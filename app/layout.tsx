@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Outfit, Inter, DM_Mono } from 'next/font/google'
 import '@/styles/globals.css'
 import Header      from '@/components/layout/Header'
 import Footer      from '@/components/layout/Footer'
@@ -8,18 +9,33 @@ import JsonLd      from '@/components/seo/JsonLd'
 import { rootMetadata }                              from '@/lib/metadata'
 import { organizationSchema, websiteSchema, softwareApplicationSchema } from '@/lib/schemas'
 
+const outfit = Outfit({
+  subsets:  ['latin'],
+  weight:   ['600', '700', '800', '900'],
+  variable: '--font-outfit',
+  display:  'swap',
+})
+
+const inter = Inter({
+  subsets:  ['latin'],
+  weight:   ['300', '400', '500', '600'],
+  variable: '--font-inter',
+  display:  'swap',
+})
+
+const dmMono = DM_Mono({
+  subsets:  ['latin'],
+  weight:   ['400', '500'],
+  variable: '--font-dm-mono',
+  display:  'swap',
+})
+
 export const metadata: Metadata = rootMetadata
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="nl" className="scroll-smooth">
+    <html lang="nl" className={`scroll-smooth ${outfit.variable} ${inter.variable} ${dmMono.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
         {/* Structured data — site-breed */}
         <JsonLd schema={[
           organizationSchema(),

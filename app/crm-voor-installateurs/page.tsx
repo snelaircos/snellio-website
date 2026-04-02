@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
 import { buildMetadata } from '@/lib/metadata'
 import { breadcrumbSchema, faqSchema } from '@/lib/schemas'
+import dynamic     from 'next/dynamic'
 import JsonLd     from '@/components/seo/JsonLd'
 import DemoForm   from '@/components/forms/DemoForm'
 import Container  from '@/components/ui/Container'
 import Button     from '@/components/ui/Button'
-import Cta        from '@/components/sections/Cta'
+
+const Cta = dynamic(() => import('@/components/sections/Cta'))
 
 export const metadata: Metadata = buildMetadata({
   title:       'CRM voor installateurs | Snellio — Probeer 30 dagen gratis',

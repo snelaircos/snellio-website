@@ -18,9 +18,9 @@ const config: Config = {
         snellio: { text: '#e8f2f8', text2: '#b8d0e0' },
       },
       fontFamily: {
-        outfit: ['Outfit', 'sans-serif'],
-        inter:  ['Inter',  'sans-serif'],
-        mono:   ['"DM Mono"', 'monospace'],
+        outfit: ['var(--font-outfit)', 'sans-serif'],
+        inter:  ['var(--font-inter)',  'sans-serif'],
+        mono:   ['var(--font-dm-mono)', 'monospace'],
       },
       backgroundImage: {
         'hero-radial': `
