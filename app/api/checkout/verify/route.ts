@@ -103,6 +103,23 @@ export async function POST(req: NextRequest) {
       }
     }
 
+    // Maak bedrijfsgegevens aan met het juiste pakket
+    if (userId) {
+      const { error: bedrijfError } = await supabase
+        .from('bedrijfsgegevens')
+        .insert({
+          user_id:      userId,
+          naam:         signup.company_name,
+          pakket:       signup.package_id,
+          pakket_addons: [],
+        })
+
+      if (bedrijfError) {
+        console.error('bedrijfsgegevens insert mislukt:', bedrijfError)
+        // Doorgaan — gebruiker is aangemaakt
+      }
+    }
+
     // Sla subscription op in database
     if (userId) {
       const { error: subscriptionError } = await supabase

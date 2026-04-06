@@ -4,10 +4,10 @@ import mollie, { SequenceType } from '@mollie/api-client'
 
 interface CheckoutRequest {
   company_name: string
-  full_name: string
-  email: string
-  password: string
-  package_id: string
+  full_name:    string
+  email:        string
+  password:     string
+  package_id:   string
 }
 
 const validPackages = ['starter', 'basis', 'pro', 'enterprise']
@@ -36,11 +36,27 @@ export async function POST(req: NextRequest) {
       auth: { autoRefreshToken: false, persistSession: false },
     })
 
+    const email = body.email.trim().toLowerCase()
+
+    // Als er al een pending signup is voor dit email, verwijder die zodat opnieuw proberen werkt
+    const { data: existing } = await supabase
+      .from('pending_signups')
+      .select('id, status')
+      .eq('email', email)
+      .single()
+
+    if (existing) {
+      if (existing.status !== 'pending') {
+        return NextResponse.json({ error: 'Dit e-mailadres heeft al een actief account' }, { status: 409 })
+      }
+      await supabase.from('pending_signups').delete().eq('id', existing.id)
+    }
+
     // Sla pending signup op
-    const { data, error } = await supabase
+    const { data: signup, error: insertError } = await supabase
       .from('pending_signups')
       .insert({
-        email:        body.email.trim().toLowerCase(),
+        email,
         company_name: body.company_name.trim(),
         full_name:    body.full_name.trim(),
         password:     body.password,
@@ -50,12 +66,8 @@ export async function POST(req: NextRequest) {
       .select('id')
       .single()
 
-    if (error) {
-      console.error('Supabase insert error:', error)
-      if (error.code === '23505')
-        return NextResponse.json({ error: 'Dit e-mailadres is al in gebruik' }, { status: 409 })
+    if (insertError || !signup)
       return NextResponse.json({ error: 'Database fout' }, { status: 500 })
-    }
 
     const mollieApiKey = process.env.MOLLIE_API_KEY
     if (!mollieApiKey)
@@ -68,38 +80,33 @@ export async function POST(req: NextRequest) {
       // Stap 1: Mollie klant aanmaken
       const customer = await mollieClient.customers.create({
         name:  body.full_name.trim(),
-        email: body.email.trim().toLowerCase(),
-        metadata: { signup_id: data.id },
+        email,
+        metadata: { signup_id: signup.id },
       })
 
-      // Sla mollie_customer_id op in pending_signup
       await supabase
         .from('pending_signups')
         .update({ mollie_customer_id: customer.id })
-        .eq('id', data.id)
+        .eq('id', signup.id)
 
-      // Stap 2: First payment (€0,01) voor mandaat — geen echte afschrijving
+      // Stap 2: First payment (€0,01) voor mandaat
       const payment = await mollieClient.payments.create({
-        customerId:    customer.id,
-        sequenceType:  SequenceType.first,
-        amount:        { value: '0.01', currency: 'EUR' },
-        description:   `Snellio ${body.package_id} — mandaatverificatie (30 dagen gratis trial)`,
-        redirectUrl:   `${siteUrl}/checkout/success?signup_id=${data.id}`,
-        webhookUrl:    `${siteUrl}/api/mollie/webhook`,
-        cancelUrl:     `${siteUrl}/checkout/cancel`,
-        metadata:      { signup_id: data.id, package_id: body.package_id },
+        customerId:   customer.id,
+        sequenceType: SequenceType.first,
+        amount:       { value: '0.01', currency: 'EUR' },
+        description:  `Snellio ${body.package_id} — mandaatverificatie (30 dagen gratis trial)`,
+        redirectUrl:  `${siteUrl}/checkout/success?signup_id=${signup.id}`,
+        webhookUrl:   `${siteUrl}/api/mollie/webhook`,
+        cancelUrl:    `${siteUrl}/checkout/cancel`,
+        metadata:     { signup_id: signup.id, package_id: body.package_id },
       })
 
-      // Sla payment_id op
       await supabase
         .from('pending_signups')
         .update({ payment_id: payment.id })
-        .eq('id', data.id)
+        .eq('id', signup.id)
 
-      return NextResponse.json({
-        success:      true,
-        checkout_url: payment.getCheckoutUrl(),
-      })
+      return NextResponse.json({ success: true, checkout_url: payment.getCheckoutUrl() })
 
     } catch (mollieError: unknown) {
       console.error('Mollie fout:', mollieError instanceof Error ? mollieError.message : mollieError)
