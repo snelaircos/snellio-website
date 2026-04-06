@@ -80,8 +80,6 @@ export async function POST(req: NextRequest) {
     const now = new Date()
     const trialEnd = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000)
 
-    let mollieSubscriptionId: string | null = null
-
     // Maak Mollie recurring subscription aan (start na 30 dagen trial)
     if (signup.mollie_customer_id) {
       try {
@@ -96,7 +94,7 @@ export async function POST(req: NextRequest) {
           webhookUrl:  `${process.env.NEXT_PUBLIC_SITE_URL}/api/mollie/webhook`,
         })
 
-        mollieSubscriptionId = subscription.id
+        void subscription.id // opgeslagen in Mollie, niet lokaal nodig
       } catch (subError) {
         console.error('Mollie subscription aanmaken mislukt:', subError)
         // Doorgaan — account is wel aangemaakt
