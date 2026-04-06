@@ -10,14 +10,6 @@ interface CheckoutRequest {
   package_id: string
 }
 
-// Maandelijkse abonnementsprijzen (voor de recurring subscription na trial)
-const PACKAGE_PRICES: Record<string, string> = {
-  starter:    '9.95',
-  basis:      '29.95',
-  pro:        '69.95',
-  enterprise: '99.95',
-}
-
 const validPackages = ['starter', 'basis', 'pro', 'enterprise']
 
 export async function POST(req: NextRequest) {
