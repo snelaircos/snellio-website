@@ -19,7 +19,7 @@ const GTM_ID        = process.env.NEXT_PUBLIC_GTM_ID        || ''
 const GA4_ID        = process.env.NEXT_PUBLIC_GA4_ID        || ''
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || ''
 const CLARITY_ID    = process.env.NEXT_PUBLIC_CLARITY_ID    || ''
-const GADS_ID       = process.env.NEXT_PUBLIC_GADS_ID       || ''
+const GADS_ID       = process.env.NEXT_PUBLIC_GADS_ID       || 'AW-18058139346'
 
 export default function Analytics() {
   // Render niets in development of als geen IDs geconfigureerd
