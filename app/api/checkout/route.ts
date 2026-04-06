@@ -81,7 +81,7 @@ export async function POST(req: NextRequest) {
       // Stap 2: First payment (€0,01) voor mandaat — geen echte afschrijving
       const payment = await mollieClient.payments.create({
         customerId:    customer.id,
-        sequenceType:  SequenceType.First,
+        sequenceType:  SequenceType.first,
         amount:        { value: '0.01', currency: 'EUR' },
         description:   `Snellio ${body.package_id} — mandaatverificatie (30 dagen gratis trial)`,
         redirectUrl:   `${siteUrl}/checkout/success?signup_id=${data.id}`,
