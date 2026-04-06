@@ -109,7 +109,7 @@ export async function POST(req: NextRequest) {
         .from('bedrijfsgegevens')
         .insert({
           user_id:      userId,
-          naam:         signup.company_name,
+          bedrijfsnaam: signup.company_name,
           pakket:       signup.package_id,
           pakket_addons: [],
         })
@@ -120,26 +120,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // Sla subscription op in database
-    if (userId) {
-      const { error: subscriptionError } = await supabase
-        .from('subscriptions')
-        .insert({
-          user_id:                 userId,
-          plan_key:                signup.package_id,
-          status:                  'trialing',
-          payment_provider:        'mollie',
-          payment_id:              signup.payment_id,
-          starts_at:               now.toISOString(),
-          trial_ends_at:           trialEnd.toISOString(),
-          ends_at:                 trialEnd.toISOString(),
-          mollie_customer_id:      signup.mollie_customer_id || null,
-          mollie_subscription_id:  mollieSubscriptionId,
-        })
-
-      if (subscriptionError)
-        console.error('Subscription opslaan mislukt:', subscriptionError)
-    }
+    // Subscription tracking via Mollie — abonnementen tabel nog niet in gebruik
 
     // Verwijder pending signup
     await supabase.from('pending_signups').delete().eq('id', signup.id)
