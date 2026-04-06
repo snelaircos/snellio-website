@@ -11,11 +11,11 @@ export default function DemoBedanktPage() {
   return (
     <>
       {/*
-        ══ GOOGLE ADS CONVERSIE TAG ══
-        Plaats hier jouw Google Ads conversion script zodra je een conversie hebt aangemaakt.
-        Ga naar: Google Ads → Tools → Conversies → Nieuwe conversie → Website
-        Selecteer: "Demo aanvragen" als conversietype
-        Plak het gtag snippet hieronder:
+        ══ GOOGLE ADS DEMO CONVERSION HERE ══
+        Uncomment and fill in your conversion ID + label from:
+        Google Ads → Goals → Conversions → New conversion action → Website
+
+        import Script from 'next/script'
 
         <Script id="ga-conversion-demo" strategy="afterInteractive">
           {`gtag('event', 'conversion', {
@@ -24,8 +24,6 @@ export default function DemoBedanktPage() {
             'currency': 'EUR'
           });`}
         </Script>
-
-        Vervang AW-XXXXXXXXXX/YYYYYYYYYYY door jouw eigen conversion ID + label.
         ══════════════════════════════
       */}
 

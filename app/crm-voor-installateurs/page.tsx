@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
 import { buildMetadata } from '@/lib/metadata'
 import { breadcrumbSchema, faqSchema } from '@/lib/schemas'
-import dynamic     from 'next/dynamic'
-import JsonLd     from '@/components/seo/JsonLd'
-import DemoForm   from '@/components/forms/DemoForm'
-import Container  from '@/components/ui/Container'
-import Button     from '@/components/ui/Button'
+import dynamic from 'next/dynamic'
+import JsonLd   from '@/components/seo/JsonLd'
+import Container from '@/components/ui/Container'
+import Button    from '@/components/ui/Button'
 
-const Cta = dynamic(() => import('@/components/sections/Cta'))
+// Split DemoForm JS out of the critical bundle — SSR still produces HTML immediately
+const DemoForm = dynamic(() => import('@/components/forms/DemoForm'))
+const Cta      = dynamic(() => import('@/components/sections/Cta'))
 
 export const metadata: Metadata = buildMetadata({
   title:       'CRM voor installateurs | Snellio — Probeer 30 dagen gratis',
@@ -77,18 +78,16 @@ export default function CrmVoorInstallateursAdsPage() {
       ]} />
 
       {/* ── HERO — boven de fold, conversie first ── */}
-      <section className="relative pt-24 pb-16 px-[5%] overflow-hidden bg-[var(--navy2)]">
-        {/* Achtergrond */}
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(10,187,214,.1) 0%, transparent 70%)' }} className="absolute inset-0" />
-        </div>
-
+      <section
+        className="hero-section relative pt-24 pb-16 px-[5%] overflow-hidden"
+        style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(10,187,214,.08) 0%, transparent 70%) #0a1a28' }}
+      >
         <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
           {/* Rechts: demo formulier — móbiel eerst bovenaan */}
           <div
             id="demo-form"
-            className="relative bg-[var(--navy3)] rounded-2xl p-8 shadow-[0_0_80px_rgba(0,0,0,.5)] order-first lg:order-last"
+            className="relative bg-[var(--navy3)] rounded-2xl p-8 shadow-lg order-first lg:order-last"
             style={{ border: '1px solid rgba(10,187,214,.25)' }}
           >
             {/* Subtiele glow bovenin het formulierblok */}
@@ -109,7 +108,7 @@ export default function CrmVoorInstallateursAdsPage() {
           {/* Links: tekst + trust */}
           <div className="order-last lg:order-first">
             <div className="inline-flex items-center gap-2 bg-[rgba(10,187,214,.1)] border border-[rgba(10,187,214,.3)] rounded-full px-4 py-1.5 mb-5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--cyan)] animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--cyan)]" />
               <span className="font-mono text-[.68rem] text-[var(--cyan)] tracking-[.08em] uppercase">
                 Speciaal voor HVAC installateurs
               </span>

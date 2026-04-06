@@ -1,5 +1,7 @@
 'use client'
 
+import Script from 'next/script'
+
 /**
  * Analytics.tsx
  *
@@ -28,7 +30,9 @@ export default function Analytics() {
       {/* ── Google Tag Manager ── */}
       {GTM_ID && (
         <>
-          <script
+          <Script
+            id="gtm-script"
+            strategy="afterInteractive"
             dangerouslySetInnerHTML={{
               __html: `
                 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -53,8 +57,10 @@ export default function Analytics() {
       {/* ── GA4 (direct, zonder GTM) ── */}
       {GA4_ID && !GTM_ID && (
         <>
-          <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`} />
-          <script
+          <Script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`} />
+          <Script
+            id="ga4-script"
+            strategy="afterInteractive"
             dangerouslySetInnerHTML={{
               __html: `
                 window.dataLayer = window.dataLayer || [];

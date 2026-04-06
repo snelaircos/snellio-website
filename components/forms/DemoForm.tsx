@@ -37,13 +37,12 @@ export default function DemoForm({ compact = false }: DemoFormProps) {
     setErrors({})
     setStatus('loading')
     try {
-      // ── Vervang dit door jouw endpoint (Resend, Formspree, API route) ──
-      // await fetch('/api/demo', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(form),
-      // })
-      await new Promise(r => setTimeout(r, 800))
+      const res = await fetch('/api', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(form),
+      })
+      if (!res.ok) throw new Error('api_error')
       router.push('/demo-bedankt')
     } catch {
       setStatus('error')
@@ -54,7 +53,7 @@ export default function DemoForm({ compact = false }: DemoFormProps) {
   const lbl = `block text-[var(--text2)] text-sm font-medium mb-1.5`
 
   return (
-    <form onSubmit={handleSubmit} noValidate className={`flex flex-col gap-${compact ? '3' : '4'}`}>
+    <form onSubmit={handleSubmit} noValidate className={`flex flex-col ${compact ? 'gap-3' : 'gap-4'}`}>
 
       {/* Naam */}
       <div>

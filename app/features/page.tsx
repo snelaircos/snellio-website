@@ -5,7 +5,7 @@ import JsonLd    from '@/components/seo/JsonLd'
 import Container from '@/components/ui/Container'
 import Button    from '@/components/ui/Button'
 import Cta       from '@/components/sections/Cta'
-import { FEATURES, CERTS } from '@/lib/constants'
+import { CERTS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Functies — Wat kan Snellio?',

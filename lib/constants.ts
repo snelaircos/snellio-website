@@ -17,6 +17,7 @@ export const NAV_ITEMS = [
   { label: 'Prijzen',  href: '/pricing'  },
   { label: 'Blog',     href: '/blog'     },
   { label: 'Contact',  href: '/contact'  },
+  { label: 'Billing',  href: '/billing'  },
 ] as const
 
 export interface Plan {
@@ -40,7 +41,7 @@ export const PLANS: Plan[] = [
     price:    { month: '9,95', year: '99,50' },
     featured: false,
     cta:      'Begin nu',
-    href:     '/registreren?pakket=starter',
+    href:     '/checkout?pakket=starter',
     features: [
       { label: 'Tot 25 installaties',          included: true  },
       { label: 'Onbeperkt klanten & locaties', included: true  },
@@ -61,7 +62,7 @@ export const PLANS: Plan[] = [
     price:    { month: '29,95', year: '299,50' },
     featured: false,
     cta:      'Begin nu',
-    href:     '/registreren?pakket=basis',
+    href:     '/checkout?pakket=basis',
     features: [
       { label: 'Onbeperkte installaties',      included: true  },
       { label: 'Onbeperkt klanten & locaties', included: true  },
@@ -82,7 +83,7 @@ export const PLANS: Plan[] = [
     featured: true,
     badge:    'Meest gekozen',
     cta:      'Begin nu →',
-    href:     '/registreren?pakket=pro',
+    href:     '/checkout?pakket=pro',
     features: [
       { label: 'Onbeperkte installaties',      included: true },
       { label: 'Onbeperkt klanten & locaties', included: true },

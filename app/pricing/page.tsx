@@ -48,7 +48,7 @@ export default function PricingPage() {
         </Container>
       </section>
 
-      <Pricing />
+      <Pricing hideHeader={true} />
 
       {/* FAQ */}
       <section className="py-20 px-[5%]">

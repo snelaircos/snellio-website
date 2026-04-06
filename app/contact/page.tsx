@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { buildMetadata }  from '@/lib/metadata'
 import { breadcrumbSchema } from '@/lib/schemas'
 import JsonLd       from '@/components/seo/JsonLd'
-import Container    from '@/components/ui/Container'
 import ContactForm  from '@/components/forms/ContactForm'
 import { SITE }     from '@/lib/constants'
 
