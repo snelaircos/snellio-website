@@ -19,11 +19,12 @@ const GTM_ID        = process.env.NEXT_PUBLIC_GTM_ID        || ''
 const GA4_ID        = process.env.NEXT_PUBLIC_GA4_ID        || ''
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || ''
 const CLARITY_ID    = process.env.NEXT_PUBLIC_CLARITY_ID    || ''
+const GADS_ID       = process.env.NEXT_PUBLIC_GADS_ID       || ''
 
 export default function Analytics() {
   // Render niets in development of als geen IDs geconfigureerd
   if (process.env.NODE_ENV !== 'production') return null
-  if (!GTM_ID && !GA4_ID) return null
+  if (!GTM_ID && !GA4_ID && !GADS_ID) return null
 
   return (
     <>
@@ -105,6 +106,28 @@ export default function Analytics() {
             `,
           }}
         />
+      )}
+
+      {/* ── Google Ads ── */}
+      {GADS_ID && (
+        <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${GADS_ID}`}
+            strategy="afterInteractive"
+          />
+          <Script
+            id="gads-script"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GADS_ID}');
+              `,
+            }}
+          />
+        </>
       )}
 
       {/* ── Bing / Microsoft Ads ── */}
