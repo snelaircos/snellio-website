@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
-import mollie from '@mollie/api-client'
+import mollie, { SequenceType } from '@mollie/api-client'
 
 interface CheckoutRequest {
   company_name: string
@@ -81,7 +81,7 @@ export async function POST(req: NextRequest) {
       // Stap 2: First payment (€0,01) voor mandaat — geen echte afschrijving
       const payment = await mollieClient.payments.create({
         customerId:    customer.id,
-        sequenceType:  'first',
+        sequenceType:  SequenceType.First,
         amount:        { value: '0.01', currency: 'EUR' },
         description:   `Snellio ${body.package_id} — mandaatverificatie (30 dagen gratis trial)`,
         redirectUrl:   `${siteUrl}/checkout/success?signup_id=${data.id}`,
