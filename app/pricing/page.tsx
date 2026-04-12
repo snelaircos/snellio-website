@@ -8,7 +8,7 @@ import Container from '@/components/ui/Container'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Prijzen & pakketten | Snellio',
-  description: 'Bekijk de prijzen van Snellio. Starter €9,95/mnd, Basis €29,95/mnd, Pro €69,95/mnd, Enterprise €99,95/mnd. 30 dagen gratis proberen, geen creditcard.',
+  description: 'Bekijk de prijzen van Snellio. Starter €9,95/mnd, Basis €29,95/mnd, Pro €69,95/mnd, Enterprise €129,95/mnd. 30 dagen gratis proberen, geen creditcard.',
   path:        '/pricing',
 })
 

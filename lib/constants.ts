@@ -99,7 +99,7 @@ export const PLANS: Plan[] = [
     id:       'enterprise',
     name:     'Enterprise',
     tagline:  'Alles inclusief · 5+ monteurs',
-    price:    { month: '99,95', year: '999,50' },
+    price:    { month: '129,95', year: '1.299,50' },
     featured: false,
     cta:      'Contact opnemen',
     href:     '/contact',

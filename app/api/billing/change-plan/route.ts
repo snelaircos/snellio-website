@@ -6,7 +6,7 @@ const PACKAGE_PRICES: Record<string, number> = {
   starter: 9.95,
   basis: 29.95,
   pro: 69.95,
-  enterprise: 99.95
+  enterprise: 129.95
 }
 
 export async function POST(req: NextRequest) {
