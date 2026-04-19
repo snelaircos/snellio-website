@@ -3,10 +3,6 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-declare global {
-  interface Window { gtag?: (...args: unknown[]) => void }
-}
-
 type Status = 'idle' | 'loading' | 'error'
 
 interface DemoFormProps {
@@ -47,13 +43,6 @@ export default function DemoForm({ compact = false }: DemoFormProps) {
         body:    JSON.stringify(form),
       })
       if (!res.ok) throw new Error('api_error')
-
-      // Google Ads conversie — alleen na succesvolle submit
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'conversion', {
-          send_to: 'AW-18058139346/aydFCN6p5ZYcENKt5aJD',
-        })
-      }
 
       router.push('/demo-bedankt')
     } catch {

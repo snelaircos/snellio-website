@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Script from 'next/script'
 
 export const metadata: Metadata = {
   title: 'Demo aangevraagd | Snellio',
@@ -10,22 +11,11 @@ export const metadata: Metadata = {
 export default function DemoBedanktPage() {
   return (
     <>
-      {/*
-        ══ GOOGLE ADS DEMO CONVERSION HERE ══
-        Uncomment and fill in your conversion ID + label from:
-        Google Ads → Goals → Conversions → New conversion action → Website
-
-        import Script from 'next/script'
-
-        <Script id="ga-conversion-demo" strategy="afterInteractive">
-          {`gtag('event', 'conversion', {
-            'send_to': 'AW-XXXXXXXXXX/YYYYYYYYYYY',
-            'value': 1.0,
-            'currency': 'EUR'
-          });`}
-        </Script>
-        ══════════════════════════════
-      */}
+      <Script id="ga-conversion-demo" strategy="afterInteractive">
+        {`gtag('event', 'conversion', {
+          'send_to': 'AW-18058139346/aydFCN6p5ZYcENKt5aJD'
+        });`}
+      </Script>
 
       <div className="min-h-screen flex flex-col items-center justify-center text-center px-[5%] bg-[var(--navy2)]">
         {/* Glow */}
