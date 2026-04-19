@@ -1,83 +1,106 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
-import Script from 'next/script'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Demo aangevraagd | Snellio',
-  description: 'Bedankt voor je demo aanvraag. We nemen binnen 1 werkdag contact op.',
-  robots: { index: false },
+import { useEffect } from 'react'
+import Link from 'next/link'
+
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void
+  }
 }
 
 export default function DemoBedanktPage() {
+  useEffect(() => {
+    let attempts = 0
+    const maxAttempts = 20 // 20 × 250ms = 5s
+
+    const fireConversion = () => {
+      if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+        window.gtag('event', 'conversion', {
+          send_to: 'AW-18058139346/aydFCN6p5ZYcENKt5aJD',
+        })
+        console.log('Google Ads conversion fired')
+        return true
+      }
+      return false
+    }
+
+    if (fireConversion()) return
+
+    const interval = setInterval(() => {
+      attempts += 1
+      if (fireConversion() || attempts >= maxAttempts) {
+        clearInterval(interval)
+        if (attempts >= maxAttempts) {
+          console.warn('Google Ads gtag niet beschikbaar — conversie niet verzonden')
+        }
+      }
+    }, 250)
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
-    <>
-      <Script id="ga-conversion-demo" strategy="afterInteractive">
-        {`gtag('event', 'conversion', {
-          'send_to': 'AW-18058139346/aydFCN6p5ZYcENKt5aJD'
-        });`}
-      </Script>
+    <div className="min-h-screen flex flex-col items-center justify-center text-center px-[5%] bg-[var(--navy2)]">
+      {/* Glow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(18,168,122,.1) 0%, transparent 70%)' }}
+        aria-hidden="true"
+      />
 
-      <div className="min-h-screen flex flex-col items-center justify-center text-center px-[5%] bg-[var(--navy2)]">
-        {/* Glow */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(18,168,122,.1) 0%, transparent 70%)' }}
-          aria-hidden="true"
-        />
+      <div className="relative max-w-lg mx-auto">
+        {/* Check icoon */}
+        <div className="w-20 h-20 rounded-full bg-[rgba(18,168,122,.15)] border border-[rgba(18,168,122,.3)] flex items-center justify-center text-4xl mx-auto mb-6">
+          ✅
+        </div>
 
-        <div className="relative max-w-lg mx-auto">
-          {/* Check icoon */}
-          <div className="w-20 h-20 rounded-full bg-[rgba(18,168,122,.15)] border border-[rgba(18,168,122,.3)] flex items-center justify-center text-4xl mx-auto mb-6">
-            ✅
-          </div>
+        <p className="font-mono text-[.65rem] text-[var(--green)] uppercase tracking-[.14em] mb-3">
+          Aanvraag ontvangen
+        </p>
 
-          <p className="font-mono text-[.65rem] text-[var(--green)] uppercase tracking-[.14em] mb-3">
-            Aanvraag ontvangen
-          </p>
+        <h1 className="font-outfit font-black text-white text-3xl tracking-tight mb-4">
+          Bedankt! We nemen snel contact op.
+        </h1>
 
-          <h1 className="font-outfit font-black text-white text-3xl tracking-tight mb-4">
-            Bedankt! We nemen snel contact op.
-          </h1>
+        <p className="text-[var(--text2)] text-base leading-relaxed mb-10">
+          We hebben je demo aanvraag ontvangen. Een van onze specialisten neemt binnen <strong className="text-white">1 werkdag</strong> contact met je op voor een persoonlijke walkthrough van Snellio.
+        </p>
 
-          <p className="text-[var(--text2)] text-base leading-relaxed mb-10">
-            We hebben je demo aanvraag ontvangen. Een van onze specialisten neemt binnen <strong className="text-white">1 werkdag</strong> contact met je op voor een persoonlijke walkthrough van Snellio.
-          </p>
+        {/* Wat kun je verwachten */}
+        <div className="bg-[var(--navy3)] border border-[var(--border)] rounded-2xl p-6 text-left mb-8">
+          <p className="font-outfit font-bold text-white text-sm mb-4">Wat kun je verwachten?</p>
+          <ul className="flex flex-col gap-3 list-none">
+            {[
+              { icon: '📞', text: 'Persoonlijk contact binnen 1 werkdag' },
+              { icon: '🎯', text: 'Demo op maat voor jouw bedrijfstype' },
+              { icon: '⏱', text: 'Sessie duurt ca. 20–30 minuten' },
+              { icon: '🔒', text: 'Geen verplichtingen, geen verkoopdruk' },
+            ].map(item => (
+              <li key={item.text} className="flex items-start gap-3 text-[var(--text2)] text-sm">
+                <span className="shrink-0">{item.icon}</span>
+                {item.text}
+              </li>
+            ))}
+          </ul>
+        </div>
 
-          {/* Wat kun je verwachten */}
-          <div className="bg-[var(--navy3)] border border-[var(--border)] rounded-2xl p-6 text-left mb-8">
-            <p className="font-outfit font-bold text-white text-sm mb-4">Wat kun je verwachten?</p>
-            <ul className="flex flex-col gap-3 list-none">
-              {[
-                { icon: '📞', text: 'Persoonlijk contact binnen 1 werkdag' },
-                { icon: '🎯', text: 'Demo op maat voor jouw bedrijfstype' },
-                { icon: '⏱', text: 'Sessie duurt ca. 20–30 minuten' },
-                { icon: '🔒', text: 'Geen verplichtingen, geen verkoopdruk' },
-              ].map(item => (
-                <li key={item.text} className="flex items-start gap-3 text-[var(--text2)] text-sm">
-                  <span className="shrink-0">{item.icon}</span>
-                  {item.text}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Alvast starten */}
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link
-              href="/registreren"
-              className="bg-gradient-to-r from-[var(--accent)] to-[var(--cyan)] text-white font-bold py-3.5 px-7 rounded-xl hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,144,184,.4)] transition-all duration-200 text-sm"
-            >
-              Alvast gratis starten →
-            </Link>
-            <Link
-              href="/"
-              className="border border-[var(--border)] text-[var(--text2)] font-medium py-3.5 px-7 rounded-xl hover:border-[var(--cyan)] hover:text-[var(--cyan)] transition-all duration-200 text-sm"
-            >
-              Terug naar home
-            </Link>
-          </div>
+        {/* Alvast starten */}
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <Link
+            href="/registreren"
+            className="bg-gradient-to-r from-[var(--accent)] to-[var(--cyan)] text-white font-bold py-3.5 px-7 rounded-xl hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,144,184,.4)] transition-all duration-200 text-sm"
+          >
+            Alvast gratis starten →
+          </Link>
+          <Link
+            href="/"
+            className="border border-[var(--border)] text-[var(--text2)] font-medium py-3.5 px-7 rounded-xl hover:border-[var(--cyan)] hover:text-[var(--cyan)] transition-all duration-200 text-sm"
+          >
+            Terug naar home
+          </Link>
         </div>
       </div>
-    </>
+    </div>
   )
 }
