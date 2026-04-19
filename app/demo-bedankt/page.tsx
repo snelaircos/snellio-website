@@ -1,14 +1,13 @@
-'use client'
-
-import { useEffect } from 'react'
+import type { Metadata } from 'next'
 import Link from 'next/link'
-import { fireConversionWithRetry } from '@/lib/analytics/gtag'
+
+export const metadata: Metadata = {
+  title: 'Demo aangevraagd | Snellio',
+  description: 'Bedankt voor je demo aanvraag. We nemen binnen 1 werkdag contact op.',
+  robots: { index: false },
+}
 
 export default function DemoBedanktPage() {
-  useEffect(() => {
-    void fireConversionWithRetry('demo_request')
-  }, [])
-
   return (
     <div className="min-h-screen flex flex-col items-center justify-center text-center px-[5%] bg-[var(--navy2)]">
       {/* Glow */}

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { trackConversion } from '@/lib/gtag'
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
 
@@ -15,6 +16,12 @@ export default function ContactForm() {
       // Vervang dit door jouw eigen form endpoint (Resend, Formspree, etc.)
       // await fetch('/api/contact', { method: 'POST', body: JSON.stringify(form) })
       await new Promise(r => setTimeout(r, 1200)) // Simulatie
+
+      // Google Ads conversie — alleen bij succesvolle submit.
+      // Als "demo" is aangevinkt tellen we ook de demo-conversie.
+      trackConversion('contact_form_submitted')
+      if (form.demo) trackConversion('demo_request_submitted')
+
       setStatus('success')
     } catch {
       setStatus('error')

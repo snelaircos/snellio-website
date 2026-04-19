@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { trackConversionAndWait } from '@/lib/gtag'
 
 type Status = 'idle' | 'loading' | 'error'
 
@@ -43,6 +44,9 @@ export default function DemoForm({ compact = false }: DemoFormProps) {
         body:    JSON.stringify(form),
       })
       if (!res.ok) throw new Error('api_error')
+
+      // Google Ads conversie — wacht tot beacon verstuurd is (of timeout) vóór redirect
+      await trackConversionAndWait('demo_request_submitted')
 
       router.push('/demo-bedankt')
     } catch {

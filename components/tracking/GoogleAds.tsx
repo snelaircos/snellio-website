@@ -1,5 +1,5 @@
 import Script from 'next/script'
-import { GADS_ID } from '@/lib/analytics/gtag'
+import { GADS_ID } from '@/lib/gtag'
 
 // Google Ads base tag. Init-script loopt EERST zodat dataLayer + gtag
 // gegarandeerd bestaan voordat de externe gtag/js lib uitvoert.
