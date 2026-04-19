@@ -13,7 +13,7 @@ import Container                    from '@/components/ui/Container'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Werkbon software voor installateurs | Snellio',
-  description: 'Werkbon software en digitale werkbon app voor installateurs en HVAC bedrijven. Klanthandtekening op tablet, BRL100-rapportage, PDF-generatie en directe facturatie via iDEAL. Start 30 dagen gratis.',
+  description: 'Werkbon software en digitale werkbon app voor installateurs en HVAC bedrijven. Klanthandtekening op tablet, BRL100-rapportage, PDF-generatie en directe facturatie via iDEAL. Start 14 dagen gratis.',
   path:        '/werkbon-software',
 })
 
@@ -99,7 +99,7 @@ const faqItems = [
   },
   {
     question: 'Wat kost werkbon software van Snellio?',
-    answer:   'Snellio biedt verschillende pakketten. De Starter (€9,95/mnd) is geschikt voor ZZP\'ers met digitale werkbonnen en BRL100. Het Basis-pakket (€29,95/mnd) voegt onbeperkte installaties toe. Pro (€69,95/mnd) bevat ook F-gassen flesregistratie en meerdere monteurs. Alle pakketten zijn 30 dagen gratis te proberen, zonder creditcard.',
+    answer:   'Snellio biedt verschillende pakketten. De Starter (€9,95/mnd) is geschikt voor ZZP\'ers met digitale werkbonnen en BRL100. Het Basis-pakket (€29,95/mnd) voegt onbeperkte installaties toe. Pro (€69,95/mnd) bevat ook F-gassen flesregistratie en meerdere monteurs. Alle pakketten zijn 14 dagen gratis te proberen, zonder creditcard.',
   },
 ]
 
@@ -169,7 +169,7 @@ export default function WerkbonSoftwarePage() {
             </p>
           </div>
           <div className="mt-8">
-            <Button href="/registreren" size="md">Start 30 dagen gratis →</Button>
+            <Button href="/registreren" size="md">Start 14 dagen gratis →</Button>
           </div>
         </Container>
       </section>
@@ -428,7 +428,7 @@ export default function WerkbonSoftwarePage() {
 
             <div className="flex flex-wrap gap-4">
               <Button href="/registreren" size="md">
-                Start net als Tim — 30 dagen gratis →
+                Start net als Tim — 14 dagen gratis →
               </Button>
               <Button href="/pricing" variant="ghost" size="md">
                 Bekijk pakketten
@@ -484,7 +484,7 @@ export default function WerkbonSoftwarePage() {
           { href: '/crm-voor-installateurs',     icon: '🏢', title: 'CRM voor installateurs',  desc: 'Klant- en installatiebeheer'          },
           { href: '/planningssoftware-monteurs',  icon: '📅', title: 'Planning monteurs',         desc: 'Werkorders inplannen per monteur'      },
           { href: '/f-gassen-registratie',        icon: '❄️', title: 'F-gassen registratie',      desc: 'Flesregistratie & F-gas logboek'       },
-          { href: '/pricing',                     icon: '💶', title: 'Pakketten & prijzen',        desc: 'Vanaf €9,95/maand, 30 dagen gratis'   },
+          { href: '/pricing',                     icon: '💶', title: 'Pakketten & prijzen',        desc: 'Vanaf €9,95/maand, 14 dagen gratis'   },
         ]}
       />
 

@@ -99,7 +99,7 @@ export default function FeaturesPage() {
           <p className="text-[var(--text2)] text-lg leading-relaxed max-w-xl mx-auto mb-10">
             Snellio is gebouwd door een installateur, voor installateurs. Iedere functie is ingegeven door echte werksituaties in de koeltechniek.
           </p>
-          <Button href="/registreren" size="lg">Start 30 dagen gratis →</Button>
+          <Button href="/registreren" size="lg">Start 14 dagen gratis →</Button>
         </Container>
       </section>
 

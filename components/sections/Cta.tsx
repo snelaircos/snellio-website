@@ -27,7 +27,7 @@ export default function Cta() {
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Button href="/registreren" size="lg">
-            Start 30 dagen gratis →
+            Start 14 dagen gratis →
           </Button>
           <Button href="/contact" variant="ghost" size="lg">
             Vraag demo aan

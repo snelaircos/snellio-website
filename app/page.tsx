@@ -11,7 +11,7 @@ import Cta               from '@/components/sections/Cta'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Software voor airco en HVAC installateurs | Snellio',
-  description: 'Snellio is de alles-in-één software voor airco- en warmtepompen installateurs en HVAC-bedrijven. Werkbonnen, installatiebeheer, F-gassen registratie, BRL100-rapportage en facturatie. Start 30 dagen gratis.',
+  description: 'Snellio is de alles-in-één software voor airco- en warmtepompen installateurs en HVAC-bedrijven. Werkbonnen, installatiebeheer, F-gassen registratie, BRL100-rapportage en facturatie. Start 14 dagen gratis.',
   path:        '/',
 })
 
@@ -34,7 +34,7 @@ const faqs = [
   },
   {
     question: 'Is er een gratis proefperiode?',
-    answer:   'Ja. Je start altijd met een gratis proefperiode van 30 dagen. Geen creditcard nodig.',
+    answer:   'Ja. Je start altijd met een gratis proefperiode van 14 dagen. Geen creditcard nodig.',
   },
 ]
 

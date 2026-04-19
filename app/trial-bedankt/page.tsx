@@ -44,7 +44,7 @@ export default function TrialBedanktPage() {
           </div>
 
           <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
-            30 dagen gratis gestart
+            14 dagen gratis gestart
           </p>
 
           <h1 className="font-outfit font-black text-white text-3xl tracking-tight mb-4">
@@ -52,7 +52,7 @@ export default function TrialBedanktPage() {
           </h1>
 
           <p className="text-[var(--text2)] text-base leading-relaxed mb-10">
-            Je account is aangemaakt. Je hebt nu <strong className="text-white">30 dagen gratis</strong> toegang tot alle functies. Geen creditcard nodig, opzeggen wanneer je wilt.
+            Je account is aangemaakt. Je hebt nu <strong className="text-white">14 dagen gratis</strong> toegang tot alle functies. Geen creditcard nodig, opzeggen wanneer je wilt.
           </p>
 
           {/* Volgende stappen */}

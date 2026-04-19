@@ -87,7 +87,7 @@ export default function Header() {
             Inloggen
           </Link>
           <Button href="/registreren" className="w-full justify-center">
-            Start 30 dagen gratis →
+            Start 14 dagen gratis →
           </Button>
         </div>
       )}

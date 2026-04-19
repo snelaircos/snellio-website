@@ -44,7 +44,7 @@ export default function VoorwaardenPage() {
         </Section>
 
         <Section title="4. Proefperiode">
-          <p>Nieuwe gebruikers genieten een gratis proefperiode van 30 dagen. Na afloop van de proefperiode is een betaald abonnement vereist om de dienst te blijven gebruiken.</p>
+          <p>Nieuwe gebruikers genieten een gratis proefperiode van 14 dagen. Na afloop van de proefperiode is een betaald abonnement vereist om de dienst te blijven gebruiken.</p>
         </Section>
 
         <Section title="5. Opzegging">

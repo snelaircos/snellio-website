@@ -78,9 +78,9 @@ export async function POST(req: NextRequest) {
 
     const userId = user.user?.id
     const now = new Date()
-    const trialEnd = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000)
+    const trialEnd = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000)
 
-    // Maak Mollie recurring subscription aan (start na 30 dagen trial)
+    // Maak Mollie recurring subscription aan (start na 14 dagen trial)
     if (signup.mollie_customer_id) {
       try {
         const startDate = trialEnd.toISOString().split('T')[0] // YYYY-MM-DD

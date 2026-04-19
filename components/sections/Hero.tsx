@@ -45,7 +45,7 @@ export default function Hero() {
       {/* CTA knoppen */}
       <div className="relative flex gap-3.5 flex-wrap justify-center animate-fade-up-3">
         <Button href="/registreren" size="lg">
-          Start 30 dagen gratis →
+          Start 14 dagen gratis →
         </Button>
         <Button href="/contact" variant="ghost" size="lg">
           Bekijk demo

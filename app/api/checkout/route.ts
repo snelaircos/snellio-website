@@ -94,7 +94,7 @@ export async function POST(req: NextRequest) {
         customerId:   customer.id,
         sequenceType: SequenceType.first,
         amount:       { value: '0.01', currency: 'EUR' },
-        description:  `Snellio ${body.package_id} — mandaatverificatie (30 dagen gratis trial)`,
+        description:  `Snellio ${body.package_id} — mandaatverificatie (14 dagen gratis trial)`,
         redirectUrl:  `${siteUrl}/checkout/success?signup_id=${signup.id}`,
         webhookUrl:   `${siteUrl}/api/mollie/webhook`,
         cancelUrl:    `${siteUrl}/checkout/cancel`,

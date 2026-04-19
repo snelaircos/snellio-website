@@ -139,5 +139,5 @@ export const CERTS = [
 export const STATS = [
   { value: '100%', suffix: '',    label: 'F-gas compliant' },
   { value: '5',    suffix: 'min', label: 'setup tijd'      },
-  { value: '30',   suffix: 'dgn', label: 'gratis trial'    },
+  { value: '14',   suffix: 'dgn', label: 'gratis trial'    },
 ] as const

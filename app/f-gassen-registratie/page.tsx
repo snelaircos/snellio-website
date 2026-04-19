@@ -12,7 +12,7 @@ import { CERTS }            from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title:       'F-gassen registratie software | Snellio',
-  description: 'Digitale F-gassen registratie software conform EU F-gas Verordening 2024/573. Flesregistratie, koudemiddellogboek, lektestregistratie en BRL100-rapportage voor koeltechnische installateurs. Start 30 dagen gratis.',
+  description: 'Digitale F-gassen registratie software conform EU F-gas Verordening 2024/573. Flesregistratie, koudemiddellogboek, lektestregistratie en BRL100-rapportage voor koeltechnische installateurs. Start 14 dagen gratis.',
   path:        '/f-gassen-registratie',
 })
 
@@ -209,7 +209,7 @@ export default function FgassenRegistratiePage() {
         heading="F-gassen registratie software"
         headingAccent="voor koeltechnische installateurs."
         sub="Volledig digitaal koudemiddellogboek per installatie. Flesregistratie, lektestdocumentatie en BRL100-rapportage conform EU F-gas Verordening 2024/573 — altijd klaar voor inspectie."
-        ctaPrimary={{ label: 'Start 30 dagen gratis →', href: '/registreren' }}
+        ctaPrimary={{ label: 'Start 14 dagen gratis →', href: '/registreren' }}
         ctaSecondary={{ label: 'Bekijk pakketten', href: '/pricing' }}
         trustLine="Geen installatie nodig • Direct starten • Nederlandse support"
         stats={[
@@ -249,7 +249,7 @@ export default function FgassenRegistratiePage() {
             </p>
           </div>
           <div className="mt-8">
-            <Button href="/registreren" size="md">Start 30 dagen gratis →</Button>
+            <Button href="/registreren" size="md">Start 14 dagen gratis →</Button>
           </div>
         </Container>
       </section>
@@ -548,7 +548,7 @@ export default function FgassenRegistratiePage() {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <Button href="/registreren" size="md">Start 30 dagen gratis →</Button>
+              <Button href="/registreren" size="md">Start 14 dagen gratis →</Button>
               <Button href="/pricing" variant="ghost" size="md">Bekijk pakketten</Button>
             </div>
           </div>
@@ -602,7 +602,7 @@ export default function FgassenRegistratiePage() {
           { href: '/crm-voor-installateurs',     icon: '🏢', title: 'CRM voor installateurs',  desc: 'Klant- en installatiebeheer'          },
           { href: '/werkbon-software',            icon: '📋', title: 'Werkbon software',         desc: 'Digitale werkbonnen met handtekening' },
           { href: '/planningssoftware-monteurs',  icon: '📅', title: 'Planning monteurs',         desc: 'Werkorders inplannen per monteur'     },
-          { href: '/pricing',                     icon: '💶', title: 'Pakketten & prijzen',       desc: 'Vanaf €9,95/mnd, 30 dagen gratis'    },
+          { href: '/pricing',                     icon: '💶', title: 'Pakketten & prijzen',       desc: 'Vanaf €9,95/mnd, 14 dagen gratis'    },
         ]}
       />
 

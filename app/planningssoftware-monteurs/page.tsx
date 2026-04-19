@@ -11,7 +11,7 @@ import Container       from '@/components/ui/Container'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Planningssoftware voor monteurs | Snellio',
-  description: 'Plan werkorders, wijs monteurs toe en houd altijd overzicht met Snellio. Planningssoftware voor monteurs en installatiebedrijven met Google Calendar sync, realtime status en directe koppeling aan klantdossiers. Start 30 dagen gratis.',
+  description: 'Plan werkorders, wijs monteurs toe en houd altijd overzicht met Snellio. Planningssoftware voor monteurs en installatiebedrijven met Google Calendar sync, realtime status en directe koppeling aan klantdossiers. Start 14 dagen gratis.',
   path:        '/planningssoftware-monteurs',
 })
 
@@ -231,7 +231,7 @@ export default function PlanningssoftwareMonteurPage() {
         heading="Planningssoftware voor monteurs, installateurs"
         headingAccent="en HVAC-bedrijven."
         sub="Werkorders inplannen, monteurs toewijzen en altijd overzicht houden — zonder bellen, zonder WhatsApp, zonder dubbele boekingen."
-        ctaPrimary={{ label: 'Start 30 dagen gratis →', href: '/registreren' }}
+        ctaPrimary={{ label: 'Start 14 dagen gratis →', href: '/registreren' }}
         ctaSecondary={{ label: 'Bekijk pakketten', href: '/pricing' }}
         trustLine="Geen installatie nodig • Direct starten • Nederlandse support"
         stats={[
@@ -268,7 +268,7 @@ export default function PlanningssoftwareMonteurPage() {
             </p>
           </div>
           <div className="mt-8">
-            <Button href="/registreren" size="md">Start 30 dagen gratis →</Button>
+            <Button href="/registreren" size="md">Start 14 dagen gratis →</Button>
           </div>
         </Container>
       </section>
@@ -600,7 +600,7 @@ export default function PlanningssoftwareMonteurPage() {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <Button href="/registreren" size="md">Start 30 dagen gratis →</Button>
+              <Button href="/registreren" size="md">Start 14 dagen gratis →</Button>
               <Button href="/pricing" variant="ghost" size="md">Bekijk pakketten</Button>
             </div>
           </div>
@@ -654,7 +654,7 @@ export default function PlanningssoftwareMonteurPage() {
           { href: '/crm-voor-installateurs',  icon: '🏢', title: 'CRM voor installateurs',   desc: 'Klant- en installatiebeheer'          },
           { href: '/werkbon-software',         icon: '📋', title: 'Werkbon software',          desc: 'Digitale werkbonnen met handtekening' },
           { href: '/f-gassen-registratie',     icon: '❄️', title: 'F-gassen registratie',      desc: 'Flesregistratie & F-gas logboek'      },
-          { href: '/pricing',                  icon: '💶', title: 'Pakketten & prijzen',        desc: 'Vanaf €9,95/mnd, 30 dagen gratis'    },
+          { href: '/pricing',                  icon: '💶', title: 'Pakketten & prijzen',        desc: 'Vanaf €9,95/mnd, 14 dagen gratis'    },
         ]}
       />
 

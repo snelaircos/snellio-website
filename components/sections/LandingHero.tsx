@@ -17,7 +17,7 @@ export default function LandingHero({
   heading,
   headingAccent,
   sub,
-  ctaPrimary   = { label: 'Start 30 dagen gratis →', href: '/registreren' },
+  ctaPrimary   = { label: 'Start 14 dagen gratis →', href: '/registreren' },
   ctaSecondary = { label: 'Bekijk pakketten',         href: '/pricing'     },
   stats,
   trustLine,

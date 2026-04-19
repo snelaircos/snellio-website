@@ -11,7 +11,7 @@ const DemoForm = dynamic(() => import('@/components/forms/DemoForm'))
 const Cta      = dynamic(() => import('@/components/sections/Cta'))
 
 export const metadata: Metadata = buildMetadata({
-  title:       'CRM voor installateurs | Snellio — Probeer 30 dagen gratis',
+  title:       'CRM voor installateurs | Snellio — Probeer 14 dagen gratis',
   description: 'CRM-software speciaal voor airco- en HVAC-installateurs. Werkbonnen, planning, F-gassen registratie en BRL100-rapportage in één systeem. Start vandaag nog gratis.',
   path:        '/crm-voor-installateurs',
 })
@@ -53,7 +53,7 @@ const faqs = [
   },
   {
     question: 'Wat kost Snellio?',
-    answer: 'Snellio start vanaf €9,95 per maand voor ZZP\'ers. Je probeert het altijd 30 dagen gratis — zonder creditcard.',
+    answer: 'Snellio start vanaf €9,95 per maand voor ZZP\'ers. Je probeert het altijd 14 dagen gratis — zonder creditcard.',
   },
 ]
 
@@ -145,7 +145,7 @@ export default function CrmVoorInstallateursAdsPage() {
 
             <div className="flex flex-wrap gap-3">
               <Button href="#demo-form" size="lg">Plan mijn demo →</Button>
-              <Button href="/registreren" variant="ghost" size="lg">Start 30 dagen gratis</Button>
+              <Button href="/registreren" variant="ghost" size="lg">Start 14 dagen gratis</Button>
             </div>
 
             <p className="text-[var(--muted)] text-xs mt-4">
@@ -229,14 +229,14 @@ export default function CrmVoorInstallateursAdsPage() {
           <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">Klaar om te starten?</p>
           <h2 className="font-outfit font-black text-white tracking-tight mb-5" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>
             Start vandaag nog.<br />
-            <span className="text-[var(--cyan)]">30 dagen gratis, geen creditcard.</span>
+            <span className="text-[var(--cyan)]">14 dagen gratis, geen creditcard.</span>
           </h2>
           <p className="text-[var(--text2)] text-base mb-8">
             Binnen 5 minuten actief. Of vraag eerst een demo aan — we helpen je graag.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Button href="#demo-form" size="lg">Plan mijn demo →</Button>
-            <Button href="/registreren" variant="ghost" size="lg">Start 30 dagen gratis</Button>
+            <Button href="/registreren" variant="ghost" size="lg">Start 14 dagen gratis</Button>
           </div>
         </Container>
       </section>
