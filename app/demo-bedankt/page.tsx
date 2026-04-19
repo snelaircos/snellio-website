@@ -2,42 +2,11 @@
 
 import { useEffect } from 'react'
 import Link from 'next/link'
-
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void
-  }
-}
+import { fireConversionWithRetry } from '@/lib/analytics/gtag'
 
 export default function DemoBedanktPage() {
   useEffect(() => {
-    let attempts = 0
-    const maxAttempts = 20 // 20 × 250ms = 5s
-
-    const fireConversion = () => {
-      if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-        window.gtag('event', 'conversion', {
-          send_to: 'AW-18058139346/aydFCN6p5ZYcENKt5aJD',
-        })
-        console.log('Google Ads conversion fired')
-        return true
-      }
-      return false
-    }
-
-    if (fireConversion()) return
-
-    const interval = setInterval(() => {
-      attempts += 1
-      if (fireConversion() || attempts >= maxAttempts) {
-        clearInterval(interval)
-        if (attempts >= maxAttempts) {
-          console.warn('Google Ads gtag niet beschikbaar — conversie niet verzonden')
-        }
-      }
-    }, 250)
-
-    return () => clearInterval(interval)
+    void fireConversionWithRetry('demo_request')
   }, [])
 
   return (

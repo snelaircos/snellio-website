@@ -1,16 +1,14 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 import { Outfit, Inter, DM_Mono } from 'next/font/google'
 import '@/styles/globals.css'
 import Header      from '@/components/layout/Header'
 import Footer      from '@/components/layout/Footer'
 import Analytics   from '@/components/tracking/Analytics'
+import GoogleAds   from '@/components/tracking/GoogleAds'
 import CookieBanner from '@/components/tracking/CookieBanner'
 import JsonLd      from '@/components/seo/JsonLd'
 import { rootMetadata }                              from '@/lib/metadata'
 import { organizationSchema, websiteSchema, softwareApplicationSchema } from '@/lib/schemas'
-
-const GADS_ID = 'AW-18058139346'
 
 const outfit = Outfit({
   subsets:  ['latin'],
@@ -58,21 +56,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Analytics />
       </head>
       <body className="bg-[var(--navy2)] text-[var(--text)] antialiased">
-        {/* Google Ads base tag — site-breed, altijd actief zodat conversie tracking werkt */}
-        <Script
-          id="gads-lib"
-          src={`https://www.googletagmanager.com/gtag/js?id=${GADS_ID}`}
-          strategy="afterInteractive"
-        />
-        <Script id="gads-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            window.gtag = gtag;
-            gtag('js', new Date());
-            gtag('config', '${GADS_ID}');
-          `}
-        </Script>
+        {/* Google Ads base tag — site-breed, init vóór externe lib zodat dataLayer altijd bestaat */}
+        <GoogleAds />
         <Header />
         <main id="main-content">
           {children}
