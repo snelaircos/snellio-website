@@ -156,7 +156,7 @@ export default function HomePage() {
           <div className="mx-auto max-w-xl">
             <p className="text-[var(--text2)] text-base leading-relaxed">
               Kies het pakket dat past bij jouw bedrijf.{' '}
-              <span className="text-white font-medium">Start gratis en schaal wanneer je groeit.</span>
+              <span className="text-white font-medium">14 dagen gratis proberen, daarna vanaf €10 per maand.</span>
             </p>
           </div>
         </div>

@@ -28,34 +28,35 @@ export default function Pricing({ hideHeader = false }: PricingProps) {
               Kies wat bij jouw bedrijf <span className="text-[var(--cyan)]">past</span>
             </h2>
             <p className="mt-3 text-[var(--text2)] text-base max-w-md mx-auto">
-              Begin gratis.{' '}
+              14 dagen gratis proberen.{' '}
               <span className="text-white font-medium">Schaal wanneer je groeit.</span>
             </p>
           </div>
         )}
 
         {/* Toggle */}
-        <div className="flex items-center justify-center gap-4 mb-8">
-          <span className={`text-sm font-medium transition-colors ${!annual ? 'text-white' : 'text-[var(--muted2)]'}`}>
-            Maandelijks
-          </span>
-          <button
-            onClick={() => setAnnual(!annual)}
-            className={`relative w-12 h-6 rounded-full transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--cyan)] ${annual ? 'bg-[var(--cyan)]' : 'bg-[var(--navy3)]'}`}
-            role="switch"
-            aria-checked={annual}
-            aria-label="Jaarlijkse facturering"
-          >
-            <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform duration-300 ${annual ? 'translate-x-6' : ''}`} />
-          </button>
-          <span className={`text-sm font-medium transition-colors ${annual ? 'text-white' : 'text-[var(--muted2)]'}`}>
-            Jaarlijks
-          </span>
-          {annual && (
-            <span className="bg-[var(--green)] text-white text-xs font-bold px-2.5 py-1 rounded-full">
-              2 maanden gratis 🎉
+        <div className="flex flex-col items-center gap-2 mb-8">
+          <div className="flex items-center justify-center gap-4">
+            <span className={`text-sm font-medium transition-colors ${!annual ? 'text-white' : 'text-[var(--muted2)]'}`}>
+              Maandelijks
             </span>
-          )}
+            <button
+              onClick={() => setAnnual(!annual)}
+              className={`relative w-12 h-6 rounded-full transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--cyan)] ${annual ? 'bg-[var(--cyan)]' : 'bg-[var(--navy3)]'}`}
+              role="switch"
+              aria-checked={annual}
+              aria-label="Jaarlijkse facturering"
+            >
+              <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform duration-300 ${annual ? 'translate-x-6' : ''}`} />
+            </button>
+            <span className={`text-sm font-medium transition-colors ${annual ? 'text-white' : 'text-[var(--muted2)]'}`}>
+              Jaarlijks
+            </span>
+          </div>
+          <p className="text-xs text-[var(--muted2)]">
+            Kies jaarlijks en betaal slechts 10 maanden —{' '}
+            <span className="text-[var(--green)] font-semibold">2 maanden cadeau 🎁</span>
+          </p>
         </div>
 
         {/* Grid */}

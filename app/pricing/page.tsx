@@ -43,7 +43,7 @@ export default function PricingPage() {
             <span className="text-[var(--cyan)]">geen verrassingen.</span>
           </h1>
           <p className="text-[var(--text2)] text-lg leading-relaxed max-w-lg mx-auto">
-            Begin gratis. Kies het pakket dat bij jouw bedrijf past. Opzeggen wanneer je wilt.
+            14 dagen gratis proberen. Kies het pakket dat bij jouw bedrijf past. Opzeggen wanneer je wilt.
           </p>
         </Container>
       </section>
