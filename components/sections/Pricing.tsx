@@ -125,12 +125,12 @@ function PlanContent({ plan, annual, isPro }: PlanContentProps) {
       <div className="relative font-outfit font-bold text-white text-xl mb-1">{plan.name}</div>
 
       {/* Prijs */}
-      <div className="relative flex items-end gap-1 my-4">
-        <sup className="text-[var(--cyan)] font-bold text-base mb-2">€</sup>
-        <span className="font-outfit font-black text-3xl leading-none text-white">
+      <div className="relative flex items-baseline gap-1 my-4">
+        <span className="text-[var(--cyan)] font-bold text-xl">€</span>
+        <span className="font-outfit font-black text-4xl leading-none text-white">
           {annual ? plan.price.year : plan.price.month}
         </span>
-        <span className="text-xs text-[var(--muted2)] mb-1.5">/{annual ? 'jaar' : 'mnd'}</span>
+        <span className="text-xs text-[var(--muted2)]">/{annual ? 'jaar' : 'mnd'}</span>
       </div>
 
       {/* Tagline */}
