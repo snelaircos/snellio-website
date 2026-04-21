@@ -3,10 +3,10 @@ import { createClient } from '@supabase/supabase-js'
 import mollie from '@mollie/api-client'
 
 const PACKAGE_PRICES: Record<string, number> = {
-  starter: 9.95,
-  basis: 29.95,
-  pro: 69.95,
-  enterprise: 129.95
+  starter: 10,
+  basis: 29,
+  pro: 69,
+  enterprise: 129
 }
 
 export async function POST(req: NextRequest) {

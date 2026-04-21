@@ -4,10 +4,10 @@ import mollie from '@mollie/api-client'
 
 // Maandelijkse abonnementsprijzen
 const PACKAGE_PRICES: Record<string, string> = {
-  starter:    '9.95',
-  basis:      '29.95',
-  pro:        '69.95',
-  enterprise: '129.95',
+  starter:    '10.00',
+  basis:      '29.00',
+  pro:        '69.00',
+  enterprise: '129.00',
 }
 
 interface VerifyRequest {
@@ -87,7 +87,7 @@ export async function POST(req: NextRequest) {
 
         const subscription = await mollieClient.customerSubscriptions.create({
           customerId:  signup.mollie_customer_id,
-          amount:      { value: PACKAGE_PRICES[signup.package_id] || '69.95', currency: 'EUR' },
+          amount:      { value: PACKAGE_PRICES[signup.package_id] || '69.00', currency: 'EUR' },
           interval:    '1 month',
           startDate,
           description: `Snellio ${signup.package_id} abonnement`,

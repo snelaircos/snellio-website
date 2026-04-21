@@ -53,7 +53,7 @@ const faqs = [
   },
   {
     question: 'Wat kost Snellio?',
-    answer: 'Snellio start vanaf €9,95 per maand voor ZZP\'ers. Je probeert het altijd 14 dagen gratis — zonder creditcard.',
+    answer: 'Snellio start vanaf €10 per maand voor ZZP\'ers. Je probeert het altijd 14 dagen gratis — zonder creditcard.',
   },
 ]
 
@@ -73,7 +73,7 @@ export default function CrmVoorInstallateursAdsPage() {
           applicationCategory: 'BusinessApplication',
           operatingSystem: 'Web',
           description: 'CRM voor airco- en warmtepompen installateurs en HVAC-bedrijven.',
-          offers: { '@type': 'Offer', price: '9.95', priceCurrency: 'EUR' },
+          offers: { '@type': 'Offer', price: '10.00', priceCurrency: 'EUR' },
         },
       ]} />
 

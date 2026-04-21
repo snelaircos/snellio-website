@@ -654,7 +654,7 @@ export default function PlanningssoftwareMonteurPage() {
           { href: '/crm-voor-installateurs',  icon: '🏢', title: 'CRM voor installateurs',   desc: 'Klant- en installatiebeheer'          },
           { href: '/werkbon-software',         icon: '📋', title: 'Werkbon software',          desc: 'Digitale werkbonnen met handtekening' },
           { href: '/f-gassen-registratie',     icon: '❄️', title: 'F-gassen registratie',      desc: 'Flesregistratie & F-gas logboek'      },
-          { href: '/pricing',                  icon: '💶', title: 'Pakketten & prijzen',        desc: 'Vanaf €9,95/mnd, 14 dagen gratis'    },
+          { href: '/pricing',                  icon: '💶', title: 'Pakketten & prijzen',        desc: 'Vanaf €10/mnd, 14 dagen gratis'    },
         ]}
       />
 
