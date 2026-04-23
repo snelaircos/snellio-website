@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ssh root@187.124.168.209 \"pm2 logs snellio --lines 100 --nostream --err 2>&1 | tail -80\")"
+    ]
+  }
+}

@@ -5,8 +5,9 @@ import { sendEmail } from '@/lib/email/sendEmail'
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json()
-    const paymentId = String(body?.id || '')
+    // Mollie stuurt webhooks als application/x-www-form-urlencoded: "id=tr_xxx"
+    const form = await req.formData()
+    const paymentId = String(form.get('id') || '')
 
     if (!paymentId) {
       return NextResponse.json({ error: 'Missing payment id' }, { status: 400 })

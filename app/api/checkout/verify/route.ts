@@ -69,7 +69,12 @@ export async function POST(req: NextRequest) {
 
     if (createError) {
       console.error('User creation error:', createError)
-      if (createError.message?.includes('already registered')) {
+      const isDuplicate =
+        (createError as { code?: string }).code === 'email_exists' ||
+        createError.message?.toLowerCase().includes('already registered') ||
+        createError.message?.toLowerCase().includes('already been registered')
+
+      if (isDuplicate) {
         await supabase.from('pending_signups').delete().eq('id', signup.id)
         return NextResponse.json({ success: true, message: 'Account bestaat al', email: signup.email })
       }
