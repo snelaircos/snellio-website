@@ -5,6 +5,7 @@ import Header      from '@/components/layout/Header'
 import Footer      from '@/components/layout/Footer'
 import Analytics   from '@/components/tracking/Analytics'
 import GoogleAds   from '@/components/tracking/GoogleAds'
+import ScrollReveal from '@/components/ScrollReveal'
 import CookieBanner from '@/components/tracking/CookieBanner'
 import JsonLd      from '@/components/seo/JsonLd'
 import { rootMetadata }                              from '@/lib/metadata'
@@ -64,20 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <Footer />
         <CookieBanner />
-        {/* Scroll reveal script */}
-        <script dangerouslySetInnerHTML={{ __html: `
-          (function(){
-            var io = new IntersectionObserver(function(entries){
-              entries.forEach(function(e,i){
-                if(e.isIntersecting){
-                  setTimeout(function(){ e.target.classList.add('visible'); }, i * 60);
-                  io.unobserve(e.target);
-                }
-              });
-            }, { threshold: 0.08 });
-            document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-          })();
-        `}} />
+        <ScrollReveal />
       </body>
     </html>
   )
