@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image             from 'next/image'
 import { buildMetadata }  from '@/lib/metadata'
 import { breadcrumbSchema, faqSchema } from '@/lib/schemas'
 import JsonLd    from '@/components/seo/JsonLd'
@@ -134,6 +135,49 @@ export default function FeaturesPage() {
                 {cert}
               </span>
             ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Planning preview */}
+      <section className="py-20 px-[5%] bg-[var(--navy2)]">
+        <Container>
+          <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] text-center mb-3">
+            Planning module
+          </p>
+          <h2 className="font-outfit font-black text-white text-2xl md:text-3xl tracking-tight text-center mb-10">
+            Plan werkorders en monteurs in één oogopslag
+          </h2>
+          <div
+            className="relative rounded-2xl overflow-hidden"
+            style={{
+              background: 'linear-gradient(135deg, rgba(10,187,214,.12) 0%, rgba(0,144,184,.06) 100%)',
+              border: '1px solid rgba(10,187,214,.2)',
+              boxShadow: '0 0 0 1px rgba(10,187,214,.08), 0 32px 80px rgba(0,0,0,.5), 0 0 60px rgba(10,187,214,.08)',
+            }}
+          >
+            <div
+              className="flex items-center gap-2 px-4 py-3 border-b"
+              style={{ background: 'rgba(10,26,40,.8)', borderColor: 'rgba(10,187,214,.15)' }}
+            >
+              <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+              <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+              <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+              <div
+                className="ml-4 flex-1 max-w-xs h-5 rounded-md text-[.65rem] font-mono flex items-center px-2.5"
+                style={{ background: 'rgba(255,255,255,.06)', color: 'rgba(255,255,255,.35)' }}
+              >
+                app.snellio.nl/planning
+              </div>
+            </div>
+            <Image
+              src="/planning-preview.png"
+              alt="Snellio planning module — werkorders en monteurs gepland in een week-overzicht met Google Calendar synchronisatie voor HVAC- en koeltechnische installateurs"
+              width={1120}
+              height={550}
+              className="w-full h-auto block"
+              sizes="(min-width: 1280px) 1152px, 100vw"
+            />
           </div>
         </Container>
       </section>
