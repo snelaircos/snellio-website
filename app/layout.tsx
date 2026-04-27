@@ -5,7 +5,6 @@ import Header      from '@/components/layout/Header'
 import Footer      from '@/components/layout/Footer'
 import Analytics   from '@/components/tracking/Analytics'
 import GoogleAds   from '@/components/tracking/GoogleAds'
-import ScrollReveal from '@/components/ScrollReveal'
 import CookieBanner from '@/components/tracking/CookieBanner'
 import JsonLd      from '@/components/seo/JsonLd'
 import { rootMetadata }                              from '@/lib/metadata'
@@ -65,7 +64,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <Footer />
         <CookieBanner />
-        <ScrollReveal />
       </body>
     </html>
   )

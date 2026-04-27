@@ -28,15 +28,16 @@ body {
   line-height: 1.6;
 }
 
-/* Reveal animation */
+/* Reveal animation — pure CSS, geen JS-dependency */
 .reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .6s ease, transform .6s ease;
+  animation: revealIn .6s ease both;
 }
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes revealIn {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { animation: none; }
 }
 
 /* Gradient text */
