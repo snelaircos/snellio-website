@@ -36,12 +36,8 @@ export default function Header() {
                 {item.label}
               </Link>
             </li>
-          ))}          <li>
-            <Link href="/billing" className="text-[var(--text2)] text-[.88rem] font-medium hover:text-[var(--cyan)] transition-colors">Billing</Link>
-          </li>
-          <li>
-            <Link href="/admin/billing" className="text-[var(--text2)] text-[.88rem] font-medium hover:text-[var(--cyan)] transition-colors">Admin Billing</Link>
-          </li>        </ul>
+          ))}
+        </ul>
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-3">

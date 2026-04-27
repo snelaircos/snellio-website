@@ -17,7 +17,6 @@ export const NAV_ITEMS = [
   { label: 'Prijzen',  href: '/pricing'  },
   { label: 'Blog',     href: '/blog'     },
   { label: 'Contact',  href: '/contact'  },
-  { label: 'Billing',  href: '/billing'  },
 ] as const
 
 export interface Plan {
