@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image             from 'next/image'
 import { buildMetadata } from '@/lib/metadata'
 import { faqSchema }     from '@/lib/schemas'
 import JsonLd            from '@/components/seo/JsonLd'
@@ -91,46 +92,15 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Dashboard placeholder — vervang door echte screenshot zodra beschikbaar */}
-            <div
-              className="relative flex flex-col items-center justify-center gap-5 py-16 px-8"
-              style={{ background: 'linear-gradient(135deg, rgba(15,33,51,.97) 0%, rgba(22,45,66,.97) 100%)', minHeight: '360px' }}
-            >
-              <div className="flex gap-3 flex-wrap justify-center">
-                {[
-                  { label: 'Werkorders',   value: '12 open'  },
-                  { label: 'Klanten',      value: '84'        },
-                  { label: 'Installaties', value: '231'       },
-                  { label: 'Facturen',     value: '€ 4.280'  },
-                ].map(card => (
-                  <div
-                    key={card.label}
-                    className="bg-[var(--navy2)] border border-[var(--border)] rounded-xl px-5 py-4 text-center"
-                    style={{ minWidth: '120px' }}
-                  >
-                    <p className="font-outfit font-black text-[var(--cyan)] text-xl leading-none mb-1">
-                      {card.value}
-                    </p>
-                    <p className="font-mono text-[var(--muted2)] text-[.6rem] uppercase tracking-wide">
-                      {card.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-              <div className="flex gap-2 flex-wrap justify-center max-w-lg">
-                {['🏗 Installatiebeheer', '📋 Werkbonnen', '❄️ F-gas', '📅 Planning', '🧾 Facturatie'].map(tag => (
-                  <span
-                    key={tag}
-                    className="bg-[var(--navy3)] border border-[var(--border)] text-[var(--text2)] text-xs px-3 py-1.5 rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <p className="text-[var(--muted)] text-xs font-mono">
-                Dashboard preview — plaats /public/dashboard-preview.png voor een echte screenshot
-              </p>
-            </div>
+            {/* Dashboard screenshot */}
+            <Image
+              src="/dashboard-preview.png"
+              alt="Snellio dashboard met overzicht van klanten, installaties, openstaande werkorders, forecast keuringen en koudemiddel flessen — software voor HVAC- en koeltechnische installateurs"
+              width={2924}
+              height={1672}
+              className="w-full h-auto block"
+              sizes="(min-width: 1280px) 1152px, 100vw"
+            />
           </div>
 
           {/* Caption */}
