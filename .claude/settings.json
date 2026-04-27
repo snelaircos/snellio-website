@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(ssh root@187.124.168.209 \"pm2 logs snellio --lines 100 --nostream --err 2>&1 | tail -80\")"
+      "Bash(ssh root@187.124.168.209 \"pm2 logs snellio --lines 100 --nostream --err 2>&1 | tail -80\")",
+      "Bash(ssh root@187.124.168.209 'source /var/www/snellio/.env.local 2>/dev/null; source /var/www/snellio/.env 2>/dev/null; curl -s -X DELETE -H \"Authorization: Bearer $MOLLIE_API_KEY\" https://api.mollie.com/v2/customers/cst_vY9D6Echo7/subscriptions/sub_jxBsZ3j8mF')"
     ]
   }
 }

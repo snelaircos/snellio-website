@@ -2,32 +2,54 @@
 
 import { useEffect } from 'react'
 
-// Observeert alle .reveal elementen en voegt .visible toe zodra ze
-// in beeld komen. Elementen die al in viewport zijn bij mount worden
-// direct zichtbaar gemaakt (reveals above-the-fold op initial load).
+// Voegt .visible toe aan alle .reveal elementen.
+// - Elementen die al in viewport staan: direct revealed (geen race met observer)
+// - Elementen onder de fold: revealed zodra ze in beeld scrollen
 //
-// Moet een client component zijn zodat het na React hydration draait —
-// een inline <script> loopt tegen hydration mismatches aan.
+// Wacht één animation frame zodat layout gesetteld is voordat we
+// getBoundingClientRect lezen — voorkomt issues met hydration timing.
 export default function ScrollReveal() {
   useEffect(() => {
-    const els = document.querySelectorAll<HTMLElement>('.reveal')
-    if (els.length === 0) return
+    let io: IntersectionObserver | null = null
 
-    const io = new IntersectionObserver(
-      entries => {
-        entries.forEach((e, i) => {
-          if (e.isIntersecting) {
-            setTimeout(() => e.target.classList.add('visible'), i * 60)
-            io.unobserve(e.target)
-          }
-        })
-      },
-      { threshold: 0.08, rootMargin: '0px 0px -5% 0px' },
-    )
+    const raf = requestAnimationFrame(() => {
+      const els = Array.from(document.querySelectorAll<HTMLElement>('.reveal:not(.visible)'))
+      if (els.length === 0) return
 
-    els.forEach(el => io.observe(el))
+      const vh = window.innerHeight
+      const belowFold: HTMLElement[] = []
 
-    return () => io.disconnect()
+      els.forEach(el => {
+        const rect = el.getBoundingClientRect()
+        const inView = rect.top < vh && rect.bottom > 0
+        if (inView) {
+          el.classList.add('visible')
+        } else {
+          belowFold.push(el)
+        }
+      })
+
+      if (belowFold.length === 0) return
+
+      io = new IntersectionObserver(
+        entries => {
+          entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+              setTimeout(() => e.target.classList.add('visible'), i * 60)
+              io?.unobserve(e.target)
+            }
+          })
+        },
+        { threshold: 0.08, rootMargin: '0px 0px -5% 0px' },
+      )
+
+      belowFold.forEach(el => io!.observe(el))
+    })
+
+    return () => {
+      cancelAnimationFrame(raf)
+      io?.disconnect()
+    }
   }, [])
 
   return null
