@@ -4,7 +4,7 @@ export const SITE = {
   appUrl:        'https://app.snellio.nl',
   email:         'info@snellio.nl',
   phone:         '+31642732262',
-  company:       "Snel Airco's",
+  company:       'Snellio Webdesign',
   kvk:           '69499829',
   founded:       '2024',
   description:   'CRM-software voor HVAC- en koeltechnisch installateurs. Werkbonnen, installatiebeheer, BRL100-rapportage en F-gassen flesregistratie in één platform.',

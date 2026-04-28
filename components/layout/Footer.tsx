@@ -28,7 +28,7 @@ export default function Footer() {
             <span className="font-outfit font-bold text-white text-lg">Snellio</span>
           </Link>
           <p className="text-[var(--muted2)] text-sm leading-relaxed max-w-xs">
-            CRM-software gebouwd door en voor HVAC-installateurs. BRL100 compliant, F-gas ready.
+            Software voor service-bedrijven. Eén systeem voor klanten, werkorders, planning en facturatie.
           </p>
           <div className="mt-6">
             <a
