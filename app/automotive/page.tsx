@@ -6,7 +6,8 @@ import JsonLd            from '@/components/seo/JsonLd'
 import Container         from '@/components/ui/Container'
 import Button            from '@/components/ui/Button'
 import Cta               from '@/components/sections/Cta'
-import { SITE }          from '@/lib/constants'
+import Pricing           from '@/components/sections/Pricing'
+import { SITE, AUTOMOTIVE_PLANS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Software voor autogarages | Snellio Automotive',
@@ -87,8 +88,8 @@ const faqs = [
     answer: 'Nee. Kenteken-lookup via de RDW open data is inbegrepen in elk pakket. Geen losse abonnementen, geen kosten per opvraging.',
   },
   {
-    question: 'Ik heb al een HVAC-account bij Snellio. Kan ik switchen of erbij hebben?',
-    answer: 'Ja. Snellio is multi-tenant: bij elk account kies je de vertical (HVAC of Automotive). Je kunt switchen via je account-instellingen of een tweede account aanmaken voor een ander bedrijf. Mail support voor migratie-vragen.',
+    question: 'Werkt Snellio op tablet en telefoon van mijn monteur?',
+    answer: 'Ja. Snellio draait in de browser — werkbonnen invullen, kenteken scannen, klant-handtekening op tablet ter plaatse. Geen aparte app nodig. Voor de monteur onderweg is er een mobiele weergave met alle voertuiginfo.',
   },
   {
     question: 'Hoe krijg ik mijn klanten en voertuigen uit mijn huidige systeem in Snellio?',
@@ -291,25 +292,25 @@ export default function AutomotivePage() {
         </Container>
       </section>
 
-      {/* ── PRICING REFERENCE ── */}
-      <section className="py-20 px-[5%] bg-[var(--navy3)] text-center">
-        <Container narrow>
-          <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
-            Pakketten
-          </p>
-          <h2
-            className="font-outfit font-black text-white tracking-tight mb-4"
-            style={{ fontSize: 'clamp(1.8rem, 4vw, 2.4rem)' }}
-          >
-            Zelfde prijzen als de HVAC-versie
-          </h2>
-          <p className="text-[var(--text2)] text-base mb-8 max-w-md mx-auto">
-            Starter <span className="text-white font-semibold">€10</span> · Basis{' '}
-            <span className="text-white font-semibold">€29</span> · Pro{' '}
-            <span className="text-white font-semibold">€69</span> · Enterprise{' '}
-            <span className="text-white font-semibold">€129</span> per maand. 14 dagen gratis proberen.
-          </p>
-          <Button href="/pricing" variant="ghost" size="lg">Bekijk alle pakketten</Button>
+      {/* ── PRICING ── */}
+      <section className="py-20 px-[5%] bg-[var(--navy2)]">
+        <Container>
+          <div className="text-center mb-10">
+            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
+              Pakketten
+            </p>
+            <h2
+              className="font-outfit font-black text-white tracking-tight"
+              style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
+            >
+              Kies wat bij jouw werkplaats <span className="text-[var(--cyan)]">past</span>
+            </h2>
+            <p className="mt-3 text-[var(--text2)] text-base max-w-md mx-auto">
+              14 dagen gratis proberen.{' '}
+              <span className="text-white font-medium">Schaal wanneer je groeit.</span>
+            </p>
+          </div>
+          <Pricing hideHeader plans={AUTOMOTIVE_PLANS} />
         </Container>
       </section>
 

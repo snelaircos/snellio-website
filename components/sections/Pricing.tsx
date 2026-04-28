@@ -6,9 +6,10 @@ import { PLANS, type Plan } from '@/lib/constants'
 
 interface PricingProps {
   hideHeader?: boolean
+  plans?:      readonly Plan[]
 }
 
-export default function Pricing({ hideHeader = false }: PricingProps) {
+export default function Pricing({ hideHeader = false, plans = PLANS }: PricingProps) {
   const [annual, setAnnual] = useState(false)
 
   return (
@@ -61,7 +62,7 @@ export default function Pricing({ hideHeader = false }: PricingProps) {
 
         {/* Grid */}
         <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-5 lg:gap-7 items-start">
-          {PLANS.map((plan, i) => {
+          {plans.map((plan, i) => {
             const isPro = plan.featured
 
             return (
