@@ -1,211 +1,352 @@
 import type { Metadata } from 'next'
 import Image             from 'next/image'
+import Link              from 'next/link'
 import { buildMetadata } from '@/lib/metadata'
 import { faqSchema }     from '@/lib/schemas'
 import JsonLd            from '@/components/seo/JsonLd'
-import Hero              from '@/components/sections/Hero'
-import SocialProof       from '@/components/sections/SocialProof'
-import Features          from '@/components/sections/Features'
-import Certifications    from '@/components/sections/Certifications'
-import Pricing           from '@/components/sections/Pricing'
-import Cta               from '@/components/sections/Cta'
+import HomePricing       from '@/components/sections/HomePricing'
 
 export const metadata: Metadata = buildMetadata({
-  title:       'Software voor airco en HVAC installateurs | Snellio',
-  description: 'Snellio is de alles-in-één software voor airco- en warmtepompen installateurs en HVAC-bedrijven. Werkbonnen, installatiebeheer, F-gassen registratie, BRL100-rapportage en facturatie. Start 14 dagen gratis.',
+  title:       'Software voor koeltechniek & airco | Snellio',
+  description: 'Snellio is de Nederlandse software voor koeltechniek- en airco-bedrijven. Werkbon, klant-handtekening, F-gassen-registratie, planning en facturatie — alles vanuit één app. 14 dagen gratis proberen.',
   path:        '/',
 })
 
-const faqs = [
+const APP_REGISTREREN = 'https://app.snellio.nl/registreren'
+
+const pijnpunten = [
+  { icon: '📋', title: 'Werkbon-chaos',       desc: 'Papieren bonnen die kwijtraken, Excel-bestanden die niemand bijhoudt.' },
+  { icon: '🧪', title: 'F-gassen-rompslomp',  desc: 'Met de hand mutaties bijhouden, BRL100-audit als wachtende stress.' },
+  { icon: '📅', title: 'Planning-puzzel',     desc: 'Elke monteur in zijn eigen Google Calendar, klant belt vier keer.' },
+]
+
+const features = [
+  { icon: '🔧', title: 'Digitale werkbon',         desc: 'Klant tekent op telefoon/tablet, PDF in z\'n inbox.' },
+  { icon: '❄️', title: 'F-gassen & koudemiddelen', desc: 'Vullingen/aftappingen automatisch in de balans.' },
+  { icon: '📊', title: 'BRL100 jaar-rapport',      desc: 'Eén klik. Klaar voor de auditor.' },
+  { icon: '📅', title: 'Planning + Google Calendar', desc: 'Dispatch-board, monteurs zien hun eigen werk.' },
+  { icon: '💳', title: 'Facturatie + Mollie',      desc: 'Klant betaalt online, status update direct.' },
+  { icon: '🔗', title: 'Boekhoud-koppeling',       desc: 'Moneybird, SnelStart, Exact. Eén keer instellen.' },
+]
+
+const monteurBullets = [
+  'Eigen geplande orders, geen ander',
+  'Klant + installatie aanmaken op locatie als nodig',
+  'Handelingen invoeren met meetwaardes',
+  'Klant tekent direct op het scherm',
+  'PDF gemaild voor jij weer in de auto zit',
+]
+
+const compliance = [
   {
-    question: 'Is Snellio geschikt voor kleine eenmanszaken?',
-    answer:   'Ja. Het Starter-pakket is specifiek gemaakt voor installateurs die solo werken. Onbeperkte klanten en locaties, werkbonnen, PDF werkbon en BRL100-rapport inclusief.',
+    title: 'F-gassen-verordening (EU 517/2014)',
+    desc:  'Alle vereiste registratie ingebouwd, lekcontrole-cycli automatisch berekend op basis van CO₂-equivalent.',
   },
   {
-    question: 'Voldoen de rapporten aan de BRL100- en F-gas eisen?',
-    answer:   'Ja. Snellio is ontworpen door een BRL100-gecertificeerd installateur. Alle rapportages voldoen aan BRL100, BRL200 en EU F-gas verordening 2024/573.',
+    title: 'BRL100 / BRL200',
+    desc:  'STEK-nummer-veld, monteur-certificering, jaar-rapportage met één klik.',
   },
   {
-    question: 'Hoe lang duurt de installatie?',
-    answer:   'Je bent binnen 5 minuten aan het werk. Geen installatie nodig — Snellio werkt volledig in de browser en is ook optimaal op tablet en telefoon.',
-  },
-  {
-    question: 'Kan ik van pakket wisselen?',
-    answer:   'Ja, je kunt op elk moment upgraden of downgraden. Bij jaarlijkse betaling ontvang je 2 maanden gratis.',
-  },
-  {
-    question: 'Is er een gratis proefperiode?',
-    answer:   'Ja. Je start altijd met een gratis proefperiode van 14 dagen. Geen creditcard nodig.',
+    title: 'Data in NL',
+    desc:  'Hosting in Europa (Supabase EU-region), AVG-conform, dagelijks back-up.',
   },
 ]
 
+const integraties = ['Mollie', 'Moneybird', 'SnelStart', 'Exact', 'Google Calendar', 'WeFact']
+
+const faqs = [
+  { question: 'Kan ik mijn data exporteren?',           answer: 'Ja, alles via CSV en PDF. Je data is van jou.' },
+  { question: 'Hoe lang is de trial?',                  answer: '14 dagen gratis met alle features. Geen creditcard nodig vooraf.' },
+  { question: 'Wat als ik wil opzeggen?',               answer: 'Eén klik in je dashboard. Geen opzegtermijn na de eerste maand.' },
+  { question: 'Hosten jullie in Nederland?',            answer: 'EU-region (Supabase Frankfurt). AVG-conform.' },
+  { question: 'Kan een monteur ook offline werken?',    answer: 'Beperkt: werkbon kan worden ingevuld zonder verbinding, sync zodra hij online komt.' },
+]
+
+// ── Tailwind utility-class shorthand voor primaire/secundaire knoppen
+//    volgens het brief-style-systeem (geen variant van bestaande Button).
+const btnPrimary   = 'inline-flex items-center justify-center font-semibold rounded-[10px] bg-[var(--accent)] text-white px-[22px] py-3 hover:bg-[#007a9c] transition-colors text-[.95rem]'
+const btnSecondary = 'inline-flex items-center justify-center font-semibold rounded-[10px] bg-white border-[1.5px] border-[var(--accent)] text-[var(--accent)] px-[22px] py-3 hover:bg-[rgba(0,144,184,.06)] transition-colors text-[.95rem]'
+
+const sectionLabel = 'font-dm-mono text-[.72rem] uppercase tracking-[.08em] text-[#5f7791] mb-3'
+
 export default function HomePage() {
   return (
-    <>
-      <JsonLd schema={faqSchema(faqs)} />
+    <div className="bg-[#f4f7fa] text-[#0f2133] font-dm-sans">
+      <JsonLd schema={[
+        faqSchema(faqs),
+      ]} />
 
-      {/* ── Hero ── */}
-      <Hero />
-
-      {/* ── Why Snellio — kort vertrouwensblok onder hero ── */}
-      <section className="py-10 px-[5%] bg-[var(--navy2)] border-b border-[var(--border)]">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-[var(--text2)] text-[1rem] leading-[1.8]">
-            Gebouwd door een gecertificeerd installateur.{' '}
-            <span className="text-white font-medium">
-              Geen generieke software, maar een systeem dat exact aansluit op de praktijk in de koeltechniek.
-            </span>
-          </p>
-        </div>
-      </section>
-
-      {/* ── Dashboard preview ── */}
-      <section className="py-20 px-[5%] bg-[var(--navy2)]">
-        <div className="mx-auto max-w-6xl">
-          {/* Label */}
-          <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] text-center mb-10">
-            Alles in één scherm
-          </p>
-
-          {/* Preview frame */}
-          <div
-            className="relative rounded-2xl overflow-hidden"
-            style={{
-              background: 'linear-gradient(135deg, rgba(10,187,214,.12) 0%, rgba(0,144,184,.06) 100%)',
-              border: '1px solid rgba(10,187,214,.2)',
-              boxShadow: '0 0 0 1px rgba(10,187,214,.08), 0 32px 80px rgba(0,0,0,.5), 0 0 60px rgba(10,187,214,.08)',
-            }}
-          >
-            {/* Browser chrome bar */}
-            <div
-              className="flex items-center gap-2 px-4 py-3 border-b"
-              style={{ background: 'rgba(10,26,40,.8)', borderColor: 'rgba(10,187,214,.15)' }}
+      {/* ── 1. HERO ── */}
+      <section className="hero-section relative pt-32 pb-20 px-[5%] bg-[#f4f7fa]">
+        <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <p className={sectionLabel}>All-in-one voor koeltechniek &amp; airco</p>
+            <h1
+              className="font-syne font-extrabold text-[#0f2133] leading-[1.05] mb-5"
+              style={{ fontSize: 'clamp(2rem, 4.5vw, 3.2rem)' }}
             >
-              <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-              <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-              <span className="w-3 h-3 rounded-full bg-[#28c840]" />
-              <div
-                className="ml-4 flex-1 max-w-xs h-5 rounded-md text-[.65rem] font-mono flex items-center px-2.5"
-                style={{ background: 'rgba(255,255,255,.06)', color: 'rgba(255,255,255,.35)' }}
-              >
-                app.snellio.nl
-              </div>
+              Eindelijk één plek voor je werkbonnen, planning en F-gassen.
+            </h1>
+            <p className="text-[#5f7791] text-[1.05rem] leading-[1.6] max-w-xl mb-8">
+              Snellio is de Nederlandse software voor koeltechniek- en airco-bedrijven.
+              Werkbon, klant-handtekening, F-gassen-registratie en factuur — allemaal vanuit één app.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link href={APP_REGISTREREN} className={btnPrimary}>
+                Start gratis 14-dagen trial →
+              </Link>
+              <Link href="#pakketten" className={btnSecondary}>
+                Bekijk pakketten
+              </Link>
             </div>
-
-            {/* Dashboard screenshot */}
-            <Image
-              src="/dashboard-preview.png"
-              alt="Snellio dashboard met overzicht van klanten, installaties, openstaande werkorders, forecast keuringen en koudemiddel flessen — software voor HVAC- en koeltechnische installateurs"
-              width={2924}
-              height={1672}
-              className="w-full h-auto block"
-              sizes="(min-width: 1280px) 1152px, 100vw"
-            />
-          </div>
-
-          {/* Caption */}
-          <p className="text-center text-[var(--muted2)] text-sm mt-6">
-            Altijd inzicht in uw werkorders, klanten, installaties en facturatie — op elk apparaat.
-          </p>
-        </div>
-      </section>
-
-      {/* ── Social proof ── */}
-      <SocialProof />
-
-      {/* ── Features ── */}
-      <Features />
-
-      {/* ── Certifications ── */}
-      <Certifications />
-
-      {/* ── Pricing ── */}
-      <section className="pt-6 pb-0">
-        {/* Pricing intro */}
-        <div className="px-[5%] text-center mb-2">
-          <div className="mx-auto max-w-xl">
-            <p className="text-[var(--text2)] text-base leading-relaxed">
-              Kies het pakket dat past bij jouw bedrijf.{' '}
-              <span className="text-white font-medium">14 dagen gratis proberen, daarna vanaf €10 per maand.</span>
+            <p className="text-[#8fafc8] text-xs mt-5">
+              Geen creditcard nodig · Maandelijks opzegbaar · Nederlandse support
             </p>
           </div>
+
+          <div className="relative">
+            <div className="rounded-xl overflow-hidden bg-white border border-[#e4ecf2] shadow-[0_8px_32px_rgba(0,144,184,.08)]">
+              <Image
+                src="/dashboard-preview.png"
+                alt="Snellio dashboard met klanten, installaties, openstaande werkorders, forecast keuringen en koudemiddel-flessen — software voor koeltechniek- en airco-bedrijven"
+                width={2924}
+                height={1672}
+                className="w-full h-auto block"
+                sizes="(min-width: 1024px) 600px, 100vw"
+                priority
+              />
+            </div>
+          </div>
         </div>
       </section>
-      <Pricing />
 
-      {/* ── Interne SEO links ── */}
-      <section className="py-20 px-[5%] bg-[var(--navy2)] border-t border-[var(--border)]">
-        <div className="mx-auto max-w-5xl">
-          <p className="font-mono text-[.65rem] text-[var(--muted2)] uppercase tracking-[.14em] text-center mb-4">
-            Alles-in-één software voor installateurs
-          </p>
-          <p className="text-[var(--text2)] text-[.95rem] text-center leading-relaxed max-w-xl mx-auto mb-10">
-            Van klantbeheer tot werkbonnen, planning en F-gassen registratie. Snellio helpt installateurs om alles vanuit één systeem te regelen.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {[
-              {
-                href:  '/crm-voor-installateurs',
-                icon:  '🏢',
-                title: 'CRM voor installateurs',
-                desc:  'Beheer klanten, locaties en installaties in één systeem.',
-              },
-              {
-                href:  '/werkbon-software',
-                icon:  '📋',
-                title: 'Werkbon software',
-                desc:  'Digitale werkbonnen met handtekening en rapportage.',
-              },
-              {
-                href:  '/planningssoftware-monteurs',
-                icon:  '📅',
-                title: 'Planningssoftware',
-                desc:  'Plan werkorders en stuur monteurs efficiënt aan.',
-              },
-              {
-                href:  '/f-gassen-registratie',
-                icon:  '❄️',
-                title: 'F-gassen registratie',
-                desc:  'Volledig digitaal koudemiddellogboek conform wetgeving.',
-              },
-            ].map(link => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="group flex items-start gap-4 bg-[var(--navy3)] border border-[var(--border)] rounded-2xl p-6 hover:border-[rgba(10,187,214,.35)] hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(0,144,184,.12)] transition-all duration-200"
+      {/* ── 2. PIJN-ERKENNING ── */}
+      <section className="py-20 px-[5%] bg-white border-y border-[#e4ecf2]">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <p className={sectionLabel}>Vertrouwd?</p>
+            <h2 className="font-syne font-bold text-[#0f2133]" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
+              Drie dingen die elke koeltechniek-werkplaats herkent
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-5">
+            {pijnpunten.map(p => (
+              <div
+                key={p.title}
+                className="bg-[#f9fbfd] border border-[#e4ecf2] rounded-xl p-6 hover:border-[var(--accent)] hover:shadow-[0_2px_8px_rgba(0,144,184,.12)] transition-all"
               >
-                <div className="w-11 h-11 rounded-xl bg-[rgba(0,144,184,.12)] border border-[rgba(0,144,184,.2)] flex items-center justify-center text-xl shrink-0">
-                  {link.icon}
-                </div>
-                <div>
-                  <p className="font-outfit font-bold text-white text-[.95rem] mb-1 group-hover:text-[var(--cyan)] transition-colors">
-                    {link.title}
-                  </p>
-                  <p className="text-[var(--muted2)] text-[.82rem] leading-relaxed">
-                    {link.desc}
-                  </p>
-                </div>
-              </a>
+                <div className="text-3xl mb-3">{p.icon}</div>
+                <h3 className="font-syne font-bold text-[#0f2133] text-lg mb-2">{p.title}</h3>
+                <p className="text-[#5f7791] text-sm leading-relaxed">{p.desc}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <Cta />
-
-      {/* FAQ — voor zoekmachines */}
-      <section className="sr-only" aria-label="Veelgestelde vragen">
-        <h2>Veelgestelde vragen over Snellio</h2>
-        <dl>
-          {faqs.map(faq => (
-            <div key={faq.question}>
-              <dt>{faq.question}</dt>
-              <dd>{faq.answer}</dd>
-            </div>
-          ))}
-        </dl>
+      {/* ── 3. WAT SNELLIO DOET (FEATURE-GRID) ── */}
+      <section className="py-20 px-[5%] bg-[#f4f7fa]">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <p className={sectionLabel}>Alles in één</p>
+            <h2 className="font-syne font-bold text-[#0f2133]" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
+              Wat Snellio voor je doet
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {features.map(f => (
+              <div
+                key={f.title}
+                className="bg-white border border-[#e4ecf2] rounded-xl p-6 hover:border-[var(--accent)] hover:shadow-[0_2px_8px_rgba(0,144,184,.12)] transition-all"
+              >
+                <div className="text-2xl mb-3">{f.icon}</div>
+                <h3 className="font-syne font-bold text-[#0f2133] text-base mb-2">{f.title}</h3>
+                <p className="text-[#5f7791] text-sm leading-relaxed">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
-    </>
+
+      {/* ── 4. MOBIEL-MONTEUR-BLOK ── */}
+      <section className="py-20 px-[5%] bg-white border-y border-[#e4ecf2]">
+        <div className="mx-auto max-w-6xl grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <p className={sectionLabel}>Voor de monteur onderweg</p>
+            <h2 className="font-syne font-bold text-[#0f2133] mb-6" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
+              De monteur opent z&apos;n telefoon en ziet z&apos;n dag.
+            </h2>
+            <ul className="flex flex-col gap-3 list-none">
+              {monteurBullets.map(b => (
+                <li key={b} className="flex items-start gap-3 text-[#0f2133] text-[.95rem]">
+                  <span className="w-5 h-5 rounded-full bg-[rgba(18,168,122,.15)] text-[var(--green)] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
+                  {b}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Telefoon-mockup met inhoud */}
+          <div className="flex justify-center">
+            <div className="w-[280px] aspect-[9/19.5] rounded-[2.5rem] bg-[#0f2133] p-3 shadow-[0_24px_60px_rgba(15,33,51,.25)]">
+              <div className="w-full h-full rounded-[1.8rem] bg-[#f4f7fa] overflow-hidden flex flex-col">
+                <div className="bg-[#0f2133] text-white text-xs px-4 py-2 flex items-center justify-between">
+                  <span className="font-dm-mono">9:41</span>
+                  <span className="font-dm-mono">●●● 5G</span>
+                </div>
+                <div className="flex-1 p-4 flex flex-col gap-3">
+                  <p className="font-dm-mono text-[.6rem] text-[#5f7791] uppercase tracking-wider">Vandaag · 23 mei</p>
+                  <h3 className="font-syne font-bold text-[#0f2133] text-base">Mijn werkorders</h3>
+
+                  {[
+                    { tijd: '09:00', klant: 'Maarschalkerweerd', taak: 'Onderhoud R-32',  status: 'open'   },
+                    { tijd: '11:30', klant: 'Pietersen B.V.',     taak: 'Lekcontrole',    status: 'open'   },
+                    { tijd: '14:00', klant: 'Firma De Groot',     taak: 'Plaatsen unit',  status: 'klaar'  },
+                  ].map((wb, i) => (
+                    <div
+                      key={i}
+                      className={`bg-white rounded-lg p-3 border ${wb.status === 'klaar' ? 'border-[rgba(18,168,122,.3)]' : 'border-[#e4ecf2]'}`}
+                    >
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="font-dm-mono text-[.65rem] text-[#5f7791]">{wb.tijd}</span>
+                        <span className={`text-[.6rem] font-bold uppercase ${wb.status === 'klaar' ? 'text-[var(--green)]' : 'text-[var(--accent)]'}`}>
+                          {wb.status}
+                        </span>
+                      </div>
+                      <p className="font-semibold text-[#0f2133] text-xs">{wb.klant}</p>
+                      <p className="text-[#5f7791] text-[.7rem]">{wb.taak}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5. COMPLIANCE / VERTROUWEN ── */}
+      <section className="py-20 px-[5%] bg-[#f4f7fa]">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <p className={sectionLabel}>BRL &amp; EU-conform</p>
+            <h2 className="font-syne font-bold text-[#0f2133]" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
+              Gemaakt voor de regels van jouw vak.
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-5">
+            {compliance.map(c => (
+              <div
+                key={c.title}
+                className="bg-white border border-[#e4ecf2] rounded-xl p-6"
+              >
+                <h3 className="font-syne font-bold text-[#0f2133] text-base mb-3">{c.title}</h3>
+                <p className="text-[#5f7791] text-sm leading-relaxed">{c.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 6. INTEGRATIES ── */}
+      <section className="py-16 px-[5%] bg-white border-y border-[#e4ecf2]">
+        <div className="mx-auto max-w-5xl text-center">
+          <p className={sectionLabel}>Verbindt met wat je al gebruikt</p>
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 mt-6">
+            {integraties.map(name => (
+              <span
+                key={name}
+                className="font-syne font-bold text-[#5f7791] text-lg hover:text-[var(--accent)] transition-colors"
+              >
+                {name}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 7. PAKKETTEN ── */}
+      <section id="pakketten" className="py-20 px-[5%] bg-[#f4f7fa] scroll-mt-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center mb-10">
+            <p className={sectionLabel}>Kies je pakket</p>
+            <h2 className="font-syne font-bold text-[#0f2133]" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
+              Eerlijke prijzen, geen verrassingen.
+            </h2>
+          </div>
+          <HomePricing />
+        </div>
+      </section>
+
+      {/* ── 8. EERLIJK OVER WAT WE NIET DOEN ── */}
+      <section className="py-20 px-[5%] bg-white border-y border-[#e4ecf2]">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className={sectionLabel}>Geen verborgen addertjes</p>
+          <h2 className="font-syne font-bold text-[#0f2133] mb-6" style={{ fontSize: 'clamp(1.4rem, 3vw, 1.7rem)' }}>
+            Eerlijk over wat we niet doen
+          </h2>
+          <p className="text-[#5f7791] text-[1.05rem] leading-[1.7]">
+            Snellio doet veel maar niet alles. We zijn er niet voor warmtepomp-ontwerpcalculaties of
+            voor een service-helpdesk met 24/7 telefoonsupport. Wel voor de dagelijkse werkbon,
+            planning en F-gassen-administratie van een actief koeltechniek-bedrijf.
+          </p>
+          <p className="text-[#5f7791] text-[1.05rem] leading-[1.7] mt-4">
+            Vragen?{' '}
+            <a href="mailto:rudy@snellio.nl" className="text-[var(--accent)] font-semibold hover:underline">
+              rudy@snellio.nl
+            </a>
+            {' '}— ik kijk er persoonlijk naar.
+          </p>
+        </div>
+      </section>
+
+      {/* ── 9. FAQ ── */}
+      <section className="py-20 px-[5%] bg-[#f4f7fa]">
+        <div className="mx-auto max-w-2xl">
+          <div className="text-center mb-10">
+            <p className={sectionLabel}>Veelgestelde vragen</p>
+            <h2 className="font-syne font-bold text-[#0f2133]" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
+              Goed om te weten
+            </h2>
+          </div>
+          <div className="flex flex-col gap-3">
+            {faqs.map(faq => (
+              <details
+                key={faq.question}
+                className="bg-white border border-[#e4ecf2] rounded-xl px-6 py-4 group hover:border-[var(--accent)] transition-colors"
+              >
+                <summary className="font-syne font-bold text-[#0f2133] text-[.95rem] cursor-pointer list-none flex items-center justify-between">
+                  {faq.question}
+                  <span className="text-[var(--accent)] text-xl group-open:rotate-45 transition-transform leading-none">+</span>
+                </summary>
+                <p className="text-[#5f7791] text-sm leading-relaxed mt-3">
+                  {faq.answer}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 10. FINAL CTA ── */}
+      <section className="py-24 px-[5%] bg-white border-t border-[#e4ecf2]">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2
+            className="font-syne font-extrabold text-[#0f2133] leading-[1.1] mb-5"
+            style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
+          >
+            Klaar om je administratie eindelijk simpel te maken?
+          </h2>
+          <p className="text-[#5f7791] text-base mb-8">
+            14 dagen gratis. Geen creditcard. Annuleren wanneer je wilt.
+          </p>
+          <Link
+            href={APP_REGISTREREN}
+            className={`${btnPrimary} text-base px-8 py-4`}
+          >
+            Start gratis trial →
+          </Link>
+        </div>
+      </section>
+    </div>
   )
 }

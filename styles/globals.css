@@ -28,6 +28,11 @@ body {
   line-height: 1.6;
 }
 
+/* Snellio app-stijl font utilities — voor light-theme pagina's */
+.font-syne    { font-family: var(--font-syne),    sans-serif; letter-spacing: -0.03em; }
+.font-dm-sans { font-family: var(--font-dm-sans), sans-serif; }
+.font-dm-mono { font-family: var(--font-dm-mono), ui-monospace, monospace; }
+
 /* Reveal animation — pure CSS, geen JS-dependency */
 .reveal {
   animation: revealIn .6s ease both;
