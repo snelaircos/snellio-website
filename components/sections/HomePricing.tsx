@@ -51,18 +51,18 @@ export default function HomePricing() {
                 }`}
             >
               {plan.badge && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[var(--orange)] text-white text-xs font-bold px-3 py-1 rounded-full shadow-md whitespace-nowrap z-20 font-dm-sans">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[var(--orange)] text-white text-xs font-bold px-3 py-1 rounded-full shadow-md whitespace-nowrap z-20">
                   {plan.badge}
                 </div>
               )}
 
               <div className="p-7 flex flex-col flex-1">
-                <h3 className="font-syne font-bold text-[#0f2133] text-xl mb-1">{plan.name}</h3>
+                <h3 className="font-bold text-[#0f2133] text-xl mb-1">{plan.name}</h3>
 
                 {/* Prijs */}
                 <div className="flex items-baseline gap-1 my-4">
-                  <span className="font-dm-mono text-[var(--accent)] font-medium text-xl">€</span>
-                  <span className="font-syne font-extrabold text-4xl leading-none text-[#0f2133]">
+                  <span className="text-[var(--accent)] font-bold text-xl">€</span>
+                  <span className="font-extrabold text-4xl leading-none text-[#0f2133] tracking-tight">
                     {annual ? plan.price.year : plan.price.month}
                   </span>
                   <span className="text-xs text-[#5f7791]">/{annual ? 'jaar' : 'mnd'}</span>

@@ -77,7 +77,7 @@ export default function HomePage() {
       ]} />
 
       {/* ── 1. HERO ── */}
-      <section className="hero-section relative pt-32 pb-20 px-[5%] bg-[#f4f7fa]">
+      <section className="relative pt-32 pb-20 px-[5%] bg-[#f4f7fa]">
         <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
             <p className={sectionLabel}>All-in-one voor koeltechniek &amp; airco</p>
@@ -136,7 +136,7 @@ export default function HomePage() {
                 className="bg-[#f9fbfd] border border-[#e4ecf2] rounded-xl p-6 hover:border-[var(--accent)] hover:shadow-[0_2px_8px_rgba(0,144,184,.12)] transition-all"
               >
                 <div className="text-3xl mb-3">{p.icon}</div>
-                <h3 className="font-syne font-bold text-[#0f2133] text-lg mb-2">{p.title}</h3>
+                <h3 className="font-semibold text-[#0f2133] text-lg mb-2">{p.title}</h3>
                 <p className="text-[#5f7791] text-sm leading-relaxed">{p.desc}</p>
               </div>
             ))}
@@ -160,7 +160,7 @@ export default function HomePage() {
                 className="bg-white border border-[#e4ecf2] rounded-xl p-6 hover:border-[var(--accent)] hover:shadow-[0_2px_8px_rgba(0,144,184,.12)] transition-all"
               >
                 <div className="text-2xl mb-3">{f.icon}</div>
-                <h3 className="font-syne font-bold text-[#0f2133] text-base mb-2">{f.title}</h3>
+                <h3 className="font-semibold text-[#0f2133] text-base mb-2">{f.title}</h3>
                 <p className="text-[#5f7791] text-sm leading-relaxed">{f.desc}</p>
               </div>
             ))}
@@ -196,7 +196,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex-1 p-4 flex flex-col gap-3">
                   <p className="font-dm-mono text-[.6rem] text-[#5f7791] uppercase tracking-wider">Vandaag · 23 mei</p>
-                  <h3 className="font-syne font-bold text-[#0f2133] text-base">Mijn werkorders</h3>
+                  <h3 className="font-semibold text-[#0f2133] text-base">Mijn werkorders</h3>
 
                   {[
                     { tijd: '09:00', klant: 'Maarschalkerweerd', taak: 'Onderhoud R-32',  status: 'open'   },
@@ -239,7 +239,7 @@ export default function HomePage() {
                 key={c.title}
                 className="bg-white border border-[#e4ecf2] rounded-xl p-6"
               >
-                <h3 className="font-syne font-bold text-[#0f2133] text-base mb-3">{c.title}</h3>
+                <h3 className="font-semibold text-[#0f2133] text-base mb-3">{c.title}</h3>
                 <p className="text-[#5f7791] text-sm leading-relaxed">{c.desc}</p>
               </div>
             ))}
@@ -255,7 +255,7 @@ export default function HomePage() {
             {integraties.map(name => (
               <span
                 key={name}
-                className="font-syne font-bold text-[#5f7791] text-lg hover:text-[var(--accent)] transition-colors"
+                className="font-semibold text-[#5f7791] text-base tracking-wide hover:text-[var(--accent)] transition-colors"
               >
                 {name}
               </span>
@@ -314,7 +314,7 @@ export default function HomePage() {
                 key={faq.question}
                 className="bg-white border border-[#e4ecf2] rounded-xl px-6 py-4 group hover:border-[var(--accent)] transition-colors"
               >
-                <summary className="font-syne font-bold text-[#0f2133] text-[.95rem] cursor-pointer list-none flex items-center justify-between">
+                <summary className="font-semibold text-[#0f2133] text-[.95rem] cursor-pointer list-none flex items-center justify-between">
                   {faq.question}
                   <span className="text-[var(--accent)] text-xl group-open:rotate-45 transition-transform leading-none">+</span>
                 </summary>
