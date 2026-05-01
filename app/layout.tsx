@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Outfit, Inter, DM_Mono, Syne, DM_Sans } from 'next/font/google'
+import { Outfit, Inter, DM_Mono, DM_Sans } from 'next/font/google'
 import '@/styles/globals.css'
 import Header      from '@/components/layout/Header'
 import Footer      from '@/components/layout/Footer'
@@ -32,14 +32,7 @@ const dmMono = DM_Mono({
   display:  'swap',
 })
 
-// Snellio app-stijl fonts — Syne voor headings, DM Sans voor body
-const syne = Syne({
-  subsets:  ['latin'],
-  weight:   ['700', '800'],
-  variable: '--font-syne',
-  display:  'swap',
-})
-
+// DM Sans als body/heading font — clean en modern, matcht de app-stijl
 const dmSans = DM_Sans({
   subsets:  ['latin'],
   weight:   ['400', '500', '600', '700'],
@@ -51,7 +44,7 @@ export const metadata: Metadata = rootMetadata
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="nl" className={`scroll-smooth ${outfit.variable} ${inter.variable} ${dmMono.variable} ${syne.variable} ${dmSans.variable}`}>
+    <html lang="nl" className={`scroll-smooth ${outfit.variable} ${inter.variable} ${dmMono.variable} ${dmSans.variable}`}>
       <head>
         {/* Critical CSS: paint correct background before stylesheet loads — prevents white flash and reduces LCP */}
         <style dangerouslySetInnerHTML={{ __html: `

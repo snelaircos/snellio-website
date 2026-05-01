@@ -29,7 +29,6 @@ body {
 }
 
 /* Snellio app-stijl font utilities — voor light-theme pagina's */
-.font-syne    { font-family: var(--font-syne),    sans-serif; letter-spacing: -0.03em; }
 .font-dm-sans { font-family: var(--font-dm-sans), sans-serif; }
 .font-dm-mono { font-family: var(--font-dm-mono), ui-monospace, monospace; }
 

@@ -82,7 +82,7 @@ export default function HomePage() {
           <div>
             <p className={sectionLabel}>All-in-one voor koeltechniek &amp; airco</p>
             <h1
-              className="font-syne font-extrabold text-[#0f2133] leading-[1.05] mb-5"
+              className="font-extrabold tracking-tight text-[#0f2133] leading-[1.05] mb-5"
               style={{ fontSize: 'clamp(2rem, 4.5vw, 3.2rem)' }}
             >
               Eindelijk één plek voor je werkbonnen, planning en F-gassen.
@@ -125,7 +125,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <p className={sectionLabel}>Vertrouwd?</p>
-            <h2 className="font-syne font-bold text-[#0f2133]" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
+            <h2 className="font-bold tracking-tight text-[#0f2133]" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
               Drie dingen die elke koeltechniek-werkplaats herkent
             </h2>
           </div>
@@ -149,7 +149,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <p className={sectionLabel}>Alles in één</p>
-            <h2 className="font-syne font-bold text-[#0f2133]" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
+            <h2 className="font-bold tracking-tight text-[#0f2133]" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
               Wat Snellio voor je doet
             </h2>
           </div>
@@ -173,7 +173,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <p className={sectionLabel}>Voor de monteur onderweg</p>
-            <h2 className="font-syne font-bold text-[#0f2133] mb-6" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
+            <h2 className="font-bold tracking-tight text-[#0f2133] mb-6" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
               De monteur opent z&apos;n telefoon en ziet z&apos;n dag.
             </h2>
             <ul className="flex flex-col gap-3 list-none">
@@ -229,7 +229,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <p className={sectionLabel}>BRL &amp; EU-conform</p>
-            <h2 className="font-syne font-bold text-[#0f2133]" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
+            <h2 className="font-bold tracking-tight text-[#0f2133]" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
               Gemaakt voor de regels van jouw vak.
             </h2>
           </div>
@@ -269,7 +269,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-10">
             <p className={sectionLabel}>Kies je pakket</p>
-            <h2 className="font-syne font-bold text-[#0f2133]" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
+            <h2 className="font-bold tracking-tight text-[#0f2133]" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
               Eerlijke prijzen, geen verrassingen.
             </h2>
           </div>
@@ -281,7 +281,7 @@ export default function HomePage() {
       <section className="py-20 px-[5%] bg-white border-y border-[#e4ecf2]">
         <div className="mx-auto max-w-2xl text-center">
           <p className={sectionLabel}>Geen verborgen addertjes</p>
-          <h2 className="font-syne font-bold text-[#0f2133] mb-6" style={{ fontSize: 'clamp(1.4rem, 3vw, 1.7rem)' }}>
+          <h2 className="font-bold tracking-tight text-[#0f2133] mb-6" style={{ fontSize: 'clamp(1.4rem, 3vw, 1.7rem)' }}>
             Eerlijk over wat we niet doen
           </h2>
           <p className="text-[#5f7791] text-[1.05rem] leading-[1.7]">
@@ -304,7 +304,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-2xl">
           <div className="text-center mb-10">
             <p className={sectionLabel}>Veelgestelde vragen</p>
-            <h2 className="font-syne font-bold text-[#0f2133]" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
+            <h2 className="font-bold tracking-tight text-[#0f2133]" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
               Goed om te weten
             </h2>
           </div>
@@ -331,7 +331,7 @@ export default function HomePage() {
       <section className="py-24 px-[5%] bg-white border-t border-[#e4ecf2]">
         <div className="mx-auto max-w-2xl text-center">
           <h2
-            className="font-syne font-extrabold text-[#0f2133] leading-[1.1] mb-5"
+            className="font-extrabold tracking-tight text-[#0f2133] leading-[1.1] mb-5"
             style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
           >
             Klaar om je administratie eindelijk simpel te maken?
