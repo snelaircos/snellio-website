@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/planningssoftware-monteurs',    priority: 0.9,  changeFreq: 'monthly' as const },
     { path: '/f-gassen-registratie',          priority: 0.9,  changeFreq: 'monthly' as const },
     { path: '/automotive',                    priority: 0.9,  changeFreq: 'monthly' as const },
+    { path: '/alternatief-voor-crm-installateurs', priority: 0.85, changeFreq: 'monthly' as const },
     { path: '/contact',                       priority: 0.8,  changeFreq: 'monthly' as const },
     { path: '/registreren',                   priority: 0.8,  changeFreq: 'monthly' as const },
     { path: '/blog',                          priority: 0.7,  changeFreq: 'weekly'  as const },
