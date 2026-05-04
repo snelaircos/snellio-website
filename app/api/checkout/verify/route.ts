@@ -82,10 +82,65 @@ export async function POST(req: NextRequest) {
     }
 
     const userId = user.user?.id
+    if (!userId) {
+      return NextResponse.json({ error: 'Account aanmaken mislukt' }, { status: 500 })
+    }
     const now = new Date()
     const trialEnd = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000)
 
-    // Maak Mollie recurring subscription aan (start na 14 dagen trial)
+    // Pak het Mollie-mandaat (€0,01 first-payment leverde 'm op). Snellio's
+    // trial-cron heeft dit nodig om aan einde trial de subscription te
+    // starten. Als het er niet is gaat de tenant in 'grace' i.p.v. 'actief'.
+    let mandateId: string | null = signup.mollie_mandate_id ?? null
+    if (!mandateId && signup.mollie_customer_id) {
+      try {
+        const mandates = await mollieClient.customerMandates.page({
+          customerId: signup.mollie_customer_id,
+          limit:      10,
+        })
+        const valid = mandates.find(m => m.status === 'valid')
+        if (valid) mandateId = valid.id
+      } catch (mErr) {
+        console.error('Mandate-lookup mislukt:', mErr)
+      }
+    }
+
+    // Maak bedrijfsgegevens — moet COMPLEET zijn (eerder bug: alleen
+    // bedrijfsnaam/pakket werd geschreven, status/trial/mollie ontbraken
+    // waardoor trial-cron de tenant negeerde en admin de tenant niet zag).
+    const { error: bedrijfError } = await supabase
+      .from('bedrijfsgegevens')
+      .insert({
+        user_id:            userId,
+        bedrijfsnaam:       signup.company_name,
+        emailadres:         signup.email,
+        pakket:             signup.package_id,
+        pakket_addons:      [],
+        // Vertical: snellio.nl signupform stuurt 'm soms mee in pending_signups.
+        // Default = hvac (oorspronkelijke vertical, dekt 95%+ van signups).
+        vertical:           signup.vertical === 'automotive' ? 'automotive' : 'hvac',
+        abonnement_status:  'trial',
+        trial_start:        now.toISOString(),
+        trial_eind:         trialEnd.toISOString(),
+        mollie_customer_id: signup.mollie_customer_id ?? null,
+        mollie_mandate_id:  mandateId,
+      })
+
+    if (bedrijfError) {
+      // Hard fail: rollback auth user zodat we geen orphan account achterlaten.
+      // Eerder werd dit silent geslikt → user dacht dat signup klaar was, maar
+      // had geen bedrijfsgegevens en kon niets in Snellio.
+      console.error('bedrijfsgegevens insert mislukt:', bedrijfError)
+      await supabase.auth.admin.deleteUser(userId)
+      return NextResponse.json({
+        error: 'Account aanmaken mislukt — neem contact op met support@snellio.nl',
+        debug: bedrijfError.message,
+      }, { status: 500 })
+    }
+
+    // Maak Mollie recurring subscription aan (start na 14 dagen trial).
+    // Faal hier niet hard: als 't niet lukt pakt trial-check-cron 'm op
+    // bij de trial→grace transitie zolang er een mandaat is.
     if (signup.mollie_customer_id) {
       try {
         const startDate = trialEnd.toISOString().split('T')[0] // YYYY-MM-DD
@@ -99,34 +154,23 @@ export async function POST(req: NextRequest) {
           webhookUrl:  `${process.env.NEXT_PUBLIC_SITE_URL}/api/mollie/webhook`,
         })
 
-        void subscription.id // opgeslagen in Mollie, niet lokaal nodig
+        // Subscription-id opslaan zodat we 'm later kunnen reconcileren
+        await supabase
+          .from('bedrijfsgegevens')
+          .update({ mollie_subscription_id: subscription.id })
+          .eq('user_id', userId)
       } catch (subError) {
         console.error('Mollie subscription aanmaken mislukt:', subError)
-        // Doorgaan — account is wel aangemaakt
+        // Trial-check cron probeert 't opnieuw bij trial-eind.
       }
     }
 
-    // Maak bedrijfsgegevens aan met het juiste pakket
-    if (userId) {
-      const { error: bedrijfError } = await supabase
-        .from('bedrijfsgegevens')
-        .insert({
-          user_id:      userId,
-          bedrijfsnaam: signup.company_name,
-          pakket:       signup.package_id,
-          pakket_addons: [],
-        })
-
-      if (bedrijfError) {
-        console.error('bedrijfsgegevens insert mislukt:', bedrijfError)
-        // Doorgaan — gebruiker is aangemaakt
-      }
-    }
-
-    // Subscription tracking via Mollie — abonnementen tabel nog niet in gebruik
-
-    // Verwijder pending signup
-    await supabase.from('pending_signups').delete().eq('id', signup.id)
+    // Markeer pending_signups als completed (NIET deleten — dan kunnen we
+    // achteraf debuggen welke signups door welke flow gingen).
+    await supabase
+      .from('pending_signups')
+      .update({ status: 'completed' })
+      .eq('id', signup.id)
 
     return NextResponse.json({
       success:  true,
