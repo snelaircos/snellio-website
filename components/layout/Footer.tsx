@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { SITE, NAV_ITEMS } from '@/lib/constants'
 
 const legal = [
@@ -7,7 +10,7 @@ const legal = [
   { label: 'Cookiebeleid', href: '/cookiebeleid' },
 ]
 
-const seoLinks = [
+const hvacSeoLinks = [
   { label: 'CRM voor installateurs',    href: '/crm-voor-installateurs'    },
   { label: 'Werkbon software',          href: '/werkbon-software'           },
   { label: 'Planningssoftware monteurs', href: '/planningssoftware-monteurs' },
@@ -15,9 +18,13 @@ const seoLinks = [
 ]
 
 export default function Footer() {
+  const pathname = usePathname()
+  const isAutomotive = pathname?.startsWith('/automotive')
+  const seoLinks = isAutomotive ? [] : hvacSeoLinks
+
   return (
     <footer className="border-t border-[var(--border)] bg-[var(--navy2)]">
-      <div className="mx-auto max-w-7xl px-[5%] py-16 grid md:grid-cols-5 gap-10">
+      <div className={`mx-auto max-w-7xl px-[5%] py-16 grid gap-10 ${seoLinks.length ? 'md:grid-cols-5' : 'md:grid-cols-4'}`}>
 
         {/* Merk */}
         <div className="md:col-span-2">
@@ -59,19 +66,21 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* SEO pagina's */}
-        <div>
-          <h3 className="font-semibold text-white text-sm mb-4 tracking-wide">Software</h3>
-          <ul className="flex flex-col gap-3 list-none">
-            {seoLinks.map(item => (
-              <li key={item.href}>
-                <Link href={item.href} className="text-[var(--muted2)] text-sm hover:text-[var(--cyan)] transition-colors">
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/* SEO pagina's — alleen op niet-automotive pagina's */}
+        {seoLinks.length > 0 && (
+          <div>
+            <h3 className="font-semibold text-white text-sm mb-4 tracking-wide">Software</h3>
+            <ul className="flex flex-col gap-3 list-none">
+              {seoLinks.map(item => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-[var(--muted2)] text-sm hover:text-[var(--cyan)] transition-colors">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         {/* Juridisch */}
         <div>
