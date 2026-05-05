@@ -3,107 +3,107 @@ import Link              from 'next/link'
 import { buildMetadata } from '@/lib/metadata'
 import { breadcrumbSchema, faqSchema } from '@/lib/schemas'
 import JsonLd            from '@/components/seo/JsonLd'
-import Container         from '@/components/ui/Container'
-import Button            from '@/components/ui/Button'
-import Cta               from '@/components/sections/Cta'
-import Pricing           from '@/components/sections/Pricing'
-import { SITE, AUTOMOTIVE_PLANS } from '@/lib/constants'
+import HeroAnimation     from '@/components/sections/automotive/HeroAnimation'
+import AutomotivePricing from '@/components/sections/automotive/AutomotivePricing'
+import { SITE } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
-  title:       'Software voor autogarages | Snellio Automotive',
-  description: 'Werkplaats-software voor autogarages, APK-stations en onderhoudsbedrijven. Kenteken-lookup via RDW, onderdelen op voertuig, klant-akkoord en facturatie in één systeem. 14 dagen gratis proberen.',
+  title:       'Software voor werkplaatsen, autohandelaren & dealers | Snellio Automotive',
+  description: 'Eén tool voor je werkplaats — werkbladen, voertuigen, klanten, planning, offertes en facturen. Geef Snellio het kenteken, de rest regelt zich. 14 dagen gratis.',
   path:        '/automotive',
 })
 
 const SIGNUP_HREF = '/registreren?vertical=automotive'
 
-const pijnpunten = [
-  {
-    icon: '🔍',
-    title: 'Onderdelen zoeken in 5 verschillende systemen',
-    desc: 'Eén leverancier-portaal voor remblokken, een ander voor filters, een derde voor banden. Tabbladen vol, prijzen vergelijken, fout bestellen. Een uur kwijt voor één onderhoudsbeurt.',
-  },
-  {
-    icon: '⌨️',
-    title: 'Kenteken en voertuiginfo handmatig overtikken',
-    desc: 'Klant noemt kenteken, jij zoekt merk, model en bouwjaar handmatig op. Tikfout in het bouwjaar = verkeerde onderdelen. En dan moet alles ook nog naar de werkorder.',
-  },
-  {
-    icon: '📒',
-    title: 'Werkorder klaar? Factuur opnieuw in de boekhouding tikken',
-    desc: "Werkbon afgetekend, klant tevreden, en nu? Alle uren en onderdelen overtikken in Moneybird of WeFact, factuur versturen, betaling opvolgen. Dubbel werk, dagelijks.",
-  },
+const btnPrimary   = 'inline-flex items-center justify-center gap-2 font-semibold rounded-[10px] bg-[#0090b8] text-white px-[22px] py-3 hover:bg-[#007a9c] active:translate-y-px transition-colors text-[.95rem]'
+const btnSecondary = 'inline-flex items-center justify-center gap-2 font-semibold rounded-[10px] bg-white border-[1.5px] border-[#0090b8] text-[#0090b8] px-[22px] py-3 hover:bg-[#e6f6fa] active:translate-y-px transition-colors text-[.95rem]'
+
+const sectionLabel = 'font-dm-mono text-[.72rem] uppercase tracking-[.10em] text-[#0090b8] mb-3'
+const heading2     = 'font-extrabold tracking-[-.02em] text-[#0f2133] leading-[1.1] mb-3.5'
+const sectionLead  = 'text-[18px] text-[#5f7791] leading-[1.55] max-w-[680px] mb-9'
+
+const stats = [
+  { num: '~4', unit: 'u',  lbl: 'Minder administratie per week' },
+  { num: '1 → 15', unit: '', lbl: 'Medewerkers per werkplaats' },
+  { num: 'RDW',    unit: '', lbl: 'Auto-data via kenteken' },
+  { num: '€ 0,–',  unit: '', lbl: 'Tijdens je proefperiode' },
 ]
 
 const stappen = [
   {
-    nr: '1',
-    title: 'Kenteken invoeren',
-    desc: 'Klant noemt kenteken. RDW levert direct merk, model, bouwjaar en motorcode — geen tikfouten meer.',
+    nr: '01 · Tik in',
+    title: 'Kenteken erin',
+    desc: 'Snellio haalt merk, model, bouwjaar en APK-status op uit de RDW. Klant erbij of nieuw aanmaken.',
+    border: '#0090b8',
+    demo: <Kenteken plate="AB-90-CD" />,
   },
   {
-    nr: '2',
-    title: 'Onderdelen zoeken op voertuig',
-    desc: 'Selecteer remblokken, filters of olie. De leverancier laat alleen onderdelen zien die op deze auto passen.',
+    nr: '02 · Werkblad',
+    title: 'Het werk erop',
+    desc: 'Remblokken, koppakking, accu, banden seizoen — wat je deed, met uren en onderdelen. Foto erbij voor de klant.',
+    border: '#0abbd6',
+    demo: <span className="text-[13.5px] text-[#5f7791]">📋 WB-2025-031 · Kleine onderhoudsbeurt</span>,
   },
   {
-    nr: '3',
-    title: 'Werkorder naar klant',
-    desc: 'Stuur de werkorder ter goedkeuring. Klant tekent digitaal of geeft akkoord per mail. Pas dan bestel je.',
+    nr: '03 · Offerte / factuur',
+    title: 'Eén klik naar PDF',
+    desc: 'Werkblad wordt offerte of factuur, met jouw kop, jouw BTW, jouw nummering. Naar Moneybird als je wilt.',
+    border: '#e07a30',
+    demo: (
+      <span className="text-[13.5px]">
+        <span className="font-dm-mono text-[#0090b8]">FACT-262023</span>
+        <span className="text-[#5f7791]"> · € 11.379,98</span>
+      </span>
+    ),
   },
   {
-    nr: '4',
-    title: 'Werkorder → factuur',
-    desc: 'Werk klaar? Eén klik en de factuur staat in Moneybird of WeFact, inclusief onderdelen en arbeidsuren.',
+    nr: '04 · Betaald',
+    title: 'Klant tikt op betalen',
+    desc: 'Mollie-link in de mail. Status springt naar Betaald. Geen vervalherinneringen meer hoeven sturen.',
+    border: '#12a87a',
+    demo: (
+      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#e3f6ee] text-[#12a87a] border border-[#9bd9c0]">
+        ✓ Betaald
+      </span>
+    ),
   },
 ]
 
 const features = [
-  { icon: '🚗', title: 'Kenteken-lookup via RDW',     desc: 'Voertuiggegevens automatisch ingevuld bij elk kenteken — merk, model, bouwjaar, motorcode.' },
-  { icon: '🔧', title: 'Onderdelen op voertuig',       desc: 'Koppeling met leverancier laat alleen passende onderdelen zien. Geen verkeerde bestellingen meer.' },
-  { icon: '✍️', title: 'Klant-akkoord per werkorder',   desc: 'Werkorder ter goedkeuring naar de klant via mail of digitale handtekening. Pas bestellen na akkoord.' },
-  { icon: '📦', title: 'Eén-klik bestelling',          desc: 'Goedgekeurde onderdelen worden automatisch doorgepushed naar je leverancier-systeem.' },
-  { icon: '🧾', title: 'Werkorder → factuur',          desc: 'Werkbon afsluiten en de factuur is klaar — onderdelen en arbeidsuren staan er al in.' },
-  { icon: '📊', title: 'Boekhoudkoppeling',            desc: 'Concept-factuur direct in Moneybird, WeFact, Exact of SnelStart. Provider regelt verzending en iDEAL.' },
-  { icon: '📅', title: 'Planning & dispatch',          desc: 'Monteurs inplannen op werkorders. Mobiele monteur-app voor onderweg met alle voertuiginfo.' },
-  { icon: '👥', title: 'Multi-monteur',                desc: 'Werkorders verdelen over je team, voortgang volgen, signeren ter plaatse.' },
-]
-
-const integraties = [
-  { name: 'RDW',             desc: 'Voertuig­gegevens'   },
-  { name: 'Moneybird',       desc: 'Boekhouding'         },
-  { name: 'WeFact',          desc: 'Boekhouding'         },
-  { name: 'Mollie',          desc: 'iDEAL betalingen'    },
-  { name: 'Resend',          desc: 'Mail verzending'     },
-  { name: 'Google Calendar', desc: 'Planning sync'       },
+  { icon: '📋', title: 'Werkbladen',           desc: 'Per voertuig, per klus. Uren, onderdelen, foto\'s. Wordt vanzelf je offerte of factuur.' },
+  { icon: '🚘', title: 'Voertuigen & klanten',  desc: 'Eén kenteken aan één eigenaar. APK-deadlines op het dashboard, 30 dagen vooruit.' },
+  { icon: '🧾', title: 'Facturen & offertes',   desc: 'Concept, verzonden, betaald. Herinneringen en aanmaningen waar dat nodig is.' },
+  { icon: '📅', title: 'Planning',              desc: 'Wie doet wat wanneer. Sleep een werkblad in de week — klant krijgt automatisch bevestiging.' },
+  { icon: '📦', title: 'Vrooam-grossiers',      desc: 'Bestel onderdelen rechtstreeks bij Vrooam-aangesloten grossiers, waaronder Koskamp.' },
+  { icon: '📚', title: 'Kennisbank',            desc: 'Hoe-doe-je-dit per scenario. Geschreven door werkplaatsen, niet door consultants.' },
 ]
 
 const faqs = [
   {
-    question: 'Welke onderdelen-leveranciers worden ondersteund?',
-    answer: 'Bij start ondersteunen we de grootste Nederlandse onderdelen-leveranciers via hun voertuig-API. Tijdens de trial vertellen we precies welke koppelingen voor jouw werkplaats relevant zijn. Heb je een specifieke leverancier? Laat het weten — we breiden continu uit.',
+    question: 'Welke onderdelen-leveranciers zijn aangesloten?',
+    answer:   'Snellio koppelt met Vrooam-aangesloten grossiers — waaronder Koskamp. Bestelling, prijzen en beschikbaarheid lopen direct vanuit het werkblad. Heb je een specifieke grossier? Mail ons even, dan kijken we mee.',
   },
   {
     question: 'Brengt de RDW-koppeling extra kosten met zich mee?',
-    answer: 'Nee. Kenteken-lookup via de RDW open data is inbegrepen in elk pakket. Geen losse abonnementen, geen kosten per opvraging.',
+    answer:   'Nee. Kenteken-lookup via RDW open data zit standaard in elk pakket. Geen aparte abonnementen, geen kosten per opvraging.',
   },
   {
-    question: 'Werkt Snellio op tablet en telefoon van mijn monteur?',
-    answer: 'Ja. Snellio draait in de browser — werkbonnen invullen, kenteken scannen, klant-handtekening op tablet ter plaatse. Geen aparte app nodig. Voor de monteur onderweg is er een mobiele weergave met alle voertuiginfo.',
+    question: 'Werkt Snellio op tablet en telefoon?',
+    answer:   'Ja. Snellio draait in de browser — werkbladen invullen, kenteken erbij, klant tekent op tablet. Geen aparte app installeren. Mobile-first ontworpen, dus prettig in de werkplaats én onderweg.',
   },
   {
-    question: 'Hoe krijg ik mijn klanten en voertuigen uit mijn huidige systeem in Snellio?',
-    answer: 'Importeren kan via Excel/CSV: klantgegevens, kentekens en historische werkorders. Tijdens de trial helpt onze support je gratis met de migratie — zodat je niet vanaf nul begint.',
+    question: 'Hoe krijg ik mijn klanten en voertuigen erin?',
+    answer:   'Via Excel/CSV importeer je klanten, kentekens en historische werkbladen. Tijdens je trial helpen we je gratis met de migratie — geen vanaf nul beginnen.',
   },
   {
     question: 'Wat is de opzegtermijn?',
-    answer: 'Maandelijks opzegbaar bij maandbetaling. Bij jaarlijkse betaling loopt het abonnement tot het einde van de betaalde periode. Geen creditcard nodig om te starten.',
+    answer:   'Maandelijks opzegbaar. Bij jaarbetaling loopt het tot het einde van je betaalde periode. Geen creditcard nodig om te starten.',
   },
 ]
 
 export default function AutomotivePage() {
   return (
-    <>
+    <div className="bg-white text-[#0f2133] font-dm-sans">
       <JsonLd schema={[
         breadcrumbSchema([
           { name: 'Home',       href: '/' },
@@ -116,258 +116,199 @@ export default function AutomotivePage() {
           name:                 'Snellio Automotive',
           applicationCategory:  'BusinessApplication',
           operatingSystem:      'Web, iOS, Android',
-          description:          'Werkplaats-software voor autogarages, APK-stations en onderhoudsbedrijven. Kenteken-lookup via RDW, onderdelen op voertuig, klant-akkoord en facturatie in één systeem.',
+          description:          'Eén tool voor werkplaatsen, autohandelaren en dealers. Werkbladen, voertuigen, klanten, planning, offertes en facturen — inclusief kenteken-lookup via RDW.',
           offers:               { '@type': 'Offer', price: '10.00', priceCurrency: 'EUR' },
           publisher:            { '@id': `${SITE.url}/#organization` },
         },
       ]} />
 
       {/* ── HERO ── */}
-      <section
-        className="hero-section relative pt-28 pb-20 px-[5%] overflow-hidden"
-        style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(10,187,214,.1) 0%, transparent 70%) #0a1a28' }}
-      >
-        <Container>
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[rgba(10,187,214,.1)] border border-[rgba(10,187,214,.3)] rounded-full px-4 py-1.5 mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--cyan)] shadow-[0_0_8px_var(--cyan)]" />
-              <span className="font-mono text-[.68rem] text-[var(--cyan)] tracking-[.08em] uppercase">
-                Nieuw — Snellio Automotive
-              </span>
-            </div>
-
+      <section className="relative pt-16 md:pt-24 pb-14 px-[5%] overflow-hidden bg-white">
+        {/* Cyan glow rechtsboven */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-[20%] -right-[10%] w-[720px] h-[720px] z-0"
+          style={{ background: 'radial-gradient(circle, rgba(10,187,214,0.18) 0%, rgba(10,187,214,0) 60%)' }}
+        />
+        <div className="relative z-10 max-w-[1200px] mx-auto grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center">
+          <div>
+            <p className="font-dm-mono text-[12px] tracking-[.10em] uppercase text-[#0090b8] mb-4">
+              Voor werkplaatsen, autohandelaren &amp; dealers
+            </p>
             <h1
-              className="font-outfit font-black text-white tracking-tight leading-[1.05] mb-5"
-              style={{ fontSize: 'clamp(2rem, 5vw, 3.6rem)' }}
+              className="font-extrabold tracking-[-.025em] leading-[1.04] mb-5 [text-wrap:balance]"
+              style={{ fontSize: 'clamp(2.4rem, 5vw, 3.6rem)' }}
             >
-              Van kenteken naar factuur{' '}
-              <span style={{ background: 'linear-gradient(135deg, var(--cyan), var(--accent))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                in minuten
-              </span>
+              Geef Snellio het{' '}
+              <span className="text-[#0090b8]">kenteken</span>.
+              <br className="hidden md:block" /> De rest regelt zich.
             </h1>
-
-            <p className="text-[var(--text2)] text-[1.05rem] leading-[1.7] max-w-2xl mx-auto mb-8">
-              Werkplaats-software voor autogarages, APK-stations en onderhoudsbedrijven.
-              Kenteken-lookup via RDW, onderdelen op voertuig, klant-akkoord en facturatie —
-              alles in één systeem.
+            <p className="text-[19px] leading-[1.55] text-[#5f7791] max-w-[540px] mb-7">
+              Eén tool voor je werkplaats — werkbladen, voertuigen, klanten, planning, offertes en facturen.
+              Inclusief de factuur. Zonder gedoe.
             </p>
-
-            <div className="flex flex-wrap gap-3 justify-center">
-              <Button href={SIGNUP_HREF} size="lg">Start 14 dagen gratis →</Button>
-              <Button href="/contact" variant="ghost" size="lg">Vraag demo aan</Button>
+            <div className="flex flex-wrap gap-3 mb-5">
+              <Link href={SIGNUP_HREF} className={btnPrimary}>Probeer 14 dagen gratis →</Link>
+              <Link href="/contact" className={btnSecondary}>Bekijk demo</Link>
             </div>
-
-            <p className="text-[var(--muted)] text-xs mt-5">
-              Geen creditcard nodig · RDW-lookup inbegrepen · Nederlandse support
-            </p>
+            <div className="flex flex-wrap gap-x-5 gap-y-1.5 text-[14px] text-[#8ea2b8]">
+              <span><span className="text-[#12a87a] font-bold">✓</span> Geen creditcard nodig</span>
+              <span><span className="text-[#12a87a] font-bold">✓</span> Nederlandse support</span>
+              <span><span className="text-[#12a87a] font-bold">✓</span> Mobile-first</span>
+            </div>
           </div>
-        </Container>
+          <div>
+            <HeroAnimation />
+          </div>
+        </div>
       </section>
 
-      {/* ── PIJNPUNTEN ── */}
-      <section className="py-20 px-[5%] bg-[var(--navy3)] border-y border-[var(--border)]">
-        <Container>
-          <div className="text-center mb-12">
-            <p className="font-mono text-[.65rem] text-[var(--muted2)] uppercase tracking-[.14em] mb-3">
-              Herken je dit?
-            </p>
-            <h2
-              className="font-outfit font-black text-white tracking-tight"
-              style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
-            >
-              Drie dingen die elke werkplaats <span className="text-[var(--cyan)]">elke dag</span> kosten
-            </h2>
-          </div>
-          <div className="grid sm:grid-cols-3 gap-5 max-w-5xl mx-auto">
-            {pijnpunten.map((p, i) => (
+      {/* ── STATS STRIP ── */}
+      <section className="border-y border-[rgba(15,33,51,.08)] bg-[#fafcfd] py-7 px-[5%]">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+          {stats.map(s => (
+            <div key={s.lbl}>
+              <div className="font-extrabold text-[32px] tracking-[-.01em] text-[#0f2133] leading-none">
+                {s.num}{s.unit && <span className="text-[#0090b8]">{s.unit}</span>}
+              </div>
+              <div className="text-sm text-[#5f7791] mt-1">{s.lbl}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── HOE HET WERKT ── */}
+      <section id="hoe" className="py-22 md:py-[88px] px-[5%]">
+        <div className="max-w-[1200px] mx-auto">
+          <p className={sectionLabel}>Hoe het werkt</p>
+          <h2 className={heading2} style={{ fontSize: 'clamp(1.9rem, 3.5vw, 2.6rem)' }}>
+            Vier stappen, één kenteken.
+          </h2>
+          <p className={sectionLead}>
+            Niet meer in vier systemen werken. Niet meer overschrijven. Niet meer &ldquo;ik stuur &rsquo;m later wel&rdquo;.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {stappen.map(s => (
               <div
-                key={p.title}
-                className="reveal bg-[rgba(255,80,80,.04)] border border-[rgba(255,80,80,.1)] rounded-2xl p-6"
-                style={{ animationDelay: `${i * 80}ms` }}
+                key={s.nr}
+                className="bg-white border border-[rgba(15,33,51,.08)] rounded-2xl p-[22px] shadow-[0_1px_3px_rgba(15,33,51,.06)]"
+                style={{ borderLeft: `3px solid ${s.border}` }}
               >
-                <div className="text-3xl mb-3">{p.icon}</div>
-                <h3 className="font-outfit font-bold text-white text-[.95rem] mb-2">{p.title}</h3>
-                <p className="text-[var(--muted2)] text-sm leading-relaxed">{p.desc}</p>
+                <p className="font-dm-mono text-[11px] tracking-[.10em] uppercase text-[#5f7791] mb-2.5">
+                  {s.nr}
+                </p>
+                <h3 className="font-bold text-[18px] text-[#0f2133] mb-2">{s.title}</h3>
+                <p className="text-[14.5px] text-[#5f7791] leading-[1.5]">{s.desc}</p>
+                <div className="mt-3.5">{s.demo}</div>
               </div>
             ))}
           </div>
-          <p className="text-center text-[var(--text2)] text-base mt-10 max-w-2xl mx-auto">
-            <strong className="text-white">Snellio lost dit op.</strong>{' '}
-            Eén systeem dat van kenteken tot betaalde factuur alles afhandelt — gebouwd voor werkplaatsen.
+        </div>
+      </section>
+
+      {/* ── FEATURES ── */}
+      <section id="features" className="py-22 md:py-[88px] px-[5%] bg-[#fafcfd] border-y border-[rgba(15,33,51,.08)]">
+        <div className="max-w-[1200px] mx-auto">
+          <p className={sectionLabel}>Features</p>
+          <h2 className={heading2} style={{ fontSize: 'clamp(1.9rem, 3.5vw, 2.6rem)' }}>
+            Alles wat een werkplaats nodig heeft. Niet meer.
+          </h2>
+          <p className={sectionLead}>
+            Snellio is bewust geen alleskunner. Wel onmisbaar voor het stuk dat ondernemers het meeste tijd kost.
           </p>
-        </Container>
-      </section>
-
-      {/* ── HOE WERKT HET ── */}
-      <section className="py-20 px-[5%] bg-[var(--navy2)]">
-        <Container>
-          <div className="text-center mb-14">
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
-              Hoe het werkt
-            </p>
-            <h2
-              className="font-outfit font-black text-white tracking-tight"
-              style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
-            >
-              Vier stappen, <span className="text-[var(--cyan)]">één systeem</span>
-            </h2>
-          </div>
-
-          <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 list-none">
-            {stappen.map((s, i) => (
-              <li
-                key={s.nr}
-                className="reveal relative bg-[var(--navy3)] border border-[var(--border)] rounded-2xl p-6"
-                style={{ animationDelay: `${i * 80}ms` }}
-              >
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--accent)] to-[var(--cyan)] flex items-center justify-center font-outfit font-black text-white text-lg mb-4">
-                  {s.nr}
-                </div>
-                <h3 className="font-outfit font-bold text-white text-[1rem] mb-2">{s.title}</h3>
-                <p className="text-[var(--muted2)] text-[.86rem] leading-relaxed">{s.desc}</p>
-              </li>
-            ))}
-          </ol>
-        </Container>
-      </section>
-
-      {/* ── FEATURES GRID ── */}
-      <section className="py-20 px-[5%] bg-[var(--navy3)]">
-        <Container>
-          <div className="text-center mb-12">
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
-              Functies
-            </p>
-            <h2
-              className="font-outfit font-black text-white tracking-tight"
-              style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
-            >
-              Alles wat een werkplaats <span className="text-[var(--cyan)]">écht gebruikt</span>
-            </h2>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {features.map((f, i) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {features.map(f => (
               <article
                 key={f.title}
-                className="reveal bg-[var(--navy2)] border border-[var(--border)] rounded-2xl p-6 hover:border-[rgba(10,187,214,.35)] hover:-translate-y-1 transition-all duration-300"
-                style={{ animationDelay: `${i * 50}ms` }}
+                className="bg-white border border-[rgba(15,33,51,.08)] rounded-2xl p-[26px] shadow-[0_1px_3px_rgba(15,33,51,.06)]"
               >
-                <div className="text-2xl mb-3">{f.icon}</div>
-                <h3 className="font-outfit font-bold text-white text-[.95rem] mb-2">{f.title}</h3>
-                <p className="text-[var(--muted2)] text-[.82rem] leading-relaxed">{f.desc}</p>
+                <div className="text-2xl mb-3.5">{f.icon}</div>
+                <h3 className="font-bold text-[18px] text-[#0f2133] mb-2">{f.title}</h3>
+                <p className="text-[14.5px] text-[#5f7791] leading-[1.55]">{f.desc}</p>
               </article>
             ))}
           </div>
-        </Container>
+        </div>
       </section>
 
-      {/* ── INTEGRATIES ── */}
-      <section className="py-16 px-[5%] bg-[var(--navy2)] border-y border-[var(--border)]">
-        <Container>
-          <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] text-center mb-3">
-            Integraties
-          </p>
-          <h2 className="font-outfit font-bold text-white text-2xl text-center mb-10">
-            Werkt naadloos samen met je bestaande tools
+      {/* ── PRIJZEN ── */}
+      <section id="prijzen" className="py-22 md:py-[88px] px-[5%]">
+        <div className="max-w-[1200px] mx-auto">
+          <p className={sectionLabel}>Prijzen</p>
+          <h2 className={heading2} style={{ fontSize: 'clamp(1.9rem, 3.5vw, 2.6rem)' }}>
+            Eerlijk per maand. Geen koppelfee.
           </h2>
-          <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
-            {integraties.map(i => (
-              <div
-                key={i.name}
-                className="bg-[var(--navy3)] border border-[var(--border)] rounded-xl px-5 py-3 flex items-center gap-3"
-              >
-                <span className="font-outfit font-bold text-white text-sm">{i.name}</span>
-                <span className="text-[var(--muted2)] text-xs">{i.desc}</span>
-              </div>
-            ))}
-          </div>
-          <p className="text-center text-[var(--muted)] text-xs mt-8">
-            Mist er een integratie? Mail{' '}
-            <a href={`mailto:${SITE.email}`} className="text-[var(--cyan)] hover:underline">
-              {SITE.email}
-            </a>
-            {' '}— we breiden continu uit.
+          <p className={sectionLead}>
+            Eén prijs per werkplaats. Iedere medewerker doet mee. Maandelijks opzegbaar.
           </p>
-        </Container>
-      </section>
-
-      {/* ── PRICING ── */}
-      <section className="py-20 px-[5%] bg-[var(--navy2)]">
-        <Container>
-          <div className="text-center mb-10">
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
-              Pakketten
-            </p>
-            <h2
-              className="font-outfit font-black text-white tracking-tight"
-              style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
-            >
-              Kies wat bij jouw werkplaats <span className="text-[var(--cyan)]">past</span>
-            </h2>
-            <p className="mt-3 text-[var(--text2)] text-base max-w-md mx-auto">
-              14 dagen gratis proberen.{' '}
-              <span className="text-white font-medium">Schaal wanneer je groeit.</span>
-            </p>
-          </div>
-          <Pricing hideHeader plans={AUTOMOTIVE_PLANS} />
-        </Container>
+          <AutomotivePricing />
+        </div>
       </section>
 
       {/* ── FAQ ── */}
-      <section className="py-20 px-[5%] bg-[var(--navy2)]">
-        <Container narrow>
-          <h2 className="font-outfit font-bold text-white text-2xl mb-8 text-center">
+      <section id="faq" className="py-22 md:py-[88px] px-[5%] bg-[#fafcfd] border-y border-[rgba(15,33,51,.08)]">
+        <div className="max-w-[820px] mx-auto">
+          <p className={`${sectionLabel} text-center`}>FAQ</p>
+          <h2 className={`${heading2} text-center`} style={{ fontSize: 'clamp(1.9rem, 3.5vw, 2.4rem)' }}>
             Veelgestelde vragen
           </h2>
-          <dl className="flex flex-col gap-3">
+          <dl className="flex flex-col gap-3 mt-9">
             {faqs.map(faq => (
-              <div key={faq.question} className="bg-[var(--navy3)] border border-[var(--border)] rounded-xl px-6 py-5">
-                <dt className="font-outfit font-semibold text-white text-[.95rem] mb-2">{faq.question}</dt>
-                <dd className="text-[var(--muted2)] text-sm leading-relaxed">{faq.answer}</dd>
+              <div
+                key={faq.question}
+                className="bg-white border border-[rgba(15,33,51,.08)] rounded-xl px-6 py-5 shadow-[0_1px_3px_rgba(15,33,51,.06)]"
+              >
+                <dt className="font-semibold text-[#0f2133] text-[.95rem] mb-2">{faq.question}</dt>
+                <dd className="text-[14.5px] text-[#5f7791] leading-[1.55]">{faq.answer}</dd>
               </div>
             ))}
           </dl>
-        </Container>
+        </div>
       </section>
 
       {/* ── FOOTER CTA ── */}
-      <section className="py-24 px-[5%] bg-[var(--navy3)] text-center relative overflow-hidden">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 100%, rgba(10,187,214,.1) 0%, transparent 70%)' }}
-          aria-hidden="true"
-        />
-        <Container narrow>
-          <div className="relative">
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
-              Klaar voor je werkplaats?
-            </p>
-            <h2
-              className="font-outfit font-black text-white tracking-tight mb-5 leading-[1.1]"
-              style={{ fontSize: 'clamp(2rem, 5vw, 3rem)' }}
-            >
-              Start je 14-dagen trial.<br />
-              <span className="text-[var(--cyan)]">Geen creditcard.</span>
-            </h2>
-            <p className="text-[var(--text2)] text-base mb-8 max-w-md mx-auto">
-              Liever eerst zien hoe het werkt voor jouw werkplaats? Bel ons of vraag een demo aan.
-            </p>
-            <div className="flex flex-wrap gap-3 justify-center mb-5">
-              <Button href={SIGNUP_HREF} size="lg">Start 14 dagen gratis →</Button>
-              <Button href="/contact" variant="ghost" size="lg">Vraag demo aan</Button>
-            </div>
-            <p className="text-[var(--muted2)] text-sm">
-              Of bel direct:{' '}
-              <Link href={`tel:${SITE.phone}`} className="text-[var(--cyan)] font-semibold hover:underline">
-                {SITE.phone}
-              </Link>
-            </p>
+      <section
+        className="py-24 px-[5%] text-center border-t border-[rgba(15,33,51,.08)]"
+        style={{ background: 'radial-gradient(circle at 50% 100%, rgba(10,187,214,0.16), transparent 60%), #fff' }}
+      >
+        <div className="max-w-[820px] mx-auto">
+          <h2
+            className="font-extrabold tracking-[-.02em] text-[#0f2133] mb-4"
+            style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)' }}
+          >
+            Klaar om je administratie 4 uur per week te krimpen?
+          </h2>
+          <p className="text-[#5f7791] text-[18px] mb-7">
+            14 dagen gratis. Geen creditcard, geen lock-in.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3 mb-5">
+            <Link href={SIGNUP_HREF} className={btnPrimary} style={{ fontSize: '16px', padding: '14px 26px' }}>
+              Probeer Snellio gratis →
+            </Link>
+            <Link href="/contact" className={btnSecondary} style={{ fontSize: '16px', padding: '14px 26px' }}>
+              Vraag demo aan
+            </Link>
           </div>
-        </Container>
+          <p className="text-[#8ea2b8] text-sm">
+            Of bel direct:{' '}
+            <Link href={`tel:${SITE.phone}`} className="text-[#0090b8] font-semibold hover:underline">
+              {SITE.phone}
+            </Link>
+          </p>
+        </div>
       </section>
+    </div>
+  )
+}
 
-      <Cta />
-    </>
+function Kenteken({ plate }: { plate: string }) {
+  return (
+    <span className="inline-flex items-stretch bg-[#ffd400] text-[#0f2133] font-dm-mono font-bold tracking-[.08em] rounded-md overflow-hidden shadow-[inset_0_0_0_1px_rgba(0,0,0,.10)] leading-none">
+      <span className="bg-[#003399] text-[#ffe600] flex flex-col items-center justify-center px-1 py-1 min-w-[22px] gap-px">
+        <span className="text-[8px] leading-none">★</span>
+        <span className="text-[8px] leading-none font-dm-sans font-extrabold">NL</span>
+      </span>
+      <span className="px-3 py-2 text-base">{plate}</span>
+    </span>
   )
 }
