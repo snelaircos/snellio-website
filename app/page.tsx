@@ -195,25 +195,38 @@ export default function HomePage() {
       </section>
 
       {/* ── 4. MOBIEL-MONTEUR-BLOK ── */}
-      {/* Mockup-screenshot van de monteur-app: drop een PNG op /public/monteur-mockup.png
-         (~600×1200, transparante achtergrond aanbevolen) en haal de placeholder weg. */}
       <section className="py-20 px-[5%] bg-white border-y border-[#e4ecf2]">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className={sectionLabel}>Voor de monteur onderweg</p>
-          <h2 className="font-bold tracking-tight text-[#0f2133] mb-6" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
-            De monteur opent z&apos;n telefoon en ziet z&apos;n dag.
-          </h2>
-          <ul className="flex flex-col gap-3 list-none text-left max-w-md mx-auto mb-8">
-            {monteurBullets.map(b => (
-              <li key={b} className="flex items-start gap-3 text-[#0f2133] text-[.95rem]">
-                <span className="w-5 h-5 rounded-full bg-[rgba(18,168,122,.15)] text-[var(--green)] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
-                {b}
-              </li>
-            ))}
-          </ul>
-          <Link href="mailto:rudy@snellio.nl?subject=Demo%20monteur-app" className={btnSecondary}>
-            Vraag een live demo aan
-          </Link>
+        <div className="mx-auto max-w-6xl grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <p className={sectionLabel}>Voor de monteur onderweg</p>
+            <h2 className="font-bold tracking-tight text-[#0f2133] mb-6" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
+              De monteur opent z&apos;n telefoon en ziet z&apos;n dag.
+            </h2>
+            <ul className="flex flex-col gap-3 list-none mb-8">
+              {monteurBullets.map(b => (
+                <li key={b} className="flex items-start gap-3 text-[#0f2133] text-[.95rem]">
+                  <span className="w-5 h-5 rounded-full bg-[rgba(18,168,122,.15)] text-[var(--green)] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
+                  {b}
+                </li>
+              ))}
+            </ul>
+            <Link href="mailto:rudy@snellio.nl?subject=Demo%20monteur-app" className={btnSecondary}>
+              Vraag een live demo aan
+            </Link>
+          </div>
+
+          <div className="flex justify-center">
+            <div className="rounded-[2rem] overflow-hidden shadow-[0_24px_60px_rgba(15,33,51,.18)] ring-1 ring-[#e4ecf2] max-w-[320px] w-full">
+              <Image
+                src="/monteur-app.png"
+                alt="Snellio monteur-app op telefoon — dashboard, werkorders, installaties, F-gas balans en planning binnen handbereik"
+                width={660}
+                height={1428}
+                className="w-full h-auto block"
+                sizes="(min-width: 1024px) 320px, 80vw"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
