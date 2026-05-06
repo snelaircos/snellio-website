@@ -100,7 +100,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-[var(--border)] mx-auto max-w-7xl px-[5%] py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
         <p className="text-[var(--muted)] text-xs font-mono tracking-wide">
-          © {new Date().getFullYear()} {SITE.company} · KvK {SITE.kvk}
+          © {new Date().getFullYear()} {SITE.name} · KvK {SITE.kvk}
         </p>
         <p className="text-[var(--muted)] text-xs">
           {SITE.appUrl}

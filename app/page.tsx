@@ -54,6 +54,32 @@ const compliance = [
 
 const integraties = ['Mollie', 'Moneybird', 'SnelStart', 'Exact', 'Google Calendar', 'WeFact']
 
+// [PLACEHOLDER] vervang door echte quotes + bedrijfsnamen zodra je 3 collega-installateurs
+// hebt gebeld. Naam, bedrijf en plaats zijn verplicht — leeg laten = uit publicatie halen.
+const testimonials = [
+  {
+    quote:   '[Vul aan] Korte quote van een installateur die met Snellio z\'n F-gassen-administratie eindelijk op orde heeft.',
+    name:    '[Naam]',
+    role:    'Eigenaar',
+    company: '[Bedrijfsnaam]',
+    plaats:  '[Plaats]',
+  },
+  {
+    quote:   '[Vul aan] Tweede quote — bij voorkeur over tijdsbesparing of een concrete BRL100-audit-ervaring.',
+    name:    '[Naam]',
+    role:    'Werkplaatschef',
+    company: '[Bedrijfsnaam]',
+    plaats:  '[Plaats]',
+  },
+  {
+    quote:   '[Vul aan] Derde quote — iets over de monteur op locatie, klant tekent, klaar.',
+    name:    '[Naam]',
+    role:    'Monteur',
+    company: '[Bedrijfsnaam]',
+    plaats:  '[Plaats]',
+  },
+]
+
 const faqs = [
   { question: 'Kan ik mijn data exporteren?',           answer: 'Ja, alles via CSV en PDF. Je data is van jou.' },
   { question: 'Hoe lang is de trial?',                  answer: '14 dagen gratis met alle features. Geen creditcard nodig vooraf.' },
@@ -169,58 +195,25 @@ export default function HomePage() {
       </section>
 
       {/* ── 4. MOBIEL-MONTEUR-BLOK ── */}
+      {/* Mockup-screenshot van de monteur-app: drop een PNG op /public/monteur-mockup.png
+         (~600×1200, transparante achtergrond aanbevolen) en haal de placeholder weg. */}
       <section className="py-20 px-[5%] bg-white border-y border-[#e4ecf2]">
-        <div className="mx-auto max-w-6xl grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <p className={sectionLabel}>Voor de monteur onderweg</p>
-            <h2 className="font-bold tracking-tight text-[#0f2133] mb-6" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
-              De monteur opent z&apos;n telefoon en ziet z&apos;n dag.
-            </h2>
-            <ul className="flex flex-col gap-3 list-none">
-              {monteurBullets.map(b => (
-                <li key={b} className="flex items-start gap-3 text-[#0f2133] text-[.95rem]">
-                  <span className="w-5 h-5 rounded-full bg-[rgba(18,168,122,.15)] text-[var(--green)] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
-                  {b}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Telefoon-mockup met inhoud */}
-          <div className="flex justify-center">
-            <div className="w-[280px] aspect-[9/19.5] rounded-[2.5rem] bg-[#0f2133] p-3 shadow-[0_24px_60px_rgba(15,33,51,.25)]">
-              <div className="w-full h-full rounded-[1.8rem] bg-[#f4f7fa] overflow-hidden flex flex-col">
-                <div className="bg-[#0f2133] text-white text-xs px-4 py-2 flex items-center justify-between">
-                  <span className="font-dm-mono">9:41</span>
-                  <span className="font-dm-mono">●●● 5G</span>
-                </div>
-                <div className="flex-1 p-4 flex flex-col gap-3">
-                  <p className="font-dm-mono text-[.6rem] text-[#5f7791] uppercase tracking-wider">Vandaag · 23 mei</p>
-                  <h3 className="font-semibold text-[#0f2133] text-base">Mijn werkorders</h3>
-
-                  {[
-                    { tijd: '09:00', klant: 'Maarschalkerweerd', taak: 'Onderhoud R-32',  status: 'open'   },
-                    { tijd: '11:30', klant: 'Pietersen B.V.',     taak: 'Lekcontrole',    status: 'open'   },
-                    { tijd: '14:00', klant: 'Firma De Groot',     taak: 'Plaatsen unit',  status: 'klaar'  },
-                  ].map((wb, i) => (
-                    <div
-                      key={i}
-                      className={`bg-white rounded-lg p-3 border ${wb.status === 'klaar' ? 'border-[rgba(18,168,122,.3)]' : 'border-[#e4ecf2]'}`}
-                    >
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="font-dm-mono text-[.65rem] text-[#5f7791]">{wb.tijd}</span>
-                        <span className={`text-[.6rem] font-bold uppercase ${wb.status === 'klaar' ? 'text-[var(--green)]' : 'text-[var(--accent)]'}`}>
-                          {wb.status}
-                        </span>
-                      </div>
-                      <p className="font-semibold text-[#0f2133] text-xs">{wb.klant}</p>
-                      <p className="text-[#5f7791] text-[.7rem]">{wb.taak}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="mx-auto max-w-3xl text-center">
+          <p className={sectionLabel}>Voor de monteur onderweg</p>
+          <h2 className="font-bold tracking-tight text-[#0f2133] mb-6" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
+            De monteur opent z&apos;n telefoon en ziet z&apos;n dag.
+          </h2>
+          <ul className="flex flex-col gap-3 list-none text-left max-w-md mx-auto mb-8">
+            {monteurBullets.map(b => (
+              <li key={b} className="flex items-start gap-3 text-[#0f2133] text-[.95rem]">
+                <span className="w-5 h-5 rounded-full bg-[rgba(18,168,122,.15)] text-[var(--green)] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
+                {b}
+              </li>
+            ))}
+          </ul>
+          <Link href="mailto:rudy@snellio.nl?subject=Demo%20monteur-app" className={btnSecondary}>
+            Vraag een live demo aan
+          </Link>
         </div>
       </section>
 
@@ -264,6 +257,43 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── 6.5 SOCIAL PROOF ── */}
+      {/* [PLACEHOLDER] Quotes editen in de testimonials-array bovenaan dit bestand.
+         Tip: bel 3 collega-installateurs uit je netwerk, geef ze 6 maanden gratis ihv
+         een quote + bedrijfsnaam + bij voorkeur logo (drop in /public/logos/). */}
+      <section className="py-20 px-[5%] bg-[#f4f7fa]">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <p className={sectionLabel}>Wat collega-installateurs zeggen</p>
+            <h2 className="font-bold tracking-tight text-[#0f2133]" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
+              Door installateurs gebruikt, niet door consultants bedacht.
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {testimonials.map(t => (
+              <figure
+                key={t.name + t.company}
+                className="bg-white border border-[#e4ecf2] rounded-xl p-6 flex flex-col gap-4"
+              >
+                <div className="text-[var(--accent)] text-3xl leading-none font-bold" aria-hidden="true">&ldquo;</div>
+                <blockquote className="text-[#0f2133] text-[.95rem] leading-relaxed flex-1">
+                  {t.quote}
+                </blockquote>
+                <figcaption className="flex items-center gap-3 pt-3 border-t border-[#e4ecf2]">
+                  <div className="w-10 h-10 rounded-full bg-[rgba(0,144,184,.10)] text-[var(--accent)] font-bold flex items-center justify-center text-sm shrink-0">
+                    {t.name.replace(/[^A-Za-z]/g, '').slice(0, 2).toUpperCase() || '··'}
+                  </div>
+                  <div className="text-left">
+                    <div className="font-semibold text-[#0f2133] text-sm">{t.name}</div>
+                    <div className="text-[#5f7791] text-xs">{t.role} · {t.company} · {t.plaats}</div>
+                  </div>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── 7. PAKKETTEN ── */}
       <section id="pakketten" className="py-20 px-[5%] bg-[#f4f7fa] scroll-mt-20">
         <div className="mx-auto max-w-7xl">
@@ -277,25 +307,39 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 8. EERLIJK OVER WAT WE NIET DOEN ── */}
+      {/* ── 8. WIE BOUWT DIT ── */}
+      {/* [PLACEHOLDER PHOTO] Drop een portretfoto op /public/rudy.jpg (~600×600 vierkant)
+         en vervang het initialen-blokje hieronder door <Image src="/rudy.jpg" .../>. */}
       <section className="py-20 px-[5%] bg-white border-y border-[#e4ecf2]">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className={sectionLabel}>Geen verborgen addertjes</p>
-          <h2 className="font-bold tracking-tight text-[#0f2133] mb-6" style={{ fontSize: 'clamp(1.4rem, 3vw, 1.7rem)' }}>
-            Eerlijk over wat we niet doen
-          </h2>
-          <p className="text-[#5f7791] text-[1.05rem] leading-[1.7]">
-            Snellio doet veel maar niet alles. We zijn er niet voor warmtepomp-ontwerpcalculaties of
-            voor een service-helpdesk met 24/7 telefoonsupport. Wel voor de dagelijkse werkbon,
-            planning en F-gassen-administratie van een actief koeltechniek-bedrijf.
-          </p>
-          <p className="text-[#5f7791] text-[1.05rem] leading-[1.7] mt-4">
-            Vragen?{' '}
-            <a href="mailto:rudy@snellio.nl" className="text-[var(--accent)] font-semibold hover:underline">
-              rudy@snellio.nl
-            </a>
-            {' '}— ik kijk er persoonlijk naar.
-          </p>
+        <div className="mx-auto max-w-4xl grid md:grid-cols-[200px_1fr] gap-8 md:gap-10 items-center">
+          <div className="flex justify-center md:justify-start">
+            <div className="w-[200px] h-[200px] rounded-full bg-gradient-to-br from-[#0090b8] to-[#0abbd6] flex items-center justify-center text-white font-extrabold text-5xl shadow-[0_8px_24px_rgba(0,144,184,.25)]">
+              RS
+            </div>
+          </div>
+          <div>
+            <p className={sectionLabel}>Wie achter Snellio zit</p>
+            <h2 className="font-bold tracking-tight text-[#0f2133] mb-4" style={{ fontSize: 'clamp(1.4rem, 3vw, 1.8rem)' }}>
+              Hoi, ik ben Rudy.
+            </h2>
+            <p className="text-[#5f7791] text-[1rem] leading-[1.7] mb-3">
+              Ik run <strong className="text-[#0f2133]">Snel Airco&apos;s</strong> — een koeltechniek-bedrijf in Nederland.
+              STEK-gecertificeerd, F-gassen voor de kost, monteurs op pad, klanten die bellen, papieren werkbonnen die
+              kwijtraken en een audit die altijd net iets eerder is dan je denkt.
+            </p>
+            <p className="text-[#5f7791] text-[1rem] leading-[1.7] mb-3">
+              Ik heb Snellio gebouwd omdat ik er zelf gek van werd. Geen dure consultant, geen SaaS-bureau dat denkt te
+              weten hoe lekcontrole-cycli werken — gewoon een installateur die eindelijk z&apos;n eigen tool wilde die
+              werkt zoals z&apos;n eigen werkplaats werkt.
+            </p>
+            <p className="text-[#5f7791] text-[1rem] leading-[1.7]">
+              Vragen, wensen of een feature die mist?{' '}
+              <a href="mailto:rudy@snellio.nl" className="text-[var(--accent)] font-semibold hover:underline">
+                rudy@snellio.nl
+              </a>
+              {' '}— je krijgt mij aan de lijn.
+            </p>
+          </div>
         </div>
       </section>
 

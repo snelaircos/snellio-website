@@ -57,7 +57,7 @@ export const PLANS: Plan[] = [
   {
     id:       'basis',
     name:     'Basis',
-    tagline:  'Onbeperkte installaties · 1 monteur',
+    tagline:  'Onbeperkte installaties · 1 monteur · F-gassen inbegrepen',
     price:    { month: '29', year: '290' },
     featured: false,
     cta:      'Begin nu',
@@ -68,7 +68,7 @@ export const PLANS: Plan[] = [
       { label: 'Werkbonnen & handelingen',     included: true  },
       { label: 'PDF werkbon',                  included: true  },
       { label: 'BRL100 rapport',               included: true  },
-      { label: 'F-gassen flesregistratie',     included: false },
+      { label: 'F-gassen flesregistratie',     included: true  },
       { label: 'Forecast dashboard',           included: false },
       { label: 'Meerdere monteurs',            included: false },
     ],
