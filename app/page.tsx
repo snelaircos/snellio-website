@@ -308,13 +308,18 @@ export default function HomePage() {
       </section>
 
       {/* ── 8. WIE BOUWT DIT ── */}
-      {/* [PLACEHOLDER PHOTO] Drop een portretfoto op /public/rudy.jpg (~600×600 vierkant)
-         en vervang het initialen-blokje hieronder door <Image src="/rudy.jpg" .../>. */}
       <section className="py-20 px-[5%] bg-white border-y border-[#e4ecf2]">
         <div className="mx-auto max-w-4xl grid md:grid-cols-[200px_1fr] gap-8 md:gap-10 items-center">
           <div className="flex justify-center md:justify-start">
-            <div className="w-[200px] h-[200px] rounded-full bg-gradient-to-br from-[#0090b8] to-[#0abbd6] flex items-center justify-center text-white font-extrabold text-5xl shadow-[0_8px_24px_rgba(0,144,184,.25)]">
-              RS
+            <div className="w-[200px] h-[200px] rounded-full overflow-hidden shadow-[0_8px_24px_rgba(0,144,184,.25)] ring-4 ring-white">
+              <Image
+                src="/rudy-snel.png"
+                alt="Rudy Snel — eigenaar Snel Airco's en bouwer van Snellio"
+                width={400}
+                height={400}
+                className="w-full h-full object-cover"
+                sizes="200px"
+              />
             </div>
           </div>
           <div>
