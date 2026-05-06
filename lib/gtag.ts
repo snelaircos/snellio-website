@@ -25,8 +25,8 @@ export const GA4_ID = ''
 // ──────────────────────────────────────────
 export const CONVERSIONS = {
   demo_request_submitted:  'AW-18058139346/oNvNCL37p5QcENKt5aJD',
-  contact_form_submitted:  'AW-18058139346/CONTACT_LABEL_HIER',
-  trial_signup_completed:  'AW-18058139346/TRIAL_LABEL_HIER',
+  contact_form_submitted:  'AW-18058139346/O0ssCIm24KgcENKt5aJD',
+  trial_signup_completed:  'AW-18058139346/aeQ6CIa24KgcENKt5aJD',
   // Voorbeeld:
   // checkout_completed:    'AW-18058139346/CHECKOUT_LABEL_HIER',
 } as const
