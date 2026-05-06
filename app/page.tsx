@@ -54,32 +54,6 @@ const compliance = [
 
 const integraties = ['Mollie', 'Moneybird', 'SnelStart', 'Exact', 'Google Calendar', 'WeFact']
 
-// [PLACEHOLDER] vervang door echte quotes + bedrijfsnamen zodra je 3 collega-installateurs
-// hebt gebeld. Naam, bedrijf en plaats zijn verplicht — leeg laten = uit publicatie halen.
-const testimonials = [
-  {
-    quote:   '[Vul aan] Korte quote van een installateur die met Snellio z\'n F-gassen-administratie eindelijk op orde heeft.',
-    name:    '[Naam]',
-    role:    'Eigenaar',
-    company: '[Bedrijfsnaam]',
-    plaats:  '[Plaats]',
-  },
-  {
-    quote:   '[Vul aan] Tweede quote — bij voorkeur over tijdsbesparing of een concrete BRL100-audit-ervaring.',
-    name:    '[Naam]',
-    role:    'Werkplaatschef',
-    company: '[Bedrijfsnaam]',
-    plaats:  '[Plaats]',
-  },
-  {
-    quote:   '[Vul aan] Derde quote — iets over de monteur op locatie, klant tekent, klaar.',
-    name:    '[Naam]',
-    role:    'Monteur',
-    company: '[Bedrijfsnaam]',
-    plaats:  '[Plaats]',
-  },
-]
-
 const faqs = [
   { question: 'Kan ik mijn data exporteren?',           answer: 'Ja, alles via CSV en PDF. Je data is van jou.' },
   { question: 'Hoe lang is de trial?',                  answer: '14 dagen gratis met alle features. Geen creditcard nodig vooraf.' },
@@ -265,43 +239,6 @@ export default function HomePage() {
               >
                 {name}
               </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 6.5 SOCIAL PROOF ── */}
-      {/* [PLACEHOLDER] Quotes editen in de testimonials-array bovenaan dit bestand.
-         Tip: bel 3 collega-installateurs uit je netwerk, geef ze 6 maanden gratis ihv
-         een quote + bedrijfsnaam + bij voorkeur logo (drop in /public/logos/). */}
-      <section className="py-20 px-[5%] bg-[#f4f7fa]">
-        <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <p className={sectionLabel}>Wat collega-installateurs zeggen</p>
-            <h2 className="font-bold tracking-tight text-[#0f2133]" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
-              Door installateurs gebruikt, niet door consultants bedacht.
-            </h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {testimonials.map(t => (
-              <figure
-                key={t.name + t.company}
-                className="bg-white border border-[#e4ecf2] rounded-xl p-6 flex flex-col gap-4"
-              >
-                <div className="text-[var(--accent)] text-3xl leading-none font-bold" aria-hidden="true">&ldquo;</div>
-                <blockquote className="text-[#0f2133] text-[.95rem] leading-relaxed flex-1">
-                  {t.quote}
-                </blockquote>
-                <figcaption className="flex items-center gap-3 pt-3 border-t border-[#e4ecf2]">
-                  <div className="w-10 h-10 rounded-full bg-[rgba(0,144,184,.10)] text-[var(--accent)] font-bold flex items-center justify-center text-sm shrink-0">
-                    {t.name.replace(/[^A-Za-z]/g, '').slice(0, 2).toUpperCase() || '··'}
-                  </div>
-                  <div className="text-left">
-                    <div className="font-semibold text-[#0f2133] text-sm">{t.name}</div>
-                    <div className="text-[#5f7791] text-xs">{t.role} · {t.company} · {t.plaats}</div>
-                  </div>
-                </figcaption>
-              </figure>
             ))}
           </div>
         </div>
