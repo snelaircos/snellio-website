@@ -24,10 +24,10 @@ export const GA4_ID = ''
 // Format altijd: AW-XXXXXXXX/LABEL
 // ──────────────────────────────────────────
 export const CONVERSIONS = {
-  demo_request_submitted:  'AW-18058139346/aydFCN6p5ZYcENKt5aJD',
+  demo_request_submitted:  'AW-18058139346/oNvNCL37p5QcENKt5aJD',
   contact_form_submitted:  'AW-18058139346/CONTACT_LABEL_HIER',
-  // Voorbeelden:
-  // trial_signup_started:  'AW-18058139346/TRIAL_LABEL_HIER',
+  trial_signup_completed:  'AW-18058139346/TRIAL_LABEL_HIER',
+  // Voorbeeld:
   // checkout_completed:    'AW-18058139346/CHECKOUT_LABEL_HIER',
 } as const
 

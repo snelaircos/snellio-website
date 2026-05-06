@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { SITE } from '@/lib/constants'
+import TrialSignupConversion from '@/components/tracking/TrialSignupConversion'
 
 export const metadata: Metadata = {
   title: 'Account aangemaakt | Snellio',
@@ -11,23 +12,7 @@ export const metadata: Metadata = {
 export default function TrialBedanktPage() {
   return (
     <>
-      {/*
-        ══ GOOGLE ADS CONVERSIE TAG ══
-        Plaats hier jouw Google Ads conversion script voor "Trial gestart".
-        Ga naar: Google Ads → Tools → Conversies → Nieuwe conversie → Website
-        Selecteer: "Trial aanmelden" als conversietype
-
-        <Script id="ga-conversion-trial" strategy="afterInteractive">
-          {`gtag('event', 'conversion', {
-            'send_to': 'AW-XXXXXXXXXX/ZZZZZZZZZZZ',
-            'value': 10.0,
-            'currency': 'EUR'
-          });`}
-        </Script>
-
-        Tip: geef een hogere waarde dan de demo (bijv. 10) omdat dit verder in de funnel zit.
-        ══════════════════════════════
-      */}
+      <TrialSignupConversion />
 
       <div className="min-h-screen flex flex-col items-center justify-center text-center px-[5%] bg-[var(--navy2)]">
         {/* Glow */}
