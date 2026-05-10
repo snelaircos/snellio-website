@@ -28,7 +28,7 @@ const POSTS: Record<string, { title: string; description: string; content: strin
       **Hoe Snellio dit oplost**
 
       Snellio genereert automatisch een BRL100-compliant rapport op basis van de koeltechnische handelingen die u invoert.
-      U hoeft niets handmatig over te nemen — het systeem verzorgt de juiste lay-out en veldvolgorde.
+      U hoeft niets handmatig over te nemen, het systeem verzorgt de juiste lay-out en veldvolgorde.
     `,
   },
 }

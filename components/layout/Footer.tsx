@@ -66,7 +66,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* SEO pagina's — alleen op niet-automotive pagina's */}
+        {/* SEO pagina's, alleen op niet-automotive pagina's */}
         {seoLinks.length > 0 && (
           <div>
             <h3 className="font-semibold text-white text-sm mb-4 tracking-wide">Software</h3>

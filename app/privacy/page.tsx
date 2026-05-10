@@ -67,9 +67,9 @@ export default function PrivacyPage() {
         <Section title="5. Delen met derden">
           <p>Wij delen uw gegevens alleen met verwerkers die noodzakelijk zijn voor onze dienstverlening:</p>
           <ul className="list-disc list-inside space-y-1 ml-2">
-            <li><strong>Supabase</strong> — database hosting (EU)</li>
-            <li><strong>Mollie</strong> — betalingsverwerking</li>
-            <li><strong>Resend</strong> — transactionele e-mails</li>
+            <li><strong>Supabase</strong>, database hosting (EU)</li>
+            <li><strong>Mollie</strong>, betalingsverwerking</li>
+            <li><strong>Resend</strong>, transactionele e-mails</li>
           </ul>
           <p>Wij verkopen uw gegevens nooit aan derden.</p>
         </Section>

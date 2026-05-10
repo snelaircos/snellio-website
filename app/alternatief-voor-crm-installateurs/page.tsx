@@ -37,7 +37,7 @@ const allesInEenItems = [
 const watMaaktAndersBullets = [
   { title: 'Speciaal voor installateurs',  desc: 'Geen generieke service-tool met aangeplakte koeltechniek-features. F-gassen, BRL100 en lekcontrole zit in de kern.' },
   { title: 'Nederlandse software',         desc: 'Gebouwd in Nederland, hosting in EU-region (Frankfurt), Nederlandse support.' },
-  { title: 'Snelle implementatie',         desc: 'Account aanmaken duurt 5 minuten. Importeer klanten via CSV — meteen aan de slag.' },
+  { title: 'Snelle implementatie',         desc: 'Account aanmaken duurt 5 minuten. Importeer klanten via CSV, meteen aan de slag.' },
   { title: 'Alles gekoppeld',              desc: 'Werkbon → factuur → boekhouding → betaling. Eén keer instellen, daarna automatisch.' },
   { title: 'Minder administratie',         desc: 'Werk dat eerst drie tools en handmatig overtikken kostte, doe je nu in één formulier.' },
 ]
@@ -51,8 +51,8 @@ const vergelijking = {
   ],
   snellio: [
     'Alles in één systeem',
-    'Minder fouten — geen dubbele invoer',
-    'Minder kosten — één abonnement',
+    'Minder fouten, geen dubbele invoer',
+    'Minder kosten, één abonnement',
     'Native koppelingen ingebouwd',
   ],
 }
@@ -66,19 +66,19 @@ const voorWie = [
   {
     icon: '👥',
     title: 'Kleine teams',
-    desc: '2 tot 5 monteurs en groeiende? Pro-pakket — F-gassen, planning en facturatie inclusief.',
+    desc: '2 tot 5 monteurs en groeiende? Pro-pakket, F-gassen, planning en facturatie inclusief.',
   },
   {
     icon: '📈',
     title: 'Groeiende bedrijven',
-    desc: 'Meer monteurs, klantportaal nodig, prioriteit support? Enterprise — alles inbegrepen, schaalt mee.',
+    desc: 'Meer monteurs, klantportaal nodig, prioriteit support? Enterprise, alles inbegrepen, schaalt mee.',
   },
 ]
 
 const faqs = [
   { question: 'Kan ik mijn klanten importeren uit mijn huidige CRM?', answer: 'Ja, via CSV-import. Klantgegevens, locaties en historische werkorders. Onze support helpt je gratis met de migratie tijdens de trial.' },
   { question: 'Hoe lang duurt de overstap?',                          answer: 'Account aanmaken kost 5 minuten. Klanten importeren een avond. Daarna kun je direct werkbonnen versturen.' },
-  { question: 'Wat als ik wil terug naar mijn oude systeem?',         answer: 'Geen probleem — alle data exporteer je via CSV en PDF. Je bent nooit gevangen in Snellio.' },
+  { question: 'Wat als ik wil terug naar mijn oude systeem?',         answer: 'Geen probleem, alle data exporteer je via CSV en PDF. Je bent nooit gevangen in Snellio.' },
   { question: 'Werkt Snellio op tablet en telefoon?',                 answer: 'Ja, draait in de browser. Geen aparte app nodig. Mobile-first ontworpen voor monteurs onderweg.' },
 ]
 
@@ -105,7 +105,7 @@ export default function AlternatiefCrmInstallateursPage() {
           </h1>
           <p className="text-[#5f7791] text-[1.05rem] leading-[1.6] max-w-2xl mx-auto mb-8">
             Werk je met losse systemen voor klanten, planning, werkbonnen en facturatie?
-            Veel installateurs gebruiken tools als Climapulse, Climatools, Fieldbuddy of Simpro —
+            Veel installateurs gebruiken tools als Climapulse, Climatools, Fieldbuddy of Simpro,
             allemaal goede systemen, maar het gevoel blijft hetzelfde:{' '}
             <strong className="text-[#0f2133]">meerdere schermen, dubbele invoer, geen totaaloverzicht</strong>.
             Snellio brengt het samen in één systeem.
@@ -120,7 +120,7 @@ export default function AlternatiefCrmInstallateursPage() {
         </div>
       </section>
 
-      {/* ── SECTION 1 — Waarom overstappen ── */}
+      {/* ── SECTION 1, Waarom overstappen ── */}
       <section className="py-20 px-[5%] bg-white border-y border-[#e4ecf2]">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-12">
@@ -147,7 +147,7 @@ export default function AlternatiefCrmInstallateursPage() {
         </div>
       </section>
 
-      {/* ── SECTION 2 — Alles in één systeem ── */}
+      {/* ── SECTION 2, Alles in één systeem ── */}
       <section className="py-20 px-[5%] bg-[#f4f7fa]">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-12">
@@ -179,7 +179,7 @@ export default function AlternatiefCrmInstallateursPage() {
         </div>
       </section>
 
-      {/* ── VISUAL BLOCK — Twee screenshots ── */}
+      {/* ── VISUAL BLOCK, Twee screenshots ── */}
       <section className="py-20 px-[5%] bg-white border-y border-[#e4ecf2]">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-12">
@@ -225,7 +225,7 @@ export default function AlternatiefCrmInstallateursPage() {
         </div>
       </section>
 
-      {/* ── SECTION 3 — Wat maakt Snellio anders ── */}
+      {/* ── SECTION 3, Wat maakt Snellio anders ── */}
       <section className="py-20 px-[5%] bg-[#f4f7fa]">
         <div className="mx-auto max-w-4xl">
           <div className="text-center mb-12">
@@ -248,7 +248,7 @@ export default function AlternatiefCrmInstallateursPage() {
         </div>
       </section>
 
-      {/* ── SECTION 4 — Vergelijking ── */}
+      {/* ── SECTION 4, Vergelijking ── */}
       <section className="py-20 px-[5%] bg-white border-y border-[#e4ecf2]">
         <div className="mx-auto max-w-5xl">
           <div className="text-center mb-12">
@@ -272,7 +272,7 @@ export default function AlternatiefCrmInstallateursPage() {
                     <span className="text-[#8fafc8] font-bold shrink-0 mt-0.5">○</span>
                     <div>
                       <span className="text-[#0f2133] font-medium">{o.label}</span>
-                      <span className="text-[#8fafc8] ml-2">— {o.note}</span>
+                      <span className="text-[#8fafc8] ml-2">, {o.note}</span>
                     </div>
                   </li>
                 ))}
@@ -301,7 +301,7 @@ export default function AlternatiefCrmInstallateursPage() {
         </div>
       </section>
 
-      {/* ── SECTION 5 — Voor wie ── */}
+      {/* ── SECTION 5, Voor wie ── */}
       <section className="py-20 px-[5%] bg-[#f4f7fa]">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-12">
@@ -322,7 +322,7 @@ export default function AlternatiefCrmInstallateursPage() {
         </div>
       </section>
 
-      {/* ── SECTION 6 — Werk slimmer ── */}
+      {/* ── SECTION 6, Werk slimmer ── */}
       <section className="py-20 px-[5%] bg-white border-y border-[#e4ecf2]">
         <div className="mx-auto max-w-3xl text-center">
           <p className={sectionLabel}>Het resultaat</p>
@@ -372,7 +372,7 @@ export default function AlternatiefCrmInstallateursPage() {
         </div>
       </section>
 
-      {/* ── SECTION 7 — Final CTA ── */}
+      {/* ── SECTION 7, Final CTA ── */}
       <section className="py-24 px-[5%] bg-white border-t border-[#e4ecf2]">
         <div className="mx-auto max-w-2xl text-center">
           <p className={sectionLabel}>Klaar om over te stappen?</p>

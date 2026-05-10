@@ -32,7 +32,7 @@ const dmMono = DM_Mono({
   display:  'swap',
 })
 
-// DM Sans als body/heading font — clean en modern, matcht de app-stijl
+// DM Sans als body/heading font, clean en modern, matcht de app-stijl
 const dmSans = DM_Sans({
   subsets:  ['latin'],
   weight:   ['400', '500', '600', '700'],
@@ -46,7 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="nl" className={`scroll-smooth ${outfit.variable} ${inter.variable} ${dmMono.variable} ${dmSans.variable}`}>
       <head>
-        {/* Critical CSS: paint correct background before stylesheet loads — prevents white flash and reduces LCP */}
+        {/* Critical CSS: paint correct background before stylesheet loads, prevents white flash and reduces LCP */}
         <style dangerouslySetInnerHTML={{ __html: `
           :root{--navy:#0f2133;--navy2:#0a1a28;--navy3:#162d42;--accent:#0090b8;--cyan:#0abbd6;--green:#12a87a;--muted:#5a7d96;--muted2:#8fafc8;--border:rgba(0,144,184,.15);--text:#e8f2f8;--text2:#b8d0e0}
           *,*::before,*::after{box-sizing:border-box}
@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           body{margin:0;background:#0a1a28;color:#e8f2f8;overflow-x:hidden;line-height:1.6}
           .hero-section{background:#0a1a28}
         `}} />
-        {/* Structured data — site-breed */}
+        {/* Structured data, site-breed */}
         <JsonLd schema={[
           organizationSchema(),
           websiteSchema(),
@@ -64,7 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Analytics />
       </head>
       <body className="bg-[var(--navy2)] text-[var(--text)] antialiased">
-        {/* Google Ads base tag — site-breed, init vóór externe lib zodat dataLayer altijd bestaat */}
+        {/* Google Ads base tag, site-breed, init vóór externe lib zodat dataLayer altijd bestaat */}
         <GoogleAds />
         <Header />
         <main id="main-content">

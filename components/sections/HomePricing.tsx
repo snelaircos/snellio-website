@@ -32,7 +32,7 @@ export default function HomePricing() {
           </span>
         </div>
         <p className="text-xs text-[#5f7791]">
-          Kies jaarlijks en betaal slechts 10 maanden —{' '}
+          Kies jaarlijks en betaal slechts 10 maanden,{' '}
           <span className="text-[var(--green)] font-semibold">2 maanden cadeau 🎁</span>
         </p>
       </div>

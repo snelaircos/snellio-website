@@ -20,7 +20,7 @@ export const metadata: Metadata = buildMetadata({
 const features = [
   { icon: '✍️', title: 'Digitale handtekening ter plaatse',  desc: 'Klant ondertekent de werkbon direct op uw tablet of telefoon. PDF wordt automatisch gegenereerd en verstuurd.', badge: 'Populair' },
   { icon: '📄', title: 'BRL100 rapport automatisch',          desc: 'Elke koeltechnische handeling levert automatisch een BRL100-compliant rapport op. Direct print-klaar voor inspectie.' },
-  { icon: '🔧', title: 'Koeltechnische handelingen',           desc: 'Inbedrijfstelling, lektest, drukproef, vacumeren, afpompen — alle handelingen met de vereiste meetvelden.' },
+  { icon: '🔧', title: 'Koeltechnische handelingen',           desc: 'Inbedrijfstelling, lektest, drukproef, vacumeren, afpompen, alle handelingen met de vereiste meetvelden.' },
   { icon: '📷', title: "Foto's & bijlagen",                    desc: "Voeg foto's en documenten toe aan werkorders. Altijd beschikbaar in het klantdossier." },
   { icon: '🧾', title: 'Direct factureren vanuit werkbon',     desc: 'Van werkbon naar factuur in één klik. iDEAL of Wero betaallink via Mollie meegestuurd.' },
   { icon: '📤', title: 'Automatisch e-mailen naar klant',     desc: 'Werkbon PDF wordt direct na ondertekening per e-mail verstuurd. Geen uitprinten, geen postvak.' },
@@ -37,19 +37,19 @@ const problemen = [
   { title: 'Werkbonnen op papier invullen',         desc: 'Papier raakt zoek, leesfouten en handmatig scannen kost kostbare werktijd.' },
   { title: 'Rapporten handmatig opstellen',          desc: 'BRL100-documenten handmatig invullen kost uren per week aan administratie.' },
   { title: 'Klant ondertekent een losse bon',        desc: 'Geen digitale vastlegging, archivering is onbetrouwbaar en niet traceerbaar.' },
-  { title: 'Factuur apart invoeren',                 desc: 'Informatie overtypen van de werkbon naar het boekhoudprogramma — dubbel werk.' },
+  { title: 'Factuur apart invoeren',                 desc: 'Informatie overtypen van de werkbon naar het boekhoudprogramma, dubbel werk.' },
 ]
 
 const oplossingen = [
   { title: 'Digitale werkbon op tablet of telefoon',  desc: 'Altijd bij de hand, geen papier nodig. Alles direct ingevuld op locatie.' },
-  { title: 'BRL100-rapport automatisch gegenereerd',  desc: 'Vul de handelingen in — het rapport is klaar. Geen extra werk, geen fouten.' },
+  { title: 'BRL100-rapport automatisch gegenereerd',  desc: 'Vul de handelingen in, het rapport is klaar. Geen extra werk, geen fouten.' },
   { title: 'Digitale handtekening met tijdstempel',   desc: 'Juridisch geldig, altijd terug te vinden in het digitale archief.' },
-  { title: 'Factuur aanmaken vanuit de werkbon',      desc: 'Eén klik — factuurregels overgenomen, iDEAL betaallink toegevoegd.' },
+  { title: 'Factuur aanmaken vanuit de werkbon',      desc: 'Eén klik, factuurregels overgenomen, iDEAL betaallink toegevoegd.' },
 ]
 
 const uitgebreideFeatures = [
-  { icon: '📋', title: 'Werkorder typen',              desc: 'Inbedrijfstelling, periodieke service, storingsdienst, lektest, vacumeren, koudemiddel bijvullen of aftappen — elk type heeft zijn eigen velden.' },
-  { icon: '🌡', title: 'Meetwaarden vastleggen',        desc: 'Begin- en eindtemperatuur, hoge- en lagedrukzijde, omgevingstemperatuur, einddruk vacumeren en standtijd — alles in het juiste formaat.' },
+  { icon: '📋', title: 'Werkorder typen',              desc: 'Inbedrijfstelling, periodieke service, storingsdienst, lektest, vacumeren, koudemiddel bijvullen of aftappen, elk type heeft zijn eigen velden.' },
+  { icon: '🌡', title: 'Meetwaarden vastleggen',        desc: 'Begin- en eindtemperatuur, hoge- en lagedrukzijde, omgevingstemperatuur, einddruk vacumeren en standtijd, alles in het juiste formaat.' },
   { icon: '🔏', title: 'Digitale handtekening',         desc: 'Klant en monteur ondertekenen op het scherm. Datum, tijdstip en naam worden automatisch vastgelegd.' },
   { icon: '📁', title: 'Archief per klant',             desc: 'Alle werkbonnen, BRL100-rapporten en foto\'s worden opgeslagen per klant en installatie. Direct opvraagbaar bij elke volgende service.' },
   { icon: '🔗', title: 'Koppeling aan installatie',     desc: 'Elke werkbon is gekoppeld aan een specifieke installatie: type, merk, koudemiddel, capaciteit en serienummer.' },
@@ -83,7 +83,7 @@ const faqItems = [
   },
   {
     question: 'Genereert Snellio automatisch BRL100-rapporten?',
-    answer:   'Ja. Zodra u de koeltechnische handelingen invult — drukproef, lektest, vacumeren, koudemiddel bijvullen — genereert Snellio automatisch een BRL100-conform rapport. U hoeft niets handmatig op te stellen. Het rapport is direct print-klaar en wordt meegestuurd in de e-mail aan de klant.',
+    answer:   'Ja. Zodra u de koeltechnische handelingen invult, drukproef, lektest, vacumeren, koudemiddel bijvullen, genereert Snellio automatisch een BRL100-conform rapport. U hoeft niets handmatig op te stellen. Het rapport is direct print-klaar en wordt meegestuurd in de e-mail aan de klant.',
   },
   {
     question: 'Is de digitale handtekening juridisch geldig?',
@@ -91,11 +91,11 @@ const faqItems = [
   },
   {
     question: 'Werkt de werkbon app ook op telefoon en tablet?',
-    answer:   'Ja. Snellio werkt als webapplicatie die volledig geoptimaliseerd is voor smartphone en tablet. Er is niets te installeren via de App Store of Google Play — u opent gewoon de browser en bent direct aan het werk. Zowel iOS als Android worden ondersteund.',
+    answer:   'Ja. Snellio werkt als webapplicatie die volledig geoptimaliseerd is voor smartphone en tablet. Er is niets te installeren via de App Store of Google Play, u opent gewoon de browser en bent direct aan het werk. Zowel iOS als Android worden ondersteund.',
   },
   {
     question: 'Kan ik direct factureren vanuit de werkbon?',
-    answer:   'Ja. Zodra de werkbon is ondertekend, maakt u in één klik een factuur aan. De factuurregels worden automatisch overgenomen. U stuurt de factuur met een iDEAL of Wero betaallink via Mollie — de klant betaalt direct online.',
+    answer:   'Ja. Zodra de werkbon is ondertekend, maakt u in één klik een factuur aan. De factuurregels worden automatisch overgenomen. U stuurt de factuur met een iDEAL of Wero betaallink via Mollie, de klant betaalt direct online.',
   },
   {
     question: 'Wat kost werkbon software van Snellio?',
@@ -160,7 +160,7 @@ export default function WerkbonSoftwarePage() {
               Omdat Snellio is gebouwd door een BRL100-gecertificeerd installateur, bevat de
               software precies de velden die u dagelijks nodig heeft: koeltechnische meetwaarden,
               F-gas registratie, lektestdocumentatie en EPBD-informatie. Alles conform de
-              actuele wetgeving — zonder dat u er extra administratietijd aan kwijt bent.
+              actuele wetgeving, zonder dat u er extra administratietijd aan kwijt bent.
             </p>
             <p>
               De werkbon software is direct te gebruiken zonder installatie. U opent de browser
@@ -244,7 +244,7 @@ export default function WerkbonSoftwarePage() {
             </h2>
             <p className="text-[var(--text2)] text-base max-w-xl mx-auto mt-4 leading-relaxed">
               Snellio bevat alle functies die specifiek zijn voor installateurs en HVAC-bedrijven.
-              Geen overbodige functionaliteit — alleen wat u dagelijks nodig heeft.
+              Geen overbodige functionaliteit, alleen wat u dagelijks nodig heeft.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -274,11 +274,11 @@ export default function WerkbonSoftwarePage() {
               className="font-outfit font-black text-white tracking-tight"
               style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
             >
-              Software voor installateurs —{' '}
+              Software voor installateurs,{' '}
               <span className="text-[var(--cyan)]">van ZZP tot bedrijf</span>
             </h2>
             <p className="text-[var(--text2)] text-base max-w-xl mx-auto mt-4 leading-relaxed">
-              Of u nu solo werkt of een team van monteurs aanstuurt — Snellio past zich aan uw
+              Of u nu solo werkt of een team van monteurs aanstuurt, Snellio past zich aan uw
               bedrijf aan.
             </p>
           </div>
@@ -362,7 +362,7 @@ export default function WerkbonSoftwarePage() {
                   🔧
                 </div>
                 <div>
-                  <p className="font-outfit font-bold text-white text-lg">Tim — Airco installateur ZZP</p>
+                  <p className="font-outfit font-bold text-white text-lg">Tim, Airco installateur ZZP</p>
                   <p className="text-[var(--muted2)] text-sm">
                     Installeert dagelijks 2–3 airco-units en warmtepompen in de regio Utrecht
                   </p>
@@ -428,7 +428,7 @@ export default function WerkbonSoftwarePage() {
 
             <div className="flex flex-wrap gap-4">
               <Button href="/registreren" size="md">
-                Start net als Tim — 14 dagen gratis →
+                Start net als Tim, 14 dagen gratis →
               </Button>
               <Button href="/pricing" variant="ghost" size="md">
                 Bekijk pakketten
@@ -453,13 +453,13 @@ export default function WerkbonSoftwarePage() {
           </h2>
           <div className="prose-snellio space-y-5 text-[var(--text2)] text-[.96rem] leading-[1.9]">
             <p>
-              Werkbon software is voor veel installateurs en HVAC-bedrijven nog een relatief nieuw begrip, maar de overstap van papier naar digitaal is één van de meest concrete manieren om tijd te besparen en fouten te voorkomen. Een werkbon is het centrale document bij elke serviceopdracht: het legt vast wat er gedaan is, welke meetwaarden zijn geregistreerd en wie er akkoord mee is gegaan. Als dat document op papier bestaat, is het kwetsbaar — het raakt zoek, het is moeilijk leesbaar en archiveren kost onevenredig veel tijd.
+              Werkbon software is voor veel installateurs en HVAC-bedrijven nog een relatief nieuw begrip, maar de overstap van papier naar digitaal is één van de meest concrete manieren om tijd te besparen en fouten te voorkomen. Een werkbon is het centrale document bij elke serviceopdracht: het legt vast wat er gedaan is, welke meetwaarden zijn geregistreerd en wie er akkoord mee is gegaan. Als dat document op papier bestaat, is het kwetsbaar, het raakt zoek, het is moeilijk leesbaar en archiveren kost onevenredig veel tijd.
             </p>
             <p>
               Met een digitale werkbon app verandert het hele proces. De monteur opent de app op zijn tablet of telefoon, selecteert de klant en installatie en vult de handelingen in via velden die specifiek zijn gemaakt voor koeltechnisch werk: drukwaarden, temperatuurmetingen, vacuümresultaten, koudemiddelhoeveelheden en lektestuitkomsten. Alles staat in het juiste formaat, op de juiste plek. Er is geen ruimte voor onduidelijke handschriften of vergeten velden, omdat de software alleen verder gaat als de verplichte invoer compleet is.
             </p>
             <p>
-              Het verschil met Excel of een Word-sjabloon is fundamenteel. Een spreadsheet of tekstdocument is generiek — het is niet gebouwd voor de specifieke werkwijze van een installateur en biedt geen koppeling aan klantdossiers, installaties of facturatie. U typt gegevens in, slaat het bestand op en moet het vervolgens zelf mailen, archiveren en terugvinden. Bij Snellio is de werkbon onderdeel van een volledig systeem: de klantgegevens zijn al ingevuld, de installatiegegevens zijn bekend en zodra de bon ondertekend is, kunt u in één klik een factuur aanmaken. Niets hoeft dubbel ingevoerd te worden.
+              Het verschil met Excel of een Word-sjabloon is fundamenteel. Een spreadsheet of tekstdocument is generiek, het is niet gebouwd voor de specifieke werkwijze van een installateur en biedt geen koppeling aan klantdossiers, installaties of facturatie. U typt gegevens in, slaat het bestand op en moet het vervolgens zelf mailen, archiveren en terugvinden. Bij Snellio is de werkbon onderdeel van een volledig systeem: de klantgegevens zijn al ingevuld, de installatiegegevens zijn bekend en zodra de bon ondertekend is, kunt u in één klik een factuur aanmaken. Niets hoeft dubbel ingevoerd te worden.
             </p>
             <p>
               Voor installatiebedrijven met meerdere monteurs is goede werkbon software nog belangrijker. Zonder centraal systeem werkt iedereen met zijn eigen variant van een formulier, zijn eigen manier van archiveren en zijn eigen manier van communiceren met de klant. Dat leidt tot inconsistentie, gemiste informatie en extra werk voor de administratie. Software voor installateurs brengt structuur: iedere monteur werkt met hetzelfde format, alle documenten komen op dezelfde plek terecht en de eigenaar heeft altijd inzicht in de status van openstaande opdrachten. Combineer dit met de{' '}
@@ -469,7 +469,7 @@ export default function WerkbonSoftwarePage() {
             <p>
               Snellio is als werkbon app specifiek ontworpen voor de HVAC-branche. De software bevat standaard alle koeltechnische velden die nodig zijn voor BRL100-certificering en{' '}
               <a href="/f-gassen-registratie" className="text-[var(--cyan)] hover:underline font-medium">F-gas wetgeving</a>
-              {' '}— niet als extra module of add-on, maar als integraal onderdeel van iedere werkbon. Dat betekent dat u na het invullen van de handelingen direct een gecertificeerd rapport kunt genereren, zonder extra stappen. De klant ondertekent op het scherm, de PDF wordt automatisch verstuurd en de werkbon is gearchiveerd in het klantdossier. Van opdracht tot afgerond document duurt het nog geen tien minuten — waar dat vroeger een avond administratie kostte.
+              {' '}, niet als extra module of add-on, maar als integraal onderdeel van iedere werkbon. Dat betekent dat u na het invullen van de handelingen direct een gecertificeerd rapport kunt genereren, zonder extra stappen. De klant ondertekent op het scherm, de PDF wordt automatisch verstuurd en de werkbon is gearchiveerd in het klantdossier. Van opdracht tot afgerond document duurt het nog geen tien minuten, waar dat vroeger een avond administratie kostte.
             </p>
           </div>
         </Container>

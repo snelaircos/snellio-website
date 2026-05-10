@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Button from '@/components/ui/Button'
 
 export const metadata: Metadata = {
-  title:       'Pagina niet gevonden — Snellio',
+  title:       'Pagina niet gevonden, Snellio',
   description: 'Deze pagina bestaat niet. Ga terug naar de homepage van Snellio.',
   robots:      { index: false },
 }

@@ -6,7 +6,7 @@ import ContactForm  from '@/components/forms/ContactForm'
 import { SITE }     from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
-  title:       'Contact — Stel uw vraag of vraag een demo aan',
+  title:       'Contact, Stel uw vraag of vraag een demo aan',
   description: 'Neem contact op met Snellio. Vraag een persoonlijke demo aan of stel uw vraag. Wij reageren binnen 1 werkdag.',
   path:        '/contact',
 })

@@ -17,7 +17,7 @@ export default function ContactForm() {
       // await fetch('/api/contact', { method: 'POST', body: JSON.stringify(form) })
       await new Promise(r => setTimeout(r, 1200)) // Simulatie
 
-      // Google Ads conversie — alleen bij succesvolle submit.
+      // Google Ads conversie, alleen bij succesvolle submit.
       // Als "demo" is aangevinkt tellen we ook de demo-conversie.
       trackConversion('contact_form_submitted')
       if (form.demo) trackConversion('demo_request_submitted')

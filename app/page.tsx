@@ -8,7 +8,7 @@ import HomePricing       from '@/components/sections/HomePricing'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Software voor koeltechniek & airco | Snellio',
-  description: 'Snellio is de Nederlandse software voor koeltechniek- en airco-bedrijven. Werkbon, klant-handtekening, F-gassen-registratie, planning en facturatie — alles vanuit één app. 14 dagen gratis proberen.',
+  description: 'Snellio is de Nederlandse software voor koeltechniek- en airco-bedrijven. Werkbon, klant-handtekening, F-gassen-registratie, planning en facturatie, alles vanuit één app. 14 dagen gratis proberen.',
   path:        '/',
 })
 
@@ -89,7 +89,7 @@ export default function HomePage() {
             </h1>
             <p className="text-[#5f7791] text-[1.05rem] leading-[1.6] max-w-xl mb-8">
               Snellio is de Nederlandse software voor koeltechniek- en airco-bedrijven.
-              Werkbon, klant-handtekening, F-gassen-registratie en factuur — allemaal vanuit één app.
+              Werkbon, klant-handtekening, F-gassen-registratie en factuur, allemaal vanuit één app.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href={SIGNUP_HREF} className={btnPrimary}>
@@ -108,7 +108,7 @@ export default function HomePage() {
             <div className="rounded-xl overflow-hidden bg-white border border-[#e4ecf2] shadow-[0_8px_32px_rgba(0,144,184,.08)]">
               <Image
                 src="/dashboard-preview.png"
-                alt="Snellio dashboard met klanten, installaties, openstaande werkorders, forecast keuringen en koudemiddel-flessen — software voor koeltechniek- en airco-bedrijven"
+                alt="Snellio dashboard met klanten, installaties, openstaande werkorders, forecast keuringen en koudemiddel-flessen, software voor koeltechniek- en airco-bedrijven"
                 width={2924}
                 height={1672}
                 className="w-full h-auto block"
@@ -120,14 +120,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 1.5 WIE BOUWT DIT (founder direct na hero — 2/3 visitors leaves <30s) ── */}
+      {/* ── 1.5 WIE BOUWT DIT (founder direct na hero, 2/3 visitors leaves <30s) ── */}
       <section className="py-16 px-[5%] bg-white border-t border-[#e4ecf2]">
         <div className="mx-auto max-w-4xl grid md:grid-cols-[200px_1fr] gap-8 md:gap-10 items-center">
           <div className="flex justify-center md:justify-start">
             <div className="w-[200px] h-[200px] rounded-full overflow-hidden shadow-[0_8px_24px_rgba(0,144,184,.25)] ring-4 ring-white">
               <Image
                 src="/rudy-snel.png"
-                alt="Rudy Snel — eigenaar Snel Airco's en bouwer van Snellio"
+                alt="Rudy Snel, eigenaar Snel Airco's en bouwer van Snellio"
                 width={400}
                 height={400}
                 className="w-full h-full object-cover"
@@ -141,13 +141,13 @@ export default function HomePage() {
               Hoi, ik ben Rudy.
             </h2>
             <p className="text-[#5f7791] text-[1rem] leading-[1.7] mb-3">
-              Ik run <strong className="text-[#0f2133]">Snel Airco&apos;s</strong> — een koeltechniek-bedrijf in Nederland.
+              Ik run <strong className="text-[#0f2133]">Snel Airco&apos;s</strong>, een koeltechniek-bedrijf in Nederland.
               STEK-gecertificeerd, F-gassen voor de kost, monteurs op pad, klanten die bellen, papieren werkbonnen die
               kwijtraken en een audit die altijd net iets eerder is dan je denkt.
             </p>
             <p className="text-[#5f7791] text-[1rem] leading-[1.7] mb-3">
               Ik heb Snellio gebouwd omdat ik er zelf gek van werd. Geen dure consultant, geen SaaS-bureau dat denkt te
-              weten hoe lekcontrole-cycli werken — gewoon een installateur die eindelijk z&apos;n eigen tool wilde die
+              weten hoe lekcontrole-cycli werken, gewoon een installateur die eindelijk z&apos;n eigen tool wilde die
               werkt zoals z&apos;n eigen werkplaats werkt.
             </p>
             <p className="text-[#5f7791] text-[1rem] leading-[1.7]">
@@ -155,7 +155,7 @@ export default function HomePage() {
               <a href="mailto:rudy@snellio.nl" className="text-[var(--accent)] font-semibold hover:underline">
                 rudy@snellio.nl
               </a>
-              {' '}— je krijgt mij aan de lijn.
+              {' '}, je krijgt mij aan de lijn.
             </p>
           </div>
         </div>
@@ -234,7 +234,7 @@ export default function HomePage() {
             <div className="rounded-[2rem] overflow-hidden shadow-[0_24px_60px_rgba(15,33,51,.18)] ring-1 ring-[#e4ecf2] max-w-[320px] w-full">
               <Image
                 src="/monteur-app.png"
-                alt="Snellio monteur-app op telefoon — dashboard, werkorders, installaties, F-gas balans en planning binnen handbereik"
+                alt="Snellio monteur-app op telefoon, dashboard, werkorders, installaties, F-gas balans en planning binnen handbereik"
                 width={660}
                 height={1428}
                 className="w-full h-auto block"

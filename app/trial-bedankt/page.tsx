@@ -5,7 +5,7 @@ import TrialSignupConversion from '@/components/tracking/TrialSignupConversion'
 
 export const metadata: Metadata = {
   title: 'Account aangemaakt | Snellio',
-  description: 'Welkom bij Snellio. Je account is aangemaakt — start direct met je gratis proefperiode.',
+  description: 'Welkom bij Snellio. Je account is aangemaakt, start direct met je gratis proefperiode.',
   robots: { index: false },
 }
 

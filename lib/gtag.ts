@@ -15,11 +15,11 @@
 
 export const GADS_ID = 'AW-18058139346'
 
-// GA4 property ID — leeg laten als je geen GA4 gebruikt.
+// GA4 property ID, leeg laten als je geen GA4 gebruikt.
 export const GA4_ID = ''
 
 // ──────────────────────────────────────────
-// Conversion labels — vul de waardes in die
+// Conversion labels, vul de waardes in die
 // Google Ads je geeft bij "Tag installeren".
 // Format altijd: AW-XXXXXXXX/LABEL
 // ──────────────────────────────────────────
@@ -53,7 +53,7 @@ function isPlaceholder(label: string): boolean {
 }
 
 /**
- * Vuur een Google Ads conversie — fire-and-forget.
+ * Vuur een Google Ads conversie, fire-and-forget.
  * Gebruik dit in form submit handlers waar gtag al geladen is.
  * Retourneert `true` als het event in de queue is geduwd.
  */
@@ -62,13 +62,13 @@ export function trackConversion(
   params: Record<string, unknown> = {},
 ): boolean {
   if (!gtagAvailable()) {
-    console.warn('[gtag] niet beschikbaar — conversie niet verzonden:', key)
+    console.warn('[gtag] niet beschikbaar, conversie niet verzonden:', key)
     return false
   }
 
   const sendTo = CONVERSIONS[key]
   if (isPlaceholder(sendTo)) {
-    console.warn('[gtag] conversion label is placeholder — vul in lib/gtag.ts:', key)
+    console.warn('[gtag] conversion label is placeholder, vul in lib/gtag.ts:', key)
     return false
   }
 
@@ -89,13 +89,13 @@ export function trackConversionAndWait(
 ): Promise<boolean> {
   return new Promise(resolve => {
     if (!gtagAvailable()) {
-      console.warn('[gtag] niet beschikbaar — conversie niet verzonden:', key)
+      console.warn('[gtag] niet beschikbaar, conversie niet verzonden:', key)
       return resolve(false)
     }
 
     const sendTo = CONVERSIONS[key]
     if (isPlaceholder(sendTo)) {
-      console.warn('[gtag] conversion label is placeholder — vul in lib/gtag.ts:', key)
+      console.warn('[gtag] conversion label is placeholder, vul in lib/gtag.ts:', key)
       return resolve(false)
     }
 
@@ -142,7 +142,7 @@ export function trackConversionWithRetry(
 }
 
 /**
- * Bonus: GA4 event helper — voor als je later GA4 toevoegt.
+ * Bonus: GA4 event helper, voor als je later GA4 toevoegt.
  * Volg Google's event naming convention (snake_case).
  */
 export function trackGA4Event(name: string, params: Record<string, unknown> = {}): boolean {

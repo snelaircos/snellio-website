@@ -45,7 +45,7 @@ export default function DemoForm({ compact = false }: DemoFormProps) {
       })
       if (!res.ok) throw new Error('api_error')
 
-      // Google Ads conversie — wacht tot beacon verstuurd is (of timeout) vóór redirect
+      // Google Ads conversie, wacht tot beacon verstuurd is (of timeout) vóór redirect
       await trackConversionAndWait('demo_request_submitted')
 
       router.push('/demo-bedankt')

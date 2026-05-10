@@ -6,7 +6,7 @@ import { trackConversionWithRetry } from '@/lib/gtag'
 // Vuurt de Google Ads conversie 'trial_signup_completed' on-mount.
 // Gebruikt op /checkout/success (na geverifieerde Mollie-betaling) en als legacy
 // fallback op /trial-bedankt. trackConversionWithRetry probeert elke 250ms tot
-// gtag geladen is, max 5s — robuust tegen redirect-flows waarbij gtag nog niet
+// gtag geladen is, max 5s, robuust tegen redirect-flows waarbij gtag nog niet
 // klaar is bij eerste paint.
 //
 // Dedupe via sessionStorage: één signup mag NIET twee conversies firen, ook
@@ -33,7 +33,7 @@ function alreadyFired(dedupeKey?: string): boolean {
     if (dedupeKey && sessionStorage.getItem(KEY_PREFIX + dedupeKey)) return true
     if (sessionStorage.getItem(SESSION_KEY)) return true
   } catch {
-    // sessionStorage geblokkeerd (incognito strict, bv) — laat firen, dedupe is best-effort
+    // sessionStorage geblokkeerd (incognito strict, bv), laat firen, dedupe is best-effort
   }
   return false
 }
@@ -51,7 +51,7 @@ function markFired(dedupeKey?: string): void {
 export default function TrialSignupConversion({ dedupeKey }: Props = {}) {
   useEffect(() => {
     if (alreadyFired(dedupeKey)) {
-      console.log('[gtag] trial_signup_completed al gefired in deze session — skip', dedupeKey || '(no key)')
+      console.log('[gtag] trial_signup_completed al gefired in deze session, skip', dedupeKey || '(no key)')
       return
     }
 

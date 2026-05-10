@@ -5,18 +5,18 @@ import { breadcrumbSchema } from '@/lib/schemas'
 import JsonLd from '@/components/seo/JsonLd'
 import { SITE } from '@/lib/constants'
 
-// DemoForm uit het critical bundle — SSR levert direct HTML, JS laadt apart
+// DemoForm uit het critical bundle, SSR levert direct HTML, JS laadt apart
 const DemoForm = dynamic(() => import('@/components/forms/DemoForm'))
 
 export const metadata: Metadata = buildMetadata({
-  title:       'Demo aanvragen — Persoonlijke walkthrough van Snellio',
+  title:       'Demo aanvragen, Persoonlijke walkthrough van Snellio',
   description: 'Vraag een persoonlijke demo van Snellio aan. We laten je in 20 minuten zien hoe werkbon, F-gassen, planning en facturatie samenkomen in één app. Reactie binnen 1 werkdag.',
   path:        '/demo',
 })
 
 const voordelen = [
   { icon: '⚡', title: 'Binnen 1 werkdag contact',     desc: 'We bellen of mailen je terug om een tijdstip te plannen.'                           },
-  { icon: '🎯', title: 'Persoonlijke walkthrough',     desc: '20–30 min op maat — we tonen wat relevant is voor jouw werkplaats.'                 },
+  { icon: '🎯', title: 'Persoonlijke walkthrough',     desc: '20–30 min op maat, we tonen wat relevant is voor jouw werkplaats.'                 },
   { icon: '💬', title: 'Eerlijk advies',               desc: 'Past Snellio bij je niet? Dan zeggen we dat. Geen verkooppraatjes.'                  },
   { icon: '🛡️', title: 'Geen verplichtingen',          desc: 'Demo is gratis en vrijblijvend. Geen contract, geen creditcard.'                    },
 ]
@@ -46,7 +46,7 @@ export default function DemoPage() {
             </h1>
             <p className="text-[var(--text2)] text-[1.05rem] leading-relaxed mb-10">
               Vul het formulier in en we plannen een persoonlijke walkthrough. We laten je zien hoe
-              werkbon, F-gassen, planning en facturatie in Snellio samenkomen — en of het past bij
+              werkbon, F-gassen, planning en facturatie in Snellio samenkomen, en of het past bij
               jouw bedrijf. Geen verplichtingen.
             </p>
 

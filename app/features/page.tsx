@@ -9,7 +9,7 @@ import Cta       from '@/components/sections/Cta'
 import { CERTS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
-  title:       'Functies — Wat kan Snellio?',
+  title:       'Functies, Wat kan Snellio?',
   description: 'Ontdek alle functies van Snellio: werkbonnen, installatiebeheer, BRL100-rapportage, F-gassen flesregistratie, facturatie en Google Calendar sync. Alles voor de HVAC-installateur.',
   path:        '/features',
 })
@@ -172,7 +172,7 @@ export default function FeaturesPage() {
             </div>
             <Image
               src="/planning-preview.png"
-              alt="Snellio planning module — werkorders en monteurs gepland in een week-overzicht met Google Calendar synchronisatie voor HVAC- en koeltechnische installateurs"
+              alt="Snellio planning module, werkorders en monteurs gepland in een week-overzicht met Google Calendar synchronisatie voor HVAC- en koeltechnische installateurs"
               width={1120}
               height={550}
               className="w-full h-auto block"

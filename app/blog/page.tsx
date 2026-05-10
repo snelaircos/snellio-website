@@ -6,12 +6,12 @@ import Container from '@/components/ui/Container'
 import Button    from '@/components/ui/Button'
 
 export const metadata: Metadata = buildMetadata({
-  title:       'Blog — Tips & kennis voor HVAC-installateurs',
+  title:       'Blog, Tips & kennis voor HVAC-installateurs',
   description: 'Praktische artikelen over HVAC, koeltechniek, BRL100-wetgeving, F-gassen en bedrijfsvoering voor installateurs. Kennisbank van Snellio.',
   path:        '/blog',
 })
 
-// Tijdelijke placeholder artikelen — vervangen door CMS of MDX
+// Tijdelijke placeholder artikelen, vervangen door CMS of MDX
 const posts = [
   {
     slug:     'brl100-uitgelegd',

@@ -18,7 +18,7 @@ const faqs = [
   { question: 'Kan ik op elk moment opzeggen?',
     answer:   'Ja. Bij maandelijkse betaling kunt u per maand opzeggen. Bij jaarlijkse betaling loopt het abonnement tot het einde van de betaalde periode.' },
   { question: 'Wat is het verschil tussen maandelijks en jaarlijks?',
-    answer:   'Bij jaarlijkse betaling ontvangt u 2 maanden gratis — dat is een besparing van ruim 16%.' },
+    answer:   'Bij jaarlijkse betaling ontvangt u 2 maanden gratis, dat is een besparing van ruim 16%.' },
   { question: 'Zijn er extra kosten voor updates?',
     answer:   'Nee. Alle updates en nieuwe functies zijn inbegrepen in uw abonnement.' },
   { question: 'Kan ik van pakket wisselen?',

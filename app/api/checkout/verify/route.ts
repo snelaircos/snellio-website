@@ -105,7 +105,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // Maak bedrijfsgegevens — moet COMPLEET zijn (eerder bug: alleen
+    // Maak bedrijfsgegevens, moet COMPLEET zijn (eerder bug: alleen
     // bedrijfsnaam/pakket werd geschreven, status/trial/mollie ontbraken
     // waardoor trial-cron de tenant negeerde en admin de tenant niet zag).
     const { error: bedrijfError } = await supabase
@@ -133,7 +133,7 @@ export async function POST(req: NextRequest) {
       console.error('bedrijfsgegevens insert mislukt:', bedrijfError)
       await supabase.auth.admin.deleteUser(userId)
       return NextResponse.json({
-        error: 'Account aanmaken mislukt — neem contact op met support@snellio.nl',
+        error: 'Account aanmaken mislukt, neem contact op met support@snellio.nl',
         debug: bedrijfError.message,
       }, { status: 500 })
     }
@@ -165,7 +165,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // Markeer pending_signups als completed (NIET deleten — dan kunnen we
+    // Markeer pending_signups als completed (NIET deleten, dan kunnen we
     // achteraf debuggen welke signups door welke flow gingen).
     await supabase
       .from('pending_signups')

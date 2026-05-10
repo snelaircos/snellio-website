@@ -6,7 +6,7 @@ import CheckoutForm from '@/components/forms/CheckoutForm'
 import { PLANS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
-  title:       'Checkout — Start je gratis proefperiode',
+  title:       'Checkout, Start je gratis proefperiode',
   description: 'Kies je pakket en maak een account aan. 14 dagen gratis proberen, geen creditcard nodig. Snellio CRM voor installateurs.',
   path:        '/checkout',
 })
@@ -45,7 +45,7 @@ export default function CheckoutPage({ searchParams }: Props) {
             </h1>
 
             <p className="text-[var(--text2)] text-[1.05rem] leading-relaxed mb-8">
-              Gekozen pakket: <strong className="text-white">{plan.name}</strong> — {plan.tagline}
+              Gekozen pakket: <strong className="text-white">{plan.name}</strong>, {plan.tagline}
             </p>
 
             {/* Plan details */}

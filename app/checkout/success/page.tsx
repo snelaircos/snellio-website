@@ -111,7 +111,7 @@ export default function CheckoutSuccessPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-[5%]">
-      {/* Google Ads conversie — alleen bij status 'success' (geverifieerde betaling).
+      {/* Google Ads conversie, alleen bij status 'success' (geverifieerde betaling).
          signupId fungeert als dedupe-key zodat een page-reload geen tweede fire geeft. */}
       <TrialSignupConversion dedupeKey={signupId ?? undefined} />
 

@@ -6,7 +6,7 @@ import { AUTOMOTIVE_PLANS } from '@/lib/constants'
 
 // Light-theme pricing voor /automotive. Witte cards op #f4f7fa.
 // Pro card heeft "Aanbevolen"-pill in cyan, zoals het Claude Design ontwerp voorschrijft.
-// Maandelijks/Jaarlijks toggle. Gebruikt AUTOMOTIVE_PLANS verbatim — geen prijswijzigingen.
+// Maandelijks/Jaarlijks toggle. Gebruikt AUTOMOTIVE_PLANS verbatim, geen prijswijzigingen.
 export default function AutomotivePricing() {
   const [annual, setAnnual] = useState(false)
 
@@ -32,7 +32,7 @@ export default function AutomotivePricing() {
           </span>
         </div>
         <p className="text-xs text-[#5f7791]">
-          Kies jaarlijks en betaal slechts 10 maanden —{' '}
+          Kies jaarlijks en betaal slechts 10 maanden,{' '}
           <span className="text-[#12a87a] font-semibold">2 maanden cadeau 🎁</span>
         </p>
       </div>

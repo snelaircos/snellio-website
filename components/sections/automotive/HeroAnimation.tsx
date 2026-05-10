@@ -1,4 +1,4 @@
-// Animated SVG: "kenteken naar factuur" — ~8s loop.
+// Animated SVG: "kenteken naar factuur", ~8s loop.
 // Auto rolt in → bestuurder reikt kenteken aan → kenteken in gleuf → cyan glow → factuur met "Betaald"-stempel rolt eruit → auto rolt door.
 // Geleverd via dangerouslySetInnerHTML zodat de oorspronkelijke SMIL-attribuutnamen (kebab-case) bewaard blijven.
 const HERO_SVG = `

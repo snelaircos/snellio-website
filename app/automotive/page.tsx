@@ -9,7 +9,7 @@ import { SITE } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Software voor werkplaatsen, autohandelaren & dealers | Snellio Automotive',
-  description: 'Eén tool voor je werkplaats — werkbladen, voertuigen, klanten, planning, offertes en facturen. Geef Snellio het kenteken, de rest regelt zich. 14 dagen gratis.',
+  description: 'Eén tool voor je werkplaats, werkbladen, voertuigen, klanten, planning, offertes en facturen. Geef Snellio het kenteken, de rest regelt zich. 14 dagen gratis.',
   path:        '/automotive',
 })
 
@@ -40,7 +40,7 @@ const stappen = [
   {
     nr: '02 · Werkblad',
     title: 'Het werk erop',
-    desc: 'Remblokken, koppakking, accu, banden seizoen — wat je deed, met uren en onderdelen. Foto erbij voor de klant.',
+    desc: 'Remblokken, koppakking, accu, banden seizoen, wat je deed, met uren en onderdelen. Foto erbij voor de klant.',
     border: '#0abbd6',
     demo: <span className="text-[13.5px] text-[#5f7791]">📋 WB-2025-031 · Kleine onderhoudsbeurt</span>,
   },
@@ -73,7 +73,7 @@ const features = [
   { icon: '📋', title: 'Werkbladen',           desc: 'Per voertuig, per klus. Uren, onderdelen, foto\'s. Wordt vanzelf je offerte of factuur.' },
   { icon: '🚘', title: 'Voertuigen & klanten',  desc: 'Eén kenteken aan één eigenaar. APK-deadlines op het dashboard, 30 dagen vooruit.' },
   { icon: '🧾', title: 'Facturen & offertes',   desc: 'Concept, verzonden, betaald. Herinneringen en aanmaningen waar dat nodig is.' },
-  { icon: '📅', title: 'Planning',              desc: 'Wie doet wat wanneer. Sleep een werkblad in de week — klant krijgt automatisch bevestiging.' },
+  { icon: '📅', title: 'Planning',              desc: 'Wie doet wat wanneer. Sleep een werkblad in de week, klant krijgt automatisch bevestiging.' },
   { icon: '📦', title: 'Vrooam-grossiers',      desc: 'Bestel onderdelen rechtstreeks bij Vrooam-aangesloten grossiers, waaronder Koskamp.' },
   { icon: '📚', title: 'Kennisbank',            desc: 'Hoe-doe-je-dit per scenario. Geschreven door werkplaatsen, niet door consultants.' },
 ]
@@ -81,7 +81,7 @@ const features = [
 const faqs = [
   {
     question: 'Welke onderdelen-leveranciers zijn aangesloten?',
-    answer:   'Snellio koppelt met Vrooam-aangesloten grossiers — waaronder Koskamp. Bestelling, prijzen en beschikbaarheid lopen direct vanuit het werkblad. Heb je een specifieke grossier? Mail ons even, dan kijken we mee.',
+    answer:   'Snellio koppelt met Vrooam-aangesloten grossiers, waaronder Koskamp. Bestelling, prijzen en beschikbaarheid lopen direct vanuit het werkblad. Heb je een specifieke grossier? Mail ons even, dan kijken we mee.',
   },
   {
     question: 'Brengt de RDW-koppeling extra kosten met zich mee?',
@@ -89,11 +89,11 @@ const faqs = [
   },
   {
     question: 'Werkt Snellio op tablet en telefoon?',
-    answer:   'Ja. Snellio draait in de browser — werkbladen invullen, kenteken erbij, klant tekent op tablet. Geen aparte app installeren. Mobile-first ontworpen, dus prettig in de werkplaats én onderweg.',
+    answer:   'Ja. Snellio draait in de browser, werkbladen invullen, kenteken erbij, klant tekent op tablet. Geen aparte app installeren. Mobile-first ontworpen, dus prettig in de werkplaats én onderweg.',
   },
   {
     question: 'Hoe krijg ik mijn klanten en voertuigen erin?',
-    answer:   'Via Excel/CSV importeer je klanten, kentekens en historische werkbladen. Tijdens je trial helpen we je gratis met de migratie — geen vanaf nul beginnen.',
+    answer:   'Via Excel/CSV importeer je klanten, kentekens en historische werkbladen. Tijdens je trial helpen we je gratis met de migratie, geen vanaf nul beginnen.',
   },
   {
     question: 'Wat is de opzegtermijn?',
@@ -116,7 +116,7 @@ export default function AutomotivePage() {
           name:                 'Snellio Automotive',
           applicationCategory:  'BusinessApplication',
           operatingSystem:      'Web, iOS, Android',
-          description:          'Eén tool voor werkplaatsen, autohandelaren en dealers. Werkbladen, voertuigen, klanten, planning, offertes en facturen — inclusief kenteken-lookup via RDW.',
+          description:          'Eén tool voor werkplaatsen, autohandelaren en dealers. Werkbladen, voertuigen, klanten, planning, offertes en facturen, inclusief kenteken-lookup via RDW.',
           offers:               { '@type': 'Offer', price: '10.00', priceCurrency: 'EUR' },
           publisher:            { '@id': `${SITE.url}/#organization` },
         },
@@ -144,7 +144,7 @@ export default function AutomotivePage() {
               <br className="hidden md:block" /> De rest regelt zich.
             </h1>
             <p className="text-[19px] leading-[1.55] text-[#5f7791] max-w-[540px] mb-7">
-              Eén tool voor je werkplaats — werkbladen, voertuigen, klanten, planning, offertes en facturen.
+              Eén tool voor je werkplaats, werkbladen, voertuigen, klanten, planning, offertes en facturen.
               Inclusief de factuur. Zonder gedoe.
             </p>
             <div className="flex flex-wrap gap-3 mb-5">

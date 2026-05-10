@@ -11,11 +11,11 @@ export const metadata: Metadata = buildMetadata({
 
 const cookies = [
   { name: 'sb-auth-token',    type: 'Functioneel',  duration: 'Sessie',    purpose: 'Authenticatie en inlogsessie (Supabase)' },
-  { name: '_ga, _ga_*',       type: 'Analytisch',   duration: '2 jaar',    purpose: 'Google Analytics — anonieme bezoekersstatistieken' },
-  { name: '_gid',             type: 'Analytisch',   duration: '24 uur',    purpose: 'Google Analytics — sessieherkenning' },
-  { name: '_gcl_au',          type: 'Marketing',    duration: '3 maanden', purpose: 'Google Ads — conversietracking' },
-  { name: '_fbp',             type: 'Marketing',    duration: '3 maanden', purpose: 'Meta Pixel — advertentiemeting' },
-  { name: '_clck, _clsk',     type: 'Analytisch',   duration: '1 jaar',    purpose: 'Microsoft Clarity — heatmaps en sessierecording' },
+  { name: '_ga, _ga_*',       type: 'Analytisch',   duration: '2 jaar',    purpose: 'Google Analytics, anonieme bezoekersstatistieken' },
+  { name: '_gid',             type: 'Analytisch',   duration: '24 uur',    purpose: 'Google Analytics, sessieherkenning' },
+  { name: '_gcl_au',          type: 'Marketing',    duration: '3 maanden', purpose: 'Google Ads, conversietracking' },
+  { name: '_fbp',             type: 'Marketing',    duration: '3 maanden', purpose: 'Meta Pixel, advertentiemeting' },
+  { name: '_clck, _clsk',     type: 'Analytisch',   duration: '1 jaar',    purpose: 'Microsoft Clarity, heatmaps en sessierecording' },
   { name: 'cookie_consent',   type: 'Functioneel',  duration: '1 jaar',    purpose: 'Uw cookievoorkeur opslaan' },
 ]
 

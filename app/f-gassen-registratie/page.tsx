@@ -22,7 +22,7 @@ const features = [
   {
     icon:  '🧪',
     title: 'Flesregistratie per koudemiddel',
-    desc:  'Registreer alle F-gas flessen met type koudemiddel, serienummer, begingewicht en vulhistorie. Volledig audittrail per fles — altijd terug te vinden bij een inspectie.',
+    desc:  'Registreer alle F-gas flessen met type koudemiddel, serienummer, begingewicht en vulhistorie. Volledig audittrail per fles, altijd terug te vinden bij een inspectie.',
     badge: 'F-gas compliant',
   },
   {
@@ -33,7 +33,7 @@ const features = [
   {
     icon:  '📄',
     title: 'BRL100-rapportage automatisch',
-    desc:  'Koeltechnische handelingen genereren automatisch een BRL100-conform rapport. Geen handmatige invoer, geen fouten — direct print-klaar voor de klant of voor inspectie.',
+    desc:  'Koeltechnische handelingen genereren automatisch een BRL100-conform rapport. Geen handmatige invoer, geen fouten, direct print-klaar voor de klant of voor inspectie.',
   },
   {
     icon:  '⚖️',
@@ -53,7 +53,7 @@ const features = [
   {
     icon:  '🔗',
     title: 'Koppeling aan werkbon en klant',
-    desc:  'Elke F-gas handeling is direct gekoppeld aan de werkbon, de installatie en het klantdossier. Geen losse registraties — alles in één systeem.',
+    desc:  'Elke F-gas handeling is direct gekoppeld aan de werkbon, de installatie en het klantdossier. Geen losse registraties, alles in één systeem.',
   },
   {
     icon:  '⚠️',
@@ -88,7 +88,7 @@ const oplossingen = [
   },
   {
     title: 'Flesregistratie gekoppeld aan werkorders',
-    desc:  'Welk koudemiddel uit welke fles bij welke installatie — volledig traceerbaar zonder extra invoer.',
+    desc:  'Welk koudemiddel uit welke fles bij welke installatie, volledig traceerbaar zonder extra invoer.',
   },
   {
     title: 'Lektestregistratie conform EU-wetgeving',
@@ -104,12 +104,12 @@ const doelgroepen = [
   {
     icon:  '❄️',
     type:  'Koeltechnisch installateur',
-    desc:  'Werkt dagelijks met F-gassen en koudemiddelen. Heeft een volledig digitaal logboek nodig dat direct voldoet aan de EU F-gas Verordening — zonder extra administratie bovenop het werk.',
+    desc:  'Werkt dagelijks met F-gassen en koudemiddelen. Heeft een volledig digitaal logboek nodig dat direct voldoet aan de EU F-gas Verordening, zonder extra administratie bovenop het werk.',
   },
   {
     icon:  '🔧',
     type:  'Airco en warmtepomp installateur',
-    desc:  'Installeert systemen met R32, R410A, R290 of andere koudemiddelen. Snellio registreert per installatie welk koudemiddel is gebruikt, hoeveel en wanneer — conform BRL100.',
+    desc:  'Installeert systemen met R32, R410A, R290 of andere koudemiddelen. Snellio registreert per installatie welk koudemiddel is gebruikt, hoeveel en wanneer, conform BRL100.',
   },
   {
     icon:  '🏢',
@@ -178,7 +178,7 @@ const faqItems = [
   },
   {
     question: 'Kan ik de F-gas gegevens exporteren voor de RVO?',
-    answer:   'Ja. U kunt de F-gas gegevens per installatie en per periode exporteren. Dit is direct bruikbaar voor rapportage aan de RVO en voor externe audits. Er is geen handmatig samenstellen van rapportages nodig — Snellio doet dat automatisch.',
+    answer:   'Ja. U kunt de F-gas gegevens per installatie en per periode exporteren. Dit is direct bruikbaar voor rapportage aan de RVO en voor externe audits. Er is geen handmatig samenstellen van rapportages nodig, Snellio doet dat automatisch.',
   },
   {
     question: 'Ondersteunt Snellio R290 en andere brandbare koudemiddelen?',
@@ -208,7 +208,7 @@ export default function FgassenRegistratiePage() {
         badge="EU F-gas 2024/573 · BRL100 · Flesregistratie · Lektest"
         heading="F-gassen registratie software"
         headingAccent="voor koeltechnische installateurs."
-        sub="Volledig digitaal koudemiddellogboek per installatie. Flesregistratie, lektestdocumentatie en BRL100-rapportage conform EU F-gas Verordening 2024/573 — altijd klaar voor inspectie."
+        sub="Volledig digitaal koudemiddellogboek per installatie. Flesregistratie, lektestdocumentatie en BRL100-rapportage conform EU F-gas Verordening 2024/573, altijd klaar voor inspectie."
         ctaPrimary={{ label: 'Start 14 dagen gratis →', href: '/registreren' }}
         ctaSecondary={{ label: 'Bekijk pakketten', href: '/pricing' }}
         trustLine="Geen installatie nodig • Direct starten • Nederlandse support"
@@ -229,7 +229,7 @@ export default function FgassenRegistratiePage() {
             className="font-outfit font-black text-white leading-tight mb-6"
             style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)' }}
           >
-            Digitale F-gas registratie —{' '}
+            Digitale F-gas registratie,{' '}
             <span className="text-[var(--cyan)]">gebouwd voor de koeltechniek</span>
           </h2>
           <div className="text-[var(--text2)] text-[.96rem] leading-[1.85] space-y-4">
@@ -237,15 +237,15 @@ export default function FgassenRegistratiePage() {
               Iedere installateur die werkt met gefluoreerde broeikasgassen is wettelijk verplicht een nauwkeurig logboek bij te houden van alle handelingen met F-gassen: bijvullen, aftappen, lektests en flesregistratie. De EU F-gas Verordening 2024/573 stelt strenge eisen aan deze registratie en bij een externe inspectie moet u deze documentatie direct kunnen overleggen.
             </p>
             <p>
-              Veel installateurs lossen dit op met Excel, een papieren logboek of losse PDF-bestanden. Dat werkt zolang er niets mis gaat — maar bij een inspectie, een certificeringscontrole of een klantgeschil blijkt de documentatie onvolledig, niet te vinden of niet in het juiste format. F-gassen registratie software lost dit structureel op door de registratie direct te integreren in de werkbon en het klantdossier.
+              Veel installateurs lossen dit op met Excel, een papieren logboek of losse PDF-bestanden. Dat werkt zolang er niets mis gaat, maar bij een inspectie, een certificeringscontrole of een klantgeschil blijkt de documentatie onvolledig, niet te vinden of niet in het juiste format. F-gassen registratie software lost dit structureel op door de registratie direct te integreren in de werkbon en het klantdossier.
             </p>
             <p>
-              Snellio is gebouwd door een BRL100-gecertificeerd installateur en bevat alle velden die de wetgeving vereist: type koudemiddel, hoeveelheid, flesregistratie, lekdetector met ijkdatum, testmethode, testdruk en resultaat. U vult de handelingen in op uw tablet tijdens de service — het BRL100-rapport wordt automatisch gegenereerd en is direct beschikbaar voor de klant en voor inspectie.
+              Snellio is gebouwd door een BRL100-gecertificeerd installateur en bevat alle velden die de wetgeving vereist: type koudemiddel, hoeveelheid, flesregistratie, lekdetector met ijkdatum, testmethode, testdruk en resultaat. U vult de handelingen in op uw tablet tijdens de service, het BRL100-rapport wordt automatisch gegenereerd en is direct beschikbaar voor de klant en voor inspectie.
             </p>
             <p>
               Omdat Snellio de F-gas registratie koppelt aan het volledige{' '}
               <a href="/crm-voor-installateurs" className="text-[var(--cyan)] hover:underline font-medium">CRM voor installateurs</a>
-              {' '}— klanten, locaties, installaties en werkbonnen — heeft u niet alleen een compliant logboek, maar ook een volledig inzicht in de koeltechnische historiek van elke installatie in uw bestand.
+              {' '}, klanten, locaties, installaties en werkbonnen, heeft u niet alleen een compliant logboek, maar ook een volledig inzicht in de koeltechnische historiek van elke installatie in uw bestand.
             </p>
           </div>
           <div className="mt-8">
@@ -269,7 +269,7 @@ export default function FgassenRegistratiePage() {
               <span className="text-[var(--cyan)]">F-gassen registratie software</span>
             </h2>
             <p className="text-[var(--text2)] text-base max-w-xl mx-auto mt-4 leading-relaxed">
-              Van flesregistratie tot lektestdocumentatie — Snellio bevat alle functies die een koeltechnisch installateur nodig heeft om compliant te werken.
+              Van flesregistratie tot lektestdocumentatie, Snellio bevat alle functies die een koeltechnisch installateur nodig heeft om compliant te werken.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -504,7 +504,7 @@ export default function FgassenRegistratiePage() {
                 </div>
                 <div>
                   <p className="font-outfit font-bold text-white text-lg">
-                    Koelservice Noord — koeltechnisch servicebedrijf
+                    Koelservice Noord, koeltechnisch servicebedrijf
                   </p>
                   <p className="text-[var(--muted2)] text-sm">
                     Service en onderhoud van koelinstallaties in Noord-Nederland
@@ -518,7 +518,7 @@ export default function FgassenRegistratiePage() {
                     Situatie voor Snellio
                   </p>
                   <p className="text-[var(--text2)] text-[.85rem] leading-relaxed">
-                    Directeur Peter hield het F-gas logboek bij in een combinatie van Excel en papieren formulieren. Per installatie was er een eigen map met werkbonnen, lektestformulieren en flesregistraties. Bij een externe audit bleek dat voor drie installaties de lektestdocumentatie niet compleet was — de ijkdatum van de gebruikte detector was verlopen geweest tijdens de uitvoering en dat was nooit gesignaleerd. De tekortkoming kostte het bedrijf een hercontrole en een extra audit.
+                    Directeur Peter hield het F-gas logboek bij in een combinatie van Excel en papieren formulieren. Per installatie was er een eigen map met werkbonnen, lektestformulieren en flesregistraties. Bij een externe audit bleek dat voor drie installaties de lektestdocumentatie niet compleet was, de ijkdatum van de gebruikte detector was verlopen geweest tijdens de uitvoering en dat was nooit gesignaleerd. De tekortkoming kostte het bedrijf een hercontrole en een extra audit.
                   </p>
                 </div>
                 <div>
@@ -526,7 +526,7 @@ export default function FgassenRegistratiePage() {
                     Situatie met Snellio
                   </p>
                   <p className="text-[var(--text2)] text-[.85rem] leading-relaxed">
-                    Na de overstap naar Snellio registreert Peter alle F-gas handelingen direct in de app tijdens de service. Snellio waarschuwt automatisch wanneer de ijkdatum van een lekdetector nadert. Het F-gas logboek per installatie is altijd up-to-date en direct exporteerbaar. Bij de volgende externe audit had Peter alle documentatie in minder dan vijf minuten klaar — zonder zoeken, zonder incomplete formulieren. De auditor bevestigde dat de registraties volledig voldeden aan EU F-gas Verordening 2024/573.
+                    Na de overstap naar Snellio registreert Peter alle F-gas handelingen direct in de app tijdens de service. Snellio waarschuwt automatisch wanneer de ijkdatum van een lekdetector nadert. Het F-gas logboek per installatie is altijd up-to-date en direct exporteerbaar. Bij de volgende externe audit had Peter alle documentatie in minder dan vijf minuten klaar, zonder zoeken, zonder incomplete formulieren. De auditor bevestigde dat de registraties volledig voldeden aan EU F-gas Verordening 2024/573.
                   </p>
                 </div>
               </div>
@@ -573,20 +573,20 @@ export default function FgassenRegistratiePage() {
               De verplichting om F-gas handelingen nauwkeurig te registreren bestaat al jaren, maar de EU F-gas Verordening 2024/573 heeft de eisen aangescherpt en de handhaving geïntensiveerd. Voor installateurs die werken met gefluoreerde koudemiddelen is een volledig en correct logboek geen formaliteit maar een wettelijke verplichting. F-gassen registratie software maakt het naleven van die verplichting structureel eenvoudiger en betrouwbaarder dan handmatige administratie ooit kan zijn.
             </p>
             <p>
-              Het fundamentele probleem met Excel en papieren logboeken is niet dat ze verkeerd zijn, maar dat ze los staan van de werkbon en het klantdossier. Een monteur vult de werkbon in op locatie, maar registreert de F-gas gegevens later op kantoor — of vergeet het. Die ontkoppeling leidt tot ontbrekende gegevens, fouten en een logboek dat bij inspectie niet klopt met de feitelijke situatie. F-gas registratie software zoals Snellio elimineert die ontkoppeling door de registratie direct in de{' '}
+              Het fundamentele probleem met Excel en papieren logboeken is niet dat ze verkeerd zijn, maar dat ze los staan van de werkbon en het klantdossier. Een monteur vult de werkbon in op locatie, maar registreert de F-gas gegevens later op kantoor, of vergeet het. Die ontkoppeling leidt tot ontbrekende gegevens, fouten en een logboek dat bij inspectie niet klopt met de feitelijke situatie. F-gas registratie software zoals Snellio elimineert die ontkoppeling door de registratie direct in de{' '}
               <a href="/werkbon-software" className="text-[var(--cyan)] hover:underline font-medium">digitale werkbon</a>
               {' '}te integreren.
             </p>
             <p>
-              Voor een koeltechnisch bedrijf is flesregistratie een van de meest tijdrovende onderdelen van de F-gas administratie. Welke fles is gebruikt, hoeveel is er afgetapt of bijgevuld en hoeveel zit er nog in? Snellio houdt de flesbalans automatisch bij op basis van de ingevulde handelingen. U hoeft nooit meer handmatig te rekenen of na te tellen — het systeem doet dat voor u en waarschuwt wanneer een fles bijna leeg is of wanneer de ijkdatum van een lekdetector verloopt.
+              Voor een koeltechnisch bedrijf is flesregistratie een van de meest tijdrovende onderdelen van de F-gas administratie. Welke fles is gebruikt, hoeveel is er afgetapt of bijgevuld en hoeveel zit er nog in? Snellio houdt de flesbalans automatisch bij op basis van de ingevulde handelingen. U hoeft nooit meer handmatig te rekenen of na te tellen, het systeem doet dat voor u en waarschuwt wanneer een fles bijna leeg is of wanneer de ijkdatum van een lekdetector verloopt.
             </p>
             <p>
-              Lektestregistratie is een ander kritiek onderdeel van de F-gas compliance. De wetgeving schrijft voor welke gegevens per lektest geregistreerd moeten worden: het type detector, het serienummer, de ijkdatum, de testmethode, de testdruk en het resultaat. Snellio bevat al deze velden als standaard — u hoeft niets aan te passen of te configureren. De gegevens worden automatisch opgeslagen bij het klantdossier en zijn direct exporteerbaar voor externe audits.
+              Lektestregistratie is een ander kritiek onderdeel van de F-gas compliance. De wetgeving schrijft voor welke gegevens per lektest geregistreerd moeten worden: het type detector, het serienummer, de ijkdatum, de testmethode, de testdruk en het resultaat. Snellio bevat al deze velden als standaard, u hoeft niets aan te passen of te configureren. De gegevens worden automatisch opgeslagen bij het klantdossier en zijn direct exporteerbaar voor externe audits.
             </p>
             <p>
               In combinatie met de{' '}
               <a href="/planningssoftware-monteurs" className="text-[var(--cyan)] hover:underline font-medium">planningssoftware voor monteurs</a>
-              {' '}en het volledige klantbeheer van Snellio heeft u niet alleen een compliant F-gas registratiesysteem, maar ook een volledig servicemanagementsysteem voor uw koeltechnisch bedrijf. Van het plannen van de serviceopdracht tot het versturen van de BRL100-rapportage en de factuur — alles in één systeem, zonder dubbele invoer en zonder risico op ontbrekende documentatie.
+              {' '}en het volledige klantbeheer van Snellio heeft u niet alleen een compliant F-gas registratiesysteem, maar ook een volledig servicemanagementsysteem voor uw koeltechnisch bedrijf. Van het plannen van de serviceopdracht tot het versturen van de BRL100-rapportage en de factuur, alles in één systeem, zonder dubbele invoer en zonder risico op ontbrekende documentatie.
             </p>
           </div>
         </Container>

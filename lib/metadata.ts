@@ -20,7 +20,7 @@ export function buildMetadata({
 
   return {
     title: {
-      default:  `${SITE.name} — ${title}`,
+      default:  `${SITE.name}, ${title}`,
       template: `%s | ${SITE.name}`,
     },
     description,
@@ -35,14 +35,14 @@ export function buildMetadata({
       locale:      SITE.defaultLocale,
       url,
       siteName:    SITE.name,
-      title:       `${SITE.name} — ${title}`,
+      title:       `${SITE.name}, ${title}`,
       description,
-      images: [{ url: image, width: 1200, height: 630, alt: `${SITE.name} — ${title}` }],
+      images: [{ url: image, width: 1200, height: 630, alt: `${SITE.name}, ${title}` }],
     },
 
     twitter: {
       card:        'summary_large_image',
-      title:       `${SITE.name} — ${title}`,
+      title:       `${SITE.name}, ${title}`,
       description,
       images:      [image],
       site:        SITE.twitterHandle,
@@ -67,7 +67,7 @@ export function buildMetadata({
 export const rootMetadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default:  `${SITE.name} — CRM voor HVAC & Koeltechniek`,
+    default:  `${SITE.name}, CRM voor HVAC & Koeltechniek`,
     template: `%s | ${SITE.name}`,
   },
   description: SITE.description,

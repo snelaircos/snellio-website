@@ -16,7 +16,7 @@ export default function Pricing({ hideHeader = false, plans = PLANS }: PricingPr
     <section className="py-10 px-[5%]" id="prijzen">
       <div className="mx-auto max-w-7xl">
 
-        {/* Header — alleen getoond op standalone homepage */}
+        {/* Header, alleen getoond op standalone homepage */}
         {!hideHeader && (
           <div className="text-center mb-8">
             <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
@@ -55,7 +55,7 @@ export default function Pricing({ hideHeader = false, plans = PLANS }: PricingPr
             </span>
           </div>
           <p className="text-xs text-[var(--muted2)]">
-            Kies jaarlijks en betaal slechts 10 maanden —{' '}
+            Kies jaarlijks en betaal slechts 10 maanden,{' '}
             <span className="text-[var(--green)] font-semibold">2 maanden cadeau 🎁</span>
           </p>
         </div>
