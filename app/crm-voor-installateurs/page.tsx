@@ -6,20 +6,19 @@ import JsonLd   from '@/components/seo/JsonLd'
 import Container from '@/components/ui/Container'
 import Button    from '@/components/ui/Button'
 
-// Split DemoForm JS out of the critical bundle — SSR still produces HTML immediately
+// Split DemoForm JS out of the critical bundle. SSR still produces HTML immediately.
 const DemoForm = dynamic(() => import('@/components/forms/DemoForm'))
 const Cta      = dynamic(() => import('@/components/sections/Cta'))
 
 export const metadata: Metadata = buildMetadata({
-  title:       'CRM voor installateurs | Snellio — Probeer 14 dagen gratis',
-  description: 'CRM-software speciaal voor airco- en HVAC-installateurs. Werkbonnen, planning, F-gassen registratie en BRL100-rapportage in één systeem. Start vandaag nog gratis.',
+  title:       'CRM voor installateurs | Snellio. Probeer 14 dagen gratis',
+  description: 'CRM voor installateurs in koeltechniek. Werkbon, planning, F-gassen en factuur in één app. 14 dagen gratis proberen, geen creditcard.',
   path:        '/crm-voor-installateurs',
 })
 
 const pijnpunten = [
   { icon: '😤', text: 'Werkbon op papier invullen, terugrijden, inscannen, en dan alsnog alles overtikken voor de factuur. Elke klus kost je dubbel werk.' },
-  { icon: '📱', text: 'Planning via WhatsApp: berichten over het hoofd gezien, monteur rijdt naar het verkeerde adres, klant belt boos. Elke week opnieuw.' },
-  { icon: '📂', text: 'Servicehistorie van een installatie opzoeken? Drie Excel-bestanden, twee e-mailthreads en een aantekening op je telefoon doorzoeken — terwijl de klant aan de lijn wacht.' },
+  { icon: '📂', text: 'Servicehistorie van een installatie opzoeken? Drie Excel-bestanden, twee e-mailthreads en een aantekening op je telefoon doorzoeken. Terwijl de klant aan de lijn wacht.' },
   { icon: '⏰', text: 'Na een dag op de knieën ga je \'s avonds nog een uur aan de keukentafel facturen sturen. Dat is geen vrije tijd, dat is onbetaald werk.' },
 ]
 
@@ -34,26 +33,26 @@ const benefits = [
 
 const stappen = [
   { nr: '1', title: 'Maak gratis een account aan',     desc: 'Geen creditcard. 5 minuten. Meteen aan de slag.' },
-  { nr: '2', title: 'Voeg klanten en installaties toe', desc: 'Of vraag een demo aan — wij helpen je bij de start.' },
+  { nr: '2', title: 'Voeg klanten en installaties toe', desc: 'Of vraag een demo aan. Wij helpen je bij de start.' },
   { nr: '3', title: 'Werk slimmer vanaf dag één',       desc: 'Minder papier, minder fouten, meer tijd voor het werk.' },
 ]
 
 const faqs = [
   {
-    question: 'Is Snellio echt speciaal voor HVAC-installateurs?',
-    answer: 'Ja. Snellio is gebouwd door een BRL100-gecertificeerd installateur. De software bevat standaard alle koeltechnische velden, F-gas registratie en BRL100-rapportage — niet als add-on, maar als kern van het systeem.',
+    question: 'Werkt de app ook als ik geen bereik heb in een kruipruimte of stookhok?',
+    answer:   'Ja. De app slaat alles offline op je telefoon op en synchroniseert zodra je weer signaal hebt.',
   },
   {
-    question: 'Hoe lang duurt de installatie?',
-    answer: 'Er is geen installatie. Snellio werkt in de browser — ook op tablet en telefoon. Je bent binnen 5 minuten actief.',
+    question: 'Moet ik mijn monteurs op cursus sturen?',
+    answer:   'Nee. Eén middag samen meekijken is genoeg. De app is gebouwd voor monteurs, niet voor administratief personeel.',
   },
   {
-    question: 'Kan ik ook een demo aanvragen?',
-    answer: 'Ja. Vul het formulier op deze pagina in en we plannen een persoonlijke walkthrough van 20–30 minuten op maat voor jouw bedrijf.',
+    question: 'Is dit echt voor koeltechniek of is het een algemene tool met een F-gassen-stickertje?',
+    answer:   'Echt voor koeltechniek. Snellio is gebouwd door Rudy Snel, eigenaar van Snel Airco\'s en zelf STEK-gecertificeerd. F-gassen-registratie, BRL100-rapport en lekcontrole-cycli zitten in de kern, niet als plug-in.',
   },
   {
-    question: 'Wat kost Snellio?',
-    answer: 'Snellio start vanaf €10 per maand voor ZZP\'ers. Je probeert het altijd 14 dagen gratis — zonder creditcard.',
+    question: 'Wat als ik na 14 dagen wil stoppen?',
+    answer:   'Dan stop je. Geen creditcard achtergehouden, geen jaarcontract, niets. De trial loopt vanzelf af.',
   },
 ]
 
@@ -77,14 +76,14 @@ export default function CrmVoorInstallateursAdsPage() {
         },
       ]} />
 
-      {/* ── HERO — boven de fold, conversie first ── */}
+      {/* ── HERO. Boven de fold, conversie first ── */}
       <section
         className="hero-section relative pt-24 pb-16 px-[5%] overflow-hidden"
         style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(10,187,214,.08) 0%, transparent 70%) #0a1a28' }}
       >
         <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
-          {/* Rechts: demo formulier — móbiel eerst bovenaan */}
+          {/* Rechts: demo formulier. Móbiel eerst bovenaan. */}
           <div
             id="demo-form"
             className="relative bg-[var(--navy3)] rounded-2xl p-8 shadow-lg order-first lg:order-last"
@@ -118,14 +117,14 @@ export default function CrmVoorInstallateursAdsPage() {
               className="font-outfit font-black text-white tracking-tight leading-[1.05] mb-4"
               style={{ fontSize: 'clamp(2rem, 4.5vw, 3.4rem)' }}
             >
-              CRM voor installateurs dat je{' '}
+              De CRM voor installateurs{' '}
               <span style={{ background: 'linear-gradient(135deg, var(--cyan), var(--accent))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                administratie halveert
+                in koeltechniek
               </span>
             </h1>
 
             <p className="text-[var(--text2)] text-[1rem] leading-[1.7] mb-6 max-w-md">
-              Van werkbon tot factuur in één systeem. Speciaal voor HVAC en koeltechniek bedrijven.
+              Werkbon, planning, F-gassen en facturatie. Allemaal in één app op je telefoon. 14 dagen gratis proberen, geen creditcard.
             </p>
 
             {/* Trust bullets */}
@@ -133,8 +132,8 @@ export default function CrmVoorInstallateursAdsPage() {
               {[
                 'Gebouwd door een installateur',
                 'Van werkbon tot factuur in één app',
-                'Minder administratie, meer tijd',
-                'BRL100 compliant – F-gas ready',
+                'Werkbon, factuur en F-gassen vanuit één plek',
+                'BRL100-rapport met één klik klaar',
               ].map(item => (
                 <li key={item} className="flex items-center gap-3 text-[var(--text2)] text-sm">
                   <span className="w-5 h-5 rounded-full bg-[rgba(18,168,122,.15)] border border-[rgba(18,168,122,.3)] flex items-center justify-center text-[var(--green)] text-[.7rem] font-bold shrink-0">✓</span>
@@ -144,8 +143,8 @@ export default function CrmVoorInstallateursAdsPage() {
             </ul>
 
             <div className="flex flex-wrap gap-3">
-              <Button href="#demo-form" size="lg">Plan mijn demo →</Button>
-              <Button href="/registreren" variant="ghost" size="lg">Start 14 dagen gratis</Button>
+              <Button href="/registreren" size="lg">Start 14 dagen gratis →</Button>
+              <Button href="#demo-form" variant="ghost" size="lg">Plan mijn demo</Button>
             </div>
 
             <p className="text-[var(--muted)] text-xs mt-4">
@@ -232,7 +231,7 @@ export default function CrmVoorInstallateursAdsPage() {
             <span className="text-[var(--cyan)]">14 dagen gratis, geen creditcard.</span>
           </h2>
           <p className="text-[var(--text2)] text-base mb-8">
-            Binnen 5 minuten actief. Of vraag eerst een demo aan — we helpen je graag.
+            Binnen 5 minuten actief. Of vraag eerst een demo aan. We helpen je graag.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Button href="#demo-form" size="lg">Plan mijn demo →</Button>
