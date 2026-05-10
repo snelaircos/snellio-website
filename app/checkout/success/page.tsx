@@ -5,6 +5,7 @@ export const dynamic = 'force-dynamic'
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
+import TrialSignupConversion from '@/components/tracking/TrialSignupConversion'
 
 type Status = 'loading' | 'success' | 'error'
 
@@ -110,6 +111,10 @@ export default function CheckoutSuccessPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-[5%]">
+      {/* Google Ads conversie — alleen bij status 'success' (geverifieerde betaling).
+         signupId fungeert als dedupe-key zodat een page-reload geen tweede fire geeft. */}
+      <TrialSignupConversion dedupeKey={signupId ?? undefined} />
+
       <div className="text-center max-w-md">
         <div className="text-6xl mb-6">✅</div>
         <h1 className="font-outfit font-black text-white text-2xl mb-4">Je account is aangemaakt</h1>
