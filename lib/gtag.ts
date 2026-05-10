@@ -152,13 +152,18 @@ export function trackConversionWithRetry(
 }
 
 /**
- * Bonus: GA4 event helper, voor als je later GA4 toevoegt.
- * Volg Google's event naming convention (snake_case).
+ * GA4 custom-event helper. Volg snake_case event-naming.
+ *
+ * Bewust GEEN send_to: gtag broadcast het event naar alle configureerde
+ * destinations. GA4 (G-...) pakt het als custom event op, AW (AW-...) negeert
+ * het stilletjes omdat de event-naam geen AW-XXX/LABEL-match heeft, dus geen
+ * conversion-double-count. send_to met een GA4-ID had hier intermittent
+ * routing-issues in gtag.js wanneer AW als primary geladen wordt.
  */
 export function trackGA4Event(name: string, params: Record<string, unknown> = {}): boolean {
   if (!gtagAvailable()) return false
   if (!GA4_ID) return false
-  window.gtag!('event', name, { send_to: GA4_ID, ...params })
+  window.gtag!('event', name, params)
   console.log('[ga4] event fired:', name, params)
   return true
 }
