@@ -12,7 +12,7 @@ export const metadata: Metadata = buildMetadata({
   path:        '/',
 })
 
-const APP_REGISTREREN = 'https://app.snellio.nl/registreren'
+const SIGNUP_HREF = '/registreren'
 
 const pijnpunten = [
   { icon: '📋', title: 'Werkbon-chaos',       desc: 'Papieren bonnen die kwijtraken, Excel-bestanden die niemand bijhoudt.' },
@@ -92,7 +92,7 @@ export default function HomePage() {
               Werkbon, klant-handtekening, F-gassen-registratie en factuur — allemaal vanuit één app.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link href={APP_REGISTREREN} className={btnPrimary}>
+              <Link href={SIGNUP_HREF} className={btnPrimary}>
                 Start gratis 14-dagen trial →
               </Link>
               <Link href="#pakketten" className={btnSecondary}>
@@ -339,7 +339,7 @@ export default function HomePage() {
             14 dagen gratis. Geen creditcard. Annuleren wanneer je wilt.
           </p>
           <Link
-            href={APP_REGISTREREN}
+            href={SIGNUP_HREF}
             className={`${btnPrimary} text-base px-8 py-4`}
           >
             Start gratis trial →

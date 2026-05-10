@@ -12,7 +12,7 @@ export const metadata: Metadata = buildMetadata({
   path:        '/alternatief-voor-crm-installateurs',
 })
 
-const APP_REGISTREREN = 'https://app.snellio.nl/registreren'
+const SIGNUP_HREF = '/registreren'
 
 const btnPrimary   = 'inline-flex items-center justify-center font-semibold rounded-[10px] bg-[var(--accent)] text-white px-[22px] py-3 hover:bg-[#007a9c] transition-colors text-[.95rem]'
 const btnSecondary = 'inline-flex items-center justify-center font-semibold rounded-[10px] bg-white border-[1.5px] border-[var(--accent)] text-[var(--accent)] px-[22px] py-3 hover:bg-[rgba(0,144,184,.06)] transition-colors text-[.95rem]'
@@ -111,7 +111,7 @@ export default function AlternatiefCrmInstallateursPage() {
             Snellio brengt het samen in één systeem.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link href={APP_REGISTREREN} className={btnPrimary}>Start 14 dagen gratis →</Link>
+            <Link href={SIGNUP_HREF} className={btnPrimary}>Start 14 dagen gratis →</Link>
             <Link href="/contact" className={btnSecondary}>Bekijk demo</Link>
           </div>
           <p className="text-[#8fafc8] text-xs mt-5">
@@ -174,7 +174,7 @@ export default function AlternatiefCrmInstallateursPage() {
           </div>
 
           <div className="text-center mt-12">
-            <Link href={APP_REGISTREREN} className={btnPrimary}>Start 14 dagen gratis →</Link>
+            <Link href={SIGNUP_HREF} className={btnPrimary}>Start 14 dagen gratis →</Link>
           </div>
         </div>
       </section>
@@ -295,7 +295,7 @@ export default function AlternatiefCrmInstallateursPage() {
           </div>
 
           <div className="text-center mt-10">
-            <Link href={APP_REGISTREREN} className={btnPrimary}>Probeer Snellio 14 dagen gratis →</Link>
+            <Link href={SIGNUP_HREF} className={btnPrimary}>Probeer Snellio 14 dagen gratis →</Link>
             <p className="text-[#8fafc8] text-xs mt-3">Geen creditcard. Geen verplichtingen. Snel starten.</p>
           </div>
         </div>
@@ -386,7 +386,7 @@ export default function AlternatiefCrmInstallateursPage() {
             14 dagen gratis. Geen creditcard. Annuleren wanneer je wilt. Migratie van je oude systeem is inbegrepen.
           </p>
           <div className="flex flex-wrap gap-3 justify-center mb-6">
-            <Link href={APP_REGISTREREN} className={`${btnPrimary} text-base px-8 py-4`}>
+            <Link href={SIGNUP_HREF} className={`${btnPrimary} text-base px-8 py-4`}>
               Start 14 dagen gratis →
             </Link>
             <Link href="/contact" className={`${btnSecondary} text-base px-8 py-4`}>
