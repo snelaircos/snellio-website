@@ -112,7 +112,7 @@ export default function AlternatiefCrmInstallateursPage() {
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Link href={SIGNUP_HREF} className={btnPrimary}>Start 14 dagen gratis →</Link>
-            <Link href="/contact" className={btnSecondary}>Bekijk demo</Link>
+            <Link href="/demo" className={btnSecondary}>Bekijk demo</Link>
           </div>
           <p className="text-[#8fafc8] text-xs mt-5">
             Geen creditcard nodig · Geen verplichtingen · Snel starten
@@ -389,7 +389,7 @@ export default function AlternatiefCrmInstallateursPage() {
             <Link href={SIGNUP_HREF} className={`${btnPrimary} text-base px-8 py-4`}>
               Start 14 dagen gratis →
             </Link>
-            <Link href="/contact" className={`${btnSecondary} text-base px-8 py-4`}>
+            <Link href="/demo" className={`${btnSecondary} text-base px-8 py-4`}>
               Bekijk demo
             </Link>
           </div>

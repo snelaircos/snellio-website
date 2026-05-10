@@ -29,7 +29,7 @@ export default function Cta() {
           <Button href="/registreren" size="lg">
             Start 14 dagen gratis →
           </Button>
-          <Button href="/contact" variant="ghost" size="lg">
+          <Button href="/demo" variant="ghost" size="lg">
             Vraag demo aan
           </Button>
         </div>

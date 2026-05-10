@@ -149,7 +149,7 @@ export default function AutomotivePage() {
             </p>
             <div className="flex flex-wrap gap-3 mb-5">
               <Link href={SIGNUP_HREF} className={btnPrimary}>Probeer 14 dagen gratis →</Link>
-              <Link href="/contact" className={btnSecondary}>Bekijk demo</Link>
+              <Link href="/demo" className={btnSecondary}>Bekijk demo</Link>
             </div>
             <div className="flex flex-wrap gap-x-5 gap-y-1.5 text-[14px] text-[#8ea2b8]">
               <span><span className="text-[#12a87a] font-bold">✓</span> Geen creditcard nodig</span>
@@ -285,7 +285,7 @@ export default function AutomotivePage() {
             <Link href={SIGNUP_HREF} className={btnPrimary} style={{ fontSize: '16px', padding: '14px 26px' }}>
               Probeer Snellio gratis →
             </Link>
-            <Link href="/contact" className={btnSecondary} style={{ fontSize: '16px', padding: '14px 26px' }}>
+            <Link href="/demo" className={btnSecondary} style={{ fontSize: '16px', padding: '14px 26px' }}>
               Vraag demo aan
             </Link>
           </div>

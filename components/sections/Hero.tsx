@@ -47,7 +47,7 @@ export default function Hero() {
         <Button href="/registreren" size="lg">
           Start 14 dagen gratis →
         </Button>
-        <Button href="/contact" variant="ghost" size="lg">
+        <Button href="/demo" variant="ghost" size="lg">
           Bekijk demo
         </Button>
       </div>

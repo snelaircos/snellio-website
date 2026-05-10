@@ -225,7 +225,7 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
-            <Link href="mailto:rudy@snellio.nl?subject=Demo%20monteur-app" className={btnSecondary}>
+            <Link href="/demo" className={btnSecondary}>
               Vraag een live demo aan
             </Link>
           </div>

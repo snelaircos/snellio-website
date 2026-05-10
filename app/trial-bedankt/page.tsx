@@ -71,7 +71,7 @@ export default function TrialBedanktPage() {
               Open Snellio →
             </a>
             <Link
-              href="/contact"
+              href="/demo"
               className="border border-[var(--border)] text-[var(--text2)] font-medium py-3.5 px-7 rounded-xl hover:border-[var(--cyan)] hover:text-[var(--cyan)] transition-all duration-200 text-sm"
             >
               Vraag een demo aan
