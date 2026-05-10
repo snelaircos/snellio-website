@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import { Outfit, Inter, DM_Mono, DM_Sans } from 'next/font/google'
 import '@/styles/globals.css'
-import Header      from '@/components/layout/Header'
-import Footer      from '@/components/layout/Footer'
-import Analytics   from '@/components/tracking/Analytics'
-import GoogleAds   from '@/components/tracking/GoogleAds'
-import CookieBanner from '@/components/tracking/CookieBanner'
+import Header        from '@/components/layout/Header'
+import Footer        from '@/components/layout/Footer'
+import Analytics     from '@/components/tracking/Analytics'
+import GoogleAds     from '@/components/tracking/GoogleAds'
+import GA4PageViews  from '@/components/tracking/GA4PageViews'
+import CookieBanner  from '@/components/tracking/CookieBanner'
 import JsonLd      from '@/components/seo/JsonLd'
 import { rootMetadata }                              from '@/lib/metadata'
 import { organizationSchema, websiteSchema, softwareApplicationSchema } from '@/lib/schemas'
@@ -64,8 +65,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Analytics />
       </head>
       <body className="bg-[var(--navy2)] text-[var(--text)] antialiased">
-        {/* Google Ads base tag, site-breed, init vóór externe lib zodat dataLayer altijd bestaat */}
+        {/* Gtag.js bootstrap (Ads + GA4), site-breed, init vóór externe lib zodat dataLayer altijd bestaat */}
         <GoogleAds />
+        {/* GA4 page_view op initial + elke SPA-route-change. Geen dubbel firen op Ads. */}
+        <GA4PageViews />
         <Header />
         <main id="main-content">
           {children}

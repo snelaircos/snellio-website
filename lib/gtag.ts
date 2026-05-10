@@ -15,8 +15,9 @@
 
 export const GADS_ID = 'AW-18058139346'
 
-// GA4 property ID, leeg laten als je geen GA4 gebruikt.
-export const GA4_ID = ''
+// GA4 property ID. Stream 'Snellio Web' (ID 14853565231).
+// Leeg laten ('') om GA4 uit te zetten zonder code-wijzigingen.
+export const GA4_ID = 'G-CSC9H9DFWN'
 
 // ──────────────────────────────────────────
 // Conversion labels, vul de waardes in die
@@ -74,6 +75,11 @@ export function trackConversion(
 
   window.gtag!('event', 'conversion', { send_to: sendTo, ...params })
   console.log('[gtag] conversion fired:', key, sendTo)
+
+  // Spiegelen naar GA4 als custom event met dezelfde naam, zodat we
+  // dezelfde funnel-stappen later in GA4 als conversie kunnen markeren.
+  trackGA4Event(key, params)
+
   return true
 }
 
@@ -114,6 +120,10 @@ export function trackConversionAndWait(
       ...params,
       event_callback: () => finish(true),
     })
+
+    // Parallel naar GA4 als custom event met dezelfde naam. Niet wachten,
+    // GA4 hoeft niet bevestigd te zijn voor de Ads-redirect-flow.
+    trackGA4Event(key, params)
   })
 }
 
