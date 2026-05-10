@@ -154,16 +154,16 @@ export function trackConversionWithRetry(
 /**
  * GA4 custom-event helper. Volg snake_case event-naming.
  *
- * Bewust GEEN send_to: gtag broadcast het event naar alle configureerde
- * destinations. GA4 (G-...) pakt het als custom event op, AW (AW-...) negeert
- * het stilletjes omdat de event-naam geen AW-XXX/LABEL-match heeft, dus geen
- * conversion-double-count. send_to met een GA4-ID had hier intermittent
- * routing-issues in gtag.js wanneer AW als primary geladen wordt.
+ * Met send_to: GA4_ID wordt het event expliciet naar de GA4-property gestuurd
+ * (en niet naar AW). Vereist dat de GA4-runtime volledig is geladen, wat in
+ * GoogleAds.tsx wordt geregeld door G-... als primary id in de gtag/js
+ * library-URL te zetten. Zonder die volledige runtime droopt gtag scoped
+ * send_to-events stilletjes of routeert ze naar de verkeerde destination.
  */
 export function trackGA4Event(name: string, params: Record<string, unknown> = {}): boolean {
   if (!gtagAvailable()) return false
   if (!GA4_ID) return false
-  window.gtag!('event', name, params)
+  window.gtag!('event', name, { send_to: GA4_ID, ...params })
   console.log('[ga4] event fired:', name, params)
   return true
 }
