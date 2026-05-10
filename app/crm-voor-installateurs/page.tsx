@@ -234,8 +234,8 @@ export default function CrmVoorInstallateursAdsPage() {
             Binnen 5 minuten actief. Of vraag eerst een demo aan. We helpen je graag.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button href="#demo-form" size="lg">Plan mijn demo →</Button>
-            <Button href="/registreren" variant="ghost" size="lg">Start 14 dagen gratis</Button>
+            <Button href="/registreren" size="lg">Start 14 dagen gratis →</Button>
+            <Button href="#demo-form" variant="ghost" size="lg">Plan mijn demo</Button>
           </div>
         </Container>
       </section>
@@ -255,13 +255,13 @@ export default function CrmVoorInstallateursAdsPage() {
         </Container>
       </section>
 
-      {/* ── STICKY MOBILE CTA ── */}
+      {/* ── STICKY MOBILE CTA, één duidelijke trial-CTA op mobiel ── */}
       <div className="md:hidden fixed bottom-16 inset-x-0 z-40 px-4 pb-2">
         <a
-          href="#demo-form"
+          href="/registreren"
           className="block w-full bg-gradient-to-r from-[var(--accent)] to-[var(--cyan)] text-white font-bold py-4 rounded-xl text-center text-base shadow-[0_8px_24px_rgba(0,144,184,.5)]"
         >
-          Plan mijn demo →
+          Start 14 dagen gratis →
         </a>
       </div>
 
