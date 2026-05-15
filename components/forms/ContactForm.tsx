@@ -13,11 +13,14 @@ export default function ContactForm() {
     e.preventDefault()
     setStatus('loading')
     try {
-      // Vervang dit door jouw eigen form endpoint (Resend, Formspree, etc.)
-      // await fetch('/api/contact', { method: 'POST', body: JSON.stringify(form) })
-      await new Promise(r => setTimeout(r, 1200)) // Simulatie
+      const res = await fetch('/api/contact', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(form),
+      })
+      if (!res.ok) throw new Error('api_error')
 
-      // Google Ads conversie, alleen bij succesvolle submit.
+      // Google Ads + GA4 conversies, pas NA bevestigde succesvolle send.
       // Als "demo" is aangevinkt tellen we ook de demo-conversie.
       trackConversion('contact_form_submitted')
       if (form.demo) trackConversion('demo_request_submitted')
