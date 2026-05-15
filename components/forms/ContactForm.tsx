@@ -1,11 +1,13 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { trackConversion } from '@/lib/gtag'
 
-type Status = 'idle' | 'loading' | 'success' | 'error'
+type Status = 'idle' | 'loading' | 'error'
 
 export default function ContactForm() {
+  const router = useRouter()
   const [status, setStatus] = useState<Status>('idle')
   const [form, setForm] = useState({ naam: '', email: '', bedrijf: '', bericht: '', demo: false })
 
@@ -13,16 +15,20 @@ export default function ContactForm() {
     e.preventDefault()
     setStatus('loading')
     try {
-      // Vervang dit door jouw eigen form endpoint (Resend, Formspree, etc.)
-      // await fetch('/api/contact', { method: 'POST', body: JSON.stringify(form) })
-      await new Promise(r => setTimeout(r, 1200)) // Simulatie
+      const res = await fetch('/api/contact', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(form),
+      })
+      if (!res.ok) throw new Error('api_error')
 
-      // Google Ads conversie, alleen bij succesvolle submit.
-      // Als "demo" is aangevinkt tellen we ook de demo-conversie.
-      trackConversion('contact_form_submitted')
+      // Demo-vinkje: aparte demo_request_submitted conversie hier direct,
+      // omdat de bedankpagina alleen contact_form_submitted fired. Dedupe
+      // is niet nodig: deze fire gebeurt eenmalig na succes-response en de
+      // bedankpagina behandelt alleen de andere conversie.
       if (form.demo) trackConversion('demo_request_submitted')
 
-      setStatus('success')
+      router.push('/bedankt-contact')
     } catch {
       setStatus('error')
     }
@@ -30,16 +36,6 @@ export default function ContactForm() {
 
   const input = 'w-full bg-[var(--navy3)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[var(--cyan)] transition-colors'
   const label = 'block text-[var(--text2)] text-sm font-medium mb-1.5'
-
-  if (status === 'success') {
-    return (
-      <div className="text-center py-12">
-        <div className="text-4xl mb-4">✅</div>
-        <h3 className="font-outfit font-bold text-white text-xl mb-2">Bericht ontvangen!</h3>
-        <p className="text-[var(--muted2)]">We nemen binnen 1 werkdag contact met je op.</p>
-      </div>
-    )
-  }
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
