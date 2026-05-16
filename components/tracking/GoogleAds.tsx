@@ -2,18 +2,19 @@ import Script from 'next/script'
 import { GADS_ID, GA4_ID } from '@/lib/gtag'
 
 // Gtag.js bootstrap voor Google Ads + GA4. Eén script, twee config-calls.
-// - GA4 (G-...) staat als PRIMARY id in de gtag/js library-URL zodat de
-//   volledige GA4-runtime laadt (anders blijft GA4-routing van send_to-events
-//   stuk). AW wordt via gtag('config', AW) gewoon meegenomen, dat werkt
-//   cross-id ongeacht welke id in de library-URL staat.
+// - AW (AW-...) staat als PRIMARY id in de gtag/js library-URL omdat het
+//   huidige GA4-property corrupt is: gtag/js?id=G-CSC9H9DFWN geeft 404 en
+//   "data collection not active" in GA4-admin. Met AW als library-id laadt
+//   gtag wel betrouwbaar; GA4 wordt nog meegenomen via gtag('config', G-...)
+//   maar zal pas events ontvangen wanneer er een werkende GA4-property is.
 // - GA4 krijgt send_page_view:false, GA4PageViews fired de pageviews zelf.
 // Geladen vanuit root layout, dus precies één instantie per pagina.
 export default function GoogleAds() {
   if (!GADS_ID && !GA4_ID) return null
 
-  // Voorkeur: GA4-ID als primary in library-URL voor volledige GA4-runtime.
-  // Fallback naar Ads-ID als GA4 nog niet geconfigureerd is.
-  const libId = GA4_ID || GADS_ID
+  // Voorkeur: AW-ID als primary in library-URL — GA4-loader 404'de in prod
+  // wat alle gtag-events (ook AW-conversies) stilletjes liet vallen.
+  const libId = GADS_ID || GA4_ID
 
   return (
     <>
