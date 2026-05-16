@@ -19,6 +19,13 @@ export const GADS_ID = 'AW-18058139346'
 // Leeg laten ('') om GA4 uit te zetten zonder code-wijzigingen.
 export const GA4_ID = 'G-CSC9H9DFWN'
 
+// Geconsolideerde Google Tag (Tag Manager): bevat zowel AW als GA4 als
+// bestemmingen. Wordt als primary id in de gtag/js library-URL geladen
+// zodat één request beide destinations bootstrap. De individuele
+// gtag('config', AW) + gtag('config', GA4) calls blijven nodig om
+// destination-specifieke parameters mee te geven (zoals send_page_view).
+export const GTAG_LOADER_ID = 'GT-P3NNB4K3'
+
 // ──────────────────────────────────────────
 // Conversion labels, vul de waardes in die
 // Google Ads je geeft bij "Tag installeren".
