@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { trackConversionAndWait } from '@/lib/gtag'
 
 type Status = 'idle' | 'loading' | 'error'
 
@@ -45,9 +44,9 @@ export default function DemoForm({ compact = false }: DemoFormProps) {
       })
       if (!res.ok) throw new Error('api_error')
 
-      // Google Ads conversie, wacht tot beacon verstuurd is (of timeout) vóór redirect
-      await trackConversionAndWait('demo_request_submitted')
-
+      // Conversie wordt gefired door <DemoConversion /> op /demo-bedankt
+      // (on-mount met retry + sessionStorage-dedupe). Pre-redirect firen
+      // verloor de GA4-event vaak in de unload-race; on-mount is betrouwbaarder.
       router.push('/demo-bedankt')
     } catch {
       setStatus('error')

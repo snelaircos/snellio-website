@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { trackConversion } from '@/lib/gtag'
+import { trackConversionAndWait } from '@/lib/gtag'
 
 type Status = 'idle' | 'loading' | 'error'
 
@@ -23,10 +23,12 @@ export default function ContactForm() {
       if (!res.ok) throw new Error('api_error')
 
       // Demo-vinkje: aparte demo_request_submitted conversie hier direct,
-      // omdat de bedankpagina alleen contact_form_submitted fired. Dedupe
-      // is niet nodig: deze fire gebeurt eenmalig na succes-response en de
-      // bedankpagina behandelt alleen de andere conversie.
-      if (form.demo) trackConversion('demo_request_submitted')
+      // omdat de bedankpagina alleen contact_form_submitted fired. We
+      // awaiten het Ads-beacon (of timeout) zodat de fire niet verloren gaat
+      // in de unload-race bij de daaropvolgende router.push naar
+      // /bedankt-contact. Dedupe niet nodig: deze fire gebeurt eenmalig
+      // en /bedankt-contact behandelt alleen de andere conversie.
+      if (form.demo) await trackConversionAndWait('demo_request_submitted')
 
       router.push('/bedankt-contact')
     } catch {

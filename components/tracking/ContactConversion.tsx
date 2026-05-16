@@ -1,12 +1,14 @@
 'use client'
 
 import { useEffect } from 'react'
-import { trackConversion } from '@/lib/gtag'
+import { trackConversionWithRetry } from '@/lib/gtag'
 
-// Vuurt de Google Ads + GA4 conversie 'contact_form_submitted' on-mount
-// op /bedankt-contact, consistent met het patroon op /demo-bedankt
-// (DemoForm fired demo_request_submitted vóór redirect) en /checkout/success
-// (TrialSignupConversion fired trial_signup_completed on-mount).
+// Vuurt de Google Ads + GA4 conversie 'contact_form_submitted' on-mount op
+// /bedankt-contact. Gebruikt -WithRetry omdat gtag.js (afterInteractive)
+// na een SPA-redirect niet altijd direct beschikbaar is bij useEffect-tijd —
+// zonder retry verviel de fire dan stilletjes. Test-bevinding: stap 1 zonder
+// gclid faalde, terwijl stap 3/4 (waarbij een eerdere fire of gclid-cookie
+// gtag had "warmgestookt") wél door kwam.
 //
 // Dedupe via sessionStorage zodat een page-reload of handmatig bezoek aan
 // /bedankt-contact geen tweede fire geeft.
@@ -36,8 +38,9 @@ export default function ContactConversion() {
       console.log('[gtag] contact_form_submitted al gefired in deze session, skip')
       return
     }
-    const sent = trackConversion('contact_form_submitted')
-    if (sent) markFired()
+    trackConversionWithRetry('contact_form_submitted').then(sent => {
+      if (sent) markFired()
+    })
   }, [])
   return null
 }

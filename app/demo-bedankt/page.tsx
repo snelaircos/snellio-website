@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import DemoConversion from '@/components/tracking/DemoConversion'
 
 export const metadata: Metadata = {
   title: 'Demo aangevraagd | Snellio',
@@ -10,6 +11,9 @@ export const metadata: Metadata = {
 export default function DemoBedanktPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center text-center px-[5%] bg-[var(--navy2)]">
+      {/* Google Ads + GA4 conversie, on-mount met sessionStorage-dedupe */}
+      <DemoConversion />
+
       {/* Glow */}
       <div
         className="absolute inset-0 pointer-events-none"
