@@ -115,7 +115,7 @@ export default function AlternatiefCrmInstallateursPage() {
             <Link href="/demo" className={btnSecondary}>Bekijk demo</Link>
           </div>
           <p className="text-[#8fafc8] text-xs mt-5">
-            Geen creditcard nodig · Geen verplichtingen · Snel starten
+            Probeer 14 dagen gratis · Geen verplichtingen · Snel starten
           </p>
         </div>
       </section>
@@ -296,7 +296,7 @@ export default function AlternatiefCrmInstallateursPage() {
 
           <div className="text-center mt-10">
             <Link href={SIGNUP_HREF} className={btnPrimary}>Probeer Snellio 14 dagen gratis →</Link>
-            <p className="text-[#8fafc8] text-xs mt-3">Geen creditcard. Geen verplichtingen. Snel starten.</p>
+            <p className="text-[#8fafc8] text-xs mt-3">Probeer 14 dagen gratis. Geen verplichtingen.</p>
           </div>
         </div>
       </section>
@@ -383,7 +383,7 @@ export default function AlternatiefCrmInstallateursPage() {
             Start vandaag nog
           </h2>
           <p className="text-[#5f7791] text-base mb-8 max-w-md mx-auto">
-            14 dagen gratis. Geen creditcard. Annuleren wanneer je wilt. Migratie van je oude systeem is inbegrepen.
+            Probeer 14 dagen gratis. Annuleren wanneer je wilt. Migratie van je oude systeem is inbegrepen.
           </p>
           <div className="flex flex-wrap gap-3 justify-center mb-6">
             <Link href={SIGNUP_HREF} className={`${btnPrimary} text-base px-8 py-4`}>

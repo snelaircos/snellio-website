@@ -37,7 +37,7 @@ export default function TrialBedanktPage() {
           </h1>
 
           <p className="text-[var(--text2)] text-base leading-relaxed mb-10">
-            Je account is aangemaakt. Je hebt nu <strong className="text-white">14 dagen gratis</strong> toegang tot alle functies. Geen creditcard nodig, opzeggen wanneer je wilt.
+            Je account is aangemaakt. Je hebt nu <strong className="text-white">14 dagen gratis</strong> toegang tot alle functies. Opzeggen wanneer je wilt.
           </p>
 
           {/* Volgende stappen */}

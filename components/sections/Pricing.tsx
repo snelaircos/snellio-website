@@ -106,7 +106,7 @@ export default function Pricing({ hideHeader = false, plans = PLANS }: PricingPr
 
         {/* Trust row */}
         <p className="mt-8 text-center text-xs text-[var(--muted)] tracking-wide">
-          Geen creditcard nodig &nbsp;·&nbsp; Maandelijks opzegbaar &nbsp;·&nbsp; Nederlandse support
+          Probeer 14 dagen gratis &nbsp;·&nbsp; Maandelijks opzegbaar &nbsp;·&nbsp; Nederlandse support
         </p>
       </div>
     </section>

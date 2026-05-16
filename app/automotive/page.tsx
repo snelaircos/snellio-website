@@ -97,7 +97,7 @@ const faqs = [
   },
   {
     question: 'Wat is de opzegtermijn?',
-    answer:   'Maandelijks opzegbaar. Bij jaarbetaling loopt het tot het einde van je betaalde periode. Geen creditcard nodig om te starten.',
+    answer:   'Maandelijks opzegbaar. Bij jaarbetaling loopt het tot het einde van je betaalde periode.',
   },
 ]
 
@@ -152,7 +152,7 @@ export default function AutomotivePage() {
               <Link href="/demo" className={btnSecondary}>Bekijk demo</Link>
             </div>
             <div className="flex flex-wrap gap-x-5 gap-y-1.5 text-[14px] text-[#8ea2b8]">
-              <span><span className="text-[#12a87a] font-bold">✓</span> Geen creditcard nodig</span>
+              <span><span className="text-[#12a87a] font-bold">✓</span> Probeer 14 dagen gratis</span>
               <span><span className="text-[#12a87a] font-bold">✓</span> Nederlandse support</span>
               <span><span className="text-[#12a87a] font-bold">✓</span> Mobile-first</span>
             </div>
@@ -279,7 +279,7 @@ export default function AutomotivePage() {
             Klaar om je administratie 4 uur per week te krimpen?
           </h2>
           <p className="text-[#5f7791] text-[18px] mb-7">
-            14 dagen gratis. Geen creditcard, geen lock-in.
+            Probeer 14 dagen gratis. Geen lock-in.
           </p>
           <div className="flex flex-wrap justify-center gap-3 mb-5">
             <Link href={SIGNUP_HREF} className={btnPrimary} style={{ fontSize: '16px', padding: '14px 26px' }}>

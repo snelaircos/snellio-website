@@ -123,7 +123,7 @@ export default function AutomotivePricing() {
       </div>
 
       <p className="text-center text-xs text-[#5f7791] mt-8">
-        Alle pakketten 14 dagen gratis · Geen creditcard nodig · Maandelijks opzegbaar
+        Probeer alle pakketten 14 dagen gratis · Maandelijks opzegbaar
       </p>
     </div>
   )

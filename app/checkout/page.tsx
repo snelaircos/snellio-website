@@ -7,7 +7,7 @@ import { PLANS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Checkout, Start je gratis proefperiode',
-  description: 'Kies je pakket en maak een account aan. 14 dagen gratis proberen, geen creditcard nodig. Snellio CRM voor installateurs.',
+  description: 'Kies je pakket en maak een account aan. Probeer 14 dagen gratis. Snellio CRM voor installateurs.',
   path:        '/checkout',
 })
 
@@ -34,7 +34,7 @@ export default function CheckoutPage({ searchParams }: Props) {
             <div className="inline-flex items-center gap-2 bg-[rgba(10,187,214,.1)] border border-[rgba(10,187,214,.3)] rounded-full px-4 py-1.5 mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--cyan)] animate-pulse" />
               <span className="font-mono text-[.68rem] text-[var(--cyan)] tracking-[.08em] uppercase">
-                14 dagen gratis · geen creditcard
+                Probeer 14 dagen gratis
               </span>
             </div>
 
@@ -76,8 +76,7 @@ export default function CheckoutPage({ searchParams }: Props) {
 
             <ul className="flex flex-col gap-3 list-none mb-8">
               {[
-                '14 dagen gratis proberen',
-                'Geen creditcard nodig',
+                'Probeer 14 dagen gratis',
                 'Opzeggen wanneer je wilt',
                 'Nederlandstalige support',
                 'Alle data blijft van jou',

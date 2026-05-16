@@ -18,7 +18,7 @@ const voordelen = [
   { icon: '⚡', title: 'Binnen 1 werkdag contact',     desc: 'We bellen of mailen je terug om een tijdstip te plannen.'                           },
   { icon: '🎯', title: 'Persoonlijke walkthrough',     desc: '20–30 min op maat, we tonen wat relevant is voor jouw werkplaats.'                 },
   { icon: '💬', title: 'Eerlijk advies',               desc: 'Past Snellio bij je niet? Dan zeggen we dat. Geen verkooppraatjes.'                  },
-  { icon: '🛡️', title: 'Geen verplichtingen',          desc: 'Demo is gratis en vrijblijvend. Geen contract, geen creditcard.'                    },
+  { icon: '🛡️', title: 'Geen verplichtingen',          desc: 'Demo is gratis en vrijblijvend. Geen contract, geen kosten.'                         },
 ]
 
 export default function DemoPage() {

@@ -99,7 +99,7 @@ const faqItems = [
   },
   {
     question: 'Wat kost werkbon software van Snellio?',
-    answer:   'Snellio biedt verschillende pakketten. De Starter (€10/mnd) is geschikt voor ZZP\'ers met digitale werkbonnen en BRL100. Het Basis-pakket (€29/mnd) voegt onbeperkte installaties toe. Pro (€69/mnd) bevat ook F-gassen flesregistratie en meerdere monteurs. Alle pakketten zijn 14 dagen gratis te proberen, zonder creditcard.',
+    answer:   'Snellio biedt verschillende pakketten. De Starter (€10/mnd) is geschikt voor ZZP\'ers met digitale werkbonnen en BRL100. Het Basis-pakket (€29/mnd) voegt onbeperkte installaties toe. Pro (€69/mnd) bevat ook F-gassen flesregistratie en meerdere monteurs. Probeer 14 dagen gratis.',
   },
 ]
 

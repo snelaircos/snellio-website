@@ -8,13 +8,13 @@ import Container from '@/components/ui/Container'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Prijzen & pakketten | Snellio',
-  description: 'Bekijk de prijzen van Snellio. Starter €10/mnd, Basis €29/mnd, Pro €69/mnd, Enterprise €129/mnd. 14 dagen gratis proberen, geen creditcard.',
+  description: 'Bekijk de prijzen van Snellio. Starter €10/mnd, Basis €29/mnd, Pro €69/mnd, Enterprise €129/mnd. Probeer 14 dagen gratis.',
   path:        '/pricing',
 })
 
 const faqs = [
   { question: 'Is er een gratis proefperiode?',
-    answer:   'Ja. Alle pakketten zijn 14 dagen gratis te proberen. Geen creditcard nodig.' },
+    answer:   'Ja. Probeer alle pakketten 14 dagen gratis voordat je iets betaalt.' },
   { question: 'Kan ik op elk moment opzeggen?',
     answer:   'Ja. Bij maandelijkse betaling kunt u per maand opzeggen. Bij jaarlijkse betaling loopt het abonnement tot het einde van de betaalde periode.' },
   { question: 'Wat is het verschil tussen maandelijks en jaarlijks?',

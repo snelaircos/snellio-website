@@ -12,7 +12,7 @@ const Cta      = dynamic(() => import('@/components/sections/Cta'))
 
 export const metadata: Metadata = buildMetadata({
   title:       'CRM voor installateurs | Snellio. Probeer 14 dagen gratis',
-  description: 'CRM voor installateurs in koeltechniek. Werkbon, planning, F-gassen en factuur in één app. 14 dagen gratis proberen, geen creditcard.',
+  description: 'CRM voor installateurs in koeltechniek. Werkbon, planning, F-gassen en factuur in één app. Probeer 14 dagen gratis.',
   path:        '/crm-voor-installateurs',
 })
 
@@ -32,7 +32,7 @@ const benefits = [
 ]
 
 const stappen = [
-  { nr: '1', title: 'Maak gratis een account aan',     desc: 'Geen creditcard. 5 minuten. Meteen aan de slag.' },
+  { nr: '1', title: 'Maak gratis een account aan',     desc: 'Probeer 14 dagen gratis. 5 minuten en je bent actief.' },
   { nr: '2', title: 'Voeg klanten en installaties toe', desc: 'Of vraag een demo aan. Wij helpen je bij de start.' },
   { nr: '3', title: 'Werk slimmer vanaf dag één',       desc: 'Minder papier, minder fouten, meer tijd voor het werk.' },
 ]
@@ -52,7 +52,7 @@ const faqs = [
   },
   {
     question: 'Wat als ik na 14 dagen wil stoppen?',
-    answer:   'Dan stop je. Geen creditcard achtergehouden, geen jaarcontract, niets. De trial loopt vanzelf af.',
+    answer:   'Dan stop je. Geen jaarcontract, geen lock-in. De trial loopt vanzelf af.',
   },
 ]
 
@@ -124,7 +124,7 @@ export default function CrmVoorInstallateursAdsPage() {
             </h1>
 
             <p className="text-[var(--text2)] text-[1rem] leading-[1.7] mb-6 max-w-md">
-              Werkbon, planning, F-gassen en facturatie. Allemaal in één app op je telefoon. 14 dagen gratis proberen, geen creditcard.
+              Werkbon, planning, F-gassen en facturatie. Allemaal in één app op je telefoon. Probeer 14 dagen gratis.
             </p>
 
             {/* Trust bullets */}
@@ -148,7 +148,7 @@ export default function CrmVoorInstallateursAdsPage() {
             </div>
 
             <p className="text-[var(--muted)] text-xs mt-4">
-              Geen creditcard nodig • Opzeggen wanneer je wilt • Nederlandse support
+              Probeer 14 dagen gratis • Opzeggen wanneer je wilt • Nederlandse support
             </p>
           </div>
         </div>
@@ -228,7 +228,7 @@ export default function CrmVoorInstallateursAdsPage() {
           <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">Klaar om te starten?</p>
           <h2 className="font-outfit font-black text-white tracking-tight mb-5" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>
             Start vandaag nog.<br />
-            <span className="text-[var(--cyan)]">14 dagen gratis, geen creditcard.</span>
+            <span className="text-[var(--cyan)]">Probeer 14 dagen gratis.</span>
           </h2>
           <p className="text-[var(--text2)] text-base mb-8">
             Binnen 5 minuten actief. Of vraag eerst een demo aan. We helpen je graag.
