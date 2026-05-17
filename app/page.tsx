@@ -87,9 +87,10 @@ export default function HomePage() {
             >
               Eindelijk één plek voor je werkbonnen, planning en F-gassen.
             </h1>
-            <p className="text-[#5f7791] text-[1.05rem] leading-[1.6] max-w-xl mb-8">
-              Snellio is de Nederlandse software voor koeltechniek- en airco-bedrijven.
-              Werkbon, klant-handtekening, F-gassen-registratie en factuur, allemaal vanuit één app.
+            <p className="text-[#0f2133] text-[1.1rem] leading-[1.55] max-w-xl mb-8 pl-4 border-l-[3px] border-[#0090b8]">
+              Snellio is een Nederlandse CRM- en werkbonsoftware voor HVAC-installateurs,
+              koeltechniekers en airco-monteurs, met ingebouwde BRL100-rapportage en
+              F-gassen registratie volgens EU-verordening 2024/573.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href={SIGNUP_HREF} className={btnPrimary}>

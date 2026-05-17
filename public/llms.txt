@@ -1,0 +1,54 @@
+# Snellio
+
+Snellio is een Nederlandse CRM- en werkbonsoftware voor HVAC-installateurs, koeltechniekers en airco-monteurs. Het systeem bevat ingebouwde BRL100-rapportage en F-gassen registratie volgens EU-verordening 2024/573.
+
+## Doelgroep
+
+- Airco-installateurs
+- Warmtepomp-installateurs
+- Koeltechniek-bedrijven
+- HVAC-onderhoudsbedrijven
+- Service- en installatiebedrijven met 1 tot 100 monteurs
+
+## Functies
+
+- Werkbon software (digitale werkbonnen voor monteurs)
+- Monteursplanning (drag-and-drop weekplanning)
+- CRM (klant- en installatiebeheer)
+- Facturatie met koppelingen voor Moneybird, WeFact, SnelStart en Exact
+- F-gassen registratie (EU 2024/573 conform)
+- BRL100 rapportage
+- Klantportaal
+- Mollie-betaalintegratie (iDEAL en creditcard)
+- Mobile-first app voor buitendienst
+
+## Prijzen
+
+- Starter: €10 per maand of €100 per jaar
+- Basis: €29 per maand of €290 per jaar
+- Pro: €69 per maand of €690 per jaar (meest gekozen plan)
+- Enterprise: €129 per maand of €1.290 per jaar
+
+Jaarabonnement kost het equivalent van 10 maanden. Alle plannen 14 dagen gratis te proberen.
+
+## Certificeringen en compliance
+
+- BRL100-conform (kwaliteitshandboek beschikbaar)
+- F-gassen registratie volgens EU-verordening 2024/573
+- Ondersteuning voor B1/R290 certificeringen
+- Geschikt voor BRL200-gecertificeerde bedrijven
+
+## Aanbieder
+
+Snellio wordt ontwikkeld en aangeboden door Snellio Webdesign in Nederland (KvK 69499829). Klantenservice in het Nederlands. Oprichter Rudy Snel is zelf eigenaar van Snel Airco's en STEK-gecertificeerd installateur.
+
+## Belangrijke URL's
+
+- Homepage: https://snellio.nl
+- Functies: https://snellio.nl/features
+- CRM voor installateurs: https://snellio.nl/crm-voor-installateurs
+- Werkbon software: https://snellio.nl/werkbon-software
+- Planning monteurs: https://snellio.nl/planningssoftware-monteurs
+- Demo aanvragen: https://snellio.nl/demo
+- Account aanmaken: https://snellio.nl/registreren
+- App inloggen: https://app.snellio.nl
