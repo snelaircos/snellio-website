@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-type Status = 'idle' | 'loading' | 'success' | 'error'
+type Status = 'idle' | 'loading' | 'success' | 'error' | 'email_exists'
 
 interface CheckoutFormProps {
   selectedPackage: string
@@ -10,6 +10,7 @@ interface CheckoutFormProps {
 
 export default function CheckoutForm({ selectedPackage }: CheckoutFormProps) {
   const [status, setStatus] = useState<Status>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
   const [form, setForm] = useState({
     companyName: '',
     fullName: '',
@@ -21,6 +22,7 @@ export default function CheckoutForm({ selectedPackage }: CheckoutFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('loading')
+    setErrorMessage('')
 
     try {
       const response = await fetch('/api/checkout', {
@@ -40,6 +42,14 @@ export default function CheckoutForm({ selectedPackage }: CheckoutFormProps) {
       const data = await response.json()
 
       if (!response.ok) {
+        // Email-exists krijgt eigen status zodat we een specifieke
+        // call-to-action (inlog-link) kunnen tonen i.p.v. de generieke
+        // "iets ging mis"-message.
+        if (data.code === 'email_exists' || response.status === 409) {
+          setStatus('email_exists')
+          setErrorMessage(data.error || 'Dit e-mailadres is al geregistreerd.')
+          return
+        }
         throw new Error(data.error || 'Er is iets misgegaan')
       }
 
@@ -48,6 +58,7 @@ export default function CheckoutForm({ selectedPackage }: CheckoutFormProps) {
     } catch (error) {
       console.error('Checkout error:', error)
       setStatus('error')
+      setErrorMessage(error instanceof Error ? error.message : 'Er ging iets mis. Probeer het opnieuw of neem contact op.')
     }
   }
 
@@ -119,9 +130,21 @@ export default function CheckoutForm({ selectedPackage }: CheckoutFormProps) {
         {status === 'loading' ? 'Account aanmaken...' : 'Start gratis proefperiode →'}
       </button>
 
+      {status === 'email_exists' && (
+        <div className="rounded-xl border border-amber-500/40 bg-amber-500/10 p-4 text-center text-sm">
+          <p className="text-amber-200 mb-2">{errorMessage}</p>
+          <a
+            href={`${process.env.NEXT_PUBLIC_APP_URL || 'https://app.snellio.nl'}/login`}
+            className="inline-block underline text-[var(--cyan)] font-medium"
+          >
+            Ga naar inloggen →
+          </a>
+        </div>
+      )}
+
       {status === 'error' && (
         <p className="text-red-400 text-sm text-center">
-          Er ging iets mis. Probeer het opnieuw of neem contact op.
+          {errorMessage || 'Er ging iets mis. Probeer het opnieuw of neem contact op.'}
         </p>
       )}
     </form>

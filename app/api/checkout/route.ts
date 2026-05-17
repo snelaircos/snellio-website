@@ -38,6 +38,32 @@ export async function POST(req: NextRequest) {
 
     const email = body.email.trim().toLowerCase()
 
+    // Pre-check: bestaat email al in auth.users? Zonder deze check faalt
+    // verify pas NA de €0,01 mandate-payment op email_exists en eindigt de
+    // gebruiker met betaling + geen tenant + geen email — bug die zich in
+    // het wild voordeed (zie verify duplicate-path historie).
+    //
+    // listUsers is paginated maar zonder email-filter; voor onze schaal
+    // (huidige users << 1000) volstaat één page. Bij fout: warning loggen
+    // maar niet hard falen — beter dat verify het opvangt dan signup
+    // helemaal blokkeren bij een tijdelijke Supabase-storing.
+    try {
+      const { data: usersPage, error: listError } = await supabase.auth.admin.listUsers({ perPage: 1000 })
+      if (listError) {
+        console.warn('listUsers pre-check faalde:', listError.message)
+      } else {
+        const exists = usersPage.users.some(u => (u.email ?? '').toLowerCase() === email)
+        if (exists) {
+          return NextResponse.json({
+            error: 'Dit e-mailadres heeft al een Snellio-account. Log in via app.snellio.nl of gebruik wachtwoord-reset.',
+            code:  'email_exists',
+          }, { status: 409 })
+        }
+      }
+    } catch (preCheckErr) {
+      console.warn('Pre-check exception:', preCheckErr instanceof Error ? preCheckErr.message : preCheckErr)
+    }
+
     // Als er al een pending signup is voor dit email, verwijder die zodat opnieuw proberen werkt
     const { data: existing } = await supabase
       .from('pending_signups')
