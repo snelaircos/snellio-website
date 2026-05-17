@@ -38,7 +38,15 @@ export default function ContactConversion() {
       console.log('[gtag] contact_form_submitted al gefired in deze session, skip')
       return
     }
-    trackConversionWithRetry('contact_form_submitted').then(sent => {
+    // Unieke transaction_id zodat Ads dubbele fires (refresh, dubbele
+    // SPA-navigatie) kan dedupliceren. timestamp + random base36 is
+    // botsing-vrij genoeg op de schaal van deze website.
+    const txId = `contact_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`
+    trackConversionWithRetry('contact_form_submitted', {
+      value:          15,
+      currency:       'EUR',
+      transaction_id: txId,
+    }).then(sent => {
       if (sent) markFired()
     })
   }, [])

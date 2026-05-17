@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { trackConversionWithRetry } from '@/lib/gtag'
 
 // Vuurt de Google Ads conversie 'trial_signup_completed' on-mount.
@@ -49,14 +49,30 @@ function markFired(dedupeKey?: string): void {
 }
 
 export default function TrialSignupConversion({ dedupeKey }: Props = {}) {
+  // Strict-mode safeguard: useEffect kan in dev twee keer runnen op dezelfde
+  // mount. sessionStorage-dedupe is async (markFired pas na retry-success),
+  // dus zonder useRef-guard kunnen er twee gtag-calls in de queue belanden
+  // voor het sessionStorage-vlag gezet is.
+  const firedRef = useRef(false)
+
   useEffect(() => {
+    if (firedRef.current) return
     if (alreadyFired(dedupeKey)) {
       console.log('[gtag] trial_signup_completed al gefired in deze session, skip', dedupeKey || '(no key)')
       return
     }
+    firedRef.current = true
 
-    trackConversionWithRetry('trial_signup_completed').then(sent => {
+    // transaction_id = signup_id uit URL (?signup_id=...); Ads kan hierop
+    // dedupliceren als de user de bedankt-pagina herlaadt vóór sessionStorage
+    // gezet is, of als hetzelfde event langs een ander pad ook firet.
+    trackConversionWithRetry('trial_signup_completed', {
+      value:          359.40,
+      currency:       'EUR',
+      transaction_id: dedupeKey,
+    }).then(sent => {
       if (sent) markFired(dedupeKey)
+      else      firedRef.current = false   // reset zodat een tweede mount opnieuw mag proberen
     })
   }, [dedupeKey])
 

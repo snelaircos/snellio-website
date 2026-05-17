@@ -48,6 +48,16 @@ declare global {
   }
 }
 
+// Standaard Ads-conversie parameters. Velden zijn optioneel maar als ze
+// meegegeven worden, geeft Ads value/ROAS-rapportage en deduplicatie per
+// transaction_id (voorkomt dubbele conversies bij refresh / herbezoek).
+// Extra custom params zijn toegestaan via de Record-extension.
+export interface ConversionParams extends Record<string, unknown> {
+  value?:          number
+  currency?:       string
+  transaction_id?: string
+}
+
 // ─────────────────────────────────────────────────────────────
 // Helpers
 // ─────────────────────────────────────────────────────────────
@@ -64,10 +74,14 @@ function isPlaceholder(label: string): boolean {
  * Vuur een Google Ads conversie, fire-and-forget.
  * Gebruik dit in form submit handlers waar gtag al geladen is.
  * Retourneert `true` als het event in de queue is geduwd.
+ *
+ * Optionele params (value, currency, transaction_id) worden meegestuurd in
+ * de gtag('event', 'conversion', ...) call zodat Ads ROAS kan rapporteren
+ * en dedupe op transaction_id kan toepassen.
  */
 export function trackConversion(
   key: ConversionKey,
-  params: Record<string, unknown> = {},
+  params: ConversionParams = {},
 ): boolean {
   if (!gtagAvailable()) {
     console.warn('[gtag] niet beschikbaar, conversie niet verzonden:', key)
@@ -97,7 +111,7 @@ export function trackConversion(
  */
 export function trackConversionAndWait(
   key: ConversionKey,
-  params: Record<string, unknown> = {},
+  params: ConversionParams = {},
   timeoutMs = 1500,
 ): Promise<boolean> {
   return new Promise(resolve => {
@@ -140,7 +154,7 @@ export function trackConversionAndWait(
  */
 export function trackConversionWithRetry(
   key: ConversionKey,
-  params: Record<string, unknown> = {},
+  params: ConversionParams = {},
   maxAttempts = 20,
   intervalMs = 250,
 ): Promise<boolean> {
