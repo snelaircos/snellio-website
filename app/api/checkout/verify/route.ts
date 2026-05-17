@@ -76,7 +76,12 @@ export async function POST(req: NextRequest) {
 
       if (isDuplicate) {
         await supabase.from('pending_signups').delete().eq('id', signup.id)
-        return NextResponse.json({ success: true, message: 'Account bestaat al', email: signup.email })
+        return NextResponse.json({
+          success:    true,
+          message:    'Account bestaat al',
+          email:      signup.email,
+          payment_id: signup.payment_id,
+        })
       }
       return NextResponse.json({ error: 'Account kon niet worden aangemaakt' }, { status: 500 })
     }
@@ -173,10 +178,11 @@ export async function POST(req: NextRequest) {
       .eq('id', signup.id)
 
     return NextResponse.json({
-      success:  true,
-      message:  'Account succesvol aangemaakt',
-      user_id:  userId || null,
-      email:    signup.email,
+      success:    true,
+      message:    'Account succesvol aangemaakt',
+      user_id:    userId || null,
+      email:      signup.email,
+      payment_id: signup.payment_id,   // Mollie tr_xxx — gebruikt als transaction_id voor Ads-conversie + dedupe
     })
 
   } catch (error) {

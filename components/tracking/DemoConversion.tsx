@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { trackConversionWithRetry } from '@/lib/gtag'
 
 // Vuurt de Google Ads + GA4 conversie 'demo_request_submitted' on-mount op
@@ -33,11 +33,20 @@ function markFired(): void {
 }
 
 export default function DemoConversion() {
+  // Strict-mode safeguard: useEffect kan in dev twee keer runnen op dezelfde
+  // mount. sessionStorage-dedupe wordt pas async gezet (na retry-success),
+  // dus zonder useRef-guard kan een tweede effect-call al een tweede fire
+  // queue'en voor het sessionStorage-vlag actief is.
+  const firedRef = useRef(false)
+
   useEffect(() => {
+    if (firedRef.current) return
     if (alreadyFired()) {
       console.log('[gtag] demo_request_submitted al gefired in deze session, skip')
       return
     }
+    firedRef.current = true
+
     // Unieke transaction_id zodat Ads dubbele fires (refresh, dubbele
     // SPA-navigatie) kan dedupliceren. timestamp + random base36 is
     // botsing-vrij genoeg op de schaal van deze website.
@@ -48,6 +57,7 @@ export default function DemoConversion() {
       transaction_id: txId,
     }).then(sent => {
       if (sent) markFired()
+      else      firedRef.current = false
     })
   }, [])
   return null

@@ -13,10 +13,15 @@ export default function CheckoutSuccessPage() {
   const [status, setStatus] = useState<Status>('loading')
   const [errorMessage, setErrorMessage] = useState('')
   const [email, setEmail] = useState('')
+  const [userId, setUserId] = useState('')
+  const [paymentId, setPaymentId] = useState('')
   const [buttonLoading, setButtonLoading] = useState(false)
 
   const searchParams = useSearchParams()
   const signupId = searchParams.get('signup_id')
+  // payment_id kan in theorie ook direct in de URL meekomen (Mollie redirect),
+  // anders pakken we hem uit de verify-response (uit pending_signups in DB).
+  const paymentIdFromUrl = searchParams.get('payment_id')
   const supabase = createClient()
 
   useEffect(() => {
@@ -49,6 +54,8 @@ export default function CheckoutSuccessPage() {
         }
 
         setEmail(data.email || '')
+        setUserId(data.user_id || '')
+        setPaymentId(paymentIdFromUrl || data.payment_id || '')
 
         if (data.email && data.user_id) {
           try {
@@ -112,8 +119,16 @@ export default function CheckoutSuccessPage() {
   return (
     <div className="min-h-screen flex items-center justify-center px-[5%]">
       {/* Google Ads conversie, alleen bij status 'success' (geverifieerde betaling).
-         signupId fungeert als dedupe-key zodat een page-reload geen tweede fire geeft. */}
-      <TrialSignupConversion dedupeKey={signupId ?? undefined} />
+         dedupeKey fungeert als sessionStorage-key tegen reload-fires; paymentId
+         wordt meegestuurd als Ads transaction_id (Mollie tr_xxx); email enabled
+         Enhanced Conversions zodat Google de conversie kan matchen aan de
+         oorspronkelijke ad-click ondanks cookieless tracking. */}
+      <TrialSignupConversion
+        dedupeKey={signupId ?? undefined}
+        paymentId={paymentId || undefined}
+        userId={userId || undefined}
+        email={email || undefined}
+      />
 
       <div className="text-center max-w-md">
         <div className="text-6xl mb-6">✅</div>

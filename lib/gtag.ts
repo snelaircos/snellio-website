@@ -27,19 +27,17 @@ export const GA4_ID = 'G-CSC9H9DFWN'
 export const GTAG_LOADER_ID = 'GT-P3NNB4K3'
 
 // ──────────────────────────────────────────
-// Conversion labels, vul de waardes in die
-// Google Ads je geeft bij "Tag installeren".
-// Format altijd: AW-XXXXXXXX/LABEL
+// Google Ads conversielabels. Format: AW-XXXXXXXX/LABEL.
+// Bijgewerkt 2026-05-17 met de nieuwe labels van Peter (advertentie-
+// analist) — oude labels waren stuk en zijn in Ads vervangen.
 // ──────────────────────────────────────────
-export const CONVERSIONS = {
-  demo_request_submitted:  'AW-18058139346/oNvNCL37p5QcENKt5aJD',
-  contact_form_submitted:  'AW-18058139346/O0ssCIm24KgcENKt5aJD',
-  trial_signup_completed:  'AW-18058139346/aeQ6CIa24KgcENKt5aJD',
-  // Voorbeeld:
-  // checkout_completed:    'AW-18058139346/CHECKOUT_LABEL_HIER',
+export const AW_CONVERSION_LABELS = {
+  trial_signup_completed: 'AW-18058139346/SuNcCLS1xK4cENKt5aJD',
+  demo_request_submitted: 'AW-18058139346/RgjNCPqXrK4cENKt5aJD',
+  contact_form_submitted: 'AW-18058139346/LA8hCIq0rK4cENKt5aJD',
 } as const
 
-export type ConversionKey = keyof typeof CONVERSIONS
+export type ConversionKey = keyof typeof AW_CONVERSION_LABELS
 
 declare global {
   interface Window {
@@ -88,14 +86,19 @@ export function trackConversion(
     return false
   }
 
-  const sendTo = CONVERSIONS[key]
+  const sendTo = AW_CONVERSION_LABELS[key]
   if (isPlaceholder(sendTo)) {
     console.warn('[gtag] conversion label is placeholder, vul in lib/gtag.ts:', key)
     return false
   }
 
-  window.gtag!('event', 'conversion', { send_to: sendTo, ...params })
-  console.log('[gtag] conversion fired:', key, sendTo)
+  // Currency default 'EUR' als de aanroeper niets meegeeft — Ads klaagt
+  // niet expliciet, maar met currency erbij toont het wel netjes in
+  // rapportage (€-symbool i.p.v. raw nummer).
+  const eventParams = { send_to: sendTo, currency: 'EUR', ...params }
+
+  window.gtag!('event', 'conversion', eventParams)
+  console.log('[gtag] conversion fired:', key, sendTo, params)
 
   // Spiegelen naar GA4 als custom event met dezelfde naam, zodat we
   // dezelfde funnel-stappen later in GA4 als conversie kunnen markeren.
@@ -120,7 +123,7 @@ export function trackConversionAndWait(
       return resolve(false)
     }
 
-    const sendTo = CONVERSIONS[key]
+    const sendTo = AW_CONVERSION_LABELS[key]
     if (isPlaceholder(sendTo)) {
       console.warn('[gtag] conversion label is placeholder, vul in lib/gtag.ts:', key)
       return resolve(false)
@@ -138,6 +141,7 @@ export function trackConversionAndWait(
 
     window.gtag!('event', 'conversion', {
       send_to: sendTo,
+      currency: 'EUR',
       ...params,
       event_callback: () => finish(true),
     })
@@ -164,6 +168,58 @@ export function trackConversionWithRetry(
     let attempts = 0
     const tick = () => {
       if (trackConversion(key, params)) return resolve(true)
+      attempts += 1
+      if (attempts >= maxAttempts) return resolve(false)
+      setTimeout(tick, intervalMs)
+    }
+    tick()
+  })
+}
+
+// Enhanced Conversions user-data. Plain email/phone is OK — Google hasht
+// zelf SHA-256 in de browser vóór verzending naar de Ads-servers. Adres-
+// velden ondersteund maar voor lead-conversies meestal niet nodig.
+export interface EnhancedUserData {
+  email?:        string
+  phone_number?: string
+  address?: {
+    first_name?:  string
+    last_name?:   string
+    street?:      string
+    city?:        string
+    region?:      string
+    postal_code?: string
+    country?:     string
+  }
+}
+
+/**
+ * Zet Enhanced Conversions user_data — moet AAN gtag bekendgemaakt worden
+ * VÓÓR de bijbehorende gtag('event', 'conversion', ...) call. Hierdoor kan
+ * Ads de conversie matchen aan de oorspronkelijke ad-click ondanks cookieless
+ * tracking (ITP / ad-blockers).
+ */
+export function setEnhancedConversionUserData(data: EnhancedUserData): boolean {
+  if (!gtagAvailable()) return false
+  window.gtag!('set', 'user_data', data)
+  console.log('[gtag] enhanced user_data set', { email: !!data.email, phone: !!data.phone_number })
+  return true
+}
+
+/**
+ * setEnhancedConversionUserData met retry — voor gebruik op bedankt-pagina's
+ * waar gtag mogelijk nog niet geladen is bij eerste render.
+ */
+export function setEnhancedConversionUserDataWithRetry(
+  data: EnhancedUserData,
+  maxAttempts = 20,
+  intervalMs = 250,
+): Promise<boolean> {
+  return new Promise(resolve => {
+    if (typeof window === 'undefined') return resolve(false)
+    let attempts = 0
+    const tick = () => {
+      if (setEnhancedConversionUserData(data)) return resolve(true)
       attempts += 1
       if (attempts >= maxAttempts) return resolve(false)
       setTimeout(tick, intervalMs)
