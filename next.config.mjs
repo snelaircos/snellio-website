@@ -20,6 +20,21 @@ const nextConfig = {
       },
     ]
   },
+  // 301 redirect www → non-www. Canonical-tag wijst al naar snellio.nl,
+  // maar Google crawlt www.snellio.nl ook nog (kost crawl-budget en
+  // backlink-juice splits). Door op host te matchen redirect Next.js
+  // alle www-verkeer permanent naar de canonical host met behoud van
+  // pad en query-string.
+  async redirects() {
+    return [
+      {
+        source:      '/:path*',
+        has:         [{ type: 'host', value: 'www.snellio.nl' }],
+        destination: 'https://snellio.nl/:path*',
+        permanent:   true,
+      },
+    ]
+  },
 }
 
 export default nextConfig
