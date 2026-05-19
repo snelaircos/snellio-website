@@ -32,6 +32,22 @@ export interface Plan {
   extras:   string[]
 }
 
+// Vlakke feature-set voor alle HVAC-pakketten: geen onderscheid op functies,
+// alleen op aantal installaties (Starter beperkt, rest onbeperkt) en aantal
+// monteurs (in tagline + extras). Voorlopige strategie 2026-05: simpeler
+// koop-keuze, minder analysis-paralysis op de pricing-pagina.
+const HVAC_FEATURES = [
+  { label: 'Onbeperkt klanten & locaties', included: true },
+  { label: 'Werkbonnen & handelingen',     included: true },
+  { label: 'PDF werkbon',                  included: true },
+  { label: 'BRL100 rapport',               included: true },
+  { label: 'F-gassen flesregistratie',     included: true },
+  { label: 'Forecast dashboard',           included: true },
+  { label: 'Planning module',              included: true },
+  { label: 'Facturatie vanuit werkbon',    included: true },
+  { label: 'Klantportaal',                 included: true },
+] as const
+
 export const PLANS: Plan[] = [
   {
     id:       'starter',
@@ -41,77 +57,42 @@ export const PLANS: Plan[] = [
     featured: false,
     cta:      'Begin nu',
     href:     '/checkout?pakket=starter',
-    features: [
-      { label: 'Tot 25 installaties',          included: true  },
-      { label: 'Onbeperkt klanten & locaties', included: true  },
-      { label: 'Werkbonnen & handelingen',     included: true  },
-      { label: 'PDF werkbon',                  included: true  },
-      { label: 'BRL100 rapport',               included: true  },
-      { label: 'F-gassen flesregistratie',     included: false },
-      { label: 'Forecast dashboard',           included: false },
-      { label: 'Meerdere monteurs',            included: false },
-      { label: 'Planning & facturatie',        included: false },
-    ],
-    extras: [],
+    features: [...HVAC_FEATURES],
+    extras:   [],
   },
   {
     id:       'basis',
     name:     'Basis',
-    tagline:  'Onbeperkte installaties · 1 monteur · F-gassen inbegrepen',
+    tagline:  'Onbeperkte installaties · 1 monteur',
     price:    { month: '29', year: '290' },
     featured: false,
     cta:      'Begin nu',
     href:     '/checkout?pakket=basis',
-    features: [
-      { label: 'Onbeperkte installaties',      included: true  },
-      { label: 'Onbeperkt klanten & locaties', included: true  },
-      { label: 'Werkbonnen & handelingen',     included: true  },
-      { label: 'PDF werkbon',                  included: true  },
-      { label: 'BRL100 rapport',               included: true  },
-      { label: 'F-gassen flesregistratie',     included: true  },
-      { label: 'Forecast dashboard',           included: false },
-      { label: 'Meerdere monteurs',            included: false },
-    ],
-    extras: ['Planning module', 'Facturatie vanuit werkbon'],
+    features: [...HVAC_FEATURES],
+    extras:   [],
   },
   {
     id:       'pro',
     name:     'Pro',
-    tagline:  'Volledig pakket · Tot 5 monteurs',
+    tagline:  'Onbeperkte installaties · Schaalbaar team',
     price:    { month: '69', year: '690' },
     featured: true,
     badge:    'Meest gekozen',
     cta:      'Begin nu →',
     href:     '/checkout?pakket=pro',
-    features: [
-      { label: 'Onbeperkte installaties',      included: true },
-      { label: 'Onbeperkt klanten & locaties', included: true },
-      { label: 'Werkbonnen & handelingen',     included: true },
-      { label: 'PDF werkbon & BRL100',         included: true },
-      { label: 'F-gassen flesregistratie',     included: true },
-      { label: 'Forecast dashboard',           included: true },
-      { label: 'Tot 5 monteurs',               included: true },
-    ],
-    extras: ['Planning module', 'Facturatie vanuit werkbon', 'Extra monteurs'],
+    features: [...HVAC_FEATURES],
+    extras:   ['Extra monteur · €15 per maand'],
   },
   {
     id:       'enterprise',
     name:     'Enterprise',
-    tagline:  'Alles inclusief · 5+ monteurs',
+    tagline:  'Onbeperkte installaties · 5 monteurs standaard',
     price:    { month: '129', year: '1.290' },
     featured: false,
-    cta:      'Contact opnemen',
-    href:     '/contact',
-    features: [
-      { label: 'Alles uit Pro',                 included: true },
-      { label: 'Planning module inbegrepen',    included: true },
-      { label: 'Facturatie inbegrepen',         included: true },
-      { label: '5 monteurs standaard',          included: true },
-      { label: 'Extra monteurs lage meerprijs', included: true },
-      { label: 'Prioriteit support',            included: true },
-      { label: 'Klantportaal inbegrepen',       included: true },
-    ],
-    extras: [],
+    cta:      'Begin nu',
+    href:     '/checkout?pakket=enterprise',
+    features: [...HVAC_FEATURES],
+    extras:   ['Extra monteur · €9,95 per maand'],
   },
 ]
 
