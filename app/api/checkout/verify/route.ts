@@ -143,6 +143,31 @@ export async function POST(req: NextRequest) {
       }, { status: 500 })
     }
 
+    // Maak direct een 'hoofdaccount'-monteur aan. Het hoofd-login-account
+    // IS automatisch de eerste monteur met rol=admin, geen aparte invite
+    // nodig (user_id == bedrijf_user_id). Extra monteurs (Pro/Enterprise)
+    // krijgen wel een eigen auth-user via de /api/monteurs/[id]/invite-flow.
+    // Zonder deze rij kunnen Starter/Basis-tenants helemaal geen monteur
+    // toevoegen wegens de cap=1 — eerder bug-melding van TechVlaar.
+    const monteurNaam = signup.full_name?.trim() || signup.email.split('@')[0]
+    const { error: monteurError } = await supabase
+      .from('monteurs')
+      .insert({
+        bedrijf_user_id: userId,
+        user_id:         userId,
+        naam:            monteurNaam,
+        email:           signup.email,
+        rol:             'admin',
+        actief:          true,
+        invite_status:   'active',
+        kleur:           '#0090b8',
+      })
+    if (monteurError) {
+      // Niet hard failen: bedrijfsgegevens staat al, signup-mail moet door.
+      // Admin kan handmatig een monteur toevoegen als dit faalt (zeldzaam).
+      console.error('hoofdaccount-monteur insert mislukt:', monteurError)
+    }
+
     // Maak Mollie recurring subscription aan (start na 14 dagen trial).
     // Faal hier niet hard: als 't niet lukt pakt trial-check-cron 'm op
     // bij de trial→grace transitie zolang er een mandaat is.
