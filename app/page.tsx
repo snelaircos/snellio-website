@@ -39,7 +39,7 @@ const monteurBullets = [
 
 const compliance = [
   {
-    title: 'F-gassen-verordening (EU 517/2014)',
+    title: 'F-gassen-verordening (EU 2024/573)',
     desc:  'Alle vereiste registratie ingebouwd, lekcontrole-cycli automatisch berekend op basis van CO₂-equivalent.',
   },
   {
