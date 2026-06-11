@@ -31,6 +31,61 @@ const POSTS: Record<string, { title: string; description: string; content: strin
       U hoeft niets handmatig over te nemen, het systeem verzorgt de juiste lay-out en veldvolgorde.
     `,
   },
+  'f-gas-verordening-2024': {
+    title:       'EU F-gas verordening 2024/573: wat verandert er voor u?',
+    description: 'De nieuwe Europese F-gassenverordening (EU) 2024/573 vervangt 517/2014. Een praktisch overzicht van de belangrijkste wijzigingen, GWP-verboden en certificeringseisen voor koeltechnisch installateurs.',
+    category:    'Regelgeving',
+    date:        '8 januari 2025',
+    content:     `
+      Op 11 maart 2024 is de nieuwe Europese F-gassenverordening (EU) 2024/573 in werking getreden. Deze verordening
+      vervangt de oude verordening (EU) 517/2014 en scherpt de eisen voor het werken met gefluoreerde broeikasgassen
+      flink aan. Voor koeltechnisch installateurs verandert er de komende jaren veel, zowel op het gebied van toegestane
+      koudemiddelen als op het gebied van certificering.
+
+      **Drie grote lijnen**
+
+      De verordening rust op drie pijlers:
+      - Het in stappen versneld terugbrengen van de hoeveelheid F-gassen die op de Europese markt mag worden gebracht (HFK-quota).
+      - Een reeks verboden op het op de markt brengen van producten en apparatuur die F-gassen met een hoog GWP bevatten.
+      - Installaties lekdicht bouwen en houden, met sluitende registratie van alle handelingen.
+
+      **Strengere GWP-grenzen en bijvulverboden**
+
+      De Global Warming Potential (GWP) van een koudemiddel bepaalt steeds vaker of u het nog mag gebruiken:
+      - Vanaf 1 januari 2026 geldt een verbod op het bijvullen van koel- en klimaatapparatuur met nieuw geproduceerd
+        koudemiddel met een GWP van 2500 of hoger. Geregenereerd of gerecycled koudemiddel met een GWP ≥ 2500 mag nog
+        tot 1 januari 2032 worden gebruikt voor onderhoud en reparatie.
+      - Voor veel nieuwe apparatuur worden de maximale GWP-grenzen verlaagd naar 750 of zelfs 150. Split-units onder
+        12 kW lopen op termijn tegen een volledig F-gasverbod aan.
+      - Vanaf 1 januari 2032 geldt voor de meeste koelapparatuur (met uitzondering van chillers) een verbod op nieuw
+        koudemiddel met een GWP van 750 of hoger.
+
+      **Certificering uitgebreid naar natuurlijke koudemiddelen**
+
+      Een van de belangrijkste wijzigingen voor monteurs: de certificeringsplicht geldt niet langer alleen voor F-gassen,
+      maar ook voor natuurlijke alternatieven zoals koolwaterstoffen (propaan, isobutaan), CO₂ en ammoniak.
+      - Vanaf 29 september 2025 moeten monteurs die met deze natuurlijke koudemiddelen werken eveneens gecertificeerd zijn.
+      - De overgangsperiode voor de bestaande certificaten loopt tot 29 maart 2026; daarna worden alleen nog certificaten
+        volgens het nieuwe, gecombineerde schema afgegeven.
+      - Uiterlijk 12 maart 2029 moeten alle installateurs gecertificeerd zijn volgens het nieuwe systeem.
+
+      **Wat betekent dit concreet voor uw administratie?**
+
+      De verplichting om elke handeling met koudemiddelen nauwkeurig vast te leggen wordt belangrijker dan ooit. Bij een
+      inspectie moet u per installatie kunnen aantonen welk koudemiddel is gebruikt, hoeveel is bijgevuld of afgetapt,
+      wanneer de laatste lektest is uitgevoerd en met welk resultaat. Een onvolledig of verouderd logboek is een reëel risico.
+
+      **Hoe Snellio u helpt**
+
+      Snellio houdt automatisch de koudemiddelbalans per installatie en per fles bij, signaleert verlopende ijkdata van
+      lekdetectoren en registreert elke F-gas handeling direct vanuit de werkbon. De jaarrapportage en het volledige
+      logboek zijn altijd actueel en direct exporteerbaar, zodat u bij een audit binnen enkele minuten alle documentatie
+      conform EU F-gas Verordening 2024/573 kunt overleggen.
+
+      Let op: dit artikel is een praktische samenvatting en geen juridisch advies. Raadpleeg voor uw specifieke situatie
+      altijd de officiële verordeningstekst of uw certificerende instantie.
+    `,
+  },
 }
 
 interface Props {
