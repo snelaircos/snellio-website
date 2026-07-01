@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 import { buildMetadata }    from '@/lib/metadata'
 import { breadcrumbSchema } from '@/lib/schemas'
 import JsonLd from '@/components/seo/JsonLd'
+import YouTubeFacade from '@/components/ui/YouTubeFacade'
 import { SITE } from '@/lib/constants'
 
 // DemoForm uit het critical bundle, SSR levert direct HTML, JS laadt apart
@@ -29,7 +30,30 @@ export default function DemoPage() {
         { name: 'Demo', href: '/demo' },
       ])} />
 
-      <section className="pt-32 pb-24 px-[5%]">
+      {/* Video-preview boven het formulier: bezoeker ziet direct wat Snellio doet
+         voor hij een persoonlijk gesprek aanvraagt. Zelfde YouTubeFacade als de
+         homepage, dus zelfde performance-profiel. */}
+      <section className="pt-32 pb-12 px-[5%]">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
+            Eerst even zien
+          </p>
+          <h2 className="font-outfit font-bold text-white tracking-tight leading-tight mb-3" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.2rem)' }}>
+            Snellio in één minuut.
+          </h2>
+          <p className="text-[var(--text2)] text-base mb-8 max-w-2xl mx-auto">
+            Kort overzicht van werkbon, planning, F-gassen en factuur. Daarna plan je
+            hieronder een persoonlijke walkthrough.
+          </p>
+          <YouTubeFacade
+            videoId="1zqn7mcvo28"
+            thumbnail="/thumbnail-demo001.png"
+            title="Snellio software voor de koel/CV installateur, demo"
+          />
+        </div>
+      </section>
+
+      <section className="pt-8 pb-24 px-[5%]">
         <div className="mx-auto max-w-6xl grid lg:grid-cols-2 gap-16 items-start">
 
           {/* Links: info */}

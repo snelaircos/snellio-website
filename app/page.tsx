@@ -5,6 +5,7 @@ import { buildMetadata } from '@/lib/metadata'
 import { faqSchema }     from '@/lib/schemas'
 import JsonLd            from '@/components/seo/JsonLd'
 import HomePricing       from '@/components/sections/HomePricing'
+import YouTubeFacade     from '@/components/ui/YouTubeFacade'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Software voor koeltechniek & airco | Snellio',
@@ -159,6 +160,26 @@ export default function HomePage() {
               {' '}, je krijgt mij aan de lijn.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* ── 1.75 ZIE HET IN ACTIE (product-demo direct na founder-trust) ── */}
+      <section className="py-16 md:py-20 px-[5%] bg-[#f4f7fa]">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className={sectionLabel}>Zie het in actie</p>
+          <h2 className="font-bold tracking-tight text-[#0f2133] mb-4" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
+            Wat Snellio voor een installateur doet, in één minuut.
+          </h2>
+          <p className="text-[#5f7791] text-base leading-relaxed max-w-2xl mx-auto mb-8">
+            Korte rondleiding door de app: werkbon, planning, F-gassen en factuur.
+            Ontworpen voor installateurs, door installateurs.
+          </p>
+          <YouTubeFacade
+            videoId="1zqn7mcvo28"
+            thumbnail="/thumbnail-demo001.png"
+            title="Snellio software voor de koel/CV installateur, demo"
+            className="max-w-3xl mx-auto"
+          />
         </div>
       </section>
 
