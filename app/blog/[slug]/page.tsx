@@ -17,6 +17,10 @@ export function generateStaticParams() {
   return POSTS.map(p => ({ slug: p.slug }))
 }
 
+// Alle slugs zijn bij build bekend — onbekende slug = direct een echte 404
+// met status 404 (zonder dit gaf de server een soft-404 met status 200).
+export const dynamicParams = false
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPost(params.slug)
   if (!post) return buildMetadata({ title: 'Artikel niet gevonden', description: '', noIndex: true })
