@@ -15,6 +15,9 @@ const hvacSeoLinks = [
   { label: 'Werkbon software',          href: '/werkbon-software'           },
   { label: 'Planningssoftware monteurs', href: '/planningssoftware-monteurs' },
   { label: 'F-gassen registratie',      href: '/f-gassen-registratie'      },
+  // Automotive-verticale: zonder deze link is /automotive alleen via de
+  // sitemap bereikbaar (orphan-pagina) — slecht crawlbaar.
+  { label: 'Voor werkplaatsen (automotive)', href: '/automotive' },
 ]
 
 export default function Footer() {

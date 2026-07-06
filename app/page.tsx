@@ -21,13 +21,16 @@ const pijnpunten = [
   { icon: '📅', title: 'Planning-puzzel',     desc: 'Elke monteur in zijn eigen Google Calendar, klant belt vier keer.' },
 ]
 
+// href = interne link naar de bijbehorende landingspagina (belangrijkste
+// interne-link-winst: de homepage geeft zo autoriteit door aan het
+// SEO-cluster). Kaarten zonder href blijven statisch.
 const features = [
-  { icon: '🔧', title: 'Digitale werkbon',         desc: 'Klant tekent op telefoon/tablet, PDF in z\'n inbox.' },
-  { icon: '❄️', title: 'F-gassen & koudemiddelen', desc: 'Vullingen/aftappingen automatisch in de balans.' },
-  { icon: '📊', title: 'BRL100 jaar-rapport',      desc: 'Eén klik. Klaar voor de auditor.' },
-  { icon: '📅', title: 'Planning + Google Calendar', desc: 'Dispatch-board, monteurs zien hun eigen werk.' },
-  { icon: '💳', title: 'Facturatie + Mollie',      desc: 'Klant betaalt online, status update direct.' },
-  { icon: '🔗', title: 'Boekhoud-koppeling',       desc: 'Moneybird, SnelStart, Exact. Eén keer instellen.' },
+  { icon: '🔧', title: 'Digitale werkbon',         desc: 'Klant tekent op telefoon/tablet, PDF in z\'n inbox.', href: '/werkbon-software',           linkLabel: 'Meer over werkbon-software' },
+  { icon: '❄️', title: 'F-gassen & koudemiddelen', desc: 'Vullingen/aftappingen automatisch in de balans.',     href: '/f-gassen-registratie',       linkLabel: 'Meer over F-gassen registratie' },
+  { icon: '📊', title: 'BRL100 jaar-rapport',      desc: 'Eén klik. Klaar voor de auditor.',                    href: '/f-gassen-registratie',       linkLabel: 'Meer over BRL100 & F-gassen' },
+  { icon: '📅', title: 'Planning + Google Calendar', desc: 'Dispatch-board, monteurs zien hun eigen werk.',     href: '/planningssoftware-monteurs', linkLabel: 'Meer over planningssoftware' },
+  { icon: '💳', title: 'Facturatie + Mollie',      desc: 'Klant betaalt online, status update direct.',         href: '/crm-voor-installateurs',     linkLabel: 'Meer over het CRM' },
+  { icon: '🔗', title: 'Boekhoud-koppeling',       desc: 'Moneybird, SnelStart, Exact. Eén keer instellen.',    href: '/features',                   linkLabel: 'Bekijk alle functies' },
 ]
 
 const monteurBullets = [
@@ -68,7 +71,7 @@ const faqs = [
 const btnPrimary   = 'inline-flex items-center justify-center font-semibold rounded-[10px] bg-[var(--accent)] text-white px-[22px] py-3 hover:bg-[#007a9c] transition-colors text-[.95rem]'
 const btnSecondary = 'inline-flex items-center justify-center font-semibold rounded-[10px] bg-white border-[1.5px] border-[var(--accent)] text-[var(--accent)] px-[22px] py-3 hover:bg-[rgba(0,144,184,.06)] transition-colors text-[.95rem]'
 
-const sectionLabel = 'font-dm-mono text-[.72rem] uppercase tracking-[.08em] text-[#5f7791] mb-3'
+const sectionLabel = 'font-dm-mono text-[.72rem] uppercase tracking-[.08em] text-[#4a6076] mb-3'
 
 export default function HomePage() {
   return (
@@ -101,7 +104,7 @@ export default function HomePage() {
                 Bekijk pakketten
               </Link>
             </div>
-            <p className="text-[#8fafc8] text-xs mt-5">
+            <p className="text-[#5f7791] text-xs mt-5">
               Probeer 14 dagen gratis · Maandelijks opzegbaar · Nederlandse support
             </p>
           </div>
@@ -176,7 +179,7 @@ export default function HomePage() {
           </p>
           <YouTubeFacade
             videoId="1zqn7mcvo28"
-            thumbnail="/thumbnail-demo001.png"
+            thumbnail="/thumbnail-demo001.jpg"
             title="Snellio software voor de koel/CV installateur, demo"
             className="max-w-3xl mx-auto"
           />
@@ -218,14 +221,18 @@ export default function HomePage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {features.map(f => (
-              <div
+              <Link
                 key={f.title}
-                className="bg-white border border-[#e4ecf2] rounded-xl p-6 hover:border-[var(--accent)] hover:shadow-[0_2px_8px_rgba(0,144,184,.12)] transition-all"
+                href={f.href}
+                className="group flex flex-col bg-white border border-[#e4ecf2] rounded-xl p-6 hover:border-[var(--accent)] hover:shadow-[0_2px_8px_rgba(0,144,184,.12)] transition-all"
               >
                 <div className="text-2xl mb-3">{f.icon}</div>
                 <h3 className="font-semibold text-[#0f2133] text-base mb-2">{f.title}</h3>
-                <p className="text-[#5f7791] text-sm leading-relaxed">{f.desc}</p>
-              </div>
+                <p className="text-[#5f7791] text-sm leading-relaxed flex-1">{f.desc}</p>
+                <span className="text-[var(--accent)] text-sm font-semibold mt-4 group-hover:underline">
+                  {f.linkLabel} →
+                </span>
+              </Link>
             ))}
           </div>
         </div>

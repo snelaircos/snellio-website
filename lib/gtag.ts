@@ -64,6 +64,14 @@ function gtagAvailable(): boolean {
   return typeof window !== 'undefined' && typeof window.gtag === 'function'
 }
 
+// Debug-logging alleen buiten productie — bezoekers-consoles blijven schoon.
+export const gtagDebug = process.env.NODE_ENV !== 'production'
+  ? (...args: unknown[]) => console.log(...args)
+  : () => {}
+const gtagWarn = process.env.NODE_ENV !== 'production'
+  ? (...args: unknown[]) => console.warn(...args)
+  : () => {}
+
 function isPlaceholder(label: string): boolean {
   return /HIER$/.test(label) || /^AW-\w+\/X{3,}$/.test(label)
 }
@@ -82,13 +90,13 @@ export function trackConversion(
   params: ConversionParams = {},
 ): boolean {
   if (!gtagAvailable()) {
-    console.warn('[gtag] niet beschikbaar, conversie niet verzonden:', key)
+    gtagWarn('[gtag] niet beschikbaar, conversie niet verzonden:', key)
     return false
   }
 
   const sendTo = AW_CONVERSION_LABELS[key]
   if (isPlaceholder(sendTo)) {
-    console.warn('[gtag] conversion label is placeholder, vul in lib/gtag.ts:', key)
+    gtagWarn('[gtag] conversion label is placeholder, vul in lib/gtag.ts:', key)
     return false
   }
 
@@ -98,7 +106,7 @@ export function trackConversion(
   const eventParams = { send_to: sendTo, currency: 'EUR', ...params }
 
   window.gtag!('event', 'conversion', eventParams)
-  console.log('[gtag] conversion fired:', key, sendTo, params)
+  gtagDebug('[gtag] conversion fired:', key, sendTo, params)
 
   // Spiegelen naar GA4 als custom event met dezelfde naam, zodat we
   // dezelfde funnel-stappen later in GA4 als conversie kunnen markeren.
@@ -119,13 +127,13 @@ export function trackConversionAndWait(
 ): Promise<boolean> {
   return new Promise(resolve => {
     if (!gtagAvailable()) {
-      console.warn('[gtag] niet beschikbaar, conversie niet verzonden:', key)
+      gtagWarn('[gtag] niet beschikbaar, conversie niet verzonden:', key)
       return resolve(false)
     }
 
     const sendTo = AW_CONVERSION_LABELS[key]
     if (isPlaceholder(sendTo)) {
-      console.warn('[gtag] conversion label is placeholder, vul in lib/gtag.ts:', key)
+      gtagWarn('[gtag] conversion label is placeholder, vul in lib/gtag.ts:', key)
       return resolve(false)
     }
 
@@ -133,7 +141,7 @@ export function trackConversionAndWait(
     const finish = (sent: boolean) => {
       if (done) return
       done = true
-      console.log('[gtag] conversion', sent ? 'fired' : 'timed out', ':', key)
+      gtagDebug('[gtag] conversion', sent ? 'fired' : 'timed out', ':', key)
       resolve(sent)
     }
 
@@ -202,7 +210,7 @@ export interface EnhancedUserData {
 export function setEnhancedConversionUserData(data: EnhancedUserData): boolean {
   if (!gtagAvailable()) return false
   window.gtag!('set', 'user_data', data)
-  console.log('[gtag] enhanced user_data set', { email: !!data.email, phone: !!data.phone_number })
+  gtagDebug('[gtag] enhanced user_data set', { email: !!data.email, phone: !!data.phone_number })
   return true
 }
 
@@ -247,6 +255,6 @@ export function trackGA4Event(name: string, params: Record<string, unknown> = {}
   if (!gtagAvailable()) return false
   if (!GA4_ID) return false
   window.gtag!('event', name, params)
-  console.log('[ga4] event fired:', name, params)
+  gtagDebug('[ga4] event fired:', name, params)
   return true
 }

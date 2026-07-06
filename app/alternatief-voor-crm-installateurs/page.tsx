@@ -16,7 +16,7 @@ const SIGNUP_HREF = '/registreren'
 
 const btnPrimary   = 'inline-flex items-center justify-center font-semibold rounded-[10px] bg-[var(--accent)] text-white px-[22px] py-3 hover:bg-[#007a9c] transition-colors text-[.95rem]'
 const btnSecondary = 'inline-flex items-center justify-center font-semibold rounded-[10px] bg-white border-[1.5px] border-[var(--accent)] text-[var(--accent)] px-[22px] py-3 hover:bg-[rgba(0,144,184,.06)] transition-colors text-[.95rem]'
-const sectionLabel = 'font-dm-mono text-[.72rem] uppercase tracking-[.08em] text-[#5f7791] mb-3'
+const sectionLabel = 'font-dm-mono text-[.72rem] uppercase tracking-[.08em] text-[#4a6076] mb-3'
 
 const pijnpunten = [
   { icon: '🔀', title: 'CRM en planning los van elkaar', desc: 'Klantgegevens in tool A, planning in tool B, facturen in tool C. Drie schermen voor één klus.' },
@@ -114,7 +114,7 @@ export default function AlternatiefCrmInstallateursPage() {
             <Link href={SIGNUP_HREF} className={btnPrimary}>Start 14 dagen gratis →</Link>
             <Link href="/demo" className={btnSecondary}>Bekijk demo</Link>
           </div>
-          <p className="text-[#8fafc8] text-xs mt-5">
+          <p className="text-[#5f7791] text-xs mt-5">
             Probeer 14 dagen gratis · Geen verplichtingen · Snel starten
           </p>
         </div>
@@ -264,7 +264,7 @@ export default function AlternatiefCrmInstallateursPage() {
           <div className="grid md:grid-cols-2 gap-5">
             {/* Andere tools */}
             <div className="bg-[#f9fbfd] border border-[#e4ecf2] rounded-xl p-7">
-              <p className="font-dm-mono text-[.65rem] uppercase tracking-wide text-[#8fafc8] mb-2">Losse tools</p>
+              <p className="font-dm-mono text-[.65rem] uppercase tracking-wide text-[#5f7791] mb-2">Losse tools</p>
               <h3 className="font-bold text-[#0f2133] text-xl mb-5">Andere software</h3>
               <ul className="flex flex-col gap-3 list-none">
                 {vergelijking.others.map(o => (
@@ -272,7 +272,7 @@ export default function AlternatiefCrmInstallateursPage() {
                     <span className="text-[#8fafc8] font-bold shrink-0 mt-0.5">○</span>
                     <div>
                       <span className="text-[#0f2133] font-medium">{o.label}</span>
-                      <span className="text-[#8fafc8] ml-2">, {o.note}</span>
+                      <span className="text-[#5f7791] ml-2">, {o.note}</span>
                     </div>
                   </li>
                 ))}
@@ -296,7 +296,7 @@ export default function AlternatiefCrmInstallateursPage() {
 
           <div className="text-center mt-10">
             <Link href={SIGNUP_HREF} className={btnPrimary}>Probeer Snellio 14 dagen gratis →</Link>
-            <p className="text-[#8fafc8] text-xs mt-3">Probeer 14 dagen gratis. Geen verplichtingen.</p>
+            <p className="text-[#5f7791] text-xs mt-3">Probeer 14 dagen gratis. Geen verplichtingen.</p>
           </div>
         </div>
       </section>

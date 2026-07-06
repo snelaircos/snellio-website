@@ -9,7 +9,7 @@ export function organizationSchema() {
     url:        SITE.url,
     logo: {
       '@type': 'ImageObject',
-      url:     `${SITE.url}/logo_snellio.png`,
+      url:     `${SITE.url}/logo.png`,
     },
     contactPoint: {
       '@type':           'ContactPoint',
@@ -62,6 +62,32 @@ export function softwareApplicationSchema() {
       },
     })),
     publisher: { '@id': `${SITE.url}/#organization` },
+  }
+}
+
+// BlogPosting-schema voor artikelen: geeft Google datum, auteur en publisher
+// voor rich results. Auteur = Rudy Snel (oprichter, STEK-gecertificeerd),
+// sterk E-E-A-T-signaal bij regelgeving-content.
+export function articleSchema(post: {
+  slug: string; title: string; description: string; dateISO: string
+}) {
+  return {
+    '@context':     'https://schema.org',
+    '@type':        'BlogPosting',
+    headline:       post.title,
+    description:    post.description,
+    datePublished:  post.dateISO,
+    dateModified:   post.dateISO,
+    inLanguage:     'nl-NL',
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE.url}/blog/${post.slug}` },
+    author: {
+      '@type':   'Person',
+      name:      'Rudy Snel',
+      jobTitle:  'Oprichter Snellio, STEK-gecertificeerd installateur',
+      url:       SITE.url,
+    },
+    publisher: { '@id': `${SITE.url}/#organization` },
+    image:     `${SITE.url}/opengraph-image`,
   }
 }
 

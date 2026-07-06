@@ -13,14 +13,18 @@ export function buildMetadata({
   title,
   description,
   path       = '',
-  image      = '/og-default.png',
+  image,
   noIndex    = false,
 }: PageMeta): Metadata {
   const url = `${SITE.url}${path}`
+  // Merknaam één keer, achteraan (SERP-conventie). Pagina-titels mogen dus
+  // geen "| Snellio" meer bevatten. Bevat de titel de merknaam al, dan
+  // plakken we niets extra's (voorkomt "Snellio ... | Snellio").
+  const volledigeTitel = title.includes(SITE.name) ? title : `${title} | ${SITE.name}`
 
   return {
     title: {
-      default:  `${SITE.name}, ${title}`,
+      default:  volledigeTitel,
       template: `%s | ${SITE.name}`,
     },
     description,
@@ -35,25 +39,26 @@ export function buildMetadata({
       locale:      SITE.defaultLocale,
       url,
       siteName:    SITE.name,
-      title:       `${SITE.name}, ${title}`,
+      title:       volledigeTitel,
       description,
-      images: [{ url: image, width: 1200, height: 630, alt: `${SITE.name}, ${title}` }],
+      // Geen expliciete images tenzij een pagina er zelf één meegeeft:
+      // de file-conventie app/opengraph-image.tsx levert dan sitewide de
+      // standaard OG-afbeelding (1200×630) voor og:image én twitter:image.
+      ...(image ? { images: [{ url: image, width: 1200, height: 630, alt: volledigeTitel }] } : {}),
     },
 
     twitter: {
       card:        'summary_large_image',
-      title:       `${SITE.name}, ${title}`,
+      title:       volledigeTitel,
       description,
-      images:      [image],
+      ...(image ? { images: [image] } : {}),
       site:        SITE.twitterHandle,
       creator:     SITE.twitterHandle,
     },
 
-    icons: {
-      icon:    '/favicon.ico',
-      apple:   '/apple-touch-icon.png',
-      shortcut:'/favicon-32x32.png',
-    },
+    // Icons via de App Router file-conventies app/icon.tsx en
+    // app/apple-icon.tsx — geen handmatige verwijzingen naar bestanden
+    // die niet bestaan.
 
     verification: {
       // Vul na verificatie in:

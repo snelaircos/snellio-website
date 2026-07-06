@@ -9,6 +9,8 @@ export const metadata: Metadata = buildMetadata({
   title:       'Checkout, Start je gratis proefperiode',
   description: 'Kies je pakket en maak een account aan. Probeer 14 dagen gratis. Snellio CRM voor installateurs.',
   path:        '/checkout',
+  // Transactiepagina: geen zoekwaarde, hoort niet in Google.
+  noIndex:     true,
 })
 
 interface Props {

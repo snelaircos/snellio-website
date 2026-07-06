@@ -8,7 +8,7 @@ import AutomotivePricing from '@/components/sections/automotive/AutomotivePricin
 import { SITE } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
-  title:       'Software voor werkplaatsen, autohandelaren & dealers | Snellio Automotive',
+  title:       'Werkplaatssoftware voor garages & autobedrijven | Snellio',
   description: 'Eén tool voor je werkplaats, werkbladen, voertuigen, klanten, planning, offertes en facturen. Geef Snellio het kenteken, de rest regelt zich. 14 dagen gratis.',
   path:        '/automotive',
 })

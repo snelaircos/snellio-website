@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { buildMetadata } from '@/lib/metadata'
 import { breadcrumbSchema, faqSchema } from '@/lib/schemas'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 import JsonLd   from '@/components/seo/JsonLd'
 import Container from '@/components/ui/Container'
 import Button    from '@/components/ui/Button'
@@ -9,9 +10,10 @@ import Button    from '@/components/ui/Button'
 // Split DemoForm JS out of the critical bundle. SSR still produces HTML immediately.
 const DemoForm = dynamic(() => import('@/components/forms/DemoForm'))
 const Cta      = dynamic(() => import('@/components/sections/Cta'))
+import LandingInternalLinks from '@/components/sections/LandingInternalLinks'
 
 export const metadata: Metadata = buildMetadata({
-  title:       'CRM voor installateurs | Snellio. Probeer 14 dagen gratis',
+  title:       'CRM voor installateurs, probeer 14 dagen gratis | Snellio',
   description: 'CRM voor installateurs in koeltechniek. Werkbon, planning, F-gassen en factuur in één app. Probeer 14 dagen gratis.',
   path:        '/crm-voor-installateurs',
 })
@@ -255,6 +257,56 @@ export default function CrmVoorInstallateursAdsPage() {
         </Container>
       </section>
 
+      {/* ── LONG-FORM SEO-TEKST: geeft de pagina inhoudelijke diepgang
+             (was vrijwel alleen UI-copy — te dun voor een money-keyword) ── */}
+      <section className="py-20 px-[5%] bg-[var(--navy2)]">
+        <Container narrow>
+          <h2 className="font-outfit font-bold text-white text-2xl mb-6">
+            Wat is een CRM voor installateurs?
+          </h2>
+          <div className="text-[var(--muted2)] text-[.95rem] leading-[1.8] space-y-5">
+            <p>
+              Een CRM (Customer Relationship Management) voor installateurs is software waarin je
+              klanten, installaties, werkorders en facturen op één plek beheert. Waar een algemeen
+              CRM stopt bij contactgegevens en notities, gaat een installateurs-CRM verder: per klant
+              zie je welke airco of warmtepomp er hangt, welk koudemiddel erin zit, wanneer de laatste
+              lekcontrole was en welke <Link href="/werkbon-software" className="text-[var(--cyan)] hover:underline">werkbonnen</Link> er
+              zijn afgetekend. Voor koeltechniek-bedrijven komt daar de wettelijke{' '}
+              <Link href="/f-gassen-registratie" className="text-[var(--cyan)] hover:underline">F-gassen registratie</Link>{' '}
+              (EU-verordening 2024/573) nog bovenop.
+            </p>
+            <h3 className="font-outfit font-semibold text-white text-lg pt-2">
+              Waarom een los CRM niet werkt voor koeltechniek
+            </h3>
+            <p>
+              Veel installatiebedrijven beginnen met een algemeen pakket of losse tools: Excel voor
+              klanten, een agenda-app voor de{' '}
+              <Link href="/planningssoftware-monteurs" className="text-[var(--cyan)] hover:underline">monteursplanning</Link>,
+              papieren werkbonnen en een apart boekhoudpakket. Dat werkt tot een monteur of vijf.
+              Daarna gaat het knellen: servicehistorie is onvindbaar, flesregistratie gebeurt achteraf
+              (of niet), en elke werkbon wordt twee keer overgetikt. Een branchespecifiek CRM lost dat
+              op omdat werkbon, planning, F-gas logboek en factuur uit dezelfde database komen — invullen
+              op locatie is meteen verwerken.
+            </p>
+            <h3 className="font-outfit font-semibold text-white text-lg pt-2">
+              Waar let je op bij het kiezen?
+            </h3>
+            <p>
+              Kies op vier punten. <strong className="text-white">Eén:</strong> werkt de app offline?
+              In een kruipruimte of stookhok is geen bereik. <strong className="text-white">Twee:</strong>{' '}
+              zit F-gassen registratie en BRL100-rapportage in de kern, of is het een plug-in van een
+              algemeen pakket? <strong className="text-white">Drie:</strong> kunnen je monteurs er zonder
+              cursus mee werken? <strong className="text-white">Vier:</strong> zit je vast aan een
+              jaarcontract of kun je maandelijks opzeggen? Snellio is gebouwd door een STEK-gecertificeerd
+              installateur die zelf dagelijks op de bus zit — bekijk de{' '}
+              <Link href="/pricing" className="text-[var(--cyan)] hover:underline">pakketten en prijzen</Link>{' '}
+              of vergelijk Snellio met{' '}
+              <Link href="/alternatief-voor-crm-installateurs" className="text-[var(--cyan)] hover:underline">losse tools</Link>.
+            </p>
+          </div>
+        </Container>
+      </section>
+
       {/* ── STICKY MOBILE CTA, één duidelijke trial-CTA op mobiel ── */}
       <div className="md:hidden fixed bottom-16 inset-x-0 z-40 px-4 pb-2">
         <a
@@ -264,6 +316,17 @@ export default function CrmVoorInstallateursAdsPage() {
           Start 14 dagen gratis →
         </a>
       </div>
+
+      {/* ── Interne links naar de rest van het SEO-cluster (deze pagina is
+             het cluster-middelpunt; de andere pagina's linken al hierheen) ── */}
+      <LandingInternalLinks
+        links={[
+          { href: '/werkbon-software',            icon: '📋', title: 'Werkbon-software',      desc: 'Digitale werkbon met handtekening'   },
+          { href: '/planningssoftware-monteurs',  icon: '📅', title: 'Planning monteurs',     desc: 'Werkorders inplannen per monteur'    },
+          { href: '/f-gassen-registratie',        icon: '❄️', title: 'F-gassen registratie',  desc: 'Flesregistratie & F-gas logboek'     },
+          { href: '/pricing',                     icon: '💶', title: 'Pakketten & prijzen',   desc: 'Vanaf €10/maand, 14 dagen gratis'    },
+        ]}
+      />
 
       <Cta />
     </>

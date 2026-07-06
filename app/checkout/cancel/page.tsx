@@ -1,6 +1,12 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Button from '@/components/ui/Button'
 import Container from '@/components/ui/Container'
+
+export const metadata: Metadata = {
+  title: 'Betaling geannuleerd | Snellio',
+  robots: { index: false, follow: false },
+}
 
 export default function CancelPage() {
   return (

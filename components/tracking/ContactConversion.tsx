@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { trackConversionWithRetry } from '@/lib/gtag'
+import { trackConversionWithRetry, gtagDebug } from '@/lib/gtag'
 
 // Vuurt de Google Ads + GA4 conversie 'contact_form_submitted' on-mount op
 // /bedankt-contact. Gebruikt -WithRetry omdat gtag.js (afterInteractive)
@@ -42,7 +42,7 @@ export default function ContactConversion() {
   useEffect(() => {
     if (firedRef.current) return
     if (alreadyFired()) {
-      console.log('[gtag] contact_form_submitted al gefired in deze session, skip')
+      gtagDebug('[gtag] contact_form_submitted al gefired in deze session, skip')
       return
     }
     firedRef.current = true

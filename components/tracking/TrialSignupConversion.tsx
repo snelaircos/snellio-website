@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import {
   trackConversionWithRetry,
   setEnhancedConversionUserDataWithRetry,
+  gtagDebug,
 } from '@/lib/gtag'
 
 // Vuurt de Google Ads conversie 'trial_signup_completed' on-mount.
@@ -81,7 +82,7 @@ export default function TrialSignupConversion({
   useEffect(() => {
     if (firedRef.current) return
     if (alreadyFired(dedupeKey)) {
-      console.log('[gtag] trial_signup_completed al gefired in deze session, skip', dedupeKey || '(no key)')
+      gtagDebug('[gtag] trial_signup_completed al gefired in deze session, skip', dedupeKey || '(no key)')
       return
     }
     firedRef.current = true

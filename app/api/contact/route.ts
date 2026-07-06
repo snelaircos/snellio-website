@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
       ? '<p style="background:#e3f6ee;border:1px solid #9bd9c0;color:#12a87a;padding:8px 12px;border-radius:6px;display:inline-block;font-weight:600;">✓ Ook geïnteresseerd in persoonlijke demo</p>'
       : ''
 
-    const subject = `Contact: ${naam}${body.bedrijf ? ' — ' + body.bedrijf.trim() : ''}`
+    const subject = `Contact: ${naam}${body.bedrijf ? ' - ' + body.bedrijf.trim() : ''}`
     const html = `
       <div style="font-family:system-ui,sans-serif;color:#0f2133;max-width:600px;">
         <h2 style="color:#0090b8;margin:0 0 16px;">Nieuw contact-bericht via snellio.nl</h2>

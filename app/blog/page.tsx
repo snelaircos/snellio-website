@@ -4,6 +4,7 @@ import { breadcrumbSchema } from '@/lib/schemas'
 import JsonLd    from '@/components/seo/JsonLd'
 import Container from '@/components/ui/Container'
 import Button    from '@/components/ui/Button'
+import { POSTS } from '@/lib/posts'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Blog, Tips & kennis voor HVAC-installateurs',
@@ -11,33 +12,15 @@ export const metadata: Metadata = buildMetadata({
   path:        '/blog',
 })
 
-// Tijdelijke placeholder artikelen, vervangen door CMS of MDX
-const posts = [
-  {
-    slug:     'brl100-uitgelegd',
-    title:    'BRL100 uitgelegd: wat moet u registreren per werkorder?',
-    excerpt:  'Een praktische gids voor installateurs over de BRL100-certificeringseisen en hoe Snellio dit volledig automatiseert.',
-    category: 'Regelgeving',
-    date:     '2025-01-15',
-    readTime: '5 min',
-  },
-  {
-    slug:     'f-gas-verordening-2024',
-    title:    'EU F-gas verordening 2024/573: wat verandert er voor u?',
-    excerpt:  'De nieuwe F-gas verordening treedt in werking. We zetten de belangrijkste wijzigingen op een rij voor koeltechnisch installateurs.',
-    category: 'Regelgeving',
-    date:     '2025-01-08',
-    readTime: '7 min',
-  },
-  {
-    slug:     'digitale-werkbon-voordelen',
-    title:    '5 redenen waarom een digitale werkbon uw bedrijf efficiënter maakt',
-    excerpt:  'Van snellere facturatie tot minder papierwerk. We lichten toe wat een digitale werkbon concreet oplevert voor installateurs.',
-    category: 'Efficiëntie',
-    date:     '2024-12-20',
-    readTime: '4 min',
-  },
-]
+// Eén gedeelde bron voor index, artikel-pagina én sitemap — kan nooit meer
+// uit elkaar lopen (dode kaarten). Zie lib/posts.ts.
+const posts = POSTS.map(p => ({
+  slug:     p.slug,
+  title:    p.title,
+  excerpt:  p.description,
+  category: p.category,
+  readTime: p.readTime,
+}))
 
 export default function BlogPage() {
   return (

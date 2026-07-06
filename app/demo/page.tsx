@@ -47,7 +47,7 @@ export default function DemoPage() {
           </p>
           <YouTubeFacade
             videoId="1zqn7mcvo28"
-            thumbnail="/thumbnail-demo001.png"
+            thumbnail="/thumbnail-demo001.jpg"
             title="Snellio software voor de koel/CV installateur, demo"
           />
         </div>

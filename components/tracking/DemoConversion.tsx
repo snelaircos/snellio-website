@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { trackConversionWithRetry } from '@/lib/gtag'
+import { trackConversionWithRetry, gtagDebug } from '@/lib/gtag'
 
 // Vuurt de Google Ads + GA4 conversie 'demo_request_submitted' on-mount op
 // /demo-bedankt. Voorheen werd alleen vóór redirect in DemoForm gefired met
@@ -42,7 +42,7 @@ export default function DemoConversion() {
   useEffect(() => {
     if (firedRef.current) return
     if (alreadyFired()) {
-      console.log('[gtag] demo_request_submitted al gefired in deze session, skip')
+      gtagDebug('[gtag] demo_request_submitted al gefired in deze session, skip')
       return
     }
     firedRef.current = true

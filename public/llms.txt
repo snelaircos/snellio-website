@@ -46,9 +46,14 @@ Snellio wordt ontwikkeld en aangeboden door Snellio Webdesign in Nederland (KvK 
 
 - Homepage: https://snellio.nl
 - Functies: https://snellio.nl/features
+- Pakketten en prijzen: https://snellio.nl/pricing
 - CRM voor installateurs: https://snellio.nl/crm-voor-installateurs
 - Werkbon software: https://snellio.nl/werkbon-software
 - Planning monteurs: https://snellio.nl/planningssoftware-monteurs
+- F-gassen registratie: https://snellio.nl/f-gassen-registratie
+- Alternatief voor losse tools: https://snellio.nl/alternatief-voor-crm-installateurs
+- Voor werkplaatsen en garages: https://snellio.nl/automotive
+- Blog en kennisbank: https://snellio.nl/blog
 - Demo aanvragen: https://snellio.nl/demo
-- Account aanmaken: https://snellio.nl/registreren
+- Account aanmaken: https://snellio.nl/checkout
 - App inloggen: https://app.snellio.nl

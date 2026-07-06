@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
     const email    = escapeHtml(body.email.trim())
     const telefoon = body.telefoon?.trim() ? escapeHtml(body.telefoon.trim()) : '<em>(niet opgegeven)</em>'
 
-    const subject = `Demo-aanvraag van ${naam} — ${bedrijf}`
+    const subject = `Demo-aanvraag van ${naam} - ${bedrijf}`
     const html = `
       <div style="font-family:system-ui,sans-serif;color:#0f2133;max-width:600px;">
         <h2 style="color:#0090b8;margin:0 0 8px;">Nieuwe demo-aanvraag via snellio.nl</h2>
