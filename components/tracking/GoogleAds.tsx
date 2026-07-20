@@ -26,6 +26,28 @@ export default function GoogleAds() {
         {`
           window.dataLayer = window.dataLayer || [];
           window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+
+          // ── Consent Mode v2 — MOET vóór js/config in de dataLayer staan ──
+          // Eerdere keuze (cookiebanner) staat in localStorage; alleen bij een
+          // expliciet eerder 'accepted' starten we met granted. Nieuwe bezoekers
+          // en weigeraars: alles denied → gtag draait in cookieless-ping-modus
+          // (conversie-modellering blijft werken, geen cookies/remarketing).
+          var stored = null;
+          try { stored = localStorage.getItem('cookie_consent'); } catch (e) {}
+          var granted = stored === 'accepted' ? 'granted' : 'denied';
+          window.gtag('consent', 'default', {
+            ad_storage:         granted,
+            ad_user_data:       granted,
+            ad_personalization: granted,
+            analytics_storage:  granted,
+            wait_for_update:    500
+          });
+          // Zonder consent: ad-click-ids (gclid) redacten in de pings…
+          window.gtag('set', 'ads_data_redaction', granted === 'denied');
+          // …maar gclid wél via de URL doorgeven aan de bedanktpagina, zodat
+          // een conversie na acceptatie alsnog aan de ad-click te koppelen is.
+          window.gtag('set', 'url_passthrough', true);
+
           window.gtag('js', new Date());
           ${GADS_ID ? `window.gtag('config', '${GADS_ID}');` : ''}
           ${GA4_ID  ? `window.gtag('config', '${GA4_ID}', { send_page_view: false });` : ''}

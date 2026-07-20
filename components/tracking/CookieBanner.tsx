@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { updateGtagConsent } from '@/lib/gtag'
 
 type Consent = 'pending' | 'accepted' | 'declined'
 
@@ -23,14 +24,16 @@ export default function CookieBanner() {
     localStorage.setItem('cookie_consent', 'accepted')
     setConsent('accepted')
     setVisible(false)
-    // Laad analytics scripts pas na toestemming
-    window.dispatchEvent(new CustomEvent('cookie_consent', { detail: 'accepted' }))
+    // Consent Mode v2: alle vier de signalen naar granted
+    updateGtagConsent(true)
   }
 
   const decline = () => {
     localStorage.setItem('cookie_consent', 'declined')
     setConsent('declined')
     setVisible(false)
+    // Expliciet denied + ads_data_redaction aan
+    updateGtagConsent(false)
   }
 
   if (!visible || consent !== 'pending') return null
@@ -43,7 +46,7 @@ export default function CookieBanner() {
     >
       <p className="font-semibold text-white text-sm mb-1.5">Wij gebruiken cookies 🍪</p>
       <p className="text-[var(--muted2)] text-xs leading-relaxed mb-4">
-        We gebruiken functionele en analytische cookies om Snellio te verbeteren.{' '}
+        We gebruiken functionele, analytische en marketing-cookies om Snellio te verbeteren en advertenties te meten.{' '}
         <Link href="/cookiebeleid" className="text-[var(--cyan)] hover:underline">Meer info</Link>
       </p>
       <div className="flex gap-2">

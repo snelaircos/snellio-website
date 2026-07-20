@@ -77,6 +77,33 @@ function isPlaceholder(label: string): boolean {
 }
 
 /**
+ * Consent Mode v2 update — aangeroepen door de cookiebanner.
+ * De default staat op 'denied' (gezet in GoogleAds.tsx vóór alle andere
+ * gtag-calls); dit werkt die bij zodra de bezoeker kiest. Bij weigering
+ * blijft de tag in cookieless-ping-modus (conversie-modellering) en worden
+ * ad-click-identifiers geredact.
+ */
+export function updateGtagConsent(granted: boolean): void {
+  if (typeof window === 'undefined') return
+  window.dataLayer = window.dataLayer || []
+  // Klassieke functie met `arguments`: gtag.js verwerkt het Arguments-object,
+  // een gewone array wordt door GTM genegeerd.
+  window.gtag = window.gtag || function () {
+    // eslint-disable-next-line prefer-rest-params
+    window.dataLayer!.push(arguments as unknown as unknown[])
+  }
+  const status = granted ? 'granted' : 'denied'
+  window.gtag('consent', 'update', {
+    ad_storage:         status,
+    ad_user_data:       status,
+    ad_personalization: status,
+    analytics_storage:  status,
+  })
+  window.gtag('set', 'ads_data_redaction', !granted)
+  gtagDebug('[gtag] consent update:', status)
+}
+
+/**
  * Vuur een Google Ads conversie, fire-and-forget.
  * Gebruik dit in form submit handlers waar gtag al geladen is.
  * Retourneert `true` als het event in de queue is geduwd.
