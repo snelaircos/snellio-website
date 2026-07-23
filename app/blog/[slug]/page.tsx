@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { buildMetadata }  from '@/lib/metadata'
 import { POSTS, getPost } from '@/lib/posts'
@@ -28,6 +29,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title:       post.title,
     description: post.description,
     path:        `/blog/${params.slug}`,
+    // Eigen header-afbeelding als OG-image; zonder valt de sitewide
+    // opengraph-image file-conventie automatisch in.
+    ...(post.image ? { image: post.image.src } : {}),
   })
   // Artikel-specifieke Open Graph: type article + publicatiedatum.
   return {
@@ -106,6 +110,26 @@ export default function BlogPost({ params }: Props) {
           <p className="text-sm text-[var(--muted2)] mb-8">
             Door <span className="text-[var(--text2)] font-medium">Rudy Snel</span>, oprichter van Snellio en STEK-gecertificeerd installateur
           </p>
+
+          {/* Header-afbeelding (optioneel per post) */}
+          {post.image && (
+            <figure className="mb-10">
+              <div className="rounded-xl overflow-hidden bg-white shadow-[0_16px_48px_rgba(0,0,0,.4)] ring-1 ring-[var(--border)]">
+                <Image
+                  src={post.image.src}
+                  alt={post.image.alt}
+                  width={post.image.width}
+                  height={post.image.height}
+                  className="w-full h-auto block"
+                  sizes="(min-width: 768px) 720px, 92vw"
+                  priority
+                />
+              </div>
+              {post.image.caption && (
+                <figcaption className="text-center text-[var(--muted2)] text-xs mt-3">{post.image.caption}</figcaption>
+              )}
+            </figure>
+          )}
 
           {/* Content */}
           <div className="prose prose-invert prose-lg max-w-none text-[var(--text2)] leading-relaxed whitespace-pre-line">

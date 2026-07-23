@@ -17,9 +17,84 @@ export interface Post {
   dateISO:     string   // machine-leesbaar voor schema.org + sitemap
   readTime:    string
   content:     string
+  // Optionele header-afbeelding: getoond boven het artikel en gebruikt
+  // als OG-image + schema.org-image in plaats van de sitewide OG.
+  image?: {
+    src:      string
+    alt:      string
+    caption?: string
+    width:    number
+    height:   number
+  }
 }
 
 export const POSTS: Post[] = [
+  {
+    slug:        'digitaal-logboek-qr-kenplaat',
+    title:       'De kenplaat wordt digitaal: het F-gas logboek achter een QR-code',
+    description: 'Snellio print BRL100-conforme kenplaten met QR-code. Wie de code scant, opent het digitale logboek van de installatie: specificaties én volledige werk-historie, direct bij het apparaat.',
+    category:    'Product',
+    date:        '20 juli 2026',
+    dateISO:     '2026-07-20',
+    readTime:    '4 min',
+    image: {
+      src:     '/kenplaat-voorbeeld.png',
+      alt:     'BRL100-conforme kenplaat koelinstallatie geprint vanuit Snellio, met koudemiddel, GWP, nominale vulling, CO2-equivalent en QR-code naar het digitale logboek',
+      caption: 'Zo komt de kenplaat uit de printer: alle verplichte velden, plus een QR-code naar het digitale logboek.',
+      width:   1400,
+      height:  933,
+    },
+    content:     `
+      Elke koelinstallatie hoort een kenplaat en een logboek te hebben. De kenplaat vertelt wat er in de installatie
+      zit, het logboek vertelt wat ermee gebeurd is. In de praktijk is de kenplaat vaak handgeschreven en ligt het
+      logboek als map op kantoor of als Excel-bestand op een server, kilometers verwijderd van de installatie waar
+      een monteur er iets aan zou hebben. Snellio brengt die twee nu samen: een geprinte kenplaat met een QR-code
+      die het digitale logboek opent, precies daar waar het hoort: bij de installatie zelf.
+
+      **Hoe het werkt**
+
+      Vanuit het installatiedossier in Snellio print u met één klik een kenplaat op een kenplaatprinter
+      (126 × 84 mm label). De plaat bevat alle velden die de BRL100 voorschrijft: het
+      installatie-identificatienummer, de leverancier, het type koelinstallatie, het koudemiddel met GWP-waarde,
+      de nominale vulling, het totale CO2-equivalent en de datum van de laatste controle. Ook uw BRL-100-nummer en
+      het BRL-200-nummer van de monteur staan erop. Bevat de installatie een F-gas, dan zet Snellio automatisch de
+      verplichte zin over gefluoreerde broeikasgassen op de plaat; bij natuurlijke koudemiddelen zoals R290 of CO2
+      blijft die terecht achterwege.
+
+      Rechts op de plaat staat een QR-code. Wie die scant, met welke telefoon dan ook, opent het digitale logboek
+      van precies deze installatie.
+
+      **Wat er in het digitale logboek staat**
+
+      Het logboek toont de specificaties van de installatie en de volledige werk-historie: elke vulling of aftapping
+      met datum en hoeveelheid, uitgevoerde handelingen zoals lektesten, en aanvullende logboekregels. Die historie
+      vult zichzelf: elke [werkbon](/werkbon-software) en elke [F-gas registratie](/f-gassen-registratie) die uw
+      monteurs in Snellio vastleggen, verschijnt automatisch in het logboek van de bijbehorende installatie. Er is
+      geen aparte administratie, het logboek is een ander venster op dezelfde data.
+
+      Belangrijk detail: het logboek is bewust publiek leesbaar zonder klantgegevens. Een scanner ziet de techniek,
+      de specificaties en de historie, maar geen namen, adressen of prijzen. Alleen de eigenaar kan, ingelogd,
+      regels toevoegen.
+
+      **Waarom dit handig is**
+
+      - **Voor uw monteurs**: bij een storing scant de monteur de plaat en ziet direct wat er ooit aan de
+        installatie is gedaan, ook door collega's. Geen telefoontjes naar kantoor, geen zoeken in mappen.
+      - **Voor inspecties en audits**: de EU F-gas verordening 2024/573 verplicht een sluitende registratie per
+        installatie. Met de QR-code laat u een inspecteur ter plekke het complete logboek zien.
+      - **Voor collega-bedrijven en beheerders**: neemt een ander bedrijf het onderhoud over, of wil een
+        gebouwbeheerder weten wat er hangt, dan staat alle informatie op de plaat en achter de QR-code.
+      - **Voor de uitstraling**: een strak geprinte kenplaat met uw bedrijfsnaam oogt professioneler dan een
+        handgeschreven sticker, en hij blijft leesbaar.
+
+      **Zelf kenplaten printen**
+
+      De functie staat voor alle Snellio-gebruikers klaar. Heeft u een kenplaatprinter, dan print u de plaat
+      direct vanuit het installatiedossier; het digitale logboek en de QR-code werken vanaf dat moment meteen.
+      Bekijk alle mogelijkheden op de [functiepagina](/features) of probeer het zelf met een
+      [gratis proefperiode van 14 dagen](/checkout).
+    `,
+  },
   {
     slug:        'brl100-uitgelegd',
     title:       'BRL100 uitgelegd: wat moet u registreren per werkorder?',

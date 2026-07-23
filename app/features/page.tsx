@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Image             from 'next/image'
+import Link              from 'next/link'
 import { buildMetadata }  from '@/lib/metadata'
 import { breadcrumbSchema, faqSchema } from '@/lib/schemas'
 import JsonLd    from '@/components/seo/JsonLd'
@@ -144,6 +145,24 @@ export default function FeaturesPage() {
             </p>
           </div>
 
+          {/* Echte kenplaat zoals Snellio hem print (gegenereerd met de
+              productie-generator; QR wijst naar /demo) */}
+          <div className="max-w-xl mx-auto mb-12">
+            <div className="rounded-xl overflow-hidden bg-white shadow-[0_16px_48px_rgba(0,0,0,.45)] ring-1 ring-[rgba(10,187,214,.25)]">
+              <Image
+                src="/kenplaat-voorbeeld.png"
+                alt="BRL100-conforme kenplaat koelinstallatie geprint vanuit Snellio, met installatie-identificatienummer, koudemiddel R-32 met GWP, nominale vulling, CO2-equivalent en QR-code naar het digitale logboek"
+                width={1400}
+                height={933}
+                className="w-full h-auto block"
+                sizes="(min-width: 768px) 576px, 92vw"
+              />
+            </div>
+            <p className="text-center text-[var(--muted2)] text-xs mt-3">
+              Zo rolt de kenplaat uit de printer, alle verplichte velden plus QR-code naar het logboek. Scan hem gerust.
+            </p>
+          </div>
+
           <div className="grid md:grid-cols-3 gap-6 mb-10">
             {[
               {
@@ -180,6 +199,12 @@ export default function FeaturesPage() {
               </li>
             ))}
           </ul>
+
+          <p className="text-center mt-8">
+            <Link href="/blog/digitaal-logboek-qr-kenplaat" className="text-[var(--cyan)] text-sm font-medium hover:underline">
+              Lees hoe het digitale logboek werkt →
+            </Link>
+          </p>
         </Container>
       </section>
 

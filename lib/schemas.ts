@@ -70,6 +70,7 @@ export function softwareApplicationSchema() {
 // sterk E-E-A-T-signaal bij regelgeving-content.
 export function articleSchema(post: {
   slug: string; title: string; description: string; dateISO: string
+  image?: { src: string }
 }) {
   return {
     '@context':     'https://schema.org',
@@ -87,7 +88,7 @@ export function articleSchema(post: {
       url:       SITE.url,
     },
     publisher: { '@id': `${SITE.url}/#organization` },
-    image:     `${SITE.url}/opengraph-image`,
+    image:     post.image ? `${SITE.url}${post.image.src}` : `${SITE.url}/opengraph-image`,
   }
 }
 
