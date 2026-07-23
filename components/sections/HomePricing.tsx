@@ -37,6 +37,19 @@ export default function HomePricing() {
         </p>
       </div>
 
+      {/* Boekhoudkoppelingen: gratis bij elk pakket — belangrijk verkoopargument */}
+      <div className="mx-auto max-w-3xl mb-10 flex flex-col sm:flex-row items-center gap-4 justify-center text-center sm:text-left bg-[rgba(18,168,122,.07)] border border-[rgba(18,168,122,.3)] rounded-2xl px-6 py-4">
+        <span className="text-3xl shrink-0">🔗</span>
+        <div>
+          <p className="text-[#0f2133] text-sm font-semibold">
+            Gratis koppeling met WeFact, Moneybird én Exact Online — bij elk pakket.
+          </p>
+          <p className="text-[#5f7791] text-xs mt-1">
+            Staat jouw boekhoudpakket er niet bij? Dan proberen wij, indien mogelijk, deze alsnog toe te voegen.
+          </p>
+        </div>
+      </div>
+
       {/* Cards */}
       <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-5 items-start">
         {PLANS.map(plan => {

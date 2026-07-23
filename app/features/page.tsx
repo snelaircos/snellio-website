@@ -60,6 +60,7 @@ const details = [
     items: [
       'Factureer direct vanuit een werkorder',
       'iDEAL betaallink via Mollie',
+      'Gratis koppeling met WeFact, Moneybird en Exact Online',
       'Eigen verzenddomein koppelen',
       'Concept → definitief factuurnummer bij verzenden',
     ],

@@ -15,6 +15,8 @@ export const metadata: Metadata = buildMetadata({
 const faqs = [
   { question: 'Is er een gratis proefperiode?',
     answer:   'Ja. Probeer alle pakketten 14 dagen gratis voordat je iets betaalt.' },
+  { question: 'Zijn de boekhoudkoppelingen inbegrepen?',
+    answer:   'Ja. De koppelingen met WeFact, Moneybird en Exact Online zijn bij elk pakket gratis inbegrepen, ook bij Starter. Staat uw boekhoudpakket er niet bij? Dan proberen wij, indien mogelijk, deze alsnog toe te voegen.' },
   { question: 'Kan ik op elk moment opzeggen?',
     answer:   'Ja. Bij maandelijkse betaling kunt u per maand opzeggen. Bij jaarlijkse betaling loopt het abonnement tot het einde van de betaalde periode.' },
   { question: 'Wat is het verschil tussen maandelijks en jaarlijks?',

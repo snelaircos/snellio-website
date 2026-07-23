@@ -33,6 +33,8 @@ Snellio is een Nederlandse CRM- en werkbonsoftware voor HVAC-installateurs, koel
 
 Jaarabonnement kost het equivalent van 10 maanden. Alle plannen 14 dagen gratis te proberen.
 
+Bij elk pakket gratis inbegrepen: koppeling met WeFact, Moneybird en Exact Online. Ontbreekt een boekhoudpakket, dan probeert Snellio deze waar mogelijk alsnog toe te voegen.
+
 ## Certificeringen en compliance
 
 - BRL100-conform (kwaliteitshandboek beschikbaar)

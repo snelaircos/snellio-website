@@ -30,7 +30,7 @@ const features = [
   { icon: '📊', title: 'BRL100 jaar-rapport',      desc: 'Eén klik. Klaar voor de auditor.',                    href: '/f-gassen-registratie',       linkLabel: 'Meer over BRL100 & F-gassen' },
   { icon: '📅', title: 'Planning + Google Calendar', desc: 'Dispatch-board, monteurs zien hun eigen werk.',     href: '/planningssoftware-monteurs', linkLabel: 'Meer over planningssoftware' },
   { icon: '💳', title: 'Facturatie + Mollie',      desc: 'Klant betaalt online, status update direct.',         href: '/crm-voor-installateurs',     linkLabel: 'Meer over het CRM' },
-  { icon: '🔗', title: 'Boekhoud-koppeling',       desc: 'Moneybird, SnelStart, Exact. Eén keer instellen.',    href: '/features',                   linkLabel: 'Bekijk alle functies' },
+  { icon: '🔗', title: 'Boekhoud-koppeling',       desc: 'WeFact, Moneybird en Exact Online. Gratis bij elk pakket.',    href: '/features',                   linkLabel: 'Bekijk alle functies' },
 ]
 
 const monteurBullets = [

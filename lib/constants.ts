@@ -45,6 +45,9 @@ const HVAC_FEATURES = [
   { label: 'Forecast dashboard',           included: true },
   { label: 'Planning module',              included: true },
   { label: 'Facturatie vanuit werkbon',    included: true },
+  // Verkoopargument (2026-07, n.a.v. Bas): koppelingen zijn bij élk pakket
+  // gratis inbegrepen — expliciet benoemen, niet als add-on framen.
+  { label: 'Gratis koppeling WeFact, Moneybird & Exact Online', included: true },
   { label: 'Klantportaal',                 included: true },
 ] as const
 
@@ -113,7 +116,7 @@ export const AUTOMOTIVE_PLANS: Plan[] = [
       { label: 'PDF werkbon',                       included: true  },
       { label: 'Onderdelen-koppeling leverancier',  included: false },
       { label: 'Klant-akkoord-flow',                included: false },
-      { label: 'Boekhoudkoppeling',                 included: false },
+      { label: 'Gratis boekhoudkoppeling (WeFact, Moneybird, Exact)', included: true  },
       { label: 'Meerdere monteurs',                 included: false },
     ],
     extras: [],
@@ -134,7 +137,7 @@ export const AUTOMOTIVE_PLANS: Plan[] = [
       { label: 'Klant-akkoord-flow',                included: true  },
       { label: 'PDF werkbon',                       included: true  },
       { label: 'Onderdelen-koppeling leverancier',  included: false },
-      { label: 'Boekhoudkoppeling',                 included: false },
+      { label: 'Gratis boekhoudkoppeling (WeFact, Moneybird, Exact)', included: true  },
       { label: 'Meerdere monteurs',                 included: false },
     ],
     extras: ['Planning module', 'Facturatie vanuit werkorder'],
@@ -155,7 +158,7 @@ export const AUTOMOTIVE_PLANS: Plan[] = [
       { label: 'Kenteken-lookup via RDW',           included: true },
       { label: 'Onderdelen-koppeling leverancier',  included: true },
       { label: 'Klant-akkoord-flow',                included: true },
-      { label: 'Boekhoudkoppeling',                 included: true },
+      { label: 'Gratis boekhoudkoppeling (WeFact, Moneybird, Exact)', included: true },
       { label: 'Tot 5 monteurs',                    included: true },
     ],
     extras: ['Planning module', 'Extra monteurs'],

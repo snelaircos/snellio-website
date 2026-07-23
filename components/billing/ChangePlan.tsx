@@ -49,8 +49,14 @@ export default function ChangePlan({ currentPlan, pendingPlan }: ChangePlanProps
     <div className="mt-6 rounded-xl border border-[var(--border)] bg-[var(--navy)] p-6">
       <h2 className="text-xl font-bold mb-3">Wijzig abonnement</h2>
 
+      <p className="mb-4 text-sm text-[var(--text2)]">
+        <span className="font-semibold text-[var(--green)]">🔗 Bij elk pakket gratis inbegrepen:</span>{' '}
+        koppeling met WeFact, Moneybird én Exact Online. Staat jouw boekhoudpakket er niet bij?
+        Dan proberen wij, indien mogelijk, deze alsnog toe te voegen.
+      </p>
+
       {pendingPlan ? (
-        <p className="mb-4 text-yellow-300">Je abonnement wordt gewijzigd naar &apos;{pendingPlan}&apos; bij de volgende betaling</p>
+        <p className="mb-4 text-[var(--orange)]">Je abonnement wordt gewijzigd naar &apos;{pendingPlan}&apos; bij de volgende betaling</p>
       ) : null}
 
       <div className="flex flex-wrap gap-3">
