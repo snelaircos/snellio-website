@@ -34,7 +34,7 @@ export default function PrivacyPage() {
         </Section>
 
         <Section title="2. Welke gegevens verzamelen wij?">
-          <p>Wij verwerken de volgende persoonsgegevens:</p>
+          <p>Gegevens verzamelen wij doordat u ze zelf invoert in de applicatie, via uw gebruik van het platform (technische loggegevens) en via koppelingen die u zelf activeert. Wij verwerken de volgende persoonsgegevens:</p>
           <ul className="list-disc list-inside space-y-1 ml-2">
             <li>Naam, e-mailadres en bedrijfsnaam bij registratie</li>
             <li>Bedrijfsgegevens (adres, KvK, BTW-nummer)</li>
@@ -70,7 +70,9 @@ export default function PrivacyPage() {
             <li><strong>Supabase</strong>, database hosting (EU)</li>
             <li><strong>Mollie</strong>, betalingsverwerking</li>
             <li><strong>Resend</strong>, transactionele e-mails</li>
+            <li><strong>Hostinger</strong>, hosting van de applicatie (EU)</li>
           </ul>
+          <p><strong>Boekhoudkoppelingen:</strong> activeert u een koppeling met uw boekhoudpakket (WeFact, Moneybird of Exact Online), dan worden factuur- en klantgegevens in uw opdracht met dat pakket uitgewisseld. Dit gebeurt uitsluitend na uw expliciete toestemming (via de officiële koppel-procedure van het pakket). U kunt de koppeling op elk moment verbreken; de toegangssleutels worden dan direct verwijderd.</p>
           <p>Wij verkopen uw gegevens nooit aan derden.</p>
         </Section>
 
