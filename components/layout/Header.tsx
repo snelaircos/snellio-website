@@ -36,7 +36,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0" aria-label={SITE.name}>
           <Image
-            src="/logo-donker.png"
+            src="/logo-licht.png"
             alt="Snellio"
             width={130}
             height={38}
