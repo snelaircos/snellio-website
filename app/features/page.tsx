@@ -10,13 +10,15 @@ import { CERTS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Functies, Wat kan Snellio?',
-  description: 'Ontdek alle functies van Snellio: werkbonnen, installatiebeheer, BRL100-rapportage, F-gassen flesregistratie, facturatie en Google Calendar sync. Alles voor de HVAC-installateur.',
+  description: 'Ontdek alle functies van Snellio: werkbonnen, digitaal logboek met QR-kenplaten, BRL100-rapportage, F-gassen flesregistratie, facturatie en Google Calendar sync. Alles voor de HVAC-installateur.',
   path:        '/features',
 })
 
 const faqs = [
   { question: 'Kan ik BRL100-rapporten automatisch genereren?',
     answer:   'Ja. Snellio genereert BRL100-rapporten automatisch op basis van de ingevulde koeltechnische handelingen. Je hoeft niets handmatig over te typen.' },
+  { question: 'Kan ik kenplaten printen vanuit Snellio?',
+    answer:   'Ja. Heb je een kenplaatprinter, dan print je per installatie direct vanuit Snellio een BRL100-conforme kenplaat, inclusief QR-code. Wie de QR-code scant, opent het digitale logboek van die installatie met alle specificaties en de volledige werk-historie.' },
   { question: 'Werkt de app ook offline?',
     answer:   'Snellio werkt via de browser. Een stabiele internetverbinding is nodig voor synchronisatie, maar op tablet of telefoon is de interface volledig geoptimaliseerd voor gebruik op locatie.' },
   { question: 'Kan ik meerdere monteurs toevoegen?',
@@ -39,6 +41,7 @@ const details = [
       'Volledig flesregistratie conform EU F-gas 2024/573',
       'Automatische gram-/kg-berekening per handeling',
       'Track & trace per fles en installatie',
+      'Digitaal logboek per installatie, via QR op de kenplaat',
       'Waarschuwing bij lekkoets en ijkdatum lekdetector',
     ],
   },
@@ -122,6 +125,62 @@ export default function FeaturesPage() {
             </article>
           ))}
         </div>
+      </section>
+
+      {/* ── NIEUW: Digitaal logboek + QR-kenplaten ── */}
+      <section className="py-20 px-[5%] bg-[var(--navy2)]">
+        <Container>
+          <div className="text-center mb-12">
+            <span className="inline-block bg-[var(--green)] text-white text-[.65rem] font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-4">
+              Nieuw
+            </span>
+            <h2 className="font-outfit font-black text-white text-2xl md:text-3xl tracking-tight mb-4">
+              Digitaal logboek, te openen via de QR-code op de kenplaat
+            </h2>
+            <p className="text-[var(--text2)] text-base leading-relaxed max-w-2xl mx-auto">
+              Elke installatie in Snellio heeft een eigen digitaal logboek. Print de kenplaat met
+              QR-code direct vanuit Snellio en iedereen die bij de installatie staat, scant zich
+              naar de volledige historie.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-10">
+            {[
+              {
+                nr: '1', icon: '🖨️', title: 'Print de kenplaat',
+                desc: 'Heb je een kenplaatprinter, dan print je per installatie een BRL100-conforme kenplaat: koudemiddel, GWP, nominale vulling, CO2-equivalent en je BRL-nummers, plus QR-code.',
+              },
+              {
+                nr: '2', icon: '🏷️', title: 'Plak hem op de installatie',
+                desc: 'De kenplaat komt op de unit te zitten, netjes geprint in plaats van handgeschreven. Alle wettelijk verplichte gegevens staan erop.',
+              },
+              {
+                nr: '3', icon: '📱', title: 'Scan en zie het logboek',
+                desc: 'Wie de QR-code scant, opent direct het digitale logboek: specificaties en volledige werk-historie van de installatie, zonder klantgegevens.',
+              },
+            ].map(stap => (
+              <article key={stap.nr} className="relative bg-[var(--navy3)] border border-[var(--border)] rounded-2xl p-7">
+                <span className="absolute top-5 right-6 font-outfit font-black text-4xl text-[rgba(10,187,214,.15)]">{stap.nr}</span>
+                <div className="text-3xl mb-4">{stap.icon}</div>
+                <h3 className="font-outfit font-bold text-white text-lg mb-2">{stap.title}</h3>
+                <p className="text-[var(--muted2)] text-sm leading-relaxed">{stap.desc}</p>
+              </article>
+            ))}
+          </div>
+
+          <ul className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-x-8 gap-y-2.5 list-none max-w-3xl mx-auto">
+            {[
+              'Logboek vult zichzelf vanuit werkorders en F-gas registratie',
+              'Monteurs zien ter plekke de complete historie',
+              'Voldoet aan de logboekplicht van EU-verordening 2024/573',
+            ].map(punt => (
+              <li key={punt} className="flex items-start gap-2.5 text-sm text-[var(--text2)]">
+                <span className="text-[var(--green)] font-bold shrink-0 mt-px">✓</span>
+                {punt}
+              </li>
+            ))}
+          </ul>
+        </Container>
       </section>
 
       {/* Certificeringen */}

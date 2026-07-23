@@ -44,7 +44,7 @@ const monteurBullets = [
 const compliance = [
   {
     title: 'F-gassen-verordening (EU 2024/573)',
-    desc:  'Alle vereiste registratie ingebouwd, lekcontrole-cycli automatisch berekend op basis van CO₂-equivalent.',
+    desc:  'Alle vereiste registratie ingebouwd, lekcontrole-cycli automatisch berekend op basis van CO₂-equivalent. Digitaal logboek per installatie, te openen via de QR-code op de zelf geprinte kenplaat.',
   },
   {
     title: 'BRL100 / BRL200',

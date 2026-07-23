@@ -27,8 +27,9 @@ const features = [
   },
   {
     icon:  '📊',
-    title: 'Koudemiddellogboek per installatie',
-    desc:  'Elk bijvullen, aftappen of lektestresultaat wordt direct gekoppeld aan de betreffende installatie. U ziet in één oogopslag de volledige F-gas historiek per systeem.',
+    title: 'Digitaal logboek per installatie',
+    desc:  'Elk bijvullen, aftappen of lektestresultaat wordt direct gekoppeld aan de betreffende installatie. Scan de QR-code op de kenplaat en het volledige logboek opent ter plekke, bij de installatie zelf.',
+    badge: 'Nieuw: QR-kenplaat',
   },
   {
     icon:  '📄',
@@ -84,7 +85,7 @@ const problemen = [
 const oplossingen = [
   {
     title: 'Automatisch F-gas logboek per installatie',
-    desc:  'Elke handeling wordt direct vastgelegd en gekoppeld aan klant, locatie en installatie. Altijd actueel, altijd compliant.',
+    desc:  'Elke handeling wordt direct vastgelegd en gekoppeld aan klant, locatie en installatie. Print de BRL100-conforme kenplaat met QR-code vanuit Snellio: wie scant, opent het logboek direct bij de installatie.',
   },
   {
     title: 'Flesregistratie gekoppeld aan werkorders',
