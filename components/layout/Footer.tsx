@@ -108,6 +108,14 @@ export default function Footer() {
         <p className="text-[var(--muted)] text-xs">
           {SITE.appUrl}
         </p>
+        {/* Stond eerst alleen als hotfix op de VPS — nu in de repo zodat
+            een deploy hem niet meer wegvaagt. */}
+        <a
+          href="https://snelliowebdesign.nl"
+          className="text-[var(--muted)] text-xs hover:underline"
+        >
+          Website door Snellio Webdesign
+        </a>
       </div>
     </footer>
   )
