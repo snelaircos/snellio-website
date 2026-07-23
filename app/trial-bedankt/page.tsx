@@ -28,21 +28,21 @@ export default function TrialBedanktPage() {
             🚀
           </div>
 
-          <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
+          <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">
             14 dagen gratis gestart
           </p>
 
-          <h1 className="font-outfit font-black text-white text-3xl tracking-tight mb-4">
+          <h1 className="font-outfit font-black text-[var(--text)] text-3xl tracking-tight mb-4">
             Welkom bij Snellio!
           </h1>
 
           <p className="text-[var(--text2)] text-base leading-relaxed mb-10">
-            Je account is aangemaakt. Je hebt nu <strong className="text-white">14 dagen gratis</strong> toegang tot alle functies. Opzeggen wanneer je wilt.
+            Je account is aangemaakt. Je hebt nu <strong className="text-[var(--text)]">14 dagen gratis</strong> toegang tot alle functies. Opzeggen wanneer je wilt.
           </p>
 
           {/* Volgende stappen */}
           <div className="bg-[var(--navy3)] border border-[var(--border)] rounded-2xl p-6 text-left mb-8">
-            <p className="font-outfit font-bold text-white text-sm mb-4">Start in 3 stappen:</p>
+            <p className="font-outfit font-bold text-[var(--text)] text-sm mb-4">Start in 3 stappen:</p>
             <ol className="flex flex-col gap-4 list-none">
               {[
                 { nr: '1', title: 'Voeg je eerste klant toe', desc: 'Naam, adres en contactgegevens. Klaar in 1 minuut.' },
@@ -54,7 +54,7 @@ export default function TrialBedanktPage() {
                     {step.nr}
                   </div>
                   <div>
-                    <p className="font-semibold text-white text-sm mb-0.5">{step.title}</p>
+                    <p className="font-semibold text-[var(--text)] text-sm mb-0.5">{step.title}</p>
                     <p className="text-[var(--muted2)] text-xs">{step.desc}</p>
                   </div>
                 </li>
@@ -72,7 +72,7 @@ export default function TrialBedanktPage() {
             </a>
             <Link
               href="/demo"
-              className="border border-[var(--border)] text-[var(--text2)] font-medium py-3.5 px-7 rounded-xl hover:border-[var(--cyan)] hover:text-[var(--cyan)] transition-all duration-200 text-sm"
+              className="border border-[var(--border)] text-[var(--text2)] font-medium py-3.5 px-7 rounded-xl hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all duration-200 text-sm"
             >
               Vraag een demo aan
             </Link>

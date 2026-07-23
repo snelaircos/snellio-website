@@ -17,8 +17,8 @@ export default function NotFound() {
         aria-hidden="true"
       />
 
-      <p className="font-mono text-[var(--cyan)] text-[.7rem] uppercase tracking-[.14em] mb-4">404</p>
-      <h1 className="font-outfit font-black text-white text-5xl tracking-tight mb-4">
+      <p className="font-mono text-[var(--accent)] text-[.7rem] uppercase tracking-[.14em] mb-4">404</p>
+      <h1 className="font-outfit font-black text-[var(--text)] text-5xl tracking-tight mb-4">
         Pagina niet gevonden
       </h1>
       <p className="text-[var(--text2)] text-lg max-w-sm mb-10 leading-relaxed">

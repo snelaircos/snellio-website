@@ -131,15 +131,15 @@ export default function WerkbonSoftwarePage() {
       {/* ── 1. Intro tekst ── */}
       <section className="py-20 px-[5%] bg-[var(--navy2)]">
         <Container narrow>
-          <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-4">
+          <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-4">
             Wat is werkbon software?
           </p>
           <h2
-            className="font-outfit font-black text-white leading-tight mb-6"
+            className="font-outfit font-black text-[var(--text)] leading-tight mb-6"
             style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)' }}
           >
             De digitale werkbon app voor{' '}
-            <span className="text-[var(--cyan)]">iedere installateur</span>
+            <span className="text-[var(--accent)]">iedere installateur</span>
           </h2>
           <div className="text-[var(--text2)] text-[.96rem] leading-[1.85] space-y-4 max-w-none">
             <p>
@@ -147,7 +147,7 @@ export default function WerkbonSoftwarePage() {
               werkbonnen, het opstellen van BRL100-rapporten en het archiveren van documenten.
               Papieren werkbonnen raken zoek, handgeschreven meetwaarden zijn moeilijk leesbaar
               en het handmatig opstellen van rapporten kost uren per week.{' '}
-              <strong className="text-white">Werkbon software lost dit structureel op.</strong>
+              <strong className="text-[var(--text)]">Werkbon software lost dit structureel op.</strong>
             </p>
             <p>
               Snellio is een digitale werkbon app die speciaal is gebouwd voor airco- en
@@ -186,15 +186,15 @@ export default function WerkbonSoftwarePage() {
       <section className="py-24 px-[5%] bg-[var(--navy2)]">
         <div className="mx-auto max-w-5xl">
           <div className="text-center mb-14">
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
+            <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">
               Hoe het werkt
             </p>
             <h2
-              className="font-outfit font-black text-white tracking-tight"
+              className="font-outfit font-black text-[var(--text)] tracking-tight"
               style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
             >
               Van werkorder naar{' '}
-              <span className="text-[var(--cyan)]">betaalde factuur</span>
+              <span className="text-[var(--accent)]">betaalde factuur</span>
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -207,7 +207,7 @@ export default function WerkbonSoftwarePage() {
                 <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[var(--accent)] to-[var(--cyan)] flex items-center justify-center font-outfit font-black text-white text-sm mb-4">
                   {s.icon}
                 </div>
-                <h3 className="font-outfit font-bold text-white text-sm mb-2">{s.title}</h3>
+                <h3 className="font-outfit font-bold text-[var(--text)] text-sm mb-2">{s.title}</h3>
                 <p className="text-[var(--muted2)] text-[.8rem] leading-relaxed">{s.desc}</p>
                 {i < stappen.length - 1 && (
                   <div className="hidden lg:block absolute top-1/2 -right-3 text-[var(--muted)] text-lg z-10">
@@ -232,15 +232,15 @@ export default function WerkbonSoftwarePage() {
       <section className="py-24 px-[5%] bg-[var(--navy3)]">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-14">
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
+            <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">
               Functionaliteiten
             </p>
             <h2
-              className="font-outfit font-black text-white tracking-tight"
+              className="font-outfit font-black text-[var(--text)] tracking-tight"
               style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
             >
               Alles wat een digitale werkbon{' '}
-              <span className="text-[var(--cyan)]">nodig heeft</span>
+              <span className="text-[var(--accent)]">nodig heeft</span>
             </h2>
             <p className="text-[var(--text2)] text-base max-w-xl mx-auto mt-4 leading-relaxed">
               Snellio bevat alle functies die specifiek zijn voor installateurs en HVAC-bedrijven.
@@ -255,7 +255,7 @@ export default function WerkbonSoftwarePage() {
                 style={{ transitionDelay: `${i * 50}ms` }}
               >
                 <div className="text-2xl mb-3">{f.icon}</div>
-                <h3 className="font-outfit font-bold text-white text-[.95rem] mb-2">{f.title}</h3>
+                <h3 className="font-outfit font-bold text-[var(--text)] text-[.95rem] mb-2">{f.title}</h3>
                 <p className="text-[var(--muted2)] text-[.82rem] leading-relaxed">{f.desc}</p>
               </article>
             ))}
@@ -267,15 +267,15 @@ export default function WerkbonSoftwarePage() {
       <section className="py-24 px-[5%] bg-[var(--navy2)]">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-14">
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
+            <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">
               Voor wie
             </p>
             <h2
-              className="font-outfit font-black text-white tracking-tight"
+              className="font-outfit font-black text-[var(--text)] tracking-tight"
               style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
             >
               Software voor installateurs,{' '}
-              <span className="text-[var(--cyan)]">van ZZP tot bedrijf</span>
+              <span className="text-[var(--accent)]">van ZZP tot bedrijf</span>
             </h2>
             <p className="text-[var(--text2)] text-base max-w-xl mx-auto mt-4 leading-relaxed">
               Of u nu solo werkt of een team van monteurs aanstuurt, Snellio past zich aan uw
@@ -291,7 +291,7 @@ export default function WerkbonSoftwarePage() {
               >
                 <div className="text-3xl shrink-0 mt-0.5">{d.icon}</div>
                 <div>
-                  <h3 className="font-outfit font-bold text-white text-[.95rem] mb-2">{d.type}</h3>
+                  <h3 className="font-outfit font-bold text-[var(--text)] text-[.95rem] mb-2">{d.type}</h3>
                   <p className="text-[var(--muted2)] text-[.82rem] leading-relaxed">{d.desc}</p>
                 </div>
               </article>
@@ -304,15 +304,15 @@ export default function WerkbonSoftwarePage() {
       <section className="py-24 px-[5%] bg-[var(--navy3)]">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-14">
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
+            <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">
               Voordelen
             </p>
             <h2
-              className="font-outfit font-black text-white tracking-tight"
+              className="font-outfit font-black text-[var(--text)] tracking-tight"
               style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
             >
               Wat levert digitale werkbon software{' '}
-              <span className="text-[var(--cyan)]">concreet op?</span>
+              <span className="text-[var(--accent)]">concreet op?</span>
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
@@ -323,8 +323,8 @@ export default function WerkbonSoftwarePage() {
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
                 <div className="text-3xl mb-3">{v.icon}</div>
-                <h3 className="font-outfit font-bold text-white text-lg mb-1">{v.title}</h3>
-                <p className="font-mono text-[var(--cyan)] text-[.72rem] tracking-wide mb-5">
+                <h3 className="font-outfit font-bold text-[var(--text)] text-lg mb-1">{v.title}</h3>
+                <p className="font-mono text-[var(--accent)] text-[.72rem] tracking-wide mb-5">
                   {v.stat}
                 </p>
                 <ul className="flex flex-col gap-2.5 list-none">
@@ -345,15 +345,15 @@ export default function WerkbonSoftwarePage() {
       <section className="py-24 px-[5%] bg-[var(--navy2)]">
         <Container>
           <div className="max-w-4xl mx-auto">
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-4">
+            <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-4">
               Praktijkvoorbeeld
             </p>
             <h2
-              className="font-outfit font-black text-white leading-tight mb-8"
+              className="font-outfit font-black text-[var(--text)] leading-tight mb-8"
               style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)' }}
             >
               Hoe Tim zijn werkbon administratie{' '}
-              <span className="text-[var(--cyan)]">van 4 uur naar 20 minuten bracht</span>
+              <span className="text-[var(--accent)]">van 4 uur naar 20 minuten bracht</span>
             </h2>
 
             <div className="bg-[var(--navy3)] border border-[var(--border)] rounded-2xl p-8 mb-8">
@@ -362,7 +362,7 @@ export default function WerkbonSoftwarePage() {
                   🔧
                 </div>
                 <div>
-                  <p className="font-outfit font-bold text-white text-lg">Tim, Airco installateur ZZP</p>
+                  <p className="font-outfit font-bold text-[var(--text)] text-lg">Tim, Airco installateur ZZP</p>
                   <p className="text-[var(--muted2)] text-sm">
                     Installeert dagelijks 2–3 airco-units en warmtepompen in de regio Utrecht
                   </p>
@@ -417,7 +417,7 @@ export default function WerkbonSoftwarePage() {
                   { label: 'Setup tijd',     value: '< 5 minuten'  },
                 ].map(s => (
                   <div key={s.label}>
-                    <p className="font-outfit font-black text-[var(--cyan)] text-xl">{s.value}</p>
+                    <p className="font-outfit font-black text-[var(--accent)] text-xl">{s.value}</p>
                     <p className="font-mono text-[var(--muted2)] text-[.62rem] uppercase tracking-wide">
                       {s.label}
                     </p>
@@ -441,15 +441,15 @@ export default function WerkbonSoftwarePage() {
       {/* ── 9. SEO tekst ── */}
       <section className="py-20 px-[5%] bg-[var(--navy2)]">
         <Container narrow>
-          <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-4">
+          <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-4">
             Meer over werkbon software
           </p>
           <h2
-            className="font-outfit font-black text-white leading-tight mb-8"
+            className="font-outfit font-black text-[var(--text)] leading-tight mb-8"
             style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
           >
             Waarom moderne installateurs kiezen voor{' '}
-            <span className="text-[var(--cyan)]">digitale werkbon software</span>
+            <span className="text-[var(--accent)]">digitale werkbon software</span>
           </h2>
           <div className="prose-snellio space-y-5 text-[var(--text2)] text-[.96rem] leading-[1.9]">
             <p>
@@ -463,12 +463,12 @@ export default function WerkbonSoftwarePage() {
             </p>
             <p>
               Voor installatiebedrijven met meerdere monteurs is goede werkbon software nog belangrijker. Zonder centraal systeem werkt iedereen met zijn eigen variant van een formulier, zijn eigen manier van archiveren en zijn eigen manier van communiceren met de klant. Dat leidt tot inconsistentie, gemiste informatie en extra werk voor de administratie. Software voor installateurs brengt structuur: iedere monteur werkt met hetzelfde format, alle documenten komen op dezelfde plek terecht en de eigenaar heeft altijd inzicht in de status van openstaande opdrachten. Combineer dit met de{' '}
-              <a href="/planningssoftware-monteurs" className="text-[var(--cyan)] hover:underline font-medium">planningssoftware voor monteurs</a>
+              <a href="/planningssoftware-monteurs" className="text-[var(--accent)] hover:underline font-medium">planningssoftware voor monteurs</a>
               {' '}en u heeft een volledig operationeel systeem.
             </p>
             <p>
               Snellio is als werkbon app specifiek ontworpen voor de HVAC-branche. De software bevat standaard alle koeltechnische velden die nodig zijn voor BRL100-certificering en{' '}
-              <a href="/f-gassen-registratie" className="text-[var(--cyan)] hover:underline font-medium">F-gas wetgeving</a>
+              <a href="/f-gassen-registratie" className="text-[var(--accent)] hover:underline font-medium">F-gas wetgeving</a>
               {' '}, niet als extra module of add-on, maar als integraal onderdeel van iedere werkbon. Dat betekent dat u na het invullen van de handelingen direct een gecertificeerd rapport kunt genereren, zonder extra stappen. De klant ondertekent op het scherm, de PDF wordt automatisch verstuurd en de werkbon is gearchiveerd in het klantdossier. Van opdracht tot afgerond document duurt het nog geen tien minuten, waar dat vroeger een avond administratie kostte.
             </p>
           </div>

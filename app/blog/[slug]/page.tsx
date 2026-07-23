@@ -51,12 +51,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 function renderContent(content: string) {
   return content.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g).map((part, i) => {
     if (part.startsWith('**') && part.endsWith('**')) {
-      return <strong key={i} className="text-white font-semibold">{part.slice(2, -2)}</strong>
+      return <strong key={i} className="text-[var(--text)] font-semibold">{part.slice(2, -2)}</strong>
     }
     const link = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
     if (link) {
       return (
-        <Link key={i} href={link[2]} className="text-[var(--cyan)] underline underline-offset-2 hover:text-white transition-colors">
+        <Link key={i} href={link[2]} className="text-[var(--accent)] underline underline-offset-2 hover:text-[var(--text)] transition-colors">
           {link[1]}
         </Link>
       )
@@ -93,7 +93,7 @@ export default function BlogPost({ params }: Props) {
 
           {/* Meta */}
           <div className="flex items-center gap-3 mb-6 flex-wrap">
-            <span className="text-xs font-mono text-[var(--cyan)] bg-[rgba(10,187,214,.1)] px-2.5 py-1 rounded-full">
+            <span className="text-xs font-mono text-[var(--accent)] bg-[rgba(10,187,214,.1)] px-2.5 py-1 rounded-full">
               {post.category}
             </span>
             <time dateTime={post.dateISO} className="text-sm text-[var(--muted2)]">{post.date}</time>
@@ -101,7 +101,7 @@ export default function BlogPost({ params }: Props) {
           </div>
 
           {/* Titel */}
-          <h1 className="font-outfit font-black text-white leading-tight tracking-tight mb-4"
+          <h1 className="font-outfit font-black text-[var(--text)] leading-tight tracking-tight mb-4"
               style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)' }}>
             {post.title}
           </h1>
@@ -114,7 +114,7 @@ export default function BlogPost({ params }: Props) {
           {/* Header-afbeelding (optioneel per post) */}
           {post.image && (
             <figure className="mb-10">
-              <div className="rounded-xl overflow-hidden bg-white shadow-[0_16px_48px_rgba(0,0,0,.4)] ring-1 ring-[var(--border)]">
+              <div className="rounded-xl overflow-hidden bg-white shadow-[0_16px_48px_rgba(15,33,51,.12)] ring-1 ring-[var(--border)]">
                 <Image
                   src={post.image.src}
                   alt={post.image.alt}
@@ -132,7 +132,7 @@ export default function BlogPost({ params }: Props) {
           )}
 
           {/* Content */}
-          <div className="prose prose-invert prose-lg max-w-none text-[var(--text2)] leading-relaxed whitespace-pre-line">
+          <div className="prose prose-lg max-w-none text-[var(--text2)] leading-relaxed whitespace-pre-line">
             {renderContent(post.content)}
           </div>
 

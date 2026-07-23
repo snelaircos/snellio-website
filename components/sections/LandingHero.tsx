@@ -34,16 +34,16 @@ export default function LandingHero({
         {badge && (
           <div className="inline-flex items-center gap-2 bg-[rgba(10,187,214,.1)] border border-[rgba(10,187,214,.3)] rounded-full px-4 py-1.5 mb-6 animate-fade-up">
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--cyan)] shadow-[0_0_8px_var(--cyan)] animate-pulse-dot" />
-            <span className="font-mono text-[.68rem] text-[var(--cyan)] tracking-[.08em] uppercase">{badge}</span>
+            <span className="font-mono text-[.68rem] text-[var(--accent)] tracking-[.08em] uppercase">{badge}</span>
           </div>
         )}
 
         <h1
-          className="relative font-outfit font-black text-white tracking-tight leading-[1.1] max-w-4xl mx-auto animate-fade-up-1"
+          className="relative font-outfit font-black text-[var(--text)] tracking-tight leading-[1.1] max-w-4xl mx-auto animate-fade-up-1"
           style={{ fontSize: 'clamp(2rem, 5vw, 3.8rem)' }}
         >
           {heading}<br />
-          <span style={{ background: 'linear-gradient(135deg, var(--cyan), var(--accent))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+          <span style={{ background: 'linear-gradient(135deg, var(--accent) 30%, var(--cyan))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
             {headingAccent}
           </span>
         </h1>
@@ -67,7 +67,7 @@ export default function LandingHero({
           <div className="relative flex gap-10 mt-14 flex-wrap justify-center animate-fade-up-4">
             {stats.map(s => (
               <div key={s.label} className="text-center">
-                <div className="font-outfit font-black text-[1.7rem] leading-none text-white" dangerouslySetInnerHTML={{ __html: s.value }} />
+                <div className="font-outfit font-black text-[1.7rem] leading-none text-[var(--text)]" dangerouslySetInnerHTML={{ __html: s.value }} />
                 <div className="font-mono text-[.58rem] text-[var(--muted2)] uppercase tracking-[.1em] mt-1.5">{s.label}</div>
               </div>
             ))}

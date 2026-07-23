@@ -36,7 +36,7 @@ export default function ContactForm() {
     }
   }
 
-  const input = 'w-full bg-[var(--navy3)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[var(--cyan)] transition-colors'
+  const input = 'w-full bg-[var(--navy3)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[var(--accent)] transition-colors'
   const label = 'block text-[var(--text2)] text-sm font-medium mb-1.5'
 
   return (

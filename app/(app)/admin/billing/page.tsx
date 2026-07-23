@@ -20,7 +20,7 @@ export default async function AdminBillingPage() {
   const overview = await getBillingOverview()
 
   return (
-    <div className="min-h-screen bg-[var(--navy2)] text-white py-16 px-[5%]">
+    <div className="min-h-screen bg-[var(--navy2)] text-[var(--text)] py-16 px-[5%]">
       <div className="mx-auto max-w-7xl">
         <h1 className="text-2xl font-bold mb-6">Admin Billing overzicht</h1>
         <div className="overflow-x-auto rounded-lg border border-[var(--border)] bg-[var(--navy)]">

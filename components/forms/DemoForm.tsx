@@ -53,7 +53,7 @@ export default function DemoForm({ compact = false }: DemoFormProps) {
     }
   }
 
-  const inp = `w-full bg-[var(--navy2)] border text-[var(--text)] placeholder:text-[var(--muted)] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[var(--cyan)] transition-colors`
+  const inp = `w-full bg-[var(--navy2)] border text-[var(--text)] placeholder:text-[var(--muted)] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[var(--accent)] transition-colors`
   const lbl = `block text-[var(--text2)] text-sm font-medium mb-1.5`
 
   return (

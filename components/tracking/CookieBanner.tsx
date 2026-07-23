@@ -42,17 +42,17 @@ export default function CookieBanner() {
     <div
       role="dialog"
       aria-label="Cookie-instellingen"
-      className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-sm z-[999] bg-[var(--navy3)] border border-[var(--border)] rounded-2xl p-5 shadow-[0_8px_40px_rgba(0,0,0,.4)]"
+      className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-sm z-[999] bg-[var(--navy3)] border border-[var(--border)] rounded-2xl p-5 shadow-[0_8px_40px_rgba(15,33,51,.12)]"
     >
-      <p className="font-semibold text-white text-sm mb-1.5">Wij gebruiken cookies 🍪</p>
+      <p className="font-semibold text-[var(--text)] text-sm mb-1.5">Wij gebruiken cookies 🍪</p>
       <p className="text-[var(--muted2)] text-xs leading-relaxed mb-4">
         We gebruiken functionele, analytische en marketing-cookies om Snellio te verbeteren en advertenties te meten.{' '}
-        <Link href="/cookiebeleid" className="text-[var(--cyan)] hover:underline">Meer info</Link>
+        <Link href="/cookiebeleid" className="text-[var(--accent)] hover:underline">Meer info</Link>
       </p>
       <div className="flex gap-2">
         <button
           onClick={decline}
-          className="flex-1 text-xs font-medium text-[var(--muted2)] border border-[var(--border)] rounded-lg py-2 px-3 hover:border-[var(--cyan)] hover:text-[var(--text2)] transition-colors"
+          className="flex-1 text-xs font-medium text-[var(--muted2)] border border-[var(--border)] rounded-lg py-2 px-3 hover:border-[var(--accent)] hover:text-[var(--text2)] transition-colors"
         >
           Alleen noodzakelijk
         </button>

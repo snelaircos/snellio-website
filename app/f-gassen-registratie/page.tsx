@@ -223,15 +223,15 @@ export default function FgassenRegistratiePage() {
       {/* ── 1. Intro tekst ── */}
       <section className="py-20 px-[5%] bg-[var(--navy2)]">
         <Container narrow>
-          <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-4">
+          <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-4">
             Wat is F-gassen registratie software?
           </p>
           <h2
-            className="font-outfit font-black text-white leading-tight mb-6"
+            className="font-outfit font-black text-[var(--text)] leading-tight mb-6"
             style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)' }}
           >
             Digitale F-gas registratie,{' '}
-            <span className="text-[var(--cyan)]">gebouwd voor de koeltechniek</span>
+            <span className="text-[var(--accent)]">gebouwd voor de koeltechniek</span>
           </h2>
           <div className="text-[var(--text2)] text-[.96rem] leading-[1.85] space-y-4">
             <p>
@@ -245,7 +245,7 @@ export default function FgassenRegistratiePage() {
             </p>
             <p>
               Omdat Snellio de F-gas registratie koppelt aan het volledige{' '}
-              <a href="/crm-voor-installateurs" className="text-[var(--cyan)] hover:underline font-medium">CRM voor installateurs</a>
+              <a href="/crm-voor-installateurs" className="text-[var(--accent)] hover:underline font-medium">CRM voor installateurs</a>
               {' '}, klanten, locaties, installaties en werkbonnen, heeft u niet alleen een compliant logboek, maar ook een volledig inzicht in de koeltechnische historiek van elke installatie in uw bestand.
             </p>
           </div>
@@ -259,15 +259,15 @@ export default function FgassenRegistratiePage() {
       <section className="py-24 px-[5%] bg-[var(--navy3)]">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-14">
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
+            <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">
               Functies
             </p>
             <h2
-              className="font-outfit font-black text-white tracking-tight"
+              className="font-outfit font-black text-[var(--text)] tracking-tight"
               style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
             >
               Alles voor uw{' '}
-              <span className="text-[var(--cyan)]">F-gassen registratie software</span>
+              <span className="text-[var(--accent)]">F-gassen registratie software</span>
             </h2>
             <p className="text-[var(--text2)] text-base max-w-xl mx-auto mt-4 leading-relaxed">
               Van flesregistratie tot lektestdocumentatie, Snellio bevat alle functies die een koeltechnisch installateur nodig heeft om compliant te werken.
@@ -286,7 +286,7 @@ export default function FgassenRegistratiePage() {
                   </span>
                 )}
                 <div className="text-2xl mb-3">{f.icon}</div>
-                <h3 className="font-outfit font-bold text-white text-[.95rem] mb-2">{f.title}</h3>
+                <h3 className="font-outfit font-bold text-[var(--text)] text-[.95rem] mb-2">{f.title}</h3>
                 <p className="text-[var(--muted2)] text-[.82rem] leading-relaxed">{f.desc}</p>
                 <div
                   className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
@@ -303,15 +303,15 @@ export default function FgassenRegistratiePage() {
         <Container>
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
+              <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">
                 Wetgeving & certificering
               </p>
               <h2
-                className="font-outfit font-black text-white tracking-tight"
+                className="font-outfit font-black text-[var(--text)] tracking-tight"
                 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
               >
                 Gebouwd op{' '}
-                <span className="text-[var(--cyan)]">actuele regelgeving</span>
+                <span className="text-[var(--accent)]">actuele regelgeving</span>
               </h2>
               <p className="text-[var(--text2)] text-base max-w-lg mx-auto mt-4 leading-relaxed">
                 Snellio is ontworpen door een BRL100-gecertificeerd installateur. Alle registraties en rapporten voldoen aan de actuele certificatie-eisen en F-gas wetgeving.
@@ -332,7 +332,7 @@ export default function FgassenRegistratiePage() {
                   style={{ transitionDelay: `${i * 50}ms` }}
                 >
                   <div className="text-2xl mb-3">{w.icon}</div>
-                  <p className="font-outfit font-bold text-white text-sm mb-1.5">{w.title}</p>
+                  <p className="font-outfit font-bold text-[var(--text)] text-sm mb-1.5">{w.title}</p>
                   <p className="text-[var(--muted2)] text-xs leading-relaxed">{w.desc}</p>
                 </div>
               ))}
@@ -360,7 +360,7 @@ export default function FgassenRegistratiePage() {
               Zonder F-gas software
             </p>
             <h2
-              className="font-outfit font-bold text-white leading-tight mb-8"
+              className="font-outfit font-bold text-[var(--text)] leading-tight mb-8"
               style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
             >
               Herkenbaar?{' '}
@@ -374,7 +374,7 @@ export default function FgassenRegistratiePage() {
                 >
                   <span className="text-[#e05555] font-bold text-lg shrink-0 mt-px">✗</span>
                   <div>
-                    <p className="font-semibold text-white text-sm mb-1">{p.title}</p>
+                    <p className="font-semibold text-[var(--text)] text-sm mb-1">{p.title}</p>
                     <p className="text-[var(--muted2)] text-[.82rem] leading-relaxed">{p.desc}</p>
                   </div>
                 </li>
@@ -387,11 +387,11 @@ export default function FgassenRegistratiePage() {
               Met Snellio
             </p>
             <h2
-              className="font-outfit font-bold text-white leading-tight mb-8"
+              className="font-outfit font-bold text-[var(--text)] leading-tight mb-8"
               style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
             >
               Met Snellio is alles{' '}
-              <span className="text-[var(--cyan)]">traceerbaar en compliant.</span>
+              <span className="text-[var(--accent)]">traceerbaar en compliant.</span>
             </h2>
             <ul className="flex flex-col gap-3.5 list-none">
               {oplossingen.map(o => (
@@ -401,7 +401,7 @@ export default function FgassenRegistratiePage() {
                 >
                   <span className="text-[var(--green)] font-bold text-lg shrink-0 mt-px">✓</span>
                   <div>
-                    <p className="font-semibold text-white text-sm mb-1">{o.title}</p>
+                    <p className="font-semibold text-[var(--text)] text-sm mb-1">{o.title}</p>
                     <p className="text-[var(--muted2)] text-[.82rem] leading-relaxed">{o.desc}</p>
                   </div>
                 </li>
@@ -415,15 +415,15 @@ export default function FgassenRegistratiePage() {
       <section className="py-24 px-[5%] bg-[var(--navy2)]">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-14">
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
+            <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">
               Voor wie
             </p>
             <h2
-              className="font-outfit font-black text-white tracking-tight"
+              className="font-outfit font-black text-[var(--text)] tracking-tight"
               style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
             >
               F-gas software voor{' '}
-              <span className="text-[var(--cyan)]">koeltechnische professionals</span>
+              <span className="text-[var(--accent)]">koeltechnische professionals</span>
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-5">
@@ -435,7 +435,7 @@ export default function FgassenRegistratiePage() {
               >
                 <div className="text-3xl shrink-0 mt-0.5">{d.icon}</div>
                 <div>
-                  <h3 className="font-outfit font-bold text-white text-[.95rem] mb-2">{d.type}</h3>
+                  <h3 className="font-outfit font-bold text-[var(--text)] text-[.95rem] mb-2">{d.type}</h3>
                   <p className="text-[var(--muted2)] text-[.84rem] leading-relaxed">{d.desc}</p>
                 </div>
               </article>
@@ -448,15 +448,15 @@ export default function FgassenRegistratiePage() {
       <section className="py-24 px-[5%] bg-[var(--navy3)]">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-14">
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
+            <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">
               Voordelen
             </p>
             <h2
-              className="font-outfit font-black text-white tracking-tight"
+              className="font-outfit font-black text-[var(--text)] tracking-tight"
               style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
             >
               Wat levert digitale F-gas registratie{' '}
-              <span className="text-[var(--cyan)]">concreet op?</span>
+              <span className="text-[var(--accent)]">concreet op?</span>
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
@@ -467,8 +467,8 @@ export default function FgassenRegistratiePage() {
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
                 <div className="text-3xl mb-3">{v.icon}</div>
-                <h3 className="font-outfit font-bold text-white text-lg mb-1">{v.title}</h3>
-                <p className="font-mono text-[var(--cyan)] text-[.72rem] tracking-wide mb-5">{v.stat}</p>
+                <h3 className="font-outfit font-bold text-[var(--text)] text-lg mb-1">{v.title}</h3>
+                <p className="font-mono text-[var(--accent)] text-[.72rem] tracking-wide mb-5">{v.stat}</p>
                 <ul className="flex flex-col gap-2.5 list-none">
                   {v.items.map(item => (
                     <li key={item} className="flex items-start gap-2.5 text-[.82rem] text-[var(--text2)]">
@@ -487,15 +487,15 @@ export default function FgassenRegistratiePage() {
       <section className="py-24 px-[5%] bg-[var(--navy2)]">
         <Container>
           <div className="max-w-4xl mx-auto">
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-4">
+            <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-4">
               Praktijkvoorbeeld
             </p>
             <h2
-              className="font-outfit font-black text-white leading-tight mb-8"
+              className="font-outfit font-black text-[var(--text)] leading-tight mb-8"
               style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)' }}
             >
               Hoe Koelservice Noord van papieren logboeken{' '}
-              <span className="text-[var(--cyan)]">naar volledig digitale F-gas compliance ging</span>
+              <span className="text-[var(--accent)]">naar volledig digitale F-gas compliance ging</span>
             </h2>
 
             <div className="bg-[var(--navy3)] border border-[var(--border)] rounded-2xl p-8 mb-8">
@@ -504,7 +504,7 @@ export default function FgassenRegistratiePage() {
                   ❄️
                 </div>
                 <div>
-                  <p className="font-outfit font-bold text-white text-lg">
+                  <p className="font-outfit font-bold text-[var(--text)] text-lg">
                     Koelservice Noord, koeltechnisch servicebedrijf
                   </p>
                   <p className="text-[var(--muted2)] text-sm">
@@ -539,7 +539,7 @@ export default function FgassenRegistratiePage() {
                   { label: 'Logboek administratie',  value: '−3 uur/week'  },
                 ].map(s => (
                   <div key={s.label}>
-                    <p className="font-outfit font-black text-[var(--cyan)] text-xl">{s.value}</p>
+                    <p className="font-outfit font-black text-[var(--accent)] text-xl">{s.value}</p>
                     <p className="font-mono text-[var(--muted2)] text-[.62rem] uppercase tracking-wide">
                       {s.label}
                     </p>
@@ -559,15 +559,15 @@ export default function FgassenRegistratiePage() {
       {/* ── 8. SEO tekst ── */}
       <section className="py-20 px-[5%] bg-[var(--navy3)]">
         <Container narrow>
-          <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-4">
+          <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-4">
             Meer over F-gassen registratie software
           </p>
           <h2
-            className="font-outfit font-black text-white leading-tight mb-8"
+            className="font-outfit font-black text-[var(--text)] leading-tight mb-8"
             style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
           >
             Waarom digitale F-gas registratie{' '}
-            <span className="text-[var(--cyan)]">geen optie meer is</span>
+            <span className="text-[var(--accent)]">geen optie meer is</span>
           </h2>
           <div className="text-[var(--text2)] text-[.96rem] leading-[1.9] space-y-5">
             <p>
@@ -575,7 +575,7 @@ export default function FgassenRegistratiePage() {
             </p>
             <p>
               Het fundamentele probleem met Excel en papieren logboeken is niet dat ze verkeerd zijn, maar dat ze los staan van de werkbon en het klantdossier. Een monteur vult de werkbon in op locatie, maar registreert de F-gas gegevens later op kantoor, of vergeet het. Die ontkoppeling leidt tot ontbrekende gegevens, fouten en een logboek dat bij inspectie niet klopt met de feitelijke situatie. F-gas registratie software zoals Snellio elimineert die ontkoppeling door de registratie direct in de{' '}
-              <a href="/werkbon-software" className="text-[var(--cyan)] hover:underline font-medium">digitale werkbon</a>
+              <a href="/werkbon-software" className="text-[var(--accent)] hover:underline font-medium">digitale werkbon</a>
               {' '}te integreren.
             </p>
             <p>
@@ -586,7 +586,7 @@ export default function FgassenRegistratiePage() {
             </p>
             <p>
               In combinatie met de{' '}
-              <a href="/planningssoftware-monteurs" className="text-[var(--cyan)] hover:underline font-medium">planningssoftware voor monteurs</a>
+              <a href="/planningssoftware-monteurs" className="text-[var(--accent)] hover:underline font-medium">planningssoftware voor monteurs</a>
               {' '}en het volledige klantbeheer van Snellio heeft u niet alleen een compliant F-gas registratiesysteem, maar ook een volledig servicemanagementsysteem voor uw koeltechnisch bedrijf. Van het plannen van de serviceopdracht tot het versturen van de BRL100-rapportage en de factuur, alles in één systeem, zonder dubbele invoer en zonder risico op ontbrekende documentatie.
             </p>
           </div>

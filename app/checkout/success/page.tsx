@@ -95,7 +95,7 @@ export default function CheckoutSuccessPage() {
       <div className="min-h-screen flex items-center justify-center px-[5%]">
         <div className="text-center">
           <div className="text-6xl mb-6">⏳</div>
-          <h1 className="font-outfit font-black text-white text-2xl mb-4">Betaling wordt gecontroleerd...</h1>
+          <h1 className="font-outfit font-black text-[var(--text)] text-2xl mb-4">Betaling wordt gecontroleerd...</h1>
           <p className="text-[var(--text2)]">Even geduld, we controleren je betaling en zetten alles klaar.</p>
         </div>
       </div>
@@ -107,10 +107,10 @@ export default function CheckoutSuccessPage() {
       <div className="min-h-screen flex items-center justify-center px-[5%]">
         <div className="text-center max-w-md">
           <div className="text-6xl mb-6">❌</div>
-          <h1 className="font-outfit font-black text-white text-2xl mb-4">Verificatie mislukt</h1>
+          <h1 className="font-outfit font-black text-[var(--text)] text-2xl mb-4">Verificatie mislukt</h1>
           <p className="text-[var(--text2)] mb-6">{errorMessage}</p>
-          <button onClick={() => window.location.reload()} className="inline-block bg-[var(--cyan)] text-black font-semibold py-3 px-6 rounded-xl mr-3">Opnieuw proberen</button>
-          <a href="/pricing" className="inline-block text-white underline">Terug naar prijzen</a>
+          <button onClick={() => window.location.reload()} className="inline-block bg-[var(--accent)] text-white font-semibold py-3 px-6 rounded-xl mr-3">Opnieuw proberen</button>
+          <a href="/pricing" className="inline-block text-[var(--text)] underline">Terug naar prijzen</a>
         </div>
       </div>
     )
@@ -132,12 +132,12 @@ export default function CheckoutSuccessPage() {
 
       <div className="text-center max-w-md">
         <div className="text-6xl mb-6">✅</div>
-        <h1 className="font-outfit font-black text-white text-2xl mb-4">Je account is aangemaakt</h1>
+        <h1 className="font-outfit font-black text-[var(--text)] text-2xl mb-4">Je account is aangemaakt</h1>
         <p className="text-[var(--text2)] mb-1">Je kunt nu inloggen met:</p>
         <p className="font-semibold text-[var(--text)] mb-6">{email || 'Onbekend e-mailadres'}</p>
 
-        <button onClick={goToLogin} className="w-full bg-[var(--cyan)] text-black font-semibold py-3 px-6 rounded-xl mb-3">Ga naar login</button>
-        <button onClick={goToDashboard} disabled={buttonLoading} className="w-full border border-white text-white font-semibold py-3 px-6 rounded-xl hover:bg-white hover:text-black transition">
+        <button onClick={goToLogin} className="w-full bg-[var(--accent)] text-white font-semibold py-3 px-6 rounded-xl mb-3">Ga naar login</button>
+        <button onClick={goToDashboard} disabled={buttonLoading} className="w-full border border-[var(--accent)] text-[var(--accent)] font-semibold py-3 px-6 rounded-xl hover:bg-[var(--accent)] hover:text-white transition">
           {buttonLoading ? 'Bezig...' : 'Ga naar dashboard'}
         </button>
 

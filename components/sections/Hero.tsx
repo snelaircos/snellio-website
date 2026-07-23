@@ -23,14 +23,14 @@ export default function Hero() {
       {/* Badge */}
       <div className="relative animate-fade-up inline-flex items-center gap-2 bg-[rgba(10,187,214,.1)] border border-[rgba(10,187,214,.3)] rounded-full px-4 py-1.5 mb-7">
         <span className="w-1.5 h-1.5 rounded-full bg-[var(--cyan)] shadow-[0_0_8px_var(--cyan)] animate-pulse-dot" />
-        <span className="font-mono text-[.68rem] text-[var(--cyan)] tracking-[.08em] uppercase">
+        <span className="font-mono text-[.68rem] text-[var(--accent)] tracking-[.08em] uppercase">
           BRL100 • F-gas 2024/573 • EPBD ready
         </span>
       </div>
 
       {/* Heading */}
       <h1
-        className="relative font-outfit font-black text-white tracking-tight leading-[1.05] max-w-3xl animate-fade-up-1"
+        className="relative font-outfit font-black text-[var(--text)] tracking-tight leading-[1.05] max-w-3xl animate-fade-up-1"
         style={{ fontSize: 'clamp(2.2rem, 5.5vw, 4rem)' }}
       >
         Stop met losse tools. Regel je hele installatiebedrijf in{' '}
@@ -56,9 +56,9 @@ export default function Hero() {
       <div className="relative flex gap-12 mt-16 flex-wrap justify-center animate-fade-up-4">
         {STATS.map(stat => (
           <div key={stat.label} className="text-center">
-            <div className="font-outfit font-black text-[1.8rem] text-white leading-none">
+            <div className="font-outfit font-black text-[1.8rem] text-[var(--text)] leading-none">
               {stat.value}
-              {stat.suffix && <span className="text-[var(--cyan)] text-[1.2rem] ml-0.5">{stat.suffix}</span>}
+              {stat.suffix && <span className="text-[var(--accent)] text-[1.2rem] ml-0.5">{stat.suffix}</span>}
             </div>
             <div className="font-mono text-[.6rem] text-[var(--muted2)] uppercase tracking-[.1em] mt-1.5">
               {stat.label}

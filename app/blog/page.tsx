@@ -32,11 +32,11 @@ export default function BlogPage() {
 
       <section className="pt-32 pb-8 px-[5%] text-center">
         <Container>
-          <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">Kennisbank</p>
-          <h1 className="font-outfit font-black text-white tracking-tight leading-tight mb-5"
+          <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">Kennisbank</p>
+          <h1 className="font-outfit font-black text-[var(--text)] tracking-tight leading-tight mb-5"
               style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>
             Tips & kennis voor<br />
-            <span className="text-[var(--cyan)]">HVAC-installateurs</span>
+            <span className="text-[var(--accent)]">HVAC-installateurs</span>
           </h1>
           <p className="text-[var(--text2)] text-lg max-w-lg mx-auto">
             Regelgeving, software-tips en praktijkverhalen uit de koeltechniek.
@@ -58,12 +58,12 @@ export default function BlogPage() {
               </div>
               <div className="p-6 flex flex-col flex-1">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="text-xs font-mono text-[var(--cyan)] bg-[rgba(10,187,214,.1)] px-2.5 py-1 rounded-full">
+                  <span className="text-xs font-mono text-[var(--accent)] bg-[rgba(10,187,214,.1)] px-2.5 py-1 rounded-full">
                     {post.category}
                   </span>
                   <span className="text-xs text-[var(--muted2)]">{post.readTime} lezen</span>
                 </div>
-                <h2 className="font-outfit font-bold text-white text-[1rem] leading-snug mb-3 group-hover:text-[var(--cyan)] transition-colors">
+                <h2 className="font-outfit font-bold text-[var(--text)] text-[1rem] leading-snug mb-3 group-hover:text-[var(--accent)] transition-colors">
                   {post.title}
                 </h2>
                 <p className="text-[var(--muted2)] text-sm leading-relaxed flex-1 mb-5">

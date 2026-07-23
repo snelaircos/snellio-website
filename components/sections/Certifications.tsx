@@ -6,7 +6,7 @@ export default function Certifications() {
       <div className="mx-auto max-w-7xl flex flex-col md:flex-row items-center gap-10 md:gap-16">
 
         <div className="md:max-w-sm shrink-0">
-          <h2 className="font-outfit font-bold text-white text-xl mb-2">
+          <h2 className="font-outfit font-bold text-[var(--text)] text-xl mb-2">
             Gebouwd op wet- en regelgeving
           </h2>
           <p className="text-[var(--muted2)] text-sm leading-relaxed">

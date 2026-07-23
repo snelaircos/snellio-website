@@ -25,7 +25,7 @@ export default function LoginPage({ searchParams }: Props) {
     <div className='min-h-screen flex items-center justify-center px-[5%]'>
       <div className='text-center max-w-md'>
         <div className='text-6xl mb-6'>🔐</div>
-        <h1 className='font-outfit font-black text-white text-2xl mb-4'>Inloggen</h1>
+        <h1 className='font-outfit font-black text-[var(--text)] text-2xl mb-4'>Inloggen</h1>
 
         {newAccount && (
           <div className='mb-6 rounded-xl border border-green-400 bg-green-950 p-4 text-left'>
@@ -42,13 +42,13 @@ export default function LoginPage({ searchParams }: Props) {
 
         <a
           href={loginUrl}
-          className='inline-block bg-[var(--cyan)] text-black font-semibold py-3 px-6 rounded-xl hover:brightness-110 transition-all duration-200'
+          className='inline-block bg-[var(--accent)] text-white font-semibold py-3 px-6 rounded-xl hover:brightness-110 transition-all duration-200'
         >
           Naar app.snellio.nl →
         </a>
 
         <p className='text-[var(--muted)] text-sm mt-6'>
-          Nog geen account? <a href='/checkout' className='text-[var(--cyan)] hover:underline'>Probeer 14 dagen gratis</a>
+          Nog geen account? <a href='/checkout' className='text-[var(--accent)] hover:underline'>Probeer 14 dagen gratis</a>
         </p>
       </div>
     </div>

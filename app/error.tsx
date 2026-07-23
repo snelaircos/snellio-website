@@ -17,7 +17,7 @@ export default function Error({
   return (
     <div className="min-h-screen flex flex-col items-center justify-center text-center px-[5%]">
       <p className="font-mono text-[var(--orange)] text-[.7rem] uppercase tracking-[.14em] mb-4">Fout</p>
-      <h1 className="font-outfit font-black text-white text-4xl tracking-tight mb-4">
+      <h1 className="font-outfit font-black text-[var(--text)] text-4xl tracking-tight mb-4">
         Er is iets misgegaan
       </h1>
       <p className="text-[var(--text2)] text-lg max-w-sm mb-10 leading-relaxed">

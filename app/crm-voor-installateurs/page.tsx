@@ -81,7 +81,7 @@ export default function CrmVoorInstallateursAdsPage() {
       {/* ── HERO. Boven de fold, conversie first ── */}
       <section
         className="hero-section relative pt-24 pb-16 px-[5%] overflow-hidden"
-        style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(10,187,214,.08) 0%, transparent 70%) #0a1a28' }}
+        style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(10,187,214,.10) 0%, transparent 70%) #f4f7fa' }}
       >
         <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
@@ -94,10 +94,10 @@ export default function CrmVoorInstallateursAdsPage() {
             {/* Subtiele glow bovenin het formulierblok */}
             <div className="absolute top-0 inset-x-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-[var(--accent)] to-[var(--cyan)]" />
 
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-2">
+            <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-2">
               Gratis demo aanvragen
             </p>
-            <h2 className="font-outfit font-bold text-white text-xl mb-1">
+            <h2 className="font-outfit font-bold text-[var(--text)] text-xl mb-1">
               Plan je demo in 20 minuten
             </h2>
             <p className="text-[var(--muted2)] text-sm mb-6">
@@ -110,17 +110,17 @@ export default function CrmVoorInstallateursAdsPage() {
           <div className="order-last lg:order-first">
             <div className="inline-flex items-center gap-2 bg-[rgba(10,187,214,.1)] border border-[rgba(10,187,214,.3)] rounded-full px-4 py-1.5 mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--cyan)]" />
-              <span className="font-mono text-[.68rem] text-[var(--cyan)] tracking-[.08em] uppercase">
+              <span className="font-mono text-[.68rem] text-[var(--accent)] tracking-[.08em] uppercase">
                 Speciaal voor HVAC installateurs
               </span>
             </div>
 
             <h1
-              className="font-outfit font-black text-white tracking-tight leading-[1.05] mb-4"
+              className="font-outfit font-black text-[var(--text)] tracking-tight leading-[1.05] mb-4"
               style={{ fontSize: 'clamp(2rem, 4.5vw, 3.4rem)' }}
             >
               De CRM voor installateurs{' '}
-              <span style={{ background: 'linear-gradient(135deg, var(--cyan), var(--accent))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+              <span style={{ background: 'linear-gradient(135deg, var(--accent) 30%, var(--cyan))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                 in koeltechniek
               </span>
             </h1>
@@ -171,7 +171,7 @@ export default function CrmVoorInstallateursAdsPage() {
             ))}
           </div>
           <p className="text-center text-[var(--text2)] text-sm mt-8">
-            <strong className="text-white">Snellio lost dit op.</strong> Alles in één systeem, gebouwd voor installateurs.
+            <strong className="text-[var(--text)]">Snellio lost dit op.</strong> Alles in één systeem, gebouwd voor installateurs.
           </p>
         </Container>
       </section>
@@ -180,9 +180,9 @@ export default function CrmVoorInstallateursAdsPage() {
       <section className="py-20 px-[5%] bg-[var(--navy2)]">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-12">
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">Functies</p>
-            <h2 className="font-outfit font-black text-white tracking-tight" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>
-              Alles wat je nodig hebt, <span className="text-[var(--cyan)]">niets wat je niet gebruikt</span>
+            <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">Functies</p>
+            <h2 className="font-outfit font-black text-[var(--text)] tracking-tight" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>
+              Alles wat je nodig hebt, <span className="text-[var(--accent)]">niets wat je niet gebruikt</span>
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -193,7 +193,7 @@ export default function CrmVoorInstallateursAdsPage() {
                 style={{ transitionDelay: `${i * 50}ms` }}
               >
                 <div className="text-2xl mb-3">{b.icon}</div>
-                <h3 className="font-outfit font-bold text-white text-[.95rem] mb-2">{b.title}</h3>
+                <h3 className="font-outfit font-bold text-[var(--text)] text-[.95rem] mb-2">{b.title}</h3>
                 <p className="text-[var(--muted2)] text-[.82rem] leading-relaxed">{b.desc}</p>
               </div>
             ))}
@@ -205,9 +205,9 @@ export default function CrmVoorInstallateursAdsPage() {
       <section className="py-20 px-[5%] bg-[var(--navy3)]">
         <Container>
           <div className="text-center mb-12">
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">Hoe het werkt</p>
-            <h2 className="font-outfit font-black text-white tracking-tight" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.4rem)' }}>
-              Aan de slag in <span className="text-[var(--cyan)]">3 stappen</span>
+            <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">Hoe het werkt</p>
+            <h2 className="font-outfit font-black text-[var(--text)] tracking-tight" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.4rem)' }}>
+              Aan de slag in <span className="text-[var(--accent)]">3 stappen</span>
             </h2>
           </div>
           <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -216,7 +216,7 @@ export default function CrmVoorInstallateursAdsPage() {
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--accent)] to-[var(--cyan)] flex items-center justify-center font-outfit font-black text-white text-lg mx-auto mb-4">
                   {s.nr}
                 </div>
-                <h3 className="font-outfit font-bold text-white text-sm mb-2">{s.title}</h3>
+                <h3 className="font-outfit font-bold text-[var(--text)] text-sm mb-2">{s.title}</h3>
                 <p className="text-[var(--muted2)] text-[.82rem] leading-relaxed">{s.desc}</p>
               </div>
             ))}
@@ -227,10 +227,10 @@ export default function CrmVoorInstallateursAdsPage() {
       {/* ── CTA REPEAT ── */}
       <section className="py-20 px-[5%] bg-[var(--navy2)] text-center">
         <Container narrow>
-          <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">Klaar om te starten?</p>
-          <h2 className="font-outfit font-black text-white tracking-tight mb-5" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>
+          <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">Klaar om te starten?</p>
+          <h2 className="font-outfit font-black text-[var(--text)] tracking-tight mb-5" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>
             Start vandaag nog.<br />
-            <span className="text-[var(--cyan)]">Probeer 14 dagen gratis.</span>
+            <span className="text-[var(--accent)]">Probeer 14 dagen gratis.</span>
           </h2>
           <p className="text-[var(--text2)] text-base mb-8">
             Binnen 5 minuten actief. Of vraag eerst een demo aan. We helpen je graag.
@@ -245,11 +245,11 @@ export default function CrmVoorInstallateursAdsPage() {
       {/* ── FAQ ── */}
       <section className="py-16 px-[5%] bg-[var(--navy3)]">
         <Container narrow>
-          <h2 className="font-outfit font-bold text-white text-xl mb-6 text-center">Veelgestelde vragen</h2>
+          <h2 className="font-outfit font-bold text-[var(--text)] text-xl mb-6 text-center">Veelgestelde vragen</h2>
           <dl className="flex flex-col gap-3">
             {faqs.map(faq => (
               <div key={faq.question} className="bg-[var(--navy2)] border border-[var(--border)] rounded-xl px-6 py-5">
-                <dt className="font-outfit font-semibold text-white text-[.95rem] mb-1.5">{faq.question}</dt>
+                <dt className="font-outfit font-semibold text-[var(--text)] text-[.95rem] mb-1.5">{faq.question}</dt>
                 <dd className="text-[var(--muted2)] text-sm leading-relaxed">{faq.answer}</dd>
               </div>
             ))}
@@ -261,7 +261,7 @@ export default function CrmVoorInstallateursAdsPage() {
              (was vrijwel alleen UI-copy — te dun voor een money-keyword) ── */}
       <section className="py-20 px-[5%] bg-[var(--navy2)]">
         <Container narrow>
-          <h2 className="font-outfit font-bold text-white text-2xl mb-6">
+          <h2 className="font-outfit font-bold text-[var(--text)] text-2xl mb-6">
             Wat is een CRM voor installateurs?
           </h2>
           <div className="text-[var(--muted2)] text-[.95rem] leading-[1.8] space-y-5">
@@ -270,38 +270,38 @@ export default function CrmVoorInstallateursAdsPage() {
               klanten, installaties, werkorders en facturen op één plek beheert. Waar een algemeen
               CRM stopt bij contactgegevens en notities, gaat een installateurs-CRM verder: per klant
               zie je welke airco of warmtepomp er hangt, welk koudemiddel erin zit, wanneer de laatste
-              lekcontrole was en welke <Link href="/werkbon-software" className="text-[var(--cyan)] hover:underline">werkbonnen</Link> er
+              lekcontrole was en welke <Link href="/werkbon-software" className="text-[var(--accent)] hover:underline">werkbonnen</Link> er
               zijn afgetekend. Voor koeltechniek-bedrijven komt daar de wettelijke{' '}
-              <Link href="/f-gassen-registratie" className="text-[var(--cyan)] hover:underline">F-gassen registratie</Link>{' '}
+              <Link href="/f-gassen-registratie" className="text-[var(--accent)] hover:underline">F-gassen registratie</Link>{' '}
               (EU-verordening 2024/573) nog bovenop.
             </p>
-            <h3 className="font-outfit font-semibold text-white text-lg pt-2">
+            <h3 className="font-outfit font-semibold text-[var(--text)] text-lg pt-2">
               Waarom een los CRM niet werkt voor koeltechniek
             </h3>
             <p>
               Veel installatiebedrijven beginnen met een algemeen pakket of losse tools: Excel voor
               klanten, een agenda-app voor de{' '}
-              <Link href="/planningssoftware-monteurs" className="text-[var(--cyan)] hover:underline">monteursplanning</Link>,
+              <Link href="/planningssoftware-monteurs" className="text-[var(--accent)] hover:underline">monteursplanning</Link>,
               papieren werkbonnen en een apart boekhoudpakket. Dat werkt tot een monteur of vijf.
               Daarna gaat het knellen: servicehistorie is onvindbaar, flesregistratie gebeurt achteraf
               (of niet), en elke werkbon wordt twee keer overgetikt. Een branchespecifiek CRM lost dat
               op omdat werkbon, planning, F-gas logboek en factuur uit dezelfde database komen — invullen
               op locatie is meteen verwerken.
             </p>
-            <h3 className="font-outfit font-semibold text-white text-lg pt-2">
+            <h3 className="font-outfit font-semibold text-[var(--text)] text-lg pt-2">
               Waar let je op bij het kiezen?
             </h3>
             <p>
-              Kies op vier punten. <strong className="text-white">Eén:</strong> werkt de app offline?
-              In een kruipruimte of stookhok is geen bereik. <strong className="text-white">Twee:</strong>{' '}
+              Kies op vier punten. <strong className="text-[var(--text)]">Eén:</strong> werkt de app offline?
+              In een kruipruimte of stookhok is geen bereik. <strong className="text-[var(--text)]">Twee:</strong>{' '}
               zit F-gassen registratie en BRL100-rapportage in de kern, of is het een plug-in van een
-              algemeen pakket? <strong className="text-white">Drie:</strong> kunnen je monteurs er zonder
-              cursus mee werken? <strong className="text-white">Vier:</strong> zit je vast aan een
+              algemeen pakket? <strong className="text-[var(--text)]">Drie:</strong> kunnen je monteurs er zonder
+              cursus mee werken? <strong className="text-[var(--text)]">Vier:</strong> zit je vast aan een
               jaarcontract of kun je maandelijks opzeggen? Snellio is gebouwd door een STEK-gecertificeerd
               installateur die zelf dagelijks op de bus zit — bekijk de{' '}
-              <Link href="/pricing" className="text-[var(--cyan)] hover:underline">pakketten en prijzen</Link>{' '}
+              <Link href="/pricing" className="text-[var(--accent)] hover:underline">pakketten en prijzen</Link>{' '}
               of vergelijk Snellio met{' '}
-              <Link href="/alternatief-voor-crm-installateurs" className="text-[var(--cyan)] hover:underline">losse tools</Link>.
+              <Link href="/alternatief-voor-crm-installateurs" className="text-[var(--accent)] hover:underline">losse tools</Link>.
             </p>
           </div>
         </Container>

@@ -9,7 +9,7 @@ export function organizationSchema() {
     url:        SITE.url,
     logo: {
       '@type': 'ImageObject',
-      url:     `${SITE.url}/logo.png`,
+      url:     `${SITE.url}/logo-donker.png`,
     },
     contactPoint: {
       '@type':           'ContactPoint',

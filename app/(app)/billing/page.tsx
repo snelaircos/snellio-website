@@ -4,10 +4,10 @@ import ChangePlan from '@/components/billing/ChangePlan'
 export const dynamic = 'force-dynamic'
 
 const statusBadge = (status: string) => {
-  if (status === 'active') return 'bg-emerald-500 text-white'
+  if (status === 'active') return 'bg-emerald-500 text-[var(--text)]'
   if (status === 'past_due') return 'bg-amber-500 text-black'
-  if (status === 'canceled' || status === 'expired') return 'bg-rose-500 text-white'
-  return 'bg-slate-500 text-white'
+  if (status === 'canceled' || status === 'expired') return 'bg-rose-500 text-[var(--text)]'
+  return 'bg-[var(--navy2)] border border-[var(--border)] text-[var(--muted2)]'
 }
 
 export default async function BillingPage() {
@@ -16,7 +16,7 @@ export default async function BillingPage() {
   if (!subscription) {
     return (
       <div className="min-h-screen flex items-center justify-center px-[5%]">
-        <div className="text-white">Geen abonnement gevonden.</div>
+        <div className="text-[var(--text)]">Geen abonnement gevonden.</div>
       </div>
     )
   }
@@ -24,7 +24,7 @@ export default async function BillingPage() {
   const canReactivate = subscription.status === 'canceled' && new Date(subscription.ends_at) > new Date()
 
   return (
-    <div className="min-h-screen bg-[var(--navy2)] text-white py-16 px-[5%]">
+    <div className="min-h-screen bg-[var(--navy2)] text-[var(--text)] py-16 px-[5%]">
       <div className="mx-auto max-w-5xl space-y-6">
         <section className="rounded-xl border border-[var(--border)] bg-[var(--navy)] p-6">
           <h1 className="text-2xl font-bold mb-4">Abonnement</h1>
@@ -79,7 +79,7 @@ export default async function BillingPage() {
               </button>
               <button
                 disabled={!canReactivate}
-                className={`rounded-lg px-4 py-2 font-semibold ${canReactivate ? 'bg-cyan-500 text-black' : 'bg-slate-700 text-[var(--text)]'}`}
+                className={`rounded-lg px-4 py-2 font-semibold ${canReactivate ? 'bg-[var(--accent)] text-white' : 'bg-[var(--navy2)] border border-[var(--border)] text-[var(--muted2)]'}`}
               >
                 {canReactivate ? 'Abonnement opnieuw activeren' : 'Binnenkort beschikbaar'}
               </button>              {subscription.status === 'past_due' ? (

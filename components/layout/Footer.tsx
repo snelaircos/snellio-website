@@ -26,7 +26,7 @@ export default function Footer() {
   const seoLinks = isAutomotive ? [] : hvacSeoLinks
 
   return (
-    <footer className="border-t border-[var(--border)] bg-[var(--navy2)]">
+    <footer className="border-t border-[var(--border)] bg-white">
       <div className={`mx-auto max-w-7xl px-[5%] py-16 grid gap-10 ${seoLinks.length ? 'md:grid-cols-5' : 'md:grid-cols-4'}`}>
 
         {/* Merk */}
@@ -35,7 +35,7 @@ export default function Footer() {
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--cyan)] to-[var(--accent)] flex items-center justify-center text-base">
               ❄️
             </div>
-            <span className="font-outfit font-bold text-white text-lg">Snellio</span>
+            <span className="font-outfit font-bold text-[var(--text)] text-lg">Snellio</span>
           </Link>
           <p className="text-[var(--muted2)] text-sm leading-relaxed max-w-xs">
             Software voor service-bedrijven. Eén systeem voor klanten, werkorders, planning en facturatie.
@@ -43,7 +43,7 @@ export default function Footer() {
           <div className="mt-6">
             <a
               href={`mailto:${SITE.email}`}
-              className="text-[var(--muted2)] text-sm hover:text-[var(--cyan)] transition-colors"
+              className="text-[var(--muted2)] text-sm hover:text-[var(--accent)] transition-colors"
             >
               {SITE.email}
             </a>
@@ -52,17 +52,17 @@ export default function Footer() {
 
         {/* Product */}
         <div>
-          <h3 className="font-semibold text-white text-sm mb-4 tracking-wide">Product</h3>
+          <h3 className="font-semibold text-[var(--text)] text-sm mb-4 tracking-wide">Product</h3>
           <ul className="flex flex-col gap-3 list-none">
             {NAV_ITEMS.map(item => (
               <li key={item.href}>
-                <Link href={item.href} className="text-[var(--muted2)] text-sm hover:text-[var(--cyan)] transition-colors">
+                <Link href={item.href} className="text-[var(--muted2)] text-sm hover:text-[var(--accent)] transition-colors">
                   {item.label}
                 </Link>
               </li>
             ))}
             <li>
-              <Link href="/registreren" className="text-[var(--cyan)] text-sm font-medium hover:underline">
+              <Link href="/registreren" className="text-[var(--accent)] text-sm font-medium hover:underline">
                 Gratis starten →
               </Link>
             </li>
@@ -72,11 +72,11 @@ export default function Footer() {
         {/* SEO pagina's, alleen op niet-automotive pagina's */}
         {seoLinks.length > 0 && (
           <div>
-            <h3 className="font-semibold text-white text-sm mb-4 tracking-wide">Software</h3>
+            <h3 className="font-semibold text-[var(--text)] text-sm mb-4 tracking-wide">Software</h3>
             <ul className="flex flex-col gap-3 list-none">
               {seoLinks.map(item => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-[var(--muted2)] text-sm hover:text-[var(--cyan)] transition-colors">
+                  <Link href={item.href} className="text-[var(--muted2)] text-sm hover:text-[var(--accent)] transition-colors">
                     {item.label}
                   </Link>
                 </li>
@@ -87,11 +87,11 @@ export default function Footer() {
 
         {/* Juridisch */}
         <div>
-          <h3 className="font-semibold text-white text-sm mb-4 tracking-wide">Juridisch</h3>
+          <h3 className="font-semibold text-[var(--text)] text-sm mb-4 tracking-wide">Juridisch</h3>
           <ul className="flex flex-col gap-3 list-none">
             {legal.map(item => (
               <li key={item.href}>
-                <Link href={item.href} className="text-[var(--muted2)] text-sm hover:text-[var(--cyan)] transition-colors">
+                <Link href={item.href} className="text-[var(--muted2)] text-sm hover:text-[var(--accent)] transition-colors">
                   {item.label}
                 </Link>
               </li>

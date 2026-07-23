@@ -58,7 +58,7 @@ export default function ChangePlan({ currentPlan, pendingPlan }: ChangePlanProps
           <button
             key={plan}
             disabled={loading || plan === currentPlan}
-            className={`rounded-lg px-4 py-2 font-semibold ${plan === currentPlan ? 'bg-slate-700 text-[var(--text)]' : 'bg-cyan-500 text-black'}`}
+            className={`rounded-lg px-4 py-2 font-semibold ${plan === currentPlan ? 'bg-[var(--navy2)] border border-[var(--border)] text-[var(--muted2)]' : 'bg-[var(--accent)] text-white'}`}
             onClick={() => changeTo(plan)}
           >
             {PLAN_LABELS[plan]}

@@ -14,13 +14,13 @@ export default function Cta() {
       />
 
       <div className="relative mx-auto max-w-2xl">
-        <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-5">
+        <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-5">
           Klaar om te beginnen?
         </p>
-        <h2 className="font-outfit font-black text-white tracking-tight leading-[1.1] mb-5"
+        <h2 className="font-outfit font-black text-[var(--text)] tracking-tight leading-[1.1] mb-5"
             style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)' }}>
           Start vandaag nog.<br />
-          <span className="text-[var(--cyan)]">Probeer 14 dagen gratis.</span>
+          <span className="text-[var(--accent)]">Probeer 14 dagen gratis.</span>
         </h2>
         <p className="text-[var(--text2)] text-[1.05rem] leading-relaxed mb-10">
           Binnen 5 minuten aan het werk. Installaties, werkbonnen en BRL100-rapporten direct beschikbaar.

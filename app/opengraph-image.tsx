@@ -3,7 +3,7 @@ import { ImageResponse } from 'next/og'
 // Sitewide standaard Open Graph-afbeelding (1200×630), gegenereerd bij de
 // build via de App Router file-conventie. Elke pagina zonder eigen og-image
 // krijgt deze — dus elke share op WhatsApp/LinkedIn/X toont een nette kaart.
-// Kleuren = huisstijl (navy/cyan uit layout.tsx).
+// Kleuren = licht thema (wit/grijsblauw/blauw, zelfde palet als de app).
 
 export const runtime = 'nodejs'
 export const alt = 'Snellio, software voor koeltechniek en airco-installateurs'
@@ -20,7 +20,7 @@ export default function OgImage() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          background: 'linear-gradient(135deg, #0a1a28 0%, #0f2133 55%, #162d42 100%)',
+          background: 'linear-gradient(135deg, #ffffff 0%, #f4f7fa 55%, #e8f1f7 100%)',
           padding: '72px 84px',
           fontFamily: 'sans-serif',
         }}
@@ -43,7 +43,7 @@ export default function OgImage() {
           >
             S
           </div>
-          <div style={{ display: 'flex', color: '#ffffff', fontSize: 44, fontWeight: 800 }}>
+          <div style={{ display: 'flex', color: '#0f2133', fontSize: 44, fontWeight: 800 }}>
             Snellio
           </div>
         </div>
@@ -53,7 +53,7 @@ export default function OgImage() {
           <div
             style={{
               display: 'flex',
-              color: '#ffffff',
+              color: '#0f2133',
               fontSize: 64,
               fontWeight: 800,
               lineHeight: 1.15,
@@ -63,17 +63,17 @@ export default function OgImage() {
           >
             Eén plek voor je werkbonnen, planning en F-gassen
           </div>
-          <div style={{ display: 'flex', color: '#b8d0e0', fontSize: 30, lineHeight: 1.4 }}>
+          <div style={{ display: 'flex', color: '#44607a', fontSize: 30, lineHeight: 1.4 }}>
             Software voor koeltechniek- en airco-installateurs
           </div>
         </div>
 
         {/* Onderbalk */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', color: '#0abbd6', fontSize: 28, fontWeight: 700 }}>
+          <div style={{ display: 'flex', color: '#0090b8', fontSize: 28, fontWeight: 700 }}>
             snellio.nl
           </div>
-          <div style={{ display: 'flex', color: '#8fafc8', fontSize: 24 }}>
+          <div style={{ display: 'flex', color: '#5f7791', fontSize: 24 }}>
             BRL100 · F-gassen 2024/573 · Werkbon · Planning
           </div>
         </div>

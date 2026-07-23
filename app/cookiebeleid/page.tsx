@@ -23,12 +23,12 @@ export default function CookiebeleidPage() {
   return (
     <div className="pt-32 pb-24 px-[5%]">
       <Container narrow>
-        <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">Juridisch</p>
-        <h1 className="font-outfit font-black text-white text-4xl mb-2">Cookiebeleid</h1>
+        <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">Juridisch</p>
+        <h1 className="font-outfit font-black text-[var(--text)] text-4xl mb-2">Cookiebeleid</h1>
         <p className="text-[var(--muted2)] text-sm mb-12">Laatste update: januari 2025</p>
 
         <section className="mb-10">
-          <h2 className="font-outfit font-bold text-white text-xl mb-4">Wat zijn cookies?</h2>
+          <h2 className="font-outfit font-bold text-[var(--text)] text-xl mb-4">Wat zijn cookies?</h2>
           <p className="text-[var(--text2)] text-sm leading-relaxed">
             Cookies zijn kleine tekstbestanden die door uw browser worden opgeslagen wanneer u onze website bezoekt.
             Wij gebruiken cookies om de website goed te laten werken, het gebruik te analyseren en onze marketing te verbeteren.
@@ -36,7 +36,7 @@ export default function CookiebeleidPage() {
         </section>
 
         <section className="mb-10">
-          <h2 className="font-outfit font-bold text-white text-xl mb-6">Overzicht van cookies</h2>
+          <h2 className="font-outfit font-bold text-[var(--text)] text-xl mb-6">Overzicht van cookies</h2>
           <div className="overflow-x-auto rounded-xl border border-[var(--border)]">
             <table className="w-full text-sm">
               <thead>
@@ -49,7 +49,7 @@ export default function CookiebeleidPage() {
               <tbody>
                 {cookies.map((c, i) => (
                   <tr key={c.name} className={`border-b border-[var(--border)] ${i % 2 === 0 ? 'bg-[var(--navy2)]' : 'bg-[var(--navy3)]'}`}>
-                    <td className="px-4 py-3 font-mono text-[var(--cyan)] text-xs">{c.name}</td>
+                    <td className="px-4 py-3 font-mono text-[var(--accent)] text-xs">{c.name}</td>
                     <td className="px-4 py-3 text-[var(--text2)]">
                       <span className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium
                         ${c.type === 'Functioneel' ? 'bg-blue-900/40 text-blue-300' :
@@ -68,7 +68,7 @@ export default function CookiebeleidPage() {
         </section>
 
         <section className="mb-10">
-          <h2 className="font-outfit font-bold text-white text-xl mb-4">Uw voorkeuren beheren</h2>
+          <h2 className="font-outfit font-bold text-[var(--text)] text-xl mb-4">Uw voorkeuren beheren</h2>
           <p className="text-[var(--text2)] text-sm leading-relaxed mb-4">
             Functionele cookies zijn noodzakelijk voor het functioneren van de website. Analytische en marketingcookies plaatsen wij alleen met uw toestemming.
           </p>
@@ -79,10 +79,10 @@ export default function CookiebeleidPage() {
         </section>
 
         <section>
-          <h2 className="font-outfit font-bold text-white text-xl mb-4">Contact</h2>
+          <h2 className="font-outfit font-bold text-[var(--text)] text-xl mb-4">Contact</h2>
           <p className="text-[var(--text2)] text-sm">
             Vragen? Mail naar{' '}
-            <a href={`mailto:${SITE.email}`} className="text-[var(--cyan)] hover:underline">{SITE.email}</a>
+            <a href={`mailto:${SITE.email}`} className="text-[var(--accent)] hover:underline">{SITE.email}</a>
           </p>
         </section>
       </Container>

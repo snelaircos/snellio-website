@@ -12,7 +12,7 @@ export const metadata: Metadata = buildMetadata({
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <section className="mb-10">
-    <h2 className="font-outfit font-bold text-white text-xl mb-4">{title}</h2>
+    <h2 className="font-outfit font-bold text-[var(--text)] text-xl mb-4">{title}</h2>
     <div className="text-[var(--text2)] text-sm leading-relaxed space-y-3">{children}</div>
   </section>
 )
@@ -21,8 +21,8 @@ export default function PrivacyPage() {
   return (
     <div className="pt-32 pb-24 px-[5%]">
       <Container narrow>
-        <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">Juridisch</p>
-        <h1 className="font-outfit font-black text-white text-4xl mb-2">Privacybeleid</h1>
+        <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">Juridisch</p>
+        <h1 className="font-outfit font-black text-[var(--text)] text-4xl mb-2">Privacybeleid</h1>
         <p className="text-[var(--muted2)] text-sm mb-12">Laatste update: januari 2025</p>
 
         <Section title="1. Wie zijn wij?">
@@ -30,7 +30,7 @@ export default function PrivacyPage() {
             {SITE.name} is een product van {SITE.company}, gevestigd in Nederland (KvK {SITE.kvk}).
             Wij bieden CRM-software voor HVAC- en koeltechnisch installateurs via {SITE.url}.
           </p>
-          <p>Vragen over privacy? Mail naar <a href={`mailto:${SITE.email}`} className="text-[var(--cyan)] hover:underline">{SITE.email}</a></p>
+          <p>Vragen over privacy? Mail naar <a href={`mailto:${SITE.email}`} className="text-[var(--accent)] hover:underline">{SITE.email}</a></p>
         </Section>
 
         <Section title="2. Welke gegevens verzamelen wij?">
@@ -76,7 +76,7 @@ export default function PrivacyPage() {
 
         <Section title="6. Uw rechten">
           <p>U heeft het recht op inzage, correctie, verwijdering, bezwaar en dataportabiliteit.
-          Neem hiervoor contact op via <a href={`mailto:${SITE.email}`} className="text-[var(--cyan)] hover:underline">{SITE.email}</a>.</p>
+          Neem hiervoor contact op via <a href={`mailto:${SITE.email}`} className="text-[var(--accent)] hover:underline">{SITE.email}</a>.</p>
         </Section>
 
         <Section title="7. Bewaartermijnen">
@@ -84,7 +84,7 @@ export default function PrivacyPage() {
         </Section>
 
         <Section title="8. Cookies">
-          <p>Wij gebruiken functionele cookies (noodzakelijk) en analytische cookies (met toestemming). Zie ons <a href="/cookiebeleid" className="text-[var(--cyan)] hover:underline">cookiebeleid</a> voor details.</p>
+          <p>Wij gebruiken functionele cookies (noodzakelijk) en analytische cookies (met toestemming). Zie ons <a href="/cookiebeleid" className="text-[var(--accent)] hover:underline">cookiebeleid</a> voor details.</p>
         </Section>
 
         <Section title="9. Wijzigingen">

@@ -11,7 +11,7 @@ export const metadata: Metadata = buildMetadata({
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <section className="mb-10">
-    <h2 className="font-outfit font-bold text-white text-xl mb-4">{title}</h2>
+    <h2 className="font-outfit font-bold text-[var(--text)] text-xl mb-4">{title}</h2>
     <div className="text-[var(--text2)] text-sm leading-relaxed space-y-3">{children}</div>
   </section>
 )
@@ -20,8 +20,8 @@ export default function VoorwaardenPage() {
   return (
     <div className="pt-32 pb-24 px-[5%]">
       <Container narrow>
-        <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">Juridisch</p>
-        <h1 className="font-outfit font-black text-white text-4xl mb-2">Algemene voorwaarden</h1>
+        <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">Juridisch</p>
+        <h1 className="font-outfit font-black text-[var(--text)] text-4xl mb-2">Algemene voorwaarden</h1>
         <p className="text-[var(--muted2)] text-sm mb-12">Laatste update: januari 2025</p>
 
         <Section title="1. Definities">
@@ -68,7 +68,7 @@ export default function VoorwaardenPage() {
         </Section>
 
         <Section title="10. Contact">
-          <p>Vragen? Mail naar <a href={`mailto:${SITE.email}`} className="text-[var(--cyan)] hover:underline">{SITE.email}</a></p>
+          <p>Vragen? Mail naar <a href={`mailto:${SITE.email}`} className="text-[var(--accent)] hover:underline">{SITE.email}</a></p>
         </Section>
       </Container>
     </div>

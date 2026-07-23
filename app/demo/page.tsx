@@ -35,10 +35,10 @@ export default function DemoPage() {
          homepage, dus zelfde performance-profiel. */}
       <section className="pt-32 pb-12 px-[5%]">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
+          <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">
             Eerst even zien
           </p>
-          <h2 className="font-outfit font-bold text-white tracking-tight leading-tight mb-3" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.2rem)' }}>
+          <h2 className="font-outfit font-bold text-[var(--text)] tracking-tight leading-tight mb-3" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.2rem)' }}>
             Snellio in één minuut.
           </h2>
           <p className="text-[var(--text2)] text-base mb-8 max-w-2xl mx-auto">
@@ -58,15 +58,15 @@ export default function DemoPage() {
 
           {/* Links: info */}
           <div>
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
+            <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">
               Demo aanvragen
             </p>
             <h1
-              className="font-outfit font-black text-white tracking-tight leading-tight mb-5"
+              className="font-outfit font-black text-[var(--text)] tracking-tight leading-tight mb-5"
               style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
             >
               Zie Snellio in 20 minuten.<br />
-              <span className="text-[var(--cyan)]">Op jouw werkplaats afgestemd.</span>
+              <span className="text-[var(--accent)]">Op jouw werkplaats afgestemd.</span>
             </h1>
             <p className="text-[var(--text2)] text-[1.05rem] leading-relaxed mb-10">
               Vul het formulier in en we plannen een persoonlijke walkthrough. We laten je zien hoe
@@ -84,7 +84,7 @@ export default function DemoPage() {
                     {v.icon}
                   </div>
                   <div>
-                    <p className="text-white font-semibold text-sm mb-1">{v.title}</p>
+                    <p className="text-[var(--text)] font-semibold text-sm mb-1">{v.title}</p>
                     <p className="text-[var(--muted2)] text-sm leading-relaxed">{v.desc}</p>
                   </div>
                 </li>
@@ -95,7 +95,7 @@ export default function DemoPage() {
               Liever direct mailen? Dat kan ook via{' '}
               <a
                 href={`mailto:${SITE.email}`}
-                className="text-[var(--cyan)] font-medium hover:underline"
+                className="text-[var(--accent)] font-medium hover:underline"
               >
                 {SITE.email}
               </a>
@@ -105,7 +105,7 @@ export default function DemoPage() {
 
           {/* Rechts: formulier */}
           <div className="bg-[var(--navy3)] border border-[var(--border)] rounded-2xl p-8 lg:sticky lg:top-24">
-            <h2 className="font-outfit font-bold text-white text-xl mb-2">Plan je demo</h2>
+            <h2 className="font-outfit font-bold text-[var(--text)] text-xl mb-2">Plan je demo</h2>
             <p className="text-[var(--muted2)] text-sm mb-6">
               We nemen binnen 1 werkdag contact op.
             </p>

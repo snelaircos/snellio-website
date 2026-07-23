@@ -27,7 +27,7 @@ export default function LandingInternalLinks({ heading = 'Meer ontdekken', links
               className="group flex flex-col gap-2 bg-[var(--navy3)] border border-[var(--border)] rounded-xl p-5 hover:border-[rgba(10,187,214,.3)] transition-all duration-200 hover:-translate-y-0.5"
             >
               <span className="text-2xl">{link.icon}</span>
-              <span className="font-outfit font-bold text-white text-sm group-hover:text-[var(--cyan)] transition-colors">
+              <span className="font-outfit font-bold text-[var(--text)] text-sm group-hover:text-[var(--accent)] transition-colors">
                 {link.title}
               </span>
               <span className="text-[var(--muted2)] text-xs leading-relaxed">{link.desc}</span>

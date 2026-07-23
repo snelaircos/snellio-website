@@ -62,7 +62,7 @@ export default function CheckoutForm({ selectedPackage }: CheckoutFormProps) {
     }
   }
 
-  const input = 'w-full bg-[var(--navy3)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[var(--cyan)] transition-colors'
+  const input = 'w-full bg-[var(--navy3)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[var(--accent)] transition-colors'
   const label = 'block text-[var(--text2)] text-sm font-medium mb-1.5'
 
   return (
@@ -135,7 +135,7 @@ export default function CheckoutForm({ selectedPackage }: CheckoutFormProps) {
           <p className="text-amber-200 mb-2">{errorMessage}</p>
           <a
             href={`${process.env.NEXT_PUBLIC_APP_URL || 'https://app.snellio.nl'}/login`}
-            className="inline-block underline text-[var(--cyan)] font-medium"
+            className="inline-block underline text-[var(--accent)] font-medium"
           >
             Ga naar inloggen →
           </a>

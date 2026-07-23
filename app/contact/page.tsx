@@ -24,11 +24,11 @@ export default function ContactPage() {
 
           {/* Links: info */}
           <div>
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">Contact</p>
-            <h1 className="font-outfit font-black text-white tracking-tight leading-tight mb-5"
+            <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">Contact</p>
+            <h1 className="font-outfit font-black text-[var(--text)] tracking-tight leading-tight mb-5"
                 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>
               Laten we kennismaken.<br />
-              <span className="text-[var(--cyan)]">Wij helpen je graag.</span>
+              <span className="text-[var(--accent)]">Wij helpen je graag.</span>
             </h1>
             <p className="text-[var(--text2)] text-[1.05rem] leading-relaxed mb-10">
               Heb je een vraag over Snellio, wil je een persoonlijke demo, of wil je meer weten over de mogelijkheden voor jouw bedrijf? Vul het formulier in en we nemen snel contact op.
@@ -41,7 +41,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="text-[var(--muted2)] text-xs font-mono uppercase tracking-wide mb-1">E-mail</p>
-                  <a href={`mailto:${SITE.email}`} className="text-white font-medium hover:text-[var(--cyan)] transition-colors">
+                  <a href={`mailto:${SITE.email}`} className="text-[var(--text)] font-medium hover:text-[var(--accent)] transition-colors">
                     {SITE.email}
                   </a>
                 </div>
@@ -53,7 +53,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="text-[var(--muted2)] text-xs font-mono uppercase tracking-wide mb-1">Reactietijd</p>
-                  <p className="text-white font-medium">Binnen 1 werkdag</p>
+                  <p className="text-[var(--text)] font-medium">Binnen 1 werkdag</p>
                 </div>
               </div>
 
@@ -63,7 +63,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="text-[var(--muted2)] text-xs font-mono uppercase tracking-wide mb-1">Demo</p>
-                  <p className="text-white font-medium">Persoonlijke walkthrough op afspraak</p>
+                  <p className="text-[var(--text)] font-medium">Persoonlijke walkthrough op afspraak</p>
                 </div>
               </div>
             </div>
@@ -71,7 +71,7 @@ export default function ContactPage() {
 
           {/* Rechts: formulier */}
           <div className="bg-[var(--navy3)] border border-[var(--border)] rounded-2xl p-8">
-            <h2 className="font-outfit font-bold text-white text-xl mb-6">Stuur ons een bericht</h2>
+            <h2 className="font-outfit font-bold text-[var(--text)] text-xl mb-6">Stuur ons een bericht</h2>
             <ContactForm />
           </div>
         </div>

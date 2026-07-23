@@ -15,8 +15,8 @@ const base = 'inline-flex items-center justify-center font-semibold rounded-xl t
 
 const variants = {
   primary: 'bg-gradient-btn text-white shadow-[0_4px_20px_rgba(0,144,184,.4)] hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(0,144,184,.5)]',
-  ghost:   'text-[var(--text2)] border border-[var(--border)] hover:border-[var(--cyan)] hover:text-[var(--cyan)]',
-  outline: 'text-[var(--cyan)] border border-[var(--cyan)] hover:bg-[var(--cyan)] hover:text-white',
+  ghost:   'text-[var(--text2)] border border-[var(--border)] hover:border-[var(--accent)] hover:text-[var(--accent)]',
+  outline: 'text-[var(--accent)] border border-[var(--accent)] hover:bg-[var(--accent)] hover:text-white',
 }
 
 const sizes = {

@@ -19,8 +19,8 @@ export default function LandingFaq({ items, heading = 'Veelgestelde vragen' }: L
     <section className="py-24 px-[5%] bg-[var(--navy3)]">
       <div className="mx-auto max-w-3xl">
         <div className="text-center mb-12">
-          <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">FAQ</p>
-          <h2 className="font-outfit font-black text-white tracking-tight"
+          <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">FAQ</p>
+          <h2 className="font-outfit font-black text-[var(--text)] tracking-tight"
               style={{ fontSize: 'clamp(1.8rem, 4vw, 2.4rem)' }}>
             {heading}
           </h2>
@@ -39,11 +39,11 @@ export default function LandingFaq({ items, heading = 'Veelgestelde vragen' }: L
                   className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
                   aria-expanded={open === i}
                 >
-                  <span className="font-outfit font-bold text-white text-[.95rem] leading-snug">
+                  <span className="font-outfit font-bold text-[var(--text)] text-[.95rem] leading-snug">
                     {item.question}
                   </span>
                   <span
-                    className={`text-[var(--cyan)] text-xl shrink-0 transition-transform duration-300 ${open === i ? 'rotate-45' : ''}`}
+                    className={`text-[var(--accent)] text-xl shrink-0 transition-transform duration-300 ${open === i ? 'rotate-45' : ''}`}
                     aria-hidden="true"
                   >
                     +

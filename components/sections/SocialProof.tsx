@@ -15,7 +15,7 @@ export default function SocialProof() {
           {items.map(item => (
             <div key={item.label} className="flex flex-col items-center text-center gap-1.5">
               <span className="text-2xl">{item.icon}</span>
-              <span className="font-semibold text-white text-xs">{item.label}</span>
+              <span className="font-semibold text-[var(--text)] text-xs">{item.label}</span>
               <span className="font-mono text-[.58rem] text-[var(--muted2)] uppercase tracking-wide">{item.sub}</span>
             </div>
           ))}

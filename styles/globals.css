@@ -2,19 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Licht thema in de stijl van de Snellio-app (app/globals.css aldaar):
+   wit, grijsblauw en blauw. De var-namen navy/navy2/navy3 zijn historisch
+   (donker thema) maar worden overal als bg-vlakken gebruikt — de waardes
+   zijn nu hun lichte tegenhangers:
+     navy2 = paginavlak (#f4f7fa, app --bg)
+     navy3 = kaart/sectie-vlak (wit, app --surface)
+     navy  = subtiel kaart-tintje (#f9fbfd, app --card) */
 :root {
-  --navy:    #0f2133;
-  --navy2:   #0a1a28;
-  --navy3:   #162d42;
+  --navy:    #f9fbfd;
+  --navy2:   #f4f7fa;
+  --navy3:   #ffffff;
   --accent:  #0090b8;
+  --accent2: #006d8f;
   --cyan:    #0abbd6;
   --green:   #12a87a;
   --orange:  #e07a30;
-  --muted:   #5a7d96;
-  --muted2:  #8fafc8;
-  --border:  rgba(0,144,184,.15);
-  --text:    #e8f2f8;
-  --text2:   #b8d0e0;
+  --muted:   #5f7791;
+  --muted2:  #5f7791;
+  --border:  #e4ecf2;
+  --text:    #0f2133;
+  --text2:   #44607a;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -46,7 +54,7 @@ body {
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, var(--cyan), var(--accent));
+  background: linear-gradient(135deg, var(--accent) 30%, var(--cyan));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -54,17 +62,17 @@ body {
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--navy2); }
-::-webkit-scrollbar-thumb { background: var(--navy3); border-radius: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d0dde8; border-radius: 3px; }
 
 /* Focus ring */
 :focus-visible {
-  outline: 2px solid var(--cyan);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
 /* Selection */
 ::selection {
-  background: rgba(10,187,214,.2);
-  color: white;
+  background: rgba(0,144,184,.18);
+  color: var(--text);
 }

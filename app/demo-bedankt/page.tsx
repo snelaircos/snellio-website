@@ -31,17 +31,17 @@ export default function DemoBedanktPage() {
           Aanvraag ontvangen
         </p>
 
-        <h1 className="font-outfit font-black text-white text-3xl tracking-tight mb-4">
+        <h1 className="font-outfit font-black text-[var(--text)] text-3xl tracking-tight mb-4">
           Bedankt! We nemen snel contact op.
         </h1>
 
         <p className="text-[var(--text2)] text-base leading-relaxed mb-10">
-          We hebben je demo aanvraag ontvangen. Een van onze specialisten neemt binnen <strong className="text-white">1 werkdag</strong> contact met je op voor een persoonlijke walkthrough van Snellio.
+          We hebben je demo aanvraag ontvangen. Een van onze specialisten neemt binnen <strong className="text-[var(--text)]">1 werkdag</strong> contact met je op voor een persoonlijke walkthrough van Snellio.
         </p>
 
         {/* Wat kun je verwachten */}
         <div className="bg-[var(--navy3)] border border-[var(--border)] rounded-2xl p-6 text-left mb-8">
-          <p className="font-outfit font-bold text-white text-sm mb-4">Wat kun je verwachten?</p>
+          <p className="font-outfit font-bold text-[var(--text)] text-sm mb-4">Wat kun je verwachten?</p>
           <ul className="flex flex-col gap-3 list-none">
             {[
               { icon: '📞', text: 'Persoonlijk contact binnen 1 werkdag' },
@@ -67,7 +67,7 @@ export default function DemoBedanktPage() {
           </Link>
           <Link
             href="/"
-            className="border border-[var(--border)] text-[var(--text2)] font-medium py-3.5 px-7 rounded-xl hover:border-[var(--cyan)] hover:text-[var(--cyan)] transition-all duration-200 text-sm"
+            className="border border-[var(--border)] text-[var(--text2)] font-medium py-3.5 px-7 rounded-xl hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all duration-200 text-sm"
           >
             Terug naar home
           </Link>

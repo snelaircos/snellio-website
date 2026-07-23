@@ -244,15 +244,15 @@ export default function PlanningssoftwareMonteurPage() {
       {/* ── 1. Intro tekst ── */}
       <section className="py-20 px-[5%] bg-[var(--navy2)]">
         <Container narrow>
-          <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-4">
+          <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-4">
             Wat is planningssoftware voor monteurs?
           </p>
           <h2
-            className="font-outfit font-black text-white leading-tight mb-6"
+            className="font-outfit font-black text-[var(--text)] leading-tight mb-6"
             style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)' }}
           >
             Van losse afspraken naar{' '}
-            <span className="text-[var(--cyan)]">centrale buitendienst planning</span>
+            <span className="text-[var(--accent)]">centrale buitendienst planning</span>
           </h2>
           <div className="text-[var(--text2)] text-[.96rem] leading-[1.85] space-y-4">
             <p>
@@ -263,7 +263,7 @@ export default function PlanningssoftwareMonteurPage() {
             </p>
             <p>
               Snellio is gebouwd voor installateurs en HVAC-bedrijven die willen groeien zonder dat de administratie en planning proportioneel meer tijd gaan kosten. De planningsmodule is direct gekoppeld aan het{' '}
-              <a href="/crm-voor-installateurs" className="text-[var(--cyan)] hover:underline font-medium">CRM voor installateurs</a>
+              <a href="/crm-voor-installateurs" className="text-[var(--accent)] hover:underline font-medium">CRM voor installateurs</a>
               {' '}en de installatiebeheer, zodat een monteur die bij een klant aankomt direct alles ziet wat hij nodig heeft, van adres tot eerdere werkbonnen. Dat bespaart niet alleen tijd, het voorkomt ook fouten en geeft u als eigenaar rust en overzicht over uw bedrijf.
             </p>
           </div>
@@ -277,15 +277,15 @@ export default function PlanningssoftwareMonteurPage() {
       <section className="py-24 px-[5%] bg-[var(--navy3)]">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-14">
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
+            <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">
               Functies
             </p>
             <h2
-              className="font-outfit font-black text-white tracking-tight"
+              className="font-outfit font-black text-[var(--text)] tracking-tight"
               style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
             >
               Alles voor uw{' '}
-              <span className="text-[var(--cyan)]">monteursplanning</span>
+              <span className="text-[var(--accent)]">monteursplanning</span>
             </h2>
             <p className="text-[var(--text2)] text-base max-w-xl mx-auto mt-4 leading-relaxed">
               Van werkorder aanmaken tot factuur versturen, Snellio beheert de volledige servicecyclus voor installatiebedrijven.
@@ -304,7 +304,7 @@ export default function PlanningssoftwareMonteurPage() {
                   </span>
                 )}
                 <div className="text-2xl mb-3">{f.icon}</div>
-                <h3 className="font-outfit font-bold text-white text-[.95rem] mb-2">{f.title}</h3>
+                <h3 className="font-outfit font-bold text-[var(--text)] text-[.95rem] mb-2">{f.title}</h3>
                 <p className="text-[var(--muted2)] text-[.82rem] leading-relaxed">{f.desc}</p>
                 <div
                   className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
@@ -320,15 +320,15 @@ export default function PlanningssoftwareMonteurPage() {
       <section className="py-24 px-[5%] bg-[var(--navy2)]">
         <div className="mx-auto max-w-5xl">
           <div className="text-center mb-14">
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
+            <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">
               Hoe het werkt
             </p>
             <h2
-              className="font-outfit font-black text-white tracking-tight"
+              className="font-outfit font-black text-[var(--text)] tracking-tight"
               style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
             >
               Van werkorder naar{' '}
-              <span className="text-[var(--cyan)]">afgeronde opdracht</span>
+              <span className="text-[var(--accent)]">afgeronde opdracht</span>
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -341,7 +341,7 @@ export default function PlanningssoftwareMonteurPage() {
                 <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[var(--accent)] to-[var(--cyan)] flex items-center justify-center font-outfit font-black text-white text-sm mb-4">
                   {s.icon}
                 </div>
-                <h3 className="font-outfit font-bold text-white text-sm mb-2">{s.title}</h3>
+                <h3 className="font-outfit font-bold text-[var(--text)] text-sm mb-2">{s.title}</h3>
                 <p className="text-[var(--muted2)] text-[.8rem] leading-relaxed">{s.desc}</p>
                 {i < stappen.length - 1 && (
                   <div className="hidden lg:block absolute top-1/2 -right-3 text-[var(--muted)] text-lg z-10">
@@ -362,7 +362,7 @@ export default function PlanningssoftwareMonteurPage() {
               Zonder planningssoftware
             </p>
             <h2
-              className="font-outfit font-bold text-white leading-tight mb-8"
+              className="font-outfit font-bold text-[var(--text)] leading-tight mb-8"
               style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
             >
               Herkenbaar?{' '}
@@ -376,7 +376,7 @@ export default function PlanningssoftwareMonteurPage() {
                 >
                   <span className="text-[#e05555] font-bold text-lg shrink-0 mt-px">✗</span>
                   <div>
-                    <p className="font-semibold text-white text-sm mb-1">{p.title}</p>
+                    <p className="font-semibold text-[var(--text)] text-sm mb-1">{p.title}</p>
                     <p className="text-[var(--muted2)] text-[.82rem] leading-relaxed">{p.desc}</p>
                   </div>
                 </li>
@@ -389,11 +389,11 @@ export default function PlanningssoftwareMonteurPage() {
               Met Snellio
             </p>
             <h2
-              className="font-outfit font-bold text-white leading-tight mb-8"
+              className="font-outfit font-bold text-[var(--text)] leading-tight mb-8"
               style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
             >
               Met Snellio heeft u{' '}
-              <span className="text-[var(--cyan)]">altijd grip op de planning.</span>
+              <span className="text-[var(--accent)]">altijd grip op de planning.</span>
             </h2>
             <ul className="flex flex-col gap-3.5 list-none">
               {oplossingen.map(o => (
@@ -403,7 +403,7 @@ export default function PlanningssoftwareMonteurPage() {
                 >
                   <span className="text-[var(--green)] font-bold text-lg shrink-0 mt-px">✓</span>
                   <div>
-                    <p className="font-semibold text-white text-sm mb-1">{o.title}</p>
+                    <p className="font-semibold text-[var(--text)] text-sm mb-1">{o.title}</p>
                     <p className="text-[var(--muted2)] text-[.82rem] leading-relaxed">{o.desc}</p>
                   </div>
                 </li>
@@ -417,15 +417,15 @@ export default function PlanningssoftwareMonteurPage() {
       <section className="py-20 px-[5%] bg-[var(--navy2)]">
         <Container>
           <div className="max-w-4xl mx-auto text-center">
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
+            <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">
               Integratie
             </p>
             <h2
-              className="font-outfit font-black text-white tracking-tight mb-5"
+              className="font-outfit font-black text-[var(--text)] tracking-tight mb-5"
               style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
             >
               Google Calendar{' '}
-              <span className="text-[var(--cyan)]">automatisch bijgewerkt</span>
+              <span className="text-[var(--accent)]">automatisch bijgewerkt</span>
             </h2>
             <p className="text-[var(--text2)] text-base leading-relaxed max-w-xl mx-auto mb-10">
               Zodra u een werkorder aanmaakt en toewijst, verschijnt de afspraak direct in de Google Calendar van de betreffende monteur, inclusief klantadres, telefoonnummer en installatiegegevens. Wijzigen of annuleren? De agenda past automatisch mee.
@@ -453,7 +453,7 @@ export default function PlanningssoftwareMonteurPage() {
                   className="reveal bg-[var(--navy3)] border border-[var(--border)] rounded-xl p-5"
                 >
                   <div className="text-2xl mb-3">{item.icon}</div>
-                  <p className="font-outfit font-bold text-white text-sm mb-1.5">{item.title}</p>
+                  <p className="font-outfit font-bold text-[var(--text)] text-sm mb-1.5">{item.title}</p>
                   <p className="text-[var(--muted2)] text-xs leading-relaxed">{item.desc}</p>
                 </div>
               ))}
@@ -466,15 +466,15 @@ export default function PlanningssoftwareMonteurPage() {
       <section className="py-24 px-[5%] bg-[var(--navy3)]">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-14">
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
+            <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">
               Voor wie
             </p>
             <h2
-              className="font-outfit font-black text-white tracking-tight"
+              className="font-outfit font-black text-[var(--text)] tracking-tight"
               style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
             >
               Planning software voor{' '}
-              <span className="text-[var(--cyan)]">elk installatiebedrijf</span>
+              <span className="text-[var(--accent)]">elk installatiebedrijf</span>
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-5">
@@ -486,7 +486,7 @@ export default function PlanningssoftwareMonteurPage() {
               >
                 <div className="text-3xl shrink-0 mt-0.5">{d.icon}</div>
                 <div>
-                  <h3 className="font-outfit font-bold text-white text-[.95rem] mb-2">{d.type}</h3>
+                  <h3 className="font-outfit font-bold text-[var(--text)] text-[.95rem] mb-2">{d.type}</h3>
                   <p className="text-[var(--muted2)] text-[.84rem] leading-relaxed">{d.desc}</p>
                 </div>
               </article>
@@ -499,15 +499,15 @@ export default function PlanningssoftwareMonteurPage() {
       <section className="py-24 px-[5%] bg-[var(--navy2)]">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-14">
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-3">
+            <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">
               Voordelen
             </p>
             <h2
-              className="font-outfit font-black text-white tracking-tight"
+              className="font-outfit font-black text-[var(--text)] tracking-tight"
               style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
             >
               Wat levert centrale planning{' '}
-              <span className="text-[var(--cyan)]">concreet op?</span>
+              <span className="text-[var(--accent)]">concreet op?</span>
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
@@ -518,8 +518,8 @@ export default function PlanningssoftwareMonteurPage() {
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
                 <div className="text-3xl mb-3">{v.icon}</div>
-                <h3 className="font-outfit font-bold text-white text-lg mb-1">{v.title}</h3>
-                <p className="font-mono text-[var(--cyan)] text-[.72rem] tracking-wide mb-5">{v.stat}</p>
+                <h3 className="font-outfit font-bold text-[var(--text)] text-lg mb-1">{v.title}</h3>
+                <p className="font-mono text-[var(--accent)] text-[.72rem] tracking-wide mb-5">{v.stat}</p>
                 <ul className="flex flex-col gap-2.5 list-none">
                   {v.items.map(item => (
                     <li key={item} className="flex items-start gap-2.5 text-[.82rem] text-[var(--text2)]">
@@ -538,15 +538,15 @@ export default function PlanningssoftwareMonteurPage() {
       <section className="py-24 px-[5%] bg-[var(--navy3)]">
         <Container>
           <div className="max-w-4xl mx-auto">
-            <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-4">
+            <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-4">
               Praktijkvoorbeeld
             </p>
             <h2
-              className="font-outfit font-black text-white leading-tight mb-8"
+              className="font-outfit font-black text-[var(--text)] leading-tight mb-8"
               style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)' }}
             >
               Hoe Airco Totaal de chaos van vier{' '}
-              <span className="text-[var(--cyan)]">monteurs in één systeem bracht</span>
+              <span className="text-[var(--accent)]">monteurs in één systeem bracht</span>
             </h2>
 
             <div className="bg-[var(--navy2)] border border-[var(--border)] rounded-2xl p-8 mb-8">
@@ -555,7 +555,7 @@ export default function PlanningssoftwareMonteurPage() {
                   🏢
                 </div>
                 <div>
-                  <p className="font-outfit font-bold text-white text-lg">
+                  <p className="font-outfit font-bold text-[var(--text)] text-lg">
                     Airco Totaal, installatiebedrijf met 4 monteurs
                   </p>
                   <p className="text-[var(--muted2)] text-sm">
@@ -590,7 +590,7 @@ export default function PlanningssoftwareMonteurPage() {
                   { label: 'Planning tijd/week', value: '−5 uur'     },
                 ].map(s => (
                   <div key={s.label}>
-                    <p className="font-outfit font-black text-[var(--cyan)] text-xl">{s.value}</p>
+                    <p className="font-outfit font-black text-[var(--accent)] text-xl">{s.value}</p>
                     <p className="font-mono text-[var(--muted2)] text-[.62rem] uppercase tracking-wide">
                       {s.label}
                     </p>
@@ -610,15 +610,15 @@ export default function PlanningssoftwareMonteurPage() {
       {/* ── 9. SEO tekst ── */}
       <section className="py-20 px-[5%] bg-[var(--navy2)]">
         <Container narrow>
-          <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-4">
+          <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-4">
             Meer over planningssoftware voor installateurs
           </p>
           <h2
-            className="font-outfit font-black text-white leading-tight mb-8"
+            className="font-outfit font-black text-[var(--text)] leading-tight mb-8"
             style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
           >
             Waarom goede planningssoftware{' '}
-            <span className="text-[var(--cyan)]">het verschil maakt</span>
+            <span className="text-[var(--accent)]">het verschil maakt</span>
           </h2>
           <div className="text-[var(--text2)] text-[.96rem] leading-[1.9] space-y-5">
             <p>
@@ -626,7 +626,7 @@ export default function PlanningssoftwareMonteurPage() {
             </p>
             <p>
               Het antwoord op die vragen ligt niet in meer WhatsApp-berichten of een uitgebreider spreadsheet, maar in{' '}
-              <a href="/crm-voor-installateurs" className="text-[var(--cyan)] hover:underline font-medium">centrale software voor installateurs</a>
+              <a href="/crm-voor-installateurs" className="text-[var(--accent)] hover:underline font-medium">centrale software voor installateurs</a>
               {' '}die de planning, de klantdossiers en de werkbonnen met elkaar verbindt. Dat is precies wat buitendienst planning software zoals Snellio doet: één systeem voor de volledige servicecyclus, van het aanmaken van een werkorder tot het versturen van de factuur.
             </p>
             <p>
@@ -637,7 +637,7 @@ export default function PlanningssoftwareMonteurPage() {
             </p>
             <p>
               Planning software voor installateurs moet ook schalen met uw bedrijf. Snellio werkt voor een solo-installateur die zijn eerste medewerker aanneemt net zo goed als voor een team van vijf monteurs met een volle agenda. U hoeft niet van systeem te wisselen als uw bedrijf groeit, Snellio groeit gewoon mee. En met de ingebouwde{' '}
-              <a href="/werkbon-software" className="text-[var(--cyan)] hover:underline font-medium">werkbon software</a>
+              <a href="/werkbon-software" className="text-[var(--accent)] hover:underline font-medium">werkbon software</a>
               {' '}is de stap van uitgevoerde opdracht naar ondertekende bon en verstuurde factuur nog nooit zo klein geweest.
             </p>
           </div>

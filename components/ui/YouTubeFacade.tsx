@@ -39,7 +39,7 @@ export default function YouTubeFacade({ videoId, thumbnail, title, className = '
       type="button"
       onClick={() => setPlaying(true)}
       aria-label={`Speel af: ${title}`}
-      className={`group relative aspect-video w-full rounded-2xl overflow-hidden shadow-[0_24px_60px_rgba(15,33,51,.18)] ring-1 ring-[#e4ecf2] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--cyan)] ${className}`}
+      className={`group relative aspect-video w-full rounded-2xl overflow-hidden shadow-[0_24px_60px_rgba(15,33,51,.18)] ring-1 ring-[#e4ecf2] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] ${className}`}
     >
       <Image
         src={thumbnail}
@@ -53,7 +53,7 @@ export default function YouTubeFacade({ videoId, thumbnail, title, className = '
       <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-300" aria-hidden="true" />
       {/* Play-button */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/95 backdrop-blur-sm shadow-[0_8px_32px_rgba(0,0,0,.35)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+        <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/95 backdrop-blur-sm shadow-[0_8px_32px_rgba(15,33,51,.12)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
           {/* Driehoek naar rechts, cyan */}
           <svg viewBox="0 0 24 24" className="w-8 h-8 md:w-10 md:h-10 ml-1 fill-[var(--accent)]" aria-hidden="true">
             <path d="M8 5v14l11-7z" />

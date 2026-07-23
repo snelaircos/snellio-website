@@ -16,15 +16,15 @@ export default function Features() {
 
         {/* Header */}
         <div className="max-w-2xl mx-auto text-center mb-20">
-          <p className="font-mono text-[.65rem] text-[var(--cyan)] uppercase tracking-[.14em] mb-4">
+          <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-4">
             Wat Snellio biedt
           </p>
           <h2
-            className="font-outfit font-black text-white tracking-tight leading-[1.1] mb-6"
+            className="font-outfit font-black text-[var(--text)] tracking-tight leading-[1.1] mb-6"
             style={{ fontSize: 'clamp(1.9rem, 4vw, 2.9rem)' }}
           >
             Alles wat een HVAC-bedrijf<br />
-            <span className="text-[var(--cyan)]">écht nodig heeft</span>
+            <span className="text-[var(--accent)]">écht nodig heeft</span>
           </h2>
           <p className="text-[var(--text2)] text-base leading-relaxed mb-8">
             Geen losse tools meer. Snellio combineert alles wat een installateur dagelijks nodig heeft in één overzichtelijk systeem.
@@ -60,7 +60,7 @@ export default function Features() {
               >
                 {feature.icon}
               </div>
-              <h3 className="font-outfit font-bold text-white text-[1.05rem] mb-2.5">
+              <h3 className="font-outfit font-bold text-[var(--text)] text-[1.05rem] mb-2.5">
                 {feature.title}
               </h3>
               <p className="text-[var(--muted2)] text-[.84rem] leading-relaxed">
@@ -79,7 +79,7 @@ export default function Features() {
         <div className="text-center mt-14">
           <Link
             href="/features"
-            className="inline-flex items-center gap-2 text-[var(--cyan)] text-sm font-semibold hover:gap-3 transition-all duration-200"
+            className="inline-flex items-center gap-2 text-[var(--accent)] text-sm font-semibold hover:gap-3 transition-all duration-200"
           >
             Bekijk alle functies
             <span>→</span>
