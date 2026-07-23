@@ -7,6 +7,7 @@ import Analytics     from '@/components/tracking/Analytics'
 import GoogleAds     from '@/components/tracking/GoogleAds'
 import GA4PageViews  from '@/components/tracking/GA4PageViews'
 import CookieBanner  from '@/components/tracking/CookieBanner'
+import WhatsAppButton from '@/components/ui/WhatsAppButton'
 import JsonLd      from '@/components/seo/JsonLd'
 import { rootMetadata }                              from '@/lib/metadata'
 import { organizationSchema, websiteSchema, softwareApplicationSchema } from '@/lib/schemas'
@@ -81,6 +82,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <Footer />
+        <WhatsAppButton />
         <CookieBanner />
       </body>
     </html>
