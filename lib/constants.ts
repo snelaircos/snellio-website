@@ -106,8 +106,8 @@ export const AUTOMOTIVE_PLANS: Plan[] = [
     tagline:  'Tot 50 voertuigen · 1 monteur',
     price:    { month: '10', year: '100' },
     featured: false,
-    cta:      'Begin nu',
-    href:     '/checkout?pakket=starter&vertical=automotive',
+    cta:      'Hou mij op de hoogte',
+    href:     '/contact',
     features: [
       { label: 'Tot 50 voertuigen',                 included: true  },
       { label: 'Onbeperkt klanten',                 included: true  },
@@ -127,8 +127,8 @@ export const AUTOMOTIVE_PLANS: Plan[] = [
     tagline:  'Onbeperkte voertuigen · 1 monteur',
     price:    { month: '29', year: '290' },
     featured: false,
-    cta:      'Begin nu',
-    href:     '/checkout?pakket=basis&vertical=automotive',
+    cta:      'Hou mij op de hoogte',
+    href:     '/contact',
     features: [
       { label: 'Onbeperkte voertuigen',             included: true  },
       { label: 'Onbeperkt klanten',                 included: true  },
@@ -149,8 +149,8 @@ export const AUTOMOTIVE_PLANS: Plan[] = [
     price:    { month: '69', year: '690' },
     featured: true,
     badge:    'Meest gekozen',
-    cta:      'Begin nu →',
-    href:     '/checkout?pakket=pro&vertical=automotive',
+    cta:      'Hou mij op de hoogte →',
+    href:     '/contact',
     features: [
       { label: 'Onbeperkte voertuigen',             included: true },
       { label: 'Onbeperkt klanten',                 included: true },

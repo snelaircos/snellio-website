@@ -19,7 +19,10 @@ export default function Header() {
   const pathname = usePathname()
   const isAutomotive = pathname?.startsWith('/automotive')
   const navItems     = isAutomotive ? AUTOMOTIVE_NAV : NAV_ITEMS
-  const signupHref   = isAutomotive ? '/registreren?vertical=automotive' : '/registreren'
+  // Automotive is in ontwikkeling: nog geen aanmeldingen — CTA gaat naar contact.
+  const signupHref   = isAutomotive ? '/contact' : '/registreren'
+  const signupLabel  = isAutomotive ? 'Hou mij op de hoogte' : 'Gratis starten →'
+  const signupLabelL = isAutomotive ? 'Hou mij op de hoogte →' : 'Start 14 dagen gratis →'
 
   // Licht thema sitebreed, in de stijl van de Snellio-app: witte balk,
   // donkere tekst, blauwe accenten. Navigatie gecentreerd in de balk.
@@ -68,7 +71,7 @@ export default function Header() {
             Inloggen
           </Link>
           <Button href={signupHref} size="sm">
-            Gratis starten →
+            {signupLabel}
           </Button>
         </div>
 
@@ -103,7 +106,7 @@ export default function Header() {
             Inloggen
           </Link>
           <Button href={signupHref} className="w-full justify-center">
-            Start 14 dagen gratis →
+            {signupLabelL}
           </Button>
         </div>
       )}
@@ -111,7 +114,7 @@ export default function Header() {
       {/* Sticky mobiel CTA */}
       <div className={`md:hidden fixed bottom-0 inset-x-0 z-50 p-4 border-t ${stickyCtaBg}`}>
         <Button href={signupHref} className="w-full justify-center">
-          Gratis starten →
+          {signupLabel}
         </Button>
       </div>
     </header>

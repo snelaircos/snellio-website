@@ -13,7 +13,10 @@ export const metadata: Metadata = buildMetadata({
   path:        '/automotive',
 })
 
-const SIGNUP_HREF = '/registreren?vertical=automotive'
+// Automotive is nog in ontwikkeling: aanmelden kan nog niet. Alle CTA's
+// verwijzen daarom naar het contactformulier ("hou mij op de hoogte")
+// in plaats van naar registreren/checkout.
+const SIGNUP_HREF = '/contact'
 
 const btnPrimary   = 'inline-flex items-center justify-center gap-2 font-semibold rounded-[10px] bg-[#0090b8] text-white px-[22px] py-3 hover:bg-[#007a9c] active:translate-y-px transition-colors text-[.95rem]'
 const btnSecondary = 'inline-flex items-center justify-center gap-2 font-semibold rounded-[10px] bg-white border-[1.5px] border-[#0090b8] text-[#0090b8] px-[22px] py-3 hover:bg-[#e6f6fa] active:translate-y-px transition-colors text-[.95rem]'
@@ -132,6 +135,12 @@ export default function AutomotivePage() {
         />
         <div className="relative z-10 max-w-[1200px] mx-auto grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center">
           <div>
+            <div className="inline-flex items-center gap-2 bg-[rgba(224,122,48,.1)] border border-[rgba(224,122,48,.35)] rounded-full px-4 py-1.5 mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--orange)]" />
+              <span className="font-dm-mono text-[11px] tracking-[.08em] uppercase text-[#b45f22] font-semibold">
+                In ontwikkeling
+              </span>
+            </div>
             <p className="font-dm-mono text-[12px] tracking-[.10em] uppercase text-[#0090b8] mb-4">
               Voor werkplaatsen, autohandelaren &amp; dealers
             </p>
@@ -148,11 +157,14 @@ export default function AutomotivePage() {
               Inclusief de factuur. Zonder gedoe.
             </p>
             <div className="flex flex-wrap gap-3 mb-5">
-              <Link href={SIGNUP_HREF} className={btnPrimary}>Probeer 14 dagen gratis →</Link>
+              <Link href={SIGNUP_HREF} className={btnPrimary}>Hou mij op de hoogte →</Link>
               <Link href="/demo" className={btnSecondary}>Bekijk demo</Link>
             </div>
+            <p className="text-[14px] text-[#5f7791] mb-4 max-w-[540px]">
+              De automotive-versie van Snellio is <strong className="text-[#0f2133]">in ontwikkeling</strong>.
+              Aanmelden kan nog niet — laat je gegevens achter en we informeren je zodra hij klaar is.
+            </p>
             <div className="flex flex-wrap gap-x-5 gap-y-1.5 text-[14px] text-[#8ea2b8]">
-              <span><span className="text-[#12a87a] font-bold">✓</span> Probeer 14 dagen gratis</span>
               <span><span className="text-[#12a87a] font-bold">✓</span> Nederlandse support</span>
               <span><span className="text-[#12a87a] font-bold">✓</span> Mobile-first</span>
             </div>
@@ -241,6 +253,10 @@ export default function AutomotivePage() {
           <p className={sectionLead}>
             Eén prijs per werkplaats. Iedere medewerker doet mee. Maandelijks opzegbaar.
           </p>
+          <p className="text-center text-sm text-[#b45f22] bg-[rgba(224,122,48,.08)] border border-[rgba(224,122,48,.3)] rounded-xl px-5 py-3 max-w-2xl mx-auto mb-8">
+            <strong>In ontwikkeling</strong> — prijzen onder voorbehoud. Aanmelden kan nog niet;
+            laat je gegevens achter en we informeren je bij de lancering.
+          </p>
           <AutomotivePricing />
         </div>
       </section>
@@ -279,11 +295,11 @@ export default function AutomotivePage() {
             Klaar om je administratie 4 uur per week te krimpen?
           </h2>
           <p className="text-[#5f7791] text-[18px] mb-7">
-            Probeer 14 dagen gratis. Geen lock-in.
+            Snellio Automotive is in ontwikkeling. Wees er als eerste bij.
           </p>
           <div className="flex flex-wrap justify-center gap-3 mb-5">
             <Link href={SIGNUP_HREF} className={btnPrimary} style={{ fontSize: '16px', padding: '14px 26px' }}>
-              Probeer Snellio gratis →
+              Hou mij op de hoogte →
             </Link>
             <Link href="/demo" className={btnSecondary} style={{ fontSize: '16px', padding: '14px 26px' }}>
               Vraag demo aan
