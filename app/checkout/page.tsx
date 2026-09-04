@@ -3,7 +3,7 @@ import { buildMetadata }  from '@/lib/metadata'
 import { breadcrumbSchema } from '@/lib/schemas'
 import JsonLd    from '@/components/seo/JsonLd'
 import CheckoutForm from '@/components/forms/CheckoutForm'
-import { PLANS } from '@/lib/constants'
+import { BTW, PLANS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Checkout, Start je gratis proefperiode',
@@ -52,13 +52,14 @@ export default function CheckoutPage({ searchParams }: Props) {
 
             {/* Plan details */}
             <div className="bg-[var(--navy3)] border border-[var(--border)] rounded-xl p-6 mb-8">
-              <div className="flex items-end gap-1 mb-4">
+              <div className="flex items-end gap-1 mb-1">
                 <sup className="text-[var(--accent)] font-bold text-base">€</sup>
                 <span className="font-outfit font-black text-2xl leading-none text-[var(--text)]">
                   {plan.price.month}
                 </span>
                 <span className="text-sm text-[var(--muted2)]">/mnd</span>
               </div>
+              <p className="text-xs text-[var(--muted2)] mb-4">{BTW.short}</p>
 
               <ul className="flex flex-col gap-2 list-none">
                 {plan.features.filter(f => f.included).slice(0, 5).map(f => (
@@ -102,7 +103,7 @@ export default function CheckoutPage({ searchParams }: Props) {
               <div className="text-4xl mb-3">💳</div>
               <h2 className="font-outfit font-bold text-[var(--text)] text-xl mb-2">Account aanmaken</h2>
               <p className="text-[var(--muted2)] text-sm leading-relaxed">
-                Vul je gegevens in om te beginnen. Betaling volgt na de proefperiode.
+                Vul je gegevens in om te beginnen. Betaling volgt na de proefperiode: €{plan.price.month} per maand, {BTW.short}.
               </p>
             </div>
 

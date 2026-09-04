@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { buildMetadata }  from '@/lib/metadata'
 import { breadcrumbSchema, faqSchema } from '@/lib/schemas'
+import { BTW } from '@/lib/constants'
 import JsonLd    from '@/components/seo/JsonLd'
 import Pricing   from '@/components/sections/Pricing'
 import Cta       from '@/components/sections/Cta'
@@ -8,13 +9,15 @@ import Container from '@/components/ui/Container'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Prijzen & pakketten | Snellio',
-  description: 'Bekijk de prijzen van Snellio. Starter €10/mnd, Basis €29/mnd, Pro €69/mnd, Enterprise €129/mnd. Probeer 14 dagen gratis.',
+  description: 'Bekijk de prijzen van Snellio. Starter €10/mnd, Basis €29/mnd, Pro €69/mnd, Enterprise €129/mnd, incl. 21% btw. Probeer 14 dagen gratis.',
   path:        '/pricing',
 })
 
 const faqs = [
   { question: 'Is er een gratis proefperiode?',
     answer:   'Ja. Probeer alle pakketten 14 dagen gratis voordat je iets betaalt.' },
+  { question: 'Zijn de prijzen inclusief btw?',
+    answer:   'Ja. Alle genoemde prijzen zijn inclusief 21% btw. Het bedrag dat u ziet is het bedrag dat wordt afgeschreven, er komen geen kosten bij.' },
   { question: 'Zijn de boekhoudkoppelingen inbegrepen?',
     answer:   'Ja. De koppelingen met WeFact, Moneybird en Exact Online zijn bij elk pakket gratis inbegrepen, ook bij Starter. Staat uw boekhoudpakket er niet bij? Dan proberen wij, indien mogelijk, deze alsnog toe te voegen.' },
   { question: 'Kan ik op elk moment opzeggen?',
@@ -45,7 +48,7 @@ export default function PricingPage() {
             <span className="text-[var(--accent)]">geen verrassingen.</span>
           </h1>
           <p className="text-[var(--text2)] text-lg leading-relaxed max-w-lg mx-auto">
-            14 dagen gratis proberen. Kies het pakket dat bij jouw bedrijf past. Opzeggen wanneer je wilt.
+            14 dagen gratis proberen. Kies het pakket dat bij jouw bedrijf past. Opzeggen wanneer je wilt. Alle prijzen {BTW.short}.
           </p>
         </Container>
       </section>

@@ -61,7 +61,7 @@ const voorWie = [
   {
     icon: '👤',
     title: 'ZZP installateurs',
-    desc: 'Werk je alleen of met je beste maat? Starter-pakket vanaf €10 per maand. Geen overhead, alle basisfuncties.',
+    desc: 'Werk je alleen of met je beste maat? Starter-pakket vanaf €10 per maand (incl. 21% btw). Geen overhead, alle basisfuncties.',
   },
   {
     icon: '👥',

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { AUTOMOTIVE_PLANS } from '@/lib/constants'
+import { AUTOMOTIVE_PLANS, BTW } from '@/lib/constants'
 
 // Light-theme pricing voor /automotive. Witte cards op #f4f7fa.
 // Pro card heeft "Aanbevolen"-pill in cyan, zoals het Claude Design ontwerp voorschrijft.
@@ -68,6 +68,7 @@ export default function AutomotivePricing() {
                   </span>
                   <span className="text-[15px] text-[#5f7791] font-medium">/{annual ? 'jaar' : 'mnd'}</span>
                 </div>
+                <p className="text-xs text-[#5f7791] mb-3">{BTW.short}</p>
 
                 <p className="text-[#5f7791] text-sm mb-5 pb-5 border-b border-[rgba(15,33,51,.08)]">
                   {plan.tagline}
@@ -123,7 +124,7 @@ export default function AutomotivePricing() {
       </div>
 
       <p className="text-center text-xs text-[#5f7791] mt-8">
-        Probeer alle pakketten 14 dagen gratis · Maandelijks opzegbaar
+        Probeer alle pakketten 14 dagen gratis · Maandelijks opzegbaar · Alle prijzen {BTW.short}
       </p>
     </div>
   )

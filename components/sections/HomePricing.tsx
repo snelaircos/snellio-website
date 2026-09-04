@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { PLANS } from '@/lib/constants'
+import { BTW, PLANS } from '@/lib/constants'
 
 // Light-theme pricing voor de HVAC homepage. Witte cards op #f4f7fa,
 // Pro card heeft 'Meest gekozen' badge in --orange. Maandelijks/Jaarlijks
@@ -73,13 +73,14 @@ export default function HomePricing() {
                 <h3 className="font-bold text-[#0f2133] text-xl mb-1">{plan.name}</h3>
 
                 {/* Prijs */}
-                <div className="flex items-baseline gap-1 my-4">
+                <div className="flex items-baseline gap-1 mt-4 mb-1">
                   <span className="text-[var(--accent)] font-bold text-xl">€</span>
                   <span className="font-extrabold text-4xl leading-none text-[#0f2133] tracking-tight">
                     {annual ? plan.price.year : plan.price.month}
                   </span>
                   <span className="text-xs text-[#5f7791]">/{annual ? 'jaar' : 'mnd'}</span>
                 </div>
+                <p className="text-xs text-[#5f7791] mb-4">{BTW.short}</p>
 
                 <p className="text-[#5f7791] text-xs mb-5 pb-5 border-b border-[#e4ecf2]">
                   {plan.tagline}
@@ -135,7 +136,7 @@ export default function HomePricing() {
       </div>
 
       <p className="text-center text-xs text-[#5f7791] mt-8">
-        Probeer alle pakketten 14 dagen gratis · Maandelijks opzegbaar
+        Probeer alle pakketten 14 dagen gratis · Maandelijks opzegbaar · Alle prijzen {BTW.short}
       </p>
     </div>
   )

@@ -22,7 +22,7 @@ export default function VoorwaardenPage() {
       <Container narrow>
         <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">Juridisch</p>
         <h1 className="font-outfit font-black text-[var(--text)] text-4xl mb-2">Algemene voorwaarden</h1>
-        <p className="text-[var(--muted2)] text-sm mb-12">Laatste update: januari 2025</p>
+        <p className="text-[var(--muted2)] text-sm mb-12">Laatste update: augustus 2026</p>
 
         <Section title="1. Definities">
           <p><strong>Snellio:</strong> het softwareplatform aangeboden door {SITE.company} (KvK {SITE.kvk}).</p>
@@ -37,6 +37,7 @@ export default function VoorwaardenPage() {
         <Section title="3. Abonnement en betaling">
           <ul className="list-disc list-inside space-y-1 ml-2">
             <li>Abonnementen lopen per maand of per jaar, zoals gekozen bij aanmelding</li>
+            <li>Alle genoemde prijzen zijn inclusief 21% btw</li>
             <li>Betaling vindt vooraf plaats via Mollie (iDEAL, creditcard)</li>
             <li>Bij niet-betaling behoudt {SITE.company} het recht om toegang te beperken</li>
             <li>Prijswijzigingen worden minimaal 30 dagen van tevoren gecommuniceerd</li>

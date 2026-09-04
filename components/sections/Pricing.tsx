@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { PLANS, type Plan } from '@/lib/constants'
+import { BTW, PLANS, type Plan } from '@/lib/constants'
 
 interface PricingProps {
   hideHeader?: boolean
@@ -119,7 +119,7 @@ export default function Pricing({ hideHeader = false, plans = PLANS }: PricingPr
 
         {/* Trust row */}
         <p className="mt-8 text-center text-xs text-[var(--muted)] tracking-wide">
-          Probeer 14 dagen gratis &nbsp;·&nbsp; Maandelijks opzegbaar &nbsp;·&nbsp; Nederlandse support
+          Probeer 14 dagen gratis &nbsp;·&nbsp; Maandelijks opzegbaar &nbsp;·&nbsp; Nederlandse support &nbsp;·&nbsp; Alle prijzen {BTW.short}
         </p>
       </div>
     </section>
@@ -140,13 +140,14 @@ function PlanContent({ plan, annual, isPro }: PlanContentProps) {
       <div className="relative font-outfit font-bold text-[var(--text)] text-xl mb-1">{plan.name}</div>
 
       {/* Prijs */}
-      <div className="relative flex items-baseline gap-1 my-4">
+      <div className="relative flex items-baseline gap-1 mt-4 mb-1">
         <span className="text-[var(--accent)] font-bold text-xl">€</span>
         <span className="font-outfit font-black text-4xl leading-none text-[var(--text)]">
           {annual ? plan.price.year : plan.price.month}
         </span>
         <span className="text-xs text-[var(--muted2)]">/{annual ? 'jaar' : 'mnd'}</span>
       </div>
+      <p className="relative text-xs text-[var(--muted2)] mb-4">{BTW.short}</p>
 
       {/* Tagline */}
       <p className="relative text-[var(--muted2)] text-xs mb-5 pb-5 border-b border-[var(--border)]">

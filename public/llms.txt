@@ -30,6 +30,7 @@ Snellio is een Nederlandse CRM- en werkbonsoftware voor HVAC-installateurs, koel
 - Basis: €29 per maand of €290 per jaar
 - Pro: €69 per maand of €690 per jaar (meest gekozen plan)
 - Enterprise: €129 per maand of €1.290 per jaar
+- Alle prijzen zijn inclusief 21% btw
 
 Jaarabonnement kost het equivalent van 10 maanden. Alle plannen 14 dagen gratis te proberen.
 

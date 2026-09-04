@@ -59,6 +59,7 @@ export function softwareApplicationSchema() {
         price:        p.price.month.replace(',', '.'),
         priceCurrency:'EUR',
         unitText:     'per maand',
+        valueAddedTaxIncluded: true,
       },
     })),
     publisher: { '@id': `${SITE.url}/#organization` },

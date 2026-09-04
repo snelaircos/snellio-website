@@ -12,6 +12,11 @@ export const SITE = {
   defaultLocale: 'nl-NL',
 } as const
 
+// Alle getoonde prijzen zijn inclusief 21% btw: Mollie schrijft exact het
+// getoonde bedrag af (zie PACKAGE_PRICES in de checkout/billing API-routes).
+// Eén bron voor de vermelding zodat die overal op de site identiek is.
+export const BTW = { short: 'incl. 21% btw' } as const
+
 export const NAV_ITEMS = [
   { label: 'Functies', href: '/features' },
   { label: 'Prijzen',  href: '/pricing'  },
