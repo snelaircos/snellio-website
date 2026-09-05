@@ -1,0 +1,101 @@
+import type { Metadata }   from 'next'
+import Link                from 'next/link'
+import { buildMetadata }   from '@/lib/metadata'
+import Container           from '@/components/ui/Container'
+
+export const metadata: Metadata = buildMetadata({
+  title:       'Privacybeleid (archief, januari 2025)',
+  description: 'Gearchiveerde versie van het privacybeleid van Snellio, geldig tot 5 september 2026.',
+  path:        '/privacy/archief-2025-01',
+  noIndex:     true,
+})
+
+const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
+  <section className="mb-10">
+    <h2 className="font-outfit font-bold text-[var(--text)] text-xl mb-4">{title}</h2>
+    <div className="text-[var(--text2)] text-sm leading-relaxed space-y-3">{children}</div>
+  </section>
+)
+
+// Bevroren archieftekst: bewust hardcoded (geen SITE-constanten), zodat
+// latere naams- of gegevenswijzigingen deze historische versie niet aanpassen.
+export default function PrivacyArchief202501Page() {
+  return (
+    <div className="pt-32 pb-24 px-[5%]">
+      <Container narrow>
+        <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">Juridisch · Archief</p>
+        <h1 className="font-outfit font-black text-[var(--text)] text-4xl mb-2">Privacybeleid</h1>
+        <p className="text-[var(--muted2)] text-sm mb-6">Laatste update: januari 2025 (aangevuld september 2026) · gold tot 5 september 2026</p>
+
+        <div className="bg-[rgba(224,122,48,.08)] border border-[rgba(224,122,48,.3)] rounded-xl p-5 mb-12 text-sm text-[var(--text2)] leading-relaxed">
+          Dit is een gearchiveerde versie. Het actuele privacybeleid staat op{' '}
+          <Link href="/privacy" className="text-[var(--accent)] hover:underline">snellio.nl/privacy</Link>.
+        </div>
+
+        <Section title="1. Wie zijn wij?">
+          <p>Snellio is een product van Snellio Webdesign, gevestigd in Nederland (KvK 69499829). Wij bieden CRM-software voor HVAC- en koeltechnisch installateurs via https://snellio.nl.</p>
+          <p>Vragen over privacy? Mail naar <a href="mailto:info@snellio.nl" className="text-[var(--accent)] hover:underline">info@snellio.nl</a></p>
+        </Section>
+
+        <Section title="2. Welke gegevens verzamelen wij?">
+          <p>Gegevens verzamelen wij doordat u ze zelf invoert in de applicatie, via uw gebruik van het platform (technische loggegevens) en via koppelingen die u zelf activeert. Wij verwerken de volgende persoonsgegevens:</p>
+          <ul className="list-disc list-inside space-y-1 ml-2">
+            <li>Naam, e-mailadres en bedrijfsnaam bij registratie</li>
+            <li>Bedrijfsgegevens (adres, KvK, BTW-nummer)</li>
+            <li>Klantgegevens die u invoert in de applicatie</li>
+            <li>Technische gegevens (IP-adres, browsertype, sessiedata)</li>
+            <li>Betalingsinformatie (verwerkt door Mollie, niet door ons opgeslagen)</li>
+          </ul>
+        </Section>
+
+        <Section title="3. Waarvoor gebruiken wij uw gegevens?">
+          <ul className="list-disc list-inside space-y-1 ml-2">
+            <li>Verlenen van de dienst (CRM-functionaliteit)</li>
+            <li>Facturering van uw abonnement</li>
+            <li>Klantenservice en support</li>
+            <li>Verbetering van het platform</li>
+            <li>Wettelijke verplichtingen</li>
+          </ul>
+        </Section>
+
+        <Section title="4. Grondslag voor verwerking">
+          <p>Wij verwerken uw gegevens op basis van:</p>
+          <ul className="list-disc list-inside space-y-1 ml-2">
+            <li>Uitvoering van de overeenkomst (abonnement)</li>
+            <li>Gerechtvaardigd belang (beveiliging, verbetering platform)</li>
+            <li>Wettelijke verplichting</li>
+            <li>Toestemming (voor marketing, indien van toepassing)</li>
+          </ul>
+        </Section>
+
+        <Section title="5. Delen met derden">
+          <p>Wij delen uw gegevens alleen met verwerkers die noodzakelijk zijn voor onze dienstverlening:</p>
+          <ul className="list-disc list-inside space-y-1 ml-2">
+            <li><strong>Supabase</strong>, database hosting (EU)</li>
+            <li><strong>Mollie</strong>, betalingsverwerking</li>
+            <li><strong>Resend</strong>, transactionele e-mails</li>
+            <li><strong>Hostinger</strong>, hosting van de applicatie (EU)</li>
+          </ul>
+          <p><strong>Boekhoudkoppelingen:</strong> activeert u een koppeling met uw boekhoudpakket (WeFact, Moneybird of Exact Online), dan worden factuur- en klantgegevens in uw opdracht met dat pakket uitgewisseld. Dit gebeurt uitsluitend na uw expliciete toestemming (via de officiële koppel-procedure van het pakket). U kunt de koppeling op elk moment verbreken; de toegangssleutels worden dan direct verwijderd.</p>
+          <p>Wij verkopen uw gegevens nooit aan derden.</p>
+        </Section>
+
+        <Section title="6. Uw rechten">
+          <p>U heeft het recht op inzage, correctie, verwijdering, bezwaar en dataportabiliteit. Neem hiervoor contact op via <a href="mailto:info@snellio.nl" className="text-[var(--accent)] hover:underline">info@snellio.nl</a>.</p>
+        </Section>
+
+        <Section title="7. Bewaartermijnen">
+          <p>Accountgegevens worden bewaard zolang u klant bent en daarna maximaal 2 jaar voor administratieve doeleinden. Factuurgegevens worden 7 jaar bewaard conform de wettelijke bewaarplicht.</p>
+        </Section>
+
+        <Section title="8. Cookies">
+          <p>Wij gebruiken functionele cookies (noodzakelijk) en analytische cookies (met toestemming). Zie ons <a href="/cookiebeleid" className="text-[var(--accent)] hover:underline">cookiebeleid</a> voor details.</p>
+        </Section>
+
+        <Section title="9. Wijzigingen">
+          <p>Wij kunnen dit privacybeleid aanpassen. Wij informeren u via e-mail bij wezenlijke wijzigingen.</p>
+        </Section>
+      </Container>
+    </div>
+  )
+}

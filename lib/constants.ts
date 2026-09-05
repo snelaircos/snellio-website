@@ -4,7 +4,8 @@ export const SITE = {
   appUrl:        'https://app.snellio.nl',
   email:         'info@snellio.nl',
   phone:         '+31642732262',
-  company:       'Snellio Webdesign',
+  company:       'Snellio',
+  adres:         'Schepen van Allerpad 17, 6831 MX Arnhem',
   kvk:           '69499829',
   founded:       '2024',
   description:   'CRM-software voor HVAC- en koeltechnisch installateurs. Werkbonnen, installatiebeheer, BRL100-rapportage en F-gassen flesregistratie in één platform.',
@@ -16,6 +17,14 @@ export const SITE = {
 // getoonde bedrag af (zie PACKAGE_PRICES in de checkout/billing API-routes).
 // Eén bron voor de vermelding zodat die overal op de site identiek is.
 export const BTW = { short: 'incl. 21% btw' } as const
+
+// Versie van de juridische documenten (voorwaarden + bijlagen, privacybeleid).
+// LET OP: de app-repo (snellio-app) moet exact dezelfde strings gebruiken —
+// het versienummer wordt gelogd bij acceptatie (art. 3.2 voorwaarden).
+export const VOORWAARDEN = {
+  versie: '2.0',
+  datum:  '5 september 2026',
+} as const
 
 export const NAV_ITEMS = [
   { label: 'Functies', href: '/features' },

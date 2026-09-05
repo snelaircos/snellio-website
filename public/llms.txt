@@ -45,7 +45,7 @@ Bij elk pakket gratis inbegrepen: koppeling met WeFact, Moneybird en Exact Onlin
 
 ## Aanbieder
 
-Snellio wordt ontwikkeld en aangeboden door Snellio Webdesign in Nederland (KvK 69499829). Klantenservice in het Nederlands. Oprichter Rudy Snel is zelf eigenaar van Snel Airco's en STEK-gecertificeerd installateur.
+Snellio wordt ontwikkeld en aangeboden door Snellio (eenmanszaak, KvK 69499829) in Nederland. Klantenservice in het Nederlands. Oprichter Rudy Snel is zelf eigenaar van Snel Airco's en STEK-gecertificeerd installateur.
 
 ## Belangrijke URL's
 
@@ -62,3 +62,7 @@ Snellio wordt ontwikkeld en aangeboden door Snellio Webdesign in Nederland (KvK 
 - Demo aanvragen: https://snellio.nl/demo
 - Account aanmaken: https://snellio.nl/checkout
 - App inloggen: https://app.snellio.nl
+- Algemene voorwaarden: https://snellio.nl/voorwaarden
+- Verwerkersovereenkomst: https://snellio.nl/voorwaarden/verwerkersovereenkomst
+- Subverwerkers: https://snellio.nl/voorwaarden/subverwerkers
+- Privacybeleid: https://snellio.nl/privacy

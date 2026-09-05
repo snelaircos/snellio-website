@@ -109,12 +109,6 @@ export default function CheckoutPage({ searchParams }: Props) {
 
             <CheckoutForm selectedPackage={plan.id} />
 
-            <p className="text-[var(--muted2)] text-xs mt-6 text-center">
-              Door verder te gaan gaat u akkoord met onze{' '}
-              <a href="/voorwaarden" className="hover:text-[var(--accent)] transition-colors underline">voorwaarden</a>
-              {' '}en{' '}
-              <a href="/privacy" className="hover:text-[var(--accent)] transition-colors underline">privacybeleid</a>.
-            </p>
           </div>
         </div>
       </section>

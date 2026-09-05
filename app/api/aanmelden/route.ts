@@ -10,13 +10,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 import { rateLimit, clientIp, emailDomein } from '@/lib/rate-limit'
+import { VOORWAARDEN } from '@/lib/constants'
 
 const PAKKETTEN = ['starter', 'basis', 'pro', 'enterprise']
 const LANDEN = ['NL', 'BE', 'overig']
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export async function POST(req: NextRequest) {
-  let body: { company_name?: string; email?: string; password?: string; land?: string; package_id?: string; hp_veld?: string } = {}
+  let body: { company_name?: string; email?: string; password?: string; land?: string; package_id?: string; hp_veld?: string; voorwaarden_akkoord?: boolean; voorwaarden_versie?: string } = {}
   try { body = await req.json() } catch { return NextResponse.json({ error: 'Ongeldige aanvraag' }, { status: 400 }) }
 
   // Honeypot (nooit name="website" — zie eerdere autofill-les)
@@ -39,6 +40,9 @@ export async function POST(req: NextRequest) {
   if (!bedrijfsnaam) return NextResponse.json({ error: 'Bedrijfsnaam is verplicht' }, { status: 400 })
   if (!EMAIL_RE.test(email)) return NextResponse.json({ error: 'Geldig e-mailadres is verplicht' }, { status: 400 })
   if (password.length < 8) return NextResponse.json({ error: 'Wachtwoord moet minimaal 8 tekens zijn' }, { status: 400 })
+  // Acceptatie voorwaarden (art. 3.2) is verplicht bij registratie.
+  if (body.voorwaarden_akkoord !== true)
+    return NextResponse.json({ error: 'Je moet akkoord gaan met de algemene voorwaarden om een account aan te maken.' }, { status: 400 })
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -54,8 +58,14 @@ export async function POST(req: NextRequest) {
   } catch (e) { console.warn('[aanmelden] listUsers faalde:', e) }
 
   // 1. Auth-user
+  // Acceptatie-log (art. 3.2): INTERIM in user_metadata. De definitieve log
+  // hoort in de Supabase-tabel 'voorwaarden_akkoord' — die tabel wordt door de
+  // app-repo (snellio-app) gedefinieerd en aangemaakt; zodra de kolomdefinitie
+  // er is, hier een insert toevoegen. Bewust GEEN eigen tabel aanmaken vanuit
+  // deze repo (afspraak 05-09-2026, voorkomt twee structuren).
+  const akkoordLog = { versie: VOORWAARDEN.versie, tijdstip: new Date().toISOString(), ip }
   const { data: created, error: authErr } = await supabase.auth.admin.createUser({
-    email, password, email_confirm: true, user_metadata: { company_name: bedrijfsnaam, bron: 'snellio.nl' },
+    email, password, email_confirm: true, user_metadata: { company_name: bedrijfsnaam, bron: 'snellio.nl', voorwaarden_akkoord: akkoordLog },
   })
   if (authErr || !created.user) {
     if (authErr?.message?.toLowerCase().includes('already')) return NextResponse.json({ error: 'Dit e-mailadres is al geregistreerd. Log in met je bestaande account.', code: 'email_exists' }, { status: 409 })

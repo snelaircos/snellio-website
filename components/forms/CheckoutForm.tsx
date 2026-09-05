@@ -5,6 +5,7 @@
 // daarna kiest de klant zelf in de app hoe hij betaalt.
 
 import { useState } from 'react'
+import { VOORWAARDEN } from '@/lib/constants'
 
 type Status = 'idle' | 'loading' | 'success' | 'error' | 'email_exists'
 
@@ -16,17 +17,22 @@ export default function CheckoutForm({ selectedPackage }: CheckoutFormProps) {
   const [status, setStatus] = useState<Status>('idle')
   const [errorMessage, setErrorMessage] = useState('')
   const [loginUrl, setLoginUrl] = useState('')
-  const [form, setForm] = useState({ companyName: '', email: '', land: 'NL', password: '', hp: '', package: selectedPackage })
+  const [form, setForm] = useState({ companyName: '', email: '', land: 'NL', password: '', hp: '', akkoord: false, package: selectedPackage })
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!form.akkoord) {
+      setStatus('error')
+      setErrorMessage('Vink aan dat je akkoord gaat met de algemene voorwaarden.')
+      return
+    }
     setStatus('loading')
     setErrorMessage('')
     try {
       const response = await fetch('/api/aanmelden', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ company_name: form.companyName, email: form.email, land: form.land, password: form.password, package_id: form.package, hp_veld: form.hp }),
+        body: JSON.stringify({ company_name: form.companyName, email: form.email, land: form.land, password: form.password, package_id: form.package, hp_veld: form.hp, voorwaarden_akkoord: form.akkoord, voorwaarden_versie: VOORWAARDEN.versie }),
       })
       const data = await response.json()
       if (!response.ok) {
@@ -90,6 +96,23 @@ export default function CheckoutForm({ selectedPackage }: CheckoutFormProps) {
         <input type="text" name="hp_veld" tabIndex={-1} autoComplete="off" value={form.hp} onChange={e => setForm(f => ({ ...f, hp: e.target.value }))} />
       </div>
       <input type="hidden" name="package" value={form.package} />
+
+      {/* Acceptatie (art. 3.2 voorwaarden): expliciete checkbox, versie wordt
+          meegestuurd en server-side gelogd. */}
+      <label htmlFor="voorwaardenAkkoord" className="flex items-start gap-3 text-sm text-[var(--text2)] cursor-pointer select-none">
+        <input id="voorwaardenAkkoord" type="checkbox" required checked={form.akkoord}
+          onChange={e => setForm(f => ({ ...f, akkoord: e.target.checked }))}
+          className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--accent)]" />
+        <span>
+          Ik ga akkoord met de{' '}
+          <a href="/voorwaarden" target="_blank" rel="noopener" className="text-[var(--accent)] underline hover:no-underline">algemene voorwaarden</a>{' '}
+          (versie {VOORWAARDEN.versie}), inclusief de{' '}
+          <a href="/voorwaarden/verwerkersovereenkomst" target="_blank" rel="noopener" className="text-[var(--accent)] underline hover:no-underline">verwerkersovereenkomst</a>,
+          en heb het{' '}
+          <a href="/privacy" target="_blank" rel="noopener" className="text-[var(--accent)] underline hover:no-underline">privacybeleid</a>{' '}
+          gelezen. *
+        </span>
+      </label>
 
       <button type="submit" disabled={status === 'loading'}
         className="w-full bg-gradient-btn text-white font-semibold py-4 rounded-xl shadow-[0_4px_20px_rgba(0,144,184,.4)] hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(0,144,184,.5)] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0">
