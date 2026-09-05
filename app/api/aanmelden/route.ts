@@ -9,6 +9,7 @@
 
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
+import { rateLimit, clientIp, emailDomein } from '@/lib/rate-limit'
 
 const PAKKETTEN = ['starter', 'basis', 'pro', 'enterprise']
 const LANDEN = ['NL', 'BE', 'overig']
@@ -20,6 +21,15 @@ export async function POST(req: NextRequest) {
 
   // Honeypot (nooit name="website" — zie eerdere autofill-les)
   if (body.hp_veld) return NextResponse.json({ ok: true })
+
+  // Rate limiting (blok B10): per IP 5 per 10 minuten en 20 per dag, per
+  // e-maildomein 10 per dag. Publiek endpoint dat tenants aanmaakt.
+  const ip = clientIp(req.headers)
+  const dom = emailDomein(body.email)
+  for (const [sleutel, max, venster] of [[`aanmelden:ip10m:${ip}`, 5, 10 * 60_000], [`aanmelden:ipdag:${ip}`, 20, 86_400_000], [`aanmelden:dom:${dom}`, 10, 86_400_000]] as Array<[string, number, number]>) {
+    const r = rateLimit(sleutel, max, venster)
+    if (!r.ok) return NextResponse.json({ error: 'Te veel aanmeldpogingen. Probeer het later opnieuw of mail info@snellio.nl.' }, { status: 429, headers: { 'Retry-After': String(r.over ?? 60) } })
+  }
 
   const bedrijfsnaam = (body.company_name ?? '').trim()
   const email = (body.email ?? '').trim().toLowerCase()
