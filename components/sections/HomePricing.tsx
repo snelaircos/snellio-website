@@ -136,7 +136,7 @@ export default function HomePricing() {
       </div>
 
       <p className="text-center text-xs text-[#5f7791] mt-8">
-        Probeer alle pakketten 14 dagen gratis · Maandelijks opzegbaar · Alle prijzen {BTW.short}
+        Probeer alle pakketten 14 dagen gratis, geen creditcard nodig · Maandelijks opzegbaar · Alle prijzen {BTW.short}
       </p>
     </div>
   )
