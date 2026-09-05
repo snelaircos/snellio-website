@@ -69,7 +69,7 @@ export default function VoorwaardenPage() {
           <p>5.2 De Klant kiest een periode (per maand of per jaar) en een betaalwijze (betaling op factuur via iDEAL, of automatische incasso). Een jaarabonnement kost tien maandbedragen voor twaalf maanden.</p>
           <p>5.3 Alle prijzen zijn inclusief 21% btw, tenzij uitdrukkelijk anders vermeld. Extra gebruikers, extra modules en verbruik van AI-functies worden in rekening gebracht volgens de prijslijst die in de Dienst wordt getoond op het moment van afname.</p>
           <p>5.4 Snellio kan prijzen jaarlijks per 1 januari aanpassen aan de consumentenprijsindex van het CBS. Andere prijswijzigingen worden ten minste 30 dagen vooraf aangekondigd en gelden voor een lopend jaarabonnement pas bij de eerstvolgende verlenging.</p>
-          <p>5.5 Een maandabonnement loopt per kalendermaand vanaf de startdatum en wordt telkens met een maand verlengd totdat het wordt opgezegd. Een jaarabonnement loopt tot het einde van de betaalde periode en wordt niet stilzwijgend verlengd. Snellio herinnert de Klant ten minste 30 dagen vóór afloop en de Klant kiest opnieuw.</p>
+          <p>5.5 Een maandabonnement loopt per maandperiode vanaf de startdatum en wordt telkens met een maand verlengd totdat het wordt opgezegd. Een jaarabonnement loopt tot het einde van de betaalde periode en wordt niet stilzwijgend verlengd. Snellio herinnert de Klant ten minste 30 dagen vóór afloop en de Klant kiest opnieuw.</p>
         </Section>
 
         <Section title="6. Betaling">
