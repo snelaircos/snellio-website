@@ -60,7 +60,7 @@ const integraties = ['Mollie', 'Moneybird', 'SnelStart', 'Exact', 'Google Calend
 
 const faqs = [
   { question: 'Kan ik mijn data exporteren?',           answer: 'Ja, alles via CSV en PDF. Je data is van jou.' },
-  { question: 'Hoe lang is de trial?',                  answer: 'Probeer 14 dagen gratis, met alle features. Pas na 14 dagen start je abonnement, daarvoor betaal je niets.' },
+  { question: 'Hoe lang is de trial?',                  answer: 'Probeer 14 dagen gratis met alle features, zonder creditcard of betaalgegevens. Na 14 dagen kies je zelf hoe je verder wilt: per maand of per jaar, zelf via iDEAL of automatische incasso. Niets loopt stilzwijgend door.' },
   { question: 'Wat als ik wil opzeggen?',               answer: 'Eén klik in je dashboard. Geen opzegtermijn na de eerste maand.' },
   { question: 'Hosten jullie in Nederland?',            answer: 'EU-region (Supabase Frankfurt). AVG-conform.' },
   { question: 'Kan een monteur ook offline werken?',    answer: 'Beperkt: werkbon kan worden ingevuld zonder verbinding, sync zodra hij online komt.' },
@@ -105,7 +105,7 @@ export default function HomePage() {
               </Link>
             </div>
             <p className="text-[#5f7791] text-xs mt-5">
-              Probeer 14 dagen gratis · Maandelijks opzegbaar · Nederlandse support
+              14 dagen gratis, geen creditcard nodig · Maandelijks opzegbaar · Nederlandse support
             </p>
           </div>
 
@@ -365,7 +365,7 @@ export default function HomePage() {
             Klaar om je administratie eindelijk simpel te maken?
           </h2>
           <p className="text-[#5f7791] text-base mb-8">
-            Probeer 14 dagen gratis. Annuleren wanneer je wilt.
+            14 dagen gratis proberen, geen creditcard nodig. Annuleren wanneer je wilt.
           </p>
           <Link
             href={SIGNUP_HREF}

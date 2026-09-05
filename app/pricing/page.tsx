@@ -15,9 +15,9 @@ export const metadata: Metadata = buildMetadata({
 
 const faqs = [
   { question: 'Is er een gratis proefperiode?',
-    answer:   'Ja. Probeer alle pakketten 14 dagen gratis voordat je iets betaalt.' },
+    answer:   'Ja. Probeer alle pakketten 14 dagen gratis, zonder creditcard of betaalgegevens. Pas daarna kies je zelf hoe je betaalt: per maand of per jaar, via iDEAL of automatische incasso.' },
   { question: 'Zijn de prijzen inclusief btw?',
-    answer:   'Ja. Alle genoemde prijzen zijn inclusief 21% btw. Het bedrag dat u ziet is het bedrag dat wordt afgeschreven, er komen geen kosten bij.' },
+    answer:   'Ja. Alle genoemde prijzen zijn inclusief 21% btw. Het bedrag dat je ziet is het bedrag dat je betaalt, er komen geen kosten bij. Kies je incasso, dan incasseren we nooit méér dan het gekozen bedrag en loopt niets stilzwijgend door.' },
   { question: 'Zijn de boekhoudkoppelingen inbegrepen?',
     answer:   'Ja. De koppelingen met WeFact, Moneybird en Exact Online zijn bij elk pakket gratis inbegrepen, ook bij Starter. Staat uw boekhoudpakket er niet bij? Dan proberen wij, indien mogelijk, deze alsnog toe te voegen.' },
   { question: 'Kan ik op elk moment opzeggen?',
@@ -48,12 +48,34 @@ export default function PricingPage() {
             <span className="text-[var(--accent)]">geen verrassingen.</span>
           </h1>
           <p className="text-[var(--text2)] text-lg leading-relaxed max-w-lg mx-auto">
-            14 dagen gratis proberen. Kies het pakket dat bij jouw bedrijf past. Opzeggen wanneer je wilt. Alle prijzen {BTW.short}.
+            14 dagen gratis proberen, geen creditcard nodig. Daarna kies je zelf: per jaar of per maand, zelf betalen via iDEAL of automatische incasso. Alle prijzen {BTW.short}.
           </p>
         </Container>
       </section>
 
       <Pricing hideHeader={true} />
+
+      {/* Zo betaal je (stap 12): jaar of maand × zelf via iDEAL of incasso */}
+      <section className="py-16 px-[5%]">
+        <Container narrow>
+          <h2 className="font-outfit font-bold text-[var(--text)] text-2xl mb-3 text-center">Zo betaal je — jij kiest</h2>
+          <p className="text-[var(--muted2)] text-sm text-center mb-8">
+            Een jaarabonnement kost tien maandbedragen voor twaalf maanden: Starter €20, Basis €58, Pro €138 en Enterprise €258 voordeel per jaar.
+            De jaarprijs is gelijk voor beide betaalwijzen — geen extra korting op incasso. Je abonnement loopt nooit stilzwijgend via incasso door.
+          </p>
+          <div className="grid grid-cols-[110px_1fr_1fr] gap-3 text-sm">
+            <div />
+            <div className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] self-end">Ik betaal zelf via iDEAL</div>
+            <div className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] self-end">Automatische incasso</div>
+            <div className="font-semibold text-[var(--text)] self-center">Per jaar <span className="block text-[.65rem] text-emerald-400 font-mono">AANBEVOLEN</span></div>
+            <div className="bg-[var(--navy3)] border border-[var(--accent)] rounded-xl p-4 text-[var(--text2)]">Eén factuur voor tien maanden met betaallink, twaalf maanden toegang.</div>
+            <div className="bg-[var(--navy3)] border border-[var(--accent)] rounded-xl p-4 text-[var(--text2)]">Eenmalig tien maanden, jaarlijks geïncasseerd.</div>
+            <div className="font-semibold text-[var(--text)] self-center">Per maand</div>
+            <div className="bg-[var(--navy3)] border border-[var(--border)] rounded-xl p-4 text-[var(--text2)]">Elke maand een factuur met betaallink.</div>
+            <div className="bg-[var(--navy3)] border border-[var(--border)] rounded-xl p-4 text-[var(--text2)]">Elke maand automatisch geïncasseerd.</div>
+          </div>
+        </Container>
+      </section>
 
       {/* FAQ */}
       <section className="py-20 px-[5%]">

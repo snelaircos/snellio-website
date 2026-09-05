@@ -100,10 +100,10 @@ export default function CheckoutPage({ searchParams }: Props) {
           {/* Rechts: checkout form */}
           <div className="bg-[var(--navy3)] border border-[var(--border)] rounded-2xl p-8">
             <div className="text-center mb-6">
-              <div className="text-4xl mb-3">💳</div>
+              <div className="text-4xl mb-3">🚀</div>
               <h2 className="font-outfit font-bold text-[var(--text)] text-xl mb-2">Account aanmaken</h2>
               <p className="text-[var(--muted2)] text-sm leading-relaxed">
-                Vul je gegevens in om te beginnen. Betaling volgt na de proefperiode: €{plan.price.month} per maand, {BTW.short}.
+                14 dagen gratis proberen, geen creditcard nodig. Na de proefperiode kies je zelf: per maand (€{plan.price.month}) of per jaar (€{plan.price.year}, twee maanden gratis), zelf betalen via iDEAL of automatische incasso. Niets loopt stilzwijgend door. Alle prijzen {BTW.short}.
               </p>
             </div>
 

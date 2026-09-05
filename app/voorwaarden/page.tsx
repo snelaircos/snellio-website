@@ -36,16 +36,16 @@ export default function VoorwaardenPage() {
 
         <Section title="3. Abonnement en betaling">
           <ul className="list-disc list-inside space-y-1 ml-2">
-            <li>Abonnementen lopen per maand of per jaar, zoals gekozen bij aanmelding</li>
+            <li>Na de proefperiode kiest de gebruiker zelf een abonnement per maand of per jaar; een jaarabonnement kost tien maandbedragen voor twaalf maanden</li>
             <li>Alle genoemde prijzen zijn inclusief 21% btw</li>
-            <li>Betaling vindt vooraf plaats via Mollie (iDEAL, creditcard)</li>
+            <li>Betaling vindt vooraf plaats via Mollie: op factuur via iDEAL, of via automatische incasso als de gebruiker daar uitdrukkelijk voor kiest. Een abonnement loopt nooit stilzwijgend via incasso door zonder die keuze</li>
             <li>Bij niet-betaling behoudt {SITE.company} het recht om toegang te beperken</li>
             <li>Prijswijzigingen worden minimaal 30 dagen van tevoren gecommuniceerd</li>
           </ul>
         </Section>
 
         <Section title="4. Proefperiode">
-          <p>Nieuwe gebruikers genieten een gratis proefperiode van 14 dagen. Na afloop van de proefperiode is een betaald abonnement vereist om de dienst te blijven gebruiken.</p>
+          <p>Nieuwe gebruikers genieten een gratis proefperiode van 14 dagen, zonder dat betaalgegevens of een incassomachtiging nodig zijn. Na afloop van de proefperiode is een betaald abonnement vereist om de dienst te blijven gebruiken; zonder keuze wordt het account alleen-lezen en blijven de gegevens 60 dagen bewaard.</p>
         </Section>
 
         <Section title="5. Opzegging">
