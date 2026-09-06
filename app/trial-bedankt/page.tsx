@@ -1,7 +1,10 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { SITE } from '@/lib/constants'
-import TrialSignupConversion from '@/components/tracking/TrialSignupConversion'
+
+// Legacy bedankt-pagina. Vuurt bewust GEEN conversie: de URL is vrij te
+// openen en er is hier geen backend-bevestiging. De trial-conversie zit in
+// CheckoutForm, direct na een succesvolle /api/aanmelden.
 
 export const metadata: Metadata = {
   title: 'Account aangemaakt | Snellio',
@@ -12,8 +15,6 @@ export const metadata: Metadata = {
 export default function TrialBedanktPage() {
   return (
     <>
-      <TrialSignupConversion />
-
       <div className="min-h-screen flex flex-col items-center justify-center text-center px-[5%] bg-[var(--navy2)]">
         {/* Glow */}
         <div

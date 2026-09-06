@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { trackConversionAndWait } from '@/lib/gtag'
+import { trackLeadSubmitted } from '@/lib/tracking'
 
 type Status = 'idle' | 'loading' | 'error'
 
@@ -21,14 +21,12 @@ export default function ContactForm() {
         body:    JSON.stringify(form),
       })
       if (!res.ok) throw new Error('api_error')
+      const data = await res.json().catch(() => ({})) as { lead_id?: string }
 
-      // Demo-vinkje: aparte demo_request_submitted conversie hier direct,
-      // omdat de bedankpagina alleen contact_form_submitted fired. We
-      // awaiten het Ads-beacon (of timeout) zodat de fire niet verloren gaat
-      // in de unload-race bij de daaropvolgende router.push naar
-      // /bedankt-contact. Dedupe niet nodig: deze fire gebeurt eenmalig
-      // en /bedankt-contact behandelt alleen de andere conversie.
-      if (form.demo) await trackConversionAndWait('demo_request_submitted')
+      // Eén inzending = één lead-conversie (het demo-vinkje gaat mee als
+      // lead_type, geen tweede conversie). Pas na bevestiging van de API, met
+      // de server-lead-id als transaction_id. /bedankt-contact vuurt niets.
+      await trackLeadSubmitted({ leadId: data.lead_id ?? `nolid_${Date.now()}`, leadType: form.demo ? 'contact_demo' : 'contact' })
 
       router.push('/bedankt-contact')
     } catch {

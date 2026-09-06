@@ -69,18 +69,30 @@ lib/
 - [x] `lang="nl"` op html element
 - [x] Alt tekst op alle afbeeldingen
 
-## Analytics instellen
+## Tracking instellen (Google Ads + GA4)
 
-Vul in `.env.local`:
+Alle tracking loopt via de centrale laag in `lib/tracking/` (config, consent,
+attributie, events). Geen losse `gtag()`-aanroepen in componenten.
+
+Vul in `.env.local` (zie `.env.example`):
 
 ```env
-NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX        # Google Tag Manager
-NEXT_PUBLIC_GA4_ID=G-XXXXXXXXXX       # Google Analytics 4
-NEXT_PUBLIC_META_PIXEL_ID=...         # Meta Pixel
-NEXT_PUBLIC_CLARITY_ID=...            # Microsoft Clarity
+NEXT_PUBLIC_GOOGLE_TAG_ID=GT-…          # geconsolideerde Google Tag (loader)
+NEXT_PUBLIC_GOOGLE_ADS_ID=AW-…          # Google Ads conversion-account
+NEXT_PUBLIC_GA4_ID=G-…                  # GA4 measurement-id
+NEXT_PUBLIC_GOOGLE_ADS_TRIAL_SIGNUP_LABEL=…
+NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL=…
+NEXT_PUBLIC_GOOGLE_ADS_DEMO_LABEL=…
+NEXT_PUBLIC_GOOGLE_ADS_PURCHASE_LABEL=  # leeg = aankoop niet meten
 ```
 
-Analytics wordt alleen geladen in `production`. In development geen tracking.
+Events (alleen na backend-bevestiging, met stabiele `transaction_id`):
+`trial_signup_completed` (CheckoutForm na `/api/aanmelden`), `lead_submitted`
+(ContactForm na `/api/contact`), `demo_requested` (DemoForm na `/api`),
+`purchase_completed` (app, na Mollie `paid`). Consent Mode v2 default staat in
+`<head>` (GoogleTag.tsx); de keuze staat in cookie `snellio_consent` op
+`.snellio.nl`. Debug: `?tracking_debug=1` → console `[Tracking] …` en
+`window.__snellioTracking`. Testplan: `docs/tracking-testplan.md`.
 
 ## Content aanpassen
 

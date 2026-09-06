@@ -46,6 +46,7 @@ export default function PrivacyPage() {
             <li>WhatsApp-berichten en bijlagen die via de koppeling binnenkomen</li>
             <li>De inhoud van AI-interacties</li>
             <li>Gegevens over acceptatie van de voorwaarden (tijdstip, versienummer, IP-adres)</li>
+            <li>Herkomst van uw aanmelding (campagneparameters uit de URL; de advertentieklik-id alleen met uw toestemming voor marketingcookies)</li>
             <li>Technische gegevens (IP-adres, browsertype, sessiedata)</li>
             <li>Betalingsinformatie (verwerkt door Mollie, niet door ons opgeslagen)</li>
           </ul>

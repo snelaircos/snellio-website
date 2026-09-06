@@ -5,7 +5,6 @@ export const dynamic = 'force-dynamic'
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
-import TrialSignupConversion from '@/components/tracking/TrialSignupConversion'
 
 type Status = 'loading' | 'success' | 'error'
 
@@ -13,15 +12,10 @@ export default function CheckoutSuccessPage() {
   const [status, setStatus] = useState<Status>('loading')
   const [errorMessage, setErrorMessage] = useState('')
   const [email, setEmail] = useState('')
-  const [userId, setUserId] = useState('')
-  const [paymentId, setPaymentId] = useState('')
   const [buttonLoading, setButtonLoading] = useState(false)
 
   const searchParams = useSearchParams()
   const signupId = searchParams.get('signup_id')
-  // payment_id kan in theorie ook direct in de URL meekomen (Mollie redirect),
-  // anders pakken we hem uit de verify-response (uit pending_signups in DB).
-  const paymentIdFromUrl = searchParams.get('payment_id')
   const supabase = createClient()
 
   useEffect(() => {
@@ -54,8 +48,6 @@ export default function CheckoutSuccessPage() {
         }
 
         setEmail(data.email || '')
-        setUserId(data.user_id || '')
-        setPaymentId(paymentIdFromUrl || data.payment_id || '')
 
         if (data.email && data.user_id) {
           try {
@@ -118,18 +110,8 @@ export default function CheckoutSuccessPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-[5%]">
-      {/* Google Ads conversie, alleen bij status 'success' (geverifieerde betaling).
-         dedupeKey fungeert als sessionStorage-key tegen reload-fires; paymentId
-         wordt meegestuurd als Ads transaction_id (Mollie tr_xxx); email enabled
-         Enhanced Conversions zodat Google de conversie kan matchen aan de
-         oorspronkelijke ad-click ondanks cookieless tracking. */}
-      <TrialSignupConversion
-        dedupeKey={signupId ?? undefined}
-        paymentId={paymentId || undefined}
-        userId={userId || undefined}
-        email={email || undefined}
-      />
-
+      {/* Legacy (oude €0,01-mandaatflow; /api/checkout is uitgeschakeld). Geen
+         conversie meer vanaf hier: trial-signup wordt in CheckoutForm gemeten. */}
       <div className="text-center max-w-md">
         <div className="text-6xl mb-6">✅</div>
         <h1 className="font-outfit font-black text-[var(--text)] text-2xl mb-4">Je account is aangemaakt</h1>

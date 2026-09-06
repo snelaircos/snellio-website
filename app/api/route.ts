@@ -37,6 +37,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Server configuratie fout' }, { status: 500 })
     }
 
+    // Lead-id: transaction_id voor de Ads-conversie én referentie in de mail.
+    const leadId = crypto.randomUUID()
     const naam     = escapeHtml(body.naam.trim())
     const bedrijf  = escapeHtml(body.bedrijfsnaam.trim())
     const email    = escapeHtml(body.email.trim())
@@ -57,7 +59,7 @@ export async function POST(req: NextRequest) {
           Demo-aanvraag binnen via het formulier. Bel of mail terug om een tijdstip te plannen.
         </p>
         <p style="color:#8ea2b8;font-size:12px;margin-top:24px;border-top:1px solid #e4ecf2;padding-top:12px;">
-          Verzonden via snellio.nl/demo · ${new Date().toLocaleString('nl-NL', { timeZone: 'Europe/Amsterdam' })}
+          Verzonden via snellio.nl/demo · ${new Date().toLocaleString('nl-NL', { timeZone: 'Europe/Amsterdam' })} · Referentie ${leadId}
         </p>
       </div>
     `
@@ -92,7 +94,7 @@ export async function POST(req: NextRequest) {
       timestamp: new Date().toISOString(),
     })
 
-    return NextResponse.json({ success: true }, { status: 200 })
+    return NextResponse.json({ success: true, lead_id: leadId }, { status: 200 })
 
   } catch (err) {
     console.error('[Demo API error]', err)

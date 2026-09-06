@@ -1,6 +1,6 @@
 'use client'
 
-import { trackGA4Event } from '@/lib/gtag'
+import { trackEvent } from '@/lib/tracking'
 
 // Zwevende WhatsApp-knop rechtsonder op elke pagina, zelfde opzet als op
 // snelaircos.nl. 085-5005505 → internationaal 31855005505.
@@ -15,7 +15,7 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Stuur een WhatsApp-bericht"
-      onClick={() => trackGA4Event('whatsapp_click', { location: 'floating_button' })}
+      onClick={() => trackEvent('whatsapp_click', { location: 'floating_button' })}
       className="fixed bottom-24 right-4 md:bottom-6 md:right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg shadow-black/20 transition-transform hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
     >
       <svg viewBox="0 0 24 24" className="h-8 w-8 fill-white" aria-hidden="true">

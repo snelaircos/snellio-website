@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import ContactConversion from '@/components/tracking/ContactConversion'
 
 export const metadata: Metadata = {
   title: 'Bericht ontvangen | Snellio',
@@ -11,9 +10,7 @@ export const metadata: Metadata = {
 export default function BedanktContactPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center text-center px-[5%] bg-[var(--navy2)]">
-      {/* Google Ads + GA4 conversie, on-mount met sessionStorage-dedupe */}
-      <ContactConversion />
-
+      {/* Geen conversie hier: die vuurt in ContactForm ná bevestiging van de API. */}
       {/* Glow */}
       <div
         className="absolute inset-0 pointer-events-none"

@@ -6,6 +6,7 @@
 
 import { useState } from 'react'
 import { VOORWAARDEN } from '@/lib/constants'
+import { trackTrialSignupCompleted, attributionForServer } from '@/lib/tracking'
 
 type Status = 'idle' | 'loading' | 'success' | 'error' | 'email_exists'
 
@@ -32,7 +33,7 @@ export default function CheckoutForm({ selectedPackage }: CheckoutFormProps) {
       const response = await fetch('/api/aanmelden', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ company_name: form.companyName, email: form.email, land: form.land, password: form.password, package_id: form.package, hp_veld: form.hp, voorwaarden_akkoord: form.akkoord, voorwaarden_versie: VOORWAARDEN.versie }),
+        body: JSON.stringify({ company_name: form.companyName, email: form.email, land: form.land, password: form.password, package_id: form.package, hp_veld: form.hp, voorwaarden_akkoord: form.akkoord, voorwaarden_versie: VOORWAARDEN.versie, attributie: attributionForServer() }),
       })
       const data = await response.json()
       if (!response.ok) {
@@ -45,6 +46,10 @@ export default function CheckoutForm({ selectedPackage }: CheckoutFormProps) {
       }
       setStatus('success')
       setLoginUrl(data.login_url)
+      // Conversie pas nu: /api/aanmelden gaf ok → account + tenant bestaan.
+      // Wachten op de gtag-callback (max 1,5 s) vóór de harde redirect naar
+      // app.snellio.nl, anders kan de conversie-hit sneuvelen in de unload.
+      if (data.user_id) await trackTrialSignupCompleted({ userId: data.user_id, email: form.email })
       setTimeout(() => { window.location.href = data.login_url }, 2500)
     } catch (error) {
       console.error('Aanmelden error:', error)

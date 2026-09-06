@@ -17,7 +17,7 @@ const LANDEN = ['NL', 'BE', 'overig']
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export async function POST(req: NextRequest) {
-  let body: { company_name?: string; email?: string; password?: string; land?: string; package_id?: string; hp_veld?: string; voorwaarden_akkoord?: boolean; voorwaarden_versie?: string } = {}
+  let body: { company_name?: string; email?: string; password?: string; land?: string; package_id?: string; hp_veld?: string; voorwaarden_akkoord?: boolean; voorwaarden_versie?: string; attributie?: Record<string, unknown> } = {}
   try { body = await req.json() } catch { return NextResponse.json({ error: 'Ongeldige aanvraag' }, { status: 400 }) }
 
   // Honeypot (nooit name="website" — zie eerdere autofill-les)
@@ -64,8 +64,17 @@ export async function POST(req: NextRequest) {
   // er is, hier een insert toevoegen. Bewust GEEN eigen tabel aanmaken vanuit
   // deze repo (afspraak 05-09-2026, voorkomt twee structuren).
   const akkoordLog = { versie: VOORWAARDEN.versie, tijdstip: new Date().toISOString(), ip }
+  // Attributie (gclid/gbraid/wbraid/utm/landing) uit de first-party opslag van
+  // de site: gewhitelist en begrensd, bij het account bewaard zodat de app een
+  // latere aankoop aan de advertentieklik kan koppelen (o.a. offline conversie).
+  const ATTR_KEYS = ['gclid', 'gbraid', 'wbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'landing_page', 'referrer', 'captured_at'] as const
+  const attributie: Record<string, string | boolean> = {}
+  if (body.attributie && typeof body.attributie === 'object') {
+    for (const k of ATTR_KEYS) { const v = body.attributie[k]; if (typeof v === 'string' && v.trim()) attributie[k] = v.trim().slice(0, 200) }
+    if (typeof body.attributie.consent_ads === 'boolean') attributie.consent_ads = body.attributie.consent_ads
+  }
   const { data: created, error: authErr } = await supabase.auth.admin.createUser({
-    email, password, email_confirm: true, user_metadata: { company_name: bedrijfsnaam, bron: 'snellio.nl', voorwaarden_akkoord: akkoordLog },
+    email, password, email_confirm: true, user_metadata: { company_name: bedrijfsnaam, bron: 'snellio.nl', voorwaarden_akkoord: akkoordLog, attributie: Object.keys(attributie).length ? attributie : null },
   })
   if (authErr || !created.user) {
     if (authErr?.message?.toLowerCase().includes('already')) return NextResponse.json({ error: 'Dit e-mailadres is al geregistreerd. Log in met je bestaande account.', code: 'email_exists' }, { status: 409 })
@@ -100,5 +109,6 @@ export async function POST(req: NextRequest) {
   }).then(({ error }) => { if (error) console.warn('[aanmelden] pending_signups:', error.message) })
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://app.snellio.nl'
-  return NextResponse.json({ ok: true, login_url: `${appUrl}/login?new_account=1&email=${encodeURIComponent(email)}` })
+  // user_id gaat mee als stabiele transaction_id voor de Ads-conversie (dedupe).
+  return NextResponse.json({ ok: true, user_id: userId, login_url: `${appUrl}/login?new_account=1&email=${encodeURIComponent(email)}` })
 }

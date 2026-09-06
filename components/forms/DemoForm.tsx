@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { trackDemoRequested } from '@/lib/tracking'
 
 type Status = 'idle' | 'loading' | 'error'
 
@@ -43,10 +44,11 @@ export default function DemoForm({ compact = false }: DemoFormProps) {
         body:    JSON.stringify(form),
       })
       if (!res.ok) throw new Error('api_error')
+      const data = await res.json().catch(() => ({})) as { lead_id?: string }
 
-      // Conversie wordt gefired door <DemoConversion /> op /demo-bedankt
-      // (on-mount met retry + sessionStorage-dedupe). Pre-redirect firen
-      // verloor de GA4-event vaak in de unload-race; on-mount is betrouwbaarder.
+      // Conversie pas na bevestiging van de API, met de server-lead-id als
+      // transaction_id. /demo-bedankt zelf vuurt niets meer (open URL).
+      await trackDemoRequested({ leadId: data.lead_id ?? `nolid_${Date.now()}` })
       router.push('/demo-bedankt')
     } catch {
       setStatus('error')
