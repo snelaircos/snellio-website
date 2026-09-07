@@ -63,13 +63,11 @@ export const POSTS: Post[] = [
       bio:  "Rudy Snel is BRL-100 en STEK gecertificeerd airco- en warmtepompmonteur (Snel Airco's, Harskamp) en bouwer van Snellio. Hij gebruikt Snellio dagelijks in zijn eigen bus.",
     },
     // OG-afbeelding = eerste screenshot; staat ook inline in de tekst, dus
-    // niet als header. Bestanden in /public/blog/zomer-2026/ worden door
-    // Rudy aangeleverd: weekplanning-zomer.png, whatsapp-assistent.png,
-    // werkbon-ondertekend.png.
+    // niet als header. Bestanden staan in /public/blog/zomer-2026/.
     image: {
       src:    '/blog/zomer-2026/weekplanning-zomer.png',
       alt:    'Weekplanning van een airco-monteur in Snellio met drie klussen per dag',
-      width:  1180,
+      width:  1200,
       height: 900,
       showAsHeader: false,
     },
@@ -105,6 +103,8 @@ export const POSTS: Post[] = [
       ## Werkbon op de telefoon, tussen de handelingen door
 
       Wat ik vroeger aan de keukentafel deed met een iPad, doe ik nu op mijn telefoon terwijl ik bij de klant sta. De klantgegevens zaten al in Snellio vanaf het plannen, dus bij aankomst open ik de [werkbon](/werkbon-software) en vul ik de handelingen in: inbedrijfstelling, onderhoudsrapport, koudemiddel. Tussen het vacumeren en het opstarten door, niet erna.
+
+      ![Dagplanning van een airco-monteur in Snellio op de telefoon, met vier afspraken op een donderdag in augustus](/blog/zomer-2026/dagplanning-telefoon.png)
 
       ## Handtekening, kosten en factuur in één beweging
 

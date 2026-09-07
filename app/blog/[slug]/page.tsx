@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import { existsSync } from 'fs'
+import { existsSync, openSync, readSync, closeSync } from 'fs'
 import path from 'path'
 import { notFound } from 'next/navigation'
 import { buildMetadata }  from '@/lib/metadata'
@@ -29,6 +29,19 @@ export const dynamicParams = false
 // statisch, dus na het toevoegen van bestanden is een nieuwe build nodig.
 function publicFileExists(src: string): boolean {
   return existsSync(path.join(process.cwd(), 'public', src))
+}
+
+// Afmetingen uit de PNG-header (IHDR), voor width/height op de <img> (geen
+// layout-shift) en om staande telefoon-screenshots smaller te tonen.
+function pngSize(src: string): { width: number; height: number } | null {
+  try {
+    const fd = openSync(path.join(process.cwd(), 'public', src), 'r')
+    const buf = Buffer.alloc(24)
+    readSync(fd, buf, 0, 24, 0)
+    closeSync(fd)
+    if (buf.toString('ascii', 1, 4) !== 'PNG') return null
+    return { width: buf.readUInt32BE(16), height: buf.readUInt32BE(20) }
+  } catch { return null }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -113,14 +126,18 @@ function renderBlocks(content: string) {
     }
     if (block.type === 'img') {
       if (!publicFileExists(block.src)) return null
+      const size = pngSize(block.src)
+      const portrait = !!size && size.height > size.width
       return (
         <figure key={i} className="my-8">
-          {/* eslint-disable-next-line @next/next/no-img-element -- afmetingen pas bekend na aanlevering; lazy + max-w-full volstaat */}
+          {/* eslint-disable-next-line @next/next/no-img-element -- statische PNG's uit /public; lazy + expliciete afmetingen volstaan */}
           <img
             src={block.src}
             alt={block.alt}
             loading="lazy"
-            className="w-full max-w-full h-auto block rounded-xl ring-1 ring-[var(--border)] shadow-[0_16px_48px_rgba(15,33,51,.12)]"
+            width={size?.width}
+            height={size?.height}
+            className={`max-w-full h-auto block rounded-xl ring-1 ring-[var(--border)] shadow-[0_16px_48px_rgba(15,33,51,.12)] ${portrait ? 'w-[min(100%,360px)] mx-auto' : 'w-full'}`}
           />
         </figure>
       )
