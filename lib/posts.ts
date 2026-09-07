@@ -90,7 +90,7 @@ export const POSTS: Post[] = [
 
       Op mijn website stuur ik aanvragen naar een apart WhatsApp-nummer. Op dat nummer draait een AI-assistent die de eerste vragen van klanten beantwoordt. Geen prijzen uit zichzelf, wel: wat voor installatie is het, waar staat hij, wat is het adres en de postcode. Klanten kregen binnen minuten antwoord, ook als ik met mijn handen in een buitenunit zat.
 
-      Het resultaat: [AANTAL] aanvragen deze zomer via WhatsApp, waarvan het grootste deel al compleet was met adres en installatiegegevens voordat ik er zelf naar keek.
+      Het resultaat: ruim 300 werkorders aangemaakt en ruim 240 nieuwe klanten deze zomer via WhatsApp, waarvan het grootste deel al compleet was met adres en installatiegegevens voordat ik er zelf naar keek.
 
       ![AI-assistent in Snellio vraagt via WhatsApp het adres en type installatie uit](/blog/zomer-2026/whatsapp-assistent.png)
 
