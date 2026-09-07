@@ -72,10 +72,13 @@ export function softwareApplicationSchema() {
 export function articleSchema(post: {
   slug: string; title: string; description: string; dateISO: string
   image?: { src: string }
+  schemaType?: 'Article' | 'BlogPosting'
+  tags?: string[]
 }) {
   return {
     '@context':     'https://schema.org',
-    '@type':        'BlogPosting',
+    '@type':        post.schemaType ?? 'BlogPosting',
+    ...(post.tags?.length ? { keywords: post.tags.join(', ') } : {}),
     headline:       post.title,
     description:    post.description,
     datePublished:  post.dateISO,

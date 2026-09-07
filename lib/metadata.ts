@@ -23,10 +23,9 @@ export function buildMetadata({
   const volledigeTitel = title.includes(SITE.name) ? title : `${title} | ${SITE.name}`
 
   return {
-    title: {
-      default:  volledigeTitel,
-      template: `%s | ${SITE.name}`,
-    },
+    // absolute: anders plakt de root-template (%s | Snellio) er nóg een
+    // keer de merknaam achter ("… | Snellio | Snellio").
+    title: { absolute: volledigeTitel },
     description,
     metadataBase: new URL(SITE.url),
     alternates:   { canonical: url },

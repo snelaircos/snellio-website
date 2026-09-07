@@ -19,16 +19,132 @@ export interface Post {
   content:     string
   // Optionele header-afbeelding: getoond boven het artikel en gebruikt
   // als OG-image + schema.org-image in plaats van de sitewide OG.
+  // showAsHeader:false = alleen OG/schema, niet bovenaan tonen (bv. als
+  // dezelfde afbeelding al inline in de tekst staat).
   image?: {
     src:      string
     alt:      string
     caption?: string
     width:    number
     height:   number
+    showAsHeader?: boolean
   }
+  // Afwijkende <title> (SEO); zonder valt post.title in.
+  metaTitle?:  string
+  tags?:       string[]
+  // Auteursbox onder het artikel.
+  author?:     { name: string; bio: string }
+  // FAQ-blok onder het artikel; wordt ook als FAQPage-schema uitgezet.
+  faq?:        { question: string; answer: string }[]
+  // schema.org-type; standaard BlogPosting.
+  schemaType?: 'Article' | 'BlogPosting'
 }
 
+// Content-notatie, aanvullend op **vet** en [tekst](/pad):
+//   ## Kop            → <h2>
+//   ![alt](/pad.png)  → <figure><img loading="lazy"> — alleen gerenderd als
+//                       het bestand in /public bestaat, anders niets (geen
+//                       kapotte afbeelding, geen placeholder).
+
 export const POSTS: Post[] = [
+  {
+    slug:        'drukste-zomer-airco-monteur-zonder-administratie-achterstand',
+    title:       'Mijn drukste zomer ooit als airco-monteur, en waarom de administratie me niet inhaalde',
+    metaTitle:   'Drukste zomer ooit als airco-monteur, zonder administratie-achterstand | Snellio',
+    description: 'Hoe een airco-monteur zijn drukste zomer draaide met WhatsApp-aanvragen, een AI-assistent, werkbonnen op de telefoon en F-gassenregistratie volgens BRL-100 v3.0. Zonder avonden aan de keukentafel.',
+    category:    'Praktijk',
+    date:        '7 september 2026',
+    dateISO:     '2026-09-07',
+    readTime:    '6 min',
+    schemaType:  'Article',
+    tags:        ['werkbon app', 'f-gassen registratie', 'planning installateur', 'airco monteur software', 'whatsapp aanvragen', 'koudemiddel registratie'],
+    author: {
+      name: 'Rudy Snel',
+      bio:  "Rudy Snel is BRL-100 en STEK gecertificeerd airco- en warmtepompmonteur (Snel Airco's, Harskamp) en bouwer van Snellio. Hij gebruikt Snellio dagelijks in zijn eigen bus.",
+    },
+    // OG-afbeelding = eerste screenshot; staat ook inline in de tekst, dus
+    // niet als header. Bestanden in /public/blog/zomer-2026/ worden door
+    // Rudy aangeleverd: weekplanning-zomer.png, whatsapp-assistent.png,
+    // werkbon-ondertekend.png.
+    image: {
+      src:    '/blog/zomer-2026/weekplanning-zomer.png',
+      alt:    'Weekplanning van een airco-monteur in Snellio met drie klussen per dag',
+      width:  1180,
+      height: 900,
+      showAsHeader: false,
+    },
+    faq: [
+      { question: 'Werkt Snellio ook als ik geen WhatsApp-nummer voor aanvragen heb?',
+        answer:   'Ja. WhatsApp is een optie die je zelf aanzet. Aanvragen via mail of je website komen op dezelfde plek terecht.' },
+      { question: 'Is de F-gassenregistratie in Snellio geschikt voor de BRL-100 audit?',
+        answer:   'Ja. Registratie per fles en per installatie, met handelingen, hoeveelheden en datum, volgens BRL-100 versie 3.0. Het logboek is per installatie te tonen aan de auditor.' },
+      { question: 'Moet ik een creditcard of incassomachtiging afgeven om te proberen?',
+        answer:   'Nee. De proefperiode van 14 dagen vraagt geen betaalgegevens. Na afloop kies je zelf: per maand of per jaar, via iDEAL-factuur of automatische incasso.' },
+      { question: 'Kan ik mijn bestaande klanten en installaties importeren?',
+        answer:   'Ja, via een import of via de API. Neem contact op als je hulp wilt bij de overstap.' },
+    ],
+    content:     `
+      De zomer van 2026 was de drukste die ik als monteur heb gedraaid. Meer aanvragen dan ooit, dagen met drie klussen achter elkaar, en 's avonds nog plannen voor de volgende dag. Andere jaren betekende dat: keukentafel, iPad, en tot laat werkbonnen en facturen bijwerken. Dit jaar niet. Ik heb de hele zomer met Snellio gewerkt, de software die ik zelf heb gebouwd omdat ik het als monteur zat was om tweemaal hetzelfde in te typen. Dit is hoe dat in de praktijk ging.
+
+      ![Weekplanning van een airco-monteur in Snellio met drie klussen per dag](/blog/zomer-2026/weekplanning-zomer.png)
+
+      ## Aanvragen via WhatsApp, beantwoord binnen enkele minuten
+
+      Op mijn website stuur ik aanvragen naar een apart WhatsApp-nummer. Op dat nummer draait een AI-assistent die de eerste vragen van klanten beantwoordt. Geen prijzen uit zichzelf, wel: wat voor installatie is het, waar staat hij, wat is het adres en de postcode. Klanten kregen binnen minuten antwoord, ook als ik met mijn handen in een buitenunit zat.
+
+      Het resultaat: [AANTAL] aanvragen deze zomer via WhatsApp, waarvan het grootste deel al compleet was met adres en installatiegegevens voordat ik er zelf naar keek.
+
+      ![AI-assistent in Snellio vraagt via WhatsApp het adres en type installatie uit](/blog/zomer-2026/whatsapp-assistent.png)
+
+      ## 's Avonds plannen, de klant drukt zelf op akkoord
+
+      Omdat de gegevens al binnen waren, kostte plannen 's avonds een paar minuten per klant. Ik zet een [planningsvoorstel](/planningssoftware-monteurs) klaar, de klant krijgt een mail met drie knoppen: akkoord, afwijzen of een ander moment. Drukt hij op akkoord, dan staat de afspraak groen in mijn eigen Google Agenda. Blijft hij oranje, dan weet ik dat ik een andere datum moet voorstellen. Geen belrondes meer, geen "ik kom er nog op terug".
+
+      Zo heb ik deze zomer heel veel klanten blij gemaakt met een afspraak binnen een paar dagen, zonder dat ik daar overdag tijd aan kwijt was.
+
+      ## Werkbon op de telefoon, tussen de handelingen door
+
+      Wat ik vroeger aan de keukentafel deed met een iPad, doe ik nu op mijn telefoon terwijl ik bij de klant sta. De klantgegevens zaten al in Snellio vanaf het plannen, dus bij aankomst open ik de [werkbon](/werkbon-software) en vul ik de handelingen in: inbedrijfstelling, onderhoudsrapport, koudemiddel. Tussen het vacumeren en het opstarten door, niet erna.
+
+      ## Handtekening, kosten en factuur in één beweging
+
+      Klaar op locatie? Dan laat ik de klant tekenen op mijn telefoon en zet ik in de opmerkingen meteen de kosten van de klus. De klant weet waar hij aan toe is en ik heb zijn handtekening eronder. Heb ik tijd, dan maak ik de factuur nog in de bus. Meestal doe ik het thuis. Dat kan, want een getekende werkbon zonder factuur blijft in een lijst staan totdat de factuur eraan hangt. Je raakt er geen één meer kwijt, en de klant krijgt altijd zijn factuur.
+
+      ![Getekende werkbon in Snellio met kosten van de klus in de opmerkingen](/blog/zomer-2026/werkbon-ondertekend.png)
+
+      ## Betaald via iDEAL, vaak binnen een uur
+
+      Facturen gaan de deur uit met een betaallink via Mollie en een duidelijke omschrijving. Wat me verbaasde: klanten betalen vaak direct nadat ze de mail hebben geopend. Betaalt iemand niet, dan volgt vanzelf een herinnering, en dan wordt er alsnog betaald. Vaak met een excuus erbij. Ik heb deze zomer geen enkele factuur hoeven nabellen.
+
+      ## Kenplaat printen met QR-code naar het digitale logboek
+
+      Nieuw dit jaar is mijn kenplaatprinter. Zodra ik een installatie in Snellio heb ingevoerd, staat er een kenplaat klaar als bijlage. Uitprinten, op de unit plakken, klaar. Op de plaat staat een QR-code naar het digitale logboek van die installatie: geen persoonsgegevens, alleen de installatie en alle handelingen uit het verleden.
+
+      Kom ik later terug voor een storing en is er nog geen werkorder aangemaakt, dan scan ik de QR-code en heb ik direct een nieuwe werkorder aan die installatie hangen. Zo simpel is het.
+
+      ## Koudemiddel registreren volgens BRL-100 v3.0, zonder de nominale inhoud te vergeten
+
+      Koudemiddel wordt uiteraard netjes geregistreerd, per fles en per installatie, volgens BRL-100 versie 3.0. Maar er is één fout die ik zelf jarenlang maakte. Bij een nieuwe installatie voer je aan het begin de gegevens van de kenplaat in, inclusief de fabrieksvulling. Vul je aan het eind nog 100 gram bij voor vijf meter extra leiding, dan noteer je dat wel op de fles. Maar de nominale inhoud in de stamgegevens van de installatie? Die staat dan nog steeds op de fabrieksvulling.
+
+      Dat gebeurt je met Snellio niet meer. Vul je bij een nieuwe installatie koudemiddel bij, dan controleert het programma bij het opslaan van de werkorder of de voorvulling en de nominale inhoud nog gelijk zijn. Is dat zo, dan vraagt het of de nominale vulling aangepast moet worden. Eén klik, en je [F-gassenregistratie](/f-gassen-registratie) klopt.
+
+      ## Foto's maken, rapport laten schrijven
+
+      Kom ik bij een klant met veel werk tegelijk, zeg een lekkage, een knik in de koelleiding, elektra die niet is afgewerkt en materiaal dat ik moet leveren, dan open ik een nieuw gesprek met de AI-assistent en maak ik foto's van alles wat ik tegenkom. Bij elke foto een paar woorden: "knik in de koelleiding", "kenplaat". De assistent ziet wat er op de foto staat en schrijft er een technisch kloppend verhaal bij.
+
+      Na het repareren en aansluiten maak ik een eindfoto, zet ik de klantgegevens erbij en vraag ik om een PDF-rapport met de foto's. Alles wat ik heb gefotografeerd en toegelicht staat uitgebreid in dat koeltechnisch rapport. Opslaan, als bijlage aan de handeling hangen, klaar. Een rapport waar ik vroeger een avond op zat, is nu een bijproduct van het werk zelf.
+
+      ## Het dashboard: wat staat er open, wat zit er in de flessen
+
+      Naast het dagelijkse werk zit er een dashboard in waarop ik in één oogopslag zie welke orders nog open staan, hoeveel koudemiddel er nog per fles in de bus ligt, en wat de forecast is van de komende jaarlijkse onderhoudsbeurten en keuringen. Dat laatste is stiekem het belangrijkste: ik weet nu in september al hoe de winter eruitziet.
+
+      ## Kortom
+
+      Ik heb het deze zomer bijzonder druk gehad. Maar aanvragen, planning, werkbonnen, facturen en registratie liepen zo vanzelf dat ik eigenlijk uitkijk naar de volgende drukke periode. Niet omdat ik van werken houd, dat ook, maar omdat het werk nu ophoudt als ik de bus dichtdoe.
+
+      Snellio is gebouwd door een monteur voor monteurs. Alles wat hierboven staat gebruik ik zelf, elke dag, in mijn eigen bus. Wil je het zien? [Probeer het 14 dagen gratis](/crm-voor-installateurs), zonder creditcard en zonder incassomachtiging.
+    `,
+  },
   {
     slug:        'digitaal-logboek-qr-kenplaat',
     title:       'De kenplaat wordt digitaal: het F-gas logboek achter een QR-code',
