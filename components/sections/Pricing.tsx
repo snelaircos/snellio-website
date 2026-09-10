@@ -272,7 +272,7 @@ function PlanCard({ plan, annual, index }: PlanCardProps) {
           Start {TRIAL_DAGEN} dagen gratis
         </Link>
         <p className="text-center text-[.7rem] text-[var(--muted2)] mt-2.5">
-          Geen betaling nodig · kies je abonnement later
+          Geen creditcard nodig · kies je abonnement later
         </p>
       </div>
     </article>
