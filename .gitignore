@@ -3,5 +3,8 @@ node_modules
 .env
 .env.local
 .env.production
+# Back-ups van envbestanden (bevatten sleutels) nooit committen
+.env*.bak*
+*.env.bak*
 .DS_Store
 tsconfig.tsbuildinfo
