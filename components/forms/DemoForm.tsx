@@ -48,7 +48,7 @@ export default function DemoForm({ compact = false }: DemoFormProps) {
 
       // Conversie pas na bevestiging van de API, met de server-lead-id als
       // transaction_id. /demo-bedankt zelf vuurt niets meer (open URL).
-      await trackDemoRequested({ leadId: data.lead_id ?? `nolid_${Date.now()}` })
+      if (data.lead_id) await trackDemoRequested({ leadId: data.lead_id })
       router.push('/demo-bedankt')
     } catch {
       setStatus('error')

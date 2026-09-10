@@ -11,14 +11,17 @@ import { trackTrialSignupCompleted, attributionForServer } from '@/lib/tracking'
 type Status = 'idle' | 'loading' | 'success' | 'error' | 'email_exists'
 
 interface CheckoutFormProps {
-  selectedPackage: string
+  /** Alleen nog decoratief: het aanmeldformulier kiest geen pakket meer.
+   *  De klant kiest zijn abonnement in de app, na de proefperiode. */
+  selectedPackage?: string
 }
 
 export default function CheckoutForm({ selectedPackage }: CheckoutFormProps) {
+  void selectedPackage
   const [status, setStatus] = useState<Status>('idle')
   const [errorMessage, setErrorMessage] = useState('')
   const [loginUrl, setLoginUrl] = useState('')
-  const [form, setForm] = useState({ companyName: '', email: '', land: 'NL', password: '', hp: '', akkoord: false, package: selectedPackage })
+  const [form, setForm] = useState({ companyName: '', email: '', land: 'NL', password: '', hp: '', akkoord: false })
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -33,7 +36,7 @@ export default function CheckoutForm({ selectedPackage }: CheckoutFormProps) {
       const response = await fetch('/api/aanmelden', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ company_name: form.companyName, email: form.email, land: form.land, password: form.password, package_id: form.package, hp_veld: form.hp, voorwaarden_akkoord: form.akkoord, voorwaarden_versie: VOORWAARDEN.versie, attributie: attributionForServer() }),
+        body: JSON.stringify({ company_name: form.companyName, email: form.email, land: form.land, password: form.password, hp_veld: form.hp, voorwaarden_akkoord: form.akkoord, voorwaarden_versie: VOORWAARDEN.versie, attributie: attributionForServer() }),
       })
       const data = await response.json()
       if (!response.ok) {
@@ -100,7 +103,6 @@ export default function CheckoutForm({ selectedPackage }: CheckoutFormProps) {
       <div style={{ display: 'none' }} aria-hidden="true">
         <input type="text" name="hp_veld" tabIndex={-1} autoComplete="off" value={form.hp} onChange={e => setForm(f => ({ ...f, hp: e.target.value }))} />
       </div>
-      <input type="hidden" name="package" value={form.package} />
 
       {/* Acceptatie (art. 3.2 voorwaarden): expliciete checkbox, versie wordt
           meegestuurd en server-side gelogd. */}

@@ -147,9 +147,13 @@ export function trackGoogleAdsConversion(input: ConversionInput): Promise<Conver
     // Markeren vóór verzending: liever één gemiste dan één dubbele conversie.
     markFired(key)
 
+    // value + currency alleen als er werkelijk geld is betaald. Google Ads
+    // accepteert een conversie zonder waarde; een verzonnen bedrag meesturen
+    // is erger dan geen bedrag meesturen.
+    const heeftWaarde = typeof input.value === 'number' && input.value > 0
     const params = stripUndefined({
-      value:          input.value,
-      currency:       input.currency ?? TRACKING.currency,
+      value:          heeftWaarde ? input.value : undefined,
+      currency:       heeftWaarde ? (input.currency ?? TRACKING.currency) : undefined,
       transaction_id: input.transactionId,
       ...(input.extra ?? {}),
     })
@@ -190,10 +194,11 @@ export function trackTrialSignupCompleted(p: { userId: string; email?: string })
   // Enhanced Conversions: gtag hasht de e-mail zelf en houdt zich aan
   // ad_user_data-consent (bij denied wordt niets meegestuurd).
   if (p.email) gtag('set', 'user_data', { email: p.email })
+  // Bewust ZONDER value/currency: de proefperiode is gratis. De echte omzet
+  // meldt de app als purchase_completed, zodra er daadwerkelijk betaald is.
   return trackGoogleAdsConversion({
     event:         'trial_signup_completed',
     transactionId: `signup_${p.userId}`,
-    value:         TRACKING.values.trial_signup_completed,
   })
 }
 
@@ -202,8 +207,7 @@ export function trackLeadSubmitted(p: { leadId: string; leadType: 'contact' | 'c
   return trackGoogleAdsConversion({
     event:         'lead_submitted',
     transactionId: `lead_${p.leadId}`,
-    value:         TRACKING.values.lead_submitted,
-    extra:         { lead_type: p.leadType },
+    extra:         { lead_type: p.leadType },   // geen value: een aanvraag is geen omzet
   })
 }
 
@@ -211,8 +215,7 @@ export function trackLeadSubmitted(p: { leadId: string; leadType: 'contact' | 'c
 export function trackDemoRequested(p: { leadId: string }): Promise<ConversionResult> {
   return trackGoogleAdsConversion({
     event:         'demo_requested',
-    transactionId: `demo_${p.leadId}`,
-    value:         TRACKING.values.demo_requested,
+    transactionId: `demo_${p.leadId}`,   // geen value: een demo-aanvraag is geen omzet
   })
 }
 

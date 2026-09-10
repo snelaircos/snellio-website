@@ -26,7 +26,7 @@ export default function ContactForm() {
       // Eén inzending = één lead-conversie (het demo-vinkje gaat mee als
       // lead_type, geen tweede conversie). Pas na bevestiging van de API, met
       // de server-lead-id als transaction_id. /bedankt-contact vuurt niets.
-      await trackLeadSubmitted({ leadId: data.lead_id ?? `nolid_${Date.now()}`, leadType: form.demo ? 'contact_demo' : 'contact' })
+      if (data.lead_id) await trackLeadSubmitted({ leadId: data.lead_id, leadType: form.demo ? 'contact_demo' : 'contact' })
 
       router.push('/bedankt-contact')
     } catch {

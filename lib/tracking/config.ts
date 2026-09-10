@@ -16,11 +16,6 @@ function env(raw: string | undefined, fallback = ''): string {
   return s && !isPlaceholder(s) ? s : fallback
 }
 
-function envNumber(raw: string | undefined, fallback: number): number {
-  const n = Number((raw ?? '').replace(',', '.'))
-  return Number.isFinite(n) && n >= 0 ? n : fallback
-}
-
 export type ConversionEvent =
   | 'trial_signup_completed'
   | 'lead_submitted'
@@ -45,14 +40,20 @@ export const TRACKING = {
     purchase_completed:     env(process.env.NEXT_PUBLIC_GOOGLE_ADS_PURCHASE_LABEL,     ''),
   } satisfies Record<ConversionEvent, string>,
 
-  // Conversiewaarden (EUR). Trial/lead/demo hebben geen echte transactiewaarde;
-  // dit zijn rapportagewaarden, afstembaar op de instelling van de Ads-actie.
-  values: {
-    trial_signup_completed: envNumber(process.env.NEXT_PUBLIC_GOOGLE_ADS_TRIAL_SIGNUP_VALUE, 359.4),
-    lead_submitted:         envNumber(process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_VALUE,         15),
-    demo_requested:         envNumber(process.env.NEXT_PUBLIC_GOOGLE_ADS_DEMO_VALUE,         50),
-  },
-
+  // GEEN conversiewaarden voor trial, lead en demo (besluit Rudy 10-09-2026).
+  //
+  // Een gratis proefperiode, een contactformulier en een demo-aanvraag zijn
+  // geen aankoop; er is op dat moment geen euro betaald. Eerder stond hier
+  // 359,40 voor een trial (= 29,95 x 12, een prijs die niet meer bestaat),
+  // 15 voor een lead en 50 voor een demo. Die bedragen zijn verwijderd en
+  // bewust NIET vervangen: verzonnen omzet stuurt het biedalgoritme de
+  // verkeerde kant op en maakt de Ads-rapportage onbruikbaar.
+  //
+  // Wil je deze conversies later toch op waarde sturen, doe dat dan in Google
+  // Ads zelf (conversie-actie > waarde), niet in de code.
+  //
+  // Alleen purchase_completed heeft een echte waarde; die komt uit de app, uit
+  // het werkelijk betaalde factuurbedrag.
   currency: 'EUR',
 
   // Cookies op het hoofddomein zodat app.snellio.nl dezelfde consent- en

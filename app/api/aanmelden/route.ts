@@ -1,5 +1,5 @@
 // POST /api/aanmelden — nieuwe aanmeldroute zónder betaalgegevens (stap 12).
-// Minimaal: bedrijfsnaam, e-mail, land, wachtwoord (+ gekozen pakket).
+// Minimaal: bedrijfsnaam, e-mail, land, wachtwoord. GEEN pakketkeuze.
 // Maakt direct de tenant aan in Supabase (zelfde project als de app):
 // auth-user, bedrijfsgegevens (14 dagen trial, GEEN Mollie-customer/mandaat,
 // betaalwijze/periode nog leeg) en de hoofdaccount-monteur. De keuze voor
@@ -12,12 +12,11 @@ import { createClient } from '@supabase/supabase-js'
 import { rateLimit, clientIp, emailDomein } from '@/lib/rate-limit'
 import { VOORWAARDEN } from '@/lib/constants'
 
-const PAKKETTEN = ['starter', 'basis', 'pro', 'enterprise']
 const LANDEN = ['NL', 'BE', 'overig']
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export async function POST(req: NextRequest) {
-  let body: { company_name?: string; email?: string; password?: string; land?: string; package_id?: string; hp_veld?: string; voorwaarden_akkoord?: boolean; voorwaarden_versie?: string; attributie?: Record<string, unknown> } = {}
+  let body: { company_name?: string; email?: string; password?: string; land?: string; hp_veld?: string; voorwaarden_akkoord?: boolean; voorwaarden_versie?: string; attributie?: Record<string, unknown> } = {}
   try { body = await req.json() } catch { return NextResponse.json({ error: 'Ongeldige aanvraag' }, { status: 400 }) }
 
   // Honeypot (nooit name="website" — zie eerdere autofill-les)
@@ -36,7 +35,19 @@ export async function POST(req: NextRequest) {
   const email = (body.email ?? '').trim().toLowerCase()
   const password = body.password ?? ''
   const land = LANDEN.includes(body.land ?? '') ? body.land! : 'NL'
-  const pakket = PAKKETTEN.includes(body.package_id ?? '') ? body.package_id! : 'pro'
+  // GEEN pakket meer vanaf deze site (besluit Rudy 10-09-2026).
+  //
+  // Wie zich aanmeldt kiest niets: veertien dagen gratis alles. Het pakket
+  // kiest hij later zelf in de app. De kolom bedrijfsgegevens.pakket laten we
+  // leeg, zodat de databasedefault geldt; die waarde is puur intern en stuurt
+  // tijdens de proefperiode niets aan:
+  //   - de app toont "Gratis proefperiode", nooit een pakketnaam, zolang
+  //     keuze_gemaakt_op leeg is;
+  //   - tijdens abonnement_status 'trial' gelden geen installatie- of
+  //     monteurlimieten (UI en databasetriggers);
+  //   - er wordt niets gefactureerd en er loopt geen Mollie-subscription.
+  // Voorheen stond hier 'pro' om de caps te omzeilen; dat is niet meer nodig
+  // en gaf de klant ten onrechte het idee dat hij Pro had gekozen.
   if (!bedrijfsnaam) return NextResponse.json({ error: 'Bedrijfsnaam is verplicht' }, { status: 400 })
   if (!EMAIL_RE.test(email)) return NextResponse.json({ error: 'Geldig e-mailadres is verplicht' }, { status: 400 })
   if (password.length < 8) return NextResponse.json({ error: 'Wachtwoord moet minimaal 8 tekens zijn' }, { status: 400 })
@@ -87,7 +98,7 @@ export async function POST(req: NextRequest) {
 
   // 2. Tenant — geen betaalgegevens, geen mandaat, keuze volgt in de app.
   const { error: bgErr } = await supabase.from('bedrijfsgegevens').insert({
-    user_id: userId, bedrijfsnaam, emailadres: email, land, pakket, pakket_addons: [],
+    user_id: userId, bedrijfsnaam, emailadres: email, land, pakket_addons: [],
     trial_start: nu.toISOString(), trial_eind: trialEind.toISOString(), abonnement_status: 'trial', vertical: 'hvac',
     mollie_customer_id: null, mollie_mandate_id: null, mollie_subscription_id: null, betaalwijze: null, periode: null,
   })
@@ -105,7 +116,7 @@ export async function POST(req: NextRequest) {
 
   // 4. Spoor voor de app (signaalmail "Registratie via snellio.nl"); geen wachtwoord opslaan.
   await supabase.from('pending_signups').insert({
-    email, company_name: bedrijfsnaam, full_name: '', password: '', package_id: pakket, status: 'completed', vertical: 'hvac',
+    email, company_name: bedrijfsnaam, full_name: '', password: '', package_id: null, status: 'completed', vertical: 'hvac',
   }).then(({ error }) => { if (error) console.warn('[aanmelden] pending_signups:', error.message) })
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://app.snellio.nl'
