@@ -40,6 +40,40 @@ export function websiteSchema() {
 }
 
 export function softwareApplicationSchema() {
+  // Eén Offer per pakket per betaalperiode. Prijzen zijn de vaste basis-
+  // prijzen (Pro/Enterprise: inclusief de inbegrepen monteurs); extra
+  // monteurs zijn variabel en horen niet in het schema.
+  const offers = PLANS.flatMap(p => ([
+    {
+      '@type':       'Offer',
+      name:          `${p.name} (per maand)`,
+      price:         p.price.month.toFixed(2),
+      priceCurrency: 'EUR',
+      priceSpecification: {
+        '@type':         'UnitPriceSpecification',
+        price:           p.price.month.toFixed(2),
+        priceCurrency:   'EUR',
+        billingDuration: 1,
+        unitCode:        'MON',
+        unitText:        'per maand',
+      },
+    },
+    {
+      '@type':       'Offer',
+      name:          `${p.name} (per jaar)`,
+      price:         p.price.year.toFixed(2),
+      priceCurrency: 'EUR',
+      priceSpecification: {
+        '@type':         'UnitPriceSpecification',
+        price:           p.price.year.toFixed(2),
+        priceCurrency:   'EUR',
+        billingDuration: 1,
+        unitCode:        'ANN',
+        unitText:        'per jaar',
+      },
+    },
+  ]))
+
   return {
     '@context':           'https://schema.org',
     '@type':              'SoftwareApplication',
@@ -49,18 +83,7 @@ export function softwareApplicationSchema() {
     url:                  SITE.appUrl,
     applicationCategory: 'BusinessApplication',
     operatingSystem:      'Web, iOS, Android',
-    offers: PLANS.map(p => ({
-      '@type':      'Offer',
-      name:         p.name,
-      price:        p.price.month.replace(',', '.'),
-      priceCurrency:'EUR',
-      priceSpecification: {
-        '@type':      'UnitPriceSpecification',
-        price:        p.price.month.replace(',', '.'),
-        priceCurrency:'EUR',
-        unitText:     'per maand',
-      },
-    })),
+    offers,
     publisher: { '@id': `${SITE.url}/#organization` },
   }
 }

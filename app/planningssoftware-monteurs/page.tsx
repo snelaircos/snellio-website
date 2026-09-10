@@ -208,7 +208,7 @@ const faqItems = [
   },
   {
     question: 'Is planningssoftware beschikbaar in alle pakketten?',
-    answer:   'De basisplanning is beschikbaar als optie bij het Basis-pakket. Vanaf het Pro-pakket is meerdere monteurs en volledige planningsfunctionaliteit standaard inbegrepen. Enterprise bevat de volledige planningsmodule inclusief alle functies.',
+    answer:   'Ja. De planning zit in elk pakket, ook in Starter. Snellio kent geen losse planningsmodule of toeslag. Het verschil tussen de pakketten zit in het aantal monteurs en installaties, niet in de functies. Meerdere monteurs inplannen kan vanaf Pro (2 monteurs inbegrepen).',
   },
 ]
 
@@ -232,8 +232,8 @@ export default function PlanningssoftwareMonteurPage() {
         headingAccent="en HVAC-bedrijven."
         sub="Werkorders inplannen, monteurs toewijzen en altijd overzicht houden, zonder bellen, zonder WhatsApp, zonder dubbele boekingen."
         ctaPrimary={{ label: 'Start 14 dagen gratis →', href: '/registreren' }}
-        ctaSecondary={{ label: 'Bekijk pakketten', href: '/pricing' }}
-        trustLine="Geen installatie nodig • Direct starten • Nederlandse support"
+        ctaSecondary={{ label: 'Bekijk prijzen', href: '/pricing' }}
+        trustLine="14 dagen gratis • Geen betaling nodig • Alle functies inbegrepen"
         stats={[
           { value: '<span style="color:var(--cyan)">Auto</span>', label: 'Google Calendar sync'  },
           { value: '1<span style="color:var(--cyan)">min</span>', label: 'Werkorder inplannen'   },
@@ -601,7 +601,7 @@ export default function PlanningssoftwareMonteurPage() {
 
             <div className="flex flex-wrap gap-4">
               <Button href="/registreren" size="md">Start 14 dagen gratis →</Button>
-              <Button href="/pricing" variant="ghost" size="md">Bekijk pakketten</Button>
+              <Button href="/pricing" variant="ghost" size="md">Bekijk prijzen</Button>
             </div>
           </div>
         </Container>
@@ -654,7 +654,7 @@ export default function PlanningssoftwareMonteurPage() {
           { href: '/crm-voor-installateurs',  icon: '🏢', title: 'CRM voor installateurs',   desc: 'Klant- en installatiebeheer'          },
           { href: '/werkbon-software',         icon: '📋', title: 'Werkbon software',          desc: 'Digitale werkbonnen met handtekening' },
           { href: '/f-gassen-registratie',     icon: '❄️', title: 'F-gassen registratie',      desc: 'Flesregistratie & F-gas logboek'      },
-          { href: '/pricing',                  icon: '💶', title: 'Pakketten & prijzen',        desc: 'Vanaf €10/mnd, 14 dagen gratis'    },
+          { href: '/pricing',                  icon: '💶', title: 'Prijzen',                    desc: 'Vanaf €10/mnd, alles inbegrepen, 14 dagen gratis' },
         ]}
       />
 

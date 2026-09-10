@@ -23,7 +23,7 @@ const faqs = [
   { question: 'Werkt de app ook offline?',
     answer:   'Snellio werkt via de browser. Een stabiele internetverbinding is nodig voor synchronisatie, maar op tablet of telefoon is de interface volledig geoptimaliseerd voor gebruik op locatie.' },
   { question: 'Kan ik meerdere monteurs toevoegen?',
-    answer:   'Ja, dat kan vanaf het Pro-pakket. Je kunt per monteur rechten en Google Calendar instellen.' },
+    answer:   'Ja. Pro heeft 2 monteurs inbegrepen (daarna €20 per extra monteur per maand), Enterprise 5 monteurs (daarna €10 per extra monteur). Je kunt per monteur rechten en Google Calendar instellen. Alle functies zijn in elk pakket gelijk.' },
 ]
 
 const details = [

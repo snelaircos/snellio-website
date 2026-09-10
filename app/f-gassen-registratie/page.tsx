@@ -187,7 +187,7 @@ const faqItems = [
   },
   {
     question: 'Is de F-gas registratie beschikbaar in alle pakketten?',
-    answer:   'De uitgebreide F-gas flesregistratie is beschikbaar in het Pro- en Enterprise-pakket. Koeltechnische handelingen en BRL100-rapportage zijn beschikbaar vanaf het Starter-pakket. Bekijk de pakkettenpagina voor een volledig overzicht.',
+    answer:   'Ja. F-gassen flesregistratie, koeltechnische handelingen, het digitale logboek en BRL100-rapportage zitten in elk pakket, ook in Starter. Snellio kent geen losse modules: je betaalt alleen voor de grootte van je bedrijf.',
   },
 ]
 
@@ -211,8 +211,8 @@ export default function FgassenRegistratiePage() {
         headingAccent="voor koeltechnische installateurs."
         sub="Volledig digitaal koudemiddellogboek per installatie. Flesregistratie, lektestdocumentatie en BRL100-rapportage conform EU F-gas Verordening 2024/573, altijd klaar voor inspectie."
         ctaPrimary={{ label: 'Start 14 dagen gratis →', href: '/registreren' }}
-        ctaSecondary={{ label: 'Bekijk pakketten', href: '/pricing' }}
-        trustLine="Geen installatie nodig • Direct starten • Nederlandse support"
+        ctaSecondary={{ label: 'Bekijk prijzen', href: '/pricing' }}
+        trustLine="14 dagen gratis • Geen betaling nodig • Alle functies inbegrepen"
         stats={[
           { value: '2024/<span style="color:var(--cyan)">573</span>', label: 'EU F-gas compliant'   },
           { value: 'BRL<span style="color:var(--cyan)">100</span>',   label: 'Automatisch rapport'  },
@@ -550,7 +550,7 @@ export default function FgassenRegistratiePage() {
 
             <div className="flex flex-wrap gap-4">
               <Button href="/registreren" size="md">Start 14 dagen gratis →</Button>
-              <Button href="/pricing" variant="ghost" size="md">Bekijk pakketten</Button>
+              <Button href="/pricing" variant="ghost" size="md">Bekijk prijzen</Button>
             </div>
           </div>
         </Container>
@@ -603,7 +603,7 @@ export default function FgassenRegistratiePage() {
           { href: '/crm-voor-installateurs',     icon: '🏢', title: 'CRM voor installateurs',  desc: 'Klant- en installatiebeheer'          },
           { href: '/werkbon-software',            icon: '📋', title: 'Werkbon software',         desc: 'Digitale werkbonnen met handtekening' },
           { href: '/planningssoftware-monteurs',  icon: '📅', title: 'Planning monteurs',         desc: 'Werkorders inplannen per monteur'     },
-          { href: '/pricing',                     icon: '💶', title: 'Pakketten & prijzen',       desc: 'Vanaf €10/mnd, 14 dagen gratis'    },
+          { href: '/pricing',                     icon: '💶', title: 'Prijzen',                   desc: 'Vanaf €10/mnd, alles inbegrepen, 14 dagen gratis' },
         ]}
       />
 

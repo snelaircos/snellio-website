@@ -23,7 +23,7 @@ export default function Cta() {
           <span className="text-[var(--accent)]">Probeer 14 dagen gratis.</span>
         </h2>
         <p className="text-[var(--text2)] text-[1.05rem] leading-relaxed mb-10">
-          Binnen 5 minuten aan het werk. Installaties, werkbonnen en BRL100-rapporten direct beschikbaar.
+          Binnen 5 minuten aan het werk, zonder betaling of pakketkeuze. Alle functies direct beschikbaar; je abonnement kies je later.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Button href="/registreren" size="lg">

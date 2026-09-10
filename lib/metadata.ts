@@ -23,8 +23,11 @@ export function buildMetadata({
   const volledigeTitel = title.includes(SITE.name) ? title : `${title} | ${SITE.name}`
 
   return {
+    // `absolute`: anders past Next.js de root-template ('%s | Snellio' uit
+    // rootMetadata) óók nog toe op `default`, met "… | Snellio | Snellio"
+    // als gevolg. De merknaam zit al in volledigeTitel.
     title: {
-      default:  volledigeTitel,
+      absolute: volledigeTitel,
       template: `%s | ${SITE.name}`,
     },
     description,

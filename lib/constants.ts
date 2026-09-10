@@ -19,6 +19,96 @@ export const NAV_ITEMS = [
   { label: 'Contact',  href: '/contact'  },
 ] as const
 
+// ── HVAC-prijsmodel (2026-09) ───────────────────────────────────────────────
+// Geen modules meer: elk betaald pakket bevat álle Snellio-functies. Het
+// prijsverschil zit uitsluitend in de grootte van het bedrijf: het aantal
+// monteurs en (alleen bij Starter) het aantal installaties.
+//
+// Niemand kiest op de site een pakket. Elke klant start met 14 dagen gratis
+// en kiest pas in de app, tijdens de trial, abonnement en betaalwijze. De
+// site doet dus geen checkout, geen Mollie en geen mandaat.
+export const TRIAL_DAGEN = 14
+// Jaarbetaling = 10 maandbedragen voor 12 maanden gebruik (2 maanden gratis).
+export const JAAR_MAANDEN_BETAALD = 10
+
+export type HvacPlanId = 'starter' | 'basis' | 'pro' | 'enterprise'
+
+export interface HvacPlan {
+  id:        HvacPlanId
+  name:      string
+  /** Korte doelgroep-zin op de kaart. */
+  tagline:   string
+  /** Iets langere omschrijving van de doelgroep. */
+  audience:  string
+  price:     { month: number; year: number }
+  monteurs:  {
+    inbegrepen: number
+    /** Meerprijs per extra monteur per maand, vanaf monteur nr. `vanafMonteur`. */
+    extra?:     { vanafMonteur: number; prijs: number }
+  }
+  installaties: { max: number | null; label: string }
+  featured?: boolean
+  badge?:    string
+}
+
+export const PLANS: HvacPlan[] = [
+  {
+    id:       'starter',
+    name:     'Starter',
+    tagline:  'Voor wie klein begint.',
+    audience: "Startende ZZP'er of kleine installateur met een beperkte installatieportefeuille.",
+    price:    { month: 10, year: 100 },
+    monteurs: { inbegrepen: 1 },
+    installaties: { max: 25, label: 'Maximaal 25 installaties' },
+  },
+  {
+    id:       'basis',
+    name:     'Basis',
+    tagline:  'Voor de zelfstandige installateur.',
+    audience: "Zelfstandig installateur of ZZP'er die Snellio volledig gebruikt.",
+    price:    { month: 29, year: 290 },
+    monteurs: { inbegrepen: 1 },
+    installaties: { max: null, label: 'Onbeperkt installaties' },
+  },
+  {
+    id:       'pro',
+    name:     'Pro',
+    tagline:  'Voor teams vanaf 2 monteurs.',
+    audience: 'Kleine tot middelgrote installatiebedrijven met meerdere monteurs.',
+    price:    { month: 69, year: 690 },
+    monteurs: { inbegrepen: 2, extra: { vanafMonteur: 3, prijs: 20 } },
+    installaties: { max: null, label: 'Onbeperkt installaties' },
+    featured: true,
+    badge:    'Meest gekozen',
+  },
+  {
+    id:       'enterprise',
+    name:     'Enterprise',
+    tagline:  'Voor groeiende bedrijven vanaf 5 monteurs.',
+    audience: 'Groeiende installatiebedrijven vanaf ongeveer 5 monteurs.',
+    price:    { month: 129, year: 1290 },
+    monteurs: { inbegrepen: 5, extra: { vanafMonteur: 6, prijs: 10 } },
+    installaties: { max: null, label: 'Onbeperkt installaties' },
+    badge:    'Voor groeiende teams',
+  },
+]
+
+// Functies die in élk pakket zitten. Alleen functies die aantoonbaar in de
+// app bestaan (vergelijk /features en FEATURES in lib/pakket.ts van de app).
+export const INBEGREPEN = [
+  { icon: '👥', label: 'CRM: klanten, locaties & contactpersonen' },
+  { icon: '🏠', label: 'Installatiebeheer & digitaal logboek (QR-kenplaat)' },
+  { icon: '📋', label: 'Werkbonnen met digitale handtekening' },
+  { icon: '📅', label: 'Planning & Google Calendar-sync' },
+  { icon: '🧾', label: 'Facturatie met iDEAL-betaallink' },
+  { icon: '❄️', label: 'F-gassen & koudemiddelregistratie' },
+  { icon: '📄', label: 'BRL100-rapportage' },
+  { icon: '📊', label: 'Dashboard & rapportages' },
+  { icon: '🔗', label: 'Gratis koppeling WeFact, Moneybird & Exact Online' },
+  { icon: '🔐', label: 'Klantportaal' },
+] as const
+
+// ── Automotive (aparte verticale, nog in ontwikkeling) ───────────────────────
 export interface Plan {
   id:       string
   name:     string
@@ -31,73 +121,6 @@ export interface Plan {
   features: { label: string; included: boolean }[]
   extras:   string[]
 }
-
-// Vlakke feature-set voor alle HVAC-pakketten: geen onderscheid op functies,
-// alleen op aantal installaties (Starter beperkt, rest onbeperkt) en aantal
-// monteurs (in tagline + extras). Voorlopige strategie 2026-05: simpeler
-// koop-keuze, minder analysis-paralysis op de pricing-pagina.
-const HVAC_FEATURES = [
-  { label: 'Onbeperkt klanten & locaties', included: true },
-  { label: 'Werkbonnen & handelingen',     included: true },
-  { label: 'PDF werkbon',                  included: true },
-  { label: 'BRL100 rapport',               included: true },
-  { label: 'F-gassen flesregistratie',     included: true },
-  { label: 'Forecast dashboard',           included: true },
-  { label: 'Planning module',              included: true },
-  { label: 'Facturatie vanuit werkbon',    included: true },
-  // Verkoopargument (2026-07, n.a.v. Bas): koppelingen zijn bij élk pakket
-  // gratis inbegrepen — expliciet benoemen, niet als add-on framen.
-  { label: 'Gratis koppeling WeFact, Moneybird & Exact Online', included: true },
-  { label: 'Klantportaal',                 included: true },
-] as const
-
-export const PLANS: Plan[] = [
-  {
-    id:       'starter',
-    name:     'Starter',
-    tagline:  'Tot 25 installaties · 1 monteur',
-    price:    { month: '10', year: '100' },
-    featured: false,
-    cta:      'Begin nu',
-    href:     '/checkout?pakket=starter',
-    features: [...HVAC_FEATURES],
-    extras:   [],
-  },
-  {
-    id:       'basis',
-    name:     'Basis',
-    tagline:  'Onbeperkte installaties · 1 monteur',
-    price:    { month: '29', year: '290' },
-    featured: false,
-    cta:      'Begin nu',
-    href:     '/checkout?pakket=basis',
-    features: [...HVAC_FEATURES],
-    extras:   [],
-  },
-  {
-    id:       'pro',
-    name:     'Pro',
-    tagline:  'Onbeperkte installaties · Schaalbaar team',
-    price:    { month: '69', year: '690' },
-    featured: true,
-    badge:    'Meest gekozen',
-    cta:      'Begin nu →',
-    href:     '/checkout?pakket=pro',
-    features: [...HVAC_FEATURES],
-    extras:   ['Extra monteur · €15 per maand'],
-  },
-  {
-    id:       'enterprise',
-    name:     'Enterprise',
-    tagline:  'Onbeperkte installaties · 5 monteurs standaard',
-    price:    { month: '129', year: '1.290' },
-    featured: false,
-    cta:      'Begin nu',
-    href:     '/checkout?pakket=enterprise',
-    features: [...HVAC_FEATURES],
-    extras:   ['Extra monteur · €9,95 per maand'],
-  },
-]
 
 export const AUTOMOTIVE_PLANS: Plan[] = [
   {

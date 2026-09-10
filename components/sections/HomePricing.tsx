@@ -1,142 +1,85 @@
-'use client'
-
-import { useState } from 'react'
 import Link from 'next/link'
-import { PLANS } from '@/lib/constants'
+import { PLANS, TRIAL_DAGEN } from '@/lib/constants'
+import { fmtEuro } from '@/lib/pricing'
 
-// Light-theme pricing voor de HVAC homepage. Witte cards op #f4f7fa,
-// Pro card heeft 'Meest gekozen' badge in --orange. Maandelijks/Jaarlijks
-// toggle. CTA's gaan naar dezelfde checkout-flow als de bestaande Pricing.
+// Compact commercieel prijsblok voor de homepage (light theme). Geen volledige
+// pricingtabel: de boodschap is "vanaf €10, alles inbegrepen, 14 dagen gratis".
+// De volledige uitleg staat op /pricing. Server component, geen state.
+
+const SIGNUP_HREF = '/registreren'
+const vanaf = Math.min(...PLANS.map(p => p.price.month))
+
+const punten = [
+  `${TRIAL_DAGEN} dagen gratis proberen`,
+  'Geen betaling nodig om te starten',
+  'Kies je abonnement pas tijdens de trial',
+]
+
 export default function HomePricing() {
-  const [annual, setAnnual] = useState(false)
-
   return (
-    <div>
-      {/* Toggle */}
-      <div className="flex flex-col items-center gap-2 mb-10">
-        <div className="flex items-center justify-center gap-4">
-          <span className={`text-sm font-medium transition-colors ${!annual ? 'text-[#0f2133]' : 'text-[#8fafc8]'}`}>
-            Maandelijks
-          </span>
-          <button
-            onClick={() => setAnnual(!annual)}
-            className={`relative w-12 h-6 rounded-full transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] ${annual ? 'bg-[var(--accent)]' : 'bg-[#e4ecf2]'}`}
-            role="switch"
-            aria-checked={annual}
-            aria-label="Jaarlijkse facturering"
-          >
-            <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform duration-300 ${annual ? 'translate-x-6' : ''}`} />
-          </button>
-          <span className={`text-sm font-medium transition-colors ${annual ? 'text-[#0f2133]' : 'text-[#8fafc8]'}`}>
-            Jaarlijks
-          </span>
-        </div>
-        <p className="text-xs text-[#5f7791]">
-          Kies jaarlijks en betaal slechts 10 maanden,{' '}
-          <span className="text-[var(--green)] font-semibold">2 maanden cadeau 🎁</span>
-        </p>
-      </div>
-
-      {/* Boekhoudkoppelingen: gratis bij elk pakket — belangrijk verkoopargument */}
-      <div className="mx-auto max-w-3xl mb-10 flex flex-col sm:flex-row items-center gap-4 justify-center text-center sm:text-left bg-[rgba(18,168,122,.07)] border border-[rgba(18,168,122,.3)] rounded-2xl px-6 py-4">
-        <span className="text-3xl shrink-0">🔗</span>
+    <div className="mx-auto max-w-5xl">
+      <div className="bg-white border border-[#e4ecf2] rounded-2xl shadow-[0_8px_32px_rgba(0,144,184,.08)] p-7 md:p-10 grid lg:grid-cols-[1.25fr_1fr] gap-8 lg:gap-12 items-center">
         <div>
-          <p className="text-[#0f2133] text-sm font-semibold">
-            Gratis koppeling met WeFact, Moneybird én Exact Online — bij elk pakket.
+          <h2
+            className="font-extrabold tracking-tight text-[#0f2133] leading-[1.1] mb-3"
+            style={{ fontSize: 'clamp(1.7rem, 3.6vw, 2.4rem)' }}
+          >
+            Snellio vanaf {fmtEuro(vanaf)} per maand.
+          </h2>
+          <p className="text-[#0f2133] text-[1.05rem] leading-[1.55] mb-5">
+            <strong>Alle functies inbegrepen.</strong> Je betaalt alleen voor de grootte van je bedrijf:
+            het aantal monteurs en installaties. Geen modules, geen toeslagen.
           </p>
-          <p className="text-[#5f7791] text-xs mt-1">
-            Staat jouw boekhoudpakket er niet bij? Dan proberen wij, indien mogelijk, deze alsnog toe te voegen.
-          </p>
-        </div>
-      </div>
-
-      {/* Cards */}
-      <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-5 items-start">
-        {PLANS.map(plan => {
-          const isPro = plan.featured
-          return (
-            <article
-              key={plan.id}
-              className={`relative flex flex-col rounded-xl bg-white border transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,144,184,.15)]
-                ${isPro
-                  ? 'border-[var(--accent)] shadow-[0_2px_12px_rgba(0,144,184,.18)] xl:scale-[1.03]'
-                  : 'border-[#e4ecf2] hover:border-[var(--accent)]'
-                }`}
+          <ul className="flex flex-col gap-2 list-none mb-7">
+            {punten.map(p => (
+              <li key={p} className="flex items-center gap-2.5 text-[#0f2133] text-[.95rem]">
+                <span className="w-5 h-5 rounded-full bg-[rgba(18,168,122,.15)] text-[var(--green)] flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+                {p}
+              </li>
+            ))}
+          </ul>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href={SIGNUP_HREF}
+              className="inline-flex items-center justify-center font-semibold rounded-[10px] bg-[var(--accent)] text-white px-[22px] py-3 hover:bg-[#007a9c] transition-colors text-[.95rem]"
             >
-              {plan.badge && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[var(--orange)] text-white text-xs font-bold px-3 py-1 rounded-full shadow-md whitespace-nowrap z-20">
-                  {plan.badge}
-                </div>
-              )}
+              {TRIAL_DAGEN} dagen gratis proberen →
+            </Link>
+            <Link
+              href="/pricing"
+              className="inline-flex items-center justify-center font-semibold rounded-[10px] bg-white border-[1.5px] border-[var(--accent)] text-[var(--accent)] px-[22px] py-3 hover:bg-[rgba(0,144,184,.06)] transition-colors text-[.95rem]"
+            >
+              Bekijk alle prijzen
+            </Link>
+          </div>
+        </div>
 
-              <div className="p-7 flex flex-col flex-1">
-                <h3 className="font-bold text-[#0f2133] text-xl mb-1">{plan.name}</h3>
-
-                {/* Prijs */}
-                <div className="flex items-baseline gap-1 my-4">
-                  <span className="text-[var(--accent)] font-bold text-xl">€</span>
-                  <span className="font-extrabold text-4xl leading-none text-[#0f2133] tracking-tight">
-                    {annual ? plan.price.year : plan.price.month}
-                  </span>
-                  <span className="text-xs text-[#5f7791]">/{annual ? 'jaar' : 'mnd'}</span>
-                </div>
-
-                <p className="text-[#5f7791] text-xs mb-5 pb-5 border-b border-[#e4ecf2]">
-                  {plan.tagline}
+        {/* Compacte pakketrij: naam, doelgroep, maandprijs */}
+        <ul className="flex flex-col divide-y divide-[#e4ecf2] list-none border border-[#e4ecf2] rounded-xl overflow-hidden bg-[#f9fbfd]">
+          {PLANS.map(plan => (
+            <li key={plan.id} className={`flex items-center justify-between gap-4 px-5 py-3.5 ${plan.featured ? 'bg-[rgba(0,144,184,.05)]' : ''}`}>
+              <div className="min-w-0">
+                <p className="font-semibold text-[#0f2133] text-[.95rem] flex items-center gap-2">
+                  {plan.name}
+                  {plan.featured && (
+                    <span className="text-[.6rem] font-bold uppercase tracking-wide bg-[var(--accent)] text-white px-2 py-0.5 rounded-full">
+                      Meest gekozen
+                    </span>
+                  )}
                 </p>
-
-                {/* Features */}
-                <ul className="flex flex-col gap-2.5 mb-6 flex-1 list-none">
-                  {plan.features.map(f => (
-                    <li
-                      key={f.label}
-                      className={`flex items-start gap-2.5 text-sm
-                        ${f.included ? 'text-[#0f2133]' : 'opacity-40 line-through text-[#8fafc8]'}`}
-                    >
-                      <span className={`shrink-0 mt-px font-bold ${f.included ? 'text-[var(--green)]' : 'text-[#8fafc8]'}`}>
-                        {f.included ? '✓' : '✗'}
-                      </span>
-                      {f.label}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Extras */}
-                {plan.extras.length > 0 && (
-                  <div className="mb-5 pt-4 border-t border-[#e4ecf2]">
-                    <p className="font-dm-mono text-[.6rem] text-[#8fafc8] uppercase tracking-[.08em] mb-2.5">
-                      Opties tegen meerprijs
-                    </p>
-                    <ul className="flex flex-col gap-1.5 list-none">
-                      {plan.extras.map(e => (
-                        <li key={e} className="text-sm text-[var(--orange)] flex items-center gap-2">
-                          <span className="font-bold">+</span>{e}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {/* CTA */}
-                <Link
-                  href={plan.href}
-                  className={`text-center py-3 px-5 rounded-[10px] font-semibold text-sm transition-all duration-200
-                    ${isPro
-                      ? 'bg-[var(--accent)] text-white hover:bg-[#007a9c]'
-                      : 'bg-white border-[1.5px] border-[var(--accent)] text-[var(--accent)] hover:bg-[rgba(0,144,184,.06)]'
-                    }`}
-                >
-                  Start met {plan.name}
-                </Link>
+                <p className="text-[#5f7791] text-xs truncate">{plan.tagline}</p>
               </div>
-            </article>
-          )
-        })}
+              <p className="shrink-0 text-right">
+                <span className="font-extrabold text-[#0f2133] text-lg tabular-nums">{fmtEuro(plan.price.month)}</span>
+                <span className="text-[#5f7791] text-xs"> /mnd</span>
+              </p>
+            </li>
+          ))}
+          <li className="px-5 py-2.5 text-[#5f7791] text-[.7rem] bg-white">
+            Prijzen excl. btw · Pro en Enterprise: extra monteurs tegen een vaste meerprijs
+          </li>
+        </ul>
       </div>
-
-      <p className="text-center text-xs text-[#5f7791] mt-8">
-        Probeer alle pakketten 14 dagen gratis · Maandelijks opzegbaar
-      </p>
     </div>
   )
 }

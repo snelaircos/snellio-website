@@ -8,8 +8,8 @@ import HomePricing       from '@/components/sections/HomePricing'
 import YouTubeFacade     from '@/components/ui/YouTubeFacade'
 
 export const metadata: Metadata = buildMetadata({
-  title:       'Software voor koeltechniek & airco | Snellio',
-  description: 'Snellio is de Nederlandse software voor koeltechniek- en airco-bedrijven. Werkbon, klant-handtekening, F-gassen-registratie, planning en facturatie, alles vanuit één app. 14 dagen gratis proberen.',
+  title:       'Software voor installatiebedrijven | Snellio',
+  description: 'CRM, digitale werkbonnen, planning en facturatie voor installatiebedrijven in één systeem. Start Snellio 14 dagen gratis, zonder betaling.',
   path:        '/',
 })
 
@@ -60,7 +60,7 @@ const integraties = ['Mollie', 'Moneybird', 'SnelStart', 'Exact', 'Google Calend
 
 const faqs = [
   { question: 'Kan ik mijn data exporteren?',           answer: 'Ja, alles via CSV en PDF. Je data is van jou.' },
-  { question: 'Hoe lang is de trial?',                  answer: 'Probeer 14 dagen gratis, met alle features. Pas na 14 dagen start je abonnement, daarvoor betaal je niets.' },
+  { question: 'Hoe lang is de trial?',                  answer: 'Probeer 14 dagen gratis, met alle functies. Je start zonder betaling of incasso. Tijdens de trial kies je in Snellio het abonnement dat bij je bedrijf past, vanaf €10 per maand.' },
   { question: 'Wat als ik wil opzeggen?',               answer: 'Eén klik in je dashboard. Geen opzegtermijn na de eerste maand.' },
   { question: 'Hosten jullie in Nederland?',            answer: 'EU-region (Supabase Frankfurt). AVG-conform.' },
   { question: 'Kan een monteur ook offline werken?',    answer: 'Beperkt: werkbon kan worden ingevuld zonder verbinding, sync zodra hij online komt.' },
@@ -84,28 +84,28 @@ export default function HomePage() {
       <section className="relative pt-32 pb-20 px-[5%] bg-[#f4f7fa]">
         <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
-            <p className={sectionLabel}>All-in-one voor koeltechniek &amp; airco</p>
+            <p className={sectionLabel}>Software voor installatiebedrijven</p>
             <h1
               className="font-extrabold tracking-tight text-[#0f2133] leading-[1.05] mb-5"
               style={{ fontSize: 'clamp(2rem, 4.5vw, 3.2rem)' }}
             >
-              Eindelijk één plek voor je werkbonnen, planning en F-gassen.
+              Minder administratie. Meer grip op je installatiebedrijf.
             </h1>
             <p className="text-[#0f2133] text-[1.1rem] leading-[1.55] max-w-xl mb-8 pl-4 border-l-[3px] border-[#0090b8]">
-              Snellio is een Nederlandse CRM- en werkbonsoftware voor HVAC-installateurs,
-              koeltechniekers en airco-monteurs, met ingebouwde BRL100-rapportage en
-              F-gassen registratie volgens EU-verordening 2024/573.
+              CRM, digitale werkbonnen, planning en facturatie in één systeem. Voor
+              installatiebedrijven die klanten, monteurs en installaties overzichtelijk
+              willen beheren. Koeltechniek en airco? Dan zijn F-gassen en BRL100 direct inbegrepen.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href={SIGNUP_HREF} className={btnPrimary}>
-                Start gratis 14-dagen trial →
+                Start 14 dagen gratis →
               </Link>
-              <Link href="#pakketten" className={btnSecondary}>
-                Bekijk pakketten
+              <Link href="/pricing" className={btnSecondary}>
+                Bekijk prijzen
               </Link>
             </div>
             <p className="text-[#5f7791] text-xs mt-5">
-              Probeer 14 dagen gratis · Maandelijks opzegbaar · Nederlandse support
+              Geen betaling of incassomachtiging · Alle functies inbegrepen · Vanaf €10 per maand
             </p>
           </div>
 
@@ -314,11 +314,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 7. PAKKETTEN ── */}
-      <section id="pakketten" className="py-20 px-[5%] bg-[#f4f7fa] scroll-mt-20">
+      {/* ── 7. PRIJZEN (compact, volledige tabel staat op /pricing) ── */}
+      <section id="prijzen" className="py-20 px-[5%] bg-[#f4f7fa] scroll-mt-20">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-10">
-            <p className={sectionLabel}>Kies je pakket</p>
+            <p className={sectionLabel}>Prijzen</p>
             <h2 className="font-bold tracking-tight text-[#0f2133]" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
               Eerlijke prijzen, geen verrassingen.
             </h2>
@@ -365,7 +365,7 @@ export default function HomePage() {
             Klaar om je administratie eindelijk simpel te maken?
           </h2>
           <p className="text-[#5f7791] text-base mb-8">
-            Probeer 14 dagen gratis. Annuleren wanneer je wilt.
+            Probeer 14 dagen gratis. Geen betaling nodig. Kies je abonnement later.
           </p>
           <Link
             href={SIGNUP_HREF}

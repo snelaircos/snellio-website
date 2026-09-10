@@ -33,6 +33,14 @@ const nextConfig = {
         destination: 'https://snellio.nl/:path*',
         permanent:   true,
       },
+      // Oude checkout (pakketkeuze + Mollie-mandaat) is vervallen: iedereen
+      // start via de gratis trial. Alleen exact /checkout; /checkout/success
+      // en /checkout/cancel blijven bestaan voor lopende Mollie-redirects.
+      {
+        source:      '/checkout',
+        destination: '/registreren',
+        permanent:   true,
+      },
     ]
   },
 }

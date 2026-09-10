@@ -299,7 +299,7 @@ export default function CrmVoorInstallateursAdsPage() {
               cursus mee werken? <strong className="text-[var(--text)]">Vier:</strong> zit je vast aan een
               jaarcontract of kun je maandelijks opzeggen? Snellio is gebouwd door een STEK-gecertificeerd
               installateur die zelf dagelijks op de bus zit — bekijk de{' '}
-              <Link href="/pricing" className="text-[var(--accent)] hover:underline">pakketten en prijzen</Link>{' '}
+              <Link href="/pricing" className="text-[var(--accent)] hover:underline">prijzen</Link>{' '}
               of vergelijk Snellio met{' '}
               <Link href="/alternatief-voor-crm-installateurs" className="text-[var(--accent)] hover:underline">losse tools</Link>.
             </p>
@@ -324,7 +324,7 @@ export default function CrmVoorInstallateursAdsPage() {
           { href: '/werkbon-software',            icon: '📋', title: 'Werkbon-software',      desc: 'Digitale werkbon met handtekening'   },
           { href: '/planningssoftware-monteurs',  icon: '📅', title: 'Planning monteurs',     desc: 'Werkorders inplannen per monteur'    },
           { href: '/f-gassen-registratie',        icon: '❄️', title: 'F-gassen registratie',  desc: 'Flesregistratie & F-gas logboek'     },
-          { href: '/pricing',                     icon: '💶', title: 'Pakketten & prijzen',   desc: 'Vanaf €10/maand, 14 dagen gratis'    },
+          { href: '/pricing',                     icon: '💶', title: 'Prijzen',               desc: 'Vanaf €10/mnd, alles inbegrepen, 14 dagen gratis' },
         ]}
       />
 

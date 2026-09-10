@@ -48,7 +48,7 @@ export default function LoginPage({ searchParams }: Props) {
         </a>
 
         <p className='text-[var(--muted)] text-sm mt-6'>
-          Nog geen account? <a href='/checkout' className='text-[var(--accent)] hover:underline'>Probeer 14 dagen gratis</a>
+          Nog geen account? <a href='/registreren' className='text-[var(--accent)] hover:underline'>Probeer 14 dagen gratis</a>
         </p>
       </div>
     </div>

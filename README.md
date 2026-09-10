@@ -31,7 +31,7 @@ app/
 ├── not-found.tsx       # 404 pagina
 ├── error.tsx           # Error boundary
 ├── loading.tsx         # Laadscherm
-├── registreren/        # Registratiepagina met plan-selectie
+├── registreren/        # Gratis trial starten (geen pakketkeuze, geen betaling) → /api/aanmelden
 ├── pricing/            # Prijzenpagina
 ├── features/           # Functiespagina
 ├── contact/            # Contact + demo formulier
@@ -85,7 +85,9 @@ Analytics wordt alleen geladen in `production`. In development geen tracking.
 ## Content aanpassen
 
 Alle content staat centraal in `lib/constants.ts`:
-- `PLANS` — pakketten en prijzen
+- `PLANS` — HVAC-pakketten en prijzen (alle functies inbegrepen; verschil = monteurs/installaties)
+- `INBEGREPEN` — functies die in elk pakket zitten
+- `lib/pricing.ts` — prijsberekeningen (extra monteurs, jaarprijs, formattering)
 - `FEATURES` — functielijst
 - `NAV_ITEMS` — navigatie
 - `CERTS` — certificeringen

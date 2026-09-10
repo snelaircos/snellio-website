@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/',                              priority: 1.0,  changeFreq: 'weekly'  as const, lastMod: now },
     { path: '/features',                      priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
     { path: '/pricing',                       priority: 0.9,  changeFreq: 'weekly'  as const, lastMod: now },
+    { path: '/software-voor-installatiebedrijven', priority: 0.95, changeFreq: 'monthly' as const, lastMod: now },
     { path: '/crm-voor-installateurs',        priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
     { path: '/werkbon-software',              priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
     { path: '/planningssoftware-monteurs',    priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
@@ -20,8 +21,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/alternatief-voor-crm-installateurs', priority: 0.85, changeFreq: 'monthly' as const, lastMod: now },
     { path: '/contact',                       priority: 0.8,  changeFreq: 'monthly' as const, lastMod: now },
     { path: '/demo',                          priority: 0.85, changeFreq: 'monthly' as const, lastMod: now },
-    // NB: /registreren is een redirect naar /checkout en hoort niet in de
-    // sitemap (crawl-verspilling / soft-fout).
+    // NB: /registreren (trial-formulier, noindex) en /checkout (redirect
+    // naar /registreren) horen niet in de sitemap.
     { path: '/blog',                          priority: 0.7,  changeFreq: 'weekly'  as const, lastMod: now },
     { path: '/privacy',                       priority: 0.3,  changeFreq: 'yearly'  as const, lastMod: legalDatum },
     { path: '/voorwaarden',                   priority: 0.3,  changeFreq: 'yearly'  as const, lastMod: legalDatum },

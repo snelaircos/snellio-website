@@ -92,7 +92,7 @@ export const POSTS: Post[] = [
       De functie staat voor alle Snellio-gebruikers klaar. Heeft u een kenplaatprinter, dan print u de plaat
       direct vanuit het installatiedossier; het digitale logboek en de QR-code werken vanaf dat moment meteen.
       Bekijk alle mogelijkheden op de [functiepagina](/features) of probeer het zelf met een
-      [gratis proefperiode van 14 dagen](/checkout).
+      [gratis proefperiode van 14 dagen](/registreren).
     `,
   },
   {
