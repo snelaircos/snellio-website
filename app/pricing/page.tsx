@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { buildMetadata }  from '@/lib/metadata'
 import { breadcrumbSchema, faqSchema } from '@/lib/schemas'
-import { TRIAL_DAGEN } from '@/lib/constants'
+import { BTW, PLANS, TRIAL_DAGEN } from '@/lib/constants'
+import { fmtEuro, twaalfMaanden } from '@/lib/pricing'
 import JsonLd    from '@/components/seo/JsonLd'
 import Pricing   from '@/components/sections/Pricing'
 import Cta       from '@/components/sections/Cta'
@@ -9,7 +10,7 @@ import Container from '@/components/ui/Container'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Snellio prijzen | Software voor installatiebedrijven',
-  description: 'Bekijk de prijzen van Snellio. Alle functies inbegrepen. Start 14 dagen gratis en kies daarna het abonnement dat bij jouw installatiebedrijf past.',
+  description: 'Bekijk de prijzen van Snellio. Alle functies inbegrepen, incl. 21% btw. Start 14 dagen gratis en kies daarna het abonnement dat bij jouw installatiebedrijf past.',
   path:        '/pricing',
 })
 
@@ -18,13 +19,15 @@ export const metadata: Metadata = buildMetadata({
 // Starter-cap 25 installaties (lib/pakket.ts).
 const faqs = [
   { question: 'Moet ik direct betalen?',
-    answer:   `Nee. Je start eerst met een gratis trial van ${TRIAL_DAGEN} dagen. Bij registratie vragen we geen betaling en geen incassomachtiging.` },
+    answer:   `Nee. Je start eerst met een gratis trial van ${TRIAL_DAGEN} dagen. Bij registratie vragen we geen creditcard, geen betaling en geen incassomachtiging.` },
   { question: 'Wanneer kies ik mijn abonnement?',
     answer:   'Tijdens de proefperiode kies je in Snellio welk abonnement bij je bedrijf past, en of je per maand of per jaar wilt betalen.' },
+  { question: 'Zijn de prijzen inclusief btw?',
+    answer:   'Ja. Alle genoemde prijzen zijn inclusief 21% btw. Het bedrag dat je ziet is het bedrag dat je betaalt, er komen geen kosten bij.' },
   { question: 'Kan ik maandelijks betalen?',
-    answer:   'Ja. Bij maandelijkse betaling kun je per maand opzeggen.' },
+    answer:   'Ja. Bij maandelijkse betaling kun je per maand opzeggen. Een maandabonnement loopt per maandperiode en wordt telkens met een maand verlengd tot je opzegt.' },
   { question: 'Kan ik jaarlijks betalen?',
-    answer:   'Ja. Bij jaarbetaling betaal je 10 maanden en gebruik je Snellio 12 maanden.' },
+    answer:   'Ja. Bij jaarbetaling betaal je 10 maanden en gebruik je Snellio 12 maanden. Een jaarabonnement wordt niet stilzwijgend verlengd: we herinneren je ruim voor afloop en je kiest opnieuw.' },
   { question: 'Welke betaalmethoden zijn beschikbaar?',
     answer:   'Automatische incasso (SEPA) of zelf betalen via iDEAL. Je kiest dit in Snellio op het moment dat je je abonnement kiest.' },
   { question: 'Kan ik later extra monteurs toevoegen?',
@@ -42,9 +45,9 @@ const faqs = [
 ]
 
 const heroChips = [
-  'Vanaf €10 per maand',
+  'Vanaf €10 per maand incl. btw',
   `${TRIAL_DAGEN} dagen gratis`,
-  'Geen betaling nodig om te starten',
+  'Geen creditcard nodig om te starten',
 ]
 
 export default function PricingPage() {
@@ -69,7 +72,7 @@ export default function PricingPage() {
           </h1>
           <p className="text-[var(--text2)] text-lg leading-relaxed max-w-2xl mx-auto">
             CRM, planning, werkbonnen, facturatie en koeltechnische administratie zitten standaard in Snellio.
-            Je betaalt alleen voor de grootte van je bedrijf.
+            Je betaalt alleen voor de grootte van je bedrijf. Alle prijzen {BTW.short}.
           </p>
           <ul className="mt-6 flex flex-wrap justify-center gap-2 list-none">
             {heroChips.map(chip => (
@@ -85,6 +88,36 @@ export default function PricingPage() {
       </section>
 
       <Pricing />
+
+      {/* Zo betaal je: periode × betaalwijze, exact zoals het keuzescherm in de app */}
+      <section className="py-16 px-[5%]">
+        <Container narrow>
+          <h2 className="font-outfit font-bold text-[var(--text)] text-2xl mb-3 text-center">Zo betaal je, jij kiest</h2>
+          <p className="text-[var(--muted2)] text-sm text-center mb-8">
+            Een jaarabonnement kost tien maandbedragen voor twaalf maanden:{' '}
+            {PLANS.map((p, i) => (
+              <span key={p.id}>
+                {i > 0 ? (i === PLANS.length - 1 ? ' en ' : ', ') : ''}
+                {p.name} {fmtEuro(twaalfMaanden(p.price.month) - p.price.year)}
+              </span>
+            ))}{' '}voordeel per jaar. De jaarprijs is gelijk voor beide betaalwijzen, er is geen extra korting op incasso.
+            Je abonnement loopt nooit stilzwijgend via incasso door.
+          </p>
+          <div className="grid grid-cols-[100px_1fr_1fr] gap-3 text-sm">
+            <div />
+            <div className="font-mono text-[.62rem] text-[var(--accent)] uppercase tracking-[.12em] self-end">Zelf via iDEAL</div>
+            <div className="font-mono text-[.62rem] text-[var(--accent)] uppercase tracking-[.12em] self-end">Automatische incasso</div>
+            <div className="font-semibold text-[var(--text)] self-center">
+              Per jaar<span className="block text-[.62rem] text-[var(--green)] font-mono">AANBEVOLEN</span>
+            </div>
+            <div className="bg-[var(--navy3)] border border-[var(--accent)] rounded-xl p-4 text-[var(--text2)]">Eén factuur voor tien maanden met betaallink, twaalf maanden toegang.</div>
+            <div className="bg-[var(--navy3)] border border-[var(--accent)] rounded-xl p-4 text-[var(--text2)]">Eenmalig tien maanden, jaarlijks geïncasseerd.</div>
+            <div className="font-semibold text-[var(--text)] self-center">Per maand</div>
+            <div className="bg-[var(--navy3)] border border-[var(--border)] rounded-xl p-4 text-[var(--text2)]">Elke maand een factuur met betaallink.</div>
+            <div className="bg-[var(--navy3)] border border-[var(--border)] rounded-xl p-4 text-[var(--text2)]">Elke maand automatisch geïncasseerd.</div>
+          </div>
+        </Container>
+      </section>
 
       {/* FAQ */}
       <section className="py-20 px-[5%]" id="faq">

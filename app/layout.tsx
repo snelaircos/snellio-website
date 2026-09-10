@@ -4,7 +4,8 @@ import '@/styles/globals.css'
 import Header        from '@/components/layout/Header'
 import Footer        from '@/components/layout/Footer'
 import Analytics     from '@/components/tracking/Analytics'
-import GoogleAds     from '@/components/tracking/GoogleAds'
+import GoogleTag     from '@/components/tracking/GoogleTag'
+import AttributionCapture from '@/components/tracking/AttributionCapture'
 import GA4PageViews  from '@/components/tracking/GA4PageViews'
 import CookieBanner  from '@/components/tracking/CookieBanner'
 import WhatsAppButton from '@/components/ui/WhatsAppButton'
@@ -62,14 +63,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           websiteSchema(),
           softwareApplicationSchema(),
         ]} />
-        {/* Consent-based analytics */}
-        <Analytics />
+        {/* Google Tag: consent-default + config in <head>, vóór gtag.js laadt */}
+        <GoogleTag />
       </head>
       <body className="bg-[var(--navy2)] text-[var(--text)] antialiased">
-        {/* Gtag.js bootstrap (Ads + GA4), site-breed, init vóór externe lib zodat dataLayer altijd bestaat */}
-        <GoogleAds />
+        {/* Attributie (gclid/utm) first-party bewaren + tracking-init, per route */}
+        <AttributionCapture />
         {/* GA4 page_view op initial + elke SPA-route-change. Geen dubbel firen op Ads. */}
         <GA4PageViews />
+        {/* Optionele extra tags uit env (GTM/Clarity/Meta), consent-gated; nu inactief */}
+        <Analytics />
         {/* Toetsenbord-gebruikers: direct naar content, onzichtbaar tot focus */}
         <a
           href="#main-content"

@@ -105,7 +105,7 @@ export default async function BillingPage() {
                 <thead>
                   <tr className="text-left text-[var(--text2)] uppercase tracking-wider">
                     <th className="py-2 px-3">Betaaldatum</th>
-                    <th className="py-2 px-3">Bedrag</th>
+                    <th className="py-2 px-3">Bedrag (incl. 21% btw)</th>
                     <th className="py-2 px-3">Status</th>
                     <th className="py-2 px-3">Mollie betaling</th>
                   </tr>

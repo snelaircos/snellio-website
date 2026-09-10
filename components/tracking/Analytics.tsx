@@ -1,117 +1,67 @@
 'use client'
 
 import Script from 'next/script'
+import { useEffect, useState } from 'react'
+import { readConsent, onConsentChange } from '@/lib/tracking'
 
-/**
- * Analytics.tsx
- *
- * Consent-based tracking loader.
- * Vul de placeholders in met jouw echte IDs zodra je accounts hebt.
- *
- * GTM_ID:         bijv. GTM-XXXXXXX
- * GA4_ID:         bijv. G-XXXXXXXXXX
- * META_PIXEL_ID:  bijv. 1234567890123456
- * CLARITY_ID:     bijv. abcdefghij
- * ADS_CONVERSION: bijv. AW-XXXXXXXXXX
- */
+// Optionele extra tags uit env. Google Ads + GA4 lopen NIET hierlangs maar
+// via GoogleTag.tsx (Consent Mode v2 in <head>).
+//
+// - GTM: alleen zetten als GoogleTag.tsx wordt uitgeschakeld, anders laadt
+//   gtag twee keer (dubbele pageviews/conversies).
+// - Clarity en Meta Pixel: pas ná marketing-consent (cookie `snellio_consent`
+//   = granted); ze kennen geen Consent Mode en zouden anders zonder
+//   toestemming cookies zetten.
+// Allemaal inactief zolang de env leeg is (huidige productie).
 
 const GTM_ID        = process.env.NEXT_PUBLIC_GTM_ID        || ''
-const GA4_ID        = process.env.NEXT_PUBLIC_GA4_ID        || ''
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || ''
 const CLARITY_ID    = process.env.NEXT_PUBLIC_CLARITY_ID    || ''
 
-// Google Ads wordt direct in app/layout.tsx geladen, niet hier.
-
 export default function Analytics() {
-  // Render niets in development of als geen IDs geconfigureerd
+  const [granted, setGranted] = useState(false)
+
+  useEffect(() => {
+    setGranted(readConsent() === 'granted')
+    return onConsentChange(s => setGranted(s === 'granted'))
+  }, [])
+
   if (process.env.NODE_ENV !== 'production') return null
-  if (!GTM_ID && !GA4_ID) return null
+  if (!GTM_ID && !META_PIXEL_ID && !CLARITY_ID) return null
 
   return (
     <>
-      {/* ── Google Tag Manager ── */}
       {GTM_ID && (
-        <>
-          <Script
-            id="gtm-script"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                })(window,document,'script','dataLayer','${GTM_ID}');
-              `,
-            }}
-          />
-          <noscript>
-            <iframe
-              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-              height="0"
-              width="0"
-              style={{ display: 'none', visibility: 'hidden' }}
-            />
-          </noscript>
-        </>
+        <Script id="gtm-script" strategy="afterInteractive">{`
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','${GTM_ID}');
+        `}</Script>
       )}
 
-      {/* ── GA4 (direct, zonder GTM) ── */}
-      {GA4_ID && !GTM_ID && (
-        <>
-          <Script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`} />
-          <Script
-            id="ga4-script"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${GA4_ID}', {
-                  page_path: window.location.pathname,
-                });
-              `,
-            }}
-          />
-        </>
+      {granted && CLARITY_ID && (
+        <Script id="clarity-script" strategy="afterInteractive">{`
+          (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "${CLARITY_ID}");
+        `}</Script>
       )}
 
-      {/* ── Microsoft Clarity ── */}
-      {CLARITY_ID && (
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "${CLARITY_ID}");
-            `,
-          }}
-        />
+      {granted && META_PIXEL_ID && (
+        <Script id="meta-pixel" strategy="afterInteractive">{`
+          !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+          n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+          document,'script','https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '${META_PIXEL_ID}');
+          fbq('track', 'PageView');
+        `}</Script>
       )}
-
-      {/* ── Meta Pixel ── */}
-      {META_PIXEL_ID && (
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-              n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-              n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-              t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-              document,'script','https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '${META_PIXEL_ID}');
-              fbq('track', 'PageView');
-            `,
-          }}
-        />
-      )}
-
-      {/* ── Bing / Microsoft Ads ── */}
-      {/* Voeg NEXT_PUBLIC_BING_UET_TAG toe als env variabele */}
-      {/* <script ... /> */}
     </>
   )
 }

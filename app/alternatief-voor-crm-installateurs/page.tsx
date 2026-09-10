@@ -61,17 +61,17 @@ const voorWie = [
   {
     icon: '👤',
     title: 'ZZP installateurs',
-    desc: 'Werk je alleen? Starter vanaf €10 per maand (tot 25 installaties) of Basis voor €29 per maand. Alle functies inbegrepen.',
+    desc: 'Werk je alleen? Starter vanaf €10 per maand incl. btw (tot 25 installaties) of Basis voor €29 per maand. Alle functies inbegrepen.',
   },
   {
     icon: '👥',
     title: 'Kleine teams',
-    desc: '2 monteurs of meer? Pro voor €69 per maand, 2 monteurs inbegrepen. Dezelfde functies als elk ander pakket.',
+    desc: '2 monteurs of meer? Pro voor €69 per maand incl. btw, 2 monteurs inbegrepen. Dezelfde functies als elk ander pakket.',
   },
   {
     icon: '📈',
     title: 'Groeiende bedrijven',
-    desc: 'Vanaf 5 monteurs? Enterprise voor €129 per maand, 5 monteurs inbegrepen en een lage meerprijs per extra monteur.',
+    desc: 'Vanaf 5 monteurs? Enterprise voor €129 per maand incl. btw, 5 monteurs inbegrepen en een lage meerprijs per extra monteur.',
   },
 ]
 

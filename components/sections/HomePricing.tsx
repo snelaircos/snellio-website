@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { PLANS, TRIAL_DAGEN } from '@/lib/constants'
+import { BTW, PLANS, TRIAL_DAGEN } from '@/lib/constants'
 import { fmtEuro } from '@/lib/pricing'
 
 // Compact commercieel prijsblok voor de homepage (light theme). Geen volledige
@@ -11,7 +11,7 @@ const vanaf = Math.min(...PLANS.map(p => p.price.month))
 
 const punten = [
   `${TRIAL_DAGEN} dagen gratis proberen`,
-  'Geen betaling nodig om te starten',
+  'Geen creditcard of incassomachtiging nodig',
   'Kies je abonnement pas tijdens de trial',
 ]
 
@@ -76,7 +76,7 @@ export default function HomePricing() {
             </li>
           ))}
           <li className="px-5 py-2.5 text-[#5f7791] text-[.7rem] bg-white">
-            Prijzen excl. btw · Pro en Enterprise: extra monteurs tegen een vaste meerprijs
+            Alle prijzen {BTW.short} · Pro en Enterprise: extra monteurs tegen een vaste meerprijs
           </li>
         </ul>
       </div>

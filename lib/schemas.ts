@@ -41,8 +41,8 @@ export function websiteSchema() {
 
 export function softwareApplicationSchema() {
   // Eén Offer per pakket per betaalperiode. Prijzen zijn de vaste basis-
-  // prijzen (Pro/Enterprise: inclusief de inbegrepen monteurs); extra
-  // monteurs zijn variabel en horen niet in het schema.
+  // prijzen incl. 21% btw (Pro/Enterprise: inclusief de inbegrepen monteurs);
+  // extra monteurs zijn variabel en horen niet in het schema.
   const offers = PLANS.flatMap(p => ([
     {
       '@type':       'Offer',
@@ -56,6 +56,7 @@ export function softwareApplicationSchema() {
         billingDuration: 1,
         unitCode:        'MON',
         unitText:        'per maand',
+        valueAddedTaxIncluded: true,
       },
     },
     {
@@ -70,6 +71,7 @@ export function softwareApplicationSchema() {
         billingDuration: 1,
         unitCode:        'ANN',
         unitText:        'per jaar',
+        valueAddedTaxIncluded: true,
       },
     },
   ]))
@@ -94,10 +96,13 @@ export function softwareApplicationSchema() {
 export function articleSchema(post: {
   slug: string; title: string; description: string; dateISO: string
   image?: { src: string }
+  schemaType?: 'Article' | 'BlogPosting'
+  tags?: string[]
 }) {
   return {
     '@context':     'https://schema.org',
-    '@type':        'BlogPosting',
+    '@type':        post.schemaType ?? 'BlogPosting',
+    ...(post.tags?.length ? { keywords: post.tags.join(', ') } : {}),
     headline:       post.title,
     description:    post.description,
     datePublished:  post.dateISO,

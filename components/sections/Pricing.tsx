@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { PLANS, INBEGREPEN, TRIAL_DAGEN, JAAR_MAANDEN_BETAALD, type HvacPlan } from '@/lib/constants'
+import { BTW, PLANS, INBEGREPEN, TRIAL_DAGEN, JAAR_MAANDEN_BETAALD, type HvacPlan } from '@/lib/constants'
 import { fmtEuro, twaalfMaanden } from '@/lib/pricing'
 import PricingCalculator from './PricingCalculator'
 
@@ -61,7 +61,7 @@ export default function Pricing() {
                 Start {TRIAL_DAGEN} dagen gratis →
               </Link>
               <p className="text-[var(--muted2)] text-xs">
-                {TRIAL_DAGEN} dagen gratis. Geen betaling nodig. Kies je abonnement later.
+                {TRIAL_DAGEN} dagen gratis. Geen creditcard nodig. Kies je abonnement later.
               </p>
             </div>
           </div>
@@ -109,7 +109,7 @@ export default function Pricing() {
         </div>
 
         <p className="mt-7 text-center text-xs text-[var(--muted)] tracking-wide">
-          Alle prijzen exclusief btw &nbsp;·&nbsp; {TRIAL_DAGEN} dagen gratis proberen &nbsp;·&nbsp; Maandelijks opzegbaar &nbsp;·&nbsp; Nederlandse support
+          Alle prijzen {BTW.short} &nbsp;·&nbsp; {TRIAL_DAGEN} dagen gratis, geen creditcard nodig &nbsp;·&nbsp; Jaar of maand, iDEAL of incasso &nbsp;·&nbsp; Maandelijks opzegbaar
         </p>
 
         {/* ── Alles inbegrepen ── */}
@@ -219,6 +219,7 @@ function PlanCard({ plan, annual, index }: PlanCardProps) {
               <p className="text-xs text-[var(--text2)] mt-2 tabular-nums">
                 = {JAAR_MAANDEN_BETAALD} × {fmtEuro(plan.price.month)}. Je betaalt {JAAR_MAANDEN_BETAALD} maanden, gebruikt 12.
               </p>
+              <p className="text-[.7rem] text-[var(--muted2)] mt-1">{BTW.short}</p>
             </>
           ) : (
             <>
@@ -229,6 +230,7 @@ function PlanCard({ plan, annual, index }: PlanCardProps) {
               <p className="text-xs text-[var(--text2)] mt-2 tabular-nums">
                 of {fmtEuro(plan.price.year)} per jaar <span className="text-[var(--green)] font-semibold">(2 maanden gratis)</span>
               </p>
+              <p className="text-[.7rem] text-[var(--muted2)] mt-1">{BTW.short}</p>
             </>
           )}
         </div>

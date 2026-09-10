@@ -99,7 +99,7 @@ const faqItems = [
   },
   {
     question: 'Wat kost werkbon software van Snellio?',
-    answer:   'Snellio kost vanaf €10 per maand (Starter, 1 monteur, tot 25 installaties). Basis is €29 per maand met onbeperkt installaties, Pro €69 per maand met 2 monteurs inbegrepen en Enterprise €129 per maand met 5 monteurs inbegrepen. In elk pakket zitten alle functies: werkbonnen, planning, facturatie, F-gassen en BRL100. Je start met 14 dagen gratis en kiest je abonnement pas daarna.',
+    answer:   'Snellio kost vanaf €10 per maand (Starter, 1 monteur, tot 25 installaties). Basis is €29 per maand met onbeperkt installaties, Pro €69 per maand met 2 monteurs inbegrepen en Enterprise €129 per maand met 5 monteurs inbegrepen. Alle prijzen zijn inclusief 21% btw. In elk pakket zitten alle functies: werkbonnen, planning, facturatie, F-gassen en BRL100. Je start met 14 dagen gratis, zonder creditcard, en kiest je abonnement pas daarna.',
   },
 ]
 
@@ -125,7 +125,7 @@ export default function WerkbonSoftwarePage() {
           { value: 'BRL<span style="color:var(--cyan)">100</span>', label: 'Automatisch rapport'  },
           { value: '1<span style="color:var(--cyan)">klik</span>',  label: 'Naar factuur'         },
         ]}
-        trustLine="14 dagen gratis • Geen betaling nodig • Alle functies inbegrepen"
+        trustLine="14 dagen gratis • Geen creditcard nodig • Alle functies inbegrepen"
       />
 
       {/* ── 1. Intro tekst ── */}
@@ -484,7 +484,7 @@ export default function WerkbonSoftwarePage() {
           { href: '/crm-voor-installateurs',     icon: '🏢', title: 'CRM voor installateurs',  desc: 'Klant- en installatiebeheer'          },
           { href: '/planningssoftware-monteurs',  icon: '📅', title: 'Planning monteurs',         desc: 'Werkorders inplannen per monteur'      },
           { href: '/f-gassen-registratie',        icon: '❄️', title: 'F-gassen registratie',      desc: 'Flesregistratie & F-gas logboek'       },
-          { href: '/pricing',                     icon: '💶', title: 'Prijzen',                    desc: 'Vanaf €10/mnd, alles inbegrepen, 14 dagen gratis' },
+          { href: '/pricing',                     icon: '💶', title: 'Prijzen',                    desc: 'Vanaf €10/mnd incl. btw, alles inbegrepen' },
         ]}
       />
 

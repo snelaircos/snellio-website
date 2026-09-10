@@ -5,7 +5,7 @@ import { breadcrumbSchema, faqSchema } from '@/lib/schemas'
 import JsonLd            from '@/components/seo/JsonLd'
 import HeroAnimation     from '@/components/sections/automotive/HeroAnimation'
 import AutomotivePricing from '@/components/sections/automotive/AutomotivePricing'
-import { SITE } from '@/lib/constants'
+import { BTW, SITE } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Werkplaatssoftware voor garages & autobedrijven | Snellio',
@@ -120,7 +120,18 @@ export default function AutomotivePage() {
           applicationCategory:  'BusinessApplication',
           operatingSystem:      'Web, iOS, Android',
           description:          'Eén tool voor werkplaatsen, autohandelaren en dealers. Werkbladen, voertuigen, klanten, planning, offertes en facturen, inclusief kenteken-lookup via RDW.',
-          offers:               { '@type': 'Offer', price: '10.00', priceCurrency: 'EUR' },
+          offers: {
+            '@type':       'Offer',
+            price:         '10.00',
+            priceCurrency: 'EUR',
+            priceSpecification: {
+              '@type':               'UnitPriceSpecification',
+              price:                 '10.00',
+              priceCurrency:         'EUR',
+              unitText:              'per maand',
+              valueAddedTaxIncluded: true,
+            },
+          },
           publisher:            { '@id': `${SITE.url}/#organization` },
         },
       ]} />
@@ -251,7 +262,7 @@ export default function AutomotivePage() {
             Eerlijk per maand. Geen koppelfee.
           </h2>
           <p className={sectionLead}>
-            Eén prijs per werkplaats. Iedere medewerker doet mee. Maandelijks opzegbaar.
+            Eén prijs per werkplaats. Iedere medewerker doet mee. Maandelijks opzegbaar. Alle prijzen {BTW.short}.
           </p>
           <p className="text-center text-sm text-[#b45f22] bg-[rgba(224,122,48,.08)] border border-[rgba(224,122,48,.3)] rounded-xl px-5 py-3 max-w-2xl mx-auto mb-8">
             <strong>In ontwikkeling</strong> — prijzen onder voorbehoud. Aanmelden kan nog niet;

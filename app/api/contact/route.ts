@@ -38,6 +38,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Server configuratie fout' }, { status: 500 })
     }
 
+    // Lead-id: transaction_id voor de Ads-conversie én referentie in de mail.
+    const leadId = crypto.randomUUID()
     const naam    = escapeHtml(body.naam.trim())
     const email   = escapeHtml(body.email.trim())
     const bedrijf = body.bedrijf?.trim() ? escapeHtml(body.bedrijf.trim()) : '<em>(niet opgegeven)</em>'
@@ -59,7 +61,7 @@ export async function POST(req: NextRequest) {
         <p style="background:#f4f7fa;border-left:3px solid #0090b8;padding:14px 16px;border-radius:6px;line-height:1.6;">${bericht}</p>
         ${demoVlag}
         <p style="color:#8ea2b8;font-size:12px;margin-top:24px;border-top:1px solid #e4ecf2;padding-top:12px;">
-          Verzonden via snellio.nl/contact · ${new Date().toLocaleString('nl-NL', { timeZone: 'Europe/Amsterdam' })}
+          Verzonden via snellio.nl/contact · ${new Date().toLocaleString('nl-NL', { timeZone: 'Europe/Amsterdam' })} · Referentie ${leadId}
         </p>
       </div>
     `
@@ -85,7 +87,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Bericht kon niet verstuurd worden, probeer het opnieuw.' }, { status: 502 })
     }
 
-    return NextResponse.json({ success: true }, { status: 200 })
+    return NextResponse.json({ success: true, lead_id: leadId }, { status: 200 })
   } catch (err) {
     console.error('[contact] onverwachte fout:', err)
     return NextResponse.json({ error: 'Onverwachte serverfout' }, { status: 500 })

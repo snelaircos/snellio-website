@@ -212,7 +212,7 @@ export default function FgassenRegistratiePage() {
         sub="Volledig digitaal koudemiddellogboek per installatie. Flesregistratie, lektestdocumentatie en BRL100-rapportage conform EU F-gas Verordening 2024/573, altijd klaar voor inspectie."
         ctaPrimary={{ label: 'Start 14 dagen gratis →', href: '/registreren' }}
         ctaSecondary={{ label: 'Bekijk prijzen', href: '/pricing' }}
-        trustLine="14 dagen gratis • Geen betaling nodig • Alle functies inbegrepen"
+        trustLine="14 dagen gratis • Geen creditcard nodig • Alle functies inbegrepen"
         stats={[
           { value: '2024/<span style="color:var(--cyan)">573</span>', label: 'EU F-gas compliant'   },
           { value: 'BRL<span style="color:var(--cyan)">100</span>',   label: 'Automatisch rapport'  },
@@ -603,7 +603,7 @@ export default function FgassenRegistratiePage() {
           { href: '/crm-voor-installateurs',     icon: '🏢', title: 'CRM voor installateurs',  desc: 'Klant- en installatiebeheer'          },
           { href: '/werkbon-software',            icon: '📋', title: 'Werkbon software',         desc: 'Digitale werkbonnen met handtekening' },
           { href: '/planningssoftware-monteurs',  icon: '📅', title: 'Planning monteurs',         desc: 'Werkorders inplannen per monteur'     },
-          { href: '/pricing',                     icon: '💶', title: 'Prijzen',                   desc: 'Vanaf €10/mnd, alles inbegrepen, 14 dagen gratis' },
+          { href: '/pricing',                     icon: '💶', title: 'Prijzen',                   desc: 'Vanaf €10/mnd incl. btw, alles inbegrepen' },
         ]}
       />
 

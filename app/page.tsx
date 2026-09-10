@@ -5,7 +5,6 @@ import { buildMetadata } from '@/lib/metadata'
 import { faqSchema }     from '@/lib/schemas'
 import JsonLd            from '@/components/seo/JsonLd'
 import HomePricing       from '@/components/sections/HomePricing'
-import YouTubeFacade     from '@/components/ui/YouTubeFacade'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Software voor installatiebedrijven | Snellio',
@@ -60,7 +59,7 @@ const integraties = ['Mollie', 'Moneybird', 'SnelStart', 'Exact', 'Google Calend
 
 const faqs = [
   { question: 'Kan ik mijn data exporteren?',           answer: 'Ja, alles via CSV en PDF. Je data is van jou.' },
-  { question: 'Hoe lang is de trial?',                  answer: 'Probeer 14 dagen gratis, met alle functies. Je start zonder betaling of incasso. Tijdens de trial kies je in Snellio het abonnement dat bij je bedrijf past, vanaf €10 per maand.' },
+  { question: 'Hoe lang is de trial?',                  answer: 'Probeer 14 dagen gratis met alle functies, zonder creditcard of betaalgegevens. Tijdens de proefperiode kies je in Snellio het abonnement dat bij je bedrijf past, vanaf €10 per maand inclusief btw, en of je per maand of per jaar betaalt via iDEAL of automatische incasso. Niets loopt stilzwijgend door.' },
   { question: 'Wat als ik wil opzeggen?',               answer: 'Eén klik in je dashboard. Geen opzegtermijn na de eerste maand.' },
   { question: 'Hosten jullie in Nederland?',            answer: 'EU-region (Supabase Frankfurt). AVG-conform.' },
   { question: 'Kan een monteur ook offline werken?',    answer: 'Beperkt: werkbon kan worden ingevuld zonder verbinding, sync zodra hij online komt.' },
@@ -105,7 +104,7 @@ export default function HomePage() {
               </Link>
             </div>
             <p className="text-[#5f7791] text-xs mt-5">
-              Geen betaling of incassomachtiging · Alle functies inbegrepen · Vanaf €10 per maand
+              Geen creditcard of incassomachtiging · Alle functies inbegrepen · Vanaf €10 per maand incl. btw
             </p>
           </div>
 
@@ -163,26 +162,6 @@ export default function HomePage() {
               {' '}, je krijgt mij aan de lijn.
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* ── 1.75 ZIE HET IN ACTIE (product-demo direct na founder-trust) ── */}
-      <section className="py-16 md:py-20 px-[5%] bg-[#f4f7fa]">
-        <div className="mx-auto max-w-4xl text-center">
-          <p className={sectionLabel}>Zie het in actie</p>
-          <h2 className="font-bold tracking-tight text-[#0f2133] mb-4" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2rem)' }}>
-            Wat Snellio voor een installateur doet, in één minuut.
-          </h2>
-          <p className="text-[#5f7791] text-base leading-relaxed max-w-2xl mx-auto mb-8">
-            Korte rondleiding door de app: werkbon, planning, F-gassen en factuur.
-            Ontworpen voor installateurs, door installateurs.
-          </p>
-          <YouTubeFacade
-            videoId="1zqn7mcvo28"
-            thumbnail="/thumbnail-demo001.jpg"
-            title="Snellio software voor de koel/CV installateur, demo"
-            className="max-w-3xl mx-auto"
-          />
         </div>
       </section>
 
@@ -365,7 +344,7 @@ export default function HomePage() {
             Klaar om je administratie eindelijk simpel te maken?
           </h2>
           <p className="text-[#5f7791] text-base mb-8">
-            Probeer 14 dagen gratis. Geen betaling nodig. Kies je abonnement later.
+            14 dagen gratis proberen, geen creditcard nodig. Kies je abonnement later.
           </p>
           <Link
             href={SIGNUP_HREF}

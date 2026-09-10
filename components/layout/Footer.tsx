@@ -114,7 +114,7 @@ export default function Footer() {
           href="https://snelliowebdesign.nl"
           className="text-[var(--muted)] text-xs hover:underline"
         >
-          Website door Snellio Webdesign
+          Website door Snellio
         </a>
       </div>
     </footer>

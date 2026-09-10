@@ -6,7 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
   // Vaste datum voor pagina's die zelden wijzigen (legal). Voorkomt dat elke
   // deploy de lastModified van alles reset, dat signaal wordt anders ruis.
-  const legalDatum = new Date('2026-05-01')
+  const legalDatum = new Date('2026-09-05')
 
   const routes = [
     { path: '/',                              priority: 1.0,  changeFreq: 'weekly'  as const, lastMod: now },
@@ -21,11 +21,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/alternatief-voor-crm-installateurs', priority: 0.85, changeFreq: 'monthly' as const, lastMod: now },
     { path: '/contact',                       priority: 0.8,  changeFreq: 'monthly' as const, lastMod: now },
     { path: '/demo',                          priority: 0.85, changeFreq: 'monthly' as const, lastMod: now },
-    // NB: /registreren (trial-formulier, noindex) en /checkout (redirect
-    // naar /registreren) horen niet in de sitemap.
+    // NB: /registreren (redirect) en /checkout (aanmeldformulier, noindex)
+    // horen niet in de sitemap.
     { path: '/blog',                          priority: 0.7,  changeFreq: 'weekly'  as const, lastMod: now },
     { path: '/privacy',                       priority: 0.3,  changeFreq: 'yearly'  as const, lastMod: legalDatum },
     { path: '/voorwaarden',                   priority: 0.3,  changeFreq: 'yearly'  as const, lastMod: legalDatum },
+    { path: '/voorwaarden/verwerkersovereenkomst', priority: 0.3, changeFreq: 'yearly' as const, lastMod: legalDatum },
+    { path: '/voorwaarden/subverwerkers',     priority: 0.3,  changeFreq: 'yearly'  as const, lastMod: legalDatum },
     { path: '/cookiebeleid',                  priority: 0.3,  changeFreq: 'yearly'  as const, lastMod: legalDatum },
   ]
 

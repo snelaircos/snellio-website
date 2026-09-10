@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { JAAR_MAANDEN_BETAALD } from '@/lib/constants'
+import { BTW, JAAR_MAANDEN_BETAALD } from '@/lib/constants'
 import { planById, maandprijsVoorTeam, extraMonteurs, jaarprijs, fmtEuro } from '@/lib/pricing'
 
 // Kleine, puur client-side rekentool: hoeveel kost Pro of Enterprise voor
@@ -158,8 +158,8 @@ export default function PricingCalculator({ annual }: Props) {
           Start 14 dagen gratis →
         </Link>
         <p className="text-[var(--muted2)] text-xs">
-          Geen betaling nodig. Je kiest je abonnement pas tijdens de proefperiode in Snellio.
-          Extra monteurs voeg je later toe wanneer je wilt.
+          Geen creditcard nodig. Je kiest je abonnement pas tijdens de proefperiode in Snellio.
+          Extra monteurs voeg je later toe wanneer je wilt. Alle bedragen {BTW.short}.
         </p>
       </div>
     </div>

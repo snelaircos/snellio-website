@@ -233,7 +233,7 @@ export default function PlanningssoftwareMonteurPage() {
         sub="Werkorders inplannen, monteurs toewijzen en altijd overzicht houden, zonder bellen, zonder WhatsApp, zonder dubbele boekingen."
         ctaPrimary={{ label: 'Start 14 dagen gratis →', href: '/registreren' }}
         ctaSecondary={{ label: 'Bekijk prijzen', href: '/pricing' }}
-        trustLine="14 dagen gratis • Geen betaling nodig • Alle functies inbegrepen"
+        trustLine="14 dagen gratis • Geen creditcard nodig • Alle functies inbegrepen"
         stats={[
           { value: '<span style="color:var(--cyan)">Auto</span>', label: 'Google Calendar sync'  },
           { value: '1<span style="color:var(--cyan)">min</span>', label: 'Werkorder inplannen'   },
@@ -654,7 +654,7 @@ export default function PlanningssoftwareMonteurPage() {
           { href: '/crm-voor-installateurs',  icon: '🏢', title: 'CRM voor installateurs',   desc: 'Klant- en installatiebeheer'          },
           { href: '/werkbon-software',         icon: '📋', title: 'Werkbon software',          desc: 'Digitale werkbonnen met handtekening' },
           { href: '/f-gassen-registratie',     icon: '❄️', title: 'F-gassen registratie',      desc: 'Flesregistratie & F-gas logboek'      },
-          { href: '/pricing',                  icon: '💶', title: 'Prijzen',                    desc: 'Vanaf €10/mnd, alles inbegrepen, 14 dagen gratis' },
+          { href: '/pricing',                  icon: '💶', title: 'Prijzen',                    desc: 'Vanaf €10/mnd incl. btw, alles inbegrepen' },
         ]}
       />
 

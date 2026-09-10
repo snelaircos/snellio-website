@@ -324,7 +324,7 @@ export default function CrmVoorInstallateursAdsPage() {
           { href: '/werkbon-software',            icon: '📋', title: 'Werkbon-software',      desc: 'Digitale werkbon met handtekening'   },
           { href: '/planningssoftware-monteurs',  icon: '📅', title: 'Planning monteurs',     desc: 'Werkorders inplannen per monteur'    },
           { href: '/f-gassen-registratie',        icon: '❄️', title: 'F-gassen registratie',  desc: 'Flesregistratie & F-gas logboek'     },
-          { href: '/pricing',                     icon: '💶', title: 'Prijzen',               desc: 'Vanaf €10/mnd, alles inbegrepen, 14 dagen gratis' },
+          { href: '/pricing',                     icon: '💶', title: 'Prijzen',               desc: 'Vanaf €10/mnd incl. btw, alles inbegrepen' },
         ]}
       />
 
