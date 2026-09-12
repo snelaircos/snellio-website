@@ -22,6 +22,8 @@ const faqs = [
     answer:   'Ja. Heb je een kenplaatprinter, dan print je per installatie direct vanuit Snellio een BRL100-conforme kenplaat, inclusief QR-code. Wie de QR-code scant, opent het digitale logboek van die installatie met alle specificaties en de volledige werk-historie.' },
   { question: 'Werkt de app ook offline?',
     answer:   'Snellio werkt via de browser. Een stabiele internetverbinding is nodig voor synchronisatie, maar op tablet of telefoon is de interface volledig geoptimaliseerd voor gebruik op locatie.' },
+  { question: 'Maakt Snellio een TRA en LMRA bij werk met R290?',
+    answer:   'Ja. Werk je aan een installatie met een brandbaar koudemiddel, dan zet Snellio bij de werkorder een veiligheidsdossier klaar: een TRA met risico’s en beheersmaatregelen uit de risicocatalogus, een werkvergunning waar die nodig is, en een LMRA die de monteur ter plaatse invult en aftekent. Snellio levert de formulieren en de vastlegging; de beoordeling van de klus en de RI&E blijven bij de werkgever.' },
   { question: 'Kan ik meerdere monteurs toevoegen?',
     answer:   'Ja. Pro heeft 2 monteurs inbegrepen (daarna €20 per extra monteur per maand), Enterprise 5 monteurs (daarna €10 per extra monteur). Je kunt per monteur rechten en Google Calendar instellen. Alle functies zijn in elk pakket gelijk.' },
 ]
@@ -127,6 +129,54 @@ export default function FeaturesPage() {
             </article>
           ))}
         </div>
+      </section>
+
+      {/* ── Veiligheidsdossier bij brandbaar koudemiddel ── */}
+      <section className="py-20 px-[5%] border-y border-[var(--border)] bg-[var(--navy3)]">
+        <Container>
+          <div className="text-center mb-12">
+            <span className="inline-block bg-[var(--green)] text-white text-[.65rem] font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-4">
+              Nieuw
+            </span>
+            <h2 className="font-outfit font-black text-[var(--text)] text-2xl md:text-3xl tracking-tight mb-4">
+              Veiligheidsdossier bij R290 en ander brandbaar koudemiddel
+            </h2>
+            <p className="text-[var(--text2)] text-base leading-relaxed max-w-2xl mx-auto">
+              Werk je aan propaan, dan hoort er vóór aanvang een dossier klaar te liggen. Snellio maakt
+              het aan bij de werkorder: een TRA met de risico&apos;s en beheersmaatregelen, een
+              werkvergunning waar die nodig is, en een LMRA die de monteur ter plaatse invult.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-10">
+            {[
+              {
+                icon: '🧯', title: 'TRA vooraf',
+                desc: 'Vink de werkzaamheden aan uit de risicocatalogus. Bij R290 staan ventilatie, gasdetectie, ontstekingsbronnen en de ATEX-zone standaard aan, elk met de bijbehorende beheersmaatregel en PBM’s.',
+              },
+              {
+                icon: '📋', title: 'Werkvergunning erbij',
+                desc: 'Solderen, ander heet werk of een besloten ruimte vraagt om een vergunning. Nummer, geldigheid, gasmeting, LEL-percentage, zone-afzetting en brandwacht leg je vast in hetzelfde dossier.',
+              },
+              {
+                icon: '✅', title: 'LMRA op locatie',
+                desc: 'De monteur loopt de punten af op zijn telefoon, meldt of de situatie is gewijzigd en besluit: veilig starten of stoppen. Per dag en per monteur opnieuw, met digitale handtekening.',
+              },
+            ].map(k => (
+              <article key={k.title} className="bg-[var(--navy2)] border border-[var(--border)] rounded-2xl p-7">
+                <div className="text-3xl mb-4">{k.icon}</div>
+                <h3 className="font-outfit font-bold text-[var(--text)] text-lg mb-2">{k.title}</h3>
+                <p className="text-[var(--muted2)] text-sm leading-relaxed">{k.desc}</p>
+              </article>
+            ))}
+          </div>
+
+          <p className="text-center text-[var(--muted2)] text-sm leading-relaxed max-w-3xl mx-auto">
+            Snellio levert de formulieren en legt alles vast, inclusief handtekeningen van uitvoerder,
+            toezichthouder en klant, en een tijdlijn per dossier voor de audit. De beoordeling van de
+            klus en de RI&amp;E blijven bij de werkgever.
+          </p>
+        </Container>
       </section>
 
       {/* ── NIEUW: Digitaal logboek + QR-kenplaten ── */}

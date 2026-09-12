@@ -134,6 +134,7 @@ const voordelen = [
       'BRL100-rapportage automatisch gegenereerd',
       'Flesregistratie conform wetgeving',
       'Lektestdocumentatie direct klaar voor inspectie',
+      'TRA, werkvergunning en LMRA bij werk met R290',
     ],
   },
   {
@@ -183,7 +184,7 @@ const faqItems = [
   },
   {
     question: 'Ondersteunt Snellio R290 en andere brandbare koudemiddelen?',
-    answer:   'Ja. Snellio ondersteunt alle gangbare koudemiddelen, inclusief R290 (propaan), R600a, R32, R410A en andere HFK- en HFO-koudemiddelen. U stelt het type koudemiddel in per installatie. De GWP-waarde en CO₂-equivalent worden automatisch berekend voor de rapportage.',
+    answer:   'Ja. Snellio ondersteunt alle gangbare koudemiddelen, inclusief R290 (propaan), R600a, R32, R410A en andere HFK- en HFO-koudemiddelen. U stelt het type koudemiddel in per installatie. De GWP-waarde en CO₂-equivalent worden automatisch berekend voor de rapportage. Werkt u aan een brandbaar koudemiddel, dan maakt Snellio bij de werkorder bovendien een veiligheidsdossier aan: een TRA met risico\'s en beheersmaatregelen, een werkvergunning waar die nodig is, en een LMRA die de monteur ter plaatse invult en aftekent.',
   },
   {
     question: 'Is de F-gas registratie beschikbaar in alle pakketten?',

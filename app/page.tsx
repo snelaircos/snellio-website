@@ -50,6 +50,10 @@ const compliance = [
     desc:  'STEK-nummer-veld, monteur-certificering, jaar-rapportage met één klik.',
   },
   {
+    title: 'Brandbaar koudemiddel (R290)',
+    desc:  'Werk je aan propaan, dan zet Snellio bij de werkorder een veiligheidsdossier klaar: een TRA met de risico\'s en beheersmaatregelen, een werkvergunning waar die nodig is, en een LMRA die de monteur ter plaatse aftekent.',
+  },
+  {
     title: 'Data in NL',
     desc:  'Hosting in Europa (Supabase EU-region), AVG-conform, dagelijks back-up.',
   },
@@ -262,7 +266,7 @@ export default function HomePage() {
               Gemaakt voor de regels van jouw vak.
             </h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-2 gap-5">
             {compliance.map(c => (
               <div
                 key={c.title}

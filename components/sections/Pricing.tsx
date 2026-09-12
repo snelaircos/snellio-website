@@ -129,7 +129,7 @@ export default function Pricing() {
               Je betaalt alleen voor de grootte van je bedrijf.
             </p>
           </div>
-          <ul className="grid sm:grid-cols-2 lg:grid-cols-5 gap-3 list-none">
+          <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 list-none">
             {INBEGREPEN.map(f => (
               <li
                 key={f.label}

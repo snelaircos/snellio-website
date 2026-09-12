@@ -262,6 +262,38 @@ export default function SoftwareVoorInstallatiebedrijvenPage() {
         </div>
       </section>
 
+      {/* ── 4b. Veiligheid bij brandbaar koudemiddel ── */}
+      <section className="px-[5%] py-20">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-9 text-center">
+            <p className={label}>Veiligheid</p>
+            <h2 className={h2} style={h2Size}>
+              Werk je met R290? Dan staat het dossier al klaar.
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[var(--text2)]">
+              Bij brandbaar koudemiddel maakt Snellio bij de werkorder een veiligheidsdossier aan, zodat
+              je niet met losse formulieren op pad hoeft.
+            </p>
+          </div>
+          <div className="grid gap-5 md:grid-cols-3">
+            {[
+              ['TRA', 'Risico’s en beheersmaatregelen uit de catalogus. Bij R290 staan ventilatie, gasdetectie, ontstekingsbronnen en de ATEX-zone standaard aan.'],
+              ['Werkvergunning', 'Bij solderen, ander heet werk of een besloten ruimte. Met gasmeting, LEL-percentage, zone-afzetting en brandwacht.'],
+              ['LMRA', 'De monteur vinkt ter plaatse af, meldt wijzigingen en besluit: veilig starten of stoppen. Met digitale handtekening.'],
+            ].map(([t, d]) => (
+              <article key={t} className="rounded-2xl border border-[var(--border)] bg-white p-6">
+                <h3 className="mb-2 font-outfit text-lg font-bold text-[var(--text)]">{t}</h3>
+                <p className="text-sm leading-relaxed text-[var(--muted2)]">{d}</p>
+              </article>
+            ))}
+          </div>
+          <p className="mx-auto mt-6 max-w-3xl text-center text-sm leading-relaxed text-[var(--muted2)]">
+            Snellio levert de formulieren en de vastlegging. De beoordeling van de klus en de RI&amp;E
+            blijven bij de werkgever.
+          </p>
+        </div>
+      </section>
+
       {/* ── 5. Echte productbeelden ── */}
       <section className="px-[5%] py-20">
         <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">

@@ -120,6 +120,7 @@ export const INBEGREPEN = [
   { icon: '📊', label: 'Dashboard & rapportages' },
   { icon: '🔗', label: 'Gratis koppeling WeFact, Moneybird & Exact Online' },
   { icon: '🔐', label: 'Klantportaal' },
+  { icon: '🦺', label: 'TRA, werkvergunning & LMRA bij R290' },
 ] as const
 
 // ── Automotive (aparte verticale, nog in ontwikkeling) ───────────────────────
