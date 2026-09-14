@@ -151,6 +151,8 @@ npx -y firecrawl-cli@latest init --all --browser
 firecrawl --status
 ```
 
-Sleutel in `.env.local` als `FIRECRAWL_API_KEY`. Volledige uitleg, inclusief
-welke skill je waarvoor gebruikt en de veiligheidsregels voor opgehaalde
-pagina's: [`docs/firecrawl.md`](docs/firecrawl.md).
+De gehoste MCP-server staat in `.mcp.json`. Die leest de sleutel uit je
+shell-omgeving (`export FIRECRAWL_API_KEY=fc-...`), de CLI leest hem uit
+`.env.local`. Volledige uitleg, inclusief welke skill je waarvoor gebruikt en
+de veiligheidsregels voor opgehaalde pagina's:
+[`docs/firecrawl.md`](docs/firecrawl.md).

@@ -11,6 +11,7 @@ of `lib/` aangeroepen.
 | Pad | Inhoud |
 | --- | --- |
 | `.claude/skills/firecrawl*` | 28 skills, meegeleverd in de repo zodat ze in elke sessie beschikbaar zijn |
+| `.mcp.json` | Firecrawl MCP-server op projectniveau, sleutel via env-expansie |
 | `.env.example` | `FIRECRAWL_API_KEY` placeholder |
 | `.gitignore` | `.firecrawl/` genegeerd, opgehaalde webcontent hoort niet in git |
 | `docs/firecrawl.md` | dit document |
@@ -43,6 +44,45 @@ cp -rL ~/.agents/skills/firecrawl ~/.agents/skills/firecrawl-* .claude/skills/
 
 `cp -rL` is belangrijk: de CLI zet symlinks in `~/.claude/skills`, en
 symlinks naar een homedir zijn waardeloos in een verse container.
+
+## MCP-server
+
+Naast de CLI staat de gehoste Firecrawl MCP-server in `.mcp.json`, op
+projectniveau:
+
+```json
+{
+  "mcpServers": {
+    "firecrawl": {
+      "type": "http",
+      "url": "https://mcp.firecrawl.dev/v2/mcp",
+      "headers": {
+        "Authorization": "Bearer ${FIRECRAWL_API_KEY}"
+      }
+    }
+  }
+}
+```
+
+De sleutel staat er bewust **niet** letterlijk in. `${FIRECRAWL_API_KEY}`
+wordt door Claude Code uit de omgeving gelezen, zodat dit bestand veilig in
+git kan. Dat is ook wat de CLI zelf doet, `firecrawl setup mcp --project`
+schrijft nooit een opgeslagen sleutel naar een projectbestand.
+
+Let op: Claude Code leest de shell-omgeving, niet `.env.local`. Exporteer de
+sleutel dus in je shellprofiel:
+
+```bash
+export FIRECRAWL_API_KEY=fc-...
+```
+
+Zonder die export start de server met een leeg bearer-token en krijg je 401.
+De CLI blijft wel werken, die leest `.env.local` zelf.
+
+CLI of MCP? De CLI schrijft resultaten naar bestanden in `.firecrawl/`, wat
+de context van de agent klein en beheersbaar houdt. De MCP-tools geven
+resultaten direct terug. Voor grote pagina's is de CLI daarom prettiger, voor
+korte lookups de MCP-server.
 
 ## Sleutel
 
@@ -117,8 +157,12 @@ Could not fetch account info: HTTP 403: Forbidden
 ```
 
 De CLI en de skills zijn dus wel geïnstalleerd en de sleutel wordt gelezen,
-maar echte scrape-, search- en crawl-aanroepen falen in zo'n sessie. Werkt
-zonder meer op een lokale machine. Wil je het ook in websessies gebruiken,
-dan moet `api.firecrawl.dev` aan de allowlist van de omgeving worden
-toegevoegd. Zie https://code.claude.com/docs/en/claude-code-on-the-web voor
-het netwerkbeleid van een omgeving.
+maar echte scrape-, search- en crawl-aanroepen falen in zo'n sessie. Om
+dezelfde reden komt de MCP-server uit `.mcp.json` daar niet tot stand,
+`mcp.firecrawl.dev` zit in hetzelfde blok.
+
+Werkt zonder meer op een lokale machine. Wil je het ook in websessies
+gebruiken, dan moeten `api.firecrawl.dev` en `mcp.firecrawl.dev` aan de
+allowlist van de omgeving worden toegevoegd. Zie
+https://code.claude.com/docs/en/claude-code-on-the-web voor het
+netwerkbeleid van een omgeving.
