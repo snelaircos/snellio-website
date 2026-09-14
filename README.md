@@ -151,8 +151,9 @@ npx -y firecrawl-cli@latest init --all --browser
 firecrawl --status
 ```
 
-De gehoste MCP-server staat in `.mcp.json`. Die leest de sleutel uit je
-shell-omgeving (`export FIRECRAWL_API_KEY=fc-...`), de CLI leest hem uit
-`.env.local`. Volledige uitleg, inclusief welke skill je waarvoor gebruikt en
+Sleutel: `export FIRECRAWL_API_KEY=fc-...` in je shellprofiel, daar lezen
+zowel de CLI als `.mcp.json` hem. In Claude Code op het web gebruik je de
+Firecrawl-connector uit claude.ai, de CLI en `.mcp.json` zijn daar
+geblokkeerd. Volledige uitleg, inclusief welke skill je waarvoor gebruikt en
 de veiligheidsregels voor opgehaalde pagina's:
 [`docs/firecrawl.md`](docs/firecrawl.md).
