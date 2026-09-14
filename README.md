@@ -140,3 +140,17 @@ Zet in `/public/`:
 - `favicon.ico`
 - `apple-touch-icon.png`
 - `og-default.png` (1200×630px, voor social sharing)
+
+## Webresearch met Firecrawl
+
+De repo bevat 28 Firecrawl-skills in `.claude/skills/`, zodat Claude Code kan
+zoeken, scrapen, SEO-audits doen en concurrenten volgen. CLI installeren:
+
+```bash
+npx -y firecrawl-cli@latest init --all --browser
+firecrawl --status
+```
+
+Sleutel in `.env.local` als `FIRECRAWL_API_KEY`. Volledige uitleg, inclusief
+welke skill je waarvoor gebruikt en de veiligheidsregels voor opgehaalde
+pagina's: [`docs/firecrawl.md`](docs/firecrawl.md).
