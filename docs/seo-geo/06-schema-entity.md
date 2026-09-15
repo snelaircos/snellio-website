@@ -1,0 +1,20 @@
+# Schema en entity-implementatieplan
+
+`lib/schemas.ts` heeft al helpers voor `Organization`, `WebSite`,
+`SoftwareApplication` met `Offer`s, `Article`/`BlogPosting`, `FAQPage` en
+`BreadcrumbList`. Uitbreiden, niet vervangen. `Organization.sameAs` staat leeg.
+
+| Onderdeel | Implementatie | Waar |
+| --- | --- | --- |
+| Auteurspagina Rudy Snel | Route `/over/rudy-snel`. Foto (`public/rudy-snel.png` bestaat), functie, bedrijf, STEK-certificering, BRL 200-categorie en certificaatnummer (alleen als hij die publiek wil; verifieerbaar via Centraal Register Techniek), jaren in het vak, welke installaties hij zelf doet, lijst van zijn artikelen uit `lib/posts.ts`, contact. Geen marketingtekst. | `app/over/rudy-snel/page.tsx` |
+| Person-schema | `@type: Person`, `@id: https://snellio.nl/over/rudy-snel#person`, `name`, `jobTitle` ("Oprichter Snellio, koeltechnisch installateur"), `worksFor` → Organization `@id`, `knowsAbout` (F-gassenregistratie, BRL 100, koeltechniek, warmtepompen), `hasCredential` alleen met een echt certificaat als `EducationalOccupationalCredential`, `sameAs` (LinkedIn), `image`. Uitvoer op de auteurspagina; elders alleen `author: {"@id": ...}`. | nieuwe helper `personSchema()` |
+| Organization-schema | `sameAs` vullen: KvK-URL, LinkedIn-bedrijfspagina, Google Bedrijfsprofiel, eventueel CRT-vermelding van het bedrijf. Toevoegen: `legalName`, `foundingDate`, `founder` → Person `@id`, `address` (NL), `areaServed: NL`. Eén `@id`: `https://snellio.nl/#organization`, overal via referentie. | `organizationSchema` |
+| sameAs | Alleen profielen die Snellio zelf beheert en die de naam "Snellio" voeren. Geen reviewsites of directories. | idem |
+| datePublished / dateModified | Op elke informatieve pagina (BRL, F-gassen, R290, vergelijking, blog) beide velden, ISO 8601 met tijdzone. `dateModified` alleen ophogen bij inhoudelijke wijziging. Zichtbaar als "Bijgewerkt op [datum]" onder de H1, identiek aan het schema. Op commerciële pillars `dateModified` op `WebPage` en zichtbare regel "Prijzen en functies gecontroleerd op [datum]". | nieuw `UpdatedOn`-component + prop in `buildMetadata` |
+| Article-schema | Op BRL-, F-gassen-, R290- en vergelijkingspagina: `Article` (niet `BlogPosting`), `headline` = H1, `author` → Person `@id`, `publisher` → Organization `@id`, `mainEntityOfPage`, `image` (echte screenshot), `inLanguage: nl-NL`, `citation` (URL-lijst primaire bronnen), `about` (2 tot 3 `Thing`s). Niet op de commerciële pillar. | `articleSchema` uitbreiden met `citation` en `about` |
+| FAQ-schema | Helper bestaat. `Question`/`Answer` byte-gelijk aan de zichtbare FAQ. Maximaal 8 per pagina. Niet op pagina's met alleen commerciële FAQ. | bestaande `faqSchema` |
+| Bronvermelding | Zichtbare sectie "Bronnen", genummerd, primaire bronnen eerst (wet, RWS, RVO), daarna certificerende instellingen, nooit alleen concurrenten. In de tekst artikel- of paragraafnummer noemen. Uitgaande links `rel="noopener"`, geen `nofollow` naar overheid en EUR-Lex. | contentregel |
+| Originele screenshots en data | Per informatieve pagina minimaal één echte screenshot uit Snellio, geanonimiseerd, als `ImageObject` met `caption` en `datePublished`. Toevoegen: logboekscherm, flesbalans, instrumentcontrole. Eén eigen datapunt per kwartaal in de blog, met methode. | `public/` + `ImageObject` in `articleSchema` |
+| Interne links | Vast linkblok "Lees verder" met 3 links onderaan elke informatieve pagina; pillar linkt naar alle vijf; `/f-gassen-registratie` linkt naar BRL en vergelijking. Ankerteksten met de zoekterm van de doelpagina. | contentregel + component |
+| Update-datum op commerciële pillars | `/software-voor-installatiebedrijven`, `/pricing`, `/features`, `/crm-voor-installateurs`, `/werkbon-software`, `/planningssoftware-monteurs`: zichtbare regel + `WebPage.dateModified`. Koppel aan een maandelijkse controle van `PLANS` en INBEGREPEN; datum alleen vernieuwen na echte controle. | `UpdatedOn`-component |
+| llms.txt | SnelStart verwijderen tot bevestigd; TRA/LMRA/werkvergunning en "kenplaatprinter" herformuleren conform `02-feature-factcheck.md`; datumregel toevoegen. | `public/llms.txt` |
