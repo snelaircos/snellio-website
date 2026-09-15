@@ -1,4 +1,4 @@
-import { SITE, PLANS, PROFIELEN } from './constants'
+import { SITE, PLANS, PROFIELEN, KVK_NUMMER } from './constants'
 
 // Eén @id voor de auteur, overal via referentie. De auteurspagina
 // /over/rudy-snel bestaat nog niet; het @id is een identifier en hoeft niet
@@ -29,6 +29,11 @@ export function organizationSchema() {
     url:           SITE.url,
     foundingDate:  SITE.founded,
     founder:       { '@id': PERSON_ID },
+    identifier: {
+      '@type':    'PropertyValue',
+      propertyID: 'KVK',
+      value:      KVK_NUMMER,
+    },
     logo: {
       '@type': 'ImageObject',
       url:     `${SITE.url}/logo-licht.png`,

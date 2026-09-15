@@ -17,13 +17,18 @@ export const SITE = {
 // Alleen deze gaan in Organization.sameAs (lib/schemas.ts); geen reviewsites,
 // directories of persoonlijke profielen. Leeg laten tot de URL bekend is: lege
 // waarden worden overgeslagen. Zie docs/seo-geo/06-schema-entity.md.
-export const PROFIELEN: Record<'kvk' | 'linkedin' | 'googleBedrijfsprofiel' | 'youtube', string> = {
-  kvk:                   '', // URL van de KvK-inschrijving (KvK 69499829)
-  linkedin:              '', // LinkedIn-bedrijfspagina van Snellio
+export const PROFIELEN: Record<'linkedin' | 'googleBedrijfsprofiel' | 'youtube', string> = {
+  // Bedrijfspagina, aangeleverd door Rudy Snel op 15-09-2026.
+  linkedin:              'https://www.linkedin.com/company/snellio/',
   googleBedrijfsprofiel: '', // Google Bedrijfsprofiel (Maps-link)
   // Kanaal "Snellio", beschrijving en link naar snellio.nl gecontroleerd 15-09-2026.
   youtube:               'https://www.youtube.com/channel/UCMhOEmzAdSPIhJShbwUStpA',
 }
+
+// KvK-nummer van de eenmanszaak (ook in public/llms.txt). Gaat als
+// Organization.identifier in het schema; een KvK-zoek-URL is geen stabiel
+// profiel en hoort niet in sameAs.
+export const KVK_NUMMER = '69499829'
 
 // Alle getoonde prijzen zijn inclusief 21% btw: Mollie schrijft exact het
 // getoonde bedrag af (zie PACKAGE_PRICES in de checkout/billing API-routes).

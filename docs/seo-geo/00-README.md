@@ -61,8 +61,10 @@ blijven, maar zonder BRL- of F-gassenblokken en met een vaste link naar de pilla
 - Taak 1 (feature-check en tekstfixes): gedaan, `b548bb8` en `e638916`.
 - Taak 2 (`/brl-100-software`): live op main, `0b570e2`. Review: alle datums,
   drempels, art. 7-punten, bronnen en FAQ conform `01` en `04`.
-- Taak 3 (pillar en sameAs): live op main, `296fcbf`. `PROFIELEN.linkedin` en
-  `googleBedrijfsprofiel` nog leeg; KvK als `identifier` in plaats van URL.
+- Taak 3 (pillar en sameAs): live op main, `296fcbf`. `PROFIELEN.linkedin`
+  gevuld (bedrijfspagina), KvK 69499829 als `Organization.identifier`.
+  `googleBedrijfsprofiel` nog leeg: aanmaken of opzoeken, dan invullen in
+  `lib/constants.ts`.
 - Open: naamgeving "BRL100" versus "BRL 100" sitewide gelijktrekken naar
   "BRL 100" (nieuwe pagina's gebruiken de spatie, oudere pagina's en
   `llms.txt` niet); `/over/rudy-snel`; pagina 6 (vergelijking); pagina 3
