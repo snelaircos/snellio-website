@@ -17,10 +17,10 @@ import JsonLd from '@/components/seo/JsonLd'
 //
 // Certificering zoals opgegeven door Rudy Snel op 15-09-2026. Bewust geen
 // certificaatnummer op de pagina, dus ook geen hasCredential in het schema.
-// Jaren in het vak staan er niet: geen exact aantal bekend.
+// Startjaar in de koeltechniek (2017) opgegeven door Rudy Snel op 15-09-2026.
 
 const DESCRIPTION =
-  'Rudy Snel is oprichter van Snellio en eigenaar van Snel Airco’s, een koeltechniekbedrijf. STEK-gecertificeerd, F-gassen categorie I en B1 voor brandbare koudemiddelen. Hij schrijft op snellio.nl over BRL 100 en F-gassenregistratie.'
+  'Rudy Snel is oprichter van Snellio en eigenaar van Snel Airco’s, een koeltechniekbedrijf, en werkt in de koeltechniek sinds 2017. STEK-gecertificeerd, F-gassen categorie I en B1 voor brandbare koudemiddelen. Hij schrijft op snellio.nl over BRL 100 en F-gassenregistratie.'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Rudy Snel, oprichter van Snellio en koeltechnisch installateur',
@@ -43,6 +43,10 @@ const feiten: { term: string; detail: string }[] = [
   {
     term:   'Bedrijf',
     detail: 'Eigenaar van Snel Airco’s, een koeltechniekbedrijf in Nederland dat zelf onder BRL 100 werkt.',
+  },
+  {
+    term:   'Ervaring',
+    detail: 'In de koeltechniek sinds 2017.',
   },
   {
     term:   'Certificering',
@@ -95,7 +99,7 @@ export default function RudySnelPage() {
               <p className="mb-5 text-lg font-medium text-[var(--text2)]">{PERSON_JOBTITLE}</p>
               <p className="border-l-[3px] border-[var(--accent)] pl-4 text-[1.05rem] leading-relaxed text-[var(--text2)]">
                 Rudy Snel is oprichter van Snellio en eigenaar van Snel Airco’s, een koeltechniekbedrijf dat zelf
-                onder BRL 100 werkt. Hij is STEK-gecertificeerd, met het persoonscertificaat F-gassen categorie I en
+                onder BRL 100 werkt, en werkt in de koeltechniek sinds 2017. Hij is STEK-gecertificeerd, met het persoonscertificaat F-gassen categorie I en
                 de aanvulling B1 voor brandbare koudemiddelen. Op snellio.nl schrijft hij over BRL 100,
                 F-gassenregistratie en de administratie van een installatiebedrijf.
               </p>

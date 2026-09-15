@@ -42,15 +42,13 @@ const monteurBullets = [
 
 const compliance = [
   {
-    // Berekening van de lekcontroletermijn (art. 5 lid 6) pas noemen als Rudy
-    // bevestigt dat de app die berekent (02, rij 19).
+    // Formulering uit 02-feature-factcheck.md, rij 19 (bevestigd 15-09-2026).
     title: 'F-gassen-verordening (EU 2024/573)',
-    desc:  'Logboek per installatie met de gegevens uit art. 7, te openen via de QR-code op de zelf geprinte kenplaat.',
+    desc:  'Logboek per installatie met de gegevens uit art. 7, te openen via de QR-code op de zelf geprinte kenplaat. Snellio berekent het CO₂-equivalent van de vulling en zet de lekcontrole in de forecast voor installaties vanaf 5 ton CO₂-equivalent (art. 5 lid 1), met de termijn uit art. 5 lid 6.',
   },
   {
-    // BRL 200-nummer per monteur pas noemen als Rudy het bevestigt (02, rij 18).
-    title: 'BRL 100',
-    desc:  'Werkregistratie per installatie en per circuit, jaarlijkse F-gassenbalans in kilogram en CO₂-equivalent.',
+    title: 'BRL 100 en BRL 200',
+    desc:  'Werkregistratie per installatie en per circuit, jaarlijkse F-gassenbalans in kilogram en CO₂-equivalent, en het BRL 200-nummer van je monteurs in de monteursinstellingen.',
   },
   {
     title: 'Brandbaar koudemiddel (R290)',

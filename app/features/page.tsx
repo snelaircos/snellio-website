@@ -49,12 +49,12 @@ const details = [
     ],
   },
   {
-    // BRL 200-nummer per monteur pas opnemen als Rudy het bevestigt (02, rij 18).
-    icon: '📄', title: 'BRL 100-registraties',
+    icon: '📄', title: 'BRL 100-registraties en persoonscertificaten',
     items: [
       'Werkregistratie per installatie en per circuit, zoals BRL 100 §2.5.2 vraagt',
       'Kopie van de werkregistratie voor de eigenaar of exploitant, digitaal',
       'Export per installatie en per periode (csv en pdf) voor de auditor',
+      'BRL 200-nummer van je monteurs in de monteursinstellingen',
       'Digitale handtekening inclusief klantbevestiging',
     ],
   },
