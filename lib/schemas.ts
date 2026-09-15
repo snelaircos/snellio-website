@@ -44,6 +44,8 @@ export function organizationSchema() {
       contactType:       'customer support',
       availableLanguage: 'nl',
     },
+    // Bewust geen address op de Organization (besluit Rudy Snel, 15-09-2026).
+    areaServed: 'NL',
     // Alleen profielen die Snellio zelf beheert (lib/constants.ts PROFIELEN);
     // lege waarden vallen weg. Zie docs/seo-geo/06-schema-entity.md.
     sameAs: Object.values(PROFIELEN).filter(url => url.length > 0),

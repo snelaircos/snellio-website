@@ -3,7 +3,7 @@ export const SITE = {
   url:           'https://snellio.nl',
   appUrl:        'https://app.snellio.nl',
   email:         'info@snellio.nl',
-  phone:         '+31642732262',
+  phone:         '+31855005505', // 085-5005505: nummer op het Google Bedrijfsprofiel en in de WhatsApp-knop
   company:       'Snellio',
   adres:         'Schepen van Allerpad 17, 6831 MX Arnhem',
   kvk:           '69499829',
@@ -20,7 +20,8 @@ export const SITE = {
 export const PROFIELEN: Record<'linkedin' | 'googleBedrijfsprofiel' | 'youtube', string> = {
   // Bedrijfspagina, aangeleverd door Rudy Snel op 15-09-2026.
   linkedin:              'https://www.linkedin.com/company/snellio/',
-  googleBedrijfsprofiel: '', // Google Bedrijfsprofiel (Maps-link)
+  // Google Bedrijfsprofiel (Maps-link), aangeleverd door Rudy Snel op 15-09-2026.
+  googleBedrijfsprofiel: 'https://maps.google.com/?cid=10549948811825979100',
   // Kanaal "Snellio", beschrijving en link naar snellio.nl gecontroleerd 15-09-2026.
   youtube:               'https://www.youtube.com/channel/UCMhOEmzAdSPIhJShbwUStpA',
 }
