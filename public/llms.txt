@@ -15,11 +15,11 @@ Snellio is een Nederlandse CRM- en werkbonsoftware voor HVAC-installateurs, koel
 - Werkbon software (digitale werkbonnen voor monteurs)
 - Monteursplanning (drag-and-drop weekplanning)
 - CRM (klant- en installatiebeheer)
-- Facturatie met koppelingen voor Moneybird, WeFact, SnelStart en Exact
+- Facturatie met koppelingen voor Moneybird, WeFact en Exact Online
 - F-gassen registratie (EU 2024/573 conform)
 - Digitaal logboek per installatie, te openen via de QR-code op de kenplaat
-- Kenplaten printen: BRL100-conforme kenplaat met QR-code, direct vanuit Snellio op een kenplaatprinter
-- BRL100 rapportage
+- Kenplaten printen: kenplaat met de velden uit art. 12 van EU-verordening 2024/573 plus een QR-code naar het logboek, printbaar op je eigen labelprinter
+- Werkregistratie per handeling en F-gassenbalans zoals BRL 100 vraagt
 - Klantportaal
 - Mollie-betaalintegratie (iDEAL en creditcard)
 - Mobile-first app voor buitendienst

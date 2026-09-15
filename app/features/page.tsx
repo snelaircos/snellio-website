@@ -41,11 +41,11 @@ const details = [
   {
     icon: '❄️', title: 'F-gassen & koudemiddelregistratie',
     items: [
-      'Volledig flesregistratie conform EU F-gas 2024/573',
+      'Flesregistratie en F-gassenbalans zoals BRL 100 vraagt',
       'Automatische gram-/kg-berekening per handeling',
       'Track & trace per fles en installatie',
       'Digitaal logboek per installatie, via QR op de kenplaat',
-      'Waarschuwing bij lekkoets en ijkdatum lekdetector',
+      'Waarschuwing bij lektest en ijkdatum lekdetector',
     ],
   },
   {

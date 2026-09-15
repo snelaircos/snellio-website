@@ -210,7 +210,7 @@ export default function FgassenRegistratiePage() {
         badge="EU F-gas 2024/573 · BRL100 · Flesregistratie · Lektest"
         heading="F-gassen registratie software"
         headingAccent="voor koeltechnische installateurs."
-        sub="Volledig digitaal koudemiddellogboek per installatie. Flesregistratie, lektestdocumentatie en BRL100-rapportage conform EU F-gas Verordening 2024/573, altijd klaar voor inspectie."
+        sub="Volledig digitaal koudemiddellogboek per installatie. Flesregistratie en F-gassenbalans zoals BRL 100 vraagt, lektestregistratie en het logboek per installatie conform EU F-gas Verordening 2024/573, altijd klaar voor inspectie."
         ctaPrimary={{ label: 'Start 14 dagen gratis →', href: '/registreren' }}
         ctaSecondary={{ label: 'Bekijk prijzen', href: '/pricing' }}
         trustLine="14 dagen gratis • Geen creditcard nodig • Alle functies inbegrepen"
