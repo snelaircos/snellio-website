@@ -32,6 +32,7 @@ automatisch.
 | `05-vergelijkingspagina.md` | Structuur en geverifieerde prijstabel voor `/vergelijken/software-koeltechniek` | Later, na taak 2 en 3. |
 | `06-schema-entity.md` | Implementatieplan voor auteurspagina, Person, Organization, sameAs, datums, Article, FAQ, screenshots, interne links | Hoort bij taak 2 en 3. |
 | `07-zoekdata.md` | Zoekvolumes, KD, CPC, intentie en huidige rankings per term | Referentie bij titels, H1's en interne links. |
+| `08-pagina-f-gassen-registratie.md` | Volledige tekst, metadata, schema, verwijderlijst en FAQ voor het uitbreiden van `/f-gassen-registratie` | Taak 4. Tekst is publicatieklaar; drie open punten voor Rudy staan onderaan. |
 
 ## Contentarchitectuur (maximaal 6 pagina's)
 
@@ -61,14 +62,23 @@ blijven, maar zonder BRL- of F-gassenblokken en met een vaste link naar de pilla
 - Taak 1 (feature-check en tekstfixes): gedaan, `b548bb8` en `e638916`.
 - Taak 2 (`/brl-100-software`): live op main, `0b570e2`. Review: alle datums,
   drempels, art. 7-punten, bronnen en FAQ conform `01` en `04`.
-- Taak 3 (pillar en sameAs): live op main, `296fcbf`. `PROFIELEN.linkedin`
-  gevuld (bedrijfspagina), KvK 69499829 als `Organization.identifier`.
-  `googleBedrijfsprofiel` nog leeg: aanmaken of opzoeken, dan invullen in
-  `lib/constants.ts`.
-- Open: naamgeving "BRL100" versus "BRL 100" sitewide gelijktrekken naar
-  "BRL 100" (nieuwe pagina's gebruiken de spatie, oudere pagina's en
-  `llms.txt` niet); `/over/rudy-snel`; pagina 6 (vergelijking); pagina 3
-  uitbreiden; pagina 5 (R290).
+- Taak 3 (pillar en sameAs): live op main, `296fcbf` en `fd0dd90`. `PROFIELEN`
+  gevuld met LinkedIn-bedrijfspagina, Google Bedrijfsprofiel en YouTube, KvK
+  69499829 als `Organization.identifier`, telefoon +31855005505, `areaServed` NL.
+- Auteurspagina `/over/rudy-snel`: live op main, `9591443` en `2e24c19`. Person
+  één keer gedefinieerd in `personSchema()`, `Article.author` en
+  `BlogPosting.author` alleen als `@id`-verwijzing. Live gecontroleerd op
+  15 september 2026 op `/over/rudy-snel`, `/brl-100-software`, de pillar en
+  `/blog/digitaal-logboek-qr-kenplaat`.
+- Google Bedrijfsprofiel: categorie gewijzigd naar Softwarebedrijf (nog niet
+  zichtbaar op 15 september), openingstijden "open zonder vaste tijden". Open:
+  website in het profiel van `https://www.snellio.nl/` naar `https://snellio.nl`.
+- Taak 4 (`/f-gassen-registratie` uitbreiden): tekst klaar in `08`. Bouwen.
+- Open na taak 4: auteursregel "Door Rudy Snel" op blogposts en BRL-pagina als
+  link naar `/over/rudy-snel`; `/over/rudy-snel` in `public/llms.txt`;
+  "BRL100" naar "BRL 100" sitewide (ook `llms.txt`); pagina 6 (vergelijking);
+  pagina 5 (R290); jaren in het vak op de auteurspagina zodra Rudy een
+  startjaar geeft.
 
 ## Do these three first
 
@@ -78,8 +88,8 @@ blijven, maar zonder BRL- of F-gassenblokken en met een vaste link naar de pilla
 | **2. Publiceer `/brl-100-software`** uit `04-pagina-brl-100-software.md`, met Article + FAQPage + Person-referentie, zichtbare update-datum, bronnenlijst, links vanaf `/f-gassen-registratie` en de pillar. | "brl 100" is met 590 zoekopdrachten/maand en KD 9 de grootste bereikbare term in de niche. Geen enkele geciteerde bron koppelt art. 7 van de verordening aan BRL 100 §2.5.2 vanuit de auditpraktijk. | High | Eerste realistische top 10-positie op een term met volume en de eerste citeerbare pagina van snellio.nl. |
 | **3. Pillar bijwerken** volgens `03-pillar-verbeterplan.md` en `Organization.sameAs` vullen (`06-schema-entity.md`). | De pillar krijgt al Ads-verkeer en geeft de BRL-pagina zijn interne autoriteit. Het R290-blok is de grootste juridische onnauwkeurigheid op de site. Lege `sameAs` betekent dat engines Snellio niet als entiteit kunnen koppelen. | Medium | Hogere citeerbaarheid van de drukste pagina, foutieve claim van productie af, entiteitsprofiel waar de rest op bouwt. |
 
-Daarna: pagina 6 (vergelijking), pagina 3 uitbreiden, pagina 4 herpositioneren,
-pagina 5 pas als TRA/LMRA/werkvergunning in de app bevestigd zijn.
+Daarna: taak 4 (pagina 3 uitbreiden, `08`), pagina 6 (vergelijking), pagina 4
+herpositioneren, pagina 5 (R290; features zijn bevestigd, tekst volgt).
 
 ## Wat AI-engines nu over Snellio zeggen (14 september 2026)
 
