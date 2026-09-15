@@ -205,7 +205,7 @@ export default function Brl100SoftwarePage() {
             </h1>
             <UpdatedOn
               dateISO={BRL100_PAGE.dateModified}
-              by={<>Door <span className="font-medium text-[var(--text2)]">Rudy Snel</span>, oprichter van Snellio en STEK-gecertificeerd installateur</>}
+              by={<>Door <Link href={PERSON_PATH} className="font-medium text-[var(--text2)] underline underline-offset-2 hover:text-[var(--accent)]">Rudy Snel</Link>, oprichter van Snellio en STEK-gecertificeerd installateur</>}
               className="mb-7"
             />
             <p className="border-l-[3px] border-[var(--accent)] pl-4 text-[1.05rem] leading-relaxed text-[var(--text2)] md:text-lg">

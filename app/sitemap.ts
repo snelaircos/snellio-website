@@ -3,6 +3,7 @@ import { SITE } from '@/lib/constants'
 import { POSTS } from '@/lib/posts'
 import { PERSON_PATH } from '@/lib/schemas'
 import { BRL100_PAGE } from '@/app/brl-100-software/meta'
+import { FGASSEN_PAGE } from '@/app/f-gassen-registratie/meta'
 import { PILLAR_PAGE } from '@/app/software-voor-installatiebedrijven/meta'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -20,7 +21,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/crm-voor-installateurs',        priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
     { path: '/werkbon-software',              priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
     { path: '/planningssoftware-monteurs',    priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
-    { path: '/f-gassen-registratie',          priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
+    // Informatieve pagina: lastModified is de echte dateModified van de tekst.
+    { path: FGASSEN_PAGE.path,                priority: 0.9,  changeFreq: 'monthly' as const, lastMod: new Date(FGASSEN_PAGE.dateModified) },
     // Informatieve pagina: lastModified is de echte dateModified van de tekst.
     { path: BRL100_PAGE.path,                 priority: 0.9,  changeFreq: 'monthly' as const, lastMod: new Date(BRL100_PAGE.dateModified) },
     { path: '/automotive',                    priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },

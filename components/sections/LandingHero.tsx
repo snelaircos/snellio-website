@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import Button from '@/components/ui/Button'
 import Container from '@/components/ui/Container'
 
@@ -6,6 +7,8 @@ interface LandingHeroProps {
   heading:       string
   headingAccent: string
   sub:           string
+  /** Optionele regel direct onder de H1, bv. een UpdatedOn met auteur. */
+  meta?:         ReactNode
   ctaPrimary?:   { label: string; href: string }
   ctaSecondary?: { label: string; href: string }
   stats?:        { value: string; label: string }[]
@@ -17,6 +20,7 @@ export default function LandingHero({
   heading,
   headingAccent,
   sub,
+  meta,
   ctaPrimary   = { label: 'Start 14 dagen gratis →', href: '/registreren' },
   ctaSecondary = { label: 'Bekijk prijzen',           href: '/pricing'     },
   stats,
@@ -47,6 +51,8 @@ export default function LandingHero({
             {headingAccent}
           </span>
         </h1>
+
+        {meta && <div className="relative mt-4 animate-fade-up-2">{meta}</div>}
 
         <p className="relative text-[var(--text2)] text-[1.05rem] leading-[1.7] max-w-[580px] mx-auto mt-5 mb-9 animate-fade-up-2">
           {sub}

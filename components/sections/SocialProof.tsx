@@ -1,7 +1,7 @@
 const items = [
   { icon: '🔒', label: 'EU-servers',         sub: 'Data in Europa' },
-  { icon: '📄', label: 'BRL100 compliant',   sub: 'Alle rapporten' },
-  { icon: '❄️', label: 'F-gas 2024/573',     sub: 'Volledig conform' },
+  { icon: '📄', label: 'BRL 100',            sub: 'Werkregistratie en F-gassenbalans zoals BRL 100 vraagt' },
+  { icon: '❄️', label: 'F-gassen 2024/573',  sub: 'Logboek per installatie, art. 7' },
   { icon: '⚡', label: '5 min setup',         sub: 'Geen installatie' },
   { icon: '🇳🇱', label: 'NL support',         sub: 'Persoonlijk contact' },
   { icon: '🔄', label: 'Altijd up-to-date',  sub: 'Gratis updates' },

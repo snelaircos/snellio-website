@@ -6,7 +6,7 @@ import path from 'path'
 import { notFound } from 'next/navigation'
 import { buildMetadata }  from '@/lib/metadata'
 import { POSTS, getPost } from '@/lib/posts'
-import { articleSchema, breadcrumbSchema, faqSchema, personSchema } from '@/lib/schemas'
+import { articleSchema, breadcrumbSchema, faqSchema, personSchema, PERSON_NAME, PERSON_PATH } from '@/lib/schemas'
 import JsonLd    from '@/components/seo/JsonLd'
 import Container from '@/components/ui/Container'
 import Button    from '@/components/ui/Button'
@@ -194,7 +194,11 @@ export default function BlogPost({ params }: Props) {
 
           {/* Auteur-byline (E-E-A-T) */}
           <p className="text-sm text-[var(--muted2)] mb-8">
-            Door <span className="text-[var(--text2)] font-medium">{authorName}</span>, oprichter van Snellio en STEK-gecertificeerd installateur
+            Door{' '}
+            {authorName === PERSON_NAME
+              ? <Link href={PERSON_PATH} className="text-[var(--text2)] font-medium underline underline-offset-2 hover:text-[var(--accent)]">{authorName}</Link>
+              : <span className="text-[var(--text2)] font-medium">{authorName}</span>}
+            , oprichter van Snellio en STEK-gecertificeerd installateur
           </p>
 
           {/* Header-afbeelding (optioneel per post) */}
