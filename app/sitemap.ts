@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { SITE } from '@/lib/constants'
 import { POSTS } from '@/lib/posts'
+import { BRL100_PAGE } from '@/app/brl-100-software/meta'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
@@ -17,6 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/werkbon-software',              priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
     { path: '/planningssoftware-monteurs',    priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
     { path: '/f-gassen-registratie',          priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
+    // Informatieve pagina: lastModified is de echte dateModified van de tekst.
+    { path: BRL100_PAGE.path,                 priority: 0.9,  changeFreq: 'monthly' as const, lastMod: new Date(BRL100_PAGE.dateModified) },
     { path: '/automotive',                    priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
     { path: '/alternatief-voor-crm-installateurs', priority: 0.85, changeFreq: 'monthly' as const, lastMod: now },
     { path: '/contact',                       priority: 0.8,  changeFreq: 'monthly' as const, lastMod: now },

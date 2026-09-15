@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { buildMetadata } from '@/lib/metadata'
 import { breadcrumbSchema, faqSchema } from '@/lib/schemas'
 import JsonLd               from '@/components/seo/JsonLd'
@@ -236,7 +237,8 @@ export default function FgassenRegistratiePage() {
           </h2>
           <div className="text-[var(--text2)] text-[.96rem] leading-[1.85] space-y-4">
             <p>
-              Iedere installateur die werkt met gefluoreerde broeikasgassen is wettelijk verplicht een nauwkeurig logboek bij te houden van alle handelingen met F-gassen: bijvullen, aftappen en lektests. De EU F-gas Verordening 2024/573 (art. 7) stelt strenge eisen aan dit logboek per apparaat. Flesregistratie en de jaarlijkse F-gassenbalans komen daar als BRL100-eis bij. Bij een externe inspectie of audit moet u deze documentatie direct kunnen overleggen.
+              Iedere installateur die werkt met gefluoreerde broeikasgassen is wettelijk verplicht een nauwkeurig logboek bij te houden van alle handelingen met F-gassen: bijvullen, aftappen en lektests. De EU F-gas Verordening 2024/573 (art. 7) stelt strenge eisen aan dit logboek per apparaat. Flesregistratie en de jaarlijkse F-gassenbalans komen daar als BRL100-eis bij. Wat de auditor daarbij precies controleert, leest u in onze uitleg over{' '}
+              <Link href="/brl-100-software" className="text-[var(--accent)] hover:underline font-medium">BRL 100</Link>. Bij een externe inspectie of audit moet u deze documentatie direct kunnen overleggen.
             </p>
             <p>
               Veel installateurs lossen dit op met Excel, een papieren logboek of losse PDF-bestanden. Dat werkt zolang er niets mis gaat, maar bij een inspectie, een certificeringscontrole of een klantgeschil blijkt de documentatie onvolledig, niet te vinden of niet in het juiste format. F-gassen registratie software lost dit structureel op door de registratie direct te integreren in de werkbon en het klantdossier.
@@ -604,7 +606,7 @@ export default function FgassenRegistratiePage() {
           { href: '/crm-voor-installateurs',     icon: '🏢', title: 'CRM voor installateurs',  desc: 'Klant- en installatiebeheer'          },
           { href: '/werkbon-software',            icon: '📋', title: 'Werkbon software',         desc: 'Digitale werkbonnen met handtekening' },
           { href: '/planningssoftware-monteurs',  icon: '📅', title: 'Planning monteurs',         desc: 'Werkorders inplannen per monteur'     },
-          { href: '/pricing',                     icon: '💶', title: 'Prijzen',                   desc: 'Vanaf €10/mnd incl. btw, alles inbegrepen' },
+          { href: '/brl-100-software',            icon: '📄', title: 'BRL 100 uitgelegd',         desc: 'Wat de auditor van uw administratie vraagt' },
         ]}
       />
 
