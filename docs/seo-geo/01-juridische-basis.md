@@ -14,6 +14,7 @@ Bronnen:
 - [B6] Ondernemersplein (RVO), Maatregelen tegen explosiegevaar (ATEX): https://ondernemersplein.overheid.nl/wetten-en-regels/maatregelen-tegen-explosiegevaar-atex/
 - [B7] Kiwa, BRL 100 geüpdatet: dit verandert er met versie 3.0 (4 maart 2026) en FAQ: https://www.kiwa.com/nl/nl/expertisegebieden/energietransitie/nieuws/brl-100-geupdatet-dit-verandert-er-met-versie-3.0
 - [B8] Kiwa, BRL 100 dienstpagina: https://www.kiwa.com/nl/nl/diensten/certificering/brl-100/
+- [B9] Verordening (EU) nr. 910/2014 (eIDAS), NL-tekst: https://eur-lex.europa.eu/legal-content/NL/TXT/HTML/?uri=CELEX:32014R0910
 
 Kiwa is een certificerende instelling, geen wetgever. Feiten die alleen bij Kiwa
 staan zijn hieronder gemarkeerd met "volgens Kiwa".
@@ -242,3 +243,25 @@ Verboden formuleringen: "TRA is wettelijk verplicht", "LMRA is verplicht",
 | TRA, EVD-raadpleging, werkvergunning in gevarenzone | BRL 100 v3.0 hoofdstuk 2 en bijlage EVD | Arbowet (alleen EVD is wettelijk) |
 | EVD | Arbobesluit art. 3.5c | BRL 100 |
 | RI&E | Arbowet art. 5 | BRL 100 |
+
+## 6. Elektronische handtekening op de werkbon (eIDAS) [B9]
+
+Gecontroleerd 15 september 2026 aan de tekst van Verordening (EU) 910/2014.
+
+- Art. 3 punt 10: "elektronische handtekening": gegevens in elektronische vorm
+  die gehecht zijn aan of logisch verbonden zijn met andere gegevens in
+  elektronische vorm en die door de ondertekenaar worden gebruikt om te
+  ondertekenen. Een handtekening op een telefoon- of tabletscherm valt hieronder.
+- Art. 3 punt 11 en 12: "geavanceerde" (eisen van art. 26) en "gekwalificeerde"
+  elektronische handtekening (geavanceerd, aangemaakt met een gekwalificeerd
+  middel, gebaseerd op een gekwalificeerd certificaat).
+- Art. 25 lid 1: het rechtsgevolg en de toelaatbaarheid als bewijs mogen niet
+  worden ontkend louter omdat de handtekening elektronisch is of niet aan de
+  eisen voor gekwalificeerde handtekeningen voldoet.
+- Art. 25 lid 2: **alleen** een gekwalificeerde elektronische handtekening heeft
+  hetzelfde rechtsgevolg als een handgeschreven handtekening.
+
+Consequentie: nooit schrijven dat de handtekening in Snellio "juridisch
+gelijkwaardig is aan een handgeschreven handtekening" of "voldoet aan eIDAS".
+Wel: "een elektronische handtekening volgens eIDAS, die niet als bewijs mag
+worden geweigerd omdat hij elektronisch is (art. 25 lid 1)". Niet gekwalificeerd.

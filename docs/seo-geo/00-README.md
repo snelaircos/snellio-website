@@ -33,7 +33,8 @@ automatisch.
 | `06-schema-entity.md` | Implementatieplan voor auteurspagina, Person, Organization, sameAs, datums, Article, FAQ, screenshots, interne links | Hoort bij taak 2 en 3. |
 | `07-zoekdata.md` | Zoekvolumes, KD, CPC, intentie en huidige rankings per term | Referentie bij titels, H1's en interne links. |
 | `08-pagina-f-gassen-registratie.md` | Volledige tekst, metadata, schema, verwijderlijst en FAQ voor het uitbreiden van `/f-gassen-registratie` | Taak 4, live sinds `77eee43`. |
-| `09-sitewide-sweep.md` | FAQ-component naar `<details>`, claims op `/features` en `/`, naamgeving BRL 100, `llms.txt`, opruimen | Taak 5. |
+| `09-sitewide-sweep.md` | FAQ-component naar `<details>`, claims op `/features` en `/`, naamgeving BRL 100, `llms.txt`, opruimen | Taak 5, live sinds `c634346`. |
+| `10-pagina-werkbon-software.md` | Zoekdata, SERP, verwijderlijst, volledige tekst, FAQ en bronnen voor het herpositioneren van `/werkbon-software` op "werkbon app" | Taak 6. |
 
 ## Contentarchitectuur (maximaal 6 pagina's)
 
@@ -81,11 +82,27 @@ blijven, maar zonder BRL- of F-gassenblokken en met een vaste link naar de pilla
   echte tabellen, geen "BRL100", "EPBD", "volledig" of "compliant" meer.
   Afwijkingen van `08` (BRL 200-kaart weg, CERTS-badges herschreven,
   UpdatedOn in LandingHero, "Uit de eigen praktijk" weggelaten) zijn akkoord.
-- Gevonden bij die check: `LandingFaq` rendert antwoorden alleen na klikken,
-  dus de FAQ-antwoorden staan niet in de HTML. Fix in `09`, taak 5, eerst.
-- Open na taak 5: pagina 6 (vergelijking); pagina 5 (R290); screenshot logboek
-  of flesbalans; "Uit de eigen praktijk" en jaren in het vak zodra Rudy de
-  feiten geeft; twee onbevestigde rijen onderaan `02`.
+- Taak 5 (sitewide sweep, `09`): live op main, `c634346`. Live gecontroleerd op
+  15 september 2026: FAQ-antwoorden staan in de HTML op `/f-gassen-registratie`
+  (8), de pillar (11), `/features` (5) en `/` (5), telkens gelijk aan het
+  FAQPage-schema, als `<details>` zonder client-state. Geen "BRL100", "EPBD",
+  "jaar-rapport", "STEK-nummer-veld" of "lekcontrole-cycli berekend" meer in
+  zichtbare tekst of head. `llms.txt` met datumregel en zonder
+  kwaliteitshandboek. Afwijkingen van `09` (FAQ op `/features` zichtbaar
+  gemaakt, badgekop herschreven, `llms.txt` regels 43 en 44, Features.tsx en
+  STATS mee opgeruimd) zijn akkoord.
+- 15 september, avond: Rudy bevestigde het BRL 200-nummer per monteur en de
+  berekening van de lekcontroletermijn (beide nu `[x]` in `02`), gaf 2017 als
+  startjaar in de koeltechniek en levert een screenshot van de flesregistratie
+  aan als `public/koelfles-registratie.png`. Bouwen: taak 5b, prompt in het
+  chatverslag van 15 september; kleine wijzigingen op `/features`, `/`,
+  `/over/rudy-snel` en `/f-gassen-registratie`.
+- Taak 6 (pagina 4, `/werkbon-software` herpositioneren): tekst klaar in `10`.
+  Bevat ook de correctie van de onjuiste eIDAS-claim (nu `01` §6). Bouwen na 5b.
+- Open na taak 6: pagina 6 (vergelijking, alleen met een kwartaalcontrole van de
+  prijzen); pagina 5 (R290); inhoudelijk herschrijven van "BRL 100-rapport"
+  op `/crm-voor-installateurs`, `/alternatief-voor-crm-installateurs` en in
+  blogposts; "Uit de eigen praktijk" zodra Rudy de auditzin geeft.
 
 ## Do these three first
 
@@ -95,8 +112,8 @@ blijven, maar zonder BRL- of F-gassenblokken en met een vaste link naar de pilla
 | **2. Publiceer `/brl-100-software`** uit `04-pagina-brl-100-software.md`, met Article + FAQPage + Person-referentie, zichtbare update-datum, bronnenlijst, links vanaf `/f-gassen-registratie` en de pillar. | "brl 100" is met 590 zoekopdrachten/maand en KD 9 de grootste bereikbare term in de niche. Geen enkele geciteerde bron koppelt art. 7 van de verordening aan BRL 100 §2.5.2 vanuit de auditpraktijk. | High | Eerste realistische top 10-positie op een term met volume en de eerste citeerbare pagina van snellio.nl. |
 | **3. Pillar bijwerken** volgens `03-pillar-verbeterplan.md` en `Organization.sameAs` vullen (`06-schema-entity.md`). | De pillar krijgt al Ads-verkeer en geeft de BRL-pagina zijn interne autoriteit. Het R290-blok is de grootste juridische onnauwkeurigheid op de site. Lege `sameAs` betekent dat engines Snellio niet als entiteit kunnen koppelen. | Medium | Hogere citeerbaarheid van de drukste pagina, foutieve claim van productie af, entiteitsprofiel waar de rest op bouwt. |
 
-Daarna: taak 5 (sitewide sweep, `09`), pagina 6 (vergelijking), pagina 4
-herpositioneren, pagina 5 (R290; features zijn bevestigd, tekst volgt).
+Daarna: taak 6 (pagina 4, `10`), pagina 6 (vergelijking, alleen met
+kwartaalcontrole), pagina 5 (R290; features zijn bevestigd, tekst volgt).
 
 ## Wat AI-engines nu over Snellio zeggen (14 september 2026)
 
