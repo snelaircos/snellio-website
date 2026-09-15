@@ -13,6 +13,18 @@ export const SITE = {
   defaultLocale: 'nl-NL',
 } as const
 
+// Publieke profielen die Snellio zelf beheert en die de naam "Snellio" voeren.
+// Alleen deze gaan in Organization.sameAs (lib/schemas.ts); geen reviewsites,
+// directories of persoonlijke profielen. Leeg laten tot de URL bekend is: lege
+// waarden worden overgeslagen. Zie docs/seo-geo/06-schema-entity.md.
+export const PROFIELEN: Record<'kvk' | 'linkedin' | 'googleBedrijfsprofiel' | 'youtube', string> = {
+  kvk:                   '', // URL van de KvK-inschrijving (KvK 69499829)
+  linkedin:              '', // LinkedIn-bedrijfspagina van Snellio
+  googleBedrijfsprofiel: '', // Google Bedrijfsprofiel (Maps-link)
+  // Kanaal "Snellio", beschrijving en link naar snellio.nl gecontroleerd 15-09-2026.
+  youtube:               'https://www.youtube.com/channel/UCMhOEmzAdSPIhJShbwUStpA',
+}
+
 // Alle getoonde prijzen zijn inclusief 21% btw: Mollie schrijft exact het
 // getoonde bedrag af (zie PACKAGE_PRICES in de checkout/billing API-routes).
 // Eén bron voor de vermelding zodat die overal op de site identiek is.
@@ -226,7 +238,7 @@ export const FEATURES = [
   { icon: '🏠', title: 'Installatiebeheer',        desc: "Beheer al uw installaties met volledige technische specificaties, foto's en servicelogs."        },
   { icon: '📋', title: 'Werkbonnen & Handelingen', desc: 'Digitale werkbonnen met handtekening ter plaatse. Direct PDF naar klant.'                         },
   { icon: '📄', title: 'BRL100 Rapportage',         desc: 'Automatisch gegenereerde BRL100/BRL200 rapporten die voldoen aan alle certificatie-eisen.'         },
-  { icon: '❄️', title: 'F-gassen Registratie',      desc: 'Koudemiddellogboek conform EU F-gas verordening 2024/573, flesregistratie en balans zoals BRL 100 vraagt.'                   },
+  { icon: '❄️', title: 'F-gassen Registratie',      desc: 'Logboek per installatie conform EU F-gas 2024/573, flesregistratie en balans zoals BRL 100 vraagt.'                   },
   { icon: '📊', title: 'Forecast Dashboard',        desc: 'Inzicht in opbrengsten, werkorders en serviceplanning. Altijd overzicht over uw bedrijf.'          },
   { icon: '🧾', title: 'Facturatie',                desc: 'Factureer direct vanuit een werkorder. Koppel uw eigen domein voor professionele e-mails.'         },
   { icon: '📅', title: 'Google Calendar Sync',      desc: 'Werkorders automatisch in uw agenda. Per monteur instelbaar.'                                      },

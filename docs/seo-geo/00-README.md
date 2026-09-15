@@ -56,6 +56,18 @@ op een generiek VCA-publiek.
 tot één sectie). `/crm-voor-installateurs` en `/planningssoftware-monteurs`
 blijven, maar zonder BRL- of F-gassenblokken en met een vaste link naar de pillar.
 
+## Status (15 september 2026)
+
+- Taak 1 (feature-check en tekstfixes): gedaan, `b548bb8` en `e638916`.
+- Taak 2 (`/brl-100-software`): live op main, `0b570e2`. Review: alle datums,
+  drempels, art. 7-punten, bronnen en FAQ conform `01` en `04`.
+- Taak 3 (pillar en sameAs): live op main, `296fcbf`. `PROFIELEN.linkedin` en
+  `googleBedrijfsprofiel` nog leeg; KvK als `identifier` in plaats van URL.
+- Open: naamgeving "BRL100" versus "BRL 100" sitewide gelijktrekken naar
+  "BRL 100" (nieuwe pagina's gebruiken de spatie, oudere pagina's en
+  `llms.txt` niet); `/over/rudy-snel`; pagina 6 (vergelijking); pagina 3
+  uitbreiden; pagina 5 (R290).
+
 ## Do these three first
 
 | Action | Why | Effort | Expected impact |

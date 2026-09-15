@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next'
 import { SITE } from '@/lib/constants'
 import { POSTS } from '@/lib/posts'
+import { BRL100_PAGE } from '@/app/brl-100-software/meta'
+import { PILLAR_PAGE } from '@/app/software-voor-installatiebedrijven/meta'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
@@ -12,11 +14,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/',                              priority: 1.0,  changeFreq: 'weekly'  as const, lastMod: now },
     { path: '/features',                      priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
     { path: '/pricing',                       priority: 0.9,  changeFreq: 'weekly'  as const, lastMod: now },
-    { path: '/software-voor-installatiebedrijven', priority: 0.95, changeFreq: 'monthly' as const, lastMod: now },
+    // Pillar: lastModified is de gecontroleerde dateModified, niet de deploydatum.
+    { path: PILLAR_PAGE.path,                 priority: 0.95, changeFreq: 'monthly' as const, lastMod: new Date(PILLAR_PAGE.dateModified) },
     { path: '/crm-voor-installateurs',        priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
     { path: '/werkbon-software',              priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
     { path: '/planningssoftware-monteurs',    priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
     { path: '/f-gassen-registratie',          priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
+    // Informatieve pagina: lastModified is de echte dateModified van de tekst.
+    { path: BRL100_PAGE.path,                 priority: 0.9,  changeFreq: 'monthly' as const, lastMod: new Date(BRL100_PAGE.dateModified) },
     { path: '/automotive',                    priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
     { path: '/alternatief-voor-crm-installateurs', priority: 0.85, changeFreq: 'monthly' as const, lastMod: now },
     { path: '/contact',                       priority: 0.8,  changeFreq: 'monthly' as const, lastMod: now },

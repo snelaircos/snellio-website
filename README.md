@@ -151,9 +151,8 @@ npx -y firecrawl-cli@latest init --all --browser
 firecrawl --status
 ```
 
-Sleutel: `export FIRECRAWL_API_KEY=fc-...` in je shellprofiel, daar lezen
-zowel de CLI als `.mcp.json` hem. In Claude Code op het web gebruik je de
-Firecrawl-connector uit claude.ai, de CLI en `.mcp.json` zijn daar
-geblokkeerd. Volledige uitleg, inclusief welke skill je waarvoor gebruikt en
+Sleutel: `export FIRECRAWL_API_KEY=fc-...` in je shellprofiel voor de CLI.
+In Claude Code op het web gebruik je de Firecrawl-connector uit claude.ai,
+de CLI is daar geblokkeerd. Volledige uitleg, inclusief welke skill je waarvoor gebruikt en
 de veiligheidsregels voor opgehaalde pagina's:
 [`docs/firecrawl.md`](docs/firecrawl.md).

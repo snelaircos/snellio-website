@@ -44,7 +44,7 @@ const details = [
       'Flesregistratie en F-gassenbalans zoals BRL 100 vraagt',
       'Automatische gram-/kg-berekening per handeling',
       'Track & trace per fles en installatie',
-      'Digitaal logboek per installatie, via QR op de kenplaat',
+      'Digitaal logboek per installatie (art. 7 EU F-gas 2024/573), via QR op de kenplaat',
       'Waarschuwing bij lektest en ijkdatum lekdetector',
     ],
   },

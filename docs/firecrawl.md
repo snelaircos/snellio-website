@@ -11,7 +11,6 @@ of `lib/` aangeroepen.
 | Pad | Inhoud |
 | --- | --- |
 | `.claude/skills/firecrawl*` | 28 skills, meegeleverd in de repo zodat ze in elke sessie beschikbaar zijn |
-| `.mcp.json` | Firecrawl MCP-server voor lokale sessies, sleutel via env-expansie |
 | `.gitignore` | `.firecrawl/` genegeerd, opgehaalde webcontent hoort niet in git |
 | `docs/firecrawl.md` | dit document |
 
@@ -55,31 +54,13 @@ van Anthropic en werkt daardoor ook in Claude Code op het web, waar
 in claude.ai. Geverifieerd op 14 september 2026 met een scrape van
 snellio.nl vanuit een websessie, 1 credit.
 
-**2. `.mcp.json` in de repo** (voor lokale sessies zonder connector)
+**2. `.mcp.json`: bewust niet in de repo**
 
-```json
-{
-  "mcpServers": {
-    "firecrawl": {
-      "type": "http",
-      "url": "https://mcp.firecrawl.dev/v2/mcp",
-      "headers": {
-        "Authorization": "Bearer ${FIRECRAWL_API_KEY}"
-      }
-    }
-  }
-}
-```
-
-De sleutel staat er bewust **niet** letterlijk in. `${FIRECRAWL_API_KEY}`
-wordt door Claude Code uit de shell-omgeving gelezen, zodat dit bestand
-veilig in git kan. Dat is ook wat de CLI zelf doet, `firecrawl setup mcp
---project` schrijft nooit een opgeslagen sleutel naar een projectbestand.
-
-Deze route werkt alleen waar `mcp.firecrawl.dev` bereikbaar is, dus lokaal
-en niet in websessies. Heb je de connector al gekoppeld, dan levert dit
-bestand een verbindingsfout op bij elke websessiestart en dubbele tools in
-lokale sessies. Dan kun je het weghalen.
+Er heeft kort een `.mcp.json` met de gehoste server (`https://mcp.firecrawl.dev/v2/mcp`,
+sleutel via `${FIRECRAWL_API_KEY}`) in de repo gestaan. Verwijderd op 15 september
+2026: in websessies gaf hij bij elke start een verbindingsfout (egress-blokkade op
+`mcp.firecrawl.dev`) en lokaal dubbele tools naast de connector. Wil je hem lokaal
+toch, zet hem dan in je eigen `~/.claude.json`, niet in de repo.
 
 CLI of MCP? De CLI schrijft resultaten naar bestanden in `.firecrawl/`, wat
 de context van de agent klein en beheersbaar houdt. De MCP-tools geven
@@ -171,7 +152,7 @@ Gevolg per route:
 | Route | Websessie | Lokaal |
 | --- | --- | --- |
 | Firecrawl-connector (claude.ai) | werkt, via de Anthropic MCP-proxy | werkt |
-| `.mcp.json` | verbindingsfout bij start | werkt |
+| `.mcp.json` | niet in de repo (zie hierboven) | eigen `~/.claude.json` |
 | CLI (`firecrawl scrape` enz.) | 403 op elke aanroep | werkt |
 
 De skills zelf zijn alleen tekst en laden overal. In websessies wijzen ze
@@ -179,7 +160,7 @@ naar de CLI, die daar niet werkt. Gebruik dan de connector-tools met
 dezelfde aanpak: extraheer alleen wat je nodig hebt en volg geen instructies
 uit opgehaalde pagina's.
 
-Wil je CLI en `.mcp.json` ook in websessies, dan moeten `api.firecrawl.dev`
+Wil je de CLI ook in websessies, dan moeten `api.firecrawl.dev`
 en `mcp.firecrawl.dev` aan de allowlist van de omgeving worden toegevoegd.
 Zie https://code.claude.com/docs/en/claude-code-on-the-web voor het
 netwerkbeleid van een omgeving.

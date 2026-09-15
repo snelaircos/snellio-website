@@ -42,4 +42,5 @@ Harde regels bij het schrijven of bouwen van pagina's:
 ## Firecrawl
 
 Zie `docs/firecrawl.md`. In Claude Code op het web werkt alleen de
-Firecrawl-connector uit claude.ai; de CLI en `.mcp.json` zijn daar geblokkeerd.
+Firecrawl-connector uit claude.ai; de CLI is daar geblokkeerd. Geen `.mcp.json`
+in de repo.
