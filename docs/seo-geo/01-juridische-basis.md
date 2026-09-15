@@ -55,6 +55,17 @@ CO2-eq of meer.
 Schrijf nooit alleen "5/50/500 ton". Noem de kg-drempels voor HFO's en de
 hermetische uitzonderingen, of verwijs naar art. 5.
 
+GWP-waarden uit bijlage I (100 jaar), gecontroleerd 15 september 2026 [B1]:
+HFK-32 (R32) 675; HFK-125 3 500. R410A is een 50/50-mengsel van R32 en R125 en
+komt daarmee op circa 2 088 (berekend, niet als mengsel in bijlage I). R290
+(propaan) is geen F-gas en valt niet onder art. 5 en 7. Rekenvoorbeelden:
+1,2 kg R32 = 0,81 t CO2-eq (onder de drempel); 7,5 kg R32 = 5,06 t; 3 kg R410A
+= 6,26 t (beide erboven).
+
+Art. 7 geldt alleen voor apparatuur die op grond van art. 5 lid 1 op lekkage
+moet worden gecontroleerd. Onder de drempel is er dus geen wettelijk register
+van de exploitant; de werkregistratie van BRL 100 §2.5.2 geldt wel altijd.
+
 ### Art. 7: register (logboek)
 
 Per apparaat dat onder art. 5 lid 1 valt houdt de exploitant een register bij met:
