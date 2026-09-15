@@ -32,7 +32,8 @@ automatisch.
 | `05-vergelijkingspagina.md` | Structuur en geverifieerde prijstabel voor `/vergelijken/software-koeltechniek` | Later, na taak 2 en 3. |
 | `06-schema-entity.md` | Implementatieplan voor auteurspagina, Person, Organization, sameAs, datums, Article, FAQ, screenshots, interne links | Hoort bij taak 2 en 3. |
 | `07-zoekdata.md` | Zoekvolumes, KD, CPC, intentie en huidige rankings per term | Referentie bij titels, H1's en interne links. |
-| `08-pagina-f-gassen-registratie.md` | Volledige tekst, metadata, schema, verwijderlijst en FAQ voor het uitbreiden van `/f-gassen-registratie` | Taak 4. Tekst is publicatieklaar; drie open punten voor Rudy staan onderaan. |
+| `08-pagina-f-gassen-registratie.md` | Volledige tekst, metadata, schema, verwijderlijst en FAQ voor het uitbreiden van `/f-gassen-registratie` | Taak 4, live sinds `77eee43`. |
+| `09-sitewide-sweep.md` | FAQ-component naar `<details>`, claims op `/features` en `/`, naamgeving BRL 100, `llms.txt`, opruimen | Taak 5. |
 
 ## Contentarchitectuur (maximaal 6 pagina's)
 
@@ -73,12 +74,18 @@ blijven, maar zonder BRL- of F-gassenblokken en met een vaste link naar de pilla
 - Google Bedrijfsprofiel: categorie gewijzigd naar Softwarebedrijf (nog niet
   zichtbaar op 15 september), openingstijden "open zonder vaste tijden". Open:
   website in het profiel van `https://www.snellio.nl/` naar `https://snellio.nl`.
-- Taak 4 (`/f-gassen-registratie` uitbreiden): tekst klaar in `08`. Bouwen.
-- Open na taak 4: auteursregel "Door Rudy Snel" op blogposts en BRL-pagina als
-  link naar `/over/rudy-snel`; `/over/rudy-snel` in `public/llms.txt`;
-  "BRL100" naar "BRL 100" sitewide (ook `llms.txt`); pagina 6 (vergelijking);
-  pagina 5 (R290); jaren in het vak op de auteurspagina zodra Rudy een
-  startjaar geeft.
+- Taak 4 (`/f-gassen-registratie` uitbreiden): live op main, `77eee43`. Live
+  gecontroleerd op 15 september 2026: Article met author als `@id`, citation
+  met vier bronnen, ImageObject, Person op de pagina, FAQPage met 8 vragen,
+  "Bijgewerkt op" gelijk aan `dateModified`, answer-first 53 woorden, twee
+  echte tabellen, geen "BRL100", "EPBD", "volledig" of "compliant" meer.
+  Afwijkingen van `08` (BRL 200-kaart weg, CERTS-badges herschreven,
+  UpdatedOn in LandingHero, "Uit de eigen praktijk" weggelaten) zijn akkoord.
+- Gevonden bij die check: `LandingFaq` rendert antwoorden alleen na klikken,
+  dus de FAQ-antwoorden staan niet in de HTML. Fix in `09`, taak 5, eerst.
+- Open na taak 5: pagina 6 (vergelijking); pagina 5 (R290); screenshot logboek
+  of flesbalans; "Uit de eigen praktijk" en jaren in het vak zodra Rudy de
+  feiten geeft; twee onbevestigde rijen onderaan `02`.
 
 ## Do these three first
 
@@ -88,7 +95,7 @@ blijven, maar zonder BRL- of F-gassenblokken en met een vaste link naar de pilla
 | **2. Publiceer `/brl-100-software`** uit `04-pagina-brl-100-software.md`, met Article + FAQPage + Person-referentie, zichtbare update-datum, bronnenlijst, links vanaf `/f-gassen-registratie` en de pillar. | "brl 100" is met 590 zoekopdrachten/maand en KD 9 de grootste bereikbare term in de niche. Geen enkele geciteerde bron koppelt art. 7 van de verordening aan BRL 100 §2.5.2 vanuit de auditpraktijk. | High | Eerste realistische top 10-positie op een term met volume en de eerste citeerbare pagina van snellio.nl. |
 | **3. Pillar bijwerken** volgens `03-pillar-verbeterplan.md` en `Organization.sameAs` vullen (`06-schema-entity.md`). | De pillar krijgt al Ads-verkeer en geeft de BRL-pagina zijn interne autoriteit. Het R290-blok is de grootste juridische onnauwkeurigheid op de site. Lege `sameAs` betekent dat engines Snellio niet als entiteit kunnen koppelen. | Medium | Hogere citeerbaarheid van de drukste pagina, foutieve claim van productie af, entiteitsprofiel waar de rest op bouwt. |
 
-Daarna: taak 4 (pagina 3 uitbreiden, `08`), pagina 6 (vergelijking), pagina 4
+Daarna: taak 5 (sitewide sweep, `09`), pagina 6 (vergelijking), pagina 4
 herpositioneren, pagina 5 (R290; features zijn bevestigd, tekst volgt).
 
 ## Wat AI-engines nu over Snellio zeggen (14 september 2026)

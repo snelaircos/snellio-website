@@ -6,7 +6,7 @@ sinds wanneer, en is er iets sterkers dan marketingtekst (screenshot, juridisch
 document). De kolom **"Bevestigd in app"** vul je in na controle in een live
 account. Pas daarna mag een feature in nieuwe content.
 
-Laatst bijgewerkt: 15 september 2026. Alle 17 rijen bevestigd in de app door Rudy Snel op 15 september 2026.
+Laatst bijgewerkt: 15 september 2026. De eerste 17 rijen zijn bevestigd in de app door Rudy Snel op 15 september 2026. De twee rijen onderaan (BRL 200-nummer per monteur, lekcontroletermijn) zijn op 15 september toegevoegd en nog niet bevestigd.
 
 | Feature | Status | Bewijs in repo | Mag publiek geclaimd worden | Bevestigd in app (datum, door) |
 | --- | --- | --- | --- | --- |
@@ -27,6 +27,8 @@ Laatst bijgewerkt: 15 september 2026. Alle 17 rijen bevestigd in de app door Rud
 | Mollie/iDEAL op klantfacturen | Geclaimd, valkuil | Claim op features/pillar. De Mollie-code in deze repo (`app/api/mollie/webhook`, `app/api/checkout`) betreft Snellio's eigen abonnementen, niet klantfacturen. | Ja, mits bevestigd in app. Repo-code is hier geen bewijs. | [x] 15-09-2026, Rudy Snel |
 | Import bestaande installaties | Gedeeltelijk | `/alternatief-voor-crm-installateurs:79`: CSV-import van klantgegevens, locaties en historische werkorders. Installaties niet genoemd. | Alleen "klanten, locaties en werkorders via CSV". | [x] 15-09-2026, Rudy Snel |
 | Export van data | Geclaimd | Pillar-FAQ: CSV en PDF; `/f-gassen-registratie`: per installatie en per periode. | Ja, mits bevestigd. | [x] 15-09-2026, Rudy Snel |
+| BRL 200-nummer per monteur | Gemeld door lokale sessie, 15-09-2026 | Homepage: "STEK-nummer-veld, monteur-certificering"; `/features`: "BRL200/Stek-certificaat ondersteuning". Geen B1-veld volgens de lokale sessie. | Alleen als "BRL 200-nummer van je monteurs bij de medewerker". Geen B1, geen "certificaat-ondersteuning". | [ ] |
+| Lekcontroletermijn berekend uit CO2-equivalent (art. 5 lid 6) | Geclaimd op homepage | "lekcontrole-cycli automatisch berekend op basis van CO₂-equivalent". Rij 6 dekt alleen de waarschuwing, niet de berekening van de termijn. | Alleen als bevestigd, met verwijzing naar art. 5 lid 6. | [ ] |
 
 ## Drie tekstfixes op productie (uitgevoerd 15 september 2026)
 
