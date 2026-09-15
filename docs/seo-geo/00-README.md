@@ -35,6 +35,7 @@ automatisch.
 | `08-pagina-f-gassen-registratie.md` | Volledige tekst, metadata, schema, verwijderlijst en FAQ voor het uitbreiden van `/f-gassen-registratie` | Taak 4, live sinds `77eee43`. |
 | `09-sitewide-sweep.md` | FAQ-component naar `<details>`, claims op `/features` en `/`, naamgeving BRL 100, `llms.txt`, opruimen | Taak 5, live sinds `c634346`. |
 | `10-pagina-werkbon-software.md` | Zoekdata, SERP, verwijderlijst, volledige tekst, FAQ en bronnen voor het herpositioneren van `/werkbon-software` op "werkbon app" | Taak 6. |
+| `11-homepage.md` | Nieuwe sectievolgorde van de homepage (founder-blok vóór de prijzen), compacter founder-blok met link naar de auteurspagina, afwerking per sectie | Taak 7, na taak 6. |
 
 ## Contentarchitectuur (maximaal 6 pagina's)
 
@@ -99,7 +100,8 @@ blijven, maar zonder BRL- of F-gassenblokken en met een vaste link naar de pilla
   `/over/rudy-snel` en `/f-gassen-registratie`.
 - Taak 6 (pagina 4, `/werkbon-software` herpositioneren): tekst klaar in `10`.
   Bevat ook de correctie van de onjuiste eIDAS-claim (nu `01` §6). Bouwen na 5b.
-- Open na taak 6: pagina 6 (vergelijking, alleen met een kwartaalcontrole van de
+- Taak 7 (homepage: volgorde en afwerking): voorstel in `11`. Na taak 6.
+- Open na taak 7: pagina 6 (vergelijking, alleen met een kwartaalcontrole van de
   prijzen); pagina 5 (R290); inhoudelijk herschrijven van "BRL 100-rapport"
   op `/crm-voor-installateurs`, `/alternatief-voor-crm-installateurs` en in
   blogposts; "Uit de eigen praktijk" zodra Rudy de auditzin geeft.
