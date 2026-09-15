@@ -13,6 +13,18 @@ export const SITE = {
   defaultLocale: 'nl-NL',
 } as const
 
+// Publieke profielen die Snellio zelf beheert en die de naam "Snellio" voeren.
+// Alleen deze gaan in Organization.sameAs (lib/schemas.ts); geen reviewsites,
+// directories of persoonlijke profielen. Leeg laten tot de URL bekend is: lege
+// waarden worden overgeslagen. Zie docs/seo-geo/06-schema-entity.md.
+export const PROFIELEN: Record<'kvk' | 'linkedin' | 'googleBedrijfsprofiel' | 'youtube', string> = {
+  kvk:                   '', // URL van de KvK-inschrijving (KvK 69499829)
+  linkedin:              '', // LinkedIn-bedrijfspagina van Snellio
+  googleBedrijfsprofiel: '', // Google Bedrijfsprofiel (Maps-link)
+  // Kanaal "Snellio", beschrijving en link naar snellio.nl gecontroleerd 15-09-2026.
+  youtube:               'https://www.youtube.com/channel/UCMhOEmzAdSPIhJShbwUStpA',
+}
+
 // Alle getoonde prijzen zijn inclusief 21% btw: Mollie schrijft exact het
 // getoonde bedrag af (zie PACKAGE_PRICES in de checkout/billing API-routes).
 // Eén bron voor de vermelding zodat die overal op de site identiek is.

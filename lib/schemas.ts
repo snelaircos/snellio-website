@@ -1,4 +1,4 @@
-import { SITE, PLANS } from './constants'
+import { SITE, PLANS, PROFIELEN } from './constants'
 
 // Eén @id voor de auteur, overal via referentie. De auteurspagina
 // /over/rudy-snel bestaat nog niet; het @id is een identifier en hoeft niet
@@ -39,9 +39,9 @@ export function organizationSchema() {
       contactType:       'customer support',
       availableLanguage: 'nl',
     },
-    // Vullen met profielen die Snellio zelf beheert (KvK, LinkedIn, Google
-    // Bedrijfsprofiel); zie docs/seo-geo/06-schema-entity.md.
-    sameAs: [],
+    // Alleen profielen die Snellio zelf beheert (lib/constants.ts PROFIELEN);
+    // lege waarden vallen weg. Zie docs/seo-geo/06-schema-entity.md.
+    sameAs: Object.values(PROFIELEN).filter(url => url.length > 0),
   }
 }
 
@@ -194,5 +194,31 @@ export function breadcrumbSchema(items: { name: string; href: string }[]) {
       name:      item.name,
       item:      `${SITE.url}${item.href}`,
     })),
+  }
+}
+
+// WebPage-schema voor commerciële pagina's (pillars): geen Article, wel een
+// dateModified die gelijk is aan de zichtbare "Bijgewerkt op"-regel. `aboutId`
+// verwijst naar een bestaande node, bv. de site-brede SoftwareApplication
+// (`${SITE.url}/#software`), die de root-layout al op elke pagina uitzet.
+export function webPageSchema(page: {
+  path: string; name: string; description: string
+  dateModified: string; datePublished?: string
+  aboutId?: string
+}) {
+  const url = `${SITE.url}${page.path}`
+  return {
+    '@context':   'https://schema.org',
+    '@type':      'WebPage',
+    '@id':        url,
+    url,
+    name:         page.name,
+    description:  page.description,
+    inLanguage:   'nl-NL',
+    isPartOf:     { '@id': `${SITE.url}/#website` },
+    publisher:    { '@id': `${SITE.url}/#organization` },
+    ...(page.datePublished ? { datePublished: page.datePublished } : {}),
+    dateModified: page.dateModified,
+    ...(page.aboutId ? { about: { '@id': page.aboutId } } : {}),
   }
 }
