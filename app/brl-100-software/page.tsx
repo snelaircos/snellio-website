@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { buildMetadata } from '@/lib/metadata'
-import { articleSchema, breadcrumbSchema, faqSchema, personSchema } from '@/lib/schemas'
+import { articleSchema, breadcrumbSchema, faqSchema, personSchema, PERSON_PATH } from '@/lib/schemas'
 import { BTW, TRIAL_DAGEN } from '@/lib/constants'
 import { fmtEuro, planById } from '@/lib/pricing'
 import JsonLd               from '@/components/seo/JsonLd'
@@ -683,6 +683,9 @@ export default function Brl100SoftwarePage() {
               <p className="text-sm leading-relaxed text-[var(--text2)]">
                 Rudy Snel is oprichter van Snellio en eigenaar van een koeltechniekbedrijf, STEK-gecertificeerd.
                 Snellio ontstond omdat de F-gassenadministratie in dat eigen bedrijf tot de audit bleef liggen.
+              </p>
+              <p className="mt-3 text-sm">
+                <Link href={PERSON_PATH} className={anchor}>Meer over Rudy Snel →</Link>
               </p>
             </div>
           </aside>

@@ -1,22 +1,30 @@
 import { SITE, PLANS, PROFIELEN, KVK_NUMMER } from './constants'
 
-// Eén @id voor de auteur, overal via referentie. De auteurspagina
-// /over/rudy-snel bestaat nog niet; het @id is een identifier en hoeft niet
-// te resolven. Zodra de pagina er is: url, sameAs (LinkedIn) en
-// hasCredential (alleen met een echt, verifieerbaar certificaat) toevoegen.
-export const PERSON_ID = `${SITE.url}/over/rudy-snel#person`
+// Eén Person, één definitie: personSchema() hieronder, uitgevoerd op de
+// auteurspagina /over/rudy-snel en op pagina's met een Article. Elders
+// (Organization.founder, Article.author) alleen een verwijzing { '@id': PERSON_ID }.
+// Geen hasCredential: er staat bewust geen certificaatnummer op de site.
+// Zie docs/seo-geo/06-schema-entity.md, rijen "Auteurspagina" en "Person-schema".
+export const PERSON_PATH     = '/over/rudy-snel'
+export const PERSON_ID       = `${SITE.url}${PERSON_PATH}#person`
+export const PERSON_NAME     = 'Rudy Snel'
+export const PERSON_JOBTITLE = 'Oprichter Snellio, koeltechnisch installateur'
+// Persoonlijk profiel; hoort niet in PROFIELEN (dat zijn bedrijfsprofielen).
+export const PERSON_LINKEDIN = 'https://www.linkedin.com/in/rudy-snel-9962431a0/'
 
 export function personSchema() {
   return {
     '@context':  'https://schema.org',
     '@type':     'Person',
     '@id':       PERSON_ID,
-    name:        'Rudy Snel',
-    jobTitle:    'Oprichter Snellio, koeltechnisch installateur',
-    description: 'Oprichter van Snellio en eigenaar van een koeltechniekbedrijf, STEK-gecertificeerd installateur.',
+    name:        PERSON_NAME,
+    url:         `${SITE.url}${PERSON_PATH}`,
+    jobTitle:    PERSON_JOBTITLE,
+    description: 'Oprichter van Snellio en eigenaar van Snel Airco’s, een koeltechniekbedrijf. STEK-gecertificeerd installateur (F-gassen categorie I, aanvullend B1 brandbare koudemiddelen).',
     worksFor:    { '@id': `${SITE.url}/#organization` },
     knowsAbout:  ['F-gassenregistratie', 'BRL 100', 'Koeltechniek', 'Warmtepompen'],
     image:       `${SITE.url}/rudy-snel.png`,
+    sameAs:      [PERSON_LINKEDIN],
   }
 }
 
@@ -122,8 +130,9 @@ export function softwareApplicationSchema() {
 }
 
 // Article/BlogPosting-schema: geeft Google datum, auteur en publisher voor
-// rich results. Auteur = Rudy Snel (oprichter, STEK-gecertificeerd), sterk
-// E-E-A-T-signaal bij regelgeving-content; verwijst via @id naar de Person.
+// rich results. Auteur = Rudy Snel, alleen als verwijzing naar PERSON_ID; de
+// pagina die dit schema uitzet, zet ook personSchema() uit zodat het @id
+// binnen dezelfde pagina oplost.
 //
 // Blogposts geven `slug` (→ /blog/slug), losse informatieve pagina's geven
 // `path`. `citation` (URL's van primaire bronnen) en `about` (2 tot 3
@@ -162,13 +171,7 @@ export function articleSchema(post: {
     dateModified:   post.dateModifiedISO ?? post.dateISO,
     inLanguage:     'nl-NL',
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE.url}${path}` },
-    author: {
-      '@type':   'Person',
-      '@id':     PERSON_ID,
-      name:      'Rudy Snel',
-      jobTitle:  'Oprichter Snellio, STEK-gecertificeerd installateur',
-      url:       SITE.url,
-    },
+    author:    { '@id': PERSON_ID },
     publisher: { '@id': `${SITE.url}/#organization` },
     image,
     ...(post.citation?.length ? { citation: post.citation } : {}),

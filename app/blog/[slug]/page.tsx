@@ -6,7 +6,7 @@ import path from 'path'
 import { notFound } from 'next/navigation'
 import { buildMetadata }  from '@/lib/metadata'
 import { POSTS, getPost } from '@/lib/posts'
-import { articleSchema, breadcrumbSchema, faqSchema } from '@/lib/schemas'
+import { articleSchema, breadcrumbSchema, faqSchema, personSchema } from '@/lib/schemas'
 import JsonLd    from '@/components/seo/JsonLd'
 import Container from '@/components/ui/Container'
 import Button    from '@/components/ui/Button'
@@ -158,6 +158,7 @@ export default function BlogPost({ params }: Props) {
   return (
     <>
       <JsonLd schema={articleSchema({ ...post, image: post.image && publicFileExists(post.image.src) ? post.image : undefined })} />
+      <JsonLd schema={personSchema()} />
       {post.faq && <JsonLd schema={faqSchema(post.faq)} />}
       <JsonLd schema={breadcrumbSchema([
         { name: 'Home', href: '/' },

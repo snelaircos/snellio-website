@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { SITE } from '@/lib/constants'
 import { POSTS } from '@/lib/posts'
+import { PERSON_PATH } from '@/lib/schemas'
 import { BRL100_PAGE } from '@/app/brl-100-software/meta'
 import { PILLAR_PAGE } from '@/app/software-voor-installatiebedrijven/meta'
 
@@ -23,6 +24,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Informatieve pagina: lastModified is de echte dateModified van de tekst.
     { path: BRL100_PAGE.path,                 priority: 0.9,  changeFreq: 'monthly' as const, lastMod: new Date(BRL100_PAGE.dateModified) },
     { path: '/automotive',                    priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
+    // Auteurspagina: wijzigt alleen bij nieuwe artikelen of certificering.
+    { path: PERSON_PATH,                      priority: 0.5,  changeFreq: 'yearly'  as const, lastMod: new Date('2026-09-15') },
     { path: '/alternatief-voor-crm-installateurs', priority: 0.85, changeFreq: 'monthly' as const, lastMod: now },
     { path: '/contact',                       priority: 0.8,  changeFreq: 'monthly' as const, lastMod: now },
     { path: '/demo',                          priority: 0.85, changeFreq: 'monthly' as const, lastMod: now },

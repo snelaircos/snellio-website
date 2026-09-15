@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { buildMetadata } from '@/lib/metadata'
-import { faqSchema, breadcrumbSchema, webPageSchema } from '@/lib/schemas'
+import { faqSchema, breadcrumbSchema, webPageSchema, PERSON_PATH } from '@/lib/schemas'
 import { BTW, PLANS, SITE, TRIAL_DAGEN, JAAR_MAANDEN_BETAALD } from '@/lib/constants'
 import { fmtEuro, planById } from '@/lib/pricing'
 import JsonLd from '@/components/seo/JsonLd'
@@ -558,7 +558,6 @@ export default function SoftwareVoorInstallatiebedrijvenPage() {
       </section>
 
       {/* ── 11. Auteursblok ── */}
-      {/* Link naar /over/rudy-snel toevoegen zodra die pagina bestaat (06-schema-entity.md). */}
       <section className="px-[5%] py-20">
         <div className="mx-auto grid max-w-4xl items-center gap-8 md:grid-cols-[160px_1fr] md:gap-10">
           <div className="flex justify-center md:justify-start">
@@ -593,6 +592,9 @@ export default function SoftwareVoorInstallatiebedrijvenPage() {
               <Link href="/brl-100-software" className={anchor}>
                 BRL 100: wat de auditor van je administratie vraagt →
               </Link>
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-[var(--text2)] md:text-base">
+              <Link href={PERSON_PATH} className={anchor}>Meer over Rudy Snel →</Link>
             </p>
           </div>
         </div>
