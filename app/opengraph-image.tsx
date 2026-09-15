@@ -74,7 +74,7 @@ export default function OgImage() {
             snellio.nl
           </div>
           <div style={{ display: 'flex', color: '#5f7791', fontSize: 24 }}>
-            BRL100 · F-gassen 2024/573 · Werkbon · Planning
+            BRL 100 · F-gassen 2024/573 · Werkbon · Planning
           </div>
         </div>
 

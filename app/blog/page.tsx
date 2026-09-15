@@ -8,7 +8,7 @@ import { POSTS } from '@/lib/posts'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Blog, Tips & kennis voor HVAC-installateurs',
-  description: 'Praktische artikelen over HVAC, koeltechniek, BRL100-wetgeving, F-gassen en bedrijfsvoering voor installateurs. Kennisbank van Snellio.',
+  description: 'Praktische artikelen over HVAC, koeltechniek, BRL 100-wetgeving, F-gassen en bedrijfsvoering voor installateurs. Kennisbank van Snellio.',
   path:        '/blog',
 })
 

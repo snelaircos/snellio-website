@@ -13,13 +13,13 @@ import Container                    from '@/components/ui/Container'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Werkbon software voor installateurs | Snellio',
-  description: 'Werkbon software en digitale werkbon app voor installateurs en HVAC bedrijven. Klanthandtekening op tablet, BRL100-rapportage, PDF-generatie en directe facturatie via iDEAL. Start 14 dagen gratis.',
+  description: 'Werkbon software en digitale werkbon app voor installateurs en HVAC bedrijven. Klanthandtekening op tablet, BRL 100-rapportage, PDF-generatie en directe facturatie via iDEAL. Start 14 dagen gratis.',
   path:        '/werkbon-software',
 })
 
 const features = [
   { icon: '✍️', title: 'Digitale handtekening ter plaatse',  desc: 'Klant ondertekent de werkbon direct op uw tablet of telefoon. PDF wordt automatisch gegenereerd en verstuurd.', badge: 'Populair' },
-  { icon: '📄', title: 'BRL100 rapport automatisch',          desc: 'Elke koeltechnische handeling levert automatisch een BRL100-compliant rapport op. Direct print-klaar voor inspectie.' },
+  { icon: '📄', title: 'BRL 100 rapport automatisch',          desc: 'Elke koeltechnische handeling levert automatisch een BRL 100-compliant rapport op. Direct print-klaar voor inspectie.' },
   { icon: '🔧', title: 'Koeltechnische handelingen',           desc: 'Inbedrijfstelling, lektest, drukproef, vacumeren, afpompen, alle handelingen met de vereiste meetvelden.' },
   { icon: '📷', title: "Foto's & bijlagen",                    desc: "Voeg foto's en documenten toe aan werkorders. Altijd beschikbaar in het klantdossier." },
   { icon: '🧾', title: 'Direct factureren vanuit werkbon',     desc: 'Van werkbon naar factuur in één klik. iDEAL of Wero betaallink via Mollie meegestuurd.' },
@@ -30,19 +30,19 @@ const stappen = [
   { icon: '1', title: 'Maak een werkorder aan',            desc: 'Kies de klant, installatie en type handeling. Velden worden automatisch ingevuld vanuit het klantdossier.' },
   { icon: '2', title: 'Voer de handelingen in',            desc: 'Vul koeltechnische meetwaarden in: druk, temperatuur, hoeveelheid koudemiddel, lektest-resultaat.' },
   { icon: '3', title: 'Klant tekent direct op het scherm', desc: 'Handtekening op tablet of telefoon. Datum en naam worden vastgelegd.' },
-  { icon: '4', title: 'PDF klaar & verstuurd',              desc: 'BRL100-rapport en werkbon worden automatisch gegenereerd en direct naar de klant gemaild.' },
+  { icon: '4', title: 'PDF klaar & verstuurd',              desc: 'BRL 100-rapport en werkbon worden automatisch gegenereerd en direct naar de klant gemaild.' },
 ]
 
 const problemen = [
   { title: 'Werkbonnen op papier invullen',         desc: 'Papier raakt zoek, leesfouten en handmatig scannen kost kostbare werktijd.' },
-  { title: 'Rapporten handmatig opstellen',          desc: 'BRL100-documenten handmatig invullen kost uren per week aan administratie.' },
+  { title: 'Rapporten handmatig opstellen',          desc: 'BRL 100-documenten handmatig invullen kost uren per week aan administratie.' },
   { title: 'Klant ondertekent een losse bon',        desc: 'Geen digitale vastlegging, archivering is onbetrouwbaar en niet traceerbaar.' },
   { title: 'Factuur apart invoeren',                 desc: 'Informatie overtypen van de werkbon naar het boekhoudprogramma, dubbel werk.' },
 ]
 
 const oplossingen = [
   { title: 'Digitale werkbon op tablet of telefoon',  desc: 'Altijd bij de hand, geen papier nodig. Alles direct ingevuld op locatie.' },
-  { title: 'BRL100-rapport automatisch gegenereerd',  desc: 'Vul de handelingen in, het rapport is klaar. Geen extra werk, geen fouten.' },
+  { title: 'BRL 100-rapport automatisch gegenereerd',  desc: 'Vul de handelingen in, het rapport is klaar. Geen extra werk, geen fouten.' },
   { title: 'Digitale handtekening met tijdstempel',   desc: 'Juridisch geldig, altijd terug te vinden in het digitale archief.' },
   { title: 'Factuur aanmaken vanuit de werkbon',      desc: 'Eén klik, factuurregels overgenomen, iDEAL betaallink toegevoegd.' },
 ]
@@ -51,39 +51,39 @@ const uitgebreideFeatures = [
   { icon: '📋', title: 'Werkorder typen',              desc: 'Inbedrijfstelling, periodieke service, storingsdienst, lektest, vacumeren, koudemiddel bijvullen of aftappen, elk type heeft zijn eigen velden.' },
   { icon: '🌡', title: 'Meetwaarden vastleggen',        desc: 'Begin- en eindtemperatuur, hoge- en lagedrukzijde, omgevingstemperatuur, einddruk vacumeren en standtijd, alles in het juiste formaat.' },
   { icon: '🔏', title: 'Digitale handtekening',         desc: 'Klant en monteur ondertekenen op het scherm. Datum, tijdstip en naam worden automatisch vastgelegd.' },
-  { icon: '📁', title: 'Archief per klant',             desc: 'Alle werkbonnen, BRL100-rapporten en foto\'s worden opgeslagen per klant en installatie. Direct opvraagbaar bij elke volgende service.' },
+  { icon: '📁', title: 'Archief per klant',             desc: 'Alle werkbonnen, BRL 100-rapporten en foto\'s worden opgeslagen per klant en installatie. Direct opvraagbaar bij elke volgende service.' },
   { icon: '🔗', title: 'Koppeling aan installatie',     desc: 'Elke werkbon is gekoppeld aan een specifieke installatie: type, merk, koudemiddel, capaciteit en serienummer.' },
   { icon: '📧', title: 'Automatisch verzenden',         desc: 'Werkbon PDF gaat direct na ondertekening naar de klant. E-mailadres aanpasbaar, verzending desgewenst uit te stellen.' },
 ]
 
 const doelgroepen = [
-  { icon: '🔧', type: 'Airco installateur',         desc: 'Installeert dagelijks split-units bij particulieren en bedrijven. Heeft behoefte aan snelle digitale werkbonnen en BRL100-rapporten zonder papierwerk.' },
-  { icon: '♨️', type: 'Warmtepomp installateur',    desc: 'Werkt aan inbedrijfstellingen en servicebeurten van warmtepompen. Wil koeltechnische handelingen digitaal vastleggen conform BRL100/BRL200.' },
+  { icon: '🔧', type: 'Airco installateur',         desc: 'Installeert dagelijks split-units bij particulieren en bedrijven. Heeft behoefte aan snelle digitale werkbonnen en BRL 100-rapporten zonder papierwerk.' },
+  { icon: '♨️', type: 'Warmtepomp installateur',    desc: 'Werkt aan inbedrijfstellingen en servicebeurten van warmtepompen. Wil koeltechnische handelingen digitaal vastleggen conform BRL 100/BRL 200.' },
   { icon: '❄️', type: 'Koeltechnisch monteur',       desc: 'Voert lektests, drukproeven en vacumeringen uit. Heeft uitgebreide koeltechnische velden nodig en correcte F-gas documentatie.' },
   { icon: '🏢', type: 'HVAC installatiebedrijf',    desc: 'Heeft meerdere monteurs in het veld. Wil overzicht over alle werkorders, eenduidige werkbonnen per monteur en gestandaardiseerde rapportage.' },
 ]
 
 const voordelen = [
   { icon: '⏱', title: 'Tijdsbesparing', stat: '2–4 uur/week',
-    items: ['Geen papieren werkbonnen meer invullen', 'Geen handmatig BRL100-rapport opstellen', 'Geen werkbonnen scannen of archiveren', 'Factuur klaar zodra de bon ondertekend is'] },
+    items: ['Geen papieren werkbonnen meer invullen', 'Geen handmatig BRL 100-rapport opstellen', 'Geen werkbonnen scannen of archiveren', 'Factuur klaar zodra de bon ondertekend is'] },
   { icon: '✅', title: 'Minder fouten',  stat: '0 dubbele invoer',
     items: ['Klantgegevens automatisch ingevuld', 'Meetwaarden direct gekoppeld aan rapport', 'Geen overtypen van werkbon naar factuur', 'Alle documenten in één centraal archief'] },
   { icon: '📊', title: 'Meer overzicht', stat: 'Altijd inzicht',
-    items: ['Status per werkorder in real-time', 'Historiek per klant en installatie', 'Openstaande en afgeronde opdrachten', 'BRL100-documenten direct beschikbaar'] },
+    items: ['Status per werkorder in real-time', 'Historiek per klant en installatie', 'Openstaande en afgeronde opdrachten', 'BRL 100-documenten direct beschikbaar'] },
 ]
 
 const faqItems = [
   {
     question: 'Wat is werkbon software voor installateurs?',
-    answer:   'Werkbon software is een digitale oplossing waarmee installateurs werkbonnen volledig digitaal invullen, ondertekenen en archiveren. In plaats van papieren formulieren werkt u via een app of browser op een tablet of smartphone. Snellio is specifiek gebouwd voor airco- en HVAC-installateurs, met koeltechnische handelingen, BRL100-rapportage en directe facturatie standaard ingebouwd.',
+    answer:   'Werkbon software is een digitale oplossing waarmee installateurs werkbonnen volledig digitaal invullen, ondertekenen en archiveren. In plaats van papieren formulieren werkt u via een app of browser op een tablet of smartphone. Snellio is specifiek gebouwd voor airco- en HVAC-installateurs, met koeltechnische handelingen, BRL 100-rapportage en directe facturatie standaard ingebouwd.',
   },
   {
     question: 'Hoe werkt de digitale werkbon app?',
-    answer:   'U opent Snellio in de browser op uw tablet of telefoon, kiest de klant en installatie, selecteert het type handeling en vult de meetwaarden in. De klant tekent direct op het scherm. Daarna genereert Snellio automatisch een BRL100-rapport én een werkbon PDF, die direct naar de klant worden verstuurd.',
+    answer:   'U opent Snellio in de browser op uw tablet of telefoon, kiest de klant en installatie, selecteert het type handeling en vult de meetwaarden in. De klant tekent direct op het scherm. Daarna genereert Snellio automatisch een BRL 100-rapport én een werkbon PDF, die direct naar de klant worden verstuurd.',
   },
   {
-    question: 'Genereert Snellio automatisch BRL100-rapporten?',
-    answer:   'Ja. Zodra u de koeltechnische handelingen invult, drukproef, lektest, vacumeren, koudemiddel bijvullen, genereert Snellio automatisch een BRL100-conform rapport. U hoeft niets handmatig op te stellen. Het rapport is direct print-klaar en wordt meegestuurd in de e-mail aan de klant.',
+    question: 'Genereert Snellio automatisch BRL 100-rapporten?',
+    answer:   'Ja. Zodra u de koeltechnische handelingen invult, drukproef, lektest, vacumeren, koudemiddel bijvullen, genereert Snellio automatisch een BRL 100-conform rapport. U hoeft niets handmatig op te stellen. Het rapport is direct print-klaar en wordt meegestuurd in de e-mail aan de klant.',
   },
   {
     question: 'Is de digitale handtekening juridisch geldig?',
@@ -99,7 +99,7 @@ const faqItems = [
   },
   {
     question: 'Wat kost werkbon software van Snellio?',
-    answer:   'Snellio kost vanaf €10 per maand (Starter, 1 monteur, tot 25 installaties). Basis is €29 per maand met onbeperkt installaties, Pro €69 per maand met 2 monteurs inbegrepen en Enterprise €129 per maand met 5 monteurs inbegrepen. Alle prijzen zijn inclusief 21% btw. In elk pakket zitten alle functies: werkbonnen, planning, facturatie, F-gassen en BRL100. Je start met 14 dagen gratis, zonder creditcard, en kiest je abonnement pas daarna.',
+    answer:   'Snellio kost vanaf €10 per maand (Starter, 1 monteur, tot 25 installaties). Basis is €29 per maand met onbeperkt installaties, Pro €69 per maand met 2 monteurs inbegrepen en Enterprise €129 per maand met 5 monteurs inbegrepen. Alle prijzen zijn inclusief 21% btw. In elk pakket zitten alle functies: werkbonnen, planning, facturatie, F-gassen en BRL 100. Je start met 14 dagen gratis, zonder creditcard, en kiest je abonnement pas daarna.',
   },
 ]
 
@@ -116,10 +116,10 @@ export default function WerkbonSoftwarePage() {
 
       {/* ── Hero ── */}
       <LandingHero
-        badge="Digitale werkbonnen · BRL100 compliant · Werkbon app"
+        badge="Digitale werkbonnen · BRL 100 compliant · Werkbon app"
         heading="Werkbon software voor installateurs"
         headingAccent="en HVAC bedrijven."
-        sub="Geen papieren werkbonnen meer. Klant tekent direct op uw tablet, BRL100-rapport wordt automatisch gegenereerd en de PDF staat direct in de mailbox van uw klant."
+        sub="Geen papieren werkbonnen meer. Klant tekent direct op uw tablet, BRL 100-rapport wordt automatisch gegenereerd en de PDF staat direct in de mailbox van uw klant."
         stats={[
           { value: '<span style="color:var(--cyan)">0</span>',     label: 'Papier nodig'         },
           { value: 'BRL<span style="color:var(--cyan)">100</span>', label: 'Automatisch rapport'  },
@@ -144,7 +144,7 @@ export default function WerkbonSoftwarePage() {
           <div className="text-[var(--text2)] text-[.96rem] leading-[1.85] space-y-4 max-w-none">
             <p>
               Als installateur of HVAC-bedrijf besteedt u dagelijks tijd aan het invullen van
-              werkbonnen, het opstellen van BRL100-rapporten en het archiveren van documenten.
+              werkbonnen, het opstellen van BRL 100-rapporten en het archiveren van documenten.
               Papieren werkbonnen raken zoek, handgeschreven meetwaarden zijn moeilijk leesbaar
               en het handmatig opstellen van rapporten kost uren per week.{' '}
               <strong className="text-[var(--text)]">Werkbon software lost dit structureel op.</strong>
@@ -153,11 +153,11 @@ export default function WerkbonSoftwarePage() {
               Snellio is een digitale werkbon app die speciaal is gebouwd voor airco- en
               warmtepompen installateurs, koeltechnische monteurs en HVAC-bedrijven. U vult de
               werkbon in op uw tablet of telefoon, de klant tekent direct op het scherm en het
-              BRL100-rapport wordt automatisch gegenereerd. Geen papier, geen scanner, geen
+              BRL 100-rapport wordt automatisch gegenereerd. Geen papier, geen scanner, geen
               handmatige rapportage meer.
             </p>
             <p>
-              Omdat Snellio is gebouwd door een BRL100-gecertificeerd installateur, bevat de
+              Omdat Snellio is gebouwd door een BRL 100-gecertificeerd installateur, bevat de
               software precies de velden die u dagelijks nodig heeft: koeltechnische meetwaarden,
               F-gas registratie, lektestdocumentatie en EPBD-informatie. Alles conform de
               actuele wetgeving, zonder dat u er extra administratietijd aan kwijt bent.
@@ -377,7 +377,7 @@ export default function WerkbonSoftwarePage() {
                   <ul className="flex flex-col gap-2.5 list-none">
                     {[
                       'Papieren werkbonnen per installatie invullen',
-                      'BRL100-rapporten handmatig opstellen: 45 min/stuk',
+                      'BRL 100-rapporten handmatig opstellen: 45 min/stuk',
                       'Klant ondertekent papieren bon, thuis inscannen',
                       'Factuur de volgende ochtend apart invoeren',
                       'Wekelijks 3–4 uur kwijt aan administratie',
@@ -396,7 +396,7 @@ export default function WerkbonSoftwarePage() {
                   <ul className="flex flex-col gap-2.5 list-none">
                     {[
                       'Werkbon invullen op tablet: 5 minuten per job',
-                      'BRL100-rapport automatisch klaar bij invullen',
+                      'BRL 100-rapport automatisch klaar bij invullen',
                       'Klant tekent op scherm, PDF direct verstuurd',
                       'Factuur aanmaken vanuit werkbon: 1 klik',
                       'Wekelijks nog geen 20 minuten administratie',
@@ -467,7 +467,7 @@ export default function WerkbonSoftwarePage() {
               {' '}en u heeft een volledig operationeel systeem.
             </p>
             <p>
-              Snellio is als werkbon app specifiek ontworpen voor de HVAC-branche. De software bevat standaard alle koeltechnische velden die nodig zijn voor BRL100-certificering en{' '}
+              Snellio is als werkbon app specifiek ontworpen voor de HVAC-branche. De software bevat standaard alle koeltechnische velden die nodig zijn voor BRL 100-certificering en{' '}
               <a href="/f-gassen-registratie" className="text-[var(--accent)] hover:underline font-medium">F-gas wetgeving</a>
               {' '}, niet als extra module of add-on, maar als integraal onderdeel van iedere werkbon. Dat betekent dat u na het invullen van de handelingen direct een gecertificeerd rapport kunt genereren, zonder extra stappen. De klant ondertekent op het scherm, de PDF wordt automatisch verstuurd en de werkbon is gearchiveerd in het klantdossier. Van opdracht tot afgerond document duurt het nog geen tien minuten, waar dat vroeger een avond administratie kostte.
             </p>

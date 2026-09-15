@@ -60,7 +60,7 @@ const bronnen = [
     href:  'https://iplo.nl/publish/pages/228185/2025-12-05-brl100-versie-3-0-beveiligd-en-printbaar.pdf',
   },
   {
-    label: 'Nota ter informatie overgangsregeling BRL100 certificering, Rijkswaterstaat (pdf via IPLO)',
+    label: 'Nota ter informatie overgangsregeling BRL 100-certificering, Rijkswaterstaat (pdf via IPLO)',
     href:  'https://iplo.nl/publish/pages/228185/nota-ter-informatie-overgangsregeling-brl100-certificering.pdf',
   },
   {

@@ -8,7 +8,7 @@ export const SITE = {
   adres:         'Schepen van Allerpad 17, 6831 MX Arnhem',
   kvk:           '69499829',
   founded:       '2024',
-  description:   'CRM-software voor HVAC- en koeltechnisch installateurs. Werkbonnen, installatiebeheer, BRL100-rapportage en F-gassen flesregistratie in één platform.',
+  description:   'CRM-software voor HVAC- en koeltechnisch installateurs. Werkbonnen, installatiebeheer, werkregistratie en F-gassenbalans zoals BRL 100 vraagt, en flesregistratie in één platform.',
   twitterHandle: '@snellio',
   defaultLocale: 'nl-NL',
 } as const
@@ -134,7 +134,7 @@ export const INBEGREPEN = [
   { icon: '📅', label: 'Planning & Google Calendar-sync' },
   { icon: '🧾', label: 'Facturatie met iDEAL-betaallink' },
   { icon: '❄️', label: 'F-gassen & koudemiddelregistratie' },
-  { icon: '📄', label: 'BRL100-rapportage' },
+  { icon: '📄', label: 'BRL 100-werkregistratie' },
   { icon: '📊', label: 'Dashboard & rapportages' },
   { icon: '🔗', label: 'Gratis koppeling WeFact, Moneybird & Exact Online' },
   { icon: '🔐', label: 'Klantportaal' },
@@ -240,18 +240,6 @@ export const AUTOMOTIVE_PLANS: Plan[] = [
   },
 ]
 
-export const FEATURES = [
-  { icon: '🏠', title: 'Installatiebeheer',        desc: "Beheer al uw installaties met volledige technische specificaties, foto's en servicelogs."        },
-  { icon: '📋', title: 'Werkbonnen & Handelingen', desc: 'Digitale werkbonnen met handtekening ter plaatse. Direct PDF naar klant.'                         },
-  { icon: '📄', title: 'BRL 100-registratie',      desc: 'Werkregistratie en F-gassenbalans zoals BRL 100 vraagt, per handeling, per circuit en per fles.'  },
-  { icon: '❄️', title: 'F-gassen Registratie',      desc: 'Logboek per installatie conform EU F-gas 2024/573, flesregistratie en balans zoals BRL 100 vraagt.'                   },
-  { icon: '📊', title: 'Forecast Dashboard',        desc: 'Inzicht in opbrengsten, werkorders en serviceplanning. Altijd overzicht over uw bedrijf.'          },
-  { icon: '🧾', title: 'Facturatie',                desc: 'Factureer direct vanuit een werkorder. Koppel uw eigen domein voor professionele e-mails.'         },
-  { icon: '📅', title: 'Google Calendar Sync',      desc: 'Werkorders automatisch in uw agenda. Per monteur instelbaar.'                                      },
-  { icon: '👥', title: 'Klanten & Locaties',        desc: 'Volledig klantbeheer met locaties, contactpersonen en installatiehistorie.'                         },
-  { icon: '📚', title: 'Kennisbank',                desc: "Interne kennisbank voor handleidingen, schema's en technische documenten."                         },
-] as const
-
 // Badges op /f-gassen-registratie, /features en Certifications. BRL 100 v3.0
 // kent deelgebieden I, II en III (categorieën horen bij BRL 200). Geen
 // EPBD-claim: niet bevestigd in docs/seo-geo/02-feature-factcheck.md.
@@ -259,10 +247,4 @@ export const CERTS = [
   'BRL 100 deelgebied I',
   'Verordening (EU) 2024/573',
   'R290 en brandbare koudemiddelen',
-] as const
-
-export const STATS = [
-  { value: '100%', suffix: '',    label: 'F-gas compliant' },
-  { value: '5',    suffix: 'min', label: 'setup tijd'      },
-  { value: '14',   suffix: 'dgn', label: 'gratis trial'    },
 ] as const

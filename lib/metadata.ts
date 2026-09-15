@@ -94,7 +94,7 @@ export const rootMetadata: Metadata = {
   },
   description: SITE.description,
   keywords: [
-    'HVAC software', 'koeltechniek CRM', 'BRL100 software', 'F-gassen registratie',
+    'HVAC software', 'koeltechniek CRM', 'BRL 100 software', 'F-gassen registratie',
     'werkbon app installateur', 'airco administratie', 'koeltechnisch logboek',
     'warmtepomp software', 'servicebedrijf CRM', 'installateur app',
   ],

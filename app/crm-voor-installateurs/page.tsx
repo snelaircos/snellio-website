@@ -25,12 +25,12 @@ const pijnpunten = [
 ]
 
 const benefits = [
-  { icon: '📋', title: 'Digitale werkbonnen',        desc: 'Klant tekent op tablet. PDF direct verstuurd. BRL100-rapport automatisch klaar.' },
+  { icon: '📋', title: 'Digitale werkbonnen',        desc: 'Klant tekent op tablet. PDF direct verstuurd. BRL 100-rapport automatisch klaar.' },
   { icon: '📅', title: 'Planning per monteur',        desc: 'Werkorders toewijzen, Google Calendar sync, altijd overzicht.' },
   { icon: '🏗',  title: 'Installatiebeheer',          desc: 'Per klant alle installaties, koudemiddelen en servicehistorie.' },
   { icon: '❄️', title: 'F-gassen registratie',        desc: 'Koudemiddellogboek conform EU F-gas 2024/573, flesregistratie en balans zoals BRL 100 vraagt.' },
   { icon: '🧾', title: 'Facturatie',                  desc: 'Factuur aanmaken vanuit werkbon met iDEAL betaallink via Mollie.' },
-  { icon: '📄', title: 'BRL100 rapportage',           desc: 'Automatisch gegenereerd. Direct klaar voor inspectie.' },
+  { icon: '📄', title: 'BRL 100 rapportage',           desc: 'Automatisch gegenereerd. Direct klaar voor inspectie.' },
 ]
 
 const stappen = [
@@ -50,7 +50,7 @@ const faqs = [
   },
   {
     question: 'Is dit echt voor koeltechniek of is het een algemene tool met een F-gassen-stickertje?',
-    answer:   'Echt voor koeltechniek. Snellio is gebouwd door Rudy Snel, eigenaar van Snel Airco\'s en zelf STEK-gecertificeerd. F-gassen-registratie, BRL100-rapport en lekcontrole-cycli zitten in de kern, niet als plug-in.',
+    answer:   'Echt voor koeltechniek. Snellio is gebouwd door Rudy Snel, eigenaar van Snel Airco\'s en zelf STEK-gecertificeerd. F-gassen-registratie, BRL 100-rapport en lekcontrole-cycli zitten in de kern, niet als plug-in.',
   },
   {
     question: 'Wat als ik na 14 dagen wil stoppen?',
@@ -135,7 +135,7 @@ export default function CrmVoorInstallateursAdsPage() {
                 'Gebouwd door een installateur',
                 'Van werkbon tot factuur in één app',
                 'Werkbon, factuur en F-gassen vanuit één plek',
-                'BRL100-rapport met één klik klaar',
+                'BRL 100-rapport met één klik klaar',
               ].map(item => (
                 <li key={item} className="flex items-center gap-3 text-[var(--text2)] text-sm">
                   <span className="w-5 h-5 rounded-full bg-[rgba(18,168,122,.15)] border border-[rgba(18,168,122,.3)] flex items-center justify-center text-[var(--green)] text-[.7rem] font-bold shrink-0">✓</span>
@@ -294,7 +294,7 @@ export default function CrmVoorInstallateursAdsPage() {
             <p>
               Kies op vier punten. <strong className="text-[var(--text)]">Eén:</strong> werkt de app offline?
               In een kruipruimte of stookhok is geen bereik. <strong className="text-[var(--text)]">Twee:</strong>{' '}
-              zit F-gassen registratie en BRL100-rapportage in de kern, of is het een plug-in van een
+              zit F-gassen registratie en BRL 100-rapportage in de kern, of is het een plug-in van een
               algemeen pakket? <strong className="text-[var(--text)]">Drie:</strong> kunnen je monteurs er zonder
               cursus mee werken? <strong className="text-[var(--text)]">Vier:</strong> zit je vast aan een
               jaarcontract of kun je maandelijks opzeggen? Snellio is gebouwd door een STEK-gecertificeerd

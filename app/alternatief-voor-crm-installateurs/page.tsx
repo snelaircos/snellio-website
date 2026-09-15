@@ -31,11 +31,11 @@ const allesInEenItems = [
   { icon: '📋', title: 'Werkbonnen',         title2: 'Digitaal & ondertekend', desc: 'Klant tekent op tablet ter plaatse, PDF direct naar zijn inbox.' },
   { icon: '📅', title: 'Planning monteurs', title2: 'Met Google Calendar',     desc: 'Werkorders verdelen, monteurs zien hun eigen werk, sync met agenda.' },
   { icon: '💳', title: 'Facturatie',         title2: 'Mollie + boekhouding',   desc: 'Direct vanuit werkbon factureren, iDEAL betaling, koppeling Moneybird/WeFact.' },
-  { icon: '❄️', title: 'F-gassen',           title2: 'BRL100 ready',           desc: 'Flesregistratie, koudemiddel-balans, jaar-rapportage met één klik.' },
+  { icon: '❄️', title: 'F-gassen',           title2: 'BRL 100 ready',           desc: 'Flesregistratie, koudemiddel-balans, jaar-rapportage met één klik.' },
 ]
 
 const watMaaktAndersBullets = [
-  { title: 'Speciaal voor installateurs',  desc: 'Geen generieke service-tool met aangeplakte koeltechniek-features. F-gassen, BRL100 en lekcontrole zit in de kern.' },
+  { title: 'Speciaal voor installateurs',  desc: 'Geen generieke service-tool met aangeplakte koeltechniek-features. F-gassen, BRL 100 en lekcontrole zit in de kern.' },
   { title: 'Nederlandse software',         desc: 'Gebouwd in Nederland, hosting in EU-region (Frankfurt), Nederlandse support.' },
   { title: 'Snelle implementatie',         desc: 'Account aanmaken duurt 5 minuten. Importeer klanten via CSV, meteen aan de slag.' },
   { title: 'Alles gekoppeld',              desc: 'Werkbon → factuur → boekhouding → betaling. Eén keer instellen, daarna automatisch.' },

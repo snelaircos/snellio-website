@@ -148,14 +148,14 @@ export const POSTS: Post[] = [
   {
     slug:        'digitaal-logboek-qr-kenplaat',
     title:       'De kenplaat wordt digitaal: het F-gas logboek achter een QR-code',
-    description: 'Snellio print BRL100-conforme kenplaten met QR-code. Wie de code scant, opent het digitale logboek van de installatie: specificaties én volledige werk-historie, direct bij het apparaat.',
+    description: 'Snellio print BRL 100-conforme kenplaten met QR-code. Wie de code scant, opent het digitale logboek van de installatie: specificaties én volledige werk-historie, direct bij het apparaat.',
     category:    'Product',
     date:        '20 juli 2026',
     dateISO:     '2026-07-20',
     readTime:    '4 min',
     image: {
       src:     '/kenplaat-voorbeeld.png',
-      alt:     'BRL100-conforme kenplaat koelinstallatie geprint vanuit Snellio, met koudemiddel, GWP, nominale vulling, CO2-equivalent en QR-code naar het digitale logboek',
+      alt:     'BRL 100-conforme kenplaat koelinstallatie geprint vanuit Snellio, met koudemiddel, GWP, nominale vulling, CO2-equivalent en QR-code naar het digitale logboek',
       caption: 'Zo komt de kenplaat uit de printer: alle verplichte velden, plus een QR-code naar het digitale logboek.',
       width:   1400,
       height:  933,
@@ -170,7 +170,7 @@ export const POSTS: Post[] = [
       **Hoe het werkt**
 
       Vanuit het installatiedossier in Snellio print u met één klik een kenplaat op een kenplaatprinter
-      (126 × 84 mm label). De plaat bevat alle velden die de BRL100 voorschrijft: het
+      (126 × 84 mm label). De plaat bevat alle velden die de BRL 100 voorschrijft: het
       installatie-identificatienummer, de leverancier, het type koelinstallatie, het koudemiddel met GWP-waarde,
       de nominale vulling, het totale CO2-equivalent en de datum van de laatste controle. Ook uw BRL-100-nummer en
       het BRL-200-nummer van de monteur staan erop. Bevat de installatie een F-gas, dan zet Snellio automatisch de
@@ -213,14 +213,14 @@ export const POSTS: Post[] = [
   },
   {
     slug:        'brl100-uitgelegd',
-    title:       'BRL100 uitgelegd: wat moet u registreren per werkorder?',
-    description: 'Een praktische gids over BRL100-eisen en hoe Snellio dit automatiseert voor HVAC-installateurs.',
+    title:       'BRL 100 uitgelegd: wat moet u registreren per werkorder?',
+    description: 'Een praktische gids over BRL 100-eisen en hoe Snellio dit automatiseert voor HVAC-installateurs.',
     category:    'Regelgeving',
     date:        '15 januari 2025',
     dateISO:     '2025-01-15',
     readTime:    '5 min',
     content:     `
-      De BRL100-certificering stelt eisen aan de registratie van alle koeltechnische handelingen.
+      De BRL 100-certificering stelt eisen aan de registratie van alle koeltechnische handelingen.
       Voor iedere werkorder waarbij u koudemiddelen aanraakt, bent u verplicht bepaalde gegevens vast te leggen.
 
       **Wat moet u registreren?**
@@ -235,7 +235,7 @@ export const POSTS: Post[] = [
 
       **Hoe Snellio dit oplost**
 
-      Snellio genereert automatisch een BRL100-compliant rapport op basis van de koeltechnische handelingen die u invoert.
+      Snellio genereert automatisch een BRL 100-compliant rapport op basis van de koeltechnische handelingen die u invoert.
       U hoeft niets handmatig over te nemen, het systeem verzorgt de juiste lay-out en veldvolgorde. Lees meer over de
       [digitale werkbon-software](/werkbon-software) of bekijk hoe de [F-gassen registratie](/f-gassen-registratie)
       hierop aansluit.
@@ -326,11 +326,11 @@ export const POSTS: Post[] = [
       op een digitale werkbon zien hun betaaltermijn fors korter worden: de factuur is de deur uit terwijl de klus nog
       vers in het geheugen zit. In Snellio maakt u met één klik een factuur vanuit de werkbon, inclusief iDEAL-betaallink.
 
-      **3. BRL100 en F-gassen registratie zonder dubbel werk**
+      **3. BRL 100 en F-gassen registratie zonder dubbel werk**
 
       Voor koeltechnisch installateurs is dit misschien wel het grootste voordeel: de gegevens die u toch al op de
       werkbon vastlegt (metingen, lektest, koudemiddel bijgevuld of afgetapt) vormen automatisch de basis voor het
-      BRL100-rapport en het koudemiddellogboek. Geen aparte administratie meer die u 's avonds moet bijwerken. Lees hoe
+      BRL 100-rapport en het koudemiddellogboek. Geen aparte administratie meer die u 's avonds moet bijwerken. Lees hoe
       dat werkt bij de [F-gassen registratie](/f-gassen-registratie).
 
       **4. Alle historie per klant en per installatie terugvindbaar**

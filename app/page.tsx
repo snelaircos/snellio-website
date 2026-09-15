@@ -16,7 +16,7 @@ const SIGNUP_HREF = '/registreren'
 
 const pijnpunten = [
   { icon: '📋', title: 'Werkbon-chaos',       desc: 'Papieren bonnen die kwijtraken, Excel-bestanden die niemand bijhoudt.' },
-  { icon: '🧪', title: 'F-gassen-rompslomp',  desc: 'Met de hand mutaties bijhouden, BRL100-audit als wachtende stress.' },
+  { icon: '🧪', title: 'F-gassen-rompslomp',  desc: 'Met de hand mutaties bijhouden, BRL 100-audit als wachtende stress.' },
   { icon: '📅', title: 'Planning-puzzel',     desc: 'Elke monteur in zijn eigen Google Calendar, klant belt vier keer.' },
 ]
 
@@ -26,7 +26,7 @@ const pijnpunten = [
 const features = [
   { icon: '🔧', title: 'Digitale werkbon',         desc: 'Klant tekent op telefoon/tablet, PDF in z\'n inbox.', href: '/werkbon-software',           linkLabel: 'Meer over werkbon-software' },
   { icon: '❄️', title: 'F-gassen & koudemiddelen', desc: 'Vullingen/aftappingen automatisch in de balans.',     href: '/f-gassen-registratie',       linkLabel: 'Meer over F-gassen registratie' },
-  { icon: '📊', title: 'BRL100 jaar-rapport',      desc: 'Eén klik. Klaar voor de auditor.',                    href: '/f-gassen-registratie',       linkLabel: 'Meer over BRL100 & F-gassen' },
+  { icon: '📊', title: 'F-gassenbalans per jaar',  desc: 'In kilogram en CO₂-equivalent, zoals BRL 100 §3.3 vraagt.', href: '/brl-100-software',           linkLabel: 'Meer over BRL 100' },
   { icon: '📅', title: 'Planning + Google Calendar', desc: 'Dispatch-board, monteurs zien hun eigen werk.',     href: '/planningssoftware-monteurs', linkLabel: 'Meer over planningssoftware' },
   { icon: '💳', title: 'Facturatie + Mollie',      desc: 'Klant betaalt online, status update direct.',         href: '/crm-voor-installateurs',     linkLabel: 'Meer over het CRM' },
   { icon: '🔗', title: 'Boekhoud-koppeling',       desc: 'WeFact, Moneybird en Exact Online. Gratis bij elk pakket.',    href: '/features',                   linkLabel: 'Bekijk alle functies' },
@@ -42,12 +42,15 @@ const monteurBullets = [
 
 const compliance = [
   {
+    // Berekening van de lekcontroletermijn (art. 5 lid 6) pas noemen als Rudy
+    // bevestigt dat de app die berekent (02, rij 19).
     title: 'F-gassen-verordening (EU 2024/573)',
-    desc:  'Alle vereiste registratie ingebouwd, lekcontrole-cycli automatisch berekend op basis van CO₂-equivalent. Digitaal logboek per installatie, te openen via de QR-code op de zelf geprinte kenplaat.',
+    desc:  'Logboek per installatie met de gegevens uit art. 7, te openen via de QR-code op de zelf geprinte kenplaat.',
   },
   {
-    title: 'BRL100 / BRL200',
-    desc:  'STEK-nummer-veld, monteur-certificering, jaar-rapportage met één klik.',
+    // BRL 200-nummer per monteur pas noemen als Rudy het bevestigt (02, rij 18).
+    title: 'BRL 100',
+    desc:  'Werkregistratie per installatie en per circuit, jaarlijkse F-gassenbalans in kilogram en CO₂-equivalent.',
   },
   {
     title: 'Brandbaar koudemiddel (R290)',
@@ -97,7 +100,7 @@ export default function HomePage() {
             <p className="text-[#0f2133] text-[1.1rem] leading-[1.55] max-w-xl mb-8 pl-4 border-l-[3px] border-[#0090b8]">
               CRM, digitale werkbonnen, planning en facturatie in één systeem. Voor
               installatiebedrijven die klanten, monteurs en installaties overzichtelijk
-              willen beheren. Koeltechniek en airco? Dan zijn F-gassen en BRL100 direct inbegrepen.
+              willen beheren. Koeltechniek en airco? Dan zijn F-gassen en BRL 100 direct inbegrepen.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href={SIGNUP_HREF} className={btnPrimary}>

@@ -11,15 +11,15 @@ import { CERTS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Functies, Wat kan Snellio?',
-  description: 'Ontdek alle functies van Snellio: werkbonnen, digitaal logboek met QR-kenplaten, BRL100-rapportage, F-gassen flesregistratie, facturatie en Google Calendar sync. Alles voor de HVAC-installateur.',
+  description: 'Ontdek alle functies van Snellio: werkbonnen, digitaal logboek met QR-kenplaten, werkregistratie en F-gassenbalans zoals BRL 100 vraagt, flesregistratie, facturatie en Google Calendar sync. Alles voor de HVAC-installateur.',
   path:        '/features',
 })
 
 const faqs = [
-  { question: 'Kan ik BRL100-rapporten automatisch genereren?',
-    answer:   'Ja. Snellio genereert BRL100-rapporten automatisch op basis van de ingevulde koeltechnische handelingen. Je hoeft niets handmatig over te typen.' },
+  { question: 'Legt Snellio de werkregistratie voor BRL 100 automatisch vast?',
+    answer:   'Ja. Elke koeltechnische handeling die je op de werkbon invult, komt in de werkregistratie per installatie en per circuit, zoals BRL 100 §2.5.2 vraagt, en in de F-gassenbalans. Je hoeft niets handmatig over te typen.' },
   { question: 'Kan ik kenplaten printen vanuit Snellio?',
-    answer:   'Ja. Heb je een kenplaatprinter, dan print je per installatie direct vanuit Snellio een BRL100-conforme kenplaat, inclusief QR-code. Wie de QR-code scant, opent het digitale logboek van die installatie met alle specificaties en de volledige werk-historie.' },
+    answer:   'Ja. Heb je een kenplaatprinter, dan print je per installatie direct vanuit Snellio een kenplaat met de velden uit art. 12 en een QR-code. Wie de QR-code scant, opent het digitale logboek van die installatie met alle specificaties en de volledige werk-historie.' },
   { question: 'Werkt de app ook offline?',
     answer:   'Snellio werkt via de browser. Een stabiele internetverbinding is nodig voor synchronisatie, maar op tablet of telefoon is de interface volledig geoptimaliseerd voor gebruik op locatie.' },
   { question: 'Maakt Snellio een TRA en LMRA bij werk met R290?',
@@ -49,11 +49,12 @@ const details = [
     ],
   },
   {
-    icon: '📄', title: 'BRL100 & BRL200 rapportage',
+    // BRL 200-nummer per monteur pas opnemen als Rudy het bevestigt (02, rij 18).
+    icon: '📄', title: 'BRL 100-registraties',
     items: [
-      'Automatisch BRL100-rapport per installatie',
-      'BRL200/Stek-certificaat ondersteuning',
-      'EPBD-gereed voor energieprestatierapportage',
+      'Werkregistratie per installatie en per circuit, zoals BRL 100 §2.5.2 vraagt',
+      'Kopie van de werkregistratie voor de eigenaar of exploitant, digitaal',
+      'Export per installatie en per periode (csv en pdf) voor de auditor',
       'Digitale handtekening inclusief klantbevestiging',
     ],
   },
@@ -82,7 +83,7 @@ const details = [
       'Dashboard met openstaande en uitgevoerde werkorders',
       'F-gas balans per periode',
       'Forecast van geplande werkzaamheden',
-      'Exporteer gegevens voor uw eigen administratie',
+      'Exporteer gegevens voor je eigen administratie',
     ],
   },
 ]
@@ -101,8 +102,8 @@ export default function FeaturesPage() {
           <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">Functies</p>
           <h1 className="font-outfit font-black text-[var(--text)] tracking-tight leading-tight mb-5"
               style={{ fontSize: 'clamp(2.2rem, 5vw, 3.6rem)' }}>
-            Alles wat u nodig heeft,<br />
-            <span className="text-[var(--accent)]">niets wat u niet gebruikt.</span>
+            Alles wat je nodig hebt,<br />
+            <span className="text-[var(--accent)]">niets wat je niet gebruikt.</span>
           </h1>
           <p className="text-[var(--text2)] text-lg leading-relaxed max-w-xl mx-auto mb-10">
             Snellio is gebouwd door een installateur, voor installateurs. Iedere functie is ingegeven door echte werksituaties in de koeltechniek.
@@ -202,7 +203,7 @@ export default function FeaturesPage() {
             <div className="rounded-xl overflow-hidden bg-white shadow-[0_16px_48px_rgba(15,33,51,.14)] ring-1 ring-[rgba(10,187,214,.25)]">
               <Image
                 src="/kenplaat-voorbeeld.png"
-                alt="BRL100-conforme kenplaat koelinstallatie geprint vanuit Snellio, met installatie-identificatienummer, koudemiddel R-32 met GWP, nominale vulling, CO2-equivalent en QR-code naar het digitale logboek"
+                alt="Kenplaat van een koelinstallatie geprint vanuit Snellio, met de velden uit art. 12: installatie-identificatienummer, koudemiddel R-32 met GWP, nominale vulling en CO₂-equivalent, plus een QR-code naar het digitale logboek"
                 width={1400}
                 height={933}
                 className="w-full h-auto block"
@@ -210,7 +211,7 @@ export default function FeaturesPage() {
               />
             </div>
             <p className="text-center text-[var(--muted2)] text-xs mt-3">
-              Zo rolt de kenplaat uit de printer, alle verplichte velden plus QR-code naar het logboek. Scan hem gerust.
+              Zo rolt de kenplaat uit de printer: de velden uit art. 12 plus een QR-code naar het logboek. Scan hem gerust.
             </p>
           </div>
 
@@ -218,11 +219,11 @@ export default function FeaturesPage() {
             {[
               {
                 nr: '1', icon: '🖨️', title: 'Print de kenplaat',
-                desc: 'Heb je een kenplaatprinter, dan print je per installatie een BRL100-conforme kenplaat: koudemiddel, GWP, nominale vulling, CO2-equivalent en je BRL-nummers, plus QR-code.',
+                desc: 'Heb je een kenplaatprinter, dan print je per installatie een kenplaat met de velden uit art. 12 en een QR-code: koudemiddel, GWP, nominale vulling, CO₂-equivalent en je BRL-nummers.',
               },
               {
                 nr: '2', icon: '🏷️', title: 'Plak hem op de installatie',
-                desc: 'De kenplaat komt op de unit te zitten, netjes geprint in plaats van handgeschreven. Alle wettelijk verplichte gegevens staan erop.',
+                desc: 'De kenplaat komt op de unit te zitten, netjes geprint in plaats van handgeschreven. De velden uit art. 12 van Verordening (EU) 2024/573 staan erop.',
               },
               {
                 nr: '3', icon: '📱', title: 'Scan en zie het logboek',
@@ -242,7 +243,7 @@ export default function FeaturesPage() {
             {[
               'Logboek vult zichzelf vanuit werkorders en F-gas registratie',
               'Monteurs zien ter plekke de complete historie',
-              'Voldoet aan de logboekplicht van EU-verordening 2024/573',
+              'Logboek per installatie met de gegevens uit art. 7',
             ].map(punt => (
               <li key={punt} className="flex items-start gap-2.5 text-sm text-[var(--text2)]">
                 <span className="text-[var(--green)] font-bold shrink-0 mt-px">✓</span>
@@ -262,7 +263,7 @@ export default function FeaturesPage() {
       {/* Certificeringen */}
       <section className="py-16 px-[5%] border-y border-[var(--border)] bg-[var(--navy3)]">
         <Container>
-          <h2 className="font-outfit font-bold text-[var(--text)] text-2xl mb-6 text-center">Gecertificeerd & compliant</h2>
+          <h2 className="font-outfit font-bold text-[var(--text)] text-2xl mb-6 text-center">Gebouwd voor BRL 100 en Verordening (EU) 2024/573</h2>
           <div className="flex flex-wrap justify-center gap-3">
             {CERTS.map(cert => (
               <span key={cert} className="inline-flex items-center gap-2 bg-[var(--navy)] border border-[var(--border)] text-[var(--text2)] text-xs font-mono px-4 py-2 rounded-full">
@@ -313,6 +314,29 @@ export default function FeaturesPage() {
               className="w-full h-auto block"
               sizes="(min-width: 1280px) 1152px, 100vw"
             />
+          </div>
+        </Container>
+      </section>
+
+      {/* FAQ: zichtbaar én in het schema, uit dezelfde array */}
+      <section className="py-20 px-[5%]">
+        <Container narrow>
+          <h2 className="font-outfit font-black text-[var(--text)] text-2xl md:text-3xl tracking-tight text-center mb-8">
+            Veelgestelde vragen
+          </h2>
+          <div className="space-y-3">
+            {faqs.map(faq => (
+              <details
+                key={faq.question}
+                className="group rounded-xl border border-[var(--border)] bg-white px-6 py-4 transition-colors hover:border-[rgba(10,187,214,.3)]"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-[.95rem] font-semibold text-[var(--text)]">
+                  {faq.question}
+                  <span className="shrink-0 text-xl leading-none text-[var(--accent)] transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                </summary>
+                <p className="mt-3 text-sm leading-relaxed text-[var(--muted2)]">{faq.answer}</p>
+              </details>
+            ))}
           </div>
         </Container>
       </section>

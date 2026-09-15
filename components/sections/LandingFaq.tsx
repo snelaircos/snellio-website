@@ -1,20 +1,17 @@
-'use client'
-
-import { useState } from 'react'
-
 interface FaqItem {
   question: string
   answer:   string
 }
 
 interface LandingFaqProps {
-  items:     FaqItem[]
-  heading?:  string
+  items:    FaqItem[]
+  heading?: string
 }
 
+// Server component. Elk antwoord staat in de HTML, standaard dichtgeklapt via
+// <details>, zodat rich results en AI-engines dezelfde tekst zien als het
+// FAQPage-schema (docs/seo-geo/09-sitewide-sweep.md §1). Geen useState.
 export default function LandingFaq({ items, heading = 'Veelgestelde vragen' }: LandingFaqProps) {
-  const [open, setOpen] = useState<number | null>(null)
-
   return (
     <section className="py-24 px-[5%] bg-[var(--navy3)]">
       <div className="mx-auto max-w-3xl">
@@ -26,38 +23,29 @@ export default function LandingFaq({ items, heading = 'Veelgestelde vragen' }: L
           </h2>
         </div>
 
-        <dl className="flex flex-col gap-3">
-          {items.map((item, i) => (
-            <div
-              key={i}
-              className={`bg-[var(--navy2)] rounded-xl border transition-colors duration-200 overflow-hidden
-                ${open === i ? 'border-[rgba(10,187,214,.35)]' : 'border-[var(--border)] hover:border-[rgba(10,187,214,.2)]'}`}
+        <div className="flex flex-col gap-3">
+          {items.map(item => (
+            <details
+              key={item.question}
+              className="group bg-[var(--navy2)] rounded-xl border border-[var(--border)] hover:border-[rgba(10,187,214,.2)] open:border-[rgba(10,187,214,.35)] transition-colors duration-200 overflow-hidden"
             >
-              <dt>
-                <button
-                  onClick={() => setOpen(open === i ? null : i)}
-                  className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
-                  aria-expanded={open === i}
+              <summary className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                <span className="font-outfit font-bold text-[var(--text)] text-[.95rem] leading-snug">
+                  {item.question}
+                </span>
+                <span
+                  className="text-[var(--accent)] text-xl shrink-0 transition-transform duration-300 group-open:rotate-45"
+                  aria-hidden="true"
                 >
-                  <span className="font-outfit font-bold text-[var(--text)] text-[.95rem] leading-snug">
-                    {item.question}
-                  </span>
-                  <span
-                    className={`text-[var(--accent)] text-xl shrink-0 transition-transform duration-300 ${open === i ? 'rotate-45' : ''}`}
-                    aria-hidden="true"
-                  >
-                    +
-                  </span>
-                </button>
-              </dt>
-              {open === i && (
-                <dd className="px-6 pb-5 text-[var(--text2)] text-[.88rem] leading-relaxed">
-                  {item.answer}
-                </dd>
-              )}
-            </div>
+                  +
+                </span>
+              </summary>
+              <div className="px-6 pb-5 text-[var(--text2)] text-[.88rem] leading-relaxed">
+                {item.answer}
+              </div>
+            </details>
           ))}
-        </dl>
+        </div>
       </div>
     </section>
   )
