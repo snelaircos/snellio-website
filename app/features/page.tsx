@@ -41,7 +41,7 @@ const details = [
   {
     icon: '❄️', title: 'F-gassen & koudemiddelregistratie',
     items: [
-      'Flesregistratie en F-gassenbalans zoals BRL100 vraagt',
+      'Flesregistratie en F-gassenbalans zoals BRL 100 vraagt',
       'Automatische gram-/kg-berekening per handeling',
       'Track & trace per fles en installatie',
       'Digitaal logboek per installatie (art. 7 EU F-gas 2024/573), via QR op de kenplaat',

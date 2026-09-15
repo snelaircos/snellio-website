@@ -8,3 +8,6 @@ node_modules
 *.env.bak*
 .DS_Store
 tsconfig.tsbuildinfo
+
+# Firecrawl: opgehaalde webcontent is onvertrouwde data, nooit committen
+.firecrawl/

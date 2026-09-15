@@ -28,7 +28,7 @@ const benefits = [
   { icon: '📋', title: 'Digitale werkbonnen',        desc: 'Klant tekent op tablet. PDF direct verstuurd. BRL100-rapport automatisch klaar.' },
   { icon: '📅', title: 'Planning per monteur',        desc: 'Werkorders toewijzen, Google Calendar sync, altijd overzicht.' },
   { icon: '🏗',  title: 'Installatiebeheer',          desc: 'Per klant alle installaties, koudemiddelen en servicehistorie.' },
-  { icon: '❄️', title: 'F-gassen registratie',        desc: 'Koudemiddellogboek conform EU F-gas 2024/573, flesregistratie zoals BRL100 vraagt.' },
+  { icon: '❄️', title: 'F-gassen registratie',        desc: 'Koudemiddellogboek conform EU F-gas 2024/573, flesregistratie en balans zoals BRL 100 vraagt.' },
   { icon: '🧾', title: 'Facturatie',                  desc: 'Factuur aanmaken vanuit werkbon met iDEAL betaallink via Mollie.' },
   { icon: '📄', title: 'BRL100 rapportage',           desc: 'Automatisch gegenereerd. Direct klaar voor inspectie.' },
 ]
