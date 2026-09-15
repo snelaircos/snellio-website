@@ -132,7 +132,7 @@ const voordelen = [
     items: [
       'Alle verplichte velden standaard aanwezig',
       'BRL100-rapportage automatisch gegenereerd',
-      'Flesregistratie conform wetgeving',
+      'Flesregistratie en F-gassenbalans conform BRL100',
       'Lektestdocumentatie direct klaar voor inspectie',
       'TRA, werkvergunning en LMRA bij werk met R290',
     ],
@@ -164,11 +164,11 @@ const voordelen = [
 const faqItems = [
   {
     question: 'Wat is F-gassen registratie software?',
-    answer:   'F-gassen registratie software is een digitaal systeem voor het bijhouden van alle handelingen met gefluoreerde broeikasgassen (F-gassen). Dit omvat het bijvullen en aftappen van koudemiddelen, lektestresultaten, flesregistratie en de bijbehorende documentatie. Conform de EU F-gas Verordening 2024/573 zijn installateurs verplicht deze gegevens nauwkeurig bij te houden. Snellio is specifiek gebouwd voor koeltechnische installateurs en HVAC-bedrijven die deze verplichting efficiënt en foutloos willen nakomen.',
+    answer:   'F-gassen registratie software is een digitaal systeem voor het bijhouden van alle handelingen met gefluoreerde broeikasgassen (F-gassen). Dit omvat het bijvullen en aftappen van koudemiddelen, lektestresultaten en de bijbehorende documentatie. De EU F-gas Verordening 2024/573 verplicht een logboek per apparaat (art. 7), waarvan ook de installateur een kopie bewaart. Flesregistratie en de jaarlijkse F-gassenbalans zijn eisen uit BRL100. Snellio is specifiek gebouwd voor koeltechnische installateurs en HVAC-bedrijven die deze verplichtingen efficiënt en foutloos willen nakomen.',
   },
   {
     question: 'Voldoet Snellio aan EU F-gas Verordening 2024/573?',
-    answer:   'Ja. Snellio voldoet volledig aan de eisen van de EU F-gas Verordening 2024/573. Het systeem registreert alle verplichte gegevens per handeling: type koudemiddel, hoeveelheid, installatie, datum, monteur, lektestresultaat en flesregistratie. Alle gegevens zijn exporteerbaar voor rapportage aan de RVO en voor externe audits.',
+    answer:   'Ja. Snellio voldoet volledig aan de eisen van de EU F-gas Verordening 2024/573. Het systeem registreert de gegevens die art. 7 per apparaat voorschrijft: type koudemiddel, hoeveelheid, installatie, datum, monteur en lektestresultaat. Flesregistratie en de F-gassenbalans, eisen uit BRL100, zitten er ook in. Alle gegevens zijn exporteerbaar voor rapportage aan de RVO en voor externe audits.',
   },
   {
     question: 'Hoe werkt de flesregistratie in Snellio?',
@@ -210,7 +210,7 @@ export default function FgassenRegistratiePage() {
         badge="EU F-gas 2024/573 · BRL100 · Flesregistratie · Lektest"
         heading="F-gassen registratie software"
         headingAccent="voor koeltechnische installateurs."
-        sub="Volledig digitaal koudemiddellogboek per installatie. Flesregistratie, lektestdocumentatie en BRL100-rapportage conform EU F-gas Verordening 2024/573, altijd klaar voor inspectie."
+        sub="Volledig digitaal koudemiddellogboek per installatie en lektestdocumentatie conform EU F-gas Verordening 2024/573. Flesregistratie en F-gassenbalans zoals BRL100 vraagt, altijd klaar voor inspectie."
         ctaPrimary={{ label: 'Start 14 dagen gratis →', href: '/registreren' }}
         ctaSecondary={{ label: 'Bekijk prijzen', href: '/pricing' }}
         trustLine="14 dagen gratis • Geen creditcard nodig • Alle functies inbegrepen"
@@ -236,13 +236,13 @@ export default function FgassenRegistratiePage() {
           </h2>
           <div className="text-[var(--text2)] text-[.96rem] leading-[1.85] space-y-4">
             <p>
-              Iedere installateur die werkt met gefluoreerde broeikasgassen is wettelijk verplicht een nauwkeurig logboek bij te houden van alle handelingen met F-gassen: bijvullen, aftappen, lektests en flesregistratie. De EU F-gas Verordening 2024/573 stelt strenge eisen aan deze registratie en bij een externe inspectie moet u deze documentatie direct kunnen overleggen.
+              Iedere installateur die werkt met gefluoreerde broeikasgassen is wettelijk verplicht een nauwkeurig logboek bij te houden van alle handelingen met F-gassen: bijvullen, aftappen en lektests. De EU F-gas Verordening 2024/573 (art. 7) stelt strenge eisen aan dit logboek per apparaat. Flesregistratie en de jaarlijkse F-gassenbalans komen daar als BRL100-eis bij. Bij een externe inspectie of audit moet u deze documentatie direct kunnen overleggen.
             </p>
             <p>
               Veel installateurs lossen dit op met Excel, een papieren logboek of losse PDF-bestanden. Dat werkt zolang er niets mis gaat, maar bij een inspectie, een certificeringscontrole of een klantgeschil blijkt de documentatie onvolledig, niet te vinden of niet in het juiste format. F-gassen registratie software lost dit structureel op door de registratie direct te integreren in de werkbon en het klantdossier.
             </p>
             <p>
-              Snellio is gebouwd door een BRL100-gecertificeerd installateur en bevat alle velden die de wetgeving vereist: type koudemiddel, hoeveelheid, flesregistratie, lekdetector met ijkdatum, testmethode, testdruk en resultaat. U vult de handelingen in op uw tablet tijdens de service, het BRL100-rapport wordt automatisch gegenereerd en is direct beschikbaar voor de klant en voor inspectie.
+              Snellio is gebouwd door een BRL100-gecertificeerd installateur en bevat alle velden die de verordening en BRL100 vragen: type koudemiddel, hoeveelheid, flesregistratie, lekdetector met ijkdatum, testmethode, testdruk en resultaat. U vult de handelingen in op uw tablet tijdens de service, het BRL100-rapport wordt automatisch gegenereerd en is direct beschikbaar voor de klant en voor inspectie.
             </p>
             <p>
               Omdat Snellio de F-gas registratie koppelt aan het volledige{' '}

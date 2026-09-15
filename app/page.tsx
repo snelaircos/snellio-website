@@ -59,7 +59,7 @@ const compliance = [
   },
 ]
 
-const integraties = ['Mollie', 'Moneybird', 'SnelStart', 'Exact', 'Google Calendar', 'WeFact']
+const integraties = ['Mollie', 'Moneybird', 'Exact', 'Google Calendar', 'WeFact']
 
 const faqs = [
   { question: 'Kan ik mijn data exporteren?',           answer: 'Ja, alles via CSV en PDF. Je data is van jou.' },

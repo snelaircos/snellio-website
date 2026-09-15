@@ -226,7 +226,7 @@ export const FEATURES = [
   { icon: '🏠', title: 'Installatiebeheer',        desc: "Beheer al uw installaties met volledige technische specificaties, foto's en servicelogs."        },
   { icon: '📋', title: 'Werkbonnen & Handelingen', desc: 'Digitale werkbonnen met handtekening ter plaatse. Direct PDF naar klant.'                         },
   { icon: '📄', title: 'BRL100 Rapportage',         desc: 'Automatisch gegenereerde BRL100/BRL200 rapporten die voldoen aan alle certificatie-eisen.'         },
-  { icon: '❄️', title: 'F-gassen Registratie',      desc: 'Flesregistratie en koudemiddel tracking conform EU F-gas verordening 2024/573.'                   },
+  { icon: '❄️', title: 'F-gassen Registratie',      desc: 'Logboek per installatie conform EU F-gas 2024/573, flesregistratie en balans zoals BRL100 vraagt.'                   },
   { icon: '📊', title: 'Forecast Dashboard',        desc: 'Inzicht in opbrengsten, werkorders en serviceplanning. Altijd overzicht over uw bedrijf.'          },
   { icon: '🧾', title: 'Facturatie',                desc: 'Factureer direct vanuit een werkorder. Koppel uw eigen domein voor professionele e-mails.'         },
   { icon: '📅', title: 'Google Calendar Sync',      desc: 'Werkorders automatisch in uw agenda. Per monteur instelbaar.'                                      },

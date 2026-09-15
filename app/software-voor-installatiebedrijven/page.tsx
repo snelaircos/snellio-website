@@ -53,7 +53,7 @@ const functies = [
   },
   {
     titel: 'F-gassen en BRL100',
-    tekst: 'Koudemiddelregistratie, flesregistratie en lekcontrole conform EU-verordening 2024/573, met BRL100-rapportage in één klik. Standaard inbegrepen, ook in het kleinste pakket.',
+    tekst: 'Logboek per installatie en lekcontrole conform EU-verordening 2024/573. Flesregistratie en F-gassenbalans zoals BRL100 vraagt, met rapportage in één klik. Standaard inbegrepen, ook in het kleinste pakket.',
   },
   {
     titel: 'Boekhoudkoppelingen',
