@@ -67,7 +67,7 @@ export default function RudySnelPage() {
         ]),
       ]} />
 
-      <main className="bg-[var(--bg)]">
+      <article className="bg-[var(--bg)]">
         {/* ── Kop ── */}
         <section className="px-[5%] pb-10 pt-14 md:pt-20">
           <div className="mx-auto grid max-w-3xl items-center gap-8 md:grid-cols-[200px_1fr] md:gap-10">
@@ -173,7 +173,7 @@ export default function RudySnelPage() {
             </ul>
           </div>
         </section>
-      </main>
+      </article>
     </>
   )
 }
