@@ -90,13 +90,17 @@ blijven, maar zonder BRL- of F-gassenblokken en met een vaste link naar de pilla
   kwaliteitshandboek. Afwijkingen van `09` (FAQ op `/features` zichtbaar
   gemaakt, badgekop herschreven, `llms.txt` regels 43 en 44, Features.tsx en
   STATS mee opgeruimd) zijn akkoord.
-- Open na taak 5: pagina 6 (vergelijking, alleen met een kwartaalcontrole van
-  de prijzen); pagina 4 (`/werkbon-software` herpositioneren, nog geen
-  dossier); pagina 5 (R290); inhoudelijk herschrijven van "BRL 100-rapport"
-  op `/werkbon-software`, `/crm-voor-installateurs`,
-  `/alternatief-voor-crm-installateurs` en in blogposts (hoort bij pagina 4
-  en 6); screenshot logboek of flesbalans; "Uit de eigen praktijk" en jaren
-  in het vak zodra Rudy de feiten geeft; twee onbevestigde rijen onderaan `02`.
+- 15 september, avond: Rudy bevestigde het BRL 200-nummer per monteur en de
+  berekening van de lekcontroletermijn (beide nu `[x]` in `02`), gaf 2017 als
+  startjaar in de koeltechniek en levert een screenshot van de flesregistratie
+  aan als `public/koelfles-registratie.png`. Bouwen: taak 5b, prompt in het
+  chatverslag van 15 september; kleine wijzigingen op `/features`, `/`,
+  `/over/rudy-snel` en `/f-gassen-registratie`.
+- Open na taak 5b: pagina 4 (`/werkbon-software` herpositioneren, dossier
+  `10` volgt); pagina 6 (vergelijking, alleen met een kwartaalcontrole van de
+  prijzen); pagina 5 (R290); inhoudelijk herschrijven van "BRL 100-rapport"
+  op `/crm-voor-installateurs`, `/alternatief-voor-crm-installateurs` en in
+  blogposts; "Uit de eigen praktijk" zodra Rudy de auditzin geeft.
 
 ## Do these three first
 
