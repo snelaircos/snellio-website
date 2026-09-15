@@ -82,3 +82,21 @@ brl 100 software, brl100 software, erp software installatiebedrijf, wat is brl
   Welke bedrijven moeten een BRL 100-certificaat hebben?
 - Hoe kan ik controleren of een bedrijf een BRL 100-certificaat heeft?
 - Hoe lang is een F-gassencertificaat geldig? Wat kost een F-gassencertificaat?
+
+## Aanvulling 15 september 2026: cluster werkbon (voor pagina 4)
+
+Keyword suggestions op "werkbon" (91 termen met volume): werkbon 480 (KD 1,
+informatief, CPC €9,96), werkbon applicatie 320 (KD 10), werkbon app 320
+(KD 10, €19,87, navigatie), werkbon voorbeeld 210, digitale werkbon 170
+(€19,44, transactioneel), werkbon maken 90, digitale werkbon app 90 (€25,81),
+zelf digitale werkbon maken 70, werkbon software 70 (KD 6, €21,95), werkbon
+app zzp 50, snelstart werkbon 50, digitale werkbon software 50 (KD 13), wat is
+een werkbon 40 (KD 42), werkbon app gratis 30, mobiele werkbon 30 (KD 1),
+stek werkbon 20, digitale werkbon installatietechniek 20 (KD 43).
+
+SERP "werkbon app" en "digitale werkbon": AI Overview op beide, geciteerd:
+OutSmart, TimeMate, Insezo, Bouwportaal, Simple-Simon, AFAS, Appwiki, ECI,
+Viraguides, FieldBuddy, Bluace, ERP Overzicht. Snellio niet in de top 10.
+People also ask: "Hoe kan ik online een werkbon maken?", "Wat zijn de kosten
+van OutSmart?", "Hoe maak ik werkbonnen digitaal?", "Is er een app voor
+werkbonnen?", "Wat moet er op een werkbon staan?". Details in `10`.
