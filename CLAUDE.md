@@ -13,6 +13,22 @@ De applicatie zelf draait op app.snellio.nl en staat niet in deze repo.
 - Taal: Nederlands, je-vorm, geen marketinghype, geen "beste", "enige" of
   "volledig compliant".
 
+## Twee sessies
+
+Er werken twee Claude-sessies in deze repo. Elk heeft één schrijfgebied:
+
+- **Lokale sessie (VSCode, op `main`)**: alle code en content in `app/`, `lib/`,
+  `components/`, `public/` en `.claude/`, plus lint, typecheck, build en de
+  VPS-deploy. Alleen deze sessie kan deployen.
+- **Websessie (Claude Code op het web, op een branch met PR)**: onderzoek met de
+  DataForSEO- en Firecrawl-connectors, en schrijven uitsluitend in `docs/seo-geo/`
+  en `CLAUDE.md`. Nooit in `app/`, `lib/`, `components/` of `public/`. Komt er
+  toch een bouwtaak binnen: niet uitvoeren, maar als voorstel in `docs/seo-geo/`
+  zetten en naar de lokale sessie verwijzen.
+- Opdrachten aan de websessie beginnen met "alleen docs, geen code".
+- Na een deploy doet de websessie de live-check: pagina's ophalen met Firecrawl
+  en schema, datums en links op productie controleren.
+
 ## SEO/GEO-contentplan
 
 Het contentplan staat in `docs/seo-geo/`. Begin bij `docs/seo-geo/00-README.md`.
