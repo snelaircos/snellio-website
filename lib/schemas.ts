@@ -215,8 +215,11 @@ export function webPageSchema(page: {
   path: string; name: string; description: string
   dateModified: string; datePublished?: string
   aboutId?: string
+  /** Screenshot of foto met bijschrift; wordt primaryImageOfPage als ImageObject. */
+  primaryImage?: { src: string; caption: string; width: number; height: number; datePublished?: string }
 }) {
   const url = `${SITE.url}${page.path}`
+  const img = page.primaryImage
   return {
     '@context':   'https://schema.org',
     '@type':      'WebPage',
@@ -230,5 +233,16 @@ export function webPageSchema(page: {
     ...(page.datePublished ? { datePublished: page.datePublished } : {}),
     dateModified: page.dateModified,
     ...(page.aboutId ? { about: { '@id': page.aboutId } } : {}),
+    ...(img ? {
+      primaryImageOfPage: {
+        '@type':    'ImageObject',
+        url:        `${SITE.url}${img.src}`,
+        contentUrl: `${SITE.url}${img.src}`,
+        caption:    img.caption,
+        width:      img.width,
+        height:     img.height,
+        ...(img.datePublished ? { datePublished: img.datePublished } : {}),
+      },
+    } : {}),
   }
 }
