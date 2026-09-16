@@ -38,7 +38,7 @@ Harde regels bij het schrijven of bouwen van pagina's:
 1. Wet- en regelgeving alleen zoals vastgelegd in `docs/seo-geo/01-juridische-basis.md`.
    Afwijken mag alleen met een nieuwe primaire bron, en dan dat bestand bijwerken.
 2. Features alleen claimen als ze in `docs/seo-geo/02-feature-factcheck.md` in de
-   kolom "Bevestigd in app" zijn afgevinkt (22 rijen beantwoord op 15
+   kolom "Bevestigd in app" zijn afgevinkt (29 rijen beantwoord op 15 en 16
    september 2026; "offline werken" is bevestigd als niet beschikbaar), en alleen met de formulering uit de kolom "Mag publiek
    geclaimd worden". SnelStart nooit als koppeling noemen.
 3. LMRA nooit als wettelijke eis. TRA en werkvergunning alleen met de framing
