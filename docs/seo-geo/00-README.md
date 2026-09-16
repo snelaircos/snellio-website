@@ -112,10 +112,11 @@ blijven, maar zonder BRL- of F-gassenblokken en met een vaste link naar de pilla
   auteurspagina, WebPage met dateModified, 5 FAQ-antwoorden in de HTML.
 - Nog te bouwen uit de taak 7-prompt: werkbon-screenshot en Wero op
   `/werkbon-software`, trial-FAQ op de homepage uit de constanten.
-- Taak 8 (restant claims op CRM-, alternatief-, planningpagina en blog): `12`.
-  Bevat de correctie van de art. 13-datums in de blogpost over de verordening
-  (`01` §7, geverifieerd 16 september). Zeven feature-rijen (23 t/m 29) in `02`
-  wachten op Rudy.
+- Taak 8 (restant claims op CRM-, alternatief-, planningpagina en blog): live op
+  main, `a63a262`. Live gecontroleerd 16 september op alle acht URL's, zie `12`
+  §7. Art. 13-datums in de verordening-blog gecorrigeerd.
+- Taak 8b (na merge van PR #7): Wero-formulering, import incl. installaties en
+  API, planningfeatures terug (rijen 23 t/m 29 in `02` bevestigd). Zie `12` §7.
 - Open na taak 8: pagina 6 (vergelijking, alleen met een kwartaalcontrole van
   de prijzen); pagina 5 (R290); "Uit de eigen praktijk" zodra Rudy de auditzin
   geeft; certificeringsdatums natuurlijke koudemiddelen verifiëren (`01` §7).

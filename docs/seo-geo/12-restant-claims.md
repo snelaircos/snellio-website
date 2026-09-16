@@ -28,7 +28,7 @@ Hardgecodeerde prijzen: niet gezien. Offline-FAQ is al gecorrigeerd.
 | "F-gassen, BRL 100 en lekcontrole zit in de kern" | "F-gassenregistratie, BRL 100-werkregistratie en lekcontroletermijnen zitten in de kern" |
 | Doelgroepkaarten met "€10", "€29", "€69", "€129", "tot 25 installaties", "2 monteurs inbegrepen", "5 monteurs inbegrepen" | Uit `PLANS` renderen |
 | "Migratie van je oude systeem is inbegrepen" en "Onze support helpt je gratis met de migratie tijdens de trial" | Alleen laten staan als Rudy dat wil blijven beloven. Anders: "Wij helpen je op weg met de CSV-import." |
-| FAQ "Klantgegevens, locaties en historische werkorders" via CSV | Klopt met `02` rij 15. Installaties alleen toevoegen na bevestiging van rij 27. |
+| FAQ "Klantgegevens, locaties en historische werkorders" via CSV | Aanvullen: "klanten, locaties, werkorders en installaties, via CSV-import of via de API" (`02` rij 15 en 27). |
 | "Een uur per dag aan systemen schakelen ... Dat is een vrije dag per week" | Geen bron. Inkorten tot "Elke dag schakelen tussen systemen en gegevens overtikken." |
 | Meta description "alternatief voor Climapulse" | Laten staan tot pagina 6 bestaat; dan 301 volgens `00`. |
 
@@ -43,8 +43,8 @@ geen prijzen of functieclaims over hen op de pagina.
 | Praktijkvoorbeeld "Airco Totaal", "eigenaar Sandra", "vier monteurs in Noord-Holland", "−90% planningsfouten", "28 → 12 dagen betaaltermijn", "−5 uur planning per week" | Sectie verwijderen. Niet verifieerbaar. |
 | Voordeel "1–2 uur per dag" | Weglaten, geen bron. |
 | "Meerdere monteurs inplannen kan vanaf Pro (2 monteurs inbegrepen)" en soortgelijke pakketfeiten in FAQ | Uit `PLANS` |
-| "iDEAL of Wero betaallink via Mollie" | Blijft (bevestigd), met koppelteken: "iDEAL- of Wero-betaallink" |
-| Werkorderstatus onderweg/bezig/afgerond, overzicht per dag/week/monteur, eigen login per monteur | Blijven alleen na bevestiging van `02` rij 28 en 29; anders neutraler formuleren ("werkorders per monteur, status zichtbaar voor de planner"). |
+| "iDEAL of Wero betaallink via Mollie" | "De factuur gaat per e-mail met een betaallink via Mollie; de klant betaalt met iDEAL of Wero" (`02`) |
+| Werkorderstatus onderweg/bezig/afgerond, overzicht per dag/week/monteur, eigen login per monteur | Bevestigd (`02` rij 28 en 29). Blijven. |
 
 Schema: `WebPage` met `dateModified` en zichtbare regel "Prijzen en functies
 gecontroleerd op [datum]" via `UpdatedOn`, zoals de pillar en de werkbonpagina.
@@ -87,7 +87,7 @@ De alinea "Strengere GWP-grenzen en bijvulverboden" klopt niet met art. 13
 ### `drukste-zomer-airco-monteur-zonder-administratie-achterstand`
 
 - "BRL-100 v3.0" en "BRL-100 versie 3.0" (4x, ook meta description) worden "BRL 100 versie 3.0".
-- Features in deze post (WhatsApp-AI-assistent, planningsvoorstel met akkoord-knop, AI-fotorapport, controle nominale vulling, import via API) staan als rij 23 t/m 27 in `02` en wachten op bevestiging. Rudy schreef de post zelf, dus dat is één "ja" per rij. Tot die tijd de post niet wijzigen, behalve de spelling.
+- Features in deze post (WhatsApp-AI-assistent, planningsvoorstel met akkoord-knop, AI-fotorapport, controle nominale vulling, import via API) zijn bevestigd (`02` rij 23 t/m 27). Inhoud blijft; alleen de spelling aanpassen.
 - Aantallen "ruim 300 werkorders en ruim 240 nieuwe klanten": alleen laten staan als ze uit het dashboard komen.
 
 ### `digitaal-logboek-qr-kenplaat`
@@ -107,3 +107,24 @@ Op alle acht URL's: geen "rapport" in combinatie met BRL 100, geen "conform" of
 "voldoet aan", geen gedachtestreepjes, prijzen gelijk aan `PLANS`,
 `dateModified` opgehoogd, FAQ-antwoorden in de HTML. Op de blog: "Bijgewerkt
 op" zichtbaar en gelijk aan `BlogPosting.dateModified`.
+
+## 7. Live-check (16 september 2026, commit `a63a262`)
+
+Alle acht URL's gecontroleerd. CRM, alternatief en planning: geen "rapport",
+"conform", "voldoet aan" of gedachtestreepje meer, je-vorm, WebPage met
+`dateModified` 16 september en zichtbare datumregel, FAQ-antwoorden in de HTML
+(planning 7 van 7), Airco Totaal en "1–2 uur per dag" weg, prijzen gelijk aan
+`PLANS`. Blogposts: "Bijgewerkt op 16 september 2026" zichtbaar en gelijk aan
+`BlogPosting.dateModified`; `brl100-uitgelegd` met §2.5.2-lijst en link naar de
+BRL-pagina; `f-gas-verordening-2024` met het art. 13-blok (2025, 2026, 2030,
+2032), zonder certificeringsdatums en zonder de 12 kW-zin; kenplaat-blog met
+art. 12-formulering; zomerblog alleen spelling. Werkbonpagina: screenshot en
+Wero live.
+
+Restant voor taak 8b (na merge van PR #7): Wero-formulering ("betaallink in
+de factuurmail, klant betaalt met iDEAL of Wero") op de werkbonpagina in de
+functie "Direct factureren" en de FAQ "Kan ik direct factureren"; import-FAQ op
+de alternatief-pagina en de werkbon-FAQ "Hoe maak ik werkbonnen digitaal"
+aanvullen met installaties en API (`02` rij 15 en 27); planningfeatures
+terugzetten (status onderweg, bezig, afgerond; overzicht per dag, week en
+monteur; eigen login per monteur), want `02` rij 28 en 29 zijn bevestigd.

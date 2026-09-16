@@ -148,7 +148,7 @@ Een generieke werkbon app heeft de bovenste rij en de onderste. De zes rijen ert
 - **Koeltechnische handelingen met eigen velden.** Inbedrijfstelling, lekcontrole, drukbeproeving, vacumeren, koudemiddel toevoegen of terugwinnen, buitendienststelling. Elk type zijn eigen meetvelden.
 - **Werkbon gekoppeld aan de installatie.** Elke bon hangt aan een installatie met type, merk, koudemiddel, vulling en serienummer. De handelingen komen in het logboek per installatie, te openen via de QR-code op de kenplaat.
 - **Foto's en bijlagen.** Bij de werkbon, terug te vinden in het klantdossier.
-- **Direct factureren.** Van werkbon naar factuur in één klik, met iDEAL- of Wero-betaallink via Mollie. Koppeling met Moneybird, WeFact en Exact Online.
+- **Direct factureren.** Van werkbon naar factuur in één klik. De factuur gaat per e-mail met een betaallink via Mollie; de klant betaalt met iDEAL of Wero. Koppeling met Moneybird, WeFact en Exact Online.
 - **Automatisch e-mailen.** De pdf gaat direct na ondertekening naar de klant. Adres aanpasbaar, verzending uit te stellen.
 - **Archief per klant en installatie.** Werkbonnen, foto's en logboek bij elkaar. De werkregistratie blijft bewaard zolang je account bestaat; BRL 100 vraagt minimaal vijf jaar.
 - **Veiligheidsdossier bij brandbare koudemiddelen.** Bij werk aan R290 maakt Snellio bij de werkorder een TRA, een werkvergunning waar die nodig is, en een LMRA die de monteur ter plaatse invult. Framing uit `01` §3: TRA "noodzakelijk" volgens BRL 100 v3.0 als het werk risico's meebrengt, LMRA een werkwijze uit de VCA-praktijk, geen wettelijke eis.
@@ -210,7 +210,7 @@ Snellio werkt in de browser op smartphone en tablet, op iOS en Android, zonder i
 
 **Kan ik direct factureren vanuit de werkbon?**
 
-Ja. Na ondertekening maak je met één klik een factuur aan; de regels worden overgenomen uit de werkbon. Je stuurt de factuur met een iDEAL- of Wero-betaallink via Mollie. De factuur gaat mee naar Moneybird, WeFact of Exact Online als je die koppeling gebruikt.
+Ja. Na ondertekening maak je met één klik een factuur aan; de regels worden overgenomen uit de werkbon. De factuur gaat per e-mail met een betaallink via Mollie; de klant betaalt met iDEAL of Wero. De factuur gaat mee naar Moneybird, WeFact of Exact Online als je die koppeling gebruikt.
 
 **Werkt Snellio met mijn boekhoudpakket?**
 
@@ -239,7 +239,7 @@ Bestaande `Cta`. Tekst erboven: "Maak vandaag je eerste digitale werkbon. [TRIAL
 
 ## Beantwoord door Rudy (15 september 2026)
 
-- Wero-betaallink via Mollie: ja. Blijft op de pagina.
+- Wero: ja, als betaalmethode in de betaallink van de factuurmail. Zo formuleren.
 - Offline: nee, er is een verbinding nodig. FAQ hierboven zegt dat. De
   homepage-FAQ ("werkbon kan worden ingevuld zonder verbinding") en de
   dubbelzinnige FAQ op `/features` moeten mee in taak 5b.
@@ -255,6 +255,6 @@ FAQ-antwoorden letterlijk in de HTML, twee echte tabellen, drie bronlinks,
 link naar `/over/rudy-snel`. Geen "rapport", "EPBD", "Wero", "Tim",
 "gelijkwaardig", "voldoet aan", "compliant" of u-vorm meer. Afwijkingen van de
 lokale sessie (offline-zin weg, "installaties via CSV" weg, trial-constante,
-datum 16 september) zijn akkoord. Wero mag terug zodra PR #5 met de
-factcheck-rij gemerged is; dat is één regel in de functie "Direct factureren"
-en in de FAQ "Kan ik direct factureren".
+datum 16 september) zijn akkoord. Wero: formulering uit `02` (betaallink in de factuurmail, klant betaalt met
+iDEAL of Wero), in de functie "Direct factureren" en de FAQ "Kan ik direct
+factureren". Screenshot staat lokaal als `public/werkbon-voorbeeld.png`.
