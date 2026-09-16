@@ -6,7 +6,7 @@ sinds wanneer, en is er iets sterkers dan marketingtekst (screenshot, juridisch
 document). De kolom **"Bevestigd in app"** vul je in na controle in een live
 account. Pas daarna mag een feature in nieuwe content.
 
-Laatst bijgewerkt: 15 september 2026. Alle 22 rijen beantwoord door Rudy Snel op 15 september 2026; 21 bevestigd, 1 (offline werken) bevestigd als niet beschikbaar.
+Laatst bijgewerkt: 15 september 2026. Rijen 1 t/m 22 beantwoord door Rudy Snel op 15 september 2026 (21 bevestigd, offline werken bevestigd als niet beschikbaar). Rijen 23 t/m 29 zijn op 16 september toegevoegd uit de blogposts en de planningpagina en wachten op bevestiging.
 
 | Feature | Status | Bewijs in repo | Mag publiek geclaimd worden | Bevestigd in app (datum, door) |
 | --- | --- | --- | --- | --- |
@@ -32,6 +32,13 @@ Laatst bijgewerkt: 15 september 2026. Alle 22 rijen beantwoord door Rudy Snel op
 | Wero-betaallink via Mollie | Bevestigd | `/werkbon-software`: "iDEAL of Wero betaallink via Mollie". | "iDEAL- of Wero-betaallink via Mollie". | [x] 15-09-2026, Rudy Snel |
 | Offline werken | **Niet beschikbaar** | Homepage-FAQ claimt "werkbon kan worden ingevuld zonder verbinding, sync zodra hij online komt"; `/features`-FAQ is dubbelzinnig. Rudy: er is een verbinding nodig. | **Nooit** claimen. Schrijf: "Snellio werkt in de browser en heeft een internetverbinding nodig." | [x] 15-09-2026, Rudy Snel (bevestigd dat het niet kan) |
 | Vastlegging bij handtekening | Bevestigd | Naam, datum en tijdstip van de ondertekenaar. Geen IP-adres. | "Naam, datum en tijdstip worden vastgelegd." Geen IP, geen apparaat, geen "tijdstempel met bewijskracht". | [x] 15-09-2026, Rudy Snel |
+| WhatsApp-aanvragen met AI-assistent | Geclaimd in blog | `blog/drukste-zomer...`: AI-assistent op een WhatsApp-nummer vraagt installatie, adres en postcode uit; "ruim 300 werkorders en ruim 240 nieuwe klanten deze zomer". | Alleen als bevestigd, zonder de aantallen tenzij Rudy ze uit het dashboard haalt. | [ ] |
+| Planningsvoorstel per e-mail met akkoord-knop | Geclaimd in blog | Idem: klant krijgt mail met akkoord, afwijzen of ander moment; groen of oranje in Google Agenda. | Alleen als bevestigd. | [ ] |
+| AI-fotorapport (pdf uit foto's en toelichting) | Geclaimd in blog | Idem: foto's met korte toelichting, assistent schrijft technisch rapport, pdf als bijlage. | Alleen als bevestigd. | [ ] |
+| Controle nominale vulling bij bijvullen op nieuwe installatie | Geclaimd in blog | Idem: bij opslaan van de werkorder vraagt het programma of de nominale vulling aangepast moet worden. | Alleen als bevestigd. | [ ] |
+| Import van installaties (CSV of API) | Geclaimd in blog en alternatief-pagina | Blog-FAQ: "via een import of via de API". Rij 15 dekt alleen klanten, locaties en werkorders via CSV. | Alleen als bevestigd, dan rij 15 aanpassen. | [ ] |
+| Werkorderstatus onderweg, bezig, afgerond | Geclaimd op `/planningssoftware-monteurs` | "Monteur markeert de werkorder als onderweg, bezig of afgerond. U ziet de voortgang realtime." | Alleen als bevestigd. | [ ] |
+| Planningsoverzicht per dag, week en monteur; eigen login per monteur | Geclaimd op `/planningssoftware-monteurs` | Functiekaarten en FAQ. | Alleen als bevestigd. | [ ] |
 
 ## Drie tekstfixes op productie (uitgevoerd 15 september 2026)
 
