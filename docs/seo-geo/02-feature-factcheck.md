@@ -6,7 +6,7 @@ sinds wanneer, en is er iets sterkers dan marketingtekst (screenshot, juridisch
 document). De kolom **"Bevestigd in app"** vul je in na controle in een live
 account. Pas daarna mag een feature in nieuwe content.
 
-Laatst bijgewerkt: 15 september 2026. Alle 19 rijen bevestigd in de app door Rudy Snel op 15 september 2026 (de laatste twee 's avonds).
+Laatst bijgewerkt: 15 september 2026. Alle 22 rijen beantwoord door Rudy Snel op 15 september 2026; 21 bevestigd, 1 (offline werken) bevestigd als niet beschikbaar.
 
 | Feature | Status | Bewijs in repo | Mag publiek geclaimd worden | Bevestigd in app (datum, door) |
 | --- | --- | --- | --- | --- |
@@ -29,6 +29,9 @@ Laatst bijgewerkt: 15 september 2026. Alle 19 rijen bevestigd in de app door Rud
 | Export van data | Geclaimd | Pillar-FAQ: CSV en PDF; `/f-gassen-registratie`: per installatie en per periode. | Ja, mits bevestigd. | [x] 15-09-2026, Rudy Snel |
 | BRL 200-nummer per monteur | Bevestigd | Veld in de monteursinstellingen van de app. Geen B1-veld. | "BRL 200-nummer van je monteurs bij de medewerker" (of "in de monteursinstellingen"). Geen B1, geen "certificaat-ondersteuning". | [x] 15-09-2026, Rudy Snel |
 | Lekcontroletermijn berekend uit CO2-equivalent (art. 5 lid 6) | Bevestigd | De app berekent het CO2-equivalent van de vulling en de lekcontroletermijn zelf; installaties vanaf 5 ton CO2-equivalent komen in de forecast. | "Snellio berekent het CO2-equivalent van de vulling en zet de lekcontrole in de forecast voor installaties vanaf 5 ton CO2-equivalent (art. 5 lid 1), met de termijn uit art. 5 lid 6." Niet claimen dat de hermetische uitzonderingen of het lekkagedetectiesysteem automatisch worden meegewogen; dat is niet gevraagd. | [x] 15-09-2026, Rudy Snel |
+| Wero-betaallink via Mollie | Bevestigd | `/werkbon-software`: "iDEAL of Wero betaallink via Mollie". | "iDEAL- of Wero-betaallink via Mollie". | [x] 15-09-2026, Rudy Snel |
+| Offline werken | **Niet beschikbaar** | Homepage-FAQ claimt "werkbon kan worden ingevuld zonder verbinding, sync zodra hij online komt"; `/features`-FAQ is dubbelzinnig. Rudy: er is een verbinding nodig. | **Nooit** claimen. Schrijf: "Snellio werkt in de browser en heeft een internetverbinding nodig." | [x] 15-09-2026, Rudy Snel (bevestigd dat het niet kan) |
+| Vastlegging bij handtekening | Bevestigd | Naam, datum en tijdstip van de ondertekenaar. Geen IP-adres. | "Naam, datum en tijdstip worden vastgelegd." Geen IP, geen apparaat, geen "tijdstempel met bewijskracht". | [x] 15-09-2026, Rudy Snel |
 
 ## Drie tekstfixes op productie (uitgevoerd 15 september 2026)
 
@@ -40,12 +43,12 @@ Laatst bijgewerkt: 15 september 2026. Alle 19 rijen bevestigd in de app door Rud
 
 ## Consequentie voor nieuwe content
 
-Alle 19 rijen zijn bevestigd. Elke feature in de tabel mag in nieuwe content, met
+Alle rijen zijn beantwoord. Elke bevestigde feature in de tabel mag in nieuwe content, met
 de formuleringsregels uit de kolom "Mag publiek geclaimd worden": geen
 "BRL100-rapport" maar werkregistratie en F-gassenbalans; kenplaat "printbaar op
 je eigen labelprinter"; TRA, LMRA en werkvergunning uitsluitend met de framing
-uit `01-juridische-basis.md` §3; installatie-import als "klanten, locaties,
-werkorders en installaties via CSV". SnelStart blijft buiten alle lijsten.
+uit `01-juridische-basis.md` §3; installatie-import als "klanten, locaties en
+werkorders via CSV" (of installaties ook via CSV kunnen, moet Rudy nog bevestigen). SnelStart blijft buiten alle lijsten.
 
 Nog open op de site, buiten deze drie fixes: het woord "volledig" in
 `app/f-gassen-registratie/page.tsx` (FAQ "Voldoet Snellio aan...") en

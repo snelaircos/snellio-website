@@ -95,13 +95,19 @@ blijven, maar zonder BRL- of F-gassenblokken en met een vaste link naar de pilla
 - 15 september, avond: Rudy bevestigde het BRL 200-nummer per monteur en de
   berekening van de lekcontroletermijn (beide nu `[x]` in `02`), gaf 2017 als
   startjaar in de koeltechniek en levert een screenshot van de flesregistratie
-  aan als `public/koelfles-registratie.png`. Bouwen: taak 5b, prompt in het
-  chatverslag van 15 september; kleine wijzigingen op `/features`, `/`,
-  `/over/rudy-snel` en `/f-gassen-registratie`.
-- Taak 6 (pagina 4, `/werkbon-software` herpositioneren): tekst klaar in `10`.
-  Bevat ook de correctie van de onjuiste eIDAS-claim (nu `01` §6). Bouwen na 5b.
-- Taak 7 (homepage: volgorde en afwerking): voorstel in `11`. Na taak 6.
-- Open na taak 7: pagina 6 (vergelijking, alleen met een kwartaalcontrole van de
+  aan als `public/koelfles-registratie.png`. Later op de avond: Wero bevestigd,
+  offline werken **niet** beschikbaar (homepage-FAQ en `/features`-FAQ claimen
+  dat wel; fixen in 5b), handtekening legt naam, datum en tijdstip vast.
+  Bouwen: taak 5b, prompt in het chatverslag van 15 september; kleine
+  wijzigingen op `/features`, `/`, `/over/rudy-snel` en `/f-gassen-registratie`.
+- Taak 5b: volledig live (`22911ea`, `00d5172`). Offline-claim weg op homepage,
+  `/features` en `/crm-voor-installateurs`; `koelfles-registratie.png` live op
+  `/f-gassen-registratie` als figuur en `Article.image`.
+- Taak 6 (pagina 4, `/werkbon-software`): live op main, `e958dd0`. Live
+  gecontroleerd 16 september, zie `10` onderaan. eIDAS-claim weg.
+- Taak 7 (homepage: volgorde en afwerking): voorstel in `11`. Nu.
+- Taak 8 (restant claims op CRM-, alternatief-, planningpagina en blog): `09` §6.
+- Open na taak 8: pagina 6 (vergelijking, alleen met een kwartaalcontrole van de
   prijzen); pagina 5 (R290); inhoudelijk herschrijven van "BRL 100-rapport"
   op `/crm-voor-installateurs`, `/alternatief-voor-crm-installateurs` en in
   blogposts; "Uit de eigen praktijk" zodra Rudy de auditzin geeft.

@@ -64,8 +64,13 @@ citeerbaar maakt.
   `LandingProblemsVsOplossingen`, `LandingFaq` (nu `<details>`),
   `LandingInternalLinks`, `Cta`. De sectie "Wat moet er op een werkbon staan"
   is nieuw en krijgt een echte `<table>`.
-- Eén echte screenshot van een werkbon in Snellio (geanonimiseerd), met
-  bijschrift en datum. Open punt voor Rudy.
+- Afbeelding: Rudy heeft op 16 september een screenshot van een werkbon
+  aangeleverd in `public/` als "werkbon-voorbeeld" (bestandsnaam en extensie
+  controleren, hernoemen naar `werkbon-voorbeeld.png` zonder spaties). Plaatsen
+  als figuur bij "Zo werkt de werkbon app", geanonimiseerd, met bijschrift
+  "Werkbon in Snellio met koeltechnische handelingen en handtekening.
+  Screenshot: 16 september 2026." en als `WebPage.primaryImageOfPage`
+  (`ImageObject` met `caption` en `datePublished`).
 - Sectie "Bronnen" onderaan, drie bronnen, ook al is dit een commerciële pagina:
   de tabel over de werkbonvelden verwijst naar BRL 100 en de verordening.
 
@@ -76,7 +81,7 @@ citeerbaar maakt.
 | "BRL 100 rapport automatisch", "BRL 100-compliant rapport", "BRL 100-rapport wordt automatisch gegenereerd", "gecertificeerd rapport", "BRL 100-documenten", hero-stat "BRL100 Automatisch rapport", badge "BRL 100 compliant" (in totaal 14 plekken) | BRL 100 kent geen rapport (`02`, rij 1). | "De werkbon is de werkregistratie die BRL 100 §2.5.2 vraagt; elke handeling komt in het logboek van de installatie." |
 | FAQ "Is de digitale handtekening juridisch geldig? Ja. De digitale handtekening in Snellio voldoet aan de eIDAS-verordening en is juridisch gelijkwaardig aan een handgeschreven handtekening." en "Juridisch geldig" bij de oplossingen | Onjuist. Alleen een gekwalificeerde elektronische handtekening heeft hetzelfde rechtsgevolg als een handgeschreven (art. 25 lid 2). Een handtekening op een scherm is een gewone elektronische handtekening: die mag niet worden geweigerd omdat hij elektronisch is (art. 25 lid 1), maar is niet gelijkgesteld. Zie `01` §6. | Sectie en FAQ "Wat is een handtekening op het scherm juridisch" hieronder. |
 | "koeltechnische meetwaarden, F-gas registratie, lektestdocumentatie en EPBD-informatie" | EPBD niet in `02`. | Zin zonder EPBD. |
-| "iDEAL of Wero betaallink via Mollie" (2x) | Wero staat niet in `02`. Rij 14 dekt Mollie en iDEAL. | "iDEAL-betaallink via Mollie". Wero alleen na bevestiging in de app. |
+| "iDEAL of Wero betaallink via Mollie" | Bevestigd op 15 september (`02`). Blijft, met koppelteken. | "iDEAL- of Wero-betaallink via Mollie". |
 | Praktijkvoorbeeld "Tim, airco installateur zzp, regio Utrecht", "45 min/stuk", "van 4 uur naar 20 minuten", "3+ uur/week", "Start net als Tim" | Niet verifieerbaar, leest als verzonnen. | Weglaten. Eventueel later vervangen door Rudy's eigen praktijk met bevestigde feiten. |
 | "2–4 uur/week" tijdsbesparing, "Altijd inzicht" | Geen bron. | Voordelen zonder cijfers. |
 | "conform BRL 100/BRL 200" bij warmtepompinstallateur | BRL 200 is een persoonscertificaat; een werkbon is niet "conform BRL 200". | "met de velden die BRL 100 aan de werkregistratie stelt". |
@@ -143,7 +148,7 @@ Een generieke werkbon app heeft de bovenste rij en de onderste. De zes rijen ert
 - **Koeltechnische handelingen met eigen velden.** Inbedrijfstelling, lekcontrole, drukbeproeving, vacumeren, koudemiddel toevoegen of terugwinnen, buitendienststelling. Elk type zijn eigen meetvelden.
 - **Werkbon gekoppeld aan de installatie.** Elke bon hangt aan een installatie met type, merk, koudemiddel, vulling en serienummer. De handelingen komen in het logboek per installatie, te openen via de QR-code op de kenplaat.
 - **Foto's en bijlagen.** Bij de werkbon, terug te vinden in het klantdossier.
-- **Direct factureren.** Van werkbon naar factuur in één klik, met iDEAL-betaallink via Mollie. Koppeling met Moneybird, WeFact en Exact Online.
+- **Direct factureren.** Van werkbon naar factuur in één klik, met iDEAL- of Wero-betaallink via Mollie. Koppeling met Moneybird, WeFact en Exact Online.
 - **Automatisch e-mailen.** De pdf gaat direct na ondertekening naar de klant. Adres aanpasbaar, verzending uit te stellen.
 - **Archief per klant en installatie.** Werkbonnen, foto's en logboek bij elkaar. De werkregistratie blijft bewaard zolang je account bestaat; BRL 100 vraagt minimaal vijf jaar.
 - **Veiligheidsdossier bij brandbare koudemiddelen.** Bij werk aan R290 maakt Snellio bij de werkorder een TRA, een werkvergunning waar die nodig is, en een LMRA die de monteur ter plaatse invult. Framing uit `01` §3: TRA "noodzakelijk" volgens BRL 100 v3.0 als het werk risico's meebrengt, LMRA een werkwijze uit de VCA-praktijk, geen wettelijke eis.
@@ -199,13 +204,13 @@ Kies een werkbon app, zet je klanten en installaties erin (in Snellio via CSV-im
 
 Een handtekening op een telefoon of tablet is een elektronische handtekening volgens Verordening (EU) 910/2014 (eIDAS). Die mag niet als bewijs worden geweigerd alleen omdat hij elektronisch is (art. 25 lid 1). Hij is niet gelijkgesteld aan een handgeschreven handtekening; dat geldt alleen voor een gekwalificeerde elektronische handtekening met een gekwalificeerd certificaat (art. 25 lid 2). Voor een werkbon volstaat de handtekening op het scherm samen met naam, datum, tijdstip en het dossier.
 
-**Werkt de werkbon app op telefoon en tablet?**
+**Werkt de werkbon app op telefoon en tablet, ook zonder verbinding?**
 
-Ja. Snellio is een webapplicatie voor smartphone en tablet, op iOS en Android, zonder installatie uit een app store. Zonder verbinding kun je een werkbon invullen; de synchronisatie volgt zodra het apparaat weer online is.
+Snellio werkt in de browser op smartphone en tablet, op iOS en Android, zonder installatie uit een app store. Er is een internetverbinding nodig; zonder verbinding kun je geen werkbon invullen. Op locaties zonder bereik vul je de bon in zodra je weer verbinding hebt.
 
 **Kan ik direct factureren vanuit de werkbon?**
 
-Ja. Na ondertekening maak je met één klik een factuur aan; de regels worden overgenomen uit de werkbon. Je stuurt de factuur met een iDEAL-betaallink via Mollie. De factuur gaat mee naar Moneybird, WeFact of Exact Online als je die koppeling gebruikt.
+Ja. Na ondertekening maak je met één klik een factuur aan; de regels worden overgenomen uit de werkbon. Je stuurt de factuur met een iDEAL- of Wero-betaallink via Mollie. De factuur gaat mee naar Moneybird, WeFact of Exact Online als je die koppeling gebruikt.
 
 **Werkt Snellio met mijn boekhoudpakket?**
 
@@ -232,9 +237,24 @@ Bestaande `Cta`. Tekst erboven: "Maak vandaag je eerste digitale werkbon. [TRIAL
 - `/planningssoftware-monteurs`: "Planning voor monteurs"
 - `/pricing`: "Prijzen, alles inbegrepen"
 
-## Open punten voor Rudy
+## Beantwoord door Rudy (15 september 2026)
 
-1. Screenshot van een werkbon in Snellio, geanonimiseerd, voor de sectie "Zo werkt de werkbon app".
-2. Wero: zit een Wero-betaallink via Mollie echt in de app? Zo ja: rij toevoegen in `02` en de claim terug. Zo nee: blijft weg.
-3. Offline: klopt "werkbon invullen zonder verbinding, sync zodra online" (staat nu op de homepage)? Zo nee: die zin uit de FAQ.
-4. Wat legt Snellio precies vast bij een handtekening: naam, datum, tijdstip, en ook IP-adres of apparaat? Alleen wat vastligt, wordt genoemd.
+- Wero-betaallink via Mollie: ja. Blijft op de pagina.
+- Offline: nee, er is een verbinding nodig. FAQ hierboven zegt dat. De
+  homepage-FAQ ("werkbon kan worden ingevuld zonder verbinding") en de
+  dubbelzinnige FAQ op `/features` moeten mee in taak 5b.
+- Handtekening: naam, datum en tijdstip, geen IP-adres. Tekst hierboven klopt.
+- Screenshot werkbon: op 16 september alsnog aangeleverd, zie bouwinstructies.
+
+## Live-check (16 september 2026, commit `e958dd0`)
+
+WebPage met `datePublished` uit git en `dateModified` 16 september, breadcrumb
+"Home › Werkbon app", geen Article of Person, "Prijzen en functies
+gecontroleerd op 16 september 2026" onder de H1, answer-first 59 woorden, 8
+FAQ-antwoorden letterlijk in de HTML, twee echte tabellen, drie bronlinks,
+link naar `/over/rudy-snel`. Geen "rapport", "EPBD", "Wero", "Tim",
+"gelijkwaardig", "voldoet aan", "compliant" of u-vorm meer. Afwijkingen van de
+lokale sessie (offline-zin weg, "installaties via CSV" weg, trial-constante,
+datum 16 september) zijn akkoord. Wero mag terug zodra PR #5 met de
+factcheck-rij gemerged is; dat is één regel in de functie "Direct factureren"
+en in de FAQ "Kan ik direct factureren".
