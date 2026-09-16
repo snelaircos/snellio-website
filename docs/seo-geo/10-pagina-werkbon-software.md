@@ -64,9 +64,13 @@ citeerbaar maakt.
   `LandingProblemsVsOplossingen`, `LandingFaq` (nu `<details>`),
   `LandingInternalLinks`, `Cta`. De sectie "Wat moet er op een werkbon staan"
   is nieuw en krijgt een echte `<table>`.
-- Afbeelding: geen nieuwe screenshot nodig. Gebruik `public/monteur-app.png`
-  (bestaat, alt-tekst over werkorders op de telefoon) bij de sectie "Zo werkt
-  de werkbon app".
+- Afbeelding: Rudy heeft op 16 september een screenshot van een werkbon
+  aangeleverd in `public/` als "werkbon-voorbeeld" (bestandsnaam en extensie
+  controleren, hernoemen naar `werkbon-voorbeeld.png` zonder spaties). Plaatsen
+  als figuur bij "Zo werkt de werkbon app", geanonimiseerd, met bijschrift
+  "Werkbon in Snellio met koeltechnische handelingen en handtekening.
+  Screenshot: 16 september 2026." en als `WebPage.primaryImageOfPage`
+  (`ImageObject` met `caption` en `datePublished`).
 - Sectie "Bronnen" onderaan, drie bronnen, ook al is dit een commerciële pagina:
   de tabel over de werkbonvelden verwijst naar BRL 100 en de verordening.
 
@@ -240,4 +244,17 @@ Bestaande `Cta`. Tekst erboven: "Maak vandaag je eerste digitale werkbon. [TRIAL
   homepage-FAQ ("werkbon kan worden ingevuld zonder verbinding") en de
   dubbelzinnige FAQ op `/features` moeten mee in taak 5b.
 - Handtekening: naam, datum en tijdstip, geen IP-adres. Tekst hierboven klopt.
-- Screenshot werkbon: niet nu. `monteur-app.png` gebruiken.
+- Screenshot werkbon: op 16 september alsnog aangeleverd, zie bouwinstructies.
+
+## Live-check (16 september 2026, commit `e958dd0`)
+
+WebPage met `datePublished` uit git en `dateModified` 16 september, breadcrumb
+"Home › Werkbon app", geen Article of Person, "Prijzen en functies
+gecontroleerd op 16 september 2026" onder de H1, answer-first 59 woorden, 8
+FAQ-antwoorden letterlijk in de HTML, twee echte tabellen, drie bronlinks,
+link naar `/over/rudy-snel`. Geen "rapport", "EPBD", "Wero", "Tim",
+"gelijkwaardig", "voldoet aan", "compliant" of u-vorm meer. Afwijkingen van de
+lokale sessie (offline-zin weg, "installaties via CSV" weg, trial-constante,
+datum 16 september) zijn akkoord. Wero mag terug zodra PR #5 met de
+factcheck-rij gemerged is; dat is één regel in de functie "Direct factureren"
+en in de FAQ "Kan ik direct factureren".

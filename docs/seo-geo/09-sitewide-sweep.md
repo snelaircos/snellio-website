@@ -81,3 +81,16 @@ componenten werd gebruikt. Eerst `grep` om dat te bevestigen.
 Daarna live-check door de websessie: FAQ-antwoorden in de HTML op
 `/f-gassen-registratie` en de pillar, geen "BRL100" meer in zichtbare tekst,
 featurespagina zonder de vijf verwijderde claims.
+
+## 6. Restant na taak 6 (gezien op 16 september 2026)
+
+`/crm-voor-installateurs` live: "BRL 100-rapport met één klik klaar" (hero),
+"BRL 100-rapport automatisch klaar" (functiekaart), kaart "BRL 100 rapportage:
+Automatisch gegenereerd. Direct klaar voor inspectie", "Koudemiddellogboek
+conform EU F-gas 2024/573", FAQ "F-gassen-registratie, BRL 100-rapport en
+lekcontrole-cycli zitten in de kern", keuzecriterium "BRL 100-rapportage in de
+kern", en twee gedachtestreepjes (—) in de SEO-tekst. Dezelfde vervangingen als
+in §2: werkregistratie en F-gassenbalans zoals BRL 100 vraagt; logboek per
+installatie met de gegevens uit art. 7; streepjes vervangen door een punt of
+komma. Ook `/alternatief-voor-crm-installateurs`, `/planningssoftware-monteurs`
+en de blogposts op dezelfde woorden nalopen. Dit is taak 8, na taak 7.

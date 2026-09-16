@@ -47,8 +47,8 @@ Alle rijen zijn beantwoord. Elke bevestigde feature in de tabel mag in nieuwe co
 de formuleringsregels uit de kolom "Mag publiek geclaimd worden": geen
 "BRL100-rapport" maar werkregistratie en F-gassenbalans; kenplaat "printbaar op
 je eigen labelprinter"; TRA, LMRA en werkvergunning uitsluitend met de framing
-uit `01-juridische-basis.md` §3; installatie-import als "klanten, locaties,
-werkorders en installaties via CSV". SnelStart blijft buiten alle lijsten.
+uit `01-juridische-basis.md` §3; installatie-import als "klanten, locaties en
+werkorders via CSV" (of installaties ook via CSV kunnen, moet Rudy nog bevestigen). SnelStart blijft buiten alle lijsten.
 
 Nog open op de site, buiten deze drie fixes: het woord "volledig" in
 `app/f-gassen-registratie/page.tsx` (FAQ "Voldoet Snellio aan...") en
