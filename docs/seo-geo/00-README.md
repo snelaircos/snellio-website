@@ -35,7 +35,8 @@ automatisch.
 | `08-pagina-f-gassen-registratie.md` | Volledige tekst, metadata, schema, verwijderlijst en FAQ voor het uitbreiden van `/f-gassen-registratie` | Taak 4, live sinds `77eee43`. |
 | `09-sitewide-sweep.md` | FAQ-component naar `<details>`, claims op `/features` en `/`, naamgeving BRL 100, `llms.txt`, opruimen | Taak 5, live sinds `c634346`. |
 | `10-pagina-werkbon-software.md` | Zoekdata, SERP, verwijderlijst, volledige tekst, FAQ en bronnen voor het herpositioneren van `/werkbon-software` op "werkbon app" | Taak 6. |
-| `11-homepage.md` | Nieuwe sectievolgorde van de homepage (founder-blok vóór de prijzen), compacter founder-blok met link naar de auteurspagina, afwerking per sectie | Taak 7, na taak 6. |
+| `11-homepage.md` | Nieuwe sectievolgorde van de homepage (founder-blok vóór de prijzen), compacter founder-blok met link naar de auteurspagina, afwerking per sectie | Taak 7, live sinds `d7f3f85`. |
+| `12-restant-claims.md` | Per pagina de resterende claims op de CRM-, alternatief- en planningpagina en in de vijf blogposts, met vervanging; correctie van de art. 13-datums in de blog | Taak 8. |
 
 ## Contentarchitectuur (maximaal 6 pagina's)
 
@@ -105,12 +106,19 @@ blijven, maar zonder BRL- of F-gassenblokken en met een vaste link naar de pilla
   `/f-gassen-registratie` als figuur en `Article.image`.
 - Taak 6 (pagina 4, `/werkbon-software`): live op main, `e958dd0`. Live
   gecontroleerd 16 september, zie `10` onderaan. eIDAS-claim weg.
-- Taak 7 (homepage: volgorde en afwerking): voorstel in `11`. Nu.
-- Taak 8 (restant claims op CRM-, alternatief-, planningpagina en blog): `09` §6.
-- Open na taak 8: pagina 6 (vergelijking, alleen met een kwartaalcontrole van de
-  prijzen); pagina 5 (R290); inhoudelijk herschrijven van "BRL 100-rapport"
-  op `/crm-voor-installateurs`, `/alternatief-voor-crm-installateurs` en in
-  blogposts; "Uit de eigen praktijk" zodra Rudy de auditzin geeft.
+- Taak 7 (homepage): live op main, `d7f3f85`. Live gecontroleerd 16 september:
+  tien secties in de volgorde van `11`, id's en achtergronden afwisselend,
+  founder-blok op positie 7 met "Sinds 2017", badges en link naar de
+  auteurspagina, WebPage met dateModified, 5 FAQ-antwoorden in de HTML.
+- Nog te bouwen uit de taak 7-prompt: werkbon-screenshot en Wero op
+  `/werkbon-software`, trial-FAQ op de homepage uit de constanten.
+- Taak 8 (restant claims op CRM-, alternatief-, planningpagina en blog): `12`.
+  Bevat de correctie van de art. 13-datums in de blogpost over de verordening
+  (`01` §7, geverifieerd 16 september). Zeven feature-rijen (23 t/m 29) in `02`
+  wachten op Rudy.
+- Open na taak 8: pagina 6 (vergelijking, alleen met een kwartaalcontrole van
+  de prijzen); pagina 5 (R290); "Uit de eigen praktijk" zodra Rudy de auditzin
+  geeft; certificeringsdatums natuurlijke koudemiddelen verifiëren (`01` §7).
 
 ## Do these three first
 
