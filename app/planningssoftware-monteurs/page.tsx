@@ -1,19 +1,38 @@
 import type { Metadata } from 'next'
 import { buildMetadata } from '@/lib/metadata'
-import { breadcrumbSchema, faqSchema } from '@/lib/schemas'
+import { breadcrumbSchema, faqSchema, webPageSchema } from '@/lib/schemas'
+import { SITE, TRIAL_DAGEN } from '@/lib/constants'
+import { planById }    from '@/lib/pricing'
 import JsonLd          from '@/components/seo/JsonLd'
+import UpdatedOn       from '@/components/ui/UpdatedOn'
 import LandingHero     from '@/components/sections/LandingHero'
 import LandingFaq      from '@/components/sections/LandingFaq'
 import LandingInternalLinks from '@/components/sections/LandingInternalLinks'
 import Cta             from '@/components/sections/Cta'
 import Button          from '@/components/ui/Button'
 import Container       from '@/components/ui/Container'
+import { PLANNING_PAGE } from './meta'
+
+// Commerciële pagina op "planningssoftware monteurs". Herschreven volgens
+// docs/seo-geo/12-restant-claims.md §3: je-vorm, praktijkvoorbeeld weg,
+// pakketfeiten uit PLANS, WebPage met dateModified en zichtbare UpdatedOn.
+//
+// Werkorderstatus onderweg/bezig/afgerond, overzicht per dag/week/monteur en
+// eigen login per monteur staan in 02-feature-factcheck.md (rij 28 en 29)
+// nog niet bevestigd: hier neutraal geformuleerd als "werkorders per monteur,
+// status zichtbaar voor de planner". FAQ-tekst is byte-gelijk aan het schema.
+
+const TITLE       = 'Planningssoftware voor monteurs'
+const DESCRIPTION = `Plan werkorders, wijs monteurs toe en houd overzicht met Snellio. Planningssoftware voor monteurs en installatiebedrijven met Google Calendar sync, status per werkorder en directe koppeling aan klantdossiers. Start ${TRIAL_DAGEN} dagen gratis.`
 
 export const metadata: Metadata = buildMetadata({
-  title:       'Planningssoftware voor monteurs | Snellio',
-  description: 'Plan werkorders, wijs monteurs toe en houd altijd overzicht met Snellio. Planningssoftware voor monteurs en installatiebedrijven met Google Calendar sync, realtime status en directe koppeling aan klantdossiers. Start 14 dagen gratis.',
-  path:        '/planningssoftware-monteurs',
+  title:       `${TITLE} | Snellio`,
+  description: DESCRIPTION,
+  path:        PLANNING_PAGE.path,
 })
+
+const starter = planById('starter')
+const pro     = planById('pro')
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -21,7 +40,7 @@ const features = [
   {
     icon:  '📅',
     title: 'Werkorders inplannen',
-    desc:  'Maak werkorders aan en plan ze direct in op datum en tijdstip. Kies de klant, installatie en het type handeling, alle relevante informatie staat al klaar vanuit het klantdossier.',
+    desc:  'Maak werkorders aan en plan ze direct in op datum en tijdstip. Kies de klant, installatie en het type handeling; alle relevante informatie staat al klaar vanuit het klantdossier.',
   },
   {
     icon:  '👷',
@@ -30,8 +49,8 @@ const features = [
   },
   {
     icon:  '🗓',
-    title: 'Planningsoverzicht per dag en week',
-    desc:  'Bekijk alle geplande werkorders per dag, per week en per monteur in één overzicht. Direct inzicht in wie waar is, wat er open staat en waar nog capaciteit is.',
+    title: 'Planningsoverzicht',
+    desc:  'Alle geplande werkorders per monteur in één overzicht. Direct inzicht in wie waar is, wat er open staat en waar nog ruimte is.',
   },
   {
     icon:  '🔗',
@@ -47,17 +66,17 @@ const features = [
   {
     icon:  '🔔',
     title: 'Status per werkorder',
-    desc:  'Monteur markeert de werkorder als onderweg, bezig of afgerond. U ziet de voortgang realtime in het planningsoverzicht, zonder bellen of appen.',
+    desc:  'Werkorders per monteur, met de status zichtbaar voor de planner. Geen bellen of appen om te weten hoe ver het is.',
   },
   {
     icon:  '📊',
-    title: 'Realtime inzicht voor de eigenaar',
+    title: 'Inzicht voor de planner',
     desc:  'Altijd overzicht over openstaande opdrachten, afgeronde werkorders en te factureren diensten. Geen verrassingen aan het einde van de week.',
   },
   {
     icon:  '🧾',
     title: 'Van planning naar factuur',
-    desc:  'Zodra de werkorder is afgerond en de werkbon ondertekend, maakt u in één klik een factuur aan met iDEAL of Wero betaallink via Mollie. Geen dubbele invoer.',
+    desc:  'Zodra de werkorder is afgerond en de werkbon ondertekend, maak je in één klik een factuur aan met iDEAL- of Wero-betaallink via Mollie. Geen dubbele invoer.',
   },
 ]
 
@@ -90,8 +109,8 @@ const oplossingen = [
     desc:  'Toewijzing per werkorder, direct zichtbaar in de app van de monteur. Google Calendar synct automatisch mee.',
   },
   {
-    title: 'Duidelijke status per werkorder',
-    desc:  'Van ingepland naar onderweg naar afgerond, elke stap is zichtbaar. Factuur aanmaken zodra de bon getekend is.',
+    title: 'Status zichtbaar voor de planner',
+    desc:  'Per werkorder zie je wat er open staat en wat is afgerond. Factuur aanmaken zodra de bon getekend is.',
   },
   {
     title: 'Actuele klant- en installatiegegevens',
@@ -103,22 +122,22 @@ const doelgroepen = [
   {
     icon:  '🔧',
     type:  'ZZP met groeiambitie',
-    desc:  'Als u wilt groeien van solo naar een kleine ploeg, is een centrale planning essentieel. Snellio groeit mee: begin zonder medewerkers en schakel eenvoudig op naar meerdere monteurs zodra dat nodig is.',
+    desc:  'Wil je groeien van solo naar een kleine ploeg, dan is een centrale planning essentieel. Snellio groeit mee: begin zonder medewerkers en schakel op naar meerdere monteurs zodra dat nodig is.',
   },
   {
     icon:  '🏢',
     type:  'Klein installatiebedrijf',
-    desc:  'Met twee tot vijf monteurs in het veld heeft u overzicht nodig zonder een fulltime planner. Snellio geeft u dat overzicht in een paar minuten per dag.',
+    desc:  'Met twee tot vijf monteurs in het veld heb je overzicht nodig zonder een fulltime planner. Snellio geeft je dat overzicht in een paar minuten per dag.',
   },
   {
     icon:  '🛠',
     type:  'Servicebedrijf',
-    desc:  'Periodiek onderhoud, storingen en spoedopdrachten vereisen een flexibele planning. Met Snellio plant u snel in, past u eenvoudig aan en houdt u altijd overzicht over openstaande serviceopdrachten.',
+    desc:  'Periodiek onderhoud, storingen en spoedopdrachten vragen een flexibele planning. Met Snellio plan je snel in, pas je eenvoudig aan en houd je overzicht over openstaande serviceopdrachten.',
   },
   {
     icon:  '👷',
     type:  'Bedrijf met meerdere monteurs',
-    desc:  'Meer monteurs betekent meer coördinatie. Snellio centraliseert de planning zodat iedereen altijd weet wat er van hem verwacht wordt, zonder eindeloos bellen en appen.',
+    desc:  'Meer monteurs betekent meer coördinatie. Snellio centraliseert de planning zodat iedereen weet wat er van hem verwacht wordt, zonder eindeloos bellen en appen.',
   },
 ]
 
@@ -137,7 +156,7 @@ const voordelen = [
   {
     icon:  '⏱',
     title: 'Tijd besparen',
-    stat:  '1–2 uur per dag',
+    stat:  'Minder bellen en appen',
     items: [
       'Geen rondbellen om status te checken',
       'Werkorder toewijzen in één klik',
@@ -150,7 +169,7 @@ const voordelen = [
     title: 'Meer rust en overzicht',
     stat:  'Altijd in control',
     items: [
-      'Realtime inzicht in de voortgang',
+      'Status zichtbaar voor de planner',
       'Direct zien wat er open staat',
       'Facturen aanmaken zodra opdracht klaar is',
       'Geen verrassingen aan het einde van de week',
@@ -177,10 +196,11 @@ const stappen = [
   {
     icon:  '4',
     title: 'Direct factureren',
-    desc:  'Na ondertekening maakt u in één klik een factuur aan met betaallink. Klaar.',
+    desc:  'Na ondertekening maak je in één klik een factuur aan met betaallink. Klaar.',
   },
 ]
 
+// Eén array voor de zichtbare FAQ én het FAQPage-schema (byte-gelijk).
 const faqItems = [
   {
     question: 'Wat is planningssoftware voor monteurs?',
@@ -188,27 +208,27 @@ const faqItems = [
   },
   {
     question: 'Werkt de Google Calendar sync automatisch?',
-    answer:   'Ja. Zodra u een werkorder aanmaakt en toewijst aan een monteur, verschijnt de afspraak automatisch in de Google Calendar van die monteur, inclusief klantadres en telefoonnummer. Wijzigingen worden automatisch gesynchroniseerd. U kunt dit per monteur instellen en inschakelen.',
+    answer:   'Ja. Zodra je een werkorder aanmaakt en toewijst aan een monteur, verschijnt de afspraak automatisch in de Google Calendar van die monteur, inclusief klantadres en telefoonnummer. Wijzigingen worden automatisch gesynchroniseerd. Je stelt dit per monteur in.',
   },
   {
     question: 'Kan elke monteur zijn eigen planning zien?',
-    answer:   'Ja. Elke monteur heeft zijn eigen login en ziet alleen zijn eigen werkorders en planning. De eigenaar of planner heeft overzicht over alle monteurs. Op die manier werkt iedereen met de juiste informatie zonder dat privacygevoelige klantgegevens onnodig worden gedeeld.',
+    answer:   'Ja. Werkorders worden per monteur toegewezen en de monteur ziet zijn eigen werkorders in de app. De planner heeft het overzicht over alle monteurs.',
   },
   {
     question: 'Hoe snel is een werkorder aangemaakt en ingepland?',
-    answer:   'Gemiddeld minder dan een minuut. U kiest de klant, de installatie en het type opdracht, Snellio vult de klantgegevens automatisch in. Daarna wijst u een monteur toe, kiest een datum en de werkorder staat ingepland. De monteur ziet het direct in zijn app.',
+    answer:   'Gemiddeld minder dan een minuut. Je kiest de klant, de installatie en het type opdracht; Snellio vult de klantgegevens automatisch in. Daarna wijs je een monteur toe, kies je een datum en staat de werkorder ingepland. De monteur ziet het direct in zijn app.',
   },
   {
     question: 'Kan ik de planning ook aanpassen als een monteur ziek is?',
-    answer:   'Ja. U kunt werkorders op elk moment herplannen en opnieuw toewijzen aan een andere monteur. De kalender en het overzicht worden direct bijgewerkt. Als Google Calendar sync actief is, ontvangen beide monteurs automatisch een bijgewerkte afspraak.',
+    answer:   'Ja. Je kunt werkorders op elk moment herplannen en opnieuw toewijzen aan een andere monteur. De kalender en het overzicht worden direct bijgewerkt. Als Google Calendar sync actief is, ontvangen beide monteurs automatisch een bijgewerkte afspraak.',
   },
   {
     question: 'Werkt Snellio ook voor spoedopdrachten en storingen?',
-    answer:   'Ja. Een spoedopdracht aanmaken en direct inplannen duurt minder dan een minuut. U ziet direct welke monteur beschikbaar is en kunt direct toewijzen. De monteur ontvangt de opdracht direct op zijn telefoon of tablet, zonder bellen of appen.',
+    answer:   'Ja. Een spoedopdracht aanmaken en direct inplannen duurt minder dan een minuut. Je ziet welke monteur beschikbaar is en wijst direct toe. De monteur ontvangt de opdracht op zijn telefoon of tablet, zonder bellen of appen.',
   },
   {
     question: 'Is planningssoftware beschikbaar in alle pakketten?',
-    answer:   'Ja. De planning zit in elk pakket, ook in Starter. Snellio kent geen losse planningsmodule of toeslag. Het verschil tussen de pakketten zit in het aantal monteurs en installaties, niet in de functies. Meerdere monteurs inplannen kan vanaf Pro (2 monteurs inbegrepen).',
+    answer:   `Ja. De planning zit in elk pakket, ook in ${starter.name}. Snellio kent geen losse planningsmodule of toeslag. Het verschil tussen de pakketten zit in het aantal monteurs en installaties, niet in de functies. Meerdere monteurs inplannen kan vanaf ${pro.name} (${pro.monteurs.inbegrepen} monteurs inbegrepen).`,
   },
 ]
 
@@ -218,9 +238,19 @@ export default function PlanningssoftwareMonteurPage() {
   return (
     <>
       <JsonLd schema={[
+        // Commerciële pagina: WebPage met dateModified, geen Article. De
+        // SoftwareApplication staat al site-breed; hier alleen de verwijzing.
+        webPageSchema({
+          path:          PLANNING_PAGE.path,
+          name:          TITLE,
+          description:   DESCRIPTION,
+          datePublished: PLANNING_PAGE.datePublished,
+          dateModified:  PLANNING_PAGE.dateModified,
+          aboutId:       `${SITE.url}/#software`,
+        }),
         breadcrumbSchema([
-          { name: 'Home',                       href: '/'                             },
-          { name: 'Planningssoftware monteurs', href: '/planningssoftware-monteurs'   },
+          { name: 'Home',                       href: '/'                  },
+          { name: 'Planningssoftware monteurs', href: PLANNING_PAGE.path   },
         ]),
         faqSchema(faqItems),
       ]} />
@@ -230,10 +260,11 @@ export default function PlanningssoftwareMonteurPage() {
         badge="Planningssoftware · Monteurs inplannen · Google Calendar sync"
         heading="Planningssoftware voor monteurs, installateurs"
         headingAccent="en HVAC-bedrijven."
+        meta={<UpdatedOn dateISO={PLANNING_PAGE.dateModified} label="Prijzen en functies gecontroleerd op" />}
         sub="Werkorders inplannen, monteurs toewijzen en altijd overzicht houden, zonder bellen, zonder WhatsApp, zonder dubbele boekingen."
-        ctaPrimary={{ label: 'Start 14 dagen gratis →', href: '/registreren' }}
+        ctaPrimary={{ label: `Start ${TRIAL_DAGEN} dagen gratis →`, href: '/registreren' }}
         ctaSecondary={{ label: 'Bekijk prijzen', href: '/pricing' }}
-        trustLine="14 dagen gratis • Geen creditcard nodig • Alle functies inbegrepen"
+        trustLine={`${TRIAL_DAGEN} dagen gratis • Geen creditcard nodig • Alle functies inbegrepen`}
         stats={[
           { value: '<span style="color:var(--cyan)">Auto</span>', label: 'Google Calendar sync'  },
           { value: '1<span style="color:var(--cyan)">min</span>', label: 'Werkorder inplannen'   },
@@ -256,19 +287,19 @@ export default function PlanningssoftwareMonteurPage() {
           </h2>
           <div className="text-[var(--text2)] text-[.96rem] leading-[1.85] space-y-4">
             <p>
-              De meeste installatiebedrijven beginnen met een eenvoudige planning: een whiteboard, een gedeeld Google-spreadsheet of gewoon bellen en appen. Dat werkt prima als u solo werkt of met één extra monteur. Maar zodra er meer mensen in het veld zijn, meerdere klanten op een dag en wisselende opdrachten, wordt de planning al snel de zwakste schakel in uw bedrijf.
+              De meeste installatiebedrijven beginnen met een eenvoudige planning: een whiteboard, een gedeeld Google-spreadsheet of gewoon bellen en appen. Dat werkt prima als je solo werkt of met één extra monteur. Maar zodra er meer mensen in het veld zijn, meerdere klanten op een dag en wisselende opdrachten, wordt de planning al snel de zwakste schakel in je bedrijf.
             </p>
             <p>
-              Planningssoftware voor monteurs lost dit structureel op. In plaats van losse communicatie heeft u één centraal systeem waar werkorders worden aangemaakt, ingepland en toegewezen. De monteur ziet zijn opdrachten direct op zijn tablet of telefoon, inclusief het klantadres, de installatiegegevens en eventuele opmerkingen. Er wordt niets meer vergeten, er zijn geen misverstanden over wie welke klus doet en u hoeft niet meer te bellen om de status van een opdracht te achterhalen.
+              Planningssoftware voor monteurs lost dit structureel op. In plaats van losse communicatie heb je één centraal systeem waar werkorders worden aangemaakt, ingepland en toegewezen. De monteur ziet zijn opdrachten direct op zijn tablet of telefoon, inclusief het klantadres, de installatiegegevens en eventuele opmerkingen. Er wordt niets meer vergeten, er zijn geen misverstanden over wie welke klus doet en je hoeft niet meer te bellen om de status van een opdracht te achterhalen.
             </p>
             <p>
               Snellio is gebouwd voor installateurs en HVAC-bedrijven die willen groeien zonder dat de administratie en planning proportioneel meer tijd gaan kosten. De planningsmodule is direct gekoppeld aan het{' '}
               <a href="/crm-voor-installateurs" className="text-[var(--accent)] hover:underline font-medium">CRM voor installateurs</a>
-              {' '}en de installatiebeheer, zodat een monteur die bij een klant aankomt direct alles ziet wat hij nodig heeft, van adres tot eerdere werkbonnen. Dat bespaart niet alleen tijd, het voorkomt ook fouten en geeft u als eigenaar rust en overzicht over uw bedrijf.
+              {' '}en het installatiebeheer, zodat een monteur die bij een klant aankomt direct alles ziet wat hij nodig heeft, van adres tot eerdere werkbonnen. Dat bespaart niet alleen tijd, het voorkomt ook fouten en geeft jou als eigenaar rust en overzicht over je bedrijf.
             </p>
           </div>
           <div className="mt-8">
-            <Button href="/registreren" size="md">Start 14 dagen gratis →</Button>
+            <Button href="/registreren" size="md">Start {TRIAL_DAGEN} dagen gratis →</Button>
           </div>
         </Container>
       </section>
@@ -284,7 +315,7 @@ export default function PlanningssoftwareMonteurPage() {
               className="font-outfit font-black text-[var(--text)] tracking-tight"
               style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
             >
-              Alles voor uw{' '}
+              Alles voor je{' '}
               <span className="text-[var(--accent)]">monteursplanning</span>
             </h2>
             <p className="text-[var(--text2)] text-base max-w-xl mx-auto mt-4 leading-relaxed">
@@ -392,7 +423,7 @@ export default function PlanningssoftwareMonteurPage() {
               className="font-outfit font-bold text-[var(--text)] leading-tight mb-8"
               style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
             >
-              Met Snellio heeft u{' '}
+              Met Snellio heb je{' '}
               <span className="text-[var(--accent)]">altijd grip op de planning.</span>
             </h2>
             <ul className="flex flex-col gap-3.5 list-none">
@@ -428,7 +459,7 @@ export default function PlanningssoftwareMonteurPage() {
               <span className="text-[var(--accent)]">automatisch bijgewerkt</span>
             </h2>
             <p className="text-[var(--text2)] text-base leading-relaxed max-w-xl mx-auto mb-10">
-              Zodra u een werkorder aanmaakt en toewijst, verschijnt de afspraak direct in de Google Calendar van de betreffende monteur, inclusief klantadres, telefoonnummer en installatiegegevens. Wijzigen of annuleren? De agenda past automatisch mee.
+              Zodra je een werkorder aanmaakt en toewijst, verschijnt de afspraak direct in de Google Calendar van de betreffende monteur, inclusief klantadres, telefoonnummer en installatiegegevens. Wijzigen of annuleren? De agenda past automatisch mee.
             </p>
             <div className="grid sm:grid-cols-3 gap-4 text-left">
               {[
@@ -534,81 +565,8 @@ export default function PlanningssoftwareMonteurPage() {
         </div>
       </section>
 
-      {/* ── 8. Use case ── */}
-      <section className="py-24 px-[5%] bg-[var(--navy3)]">
-        <Container>
-          <div className="max-w-4xl mx-auto">
-            <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-4">
-              Praktijkvoorbeeld
-            </p>
-            <h2
-              className="font-outfit font-black text-[var(--text)] leading-tight mb-8"
-              style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)' }}
-            >
-              Hoe Airco Totaal de chaos van vier{' '}
-              <span className="text-[var(--accent)]">monteurs in één systeem bracht</span>
-            </h2>
-
-            <div className="bg-[var(--navy2)] border border-[var(--border)] rounded-2xl p-8 mb-8">
-              <div className="flex items-start gap-5 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--accent)] to-[var(--cyan)] flex items-center justify-center text-xl shrink-0">
-                  🏢
-                </div>
-                <div>
-                  <p className="font-outfit font-bold text-[var(--text)] text-lg">
-                    Airco Totaal, installatiebedrijf met 4 monteurs
-                  </p>
-                  <p className="text-[var(--muted2)] text-sm">
-                    Airco-installaties en service in Noord-Holland
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-8 mb-6">
-                <div>
-                  <p className="font-mono text-[.62rem] text-[var(--orange)] uppercase tracking-wide mb-3">
-                    Situatie voor Snellio
-                  </p>
-                  <p className="text-[var(--text2)] text-[.85rem] leading-relaxed">
-                    Eigenaar Sandra stuurde vier monteurs aan en deelde de planning wekelijks via een WhatsApp-groep. Elke dag kwamen er aanpassingen: een klant die verzette, een extra spoedopdracht, een monteur die later begon. Elke aanpassing moest handmatig gecommuniceerd worden. Twee keer per maand stond er een monteur voor een gesloten deur omdat het adres niet goed was doorgekomen. De facturatie liep weken achter omdat Sandra niet altijd wist welke opdrachten al afgerond waren en welke nog openstonden.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-mono text-[.62rem] text-[var(--green)] uppercase tracking-wide mb-3">
-                    Situatie met Snellio
-                  </p>
-                  <p className="text-[var(--text2)] text-[.85rem] leading-relaxed">
-                    Na de overstap naar Snellio plant Sandra werkorders digitaal in en wijst ze direct toe aan de juiste monteur. De Google Calendar van elke monteur wordt automatisch bijgewerkt, inclusief klantadres en telefoonnummer. Wijzigingen worden direct gesynchroniseerd, zonder bellen of appen. Sandra ziet realtime welke opdrachten zijn afgerond en maakt facturen aan zodra de werkbon is ondertekend. De achterstand in facturatie is volledig weggewerkt en de gemiddelde betaaltermijn daalde van 28 naar 12 dagen.
-                  </p>
-                </div>
-              </div>
-
-              <div className="pt-6 border-t border-[var(--border)] flex flex-wrap gap-8">
-                {[
-                  { label: 'Planningsfouten',   value: '−90%'       },
-                  { label: 'Betaaltermijn',      value: '28 → 12 dgn' },
-                  { label: 'Planning tijd/week', value: '−5 uur'     },
-                ].map(s => (
-                  <div key={s.label}>
-                    <p className="font-outfit font-black text-[var(--accent)] text-xl">{s.value}</p>
-                    <p className="font-mono text-[var(--muted2)] text-[.62rem] uppercase tracking-wide">
-                      {s.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex flex-wrap gap-4">
-              <Button href="/registreren" size="md">Start 14 dagen gratis →</Button>
-              <Button href="/pricing" variant="ghost" size="md">Bekijk prijzen</Button>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* ── 9. SEO tekst ── */}
-      <section className="py-20 px-[5%] bg-[var(--navy2)]">
+      {/* ── 8. SEO tekst ── */}
+      <section className="py-20 px-[5%] bg-[var(--navy3)]">
         <Container narrow>
           <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-4">
             Meer over planningssoftware voor installateurs
@@ -622,7 +580,7 @@ export default function PlanningssoftwareMonteurPage() {
           </h2>
           <div className="text-[var(--text2)] text-[.96rem] leading-[1.9] space-y-5">
             <p>
-              Planningssoftware voor monteurs is voor veel installatiebedrijven een van de eerste concrete stappen richting een professionelere bedrijfsvoering. Zolang u solo werkt, is een agenda en een telefoon voldoende. Maar zodra er meerdere monteurs in het veld zijn, wordt de planning al snel een dagelijkse bron van stress: wie doet wat, is iedereen op de juiste locatie, zijn alle klanten geïnformeerd en zijn alle opdrachten uitgevoerd en gefactureerd?
+              Planningssoftware voor monteurs is voor veel installatiebedrijven een van de eerste concrete stappen richting een professionelere bedrijfsvoering. Zolang je solo werkt, is een agenda en een telefoon voldoende. Maar zodra er meerdere monteurs in het veld zijn, wordt de planning al snel een dagelijkse bron van stress: wie doet wat, is iedereen op de juiste locatie, zijn alle klanten geïnformeerd en zijn alle opdrachten uitgevoerd en gefactureerd?
             </p>
             <p>
               Het antwoord op die vragen ligt niet in meer WhatsApp-berichten of een uitgebreider spreadsheet, maar in{' '}
@@ -630,13 +588,13 @@ export default function PlanningssoftwareMonteurPage() {
               {' '}die de planning, de klantdossiers en de werkbonnen met elkaar verbindt. Dat is precies wat buitendienst planning software zoals Snellio doet: één systeem voor de volledige servicecyclus, van het aanmaken van een werkorder tot het versturen van de factuur.
             </p>
             <p>
-              Monteurs inplannen gaat met Snellio in minder dan een minuut. U maakt een werkorder aan, kiest de klant en installatie, selecteert een monteur en een tijdstip. De monteur ontvangt de opdracht direct op zijn telefoon of tablet en de afspraak verschijnt automatisch in zijn Google Calendar, inclusief het klantadres en telefoonnummer. Rijdt de monteur een andere route? De navigatie-app pakt het adres direct op uit de agendaafspraak.
+              Monteurs inplannen gaat met Snellio in minder dan een minuut. Je maakt een werkorder aan, kiest de klant en installatie, selecteert een monteur en een tijdstip. De monteur ontvangt de opdracht direct op zijn telefoon of tablet en de afspraak verschijnt automatisch in zijn Google Calendar, inclusief het klantadres en telefoonnummer. Rijdt de monteur een andere route? De navigatie-app pakt het adres direct op uit de agenda-afspraak.
             </p>
             <p>
-              Voor service planning voor installateurs is de koppeling aan klantdossiers en installatiegegevens minstens zo belangrijk als de planning zelf. Een monteur die bij een klant aankomt en direct de servicehistorie, het type installatie en de eerdere meetwaarden kan inzien, werkt efficiënter en maakt minder fouten. Die koppeling ontbreekt bij generieke planningstools, maar is ingebouwd in Snellio. Zo heeft u niet alleen een planning, maar een volledig servicemanagementsysteem.
+              Voor service planning voor installateurs is de koppeling aan klantdossiers en installatiegegevens minstens zo belangrijk als de planning zelf. Een monteur die bij een klant aankomt en direct de servicehistorie, het type installatie en de eerdere meetwaarden kan inzien, werkt efficiënter en maakt minder fouten. Die koppeling ontbreekt bij generieke planningstools, maar is ingebouwd in Snellio. Zo heb je niet alleen een planning, maar een volledig servicemanagementsysteem.
             </p>
             <p>
-              Planning software voor installateurs moet ook schalen met uw bedrijf. Snellio werkt voor een solo-installateur die zijn eerste medewerker aanneemt net zo goed als voor een team van vijf monteurs met een volle agenda. U hoeft niet van systeem te wisselen als uw bedrijf groeit, Snellio groeit gewoon mee. En met de ingebouwde{' '}
+              Planning software voor installateurs moet ook schalen met je bedrijf. Snellio werkt voor een solo-installateur die zijn eerste medewerker aanneemt net zo goed als voor een team van vijf monteurs met een volle agenda. Je hoeft niet van systeem te wisselen als je bedrijf groeit, Snellio groeit gewoon mee. En met de ingebouwde{' '}
               <a href="/werkbon-software" className="text-[var(--accent)] hover:underline font-medium">werkbon software</a>
               {' '}is de stap van uitgevoerde opdracht naar ondertekende bon en verstuurde factuur nog nooit zo klein geweest.
             </p>
@@ -644,17 +602,17 @@ export default function PlanningssoftwareMonteurPage() {
         </Container>
       </section>
 
-      {/* ── 10. FAQ ── */}
+      {/* ── 9. FAQ (zichtbaar en schema uit dezelfde array) ── */}
       <LandingFaq items={faqItems} heading="Veelgestelde vragen over planningssoftware voor monteurs" />
 
-      {/* ── 11. Interne links ── */}
+      {/* ── 10. Interne links ── */}
       <LandingInternalLinks
         heading="Meer functies van Snellio"
         links={[
           { href: '/crm-voor-installateurs',  icon: '🏢', title: 'CRM voor installateurs',   desc: 'Klant- en installatiebeheer'          },
-          { href: '/werkbon-software',         icon: '📋', title: 'Werkbon software',          desc: 'Digitale werkbonnen met handtekening' },
+          { href: '/werkbon-software',         icon: '📋', title: 'Werkbon app',               desc: 'Digitale werkbonnen met handtekening' },
           { href: '/f-gassen-registratie',     icon: '❄️', title: 'F-gassen registratie',      desc: 'Flesregistratie & F-gas logboek'      },
-          { href: '/pricing',                  icon: '💶', title: 'Prijzen',                    desc: 'Vanaf €10/mnd incl. btw, alles inbegrepen' },
+          { href: '/pricing',                  icon: '💶', title: 'Prijzen',                    desc: 'Alle functies in elk pakket'          },
         ]}
       />
 

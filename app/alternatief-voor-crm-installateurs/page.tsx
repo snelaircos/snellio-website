@@ -2,17 +2,26 @@ import type { Metadata } from 'next'
 import Image             from 'next/image'
 import Link              from 'next/link'
 import { buildMetadata } from '@/lib/metadata'
-import { breadcrumbSchema, faqSchema } from '@/lib/schemas'
+import { breadcrumbSchema, faqSchema, webPageSchema } from '@/lib/schemas'
 import JsonLd            from '@/components/seo/JsonLd'
-import { SITE }          from '@/lib/constants'
+import { BTW, SITE, TRIAL_DAGEN } from '@/lib/constants'
+import { fmtEuro, planById } from '@/lib/pricing'
+import { ALTERNATIEF_PAGE } from './meta'
+
+const TITLE       = 'Alternatief voor CRM installateurs'
+const DESCRIPTION = `Zoek je een alternatief voor Climapulse of andere CRM software? Ontdek Snellio. Alles-in-één systeem voor installateurs. Start ${TRIAL_DAGEN} dagen gratis.`
 
 export const metadata: Metadata = buildMetadata({
-  title:       'Alternatief voor CRM installateurs | Snellio software',
-  description: 'Zoek je een alternatief voor Climapulse of andere CRM software? Ontdek Snellio. Alles-in-één systeem voor installateurs. Start 14 dagen gratis.',
-  path:        '/alternatief-voor-crm-installateurs',
+  title:       `${TITLE} | Snellio software`,
+  description: DESCRIPTION,
+  path:        ALTERNATIEF_PAGE.path,
 })
 
 const SIGNUP_HREF = '/registreren'
+const starter     = planById('starter')
+const basis       = planById('basis')
+const pro         = planById('pro')
+const enterprise  = planById('enterprise')
 
 const btnPrimary   = 'inline-flex items-center justify-center font-semibold rounded-[10px] bg-[var(--accent)] text-white px-[22px] py-3 hover:bg-[#007a9c] transition-colors text-[.95rem]'
 const btnSecondary = 'inline-flex items-center justify-center font-semibold rounded-[10px] bg-white border-[1.5px] border-[var(--accent)] text-[var(--accent)] px-[22px] py-3 hover:bg-[rgba(0,144,184,.06)] transition-colors text-[.95rem]'
@@ -23,7 +32,7 @@ const pijnpunten = [
   { icon: '📝', title: 'Dubbele invoer',                 desc: 'Klant aanmaken in CRM, daarna nog eens overtikken voor de werkbon en de factuur. Tijd weg.' },
   { icon: '👀', title: 'Geen overzicht in werkbonnen',   desc: 'Welke werkbon is afgetekend? Welke wacht op factuur? Niemand die het weet.' },
   { icon: '🧾', title: 'Facturatie apart geregeld',      desc: 'Werkbon klaar → handmatig overzetten naar Moneybird of WeFact. Foutgevoelig en traag.' },
-  { icon: '⏱',  title: 'Tijdverlies',                    desc: 'Een uur per dag aan systemen schakelen en data overtikken. Dat is een vrije dag per week.' },
+  { icon: '⏱',  title: 'Tijdverlies',                    desc: 'Elke dag schakelen tussen systemen en gegevens overtikken.' },
 ]
 
 const allesInEenItems = [
@@ -31,11 +40,11 @@ const allesInEenItems = [
   { icon: '📋', title: 'Werkbonnen',         title2: 'Digitaal & ondertekend', desc: 'Klant tekent op tablet ter plaatse, PDF direct naar zijn inbox.' },
   { icon: '📅', title: 'Planning monteurs', title2: 'Met Google Calendar',     desc: 'Werkorders verdelen, monteurs zien hun eigen werk, sync met agenda.' },
   { icon: '💳', title: 'Facturatie',         title2: 'Mollie + boekhouding',   desc: 'Direct vanuit werkbon factureren, iDEAL betaling, koppeling Moneybird/WeFact.' },
-  { icon: '❄️', title: 'F-gassen',           title2: 'BRL 100 ready',           desc: 'Flesregistratie, koudemiddel-balans, jaar-rapportage met één klik.' },
+  { icon: '❄️', title: 'F-gassen',           title2: 'Zoals BRL 100 vraagt',    desc: 'Flesregistratie, jaarlijkse F-gassenbalans, werkregistratie per installatie.' },
 ]
 
 const watMaaktAndersBullets = [
-  { title: 'Speciaal voor installateurs',  desc: 'Geen generieke service-tool met aangeplakte koeltechniek-features. F-gassen, BRL 100 en lekcontrole zit in de kern.' },
+  { title: 'Speciaal voor installateurs',  desc: 'Geen generieke service-tool met aangeplakte koeltechniek-features. F-gassenregistratie, BRL 100-werkregistratie en lekcontroletermijnen zitten in de kern.' },
   { title: 'Nederlandse software',         desc: 'Gebouwd in Nederland, hosting in EU-region (Frankfurt), Nederlandse support.' },
   { title: 'Snelle implementatie',         desc: 'Account aanmaken duurt 5 minuten. Importeer klanten via CSV, meteen aan de slag.' },
   { title: 'Alles gekoppeld',              desc: 'Werkbon → factuur → boekhouding → betaling. Eén keer instellen, daarna automatisch.' },
@@ -61,22 +70,22 @@ const voorWie = [
   {
     icon: '👤',
     title: 'ZZP installateurs',
-    desc: 'Werk je alleen? Starter vanaf €10 per maand incl. btw (tot 25 installaties) of Basis voor €29 per maand. Alle functies inbegrepen.',
+    desc: `Werk je alleen? ${starter.name} vanaf ${fmtEuro(starter.price.month)} per maand ${BTW.short} (${starter.installaties.label.toLowerCase()}) of ${basis.name} voor ${fmtEuro(basis.price.month)} per maand. Alle functies inbegrepen.`,
   },
   {
     icon: '👥',
     title: 'Kleine teams',
-    desc: '2 monteurs of meer? Pro voor €69 per maand incl. btw, 2 monteurs inbegrepen. Dezelfde functies als elk ander pakket.',
+    desc: `${pro.monteurs.inbegrepen} monteurs of meer? ${pro.name} voor ${fmtEuro(pro.price.month)} per maand ${BTW.short}, ${pro.monteurs.inbegrepen} monteurs inbegrepen. Dezelfde functies als elk ander pakket.`,
   },
   {
     icon: '📈',
     title: 'Groeiende bedrijven',
-    desc: 'Vanaf 5 monteurs? Enterprise voor €129 per maand incl. btw, 5 monteurs inbegrepen en een lage meerprijs per extra monteur.',
+    desc: `Vanaf ${enterprise.monteurs.inbegrepen} monteurs? ${enterprise.name} voor ${fmtEuro(enterprise.price.month)} per maand ${BTW.short}, ${enterprise.monteurs.inbegrepen} monteurs inbegrepen en ${fmtEuro(enterprise.monteurs.extra!.prijs)} per extra monteur.`,
   },
 ]
 
 const faqs = [
-  { question: 'Kan ik mijn klanten importeren uit mijn huidige CRM?', answer: 'Ja, via CSV-import. Klantgegevens, locaties en historische werkorders. Onze support helpt je gratis met de migratie tijdens de trial.' },
+  { question: 'Kan ik mijn klanten importeren uit mijn huidige CRM?', answer: 'Ja, via CSV-import. Klantgegevens, locaties en historische werkorders. Wij helpen je op weg met de CSV-import.' },
   { question: 'Hoe lang duurt de overstap?',                          answer: 'Account aanmaken kost 5 minuten. Klanten importeren een avond. Daarna kun je direct werkbonnen versturen.' },
   { question: 'Wat als ik wil terug naar mijn oude systeem?',         answer: 'Geen probleem, alle data exporteer je via CSV en PDF. Je bent nooit gevangen in Snellio.' },
   { question: 'Werkt Snellio op tablet en telefoon?',                 answer: 'Ja, draait in de browser. Geen aparte app nodig. Mobile-first ontworpen voor monteurs onderweg.' },
@@ -86,9 +95,17 @@ export default function AlternatiefCrmInstallateursPage() {
   return (
     <div className="bg-[#f4f7fa] text-[#0f2133] font-dm-sans">
       <JsonLd schema={[
+        webPageSchema({
+          path:          ALTERNATIEF_PAGE.path,
+          name:          TITLE,
+          description:   DESCRIPTION,
+          datePublished: ALTERNATIEF_PAGE.datePublished,
+          dateModified:  ALTERNATIEF_PAGE.dateModified,
+          aboutId:       `${SITE.url}/#software`,
+        }),
         breadcrumbSchema([
           { name: 'Home',       href: '/' },
-          { name: 'Alternatief voor CRM installateurs', href: '/alternatief-voor-crm-installateurs' },
+          { name: 'Alternatief voor CRM installateurs', href: ALTERNATIEF_PAGE.path },
         ]),
         faqSchema(faqs),
       ]} />
@@ -111,11 +128,11 @@ export default function AlternatiefCrmInstallateursPage() {
             Snellio brengt het samen in één systeem.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link href={SIGNUP_HREF} className={btnPrimary}>Start 14 dagen gratis →</Link>
+            <Link href={SIGNUP_HREF} className={btnPrimary}>Start {TRIAL_DAGEN} dagen gratis →</Link>
             <Link href="/demo" className={btnSecondary}>Bekijk demo</Link>
           </div>
           <p className="text-[#5f7791] text-xs mt-5">
-            Probeer 14 dagen gratis · Geen verplichtingen · Snel starten
+            Probeer {TRIAL_DAGEN} dagen gratis · Geen verplichtingen · Snel starten
           </p>
         </div>
       </section>
@@ -174,7 +191,7 @@ export default function AlternatiefCrmInstallateursPage() {
           </div>
 
           <div className="text-center mt-12">
-            <Link href={SIGNUP_HREF} className={btnPrimary}>Start 14 dagen gratis →</Link>
+            <Link href={SIGNUP_HREF} className={btnPrimary}>Start {TRIAL_DAGEN} dagen gratis →</Link>
           </div>
         </div>
       </section>
@@ -295,8 +312,8 @@ export default function AlternatiefCrmInstallateursPage() {
           </div>
 
           <div className="text-center mt-10">
-            <Link href={SIGNUP_HREF} className={btnPrimary}>Probeer Snellio 14 dagen gratis →</Link>
-            <p className="text-[#5f7791] text-xs mt-3">Probeer 14 dagen gratis. Geen verplichtingen.</p>
+            <Link href={SIGNUP_HREF} className={btnPrimary}>Probeer Snellio {TRIAL_DAGEN} dagen gratis →</Link>
+            <p className="text-[#5f7791] text-xs mt-3">Probeer {TRIAL_DAGEN} dagen gratis. Geen verplichtingen.</p>
           </div>
         </div>
       </section>
@@ -383,11 +400,11 @@ export default function AlternatiefCrmInstallateursPage() {
             Start vandaag nog
           </h2>
           <p className="text-[#5f7791] text-base mb-8 max-w-md mx-auto">
-            Probeer 14 dagen gratis. Annuleren wanneer je wilt. Migratie van je oude systeem is inbegrepen.
+            Probeer {TRIAL_DAGEN} dagen gratis. Annuleren wanneer je wilt. Wij helpen je op weg met de CSV-import.
           </p>
           <div className="flex flex-wrap gap-3 justify-center mb-6">
             <Link href={SIGNUP_HREF} className={`${btnPrimary} text-base px-8 py-4`}>
-              Start 14 dagen gratis →
+              Start {TRIAL_DAGEN} dagen gratis →
             </Link>
             <Link href="/demo" className={`${btnSecondary} text-base px-8 py-4`}>
               Bekijk demo

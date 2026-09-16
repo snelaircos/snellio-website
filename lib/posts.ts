@@ -15,6 +15,10 @@ export interface Post {
   category:    string
   date:        string   // weergave, bv. '15 januari 2025'
   dateISO:     string   // machine-leesbaar voor schema.org + sitemap
+  // Dag van de laatste inhoudelijke wijziging (deploydag). Gaat naar
+  // BlogPosting.dateModified, og:article:modified_time, de sitemap en de
+  // zichtbare regel "Bijgewerkt op". Zonder valt dateISO in.
+  dateModifiedISO?: string
   readTime:    string
   content:     string
   // Optionele header-afbeelding: getoond boven het artikel en gebruikt
@@ -51,16 +55,17 @@ export const POSTS: Post[] = [
     slug:        'drukste-zomer-airco-monteur-zonder-administratie-achterstand',
     title:       'Mijn drukste zomer ooit als airco-monteur, en waarom de administratie me niet inhaalde',
     metaTitle:   'Drukste zomer ooit als airco-monteur, zonder administratie-achterstand | Snellio',
-    description: 'Hoe een airco-monteur zijn drukste zomer draaide met WhatsApp-aanvragen, een AI-assistent, werkbonnen op de telefoon en F-gassenregistratie volgens BRL-100 v3.0. Zonder avonden aan de keukentafel.',
+    description: 'Hoe een airco-monteur zijn drukste zomer draaide met WhatsApp-aanvragen, een AI-assistent, werkbonnen op de telefoon en F-gassenregistratie volgens BRL 100 versie 3.0. Zonder avonden aan de keukentafel.',
     category:    'Praktijk',
     date:        '7 september 2026',
     dateISO:     '2026-09-07',
+    dateModifiedISO: '2026-09-16',
     readTime:    '6 min',
     schemaType:  'Article',
     tags:        ['werkbon app', 'f-gassen registratie', 'planning installateur', 'airco monteur software', 'whatsapp aanvragen', 'koudemiddel registratie'],
     author: {
       name: 'Rudy Snel',
-      bio:  "Rudy Snel is BRL-100 en STEK gecertificeerd airco- en warmtepompmonteur (Snel Airco's, Harskamp) en bouwer van Snellio. Hij gebruikt Snellio dagelijks in zijn eigen bus.",
+      bio:  "Rudy Snel is BRL 100 en STEK gecertificeerd airco- en warmtepompmonteur (Snel Airco's, Harskamp) en bouwer van Snellio. Hij gebruikt Snellio dagelijks in zijn eigen bus.",
     },
     // OG-afbeelding = eerste screenshot; staat ook inline in de tekst, dus
     // niet als header. Bestanden staan in /public/blog/zomer-2026/.
@@ -74,8 +79,8 @@ export const POSTS: Post[] = [
     faq: [
       { question: 'Werkt Snellio ook als ik geen WhatsApp-nummer voor aanvragen heb?',
         answer:   'Ja. WhatsApp is een optie die je zelf aanzet. Aanvragen via mail of je website komen op dezelfde plek terecht.' },
-      { question: 'Is de F-gassenregistratie in Snellio geschikt voor de BRL-100 audit?',
-        answer:   'Ja. Registratie per fles en per installatie, met handelingen, hoeveelheden en datum, volgens BRL-100 versie 3.0. Het logboek is per installatie te tonen aan de auditor.' },
+      { question: 'Is de F-gassenregistratie in Snellio geschikt voor de BRL 100 audit?',
+        answer:   'Ja. Registratie per fles en per installatie, met handelingen, hoeveelheden en datum, volgens BRL 100 versie 3.0. Het logboek is per installatie te tonen aan de auditor.' },
       { question: 'Moet ik een creditcard of incassomachtiging afgeven om te proberen?',
         answer:   'Nee. De proefperiode van 14 dagen vraagt geen betaalgegevens. Na afloop kies je zelf: per maand of per jaar, via iDEAL-factuur of automatische incasso.' },
       { question: 'Kan ik mijn bestaande klanten en installaties importeren?',
@@ -122,9 +127,9 @@ export const POSTS: Post[] = [
 
       Kom ik later terug voor een storing en is er nog geen werkorder aangemaakt, dan scan ik de QR-code en heb ik direct een nieuwe werkorder aan die installatie hangen. Zo simpel is het.
 
-      ## Koudemiddel registreren volgens BRL-100 v3.0, zonder de nominale inhoud te vergeten
+      ## Koudemiddel registreren volgens BRL 100 versie 3.0, zonder de nominale inhoud te vergeten
 
-      Koudemiddel wordt uiteraard netjes geregistreerd, per fles en per installatie, volgens BRL-100 versie 3.0. Maar er is één fout die ik zelf jarenlang maakte. Bij een nieuwe installatie voer je aan het begin de gegevens van de kenplaat in, inclusief de fabrieksvulling. Vul je aan het eind nog 100 gram bij voor vijf meter extra leiding, dan noteer je dat wel op de fles. Maar de nominale inhoud in de stamgegevens van de installatie? Die staat dan nog steeds op de fabrieksvulling.
+      Koudemiddel wordt uiteraard netjes geregistreerd, per fles en per installatie, volgens BRL 100 versie 3.0. Maar er is één fout die ik zelf jarenlang maakte. Bij een nieuwe installatie voer je aan het begin de gegevens van de kenplaat in, inclusief de fabrieksvulling. Vul je aan het eind nog 100 gram bij voor vijf meter extra leiding, dan noteer je dat wel op de fles. Maar de nominale inhoud in de stamgegevens van de installatie? Die staat dan nog steeds op de fabrieksvulling.
 
       Dat gebeurt je met Snellio niet meer. Vul je bij een nieuwe installatie koudemiddel bij, dan controleert het programma bij het opslaan van de werkorder of de voorvulling en de nominale inhoud nog gelijk zijn. Is dat zo, dan vraagt het of de nominale vulling aangepast moet worden. Eén klik, en je [F-gassenregistratie](/f-gassen-registratie) klopt.
 
@@ -148,15 +153,16 @@ export const POSTS: Post[] = [
   {
     slug:        'digitaal-logboek-qr-kenplaat',
     title:       'De kenplaat wordt digitaal: het F-gas logboek achter een QR-code',
-    description: 'Snellio print BRL 100-conforme kenplaten met QR-code. Wie de code scant, opent het digitale logboek van de installatie: specificaties én volledige werk-historie, direct bij het apparaat.',
+    description: 'Snellio print kenplaten met de velden uit art. 12 en een QR-code. Wie de code scant, opent het digitale logboek van de installatie: specificaties én volledige werk-historie, direct bij het apparaat.',
     category:    'Product',
     date:        '20 juli 2026',
     dateISO:     '2026-07-20',
+    dateModifiedISO: '2026-09-16',
     readTime:    '4 min',
     image: {
       src:     '/kenplaat-voorbeeld.png',
-      alt:     'BRL 100-conforme kenplaat koelinstallatie geprint vanuit Snellio, met koudemiddel, GWP, nominale vulling, CO2-equivalent en QR-code naar het digitale logboek',
-      caption: 'Zo komt de kenplaat uit de printer: alle verplichte velden, plus een QR-code naar het digitale logboek.',
+      alt:     'Kenplaat van een koelinstallatie geprint vanuit Snellio, met de velden uit art. 12 van Verordening (EU) 2024/573 (koudemiddel, GWP, nominale vulling, CO₂-equivalent) en een QR-code naar het digitale logboek',
+      caption: 'Zo komt de kenplaat uit de printer: de velden uit art. 12 van Verordening (EU) 2024/573 en een QR-code naar het digitale logboek.',
       width:   1400,
       height:  933,
     },
@@ -170,12 +176,10 @@ export const POSTS: Post[] = [
       **Hoe het werkt**
 
       Vanuit het installatiedossier in Snellio print u met één klik een kenplaat op een kenplaatprinter
-      (126 × 84 mm label). De plaat bevat alle velden die de BRL 100 voorschrijft: het
-      installatie-identificatienummer, de leverancier, het type koelinstallatie, het koudemiddel met GWP-waarde,
-      de nominale vulling, het totale CO2-equivalent en de datum van de laatste controle. Ook uw BRL-100-nummer en
-      het BRL-200-nummer van de monteur staan erop. Bevat de installatie een F-gas, dan zet Snellio automatisch de
-      verplichte zin over gefluoreerde broeikasgassen op de plaat; bij natuurlijke koudemiddelen zoals R290 of CO2
-      blijft die terecht achterwege.
+      (126 × 84 mm label). De plaat bevat de velden uit art. 12 van de verordening (koudemiddel, GWP, vulling in
+      kilogram en CO₂-equivalent, de zin over gefluoreerde broeikasgassen) en daarnaast: installatie-identificatienummer,
+      leverancier, type, datum laatste controle, uw BRL 100-nummer en het BRL 200-nummer van de monteur. Bij natuurlijke
+      koudemiddelen zoals R290 of CO₂ blijft de zin over gefluoreerde broeikasgassen terecht achterwege.
 
       Rechts op de plaat staat een QR-code. Wie die scant, met welke telefoon dan ook, opent het digitale logboek
       van precies deze installatie.
@@ -196,8 +200,9 @@ export const POSTS: Post[] = [
 
       - **Voor uw monteurs**: bij een storing scant de monteur de plaat en ziet direct wat er ooit aan de
         installatie is gedaan, ook door collega's. Geen telefoontjes naar kantoor, geen zoeken in mappen.
-      - **Voor inspecties en audits**: de EU F-gas verordening 2024/573 verplicht een sluitende registratie per
-        installatie. Met de QR-code laat u een inspecteur ter plekke het complete logboek zien.
+      - **Voor inspecties en audits**: art. 7 van Verordening (EU) 2024/573 verplicht een register per apparaat boven
+        de drempel uit art. 5; BRL 100 vraagt een werkregistratie per handeling voor elke installatie. Met de QR-code
+        laat u een inspecteur ter plekke het complete logboek zien.
       - **Voor collega-bedrijven en beheerders**: neemt een ander bedrijf het onderhoud over, of wil een
         gebouwbeheerder weten wat er hangt, dan staat alle informatie op de plaat en achter de QR-code.
       - **Voor de uitstraling**: een strak geprinte kenplaat met uw bedrijfsnaam oogt professioneler dan een
@@ -218,6 +223,7 @@ export const POSTS: Post[] = [
     category:    'Regelgeving',
     date:        '15 januari 2025',
     dateISO:     '2025-01-15',
+    dateModifiedISO: '2026-09-16',
     readTime:    '5 min',
     content:     `
       De BRL 100-certificering stelt eisen aan de registratie van alle koeltechnische handelingen.
@@ -225,8 +231,9 @@ export const POSTS: Post[] = [
 
       **Wat moet u registreren?**
 
-      Per werkorder dient u minimaal vast te leggen:
+      Per werkorder dient u minimaal vast te leggen (BRL 100 §2.5.2):
       - Type installatie en koudemiddel
+      - Bij wie en wanneer: onderneming en persoon met certificaatnummer (art. 7 lid 1 onder e)
       - Begin- en eindmetingen (druk en temperatuur)
       - Lektest resultaat
       - Vacuümwaarden en standtijd
@@ -235,8 +242,10 @@ export const POSTS: Post[] = [
 
       **Hoe Snellio dit oplost**
 
-      Snellio genereert automatisch een BRL 100-compliant rapport op basis van de koeltechnische handelingen die u invoert.
-      U hoeft niets handmatig over te nemen, het systeem verzorgt de juiste lay-out en veldvolgorde. Lees meer over de
+      Snellio legt elke koeltechnische handeling die u op de werkbon invult vast als werkregistratie per installatie en
+      per circuit, zoals BRL 100 §2.5.2 vraagt, en zet de koudemiddelboeking in de F-gassenbalans. U hoeft niets over te
+      nemen. Wat de auditor precies toetst, staat in
+      [BRL 100: wat de auditor van je administratie vraagt](/brl-100-software). Lees meer over de
       [digitale werkbon-software](/werkbon-software) of bekijk hoe de [F-gassen registratie](/f-gassen-registratie)
       hierop aansluit.
     `,
@@ -248,6 +257,7 @@ export const POSTS: Post[] = [
     category:    'Regelgeving',
     date:        '8 januari 2025',
     dateISO:     '2025-01-08',
+    dateModifiedISO: '2026-09-16',
     readTime:    '7 min',
     content:     `
       Op 11 maart 2024 is de nieuwe Europese F-gassenverordening (EU) 2024/573 in werking getreden. Deze verordening
@@ -262,25 +272,23 @@ export const POSTS: Post[] = [
       - Een reeks verboden op het op de markt brengen van producten en apparatuur die F-gassen met een hoog GWP bevatten.
       - Installaties lekdicht bouwen en houden, met sluitende registratie van alle handelingen.
 
-      **Strengere GWP-grenzen en bijvulverboden**
+      **Bijvulverboden per type apparatuur (art. 13)**
 
-      De Global Warming Potential (GWP) van een koudemiddel bepaalt steeds vaker of u het nog mag gebruiken:
-      - Vanaf 1 januari 2026 geldt een verbod op het bijvullen van koel- en klimaatapparatuur met nieuw geproduceerd
-        koudemiddel met een GWP van 2500 of hoger. Geregenereerd of gerecycled koudemiddel met een GWP ≥ 2500 mag nog
-        tot 1 januari 2032 worden gebruikt voor onderhoud en reparatie.
-      - Voor veel nieuwe apparatuur worden de maximale GWP-grenzen verlaagd naar 750 of zelfs 150. Split-units onder
-        12 kW lopen op termijn tegen een volledig F-gasverbod aan.
-      - Vanaf 1 januari 2032 geldt voor de meeste koelapparatuur (met uitzondering van chillers) een verbod op nieuw
-        koudemiddel met een GWP van 750 of hoger.
+      - Koelapparatuur: sinds 1 januari 2025 mag u geen F-gas met een GWP van 2 500 of meer meer gebruiken voor onderhoud
+        of service. Geregenereerd of gerecycled gas met zo'n GWP mag nog tot 1 januari 2030, onder voorwaarden.
+      - Airco's en warmtepompen: hetzelfde verbod sinds 1 januari 2026, met de uitzondering voor geregenereerd of
+        gerecycled gas tot 1 januari 2032.
+      - Stationaire koelapparatuur, behalve chillers: vanaf 1 januari 2032 ook geen F-gas met een GWP van 750 of meer
+        voor onderhoud of service; geregenereerd of gerecycled gas blijft toegestaan.
+      - Voor nieuwe apparatuur gelden aparte marktverboden met lagere GWP-grenzen (bijlage IV); die staan niet in dit
+        artikel.
 
       **Certificering uitgebreid naar natuurlijke koudemiddelen**
 
       Een van de belangrijkste wijzigingen voor monteurs: de certificeringsplicht geldt niet langer alleen voor F-gassen,
-      maar ook voor natuurlijke alternatieven zoals koolwaterstoffen (propaan, isobutaan), CO₂ en ammoniak.
-      - Vanaf 29 september 2025 moeten monteurs die met deze natuurlijke koudemiddelen werken eveneens gecertificeerd zijn.
-      - De overgangsperiode voor de bestaande certificaten loopt tot 29 maart 2026; daarna worden alleen nog certificaten
-        volgens het nieuwe, gecombineerde schema afgegeven.
-      - Uiterlijk 12 maart 2029 moeten alle installateurs gecertificeerd zijn volgens het nieuwe systeem.
+      maar ook voor natuurlijke alternatieven zoals koolwaterstoffen (propaan, isobutaan), CO₂ en ammoniak. In Nederland
+      is dat uitgewerkt in BRL 100 versie 3.0, met deelgebied I voor F-gassen en koolwaterstoffen, II voor CO₂ en III
+      voor ammoniak, formeel in werking sinds 31 augustus 2026.
 
       **Wat betekent dit concreet voor uw administratie?**
 
@@ -291,9 +299,9 @@ export const POSTS: Post[] = [
       **Hoe Snellio u helpt**
 
       Snellio houdt automatisch de koudemiddelbalans per installatie en per fles bij, signaleert verlopende ijkdata van
-      lekdetectoren en registreert elke F-gas handeling direct vanuit de werkbon. De jaarrapportage en het volledige
-      logboek zijn altijd actueel en direct exporteerbaar, zodat u bij een audit binnen enkele minuten alle documentatie
-      conform EU F-gas Verordening 2024/573 kunt overleggen. Bekijk de mogelijkheden op de pagina over
+      lekdetectoren en registreert elke F-gas handeling direct vanuit de werkbon. De F-gassenbalans en het logboek per
+      installatie zijn actueel en exporteerbaar, zodat u bij een audit het register uit art. 7 en de werkregistratie uit
+      BRL 100 kunt tonen. Bekijk de mogelijkheden op de pagina over
       [F-gassen registratie](/f-gassen-registratie).
 
       Let op: dit artikel is een praktische samenvatting en geen juridisch advies. Raadpleeg voor uw specifieke situatie
@@ -307,6 +315,7 @@ export const POSTS: Post[] = [
     category:    'Efficiëntie',
     date:        '20 december 2024',
     dateISO:     '2024-12-20',
+    dateModifiedISO: '2026-09-16',
     readTime:    '4 min',
     content:     `
       Veel installatiebedrijven werken nog met papieren werkbonnen of losse Word-documenten. Dat voelt vertrouwd, maar
@@ -329,8 +338,8 @@ export const POSTS: Post[] = [
       **3. BRL 100 en F-gassen registratie zonder dubbel werk**
 
       Voor koeltechnisch installateurs is dit misschien wel het grootste voordeel: de gegevens die u toch al op de
-      werkbon vastlegt (metingen, lektest, koudemiddel bijgevuld of afgetapt) vormen automatisch de basis voor het
-      BRL 100-rapport en het koudemiddellogboek. Geen aparte administratie meer die u 's avonds moet bijwerken. Lees hoe
+      werkbon vastlegt (metingen, lektest, koudemiddel bijgevuld of afgetapt) vormen automatisch de werkregistratie die
+      BRL 100 vraagt en het logboek per installatie. Geen aparte administratie meer die u 's avonds moet bijwerken. Lees hoe
       dat werkt bij de [F-gassen registratie](/f-gassen-registratie).
 
       **4. Alle historie per klant en per installatie terugvindbaar**

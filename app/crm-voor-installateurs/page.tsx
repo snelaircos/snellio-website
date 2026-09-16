@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { buildMetadata } from '@/lib/metadata'
-import { breadcrumbSchema, faqSchema } from '@/lib/schemas'
+import { breadcrumbSchema, faqSchema, webPageSchema } from '@/lib/schemas'
+import { SITE } from '@/lib/constants'
+import { CRM_PAGE } from './meta'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import JsonLd   from '@/components/seo/JsonLd'
@@ -12,10 +14,13 @@ const DemoForm = dynamic(() => import('@/components/forms/DemoForm'))
 const Cta      = dynamic(() => import('@/components/sections/Cta'))
 import LandingInternalLinks from '@/components/sections/LandingInternalLinks'
 
+const TITLE       = 'CRM voor installateurs, probeer 14 dagen gratis'
+const DESCRIPTION = 'CRM voor installateurs in koeltechniek. Werkbon, planning, F-gassen en factuur in één app. Probeer 14 dagen gratis.'
+
 export const metadata: Metadata = buildMetadata({
-  title:       'CRM voor installateurs, probeer 14 dagen gratis | Snellio',
-  description: 'CRM voor installateurs in koeltechniek. Werkbon, planning, F-gassen en factuur in één app. Probeer 14 dagen gratis.',
-  path:        '/crm-voor-installateurs',
+  title:       `${TITLE} | Snellio`,
+  description: DESCRIPTION,
+  path:        CRM_PAGE.path,
 })
 
 const pijnpunten = [
@@ -25,12 +30,12 @@ const pijnpunten = [
 ]
 
 const benefits = [
-  { icon: '📋', title: 'Digitale werkbonnen',        desc: 'Klant tekent op tablet. PDF direct verstuurd. BRL 100-rapport automatisch klaar.' },
+  { icon: '📋', title: 'Digitale werkbonnen',        desc: 'Klant tekent op tablet. PDF direct verstuurd. Elke handeling komt in het logboek van de installatie.' },
   { icon: '📅', title: 'Planning per monteur',        desc: 'Werkorders toewijzen, Google Calendar sync, altijd overzicht.' },
   { icon: '🏗',  title: 'Installatiebeheer',          desc: 'Per klant alle installaties, koudemiddelen en servicehistorie.' },
-  { icon: '❄️', title: 'F-gassen registratie',        desc: 'Koudemiddellogboek conform EU F-gas 2024/573, flesregistratie en balans zoals BRL 100 vraagt.' },
+  { icon: '❄️', title: 'F-gassen registratie',        desc: 'Logboek per installatie met de gegevens uit art. 7 van Verordening (EU) 2024/573, flesregistratie en balans zoals BRL 100 vraagt.' },
   { icon: '🧾', title: 'Facturatie',                  desc: 'Factuur aanmaken vanuit werkbon met iDEAL betaallink via Mollie.' },
-  { icon: '📄', title: 'BRL 100 rapportage',           desc: 'Automatisch gegenereerd. Direct klaar voor inspectie.' },
+  { icon: '📄', title: 'BRL 100-werkregistratie',      desc: 'Per installatie en per circuit, export voor de auditor.' },
 ]
 
 const stappen = [
@@ -50,7 +55,7 @@ const faqs = [
   },
   {
     question: 'Is dit echt voor koeltechniek of is het een algemene tool met een F-gassen-stickertje?',
-    answer:   'Echt voor koeltechniek. Snellio is gebouwd door Rudy Snel, eigenaar van Snel Airco\'s en zelf STEK-gecertificeerd. F-gassen-registratie, BRL 100-rapport en lekcontrole-cycli zitten in de kern, niet als plug-in.',
+    answer:   'Echt voor koeltechniek. Snellio is gebouwd door Rudy Snel, eigenaar van Snel Airco\'s en zelf STEK-gecertificeerd. F-gassenregistratie, BRL 100-werkregistratie en de lekcontroletermijn uit art. 5 zitten in de kern, niet als plug-in.',
   },
   {
     question: 'Wat als ik na 14 dagen wil stoppen?',
@@ -67,15 +72,16 @@ export default function CrmVoorInstallateursAdsPage() {
           { name: 'CRM voor installateurs', href: '/crm-voor-installateurs' },
         ]),
         faqSchema(faqs),
-        {
-          '@context': 'https://schema.org',
-          '@type': 'SoftwareApplication',
-          name: 'Snellio',
-          applicationCategory: 'BusinessApplication',
-          operatingSystem: 'Web',
-          description: 'CRM voor airco- en warmtepompen installateurs en HVAC-bedrijven.',
-          offers: { '@type': 'Offer', price: '10.00', priceCurrency: 'EUR' },
-        },
+        // Commerciële pagina: WebPage met dateModified. De SoftwareApplication
+        // staat al site-breed in de layout; hier alleen de verwijzing.
+        webPageSchema({
+          path:          CRM_PAGE.path,
+          name:          TITLE,
+          description:   DESCRIPTION,
+          datePublished: CRM_PAGE.datePublished,
+          dateModified:  CRM_PAGE.dateModified,
+          aboutId:       `${SITE.url}/#software`,
+        }),
       ]} />
 
       {/* ── HERO. Boven de fold, conversie first ── */}
@@ -135,7 +141,7 @@ export default function CrmVoorInstallateursAdsPage() {
                 'Gebouwd door een installateur',
                 'Van werkbon tot factuur in één app',
                 'Werkbon, factuur en F-gassen vanuit één plek',
-                'BRL 100-rapport met één klik klaar',
+                'Werkregistratie zoals BRL 100 vraagt, vanuit de werkbon',
               ].map(item => (
                 <li key={item} className="flex items-center gap-3 text-[var(--text2)] text-sm">
                   <span className="w-5 h-5 rounded-full bg-[rgba(18,168,122,.15)] border border-[rgba(18,168,122,.3)] flex items-center justify-center text-[var(--green)] text-[.7rem] font-bold shrink-0">✓</span>
@@ -258,7 +264,7 @@ export default function CrmVoorInstallateursAdsPage() {
       </section>
 
       {/* ── LONG-FORM SEO-TEKST: geeft de pagina inhoudelijke diepgang
-             (was vrijwel alleen UI-copy — te dun voor een money-keyword) ── */}
+             (was vrijwel alleen UI-copy, te dun voor een money-keyword) ── */}
       <section className="py-20 px-[5%] bg-[var(--navy2)]">
         <Container narrow>
           <h2 className="font-outfit font-bold text-[var(--text)] text-2xl mb-6">
@@ -271,9 +277,9 @@ export default function CrmVoorInstallateursAdsPage() {
               CRM stopt bij contactgegevens en notities, gaat een installateurs-CRM verder: per klant
               zie je welke airco of warmtepomp er hangt, welk koudemiddel erin zit, wanneer de laatste
               lekcontrole was en welke <Link href="/werkbon-software" className="text-[var(--accent)] hover:underline">werkbonnen</Link> er
-              zijn afgetekend. Voor koeltechniek-bedrijven komt daar de wettelijke{' '}
-              <Link href="/f-gassen-registratie" className="text-[var(--accent)] hover:underline">F-gassen registratie</Link>{' '}
-              (EU-verordening 2024/573) nog bovenop.
+              zijn afgetekend. Voor koeltechniek-bedrijven komt daar het{' '}
+              <Link href="/f-gassen-registratie" className="text-[var(--accent)] hover:underline">register per apparaat</Link>{' '}
+              uit art. 7 van Verordening (EU) 2024/573 nog bovenop.
             </p>
             <h3 className="font-outfit font-semibold text-[var(--text)] text-lg pt-2">
               Waarom een los CRM niet werkt voor koeltechniek
@@ -285,7 +291,7 @@ export default function CrmVoorInstallateursAdsPage() {
               papieren werkbonnen en een apart boekhoudpakket. Dat werkt tot een monteur of vijf.
               Daarna gaat het knellen: servicehistorie is onvindbaar, flesregistratie gebeurt achteraf
               (of niet), en elke werkbon wordt twee keer overgetikt. Een branchespecifiek CRM lost dat
-              op omdat werkbon, planning, F-gas logboek en factuur uit dezelfde database komen — invullen
+              op omdat werkbon, planning, F-gas logboek en factuur uit dezelfde database komen. Invullen
               op locatie is meteen verwerken.
             </p>
             <h3 className="font-outfit font-semibold text-[var(--text)] text-lg pt-2">
@@ -294,11 +300,11 @@ export default function CrmVoorInstallateursAdsPage() {
             <p>
               Kies op vier punten. <strong className="text-[var(--text)]">Eén:</strong> werkt de app op de
               telefoon van de monteur, in de browser en zonder installatie? <strong className="text-[var(--text)]">Twee:</strong>{' '}
-              zit F-gassen registratie en BRL 100-rapportage in de kern, of is het een plug-in van een
+              zit F-gassen registratie en BRL 100-werkregistratie in de kern, of is het een plug-in van een
               algemeen pakket? <strong className="text-[var(--text)]">Drie:</strong> kunnen je monteurs er zonder
               cursus mee werken? <strong className="text-[var(--text)]">Vier:</strong> zit je vast aan een
               jaarcontract of kun je maandelijks opzeggen? Snellio is gebouwd door een STEK-gecertificeerd
-              installateur die zelf dagelijks op de bus zit — bekijk de{' '}
+              installateur die zelf dagelijks op de bus zit. Bekijk de{' '}
               <Link href="/pricing" className="text-[var(--accent)] hover:underline">prijzen</Link>{' '}
               of vergelijk Snellio met{' '}
               <Link href="/alternatief-voor-crm-installateurs" className="text-[var(--accent)] hover:underline">losse tools</Link>.
@@ -324,7 +330,7 @@ export default function CrmVoorInstallateursAdsPage() {
           { href: '/werkbon-software',            icon: '📋', title: 'Werkbon-software',      desc: 'Digitale werkbon met handtekening'   },
           { href: '/planningssoftware-monteurs',  icon: '📅', title: 'Planning monteurs',     desc: 'Werkorders inplannen per monteur'    },
           { href: '/f-gassen-registratie',        icon: '❄️', title: 'F-gassen registratie',  desc: 'Flesregistratie & F-gas logboek'     },
-          { href: '/pricing',                     icon: '💶', title: 'Prijzen',               desc: 'Vanaf €10/mnd incl. btw, alles inbegrepen' },
+          { href: '/pricing',                     icon: '💶', title: 'Prijzen',               desc: 'Alle functies in elk pakket' },
         ]}
       />
 

@@ -11,6 +11,7 @@ import JsonLd    from '@/components/seo/JsonLd'
 import Container from '@/components/ui/Container'
 import Button    from '@/components/ui/Button'
 import Cta       from '@/components/sections/Cta'
+import { formatDatumNL } from '@/components/ui/UpdatedOn'
 
 interface Props {
   params: { slug: string }
@@ -62,6 +63,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ...meta.openGraph,
       type:          'article',
       publishedTime: post.dateISO,
+      modifiedTime:  post.dateModifiedISO ?? post.dateISO,
       authors:       [post.author?.name ?? 'Rudy Snel'],
     },
   }
@@ -192,14 +194,25 @@ export default function BlogPost({ params }: Props) {
             {post.title}
           </h1>
 
-          {/* Auteur-byline (E-E-A-T) */}
-          <p className="text-sm text-[var(--muted2)] mb-8">
-            Door{' '}
-            {authorName === PERSON_NAME
-              ? <Link href={PERSON_PATH} className="text-[var(--text2)] font-medium underline underline-offset-2 hover:text-[var(--accent)]">{authorName}</Link>
-              : <span className="text-[var(--text2)] font-medium">{authorName}</span>}
-            , oprichter van Snellio en STEK-gecertificeerd installateur
-          </p>
+          {/* Auteur-byline (E-E-A-T) en, na een inhoudelijke wijziging, de datum
+              daarvan: gelijk aan BlogPosting.dateModified. */}
+          <div className="text-sm text-[var(--muted2)] mb-8">
+            <p>
+              Door{' '}
+              {authorName === PERSON_NAME
+                ? <Link href={PERSON_PATH} className="text-[var(--text2)] font-medium underline underline-offset-2 hover:text-[var(--accent)]">{authorName}</Link>
+                : <span className="text-[var(--text2)] font-medium">{authorName}</span>}
+              , oprichter van Snellio en STEK-gecertificeerd installateur
+            </p>
+            {post.dateModifiedISO && (
+              <p className="mt-1">
+                Bijgewerkt op{' '}
+                <time dateTime={post.dateModifiedISO} className="font-medium text-[var(--text2)]">
+                  {formatDatumNL(post.dateModifiedISO)}
+                </time>
+              </p>
+            )}
+          </div>
 
           {/* Header-afbeelding (optioneel per post) */}
           {showHeaderImage && post.image && (

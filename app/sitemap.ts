@@ -3,6 +3,9 @@ import { SITE } from '@/lib/constants'
 import { POSTS } from '@/lib/posts'
 import { PERSON_PATH } from '@/lib/schemas'
 import { HOME_PAGE } from '@/app/meta'
+import { CRM_PAGE } from '@/app/crm-voor-installateurs/meta'
+import { PLANNING_PAGE } from '@/app/planningssoftware-monteurs/meta'
+import { ALTERNATIEF_PAGE } from '@/app/alternatief-voor-crm-installateurs/meta'
 import { BRL100_PAGE } from '@/app/brl-100-software/meta'
 import { FGASSEN_PAGE } from '@/app/f-gassen-registratie/meta'
 import { WERKBON_PAGE } from '@/app/werkbon-software/meta'
@@ -21,10 +24,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/pricing',                       priority: 0.9,  changeFreq: 'weekly'  as const, lastMod: now },
     // Pillar: lastModified is de gecontroleerde dateModified, niet de deploydatum.
     { path: PILLAR_PAGE.path,                 priority: 0.95, changeFreq: 'monthly' as const, lastMod: new Date(PILLAR_PAGE.dateModified) },
-    { path: '/crm-voor-installateurs',        priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
+    { path: CRM_PAGE.path,                    priority: 0.9,  changeFreq: 'monthly' as const, lastMod: new Date(CRM_PAGE.dateModified) },
     // Commerciële pagina: lastModified is de gecontroleerde dateModified, niet de deploydatum.
     { path: WERKBON_PAGE.path,                priority: 0.9,  changeFreq: 'monthly' as const, lastMod: new Date(WERKBON_PAGE.dateModified) },
-    { path: '/planningssoftware-monteurs',    priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
+    { path: PLANNING_PAGE.path,               priority: 0.9,  changeFreq: 'monthly' as const, lastMod: new Date(PLANNING_PAGE.dateModified) },
     // Informatieve pagina: lastModified is de echte dateModified van de tekst.
     { path: FGASSEN_PAGE.path,                priority: 0.9,  changeFreq: 'monthly' as const, lastMod: new Date(FGASSEN_PAGE.dateModified) },
     // Informatieve pagina: lastModified is de echte dateModified van de tekst.
@@ -32,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/automotive',                    priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
     // Auteurspagina: wijzigt alleen bij nieuwe artikelen of certificering.
     { path: PERSON_PATH,                      priority: 0.5,  changeFreq: 'yearly'  as const, lastMod: new Date('2026-09-15') },
-    { path: '/alternatief-voor-crm-installateurs', priority: 0.85, changeFreq: 'monthly' as const, lastMod: now },
+    { path: ALTERNATIEF_PAGE.path,            priority: 0.85, changeFreq: 'monthly' as const, lastMod: new Date(ALTERNATIEF_PAGE.dateModified) },
     { path: '/contact',                       priority: 0.8,  changeFreq: 'monthly' as const, lastMod: now },
     { path: '/demo',                          priority: 0.85, changeFreq: 'monthly' as const, lastMod: now },
     // NB: /registreren (redirect) en /checkout (aanmeldformulier, noindex)
@@ -49,7 +52,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // indexering van precies de pagina's die longtail-verkeer moeten trekken.
   const blogRoutes: MetadataRoute.Sitemap = POSTS.map(p => ({
     url:             `${SITE.url}/blog/${p.slug}`,
-    lastModified:    new Date(p.dateISO),
+    lastModified:    new Date(p.dateModifiedISO ?? p.dateISO),
     changeFrequency: 'yearly' as const,
     priority:        0.6,
   }))

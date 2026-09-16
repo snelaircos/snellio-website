@@ -84,7 +84,7 @@ const founderBadges = ['Snel Airco’s', 'STEK', 'BRL 100', 'Sinds 2017']
 
 const faqs = [
   { question: 'Kan ik mijn data exporteren?',           answer: 'Ja, alles via CSV en PDF. Je data is van jou.' },
-  { question: 'Hoe lang is de trial?',                  answer: 'Probeer 14 dagen gratis met alle functies, zonder creditcard of betaalgegevens. Tijdens de proefperiode kies je in Snellio het abonnement dat bij je bedrijf past, vanaf €10 per maand inclusief btw, en of je per maand of per jaar betaalt via iDEAL of automatische incasso. Niets loopt stilzwijgend door.' },
+  { question: 'Hoe lang is de trial?',                  answer: `Probeer ${TRIAL_DAGEN} dagen gratis met alle functies, zonder creditcard of betaalgegevens. Tijdens de proefperiode kies je in Snellio het abonnement dat bij je bedrijf past, vanaf ${fmtEuro(vanaf)} per maand ${BTW.short}, en of je per maand of per jaar betaalt via iDEAL of automatische incasso. Niets loopt stilzwijgend door.` },
   { question: 'Wat als ik wil opzeggen?',               answer: 'Eén klik in je dashboard. Geen opzegtermijn na de eerste maand.' },
   { question: 'Hosten jullie in Nederland?',            answer: 'EU-region (Supabase Frankfurt). AVG-conform.' },
   { question: 'Kan een monteur ook offline werken?',    answer: 'Nee. Snellio werkt in de browser en heeft een internetverbinding nodig. Zonder verbinding kun je geen werkbon invullen.' },
