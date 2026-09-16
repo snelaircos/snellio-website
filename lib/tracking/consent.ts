@@ -4,10 +4,18 @@
 // hoofddomein, zodat app.snellio.nl dezelfde keuze ziet. De DEFAULT-state
 // wordt server-side in <head> gezet (components/tracking/GoogleTag.tsx) uit
 // diezelfde cookie, vóórdat gtag.js laadt. Dit bestand doet de UPDATE.
+//
+// Eén keuze dekt alle vier de signalen (ad_storage, ad_user_data,
+// ad_personalization, analytics_storage): de banner heeft twee knoppen, alles
+// of alleen noodzakelijk. `consentStatus()` maakt "nog niet gekozen" expliciet
+// als 'unknown', zodat dat in logs en attributie nooit met 'denied' wordt
+// verward. Voor gtag geldt zonder keuze de default: alles denied.
 
 import { TRACKING } from './config'
 
-export type ConsentState = 'granted' | 'denied'
+export type ConsentState  = 'granted' | 'denied'
+/** Keuze zoals opgeslagen, plus 'unknown' zolang de bezoeker niets koos. */
+export type ConsentStatus = ConsentState | 'unknown'
 
 const CONSENT_EVENT = 'snellio:consent'
 const COOKIE_DAYS = 365
@@ -38,7 +46,7 @@ export function deleteCookie(name: string): void {
   document.cookie = `${name}=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Path=/; SameSite=Lax${domain}`
 }
 
-/** Huidige keuze: cookie eerst, dan de legacy localStorage-waarde (gemigreerd). */
+/** Huidige keuze: cookie eerst, dan de legacy localStorage-waarde (gemigreerd). null = nog niet gekozen. */
 export function readConsent(): ConsentState | null {
   const c = readCookie(TRACKING.consentCookie)
   if (c === 'granted' || c === 'denied') return c
@@ -48,6 +56,11 @@ export function readConsent(): ConsentState | null {
     if (legacy === 'declined') { setCookie(TRACKING.consentCookie, 'denied',  COOKIE_DAYS); return 'denied' }
   } catch { /* storage geblokkeerd */ }
   return null
+}
+
+/** Zelfde als readConsent, maar met 'unknown' in plaats van null: voor logs en de signup-payload. */
+export function consentStatus(): ConsentStatus {
+  return readConsent() ?? 'unknown'
 }
 
 export function adsConsentGranted(): boolean {

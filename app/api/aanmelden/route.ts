@@ -11,6 +11,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 import { rateLimit, clientIp, emailDomein } from '@/lib/rate-limit'
 import { VOORWAARDEN } from '@/lib/constants'
+import { verwerkAttributie, CLICK_KEYS } from '@/lib/tracking/server-attribution'
 
 const LANDEN = ['NL', 'BE', 'overig']
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -75,17 +76,19 @@ export async function POST(req: NextRequest) {
   // er is, hier een insert toevoegen. Bewust GEEN eigen tabel aanmaken vanuit
   // deze repo (afspraak 05-09-2026, voorkomt twee structuren).
   const akkoordLog = { versie: VOORWAARDEN.versie, tijdstip: new Date().toISOString(), ip }
-  // Attributie (gclid/gbraid/wbraid/utm/landing) uit de first-party opslag van
-  // de site: gewhitelist en begrensd, bij het account bewaard zodat de app een
-  // latere aankoop aan de advertentieklik kan koppelen (o.a. offline conversie).
-  const ATTR_KEYS = ['gclid', 'gbraid', 'wbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'landing_page', 'referrer', 'captured_at'] as const
-  const attributie: Record<string, string | boolean> = {}
-  if (body.attributie && typeof body.attributie === 'object') {
-    for (const k of ATTR_KEYS) { const v = body.attributie[k]; if (typeof v === 'string' && v.trim()) attributie[k] = v.trim().slice(0, 200) }
-    if (typeof body.attributie.consent_ads === 'boolean') attributie.consent_ads = body.attributie.consent_ads
-  }
+  // Herkomst uit de first-party opslag van de site, bij het account bewaard
+  // zodat de app een latere aankoop aan de bron kan koppelen. Twee lagen:
+  //  - verkeerscontext (first_landing_page, first_referrer, captured_at) en
+  //    de consentstatus: altijd, ook bij direct of organisch verkeer;
+  //  - marketingattributie (utm's, landing van de klik) als die er is;
+  //  - click-id's (gclid/gbraid/wbraid) uitsluitend bij consent_ads granted,
+  //    ook server-side afgedwongen, zodat een oude of gemanipuleerde client
+  //    ze niet zonder consent kan laten opslaan.
+  // consent_ads is 'granted' | 'denied' | 'unknown' (nooit gekozen); een
+  // oudere client stuurt nog een boolean, die wordt vertaald.
+  const attributie = verwerkAttributie(body.attributie)
   const { data: created, error: authErr } = await supabase.auth.admin.createUser({
-    email, password, email_confirm: true, user_metadata: { company_name: bedrijfsnaam, bron: 'snellio.nl', voorwaarden_akkoord: akkoordLog, attributie: Object.keys(attributie).length ? attributie : null },
+    email, password, email_confirm: true, user_metadata: { company_name: bedrijfsnaam, bron: 'snellio.nl', voorwaarden_akkoord: akkoordLog, attributie },
   })
   if (authErr || !created.user) {
     if (authErr?.message?.toLowerCase().includes('already')) return NextResponse.json({ error: 'Dit e-mailadres is al geregistreerd. Log in met je bestaande account.', code: 'email_exists' }, { status: 409 })
@@ -118,6 +121,14 @@ export async function POST(req: NextRequest) {
   await supabase.from('pending_signups').insert({
     email, company_name: bedrijfsnaam, full_name: '', password: '', package_id: null, status: 'completed', vertical: 'hvac',
   }).then(({ error }) => { if (error) console.warn('[aanmelden] pending_signups:', error.message) })
+
+  // Diagnose zonder persoonsgegevens: naast de Ads-conversiemelding van de
+  // client (/api/tracking/conversie-resultaat) te leggen via de user-suffix.
+  console.info('[aanmelden] tenant aangemaakt', JSON.stringify({
+    at: new Date().toISOString(), user_suffix: userId.slice(-6), consent_ads: attributie.consent_ads,
+    click_id: CLICK_KEYS.some(k => k in attributie), utm: 'utm_source' in attributie,
+    first_landing_page: attributie.first_landing_page ?? null, first_referrer: attributie.first_referrer ?? null,
+  }))
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://app.snellio.nl'
   // user_id gaat mee als stabiele transaction_id voor de Ads-conversie (dedupe).

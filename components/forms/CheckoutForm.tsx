@@ -50,10 +50,13 @@ export default function CheckoutForm({ selectedPackage }: CheckoutFormProps) {
       setStatus('success')
       setLoginUrl(data.login_url)
       // Conversie pas nu: /api/aanmelden gaf ok → account + tenant bestaan.
-      // Wachten op de gtag-callback (max 1,5 s) vóór de harde redirect naar
-      // app.snellio.nl, anders kan de conversie-hit sneuvelen in de unload.
-      if (data.user_id) await trackTrialSignupCompleted({ userId: data.user_id, email: form.email })
-      setTimeout(() => { window.location.href = data.login_url }, 2500)
+      // trackTrialSignupCompleted wacht op de gtag-callback of op zijn eigen
+      // timeout (2 s), nooit op een onbeperkte wachtrij. Bij een bevestigde
+      // hit ('sent') hoeft de bezoeker niet langer te wachten; anders nog even
+      // ruimte laten vóór de harde redirect naar app.snellio.nl. De aanmelding
+      // zelf is al geslaagd, wat het trackingresultaat ook is.
+      const result = data.user_id ? await trackTrialSignupCompleted({ userId: data.user_id, email: form.email }) : 'unavailable'
+      setTimeout(() => { window.location.href = data.login_url }, result === 'sent' ? 800 : 2000)
     } catch (error) {
       console.error('Aanmelden error:', error)
       setStatus('error')

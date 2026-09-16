@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { SITE } from '@/lib/constants'
 
 // Doorverwijspagina naar de app. Het inloggen zelf gebeurt op
@@ -48,7 +49,7 @@ export default function LoginPage({ searchParams }: Props) {
         </a>
 
         <p className='text-[var(--muted)] text-sm mt-6'>
-          Nog geen account? <a href='/checkout' className='text-[var(--accent)] hover:underline'>Probeer 14 dagen gratis</a>
+          Nog geen account? <Link href='/checkout' className='text-[var(--accent)] hover:underline'>Probeer 14 dagen gratis</Link>
         </p>
       </div>
     </div>

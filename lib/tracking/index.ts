@@ -10,8 +10,9 @@
 //  - Conversies alleen na een door de backend bevestigde status (account
 //    bestaat, lead is verstuurd, betaling is 'paid').
 //  - Elke conversie heeft een stabiele transaction_id (user-id, lead-id,
-//    Mollie payment-id) → Ads dedupliceert, en wij dedupliceren lokaal
-//    (localStorage, 90 dagen) zodat een refresh nooit opnieuw meet.
+//    Mollie payment-id) → Ads dedupliceert. Lokaal markeren we pas als
+//    verzonden ná event_callback (localStorage, 90 dagen); een timeout of
+//    geblokkeerde tag zet géén marker, zodat een refresh opnieuw mag proberen.
 //  - Redirect-veilig: trackXxx() resolvet op event_callback of timeout; wacht
 //    erop vóór window.location.href. De gtag-stub staat in <head>, dus events
 //    komen altijd in de dataLayer-queue, ook als gtag.js nog laadt.
@@ -20,15 +21,15 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { TRACKING, sendTo, type ConversionEvent } from './config'
-import { readConsent, applyConsent, onConsentChange, adsConsentGranted, type ConsentState } from './consent'
+import { readConsent, consentStatus, applyConsent, onConsentChange, adsConsentGranted, type ConsentState, type ConsentStatus } from './consent'
 import {
-  captureAttribution, getAttribution, attributionForServer, promoteAttributionOnConsent, hasClickId,
-  type Attribution,
+  captureContext, getContext, captureAttribution, getAttribution, attributionForServer, promoteAttributionOnConsent, hasClickId,
+  type Attribution, type TrafficContext, type ServerAttribution,
 } from './attribution'
 
-export { TRACKING, sendTo, readConsent, applyConsent, onConsentChange, adsConsentGranted,
-  captureAttribution, getAttribution, attributionForServer, hasClickId }
-export type { ConversionEvent, ConsentState, Attribution }
+export { TRACKING, sendTo, readConsent, consentStatus, applyConsent, onConsentChange, adsConsentGranted,
+  captureContext, getContext, captureAttribution, getAttribution, attributionForServer, hasClickId }
+export type { ConversionEvent, ConsentState, ConsentStatus, Attribution, TrafficContext, ServerAttribution }
 
 // ── Debug ────────────────────────────────────────────────────────────────────
 
@@ -39,9 +40,10 @@ interface DebugRegistry {
   events: Array<{ at: string; msg: string; data?: unknown }>
   readonly consent: ConsentState | null
   readonly attribution: Attribution | null
+  readonly context: TrafficContext | null
   readonly dataLayer: unknown[] | undefined
 }
-type DebugWindow = Window & { __snellioTracking?: DebugRegistry }
+type DebugWindow = Window & { __snellioTracking?: DebugRegistry; google_tag_manager?: unknown }
 
 export function isDebug(): boolean {
   if (process.env.NODE_ENV !== 'production') return true
@@ -58,6 +60,7 @@ function registry(): DebugRegistry | null {
       events: [],
       get consent()     { return readConsent() },
       get attribution() { return getAttribution() },
+      get context()     { return getContext() },
       get dataLayer()   { return window.dataLayer },
     }
   }
@@ -89,18 +92,45 @@ function gtag(...args: unknown[]): boolean {
   return true
 }
 
+/**
+ * Is gtag.js daadwerkelijk geladen? De stub in <head> bestaat altijd; gtag.js
+ * zet bij het laden `window.google_tag_manager`. Zonder dat object staat een
+ * event alleen in de dataLayer-wachtrij en gaat er niets het netwerk op
+ * (script geblokkeerd door een adblocker, of nog niet geladen).
+ */
+export function gtagLoaded(): boolean {
+  if (typeof window === 'undefined') return false
+  return typeof (window as DebugWindow).google_tag_manager === 'object' && (window as DebugWindow).google_tag_manager !== null
+}
+
 function stripUndefined<T extends Record<string, unknown>>(o: T): T {
   return Object.fromEntries(Object.entries(o).filter(([, v]) => v !== undefined)) as T
 }
 
 // ── Deduplicatie ─────────────────────────────────────────────────────────────
+//
+// Drie lagen, van zwak naar sterk:
+//  1. In-flight-set: geen tweede aanroep zolang de eerste nog wacht.
+//  2. localStorage-marker (90 dagen), gezet PAS in event_callback — dus alleen
+//     als gtag.js de hit heeft afgehandeld. Een timeout of een geblokkeerde
+//     tag zet géén marker, zodat een refresh in dezelfde sessie het opnieuw
+//     mag proberen. Een callback die ná onze timeout alsnog komt, zet de
+//     marker alsnog (de hit is dan wel weg).
+//  3. Google Ads zelf: dezelfde transaction_id telt maar één keer.
+// Tegen loops: maximaal MAX_ATTEMPTS pogingen per sleutel per tab-sessie.
 
-const DEDUPE_PREFIX = 'snellio:conv:'
-const DEDUPE_TTL_MS = 90 * 86_400_000
-const firedInMemory = new Set<string>()
+const DEDUPE_PREFIX   = 'snellio:conv:'
+const ATTEMPTS_PREFIX = 'snellio:conv:attempts:'
+const FUNNEL_PREFIX   = 'snellio:funnel:'
+const DEDUPE_TTL_MS   = 90 * 86_400_000
+const MAX_ATTEMPTS    = 3
+const DEFAULT_WAIT_MS = 2000
+const sentInMemory    = new Set<string>()
+const inFlight        = new Set<string>()
+const attemptsInMemory = new Map<string, number>()
 
-function alreadyFired(key: string): boolean {
-  if (firedInMemory.has(key)) return true
+function alreadySent(key: string): boolean {
+  if (sentInMemory.has(key)) return true
   try {
     const v = localStorage.getItem(DEDUPE_PREFIX + key)
     if (!v) return false
@@ -109,14 +139,45 @@ function alreadyFired(key: string): boolean {
   } catch { return false }
 }
 
-function markFired(key: string): void {
-  firedInMemory.add(key)
+function markSent(key: string): void {
+  sentInMemory.add(key)
   try { localStorage.setItem(DEDUPE_PREFIX + key, String(Date.now())) } catch { /* storage geblokkeerd: in-memory guard blijft */ }
+}
+
+function countAttempt(key: string): number {
+  let n = attemptsInMemory.get(key) ?? 0
+  try { n = Math.max(n, Number(sessionStorage.getItem(ATTEMPTS_PREFIX + key) ?? 0)) } catch { /* negeer */ }
+  n += 1
+  attemptsInMemory.set(key, n)
+  try { sessionStorage.setItem(ATTEMPTS_PREFIX + key, String(n)) } catch { /* negeer */ }
+  return n
+}
+
+/** GA4-funnelevent maar één keer per sleutel per tab-sessie, ook bij een retry van de Ads-hit. */
+function funnelEventSent(key: string): boolean {
+  try {
+    if (sessionStorage.getItem(FUNNEL_PREFIX + key)) return true
+    sessionStorage.setItem(FUNNEL_PREFIX + key, '1')
+  } catch { /* negeer */ }
+  return false
 }
 
 // ── Google Ads conversie (generiek) ──────────────────────────────────────────
 
-export type ConversionResult = 'sent' | 'timeout' | 'duplicate' | 'no_label' | 'unavailable'
+/**
+ * sent        event_callback van gtag is aangeroepen: gtag.js heeft de hit
+ *             afgehandeld. Dat is de beste bevestiging die de browser geeft;
+ *             het bewijst niet dat Google de request ook heeft ontvangen.
+ * timeout     gtag.js is geladen, maar de callback bleef uit binnen waitMs.
+ * blocked     gtag.js is niet geladen (adblocker/geblokkeerd script): het
+ *             event staat in de dataLayer-wachtrij, er ging niets weg.
+ * duplicate   eerder al 'sent' (marker), nog in-flight, of MAX_ATTEMPTS bereikt.
+ * unavailable geen browseromgeving (SSR).
+ * no_label    geen conversielabel geconfigureerd voor dit event.
+ * error       gtag gooide een uitzondering.
+ * Alleen 'sent' zet de 90-dagen-marker.
+ */
+export type ConversionResult = 'sent' | 'timeout' | 'blocked' | 'duplicate' | 'unavailable' | 'no_label' | 'error'
 
 export interface ConversionInput {
   event:          ConversionEvent
@@ -140,12 +201,20 @@ export function trackGoogleAdsConversion(input: ConversionInput): Promise<Conver
     }
 
     const key = `${input.event}:${input.transactionId}`
-    if (alreadyFired(key)) {
-      log('duplicate conversion prevented', { event: input.event, transaction_id: input.transactionId })
+    if (alreadySent(key)) {
+      log('duplicate conversion prevented (al verzonden)', { event: input.event, transaction_id: input.transactionId })
       return resolve('duplicate')
     }
-    // Markeren vóór verzending: liever één gemiste dan één dubbele conversie.
-    markFired(key)
+    if (inFlight.has(key)) {
+      log('duplicate conversion prevented (nog onderweg)', { event: input.event, transaction_id: input.transactionId })
+      return resolve('duplicate')
+    }
+    const attempt = countAttempt(key)
+    if (attempt > MAX_ATTEMPTS) {
+      log('conversion niet opnieuw geprobeerd: maximum pogingen bereikt', { event: input.event, transaction_id: input.transactionId, attempt })
+      return resolve('duplicate')
+    }
+    inFlight.add(key)
 
     // value + currency alleen als er werkelijk geld is betaald. Google Ads
     // accepteert een conversie zonder waarde; een verzonnen bedrag meesturen
@@ -162,25 +231,70 @@ export function trackGoogleAdsConversion(input: ConversionInput): Promise<Conver
     const finish = (r: ConversionResult) => {
       if (done) return
       done = true
-      log(r === 'sent'
-        ? 'Google Ads conversion fired'
-        : 'Google Ads conversion: callback-timeout (event staat in de dataLayer-queue)',
-        { event: input.event, send_to: destination, transaction_id: input.transactionId })
+      inFlight.delete(key)
+      log(r === 'sent' ? 'Google Ads conversion fired' : `Google Ads conversion: ${r}`,
+        { event: input.event, send_to: destination, transaction_id: input.transactionId, attempt, gtag_loaded: gtagLoaded() })
       resolve(r)
     }
-    const timer = setTimeout(() => finish('timeout'), input.waitMs ?? 1500)
+    // Bewust géén event_timeout-parameter van gtag: die roept event_callback
+    // ook aan als de hit NIET is verzonden, en dan is de callback geen
+    // bewijs meer. Eigen timer, callback betekent dus echt afgehandeld.
+    const timer = setTimeout(() => finish(gtagLoaded() ? 'timeout' : 'blocked'), input.waitMs ?? DEFAULT_WAIT_MS)
 
     log(input.event, params)
-    gtag('event', 'conversion', {
-      send_to: destination,
-      ...params,
-      event_callback: () => { clearTimeout(timer); finish('sent') },
-    })
+    try {
+      gtag('event', 'conversion', {
+        send_to: destination,
+        ...params,
+        event_callback: () => {
+          clearTimeout(timer)
+          // Ook een late callback (na onze timeout) markeert: de hit is weg.
+          markSent(key)
+          if (done) { log('late event_callback: alsnog gemarkeerd als verzonden', { event: input.event, transaction_id: input.transactionId }); return }
+          finish('sent')
+        },
+      })
+    } catch (e) {
+      clearTimeout(timer)
+      log('gtag error', { event: input.event, error: e instanceof Error ? e.message : String(e) })
+      return finish('error')
+    }
 
     // Zelfde funnelstap als GA4-event (zonder send_to: via de GT-loader
     // bereikt het GA4; Ads negeert events die niet 'conversion' heten).
-    if (TRACKING.ga4Id) gtag('event', input.event, params)
+    // Eén keer per sessie, ook als de Ads-hit opnieuw wordt geprobeerd.
+    if (TRACKING.ga4Id && !funnelEventSent(key)) gtag('event', input.event, params)
   })
+}
+
+// ── Resultaatrapportage (geen persoonsgegevens) ──────────────────────────────
+
+export interface ConversionReport {
+  event:               ConversionEvent
+  /** Laatste 6 tekens van de transaction_id; genoeg om een user terug te vinden, geen id om op te zoeken. */
+  transaction_suffix:  string
+  result:              ConversionResult
+  consent:             ConsentStatus
+  attribution_present: boolean
+  click_id_present:    boolean
+  gtag_loaded:         boolean
+  attempt?:            number
+}
+
+export const CONVERSION_REPORT_PATH = '/api/tracking/conversie-resultaat'
+
+/**
+ * Meldt het resultaat aan de eigen server (pm2-log), zodat bij de volgende
+ * echte aanmelding zichtbaar is óf en hoe de conversie is verzonden.
+ * sendBeacon overleeft de redirect; fetch met keepalive als fallback.
+ */
+export function reportConversionResult(report: ConversionReport): void {
+  if (typeof window === 'undefined') return
+  const body = JSON.stringify(report)
+  try {
+    if (typeof navigator.sendBeacon === 'function' && navigator.sendBeacon(CONVERSION_REPORT_PATH, new Blob([body], { type: 'application/json' }))) return
+  } catch { /* val terug op fetch */ }
+  try { void fetch(CONVERSION_REPORT_PATH, { method: 'POST', body, headers: { 'Content-Type': 'application/json' }, keepalive: true }).catch(() => {}) } catch { /* negeer */ }
 }
 
 // ── Business-events ──────────────────────────────────────────────────────────
@@ -190,16 +304,29 @@ export function trackGoogleAdsConversion(input: ConversionInput): Promise<Conver
  * heeft teruggegeven (account + tenant bestaan server-side).
  * transaction_id = user-id → één conversie per account, ook na refresh.
  */
-export function trackTrialSignupCompleted(p: { userId: string; email?: string }): Promise<ConversionResult> {
+export async function trackTrialSignupCompleted(p: { userId: string; email?: string }): Promise<ConversionResult> {
   // Enhanced Conversions: gtag hasht de e-mail zelf en houdt zich aan
   // ad_user_data-consent (bij denied wordt niets meegestuurd).
   if (p.email) gtag('set', 'user_data', { email: p.email })
   // Bewust ZONDER value/currency: de proefperiode is gratis. De echte omzet
   // meldt de app als purchase_completed, zodra er daadwerkelijk betaald is.
-  return trackGoogleAdsConversion({
-    event:         'trial_signup_completed',
-    transactionId: `signup_${p.userId}`,
-  })
+  const transactionId = `signup_${p.userId}`
+  const result = await trackGoogleAdsConversion({ event: 'trial_signup_completed', transactionId })
+
+  // Diagnose zonder persoonsgegevens: console (altijd, één regel) + server.
+  const attribution = getAttribution()
+  const report: ConversionReport = {
+    event:               'trial_signup_completed',
+    transaction_suffix:  transactionId.slice(-6),
+    result,
+    consent:             consentStatus(),
+    attribution_present: !!attribution,
+    click_id_present:    hasClickId(attribution),
+    gtag_loaded:         gtagLoaded(),
+  }
+  if (typeof console !== 'undefined') console.info('[tracking] trial conversion result', report)
+  reportConversionResult(report)
+  return result
 }
 
 /** Contactformulier verstuurd (backend heeft de mail verzonden en een lead-id teruggegeven). */
@@ -266,11 +393,14 @@ export function initTracking(): void {
   } catch { /* negeer */ }
   registry()
 
+  const context     = captureContext()
   const attribution = captureAttribution()
   if (!consentListenerRegistered) { promoteAttributionOnConsent(); consentListenerRegistered = true }
 
   log('init', {
-    consent:      readConsent() ?? 'onbekend (default denied)',
+    consent:      consentStatus(),
+    first_landing: context?.first_landing_page,
+    first_referrer: context?.first_referrer || '(direct)',
     click_id:     hasClickId(attribution),
     utm_source:   attribution?.utm_source,
     ads_label_ok: { trial: !!sendTo('trial_signup_completed'), lead: !!sendTo('lead_submitted'), demo: !!sendTo('demo_requested'), purchase: !!sendTo('purchase_completed') },
