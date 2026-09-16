@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { SITE } from '@/lib/constants'
 import { POSTS } from '@/lib/posts'
 import { PERSON_PATH } from '@/lib/schemas'
+import { HOME_PAGE } from '@/app/meta'
 import { BRL100_PAGE } from '@/app/brl-100-software/meta'
 import { FGASSEN_PAGE } from '@/app/f-gassen-registratie/meta'
 import { WERKBON_PAGE } from '@/app/werkbon-software/meta'
@@ -14,7 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const legalDatum = new Date('2026-09-05')
 
   const routes = [
-    { path: '/',                              priority: 1.0,  changeFreq: 'weekly'  as const, lastMod: now },
+    // Homepage: lastModified is de gecontroleerde dateModified (app/meta.ts), niet de deploydatum.
+    { path: HOME_PAGE.path,                   priority: 1.0,  changeFreq: 'weekly'  as const, lastMod: new Date(HOME_PAGE.dateModified) },
     { path: '/features',                      priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
     { path: '/pricing',                       priority: 0.9,  changeFreq: 'weekly'  as const, lastMod: now },
     // Pillar: lastModified is de gecontroleerde dateModified, niet de deploydatum.
