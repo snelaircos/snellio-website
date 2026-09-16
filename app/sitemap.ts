@@ -4,6 +4,7 @@ import { POSTS } from '@/lib/posts'
 import { PERSON_PATH } from '@/lib/schemas'
 import { BRL100_PAGE } from '@/app/brl-100-software/meta'
 import { FGASSEN_PAGE } from '@/app/f-gassen-registratie/meta'
+import { WERKBON_PAGE } from '@/app/werkbon-software/meta'
 import { PILLAR_PAGE } from '@/app/software-voor-installatiebedrijven/meta'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -19,7 +20,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Pillar: lastModified is de gecontroleerde dateModified, niet de deploydatum.
     { path: PILLAR_PAGE.path,                 priority: 0.95, changeFreq: 'monthly' as const, lastMod: new Date(PILLAR_PAGE.dateModified) },
     { path: '/crm-voor-installateurs',        priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
-    { path: '/werkbon-software',              priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
+    // Commerciële pagina: lastModified is de gecontroleerde dateModified, niet de deploydatum.
+    { path: WERKBON_PAGE.path,                priority: 0.9,  changeFreq: 'monthly' as const, lastMod: new Date(WERKBON_PAGE.dateModified) },
     { path: '/planningssoftware-monteurs',    priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
     // Informatieve pagina: lastModified is de echte dateModified van de tekst.
     { path: FGASSEN_PAGE.path,                priority: 0.9,  changeFreq: 'monthly' as const, lastMod: new Date(FGASSEN_PAGE.dateModified) },
