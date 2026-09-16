@@ -21,7 +21,7 @@ const faqs = [
   { question: 'Kan ik kenplaten printen vanuit Snellio?',
     answer:   'Ja. Heb je een kenplaatprinter, dan print je per installatie direct vanuit Snellio een kenplaat met de velden uit art. 12 en een QR-code. Wie de QR-code scant, opent het digitale logboek van die installatie met alle specificaties en de volledige werk-historie.' },
   { question: 'Werkt de app ook offline?',
-    answer:   'Snellio werkt via de browser. Een stabiele internetverbinding is nodig voor synchronisatie, maar op tablet of telefoon is de interface volledig geoptimaliseerd voor gebruik op locatie.' },
+    answer:   'Nee. Snellio werkt in de browser en heeft een internetverbinding nodig. Zonder verbinding kun je geen werkbon invullen.' },
   { question: 'Maakt Snellio een TRA en LMRA bij werk met R290?',
     answer:   'Ja. Werk je aan een installatie met een brandbaar koudemiddel, dan zet Snellio bij de werkorder een veiligheidsdossier klaar: een TRA met risico’s en beheersmaatregelen uit de risicocatalogus, een werkvergunning waar die nodig is, en een LMRA die de monteur ter plaatse invult en aftekent. Snellio levert de formulieren en de vastlegging; de beoordeling van de klus en de RI&E blijven bij de werkgever.' },
   { question: 'Kan ik meerdere monteurs toevoegen?',

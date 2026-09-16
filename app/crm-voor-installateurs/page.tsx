@@ -42,7 +42,7 @@ const stappen = [
 const faqs = [
   {
     question: 'Werkt de app ook als ik geen bereik heb in een kruipruimte of stookhok?',
-    answer:   'Ja. De app slaat alles offline op je telefoon op en synchroniseert zodra je weer signaal hebt.',
+    answer:   'Nee. Snellio werkt in de browser en heeft een internetverbinding nodig. Zonder verbinding kun je geen werkbon invullen.',
   },
   {
     question: 'Moet ik mijn monteurs op cursus sturen?',
@@ -292,8 +292,8 @@ export default function CrmVoorInstallateursAdsPage() {
               Waar let je op bij het kiezen?
             </h3>
             <p>
-              Kies op vier punten. <strong className="text-[var(--text)]">Eén:</strong> werkt de app offline?
-              In een kruipruimte of stookhok is geen bereik. <strong className="text-[var(--text)]">Twee:</strong>{' '}
+              Kies op vier punten. <strong className="text-[var(--text)]">Eén:</strong> werkt de app op de
+              telefoon van de monteur, in de browser en zonder installatie? <strong className="text-[var(--text)]">Twee:</strong>{' '}
               zit F-gassen registratie en BRL 100-rapportage in de kern, of is het een plug-in van een
               algemeen pakket? <strong className="text-[var(--text)]">Drie:</strong> kunnen je monteurs er zonder
               cursus mee werken? <strong className="text-[var(--text)]">Vier:</strong> zit je vast aan een

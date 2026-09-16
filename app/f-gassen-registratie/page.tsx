@@ -47,8 +47,17 @@ export const metadata: Metadata = buildMetadata({
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
-// Nog geen geanonimiseerde screenshot van het logboek of de flesbalans;
-// tot die er is, is de kenplaat de Article.image (08, bouwinstructies).
+// Screenshot van de flesregistratie, geanonimiseerd, aangeleverd door
+// Rudy Snel op 15-09-2026. Article.image (08, bouwinstructies).
+const flesFoto = {
+  src:           '/koelfles-registratie.png',
+  alt:           'Flesregistratie in Snellio: een vulcilinder R-32 met serienummer, bruto-, tarra- en nettogewicht, huidig gewicht, vulstand en de koudemiddelbewegingen per werkorder',
+  caption:       'Flesregistratie in Snellio: vulcilinder R-32 met serienummer, gewichten, vulstand en de koudemiddelbewegingen per werkorder. Screenshot: 15 september 2026.',
+  datePublished: '2026-09-15',
+  width:         1448,
+  height:        2344,
+}
+
 const kenplaatFoto = {
   src:           '/kenplaat-voorbeeld.png',
   alt:           'Kenplaat van een koelinstallatie geprint vanuit Snellio, met koudemiddel, GWP, nominale vulling, CO₂-equivalent en een QR-code naar het digitale logboek',
@@ -314,7 +323,7 @@ export default function FgassenRegistratiePage() {
           description:     DESCRIPTION,
           dateISO:         FGASSEN_PAGE.datePublished,
           dateModifiedISO: FGASSEN_PAGE.dateModified,
-          image:           kenplaatFoto,
+          image:           flesFoto,
           schemaType:      'Article',
           citation:        bronnen.map(bron => bron.href),
           about:           ['F-gassenregistratie', 'Verordening (EU) 2024/573', 'BRL 100'],
@@ -527,6 +536,19 @@ export default function FgassenRegistratiePage() {
                 </div>
               ))}
             </div>
+            <figure className="mx-auto mt-10 max-w-[440px]">
+              <div className="overflow-hidden rounded-xl bg-white shadow-[0_16px_48px_rgba(15,33,51,.12)] ring-1 ring-[var(--border)]">
+                <Image
+                  src={flesFoto.src}
+                  alt={flesFoto.alt}
+                  width={flesFoto.width}
+                  height={flesFoto.height}
+                  className="block h-auto w-full"
+                  sizes="(min-width: 768px) 440px, 92vw"
+                />
+              </div>
+              <figcaption className="mt-3 text-center text-xs text-[var(--muted2)]">{flesFoto.caption}</figcaption>
+            </figure>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               {CERTS.map(cert => (
                 <span

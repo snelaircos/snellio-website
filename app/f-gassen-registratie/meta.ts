@@ -6,5 +6,5 @@
 export const FGASSEN_PAGE = {
   path:          '/f-gassen-registratie',
   datePublished: '2026-04-02T13:13:48+02:00',
-  dateModified:  '2026-09-15T21:00:00+02:00',
+  dateModified:  '2026-09-16T08:00:00+02:00',
 } as const
