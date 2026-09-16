@@ -21,7 +21,8 @@ staan zijn hieronder gemarkeerd met "volgens Kiwa".
 
 ## 1. Verordening (EU) 2024/573 (F-gassenverordening)
 
-Vervangt Verordening (EU) 517/2014. In werking sinds februari 2024. [B1]
+Vervangt Verordening (EU) 517/2014. Bekendgemaakt 20 februari 2024, in werking
+sinds **11 maart 2024** (art. 13 lid 14 verwijst naar die datum). [B1]
 
 ### Art. 4 lid 5: reparatie en controle na reparatie
 
@@ -265,3 +266,26 @@ Consequentie: nooit schrijven dat de handtekening in Snellio "juridisch
 gelijkwaardig is aan een handgeschreven handtekening" of "voldoet aan eIDAS".
 Wel: "een elektronische handtekening volgens eIDAS, die niet als bewijs mag
 worden geweigerd omdat hij elektronisch is (art. 25 lid 1)". Niet gekwalificeerd.
+
+## 7. Art. 13: verboden op gebruik van F-gassen bij onderhoud en service [B1]
+
+Gecontroleerd 16 september 2026 aan de tekst van art. 13 lid 3, 4 en 5.
+
+| Apparatuur | Verbod | Vanaf | Uitzondering geregenereerd of gerecycled gas |
+| --- | --- | --- | --- |
+| Koelapparatuur (lid 3) | GWP 2 500 of meer voor onderhoud of service | 1 januari 2025 (voor vullingen van 40 t CO2-eq of meer gold het al) | Tot 1 januari 2030, mits geëtiketteerd volgens art. 12 lid 7 (geregenereerd) of teruggewonnen uit dergelijke apparatuur en gebruikt door of voor de onderneming die terugwon (gerecycled) |
+| Klimaatregelingsapparatuur en warmtepompen (lid 4) | GWP 2 500 of meer voor onderhoud of service | 1 januari 2026 | Tot 1 januari 2032, zelfde voorwaarden |
+| Stationaire koelapparatuur, behalve chillers (lid 5) | GWP 750 of meer voor onderhoud of service | 1 januari 2032 | Geen einddatum, zelfde voorwaarden |
+
+Niet van toepassing op militaire apparatuur en apparatuur voor koeling onder
+-50 °C (en bij lid 5 kerncentrales). De Commissie kan bij een tekort aan
+geregenereerd of gerecycled gas een vrijstelling van maximaal vier jaar geven.
+
+Schrijf dus nooit "vanaf 2026 verbod op bijvullen met GWP 2 500 of meer" zonder
+onderscheid: koeling 2025, airco en warmtepomp 2026. En de uitzondering voor
+geregenereerd of gerecycled gas loopt voor koeling tot 2030, niet 2032.
+
+**Niet geverifieerd** (niet claimen tot een bron in dit bestand staat): datums
+over certificering voor natuurlijke koudemiddelen (29 september 2025, 29 maart
+2026, 12 maart 2029) uit de blogpost `f-gas-verordening-2024`. Die horen bij
+art. 10 en Uitvoeringsverordening (EU) 2024/2215 en zijn niet nagelezen.

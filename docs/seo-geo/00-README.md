@@ -35,7 +35,8 @@ automatisch.
 | `08-pagina-f-gassen-registratie.md` | Volledige tekst, metadata, schema, verwijderlijst en FAQ voor het uitbreiden van `/f-gassen-registratie` | Taak 4, live sinds `77eee43`. |
 | `09-sitewide-sweep.md` | FAQ-component naar `<details>`, claims op `/features` en `/`, naamgeving BRL 100, `llms.txt`, opruimen | Taak 5, live sinds `c634346`. |
 | `10-pagina-werkbon-software.md` | Zoekdata, SERP, verwijderlijst, volledige tekst, FAQ en bronnen voor het herpositioneren van `/werkbon-software` op "werkbon app" | Taak 6. |
-| `11-homepage.md` | Nieuwe sectievolgorde van de homepage (founder-blok vóór de prijzen), compacter founder-blok met link naar de auteurspagina, afwerking per sectie | Taak 7, na taak 6. |
+| `11-homepage.md` | Nieuwe sectievolgorde van de homepage (founder-blok vóór de prijzen), compacter founder-blok met link naar de auteurspagina, afwerking per sectie | Taak 7, live sinds `d7f3f85`. |
+| `12-restant-claims.md` | Per pagina de resterende claims op de CRM-, alternatief- en planningpagina en in de vijf blogposts, met vervanging; correctie van de art. 13-datums in de blog | Taak 8. |
 
 ## Contentarchitectuur (maximaal 6 pagina's)
 
