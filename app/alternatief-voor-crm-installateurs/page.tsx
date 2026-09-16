@@ -85,7 +85,7 @@ const voorWie = [
 ]
 
 const faqs = [
-  { question: 'Kan ik mijn klanten importeren uit mijn huidige CRM?', answer: 'Ja, via CSV-import. Klantgegevens, locaties en historische werkorders. Wij helpen je op weg met de CSV-import.' },
+  { question: 'Kan ik mijn klanten importeren uit mijn huidige CRM?', answer: 'Ja: klanten, locaties, werkorders en installaties, via CSV-import of via de API. Wij helpen je op weg met de CSV-import.' },
   { question: 'Hoe lang duurt de overstap?',                          answer: 'Account aanmaken kost 5 minuten. Klanten importeren een avond. Daarna kun je direct werkbonnen versturen.' },
   { question: 'Wat als ik wil terug naar mijn oude systeem?',         answer: 'Geen probleem, alle data exporteer je via CSV en PDF. Je bent nooit gevangen in Snellio.' },
   { question: 'Werkt Snellio op tablet en telefoon?',                 answer: 'Ja, draait in de browser. Geen aparte app nodig. Mobile-first ontworpen voor monteurs onderweg.' },

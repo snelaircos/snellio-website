@@ -32,8 +32,11 @@ import { WERKBON_PAGE }             from './meta'
 // - Geen Article, geen Person, geen SoftwareApplication (staat site-breed).
 // - FAQ-tekst is byte-gelijk aan het FAQ-schema: één array voor beide.
 // - Zichtbare datum is gelijk aan WebPage.dateModified (meta.ts).
-// - Offline werken staat in 02 als niet beschikbaar: nooit claimen. Wero is
-//   bevestigd (02, 15-09-2026): "iDEAL- of Wero-betaallink via Mollie".
+// - Offline werken staat in 02 als niet beschikbaar: nooit claimen. Wero zit
+//   in de betaallink in de factuurmail, niet op de werkbon (02, rij 22):
+//   "De factuur gaat per e-mail met een betaallink via Mollie; de klant
+//   betaalt met iDEAL of Wero." Import: klanten, locaties, werkorders en
+//   installaties via CSV-import of via de API (02, rij 29).
 
 const TITLE       = 'Werkbon app voor installateurs in koeltechniek en airco'
 const DESCRIPTION =
@@ -100,7 +103,7 @@ const functies = [
   { icon: '🔧', title: 'Koeltechnische handelingen met eigen velden', desc: 'Inbedrijfstelling, lekcontrole, drukbeproeving, vacumeren, koudemiddel toevoegen of terugwinnen, buitendienststelling. Elk type zijn eigen meetvelden.' },
   { icon: '🏠', title: 'Werkbon gekoppeld aan de installatie',       desc: 'Elke bon hangt aan een installatie met type, merk, koudemiddel, vulling en serienummer. De handelingen komen in het logboek per installatie, te openen via de QR-code op de kenplaat.' },
   { icon: '📷', title: 'Foto’s en bijlagen',                         desc: 'Bij de werkbon, terug te vinden in het klantdossier.' },
-  { icon: '🧾', title: 'Direct factureren',                          desc: 'Van werkbon naar factuur in één klik, met iDEAL- of Wero-betaallink via Mollie. Koppeling met Moneybird, WeFact en Exact Online.' },
+  { icon: '🧾', title: 'Direct factureren',                          desc: 'Van werkbon naar factuur in één klik. De factuur gaat per e-mail met een betaallink via Mollie; de klant betaalt met iDEAL of Wero. Koppeling met Moneybird, WeFact en Exact Online.' },
   { icon: '📤', title: 'Automatisch e-mailen',                       desc: 'De pdf gaat direct na ondertekening naar de klant. Adres aanpasbaar, verzending uit te stellen.' },
   { icon: '📁', title: 'Archief per klant en installatie',           desc: 'Werkbonnen, foto’s en logboek bij elkaar. De werkregistratie blijft bewaard zolang je account bestaat; BRL 100 vraagt minimaal vijf jaar.' },
   { icon: '🦺', title: 'Veiligheidsdossier bij brandbare koudemiddelen', desc: 'Bij werk aan R290 maakt Snellio bij de werkorder een TRA, een werkvergunning waar die nodig is, en een LMRA die de monteur ter plaatse invult. BRL 100 versie 3.0 vraagt de TRA als het werk risico’s meebrengt; de LMRA is een werkwijze uit de VCA-praktijk, geen wettelijke eis.' },
@@ -145,7 +148,7 @@ const faqs = [
   },
   {
     question: 'Hoe maak ik werkbonnen digitaal?',
-    answer:   'Kies een werkbon app, zet je klanten en installaties erin (in Snellio via CSV-import van klanten, locaties en werkorders) en laat monteurs de bon op telefoon of tablet invullen. Kies een app met vaste velden voor jouw vak: voor koeltechniek zijn dat de meetwaarden van drukbeproeving, vacumeren en lekcontrole en de koudemiddelboeking per fles. Anders staan die straks in vrije tekst en zoekt de auditor ze bij elkaar.',
+    answer:   'Kies een werkbon app, zet je klanten en installaties erin (in Snellio: klanten, locaties, werkorders en installaties, via CSV-import of via de API) en laat monteurs de bon op telefoon of tablet invullen. Kies een app met vaste velden voor jouw vak: voor koeltechniek zijn dat de meetwaarden van drukbeproeving, vacumeren en lekcontrole en de koudemiddelboeking per fles. Anders staan die straks in vrije tekst en zoekt de auditor ze bij elkaar.',
   },
   {
     question: 'Is een handtekening op het scherm rechtsgeldig?',
@@ -157,7 +160,7 @@ const faqs = [
   },
   {
     question: 'Kan ik direct factureren vanuit de werkbon?',
-    answer:   'Ja. Na ondertekening maak je met één klik een factuur aan; de regels worden overgenomen uit de werkbon. Je stuurt de factuur met een iDEAL- of Wero-betaallink via Mollie. De factuur gaat mee naar Moneybird, WeFact of Exact Online als je die koppeling gebruikt.',
+    answer:   'Ja. Na ondertekening maak je met één klik een factuur aan; de regels worden overgenomen uit de werkbon. De factuur gaat per e-mail met een betaallink via Mollie; de klant betaalt met iDEAL of Wero. De factuur gaat mee naar Moneybird, WeFact of Exact Online als je die koppeling gebruikt.',
   },
   {
     question: 'Werkt Snellio met mijn boekhoudpakket?',

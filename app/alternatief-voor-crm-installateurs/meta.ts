@@ -5,5 +5,5 @@
 export const ALTERNATIEF_PAGE = {
   path:          '/alternatief-voor-crm-installateurs',
   datePublished: '2026-05-02T09:10:22+02:00',
-  dateModified:  '2026-09-16T10:00:00+02:00',
+  dateModified:  '2026-09-16T10:30:00+02:00',
 } as const

@@ -18,12 +18,11 @@ import { PLANNING_PAGE } from './meta'
 // pakketfeiten uit PLANS, WebPage met dateModified en zichtbare UpdatedOn.
 //
 // Werkorderstatus onderweg/bezig/afgerond, overzicht per dag/week/monteur en
-// eigen login per monteur staan in 02-feature-factcheck.md (rij 28 en 29)
-// nog niet bevestigd: hier neutraal geformuleerd als "werkorders per monteur,
-// status zichtbaar voor de planner". FAQ-tekst is byte-gelijk aan het schema.
+// eigen login per monteur zijn bevestigd (02-feature-factcheck.md, rij 28 en
+// 29, 16-09-2026). FAQ-tekst is byte-gelijk aan het schema.
 
 const TITLE       = 'Planningssoftware voor monteurs'
-const DESCRIPTION = `Plan werkorders, wijs monteurs toe en houd overzicht met Snellio. Planningssoftware voor monteurs en installatiebedrijven met Google Calendar sync, status per werkorder en directe koppeling aan klantdossiers. Start ${TRIAL_DAGEN} dagen gratis.`
+const DESCRIPTION = `Plan werkorders, wijs monteurs toe en houd overzicht met Snellio. Planningssoftware voor monteurs en installatiebedrijven met Google Calendar sync, realtime status per werkorder en directe koppeling aan klantdossiers. Start ${TRIAL_DAGEN} dagen gratis.`
 
 export const metadata: Metadata = buildMetadata({
   title:       `${TITLE} | Snellio`,
@@ -49,8 +48,8 @@ const features = [
   },
   {
     icon:  '🗓',
-    title: 'Planningsoverzicht',
-    desc:  'Alle geplande werkorders per monteur in één overzicht. Direct inzicht in wie waar is, wat er open staat en waar nog ruimte is.',
+    title: 'Planningsoverzicht per dag en week',
+    desc:  'Bekijk alle geplande werkorders per dag, per week en per monteur in één overzicht. Direct inzicht in wie waar is, wat er open staat en waar nog capaciteit is.',
   },
   {
     icon:  '🔗',
@@ -66,11 +65,11 @@ const features = [
   {
     icon:  '🔔',
     title: 'Status per werkorder',
-    desc:  'Werkorders per monteur, met de status zichtbaar voor de planner. Geen bellen of appen om te weten hoe ver het is.',
+    desc:  'Monteur markeert de werkorder als onderweg, bezig of afgerond. Je ziet de voortgang direct in het planningsoverzicht, zonder bellen of appen.',
   },
   {
     icon:  '📊',
-    title: 'Inzicht voor de planner',
+    title: 'Realtime inzicht voor de eigenaar',
     desc:  'Altijd overzicht over openstaande opdrachten, afgeronde werkorders en te factureren diensten. Geen verrassingen aan het einde van de week.',
   },
   {
@@ -109,8 +108,8 @@ const oplossingen = [
     desc:  'Toewijzing per werkorder, direct zichtbaar in de app van de monteur. Google Calendar synct automatisch mee.',
   },
   {
-    title: 'Status zichtbaar voor de planner',
-    desc:  'Per werkorder zie je wat er open staat en wat is afgerond. Factuur aanmaken zodra de bon getekend is.',
+    title: 'Duidelijke status per werkorder',
+    desc:  'Van ingepland naar onderweg naar afgerond, elke stap is zichtbaar. Factuur aanmaken zodra de bon getekend is.',
   },
   {
     title: 'Actuele klant- en installatiegegevens',
@@ -169,7 +168,7 @@ const voordelen = [
     title: 'Meer rust en overzicht',
     stat:  'Altijd in control',
     items: [
-      'Status zichtbaar voor de planner',
+      'Realtime inzicht in de voortgang',
       'Direct zien wat er open staat',
       'Facturen aanmaken zodra opdracht klaar is',
       'Geen verrassingen aan het einde van de week',
@@ -212,7 +211,7 @@ const faqItems = [
   },
   {
     question: 'Kan elke monteur zijn eigen planning zien?',
-    answer:   'Ja. Werkorders worden per monteur toegewezen en de monteur ziet zijn eigen werkorders in de app. De planner heeft het overzicht over alle monteurs.',
+    answer:   'Ja. Elke monteur heeft zijn eigen login en ziet alleen zijn eigen werkorders en planning. De eigenaar of planner heeft overzicht over alle monteurs. Zo werkt iedereen met de juiste informatie zonder dat privacygevoelige klantgegevens onnodig worden gedeeld.',
   },
   {
     question: 'Hoe snel is een werkorder aangemaakt en ingepland?',
