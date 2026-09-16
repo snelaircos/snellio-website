@@ -107,3 +107,24 @@ Op alle acht URL's: geen "rapport" in combinatie met BRL 100, geen "conform" of
 "voldoet aan", geen gedachtestreepjes, prijzen gelijk aan `PLANS`,
 `dateModified` opgehoogd, FAQ-antwoorden in de HTML. Op de blog: "Bijgewerkt
 op" zichtbaar en gelijk aan `BlogPosting.dateModified`.
+
+## 7. Live-check (16 september 2026, commit `a63a262`)
+
+Alle acht URL's gecontroleerd. CRM, alternatief en planning: geen "rapport",
+"conform", "voldoet aan" of gedachtestreepje meer, je-vorm, WebPage met
+`dateModified` 16 september en zichtbare datumregel, FAQ-antwoorden in de HTML
+(planning 7 van 7), Airco Totaal en "1–2 uur per dag" weg, prijzen gelijk aan
+`PLANS`. Blogposts: "Bijgewerkt op 16 september 2026" zichtbaar en gelijk aan
+`BlogPosting.dateModified`; `brl100-uitgelegd` met §2.5.2-lijst en link naar de
+BRL-pagina; `f-gas-verordening-2024` met het art. 13-blok (2025, 2026, 2030,
+2032), zonder certificeringsdatums en zonder de 12 kW-zin; kenplaat-blog met
+art. 12-formulering; zomerblog alleen spelling. Werkbonpagina: screenshot en
+Wero live.
+
+Restant voor taak 8b (na merge van PR #7): Wero-formulering ("betaallink in
+de factuurmail, klant betaalt met iDEAL of Wero") op de werkbonpagina in de
+functie "Direct factureren" en de FAQ "Kan ik direct factureren"; import-FAQ op
+de alternatief-pagina en de werkbon-FAQ "Hoe maak ik werkbonnen digitaal"
+aanvullen met installaties en API (`02` rij 15 en 27); planningfeatures
+terugzetten (status onderweg, bezig, afgerond; overzicht per dag, week en
+monteur; eigen login per monteur), want `02` rij 28 en 29 zijn bevestigd.
