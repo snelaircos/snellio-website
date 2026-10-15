@@ -83,7 +83,7 @@ export default function Pricing() {
           Alle prijzen {BTW.short} &nbsp;·&nbsp; {TRIAL_DAGEN} dagen gratis, geen creditcard nodig &nbsp;·&nbsp; Jaar of maand, iDEAL of incasso &nbsp;·&nbsp; Maandelijks opzegbaar
         </p>
 
-        {/* ── Alles inbegrepen ── */}
+        {/* ── Alle functies inbegrepen ── */}
         <div className="mt-16">
           <div className="text-center mb-8">
             <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">
@@ -93,7 +93,7 @@ export default function Pricing() {
               className="font-outfit font-black text-[var(--text)] tracking-tight leading-[1.15]"
               style={{ fontSize: 'clamp(1.5rem, 3vw, 2.1rem)' }}
             >
-              Alles inbegrepen. <span className="text-[var(--accent)]">In elk pakket.</span>
+              Alle functies inbegrepen. <span className="text-[var(--accent)]">In elk pakket.</span>
             </h2>
             <p className="text-[var(--text2)] text-base mt-3 max-w-2xl mx-auto">
               Snellio kent geen modulejungle. Starter, Basis, Pro en Enterprise bevatten dezelfde functies.

@@ -71,7 +71,7 @@ export default function PricingPage() {
           <h1 className="font-outfit font-black text-[var(--text)] tracking-tight leading-tight mb-5"
               style={{ fontSize: 'clamp(2.2rem, 5vw, 3.4rem)' }}>
             Eenvoudige prijzen.<br />
-            <span className="text-[var(--accent)]">Heel Snellio inbegrepen.</span>
+            <span className="text-[var(--accent)]">Alle functies inbegrepen.</span>
           </h1>
           <p className="text-[var(--text2)] text-lg leading-relaxed max-w-2xl mx-auto">
             CRM, planning, werkbonnen, facturatie en koeltechnische administratie zitten standaard in Snellio.
