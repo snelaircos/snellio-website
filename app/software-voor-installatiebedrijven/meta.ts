@@ -3,7 +3,7 @@
 // controle van PLANS en INBEGREPEN: datum alleen vernieuwen na echte controle.
 export const PILLAR_PAGE = {
   path:         '/software-voor-installatiebedrijven',
-  dateModified: '2026-09-15T09:00:00+02:00',
+  dateModified: '2026-10-15T22:30:00+02:00',
   // Datum waarop de concurrentprijzen in de vergelijkingsteaser bij de
   // leveranciers zijn gecontroleerd (docs/seo-geo/05-vergelijkingspagina.md).
   // Minimaal elk kwartaal herhalen.

@@ -3,15 +3,18 @@ import Image             from 'next/image'
 import Link              from 'next/link'
 import { buildMetadata } from '@/lib/metadata'
 import { faqSchema, webPageSchema, PERSON_PATH } from '@/lib/schemas'
-import { BTW, PLANS, SITE, TRIAL_DAGEN } from '@/lib/constants'
+import { BTW, HANDBOEK, PLANS, SITE, TRIAL_DAGEN } from '@/lib/constants'
 import { fmtEuro }       from '@/lib/pricing'
 import JsonLd            from '@/components/seo/JsonLd'
 import HomePricing       from '@/components/sections/HomePricing'
+import { JaarprijzenLink } from '@/components/ui/PeriodeSchakelaar'
 import { HOME_PAGE }     from './meta'
 
 // Volgorde en afwerking volgens docs/seo-geo/11-homepage.md: probleem,
-// product, bewijs, regels, mens, prijs, vragen, actie. Achtergronden strikt
-// afwisselend (#f4f7fa / wit). Teksten van hero, pijnpunten, features,
+// product, bewijs, regels, handboek, mens, prijs, vragen, actie. Achtergronden
+// strikt afwisselend (#f4f7fa / wit). De handboeksectie (15-10-2026) volgt
+// rijen 30 t/m 36 van 02-feature-factcheck.md: "gebaseerd op BRL 100 v3.0",
+// nooit "goedgekeurd" of Kiwa, toegang alleen Basis/Pro/Enterprise met jaar. Teksten van hero, pijnpunten, features,
 // compliance-kaarten en FAQ zijn in taak 5 en 5b gecontroleerd; alleen de
 // drie oplossingsregels bij de pijnpunten en de introzin bij de features
 // zijn nieuw. Geen Person-schema hier: dat staat op /over/rudy-snel.
@@ -78,6 +81,15 @@ const compliance: { title: string; desc: string; href?: string; linkLabel?: stri
   },
 ]
 
+// Teksten uit 02-feature-factcheck.md, rijen 30 t/m 36.
+const handboekBullets = [
+  `Een kwaliteitshandboek gebaseerd op BRL 100 v3.0, ${HANDBOEK.hoofdstukken} hoofdstukken, ingevuld met je eigen bedrijfsgegevens.`,
+  'Certificaten van je monteurs en je meetmiddelen komen er live uit Snellio in. Je onderaannemers vul je één keer in.',
+  'Online te lezen door elke monteur, ook onderweg, met leesbevestiging per versie. Af te drukken of als PDF op te slaan voor de auditor.',
+  'Met hoofdstukken over brandbare koudemiddelen (R290), TRA, EVD en ATEX, en de registratie uit Verordening (EU) 2024/573.',
+  'Gemaakt door een gecertificeerd installateur die het zelf gebruikt voor zijn eigen BRL 100-certificering.',
+]
+
 const integraties = ['Mollie', 'Moneybird', 'Exact Online', 'WeFact', 'Google Calendar']
 
 const founderBadges = ['Snel Airco’s', 'STEK', 'BRL 100', 'Sinds 2017']
@@ -85,6 +97,7 @@ const founderBadges = ['Snel Airco’s', 'STEK', 'BRL 100', 'Sinds 2017']
 const faqs = [
   { question: 'Kan ik mijn data exporteren?',           answer: 'Ja, alles via CSV en PDF. Je data is van jou.' },
   { question: 'Hoe lang is de trial?',                  answer: `Probeer ${TRIAL_DAGEN} dagen gratis met alle functies, zonder creditcard of betaalgegevens. Tijdens de proefperiode kies je in Snellio het abonnement dat bij je bedrijf past, vanaf ${fmtEuro(vanaf)} per maand ${BTW.short}, en of je per maand of per jaar betaalt via iDEAL of automatische incasso. Niets loopt stilzwijgend door.` },
+  { question: HANDBOEK.faq.question,                  answer: HANDBOEK.faq.answer },
   { question: 'Wat als ik wil opzeggen?',               answer: 'Eén klik in je dashboard. Geen opzegtermijn na de eerste maand.' },
   { question: 'Hosten jullie in Nederland?',            answer: 'EU-region (Supabase Frankfurt). AVG-conform.' },
   { question: 'Kan een monteur ook offline werken?',    answer: 'Nee. Snellio werkt in de browser en heeft een internetverbinding nodig. Zonder verbinding kun je geen werkbon invullen.' },
@@ -303,8 +316,63 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 7. WIE DIT BOUWT ── */}
-      <section id="rudy" className={`py-20 px-[5%] ${bgLicht}`}>
+      {/* ── 7. BRL 100-HANDBOEK ── */}
+      <section id="handboek" className={`py-20 px-[5%] ${bgLicht}`}>
+        <div className="mx-auto max-w-6xl grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-16 items-center">
+          <div>
+            <p className={sectionLabel}>BRL 100 v3.0</p>
+            <h2 className={`${h2} mb-6`} style={h2Size}>
+              Je BRL 100 v3.0-handboek, altijd actueel en auditklaar.
+            </h2>
+            <ul className="flex flex-col gap-3 list-none mb-7">
+              {handboekBullets.map(b => (
+                <li key={b} className="flex items-start gap-3 text-[#0f2133] text-[.95rem] leading-relaxed">
+                  <span className="w-5 h-5 rounded-full bg-[rgba(18,168,122,.15)] text-[var(--green)] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
+                  {b}
+                </li>
+              ))}
+            </ul>
+            <p className="inline-flex items-center gap-2 rounded-2xl sm:rounded-full border border-[rgba(18,168,122,.35)] bg-[rgba(18,168,122,.08)] px-3.5 py-1.5 text-sm font-semibold text-[#0b7a58] mb-6">
+              <span aria-hidden="true">✓</span>
+              {HANDBOEK.badge}
+            </p>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+              <JaarprijzenLink className={btnPrimary}>
+                Bekijk de jaarprijzen
+              </JaarprijzenLink>
+              <Link href={HANDBOEK.href} className="text-[var(--accent)] font-semibold hover:underline text-[.95rem]">
+                Wat staat er in het handboek →
+              </Link>
+            </div>
+            <p className="text-[#5f7791] text-xs leading-relaxed mt-6 max-w-xl">
+              {HANDBOEK.disclaimer}
+            </p>
+          </div>
+
+          {/* Opbouw van het handboek, als documentkaart */}
+          <div className="rounded-2xl bg-white ring-1 ring-[#e4ecf2] shadow-[0_24px_60px_rgba(15,33,51,.12)] overflow-hidden">
+            <div className="px-6 py-5 border-b border-[#e4ecf2] bg-[#f9fbfd]">
+              <p className="font-dm-mono text-[.68rem] uppercase tracking-[.08em] text-[var(--accent)]">Kwaliteitshandboek</p>
+              <p className="font-bold text-[#0f2133] text-lg mt-1">Gebaseerd op BRL 100 versie 3.0</p>
+              <p className="text-[#5f7791] text-xs mt-1">{HANDBOEK.hoofdstukken} hoofdstukken in {HANDBOEK.delen.length} delen, met jouw bedrijfsnaam en gegevens</p>
+            </div>
+            <ol className="list-none divide-y divide-[#e4ecf2]">
+              {HANDBOEK.delen.map(deel => (
+                <li key={deel.code} className="flex items-center gap-4 px-6 py-3">
+                  <span className="w-8 h-8 rounded-lg bg-[rgba(0,144,184,.08)] text-[var(--accent)] font-bold text-sm flex items-center justify-center shrink-0">
+                    {deel.code}
+                  </span>
+                  <span className="flex-1 min-w-0 text-[#0f2133] text-[.92rem] font-semibold">{deel.titel}</span>
+                  <span className="text-[#5f7791] text-xs tabular-nums shrink-0">{deel.aantal} hoofdst.</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 8. WIE DIT BOUWT ── */}
+      <section id="rudy" className={`py-20 px-[5%] ${bgWit}`}>
         <div className="mx-auto max-w-4xl grid md:grid-cols-[160px_1fr] gap-8 md:gap-10 items-center">
           <div className="flex justify-center md:justify-start">
             <div className="w-[120px] h-[120px] md:w-[160px] md:h-[160px] rounded-full overflow-hidden shadow-[0_8px_24px_rgba(0,144,184,.25)] ring-4 ring-white">
@@ -333,7 +401,7 @@ export default function HomePage() {
             </p>
             <ul className="flex flex-wrap gap-2 list-none mb-5">
               {founderBadges.map(badge => (
-                <li key={badge} className="rounded-full border border-[#e4ecf2] bg-white px-3 py-1 font-dm-mono text-[.7rem] uppercase tracking-[.06em] text-[#5f7791]">
+                <li key={badge} className="rounded-full border border-[#e4ecf2] bg-[#f9fbfd] px-3 py-1 font-dm-mono text-[.7rem] uppercase tracking-[.06em] text-[#5f7791]">
                   {badge}
                 </li>
               ))}
@@ -353,8 +421,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 8. PRIJZEN (compact, volledige tabel staat op /pricing) ── */}
-      <section id="prijzen" className={`py-20 px-[5%] scroll-mt-20 ${bgWit}`}>
+      {/* ── 9. PRIJZEN (compact, volledige tabel staat op /pricing) ── */}
+      <section id="prijzen" className={`py-20 px-[5%] scroll-mt-20 ${bgLicht}`}>
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-10">
             <p className={sectionLabel}>Prijzen</p>
@@ -369,8 +437,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 9. FAQ ── */}
-      <section id="faq" className={`py-20 px-[5%] ${bgLicht}`}>
+      {/* ── 10. FAQ ── */}
+      <section id="faq" className={`py-20 px-[5%] ${bgWit}`}>
         <div className="mx-auto max-w-2xl">
           <div className="text-center mb-10">
             <p className={sectionLabel}>Veelgestelde vragen</p>
@@ -382,7 +450,7 @@ export default function HomePage() {
             {faqs.map(faq => (
               <details
                 key={faq.question}
-                className="bg-white border border-[#e4ecf2] rounded-xl px-6 py-4 group hover:border-[var(--accent)] transition-colors"
+                className="bg-[#f9fbfd] border border-[#e4ecf2] rounded-xl px-6 py-4 group hover:border-[var(--accent)] transition-colors"
               >
                 <summary className="font-semibold text-[#0f2133] text-[.95rem] cursor-pointer list-none flex items-center justify-between">
                   {faq.question}
@@ -397,8 +465,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 10. SLOT-CTA ── */}
-      <section id="start" className={`py-20 px-[5%] ${bgWit}`}>
+      {/* ── 11. SLOT-CTA ── */}
+      <section id="start" className={`py-20 px-[5%] ${bgLicht}`}>
         <div className="mx-auto max-w-2xl text-center">
           <h2
             className="font-extrabold tracking-tight text-[#0f2133] leading-[1.1] mb-5"

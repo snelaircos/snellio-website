@@ -62,6 +62,11 @@ export const NAV_ITEMS = [
 export const TRIAL_DAGEN = 14
 // Jaarbetaling = 10 maandbedragen voor 12 maanden gebruik (2 maanden gratis).
 export const JAAR_MAANDEN_BETAALD = 10
+// Anker van de maand/jaar-schakelaar op de homepage en /pricing. Een link naar
+// #jaarprijzen zet de schakelaar op jaar (components/ui/PeriodeSchakelaar.tsx).
+// Hier en niet in dat client-bestand: een servercomponent krijgt een export uit
+// een 'use client'-bestand niet als tekst binnen.
+export const JAARPRIJZEN_ANKER = 'jaarprijzen'
 
 export type HvacPlanId = 'starter' | 'basis' | 'pro' | 'enterprise'
 
@@ -140,6 +145,41 @@ export const INBEGREPEN = [
   { icon: '🔐', label: 'Klantportaal' },
   { icon: '🦺', label: 'TRA, werkvergunning & LMRA bij R290' },
 ] as const
+
+// ── BRL 100 v3.0-handboek (15-10-2026) ──────────────────────────────────────
+// Een document bij jaarbetaling, geen functie: "alle functies in elk pakket"
+// blijft waar. Alleen Basis, Pro en Enterprise met jaarbetaling krijgen het
+// volledige handboek; Starter, maandbetaling en de proefperiode zien een
+// voorbeeld. Moet gelijk lopen met HANDBOEK_PAKKETTEN in
+// lib/handboek/toegang.ts van de app. Formuleringen: rijen 30 t/m 36 van
+// docs/seo-geo/02-feature-factcheck.md. Nooit "goedgekeurd" of Kiwa.
+export const HANDBOEK = {
+  pakketten:    ['basis', 'pro', 'enterprise'] as readonly HvacPlanId[],
+  hoofdstukken: 57,
+  // Indeling uit lib/handboek/delen.ts en content/brl100 van de app (15-10-2026).
+  delen: [
+    { code: '0', titel: 'Inleiding',                aantal: 2,  voorbeeld: 'Inhoudsopgave, termen en definities' },
+    { code: 'A', titel: 'Strategisch beleid',       aantal: 7,  voorbeeld: 'Beleidsverklaring, scope, rollen en directiebeoordeling' },
+    { code: 'B', titel: 'Planning',                 aantal: 2,  voorbeeld: 'Wettelijke eisen, doelstellingen en maatregelen' },
+    { code: 'C', titel: 'Uitvoering',               aantal: 13, voorbeeld: 'Procedures voor installatie, onderhoud, logboek, TRA, EVD en ATEX' },
+    { code: 'D', titel: 'Ondersteuning',            aantal: 7,  voorbeeld: 'BRL 200-opleiding, meetmiddelen, klachten, uitbesteding en interne audit' },
+    { code: 'E', titel: 'Werkinstructies',          aantal: 12, voorbeeld: 'Drukbeproeving, vacuümeren, lekcontrole, vullen, terugwinnen en PBM' },
+    { code: 'F', titel: 'Formulieren en registers', aantal: 14, voorbeeld: 'Logboek, F-gassenregistratie en -balans, meetinstrumenten en flessenkaarten' },
+  ],
+  href:         '/brl-100-handboek',
+  badge:        'Inbegrepen bij Basis, Pro en Enterprise met jaarbetaling',
+  disclaimer:   'Gebaseerd op BRL 100 v3.0. Het handboek vervangt de beoordeling door je certificerende instelling niet.',
+  regel: {
+    inbegrepen: 'Inclusief BRL 100 v3.0-handboek',
+    alleenJaar: 'BRL 100-handboek alleen bij jaarabonnement',
+    vanafBasis: 'BRL 100-handboek vanaf Basis (jaar)',
+  },
+  // Zelfde vraag en antwoord op de homepage, /pricing en /brl-100-handboek.
+  faq: {
+    question: 'Zit het BRL 100-handboek bij elk abonnement?',
+    answer:   'Bij Basis, Pro en Enterprise met jaarbetaling. Bij Starter, bij een maandabonnement en in de proefperiode zie je een voorbeeld: de inhoudsopgave en het eerste hoofdstuk, zonder je eigen gegevens. Het handboek mag je gebruiken zolang je abonnement loopt. Stopt je jaarabonnement, dan kun je het nog 30 dagen lezen.',
+  },
+} as const
 
 // ── Automotive (aparte verticale, nog in ontwikkeling) ───────────────────────
 export interface Plan {

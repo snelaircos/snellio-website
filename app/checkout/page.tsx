@@ -59,7 +59,7 @@ export default function CheckoutPage({ searchParams }: Props) {
             {/* Wat je tijdens de proefperiode krijgt: alle functies, elk pakket. */}
             <div className="bg-[var(--navy3)] border border-[var(--border)] rounded-xl p-6 mb-8">
               <p className="font-outfit font-bold text-[var(--text)] text-sm mb-4">
-                {TRIAL_DAGEN} dagen alles, zonder beperkingen
+                {TRIAL_DAGEN} dagen alle functies
               </p>
               <ul className="grid sm:grid-cols-2 gap-x-5 gap-y-2 list-none">
                 {INBEGREPEN.map(f => (
@@ -69,6 +69,9 @@ export default function CheckoutPage({ searchParams }: Props) {
                   </li>
                 ))}
               </ul>
+              <p className="text-xs text-[var(--muted2)] mt-4">
+                Het BRL 100-handboek zie je in de proefperiode als voorbeeld.
+              </p>
             </div>
 
             <ul className="flex flex-col gap-3 list-none mb-8">

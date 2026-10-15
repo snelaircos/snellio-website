@@ -1,10 +1,15 @@
+'use client'
+
 import Link from 'next/link'
-import { BTW, PLANS, TRIAL_DAGEN } from '@/lib/constants'
-import { fmtEuro } from '@/lib/pricing'
+import { BTW, JAARPRIJZEN_ANKER, PLANS, TRIAL_DAGEN } from '@/lib/constants'
+import { fmtEuro, handboekRegel } from '@/lib/pricing'
+import PeriodeSchakelaar, { usePeriode } from '@/components/ui/PeriodeSchakelaar'
 
 // Compact commercieel prijsblok voor de homepage (light theme). Geen volledige
 // pricingtabel: de boodschap is "vanaf €10, alles inbegrepen, 14 dagen gratis".
-// De volledige uitleg staat op /pricing. Server component, geen state.
+// De volledige uitleg staat op /pricing. Client component voor de maand/jaar-
+// schakelaar; "Bekijk de jaarprijzen" in de handboeksectie springt naar
+// #jaarprijzen en zet hem op jaar.
 
 const SIGNUP_HREF = '/registreren'
 const vanaf = Math.min(...PLANS.map(p => p.price.month))
@@ -16,10 +21,12 @@ const punten = [
 ]
 
 export default function HomePricing() {
+  const [annual, setAnnual] = usePeriode()
+
   return (
-    <div className="mx-auto max-w-5xl">
-      <div className="bg-white border border-[#e4ecf2] rounded-2xl shadow-[0_8px_32px_rgba(0,144,184,.08)] p-7 md:p-10 grid lg:grid-cols-[1.25fr_1fr] gap-8 lg:gap-12 items-center">
-        <div>
+    <div id={JAARPRIJZEN_ANKER} className="mx-auto max-w-5xl scroll-mt-28">
+      <div className="bg-white border border-[#e4ecf2] rounded-2xl shadow-[0_8px_32px_rgba(0,144,184,.08)] p-5 sm:p-7 md:p-10 grid lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-12 items-center">
+        <div className="min-w-0">
           <h2
             className="font-extrabold tracking-tight text-[#0f2133] leading-[1.1] mb-3"
             style={{ fontSize: 'clamp(1.7rem, 3.6vw, 2.4rem)' }}
@@ -27,8 +34,8 @@ export default function HomePricing() {
             Snellio vanaf {fmtEuro(vanaf)} per maand.
           </h2>
           <p className="text-[#0f2133] text-[1.05rem] leading-[1.55] mb-5">
-            <strong>Alle functies inbegrepen.</strong> Je betaalt alleen voor de grootte van je bedrijf:
-            het aantal monteurs en installaties. Geen modules, geen toeslagen.
+            <strong>Alle functies in elk pakket</strong>, je betaalt alleen voor de grootte van je bedrijf.
+            Het BRL 100-handboek krijg je bij jaarbetaling vanaf Basis.
           </p>
           <ul className="flex flex-col gap-2 list-none mb-7">
             {punten.map(p => (
@@ -54,31 +61,43 @@ export default function HomePricing() {
           </div>
         </div>
 
-        {/* Compacte pakketrij: naam, doelgroep, maandprijs */}
-        <ul className="flex flex-col divide-y divide-[#e4ecf2] list-none border border-[#e4ecf2] rounded-xl overflow-hidden bg-[#f9fbfd]">
-          {PLANS.map(plan => (
-            <li key={plan.id} className={`flex items-center justify-between gap-4 px-5 py-3.5 ${plan.featured ? 'bg-[rgba(0,144,184,.05)]' : ''}`}>
-              <div className="min-w-0">
-                <p className="font-semibold text-[#0f2133] text-[.95rem] flex items-center gap-2">
-                  {plan.name}
-                  {plan.featured && (
-                    <span className="text-[.6rem] font-bold uppercase tracking-wide bg-[var(--accent)] text-white px-2 py-0.5 rounded-full">
-                      Meest gekozen
+        <div className="flex flex-col gap-4 min-w-0">
+          <PeriodeSchakelaar annual={annual} onChange={setAnnual} uitleg={false} />
+
+          {/* Compacte pakketrij: naam, doelgroep, prijs, handboekregel */}
+          <ul className="flex flex-col divide-y divide-[#e4ecf2] list-none border border-[#e4ecf2] rounded-xl overflow-hidden bg-[#f9fbfd]">
+            {PLANS.map(plan => {
+              const handboek = handboekRegel(plan, annual)
+              return (
+                <li key={plan.id} className={`flex items-center justify-between gap-4 px-5 py-3.5 ${plan.featured ? 'bg-[rgba(0,144,184,.05)]' : ''}`}>
+                  <div className="min-w-0">
+                    <p className="font-semibold text-[#0f2133] text-[.95rem] flex items-center gap-2">
+                      {plan.name}
+                      {plan.featured && (
+                        <span className="text-[.6rem] font-bold uppercase tracking-wide bg-[var(--accent)] text-white px-2 py-0.5 rounded-full">
+                          Meest gekozen
+                        </span>
+                      )}
+                    </p>
+                    <p className="text-[#5f7791] text-xs truncate">{plan.tagline}</p>
+                    <p className={`text-[.7rem] mt-0.5 ${handboek.inbegrepen ? 'text-[var(--green)] font-semibold' : 'text-[#5f7791]'}`}>
+                      {handboek.inbegrepen ? '✓ ' : ''}{handboek.tekst}
+                    </p>
+                  </div>
+                  <p className="shrink-0 text-right">
+                    <span className="font-extrabold text-[#0f2133] text-lg tabular-nums">
+                      {fmtEuro(annual ? plan.price.year : plan.price.month)}
                     </span>
-                  )}
-                </p>
-                <p className="text-[#5f7791] text-xs truncate">{plan.tagline}</p>
-              </div>
-              <p className="shrink-0 text-right">
-                <span className="font-extrabold text-[#0f2133] text-lg tabular-nums">{fmtEuro(plan.price.month)}</span>
-                <span className="text-[#5f7791] text-xs"> /mnd</span>
-              </p>
+                    <span className="text-[#5f7791] text-xs"> {annual ? '/jaar' : '/mnd'}</span>
+                  </p>
+                </li>
+              )
+            })}
+            <li className="px-5 py-2.5 text-[#5f7791] text-[.7rem] bg-white">
+              Alle prijzen {BTW.short} · Pro en Enterprise: extra monteurs tegen een vaste meerprijs
             </li>
-          ))}
-          <li className="px-5 py-2.5 text-[#5f7791] text-[.7rem] bg-white">
-            Alle prijzen {BTW.short} · Pro en Enterprise: extra monteurs tegen een vaste meerprijs
-          </li>
-        </ul>
+          </ul>
+        </div>
       </div>
     </div>
   )

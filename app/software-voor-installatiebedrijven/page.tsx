@@ -200,7 +200,7 @@ const faqs = [
   },
   {
     question: 'Zijn alle functies inbegrepen?',
-    answer: `Ja. De pakketten verschillen alleen in capaciteit: het aantal monteurs en bij Starter maximaal ${starter.installaties.max} installaties. Werkbonnen, planning, facturatie, F-gassen en de boekhoudkoppelingen zitten in ieder pakket.`,
+    answer: `Ja. De pakketten verschillen alleen in capaciteit: het aantal monteurs en bij Starter maximaal ${starter.installaties.max} installaties. Werkbonnen, planning, facturatie, F-gassen en de boekhoudkoppelingen zitten in ieder pakket. Alleen het BRL 100-handboek hoort bij Basis, Pro en Enterprise met jaarbetaling.`,
   },
   {
     question: 'Kan mijn monteur Snellio onderweg gebruiken?',

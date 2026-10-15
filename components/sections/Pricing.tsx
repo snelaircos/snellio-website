@@ -1,9 +1,9 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
-import { BTW, PLANS, INBEGREPEN, TRIAL_DAGEN, JAAR_MAANDEN_BETAALD, type HvacPlan } from '@/lib/constants'
-import { fmtEuro, twaalfMaanden } from '@/lib/pricing'
+import { BTW, PLANS, INBEGREPEN, TRIAL_DAGEN, JAAR_MAANDEN_BETAALD, JAARPRIJZEN_ANKER, HANDBOEK, type HvacPlan } from '@/lib/constants'
+import { fmtEuro, handboekRegel, twaalfMaanden } from '@/lib/pricing'
+import PeriodeSchakelaar, { usePeriode } from '@/components/ui/PeriodeSchakelaar'
 import PricingCalculator from './PricingCalculator'
 
 // Pricing-sectie voor /pricing. Informatief en conversiegericht:
@@ -21,7 +21,7 @@ const trialPunten = [
 ]
 
 export default function Pricing() {
-  const [annual, setAnnual] = useState(false)
+  const [annual, setAnnual] = usePeriode()
 
   return (
     <section className="px-[5%] pb-6" id="prijzen">
@@ -67,38 +67,9 @@ export default function Pricing() {
           </div>
         </div>
 
-        {/* ── Toggle maand / jaar ── */}
-        <div className="flex flex-col items-center gap-3 mb-10">
-          <div
-            role="group"
-            aria-label="Betaalperiode"
-            className="inline-flex items-center rounded-full bg-white border border-[var(--border)] p-1 shadow-sm"
-          >
-            <button
-              type="button"
-              onClick={() => setAnnual(false)}
-              aria-pressed={!annual}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors ${!annual ? 'bg-[var(--accent)] text-white shadow' : 'text-[var(--text2)] hover:text-[var(--text)]'}`}
-            >
-              Maandelijks
-            </button>
-            <button
-              type="button"
-              onClick={() => setAnnual(true)}
-              aria-pressed={annual}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors flex items-center gap-2 ${annual ? 'bg-[var(--accent)] text-white shadow' : 'text-[var(--text2)] hover:text-[var(--text)]'}`}
-            >
-              Jaarlijks
-              <span className={`text-[.65rem] font-bold px-2 py-0.5 rounded-full ${annual ? 'bg-white/20 text-white' : 'bg-[rgba(18,168,122,.12)] text-[var(--green)]'}`}>
-                2 maanden gratis
-              </span>
-            </button>
-          </div>
-          <p className="text-xs text-[var(--muted2)] text-center">
-            {annual
-              ? `Bij jaarbetaling betaal je ${JAAR_MAANDEN_BETAALD} maanden en gebruik je Snellio 12 maanden.`
-              : 'Maandelijks opzegbaar. Kies je later voor jaarlijks, dan betaal je 10 maanden en gebruik je er 12.'}
-          </p>
+        {/* ── Toggle maand / jaar (anker voor "Bekijk de jaarprijzen") ── */}
+        <div id={JAARPRIJZEN_ANKER} className="mb-10 scroll-mt-28">
+          <PeriodeSchakelaar annual={annual} onChange={setAnnual} />
         </div>
 
         {/* ── Kaarten ── */}
@@ -126,7 +97,9 @@ export default function Pricing() {
             </h2>
             <p className="text-[var(--text2)] text-base mt-3 max-w-2xl mx-auto">
               Snellio kent geen modulejungle. Starter, Basis, Pro en Enterprise bevatten dezelfde functies.
-              Je betaalt alleen voor de grootte van je bedrijf.
+              Je betaalt alleen voor de grootte van je bedrijf. Alleen het{' '}
+              <Link href={HANDBOEK.href} className="text-[var(--accent)] font-semibold hover:underline">BRL 100-handboek</Link>{' '}
+              hoort bij Basis, Pro en Enterprise met jaarbetaling.
             </p>
           </div>
           <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 list-none">
@@ -181,6 +154,7 @@ function PlanCard({ plan, annual, index }: PlanCardProps) {
     'Geen losse moduletoeslagen',
     'Gratis boekhoudkoppelingen',
   ]
+  const handboek = handboekRegel(plan, annual)
 
   return (
     <article
@@ -244,6 +218,17 @@ function PlanCard({ plan, annual, index }: PlanCardProps) {
               {label}
             </li>
           ))}
+          {handboek.inbegrepen ? (
+            <li className="flex items-start gap-2.5 text-sm text-[var(--text)] font-semibold">
+              <span className="text-[var(--green)] font-bold shrink-0 mt-px">✓</span>
+              {handboek.tekst}
+            </li>
+          ) : (
+            <li className="flex items-start gap-2.5 text-sm text-[var(--muted2)]">
+              <span className="shrink-0 mt-px" aria-hidden="true">ℹ︎</span>
+              {handboek.tekst}
+            </li>
+          )}
           {extra && (
             <li className="flex items-start gap-2.5 text-sm text-[var(--text2)]">
               <span className="text-[var(--accent)] font-bold shrink-0 mt-px">+</span>

@@ -5,5 +5,5 @@
 export const HOME_PAGE = {
   path:          '/',
   datePublished: '2026-04-02T13:13:48+02:00',
-  dateModified:  '2026-09-16T10:00:00+02:00',
+  dateModified:  '2026-10-15T22:30:00+02:00',
 } as const

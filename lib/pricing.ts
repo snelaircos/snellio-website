@@ -2,7 +2,7 @@
 // Dit is uitsluitend presentatie: de app is de bron van waarheid voor
 // wat er daadwerkelijk gefactureerd wordt.
 
-import { PLANS, JAAR_MAANDEN_BETAALD, type HvacPlan, type HvacPlanId } from './constants'
+import { PLANS, JAAR_MAANDEN_BETAALD, HANDBOEK, type HvacPlan, type HvacPlanId } from './constants'
 
 export function planById(id: HvacPlanId): HvacPlan {
   const plan = PLANS.find(p => p.id === id)
@@ -48,4 +48,15 @@ export function fmtEuro(bedrag: number): string {
   const heelStr = heel.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
   const decimalen = cent > 0 ? `,${cent.toString().padStart(2, '0')}` : ''
   return `${negatief ? '-' : ''}€${heelStr}${decimalen}`
+}
+
+/**
+ * Regel over het BRL 100-handboek op een pakketkaart. Starter krijgt het
+ * nooit, Basis, Pro en Enterprise alleen bij jaarbetaling (HANDBOEK).
+ */
+export function handboekRegel(plan: HvacPlan, annual: boolean): { tekst: string; inbegrepen: boolean } {
+  if (!HANDBOEK.pakketten.includes(plan.id)) return { tekst: HANDBOEK.regel.vanafBasis, inbegrepen: false }
+  return annual
+    ? { tekst: HANDBOEK.regel.inbegrepen, inbegrepen: true }
+    : { tekst: HANDBOEK.regel.alleenJaar, inbegrepen: false }
 }

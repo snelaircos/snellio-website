@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { buildMetadata }  from '@/lib/metadata'
 import { breadcrumbSchema, faqSchema } from '@/lib/schemas'
-import { BTW, PLANS, TRIAL_DAGEN } from '@/lib/constants'
+import { BTW, HANDBOEK, PLANS, TRIAL_DAGEN } from '@/lib/constants'
 import { fmtEuro, twaalfMaanden } from '@/lib/pricing'
 import JsonLd    from '@/components/seo/JsonLd'
 import Pricing   from '@/components/sections/Pricing'
@@ -16,7 +16,8 @@ export const metadata: Metadata = buildMetadata({
 
 // Antwoorden zijn geverifieerd tegen de app: betaalwijzen iDEAL en
 // automatische incasso (lib/abonnement/keuze.ts), jaar = 10 maandbedragen,
-// Starter-cap 25 installaties (lib/pakket.ts).
+// Starter-cap 25 installaties (lib/pakket.ts). Handboekvraag: zelfde tekst als
+// homepage en /brl-100-handboek (HANDBOEK.faq).
 const faqs = [
   { question: 'Moet ik direct betalen?',
     answer:   `Nee. Je start eerst met een gratis trial van ${TRIAL_DAGEN} dagen. Bij registratie vragen we geen creditcard, geen betaling en geen incassomachtiging.` },
@@ -28,6 +29,8 @@ const faqs = [
     answer:   'Ja. Bij maandelijkse betaling kun je per maand opzeggen. Een maandabonnement loopt per maandperiode en wordt telkens met een maand verlengd tot je opzegt.' },
   { question: 'Kan ik jaarlijks betalen?',
     answer:   'Ja. Bij jaarbetaling betaal je 10 maanden en gebruik je Snellio 12 maanden. Een jaarabonnement wordt niet stilzwijgend verlengd: we herinneren je ruim voor afloop en je kiest opnieuw.' },
+  { question: HANDBOEK.faq.question,
+    answer:   HANDBOEK.faq.answer },
   { question: 'Welke betaalmethoden zijn beschikbaar?',
     answer:   'Automatische incasso (SEPA) of zelf betalen via iDEAL. Je kiest dit in Snellio op het moment dat je je abonnement kiest.' },
   { question: 'Kan ik later extra monteurs toevoegen?',

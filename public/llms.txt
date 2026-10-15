@@ -1,6 +1,6 @@
 # Snellio
 
-Bijgewerkt op 16 september 2026.
+Bijgewerkt op 15 oktober 2026.
 
 Snellio is een Nederlandse CRM- en werkbonsoftware voor HVAC-installateurs, koeltechniekers en airco-monteurs. Het systeem bevat werkregistratie en F-gassenbalans zoals BRL 100 vraagt, en een logboek per installatie met de gegevens uit art. 7 van Verordening (EU) 2024/573.
 
@@ -22,6 +22,7 @@ Snellio is een Nederlandse CRM- en werkbonsoftware voor HVAC-installateurs, koel
 - Digitaal logboek per installatie, te openen via de QR-code op de kenplaat
 - Kenplaten printen: kenplaat met de velden uit art. 12 van EU-verordening 2024/573 plus een QR-code naar het logboek, printbaar op je eigen labelprinter
 - Werkregistratie per handeling en F-gassenbalans zoals BRL 100 vraagt
+- Kwaliteitshandboek gebaseerd op BRL 100 v3.0: 57 hoofdstukken, ingevuld met de eigen bedrijfsgegevens, certificaten van monteurs en meetmiddelen live uit Snellio, online te lezen met leesbevestiging per versie, af te drukken of als PDF op te slaan. Het handboek vervangt de beoordeling door de certificerende instelling niet.
 - Klantportaal
 - Mollie-betaalintegratie (iDEAL en creditcard)
 - Mobile-first app voor buitendienst
@@ -35,6 +36,8 @@ Snellio is een Nederlandse CRM- en werkbonsoftware voor HVAC-installateurs, koel
 - Alle prijzen zijn inclusief 21% btw
 
 Jaarabonnement kost het equivalent van 10 maanden. Alle plannen 14 dagen gratis te proberen.
+
+Alle functies zitten in elk pakket. Het BRL 100 v3.0-handboek hoort bij Basis, Pro en Enterprise met jaarbetaling; bij Starter, bij een maandabonnement en in de proefperiode is een voorbeeld te zien (inhoudsopgave en eerste hoofdstuk).
 
 Bij elk pakket gratis inbegrepen: koppeling met WeFact, Moneybird en Exact Online. Ontbreekt een boekhoudpakket, dan probeert Snellio deze waar mogelijk alsnog toe te voegen.
 
@@ -59,6 +62,7 @@ Snellio wordt ontwikkeld en aangeboden door Snellio (eenmanszaak, KvK 69499829) 
 - Planning monteurs: https://snellio.nl/planningssoftware-monteurs
 - F-gassen logboek en registratie (art. 7, lekcontrole, BRL 100, kenplaat): https://snellio.nl/f-gassen-registratie
 - BRL 100 uitgelegd (certificaat, audit, logboek, F-gassenbalans): https://snellio.nl/brl-100-software
+- BRL 100 v3.0-kwaliteitshandboek (inhoud, toegang, wat v3.0 nieuw maakt): https://snellio.nl/brl-100-handboek
 - Over de auteur, Rudy Snel (oprichter, STEK-gecertificeerd installateur): https://snellio.nl/over/rudy-snel
 - Alternatief voor losse tools: https://snellio.nl/alternatief-voor-crm-installateurs
 - Voor werkplaatsen en garages: https://snellio.nl/automotive
