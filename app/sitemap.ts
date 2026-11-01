@@ -10,7 +10,7 @@ import { BRL100_PAGE } from '@/app/brl-100-software/meta'
 import { FGASSEN_PAGE } from '@/app/f-gassen-registratie/meta'
 import { WERKBON_PAGE } from '@/app/werkbon-software/meta'
 import { HANDBOEK_PAGE } from '@/app/brl-100-handboek/meta'
-import { AUDITMAP_PAGE } from '@/app/brl-100/meta'
+import { AUDITMAP_PAGE } from '@/app/brl-100-versie-3/meta'
 import { PILLAR_PAGE } from '@/app/software-voor-installatiebedrijven/meta'
 
 export default function sitemap(): MetadataRoute.Sitemap {

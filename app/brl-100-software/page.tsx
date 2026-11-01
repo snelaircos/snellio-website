@@ -11,6 +11,7 @@ import UpdatedOn            from '@/components/ui/UpdatedOn'
 import Button               from '@/components/ui/Button'
 import LandingInternalLinks from '@/components/sections/LandingInternalLinks'
 import { BRL100_PAGE }      from './meta'
+import { AUDITMAP_PAGE }    from '@/app/brl-100-versie-3/meta'
 
 // Informatieve pagina op "brl 100" (primaire term). Tekst, bronnen en
 // juridische claims komen uit docs/seo-geo/04-pagina-brl-100-software.md en
@@ -635,9 +636,11 @@ export default function Brl100SoftwarePage() {
               {starter.monteurs.inbegrepen} monteur, {starter.installaties.label.toLowerCase()}).{' '}
               <Link href="/f-gassen-registratie" className={anchor}>Bekijk de F-gassenregistratie in detail →</Link>
               {' · '}
-              <Link href="/brl-100" className={anchor}>Zo staat je auditmap klaar →</Link>
-              {' · '}
               <Link href="/pricing" className={anchor}>Bekijk de prijzen →</Link>
+            </p>
+            <p>
+              Wil je weten wat er met versie 3.0 verandert en hoe je auditmap klaarstaat? Lees{' '}
+              <Link href={AUDITMAP_PAGE.path} className={anchor}>BRL 100 versie 3.0</Link>.
             </p>
           </div>
         </Section>

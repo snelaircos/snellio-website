@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { SITE, NAV_ITEMS, HANDBOEK } from '@/lib/constants'
-import { AUDITMAP_PAGE } from '@/app/brl-100/meta'
+import { AUDITMAP_PAGE } from '@/app/brl-100-versie-3/meta'
 
 const legal = [
   { label: 'Privacy',      href: '/privacy'      },
@@ -29,7 +29,7 @@ export default function Footer() {
   const seoLinks = isAutomotive ? [] : hvacSeoLinks
 
   return (
-    <footer className="border-t border-[var(--border)] bg-white">
+    <footer className="border-t border-[var(--border)] bg-white pb-24 md:pb-0">
       <div className={`mx-auto max-w-7xl px-[5%] py-16 grid gap-10 ${seoLinks.length ? 'md:grid-cols-5' : 'md:grid-cols-4'}`}>
 
         {/* Merk */}

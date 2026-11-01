@@ -16,7 +16,8 @@ import { AUDITMAP_PAGE } from './meta'
 // Productpagina voor de Auditmap (1 november 2026). Eén intentie: hoe Snellio
 // je bewijs voor de audit klaarzet. De uitleg over BRL 100 zelf staat op
 // /brl-100-software, het handboek op /brl-100-handboek. Die pagina's linken
-// naar elkaar; herhaal hun uitleg hier niet.
+// naar elkaar; herhaal hun uitleg hier niet. Deze pagina richt zich op de
+// zoekterm "BRL 100 versie 3.0", /brl-100-software op "BRL 100 software".
 //
 // Regels die hier gelden:
 // - Claims alleen uit 02-feature-factcheck.md, rijen "Auditmap" e.v.
@@ -268,6 +269,10 @@ export default function BrlAuditmapPage() {
             </li>
           ))}
         </ul>
+        <p className={`${prose} mt-5`}>
+          Wil je weten wat de audit van je administratie vraagt en welke software daarbij helpt? Lees{' '}
+          <Link href="/brl-100-software" className={anchor}>BRL 100 software</Link>.
+        </p>
       </Section>
 
       {/* ── 3. Wat de auditor wil zien ── */}
@@ -341,8 +346,6 @@ export default function BrlAuditmapPage() {
       <div className="bg-[var(--navy3)] px-[5%] pb-16 text-center text-[.95rem] leading-relaxed text-[var(--text2)]">
         <p className="mx-auto max-w-2xl">
           <Link href="/pricing" className={anchor}>Bekijk de prijzen</Link>
-          {' · '}
-          <Link href="/brl-100-software" className={anchor}>Wat de auditor van je administratie vraagt</Link>
           {' · '}
           <Link href={HANDBOEK.href} className={anchor}>Het BRL 100-handboek</Link>
         </p>

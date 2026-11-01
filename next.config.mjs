@@ -38,6 +38,9 @@ const nextConfig = {
   // De .html-varianten zijn de oude site (vóór april 2026). Search Console
   // meldde ze op 19-09-2026 als "Niet gevonden (404)"; ze gaan nu naar
   // dezelfde bestemming in plaats van naar een foutpagina.
+  //
+  // /brl-100 is de eerste URL van de pagina over versie 3.0. Expliciet 301
+  // (`permanent: true` geeft in Next een 308).
   async redirects() {
     return [
       // www → apex moet eerst: pad en query blijven behouden, daarna pakken
@@ -69,6 +72,11 @@ const nextConfig = {
         source:      '/registreren.html',
         destination: '/checkout?pakket=pro',
         permanent:   true,
+      },
+      {
+        source:      '/brl-100',
+        destination: '/brl-100-versie-3',
+        statusCode:  301,
       },
     ]
   },

@@ -9,7 +9,7 @@ import JsonLd            from '@/components/seo/JsonLd'
 import HomePricing       from '@/components/sections/HomePricing'
 import { JaarprijzenLink } from '@/components/ui/PeriodeSchakelaar'
 import { HOME_PAGE }     from './meta'
-import { AUDITMAP_PAGE } from './brl-100/meta'
+import { AUDITMAP_PAGE } from './brl-100-versie-3/meta'
 
 // Volgorde en afwerking volgens docs/seo-geo/11-homepage.md: probleem,
 // product, bewijs, regels, handboek, mens, prijs, vragen, actie. Achtergronden

@@ -22,7 +22,7 @@ export default function VerwerkersovereenkomstPage() {
     <div className="pt-32 pb-24 px-[5%]">
       <Container narrow>
         <p className="font-mono text-[.65rem] text-[var(--accent)] uppercase tracking-[.14em] mb-3">Juridisch</p>
-        <h1 className="font-outfit font-black text-[var(--text)] text-4xl mb-2">Verwerkersovereenkomst</h1>
+        <h1 className="font-outfit font-black text-[var(--text)] text-4xl mb-2">Verwerkers&shy;overeenkomst</h1>
         <p className="text-[var(--muted2)] text-sm mb-12">
           Bijlage 1 bij de <Link href="/voorwaarden" className="underline hover:text-[var(--accent)]">algemene voorwaarden</Link> · versie {VOORWAARDEN.versie} · {VOORWAARDEN.datum}
         </p>

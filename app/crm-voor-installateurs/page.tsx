@@ -313,18 +313,6 @@ export default function CrmVoorInstallateursAdsPage() {
         </Container>
       </section>
 
-      {/* ── STICKY MOBILE CTA, één duidelijke trial-CTA op mobiel ──
-             next/link, geen gewone <a>: een volledige paginaovergang laat
-             url_passthrough de URL decoreren en overschrijft de attributie. */}
-      <div className="md:hidden fixed bottom-16 inset-x-0 z-40 pl-4 pr-20 pb-2">
-        <Link
-          href="/registreren"
-          className="block w-full bg-gradient-to-r from-[var(--accent)] to-[var(--cyan)] text-white font-bold py-4 rounded-xl text-center text-base shadow-[0_8px_24px_rgba(0,144,184,.5)]"
-        >
-          Start 14 dagen gratis →
-        </Link>
-      </div>
-
       {/* ── Interne links naar de rest van het SEO-cluster (deze pagina is
              het cluster-middelpunt; de andere pagina's linken al hierheen) ── */}
       <LandingInternalLinks
