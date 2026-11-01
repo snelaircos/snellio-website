@@ -9,6 +9,7 @@ import JsonLd            from '@/components/seo/JsonLd'
 import HomePricing       from '@/components/sections/HomePricing'
 import { JaarprijzenLink } from '@/components/ui/PeriodeSchakelaar'
 import { HOME_PAGE }     from './meta'
+import { AUDITMAP_PAGE } from './brl-100/meta'
 
 // Volgorde en afwerking volgens docs/seo-geo/11-homepage.md: probleem,
 // product, bewijs, regels, handboek, mens, prijs, vragen, actie. Achtergronden
@@ -249,6 +250,12 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
+          <p className="mt-8 rounded-xl border border-[#e4ecf2] bg-[#f9fbfd] px-5 py-4 text-center text-[#0f2133] text-[.95rem] leading-relaxed">
+            Klaar voor BRL 100 versie 3.0. Je auditmap staat met één klik klaar.{' '}
+            <Link href={AUDITMAP_PAGE.path} className="text-[var(--accent)] font-semibold whitespace-nowrap hover:underline">
+              Lees hoe het werkt →
+            </Link>
+          </p>
         </div>
       </section>
 

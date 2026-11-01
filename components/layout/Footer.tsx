@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { SITE, NAV_ITEMS, HANDBOEK } from '@/lib/constants'
+import { AUDITMAP_PAGE } from '@/app/brl-100/meta'
 
 const legal = [
   { label: 'Privacy',      href: '/privacy'      },
@@ -15,6 +16,7 @@ const hvacSeoLinks = [
   { label: 'Werkbon software',          href: '/werkbon-software'           },
   { label: 'Planningssoftware monteurs', href: '/planningssoftware-monteurs' },
   { label: 'F-gassen registratie',      href: '/f-gassen-registratie'      },
+  { label: 'BRL 100 versie 3.0',        href: AUDITMAP_PAGE.path           },
   { label: 'BRL 100-handboek',          href: HANDBOEK.href                },
   // Automotive-verticale: zonder deze link is /automotive alleen via de
   // sitemap bereikbaar (orphan-pagina) — slecht crawlbaar.

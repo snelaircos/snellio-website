@@ -635,6 +635,8 @@ export default function Brl100SoftwarePage() {
               {starter.monteurs.inbegrepen} monteur, {starter.installaties.label.toLowerCase()}).{' '}
               <Link href="/f-gassen-registratie" className={anchor}>Bekijk de F-gassenregistratie in detail →</Link>
               {' · '}
+              <Link href="/brl-100" className={anchor}>Zo staat je auditmap klaar →</Link>
+              {' · '}
               <Link href="/pricing" className={anchor}>Bekijk de prijzen →</Link>
             </p>
           </div>

@@ -10,6 +10,7 @@ import { BRL100_PAGE } from '@/app/brl-100-software/meta'
 import { FGASSEN_PAGE } from '@/app/f-gassen-registratie/meta'
 import { WERKBON_PAGE } from '@/app/werkbon-software/meta'
 import { HANDBOEK_PAGE } from '@/app/brl-100-handboek/meta'
+import { AUDITMAP_PAGE } from '@/app/brl-100/meta'
 import { PILLAR_PAGE } from '@/app/software-voor-installatiebedrijven/meta'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -35,6 +36,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: BRL100_PAGE.path,                 priority: 0.9,  changeFreq: 'monthly' as const, lastMod: new Date(BRL100_PAGE.dateModified) },
     // Productpagina: lastModified is de gecontroleerde dateModified, niet de deploydatum.
     { path: HANDBOEK_PAGE.path,               priority: 0.85, changeFreq: 'monthly' as const, lastMod: new Date(HANDBOEK_PAGE.dateModified) },
+    // Productpagina: lastModified is de gecontroleerde dateModified, niet de deploydatum.
+    { path: AUDITMAP_PAGE.path,               priority: 0.85, changeFreq: 'monthly' as const, lastMod: new Date(AUDITMAP_PAGE.dateModified) },
     { path: '/automotive',                    priority: 0.9,  changeFreq: 'monthly' as const, lastMod: now },
     // Auteurspagina: wijzigt alleen bij nieuwe artikelen of certificering.
     { path: PERSON_PATH,                      priority: 0.5,  changeFreq: 'yearly'  as const, lastMod: new Date('2026-09-15') },
