@@ -15,6 +15,7 @@ Bronnen:
 - [B7] Kiwa, BRL 100 geüpdatet: dit verandert er met versie 3.0 (4 maart 2026) en FAQ: https://www.kiwa.com/nl/nl/expertisegebieden/energietransitie/nieuws/brl-100-geupdatet-dit-verandert-er-met-versie-3.0
 - [B8] Kiwa, BRL 100 dienstpagina: https://www.kiwa.com/nl/nl/diensten/certificering/brl-100/
 - [B9] Verordening (EU) nr. 910/2014 (eIDAS), NL-tekst: https://eur-lex.europa.eu/legal-content/NL/TXT/HTML/?uri=CELEX:32014R0910
+- [B10] IPLO, Toelichting overgangsregeling BRL 100 v3.0 (Rijkswaterstaat, gewijzigd 23 juni 2026, gelezen 1 november 2026): https://iplo.nl/thema/lucht/ozon-en-f-gassen/certificering/eisen-ondernemingen-installatiebedrijven/toelichting-overgangsregeling-brl-100-v3-0/
 
 Kiwa is een certificerende instelling, geen wetgever. Feiten die alleen bij Kiwa
 staan zijn hieronder gemarkeerd met "volgens Kiwa".
@@ -217,6 +218,23 @@ LMRA is geen wettelijke eis, maar een gangbare laatste check op locatie."
 
 Verboden formuleringen: "TRA is wettelijk verplicht", "LMRA is verplicht",
 "Snellio bepaalt de ATEX-zone", "volledig compliant".
+
+Verschil tussen BRL en Kiwa (gecontroleerd 1 november 2026): BRL 100 v3.0 §2.5.1
+zegt "Als blijkt dat de werkzaamheden risico's met zich meebrengen [...] Het
+uitvoeren van een Taak Risico Analyse is dan noodzakelijk en is een
+verantwoordelijkheid van de onderneming", zonder brandbaar, verstikkend of
+giftig te noemen. "Verplicht bij brandbare, verstikkende of giftige
+koudemiddelen" en "een EVD is verplicht bij brandbare koudemiddelen" zijn de
+woorden van Kiwa [B7]: alleen brengen als "volgens Kiwa". Bijlage 3 van de BRL:
+de exploitant stelt het EVD (laten) op, de onderneming raadpleegt het als
+onderdeel van de TRA. Schrijf dus nooit dat de installateur verantwoordelijk is
+voor het EVD zelf.
+
+Monteurs en deelgebieden: de BRL 100-deelgebieden I, II en III gelden voor het
+bedrijf, de persoonscertificaten hebben categorieën. Volgens de toelichting op
+de overgangsregeling [B10] horen bij koolwaterstoffen en F-gassen A1 of A2, bij
+CO2 B en bij ammoniak C. Schrijf "de persoonscertificaten die horen bij de
+deelgebieden", niet "gecertificeerd voor deelgebieden".
 
 ## 4. Persoonscertificaten (BRL 200)
 
