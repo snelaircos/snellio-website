@@ -194,6 +194,33 @@ Overig: KvK-inschrijving verplicht, apart certificaat per vestiging met eigen
 juridische entiteit; kwaliteitssysteem met periodieke interne audits, ook voor
 ingehuurd personeel en uitbesteding.
 
+Kwaliteitsmanagement (§2.2), gelezen in [B2] op 7 november 2026:
+
+- §2.2.1 Directieverantwoordelijkheid: de beleidsverklaring van de directie
+  noemt onder meer continue verbetering met periodieke interne audits,
+  maatregelen tegen lekkage van F-gassen, veilig werken met natuurlijke
+  koudemiddelen en F-gassen, personeel dat kennisneemt van
+  installatiehandleidingen en eindgebruikers wijst op de gebruikershandleiding,
+  naleving van wet- en regelgeving, de opdrachtgever informeren over de
+  verplichtingen van de exploitant, en vervanging adviseren als een installatie
+  herhaaldelijk blijft lekken.
+- §2.2.2 Kwaliteitsmanagementsysteem: de directie voert **jaarlijks** een
+  directiebeoordeling uit (onder meer geschiktheid, effectiviteit en naleving
+  van procedures en werkinstructies, en klachten).
+- Interne audit: de BRL zegt "periodieke interne audits" (§2.2.1), zonder
+  frequentie. "Jaarlijks" is de invulling van het Snellio-handboek (A.02,
+  D.05.02). Schrijf dus nooit "de BRL vraagt een jaarlijkse interne audit".
+- §2.5.1 Algemeen: elke werkinstructie werkt in ieder geval uit: wanneer hij
+  wordt toegepast, de voorbereiding, de instrumenten, apparaten en PBM, de
+  handelingen en hun volgorde, uitvoering na raadpleging van het logboek, de
+  normen, en de registratie.
+- Koppen ter controle: §2.5.2 Logboek, §3.1 Procedures, §3.2 Registraties,
+  §3.3 F-gassen balans.
+
+Let op: de app (snellio-app, logboek en auditmap) noemt het logboek per
+installatie "EU 2024/573 art. 6". Volgens [B1] is het register art. 7; art. 6
+gaat over het lekkagedetectiesysteem. Op de site altijd art. 7.
+
 ## 3. R290 en brandbare koudemiddelen: de vierdeling
 
 Gebruik altijd dit onderscheid. Nooit "verplicht" schrijven waar dat niet klopt.
