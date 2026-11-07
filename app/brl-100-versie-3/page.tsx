@@ -279,7 +279,11 @@ export default function BrlAuditmapPage() {
       <Section id="wat-de-auditor-wil-zien" breed>
         <h2 className={h2} style={h2Size}>Wat de auditor wil zien</h2>
         <div className={prose}>
-          <p>Per onderwerp: waar de auditor naar kijkt, en hoe Snellio dat regelt.</p>
+          <p>
+            Per onderwerp: waar de auditor naar kijkt, en hoe Snellio dat regelt. Hoe je de audit week voor week
+            voorbereidt, lees je in{' '}
+            <Link href="/blog/brl-100-audit-voorbereiden" className={anchor}>BRL 100 v3.0-audit voorbereiden</Link>.
+          </p>
         </div>
 
         <figure className="mt-6">

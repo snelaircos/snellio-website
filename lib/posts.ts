@@ -54,16 +54,14 @@ export interface Post {
 //                       kapotte afbeelding, geen placeholder).
 
 const ALLE_POSTS: Post[] = [
-  // CONCEPT (7-11-2026), niet publiceren zonder akkoord Rudy.
-  // Claims gecontroleerd in snellio-app main 77098ef; zie
-  // docs/seo-geo/02-feature-factcheck.md, rijen Auditmap 19 punten e.v.
+  // Gepubliceerd 7-11-2026, akkoord Rudy. Claims gecontroleerd in snellio-app
+  // main 77098ef en 6780367; zie docs/seo-geo/02-feature-factcheck.md, rijen
+  // Auditmap 19 punten e.v.
   // TODO(Rudy): screenshots uit het demo-account in /public/blog/brl-100-audit/
   //   auditmap-demo.png, handboek-op-brl-eis.png, logboek-pdf.png,
   //   werkbon-handeling-pdf.png. Tot ze er staan rendert de blog ze niet.
   // TODO(Rudy): bedrag bij "Wat kost het" pas na bevestiging; nu alleen de
   //   verwijzing naar de prijzenpagina.
-  // TODO(publicatie): date, dateISO en dateModifiedISO op de publicatiedag
-  //   zetten en draft weghalen.
   {
     slug:        'brl-100-audit-voorbereiden',
     title:       'BRL 100 v3.0-audit voorbereiden: zie vooraf wat de auditor gaat vinden',
@@ -75,7 +73,6 @@ const ALLE_POSTS: Post[] = [
     dateModifiedISO: '2026-11-07',
     readTime:    '9 min',
     schemaType:  'Article',
-    draft:       true,
     tags:        ['brl 100 audit', 'transitie-audit', 'brl 100 versie 3.0', 'auditmap', 'f-gassen registratie', 'kwaliteitshandboek'],
     author: {
       name: 'Rudy Snel',

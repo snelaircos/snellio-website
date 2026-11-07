@@ -640,7 +640,9 @@ export default function Brl100SoftwarePage() {
             </p>
             <p>
               Wil je weten wat er met versie 3.0 verandert en hoe je auditmap klaarstaat? Lees{' '}
-              <Link href={AUDITMAP_PAGE.path} className={anchor}>BRL 100 versie 3.0</Link>.
+              <Link href={AUDITMAP_PAGE.path} className={anchor}>BRL 100 versie 3.0</Link>. Hoe je de transitie-audit
+              voorbereidt, lees je in{' '}
+              <Link href="/blog/brl-100-audit-voorbereiden" className={anchor}>BRL 100 v3.0-audit voorbereiden</Link>.
             </p>
           </div>
         </Section>
