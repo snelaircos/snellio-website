@@ -35,7 +35,7 @@ import { AUDITMAP_PAGE } from './meta'
 
 const TITLE       = 'BRL 100 versie 3.0: zo staat jouw auditmap klaar'
 const DESCRIPTION =
-  'BRL 100 versie 3.0: wat er verandert en hoe Snellio je auditmap klaarzet. 18 punten in groen, oranje en rood, met een export als ZIP. Je bewijs op één plek.'
+  'BRL 100 versie 3.0: wat er verandert en hoe Snellio je auditmap klaarzet. 19 punten in groen, oranje en rood, met een export als ZIP. Je bewijs op één plek.'
 
 export const metadata: Metadata = buildMetadata({
   title:       TITLE,
@@ -51,7 +51,7 @@ const starter = planById('starter')
 const answerFirst =
   'Met BRL 100 versie 3.0 vallen ook natuurlijke koudemiddelen zoals R290 onder de richtlijn, en je eerstvolgende ' +
   'reguliere audit na 31 augustus 2026 is de transitie-audit. Snellio zet je bewijs op één plek: één overzicht van ' +
-  '18 punten in groen, oranje en rood, met een export als ZIP voor de auditor.'
+  '19 punten in groen, oranje en rood, met een export als ZIP voor de auditor.'
 
 const veranderingen: { kop: string; tekst: string }[] = [
   { kop: 'Datums',                   tekst: 'Vastgesteld op 5 december 2025, formeel in werking sinds 31 augustus 2026.' },
@@ -79,7 +79,7 @@ const blokken: AuditBlok[] = [
     titel:     'Auditmap',
     auditor:   'Je bewijs overzichtelijk bij elkaar, zodat je tijdens de audit snel laat zien wat er gevraagd wordt.',
     snellio:   [
-      'Eén overzicht met 18 punten in groen, oranje en rood.',
+      'Eén overzicht met 19 punten in groen, oranje en rood.',
       'Per tekortkoming één klik naar de werkorders of installaties die het betreft.',
       'Export als ZIP met inhoudsopgave, peildatum (de datum waarop je de stand vastlegt), periode en een steekproef van werkbonnen.',
     ],

@@ -4,5 +4,5 @@
 export const AUDITMAP_PAGE = {
   path:          '/brl-100-versie-3',
   datePublished: '2026-11-01T10:00:00+01:00',
-  dateModified:  '2026-11-01T10:00:00+01:00',
+  dateModified:  '2026-11-07T10:00:00+01:00',
 } as const
