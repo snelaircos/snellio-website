@@ -186,6 +186,8 @@ const ALLE_POSTS: Post[] = [
 
       Valt het werk buiten de F-gascategorie van de monteur, dan geeft Snellio een waarschuwing bij het tekenen.
 
+      Een nieuwe installatie leg je op locatie vast, vanaf het typeplaatje. Wat de klant bij de aanvraag over de installatie opgaf, staat als referentie in het blok Opgave klant op de werkorder. Met de knop Installatie aanmaken vanaf typeplaatje is het formulier al voorgevuld, en controleer je het tegen het echte typeplaatje. Zo vervuilt je registratie niet met halve gegevens uit een aanvraag.
+
       ## Logboek per installatie en F-gassenbalans
 
       ![Logboek van een installatie als PDF, met voorbeeldgegevens](/blog/brl-100-audit/logboek-pdf.png)
@@ -218,7 +220,7 @@ const ALLE_POSTS: Post[] = [
 
       **Dag 4: het handboek.** Loop het handboek door, vul de rollen in, zet de eerste versie vast en laat de directie de beleidsverklaring ondertekenen.
 
-      **Dag 5: aan het werk.** Werk je eerste werkorders in Snellio af: werkbon, veiligheidsdossier bij brandbaar koudemiddel, en de installatie vastgelegd met merk, type, koudemiddel en nominale inhoud van het typeplaatje.
+      **Dag 5: aan het werk.** Werk je eerste werkorders in Snellio af: werkbon, veiligheidsdossier bij brandbaar koudemiddel, en nieuwe installaties vastgelegd vanaf het typeplaatje, met de knop op de werkorder.
 
       **Daarna:** bekijk de auditmap elke week en pak rood en oranje op. Eén keer per jaar doe je de interne audit en de directiebeoordeling. Voor de externe audit exporteer je de auditmap.
 
