@@ -8,6 +8,9 @@ import { useState } from 'react'
 import { VOORWAARDEN } from '@/lib/constants'
 import { trackTrialSignupCompleted, attributionForServer } from '@/lib/tracking'
 
+// Zelfde eis als /api/aanmelden (Supabase zelf staat 6 toe).
+const MIN_WACHTWOORD = 8
+
 type Status = 'idle' | 'loading' | 'success' | 'error' | 'email_exists'
 
 interface CheckoutFormProps {
@@ -23,8 +26,15 @@ export default function CheckoutForm({ selectedPackage }: CheckoutFormProps) {
   const [loginUrl, setLoginUrl] = useState('')
   const [form, setForm] = useState({ companyName: '', email: '', land: 'NL', password: '', hp: '', akkoord: false })
 
+  const teKort = form.password.length > 0 && form.password.length < MIN_WACHTWOORD
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (form.password.length < MIN_WACHTWOORD) {
+      setStatus('error')
+      setErrorMessage('Kies een wachtwoord van minimaal 8 tekens.')
+      return
+    }
     if (!form.akkoord) {
       setStatus('error')
       setErrorMessage('Vink aan dat je akkoord gaat met de algemene voorwaarden.')
@@ -100,7 +110,12 @@ export default function CheckoutForm({ selectedPackage }: CheckoutFormProps) {
       <div>
         <label htmlFor="password" className={label}>Wachtwoord *</label>
         <input id="password" type="password" required placeholder="Minimaal 8 tekens" className={input} autoComplete="new-password"
+          aria-describedby="password-hint" aria-invalid={teKort}
           value={form.password} onChange={e => setForm(f => ({ ...f, password: e.target.value }))} />
+        {/* Vaste regel: de eis blijft zichtbaar als de placeholder weg is; rood zolang het te kort is. */}
+        <p id="password-hint" aria-live="polite" className={`mt-1.5 text-xs ${teKort ? 'text-red-400' : form.password.length >= MIN_WACHTWOORD ? 'text-emerald-400' : 'text-[var(--muted)]'}`}>
+          {form.password.length >= MIN_WACHTWOORD ? '✓ Minimaal 8 tekens' : teKort ? `Minimaal 8 tekens (nu ${form.password.length})` : 'Minimaal 8 tekens'}
+        </p>
       </div>
       {/* Honeypot — voor mensen onzichtbaar; nooit name="website" (autofill) */}
       <div style={{ display: 'none' }} aria-hidden="true">
