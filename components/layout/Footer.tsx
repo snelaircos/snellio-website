@@ -114,10 +114,12 @@ export default function Footer() {
         {/* Stond eerst alleen als hotfix op de VPS — nu in de repo zodat
             een deploy hem niet meer wegvaagt. */}
         <a
-          href="https://snelliowebdesign.nl"
+          href="https://snelliowebdesign.nl/website-laten-maken-installatiebedrijf"
+          target="_blank"
+          rel="noopener"
           className="text-[var(--muted)] text-xs hover:underline"
         >
-          Website door Snellio
+          Website door Snellio Webdesign
         </a>
       </div>
     </footer>
