@@ -6,7 +6,7 @@ import { SITE, VOORWAARDEN } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Privacybeleid',
-  description: 'Lees het privacybeleid van Snellio, versie 2.0. Hoe wij omgaan met uw persoonsgegevens en hoe wij uw privacy beschermen.',
+  description: 'Lees het privacybeleid van Snellio, versie 2.1. Hoe wij omgaan met uw persoonsgegevens en hoe wij uw privacy beschermen.',
   path:        '/privacy',
   noIndex:     false,
 })

@@ -6,7 +6,7 @@ import { VOORWAARDEN }     from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Verwerkersovereenkomst',
-  description: 'De verwerkersovereenkomst van Snellio (bijlage 1 bij de algemene voorwaarden), versie 2.0.',
+  description: 'De verwerkersovereenkomst van Snellio (bijlage 1 bij de algemene voorwaarden), versie 2.1.',
   path:        '/voorwaarden/verwerkersovereenkomst',
 })
 
