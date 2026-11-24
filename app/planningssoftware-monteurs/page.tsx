@@ -30,7 +30,7 @@ export const metadata: Metadata = buildMetadata({
   path:        PLANNING_PAGE.path,
 })
 
-const starter = planById('starter')
+const basis   = planById('basis')
 const pro     = planById('pro')
 
 // ── Data ──────────────────────────────────────────────────────────────────────
@@ -227,7 +227,7 @@ const faqItems = [
   },
   {
     question: 'Is planningssoftware beschikbaar in alle pakketten?',
-    answer:   `Ja. De planning zit in elk pakket, ook in ${starter.name}. Snellio kent geen losse planningsmodule of toeslag. Het verschil tussen de pakketten zit in het aantal monteurs en installaties, niet in de functies. Meerdere monteurs inplannen kan vanaf ${pro.name} (${pro.monteurs.inbegrepen} monteurs inbegrepen).`,
+    answer:   `Ja. De planning zit in elk pakket, ook in ${basis.name}. Snellio kent geen losse planningsmodule of toeslag. Het verschil tussen de pakketten zit in het aantal monteurs, niet in de planningsfuncties. Meerdere monteurs inplannen kan vanaf ${pro.name} (${pro.monteurs.inbegrepen} monteurs inbegrepen).`,
   },
 ]
 

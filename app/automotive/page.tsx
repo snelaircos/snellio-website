@@ -5,7 +5,7 @@ import { breadcrumbSchema, faqSchema } from '@/lib/schemas'
 import JsonLd            from '@/components/seo/JsonLd'
 import HeroAnimation     from '@/components/sections/automotive/HeroAnimation'
 import AutomotivePricing from '@/components/sections/automotive/AutomotivePricing'
-import { BTW, SITE } from '@/lib/constants'
+import { BTW_AUTOMOTIVE as BTW, SITE } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Werkplaatssoftware voor garages & autobedrijven | Snellio',

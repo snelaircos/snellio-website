@@ -31,10 +31,13 @@ export const PROFIELEN: Record<'linkedin' | 'googleBedrijfsprofiel' | 'youtube',
 // profiel en hoort niet in sameAs.
 export const KVK_NUMMER = '69499829'
 
-// Alle getoonde prijzen zijn inclusief 21% btw: Mollie schrijft exact het
-// getoonde bedrag af (zie PACKAGE_PRICES in de checkout/billing API-routes).
-// Eén bron voor de vermelding zodat die overal op de site identiek is.
-export const BTW = { short: 'incl. 21% btw' } as const
+// Prijzen per 1 januari 2027 (Rudy, 24-11-2026): alle getoonde prijzen zijn
+// EXCLUSIEF btw; de klant betaalt er 21% btw bovenop. Moet gelijk lopen met
+// ladder nieuw_2027 in lib/subscriptions/pricing.ts van de app. Eén bron voor
+// de vermelding zodat die overal op de site identiek is.
+export const BTW = { short: 'excl. btw', lang: 'Alle prijzen zijn exclusief 21% btw.' } as const
+// Automotive (stil sinds 09-10-2026) houdt zijn eigen prijzen incl. btw.
+export const BTW_AUTOMOTIVE = { short: 'incl. 21% btw' } as const
 
 // Versie van de juridische documenten (voorwaarden + bijlagen, privacybeleid).
 // LET OP: de app-repo (snellio-app) moet exact dezelfde strings gebruiken —
@@ -51,10 +54,12 @@ export const NAV_ITEMS = [
   { label: 'Contact',  href: '/contact'  },
 ] as const
 
-// ── HVAC-prijsmodel (2026-09) ───────────────────────────────────────────────
-// Geen modules meer: elk betaald pakket bevat álle Snellio-functies. Het
-// prijsverschil zit uitsluitend in de grootte van het bedrijf: het aantal
-// monteurs en (alleen bij Starter) het aantal installaties.
+// ── HVAC-prijsmodel per 1-1-2027 (excl. btw) ────────────────────────────────
+// Elk pakket bevat álle Snellio-functies. Het prijsverschil zit in de grootte
+// van het bedrijf (aantal monteurs); Enterprise bevat daarnaast de
+// AI-assistent, eigen maildomein, onboarding en voorrang bij support.
+// Starter wordt niet meer aangeboden. Bestaande klanten (founding partners)
+// houden hun tarief; dat staat niet op de site.
 //
 // Niemand kiest op de site een pakket. Elke klant start met 14 dagen gratis
 // en kiest pas in de app, tijdens de trial, abonnement en betaalwijze. De
@@ -68,7 +73,12 @@ export const JAAR_MAANDEN_BETAALD = 10
 // een 'use client'-bestand niet als tekst binnen.
 export const JAARPRIJZEN_ANKER = 'jaarprijzen'
 
-export type HvacPlanId = 'starter' | 'basis' | 'pro' | 'enterprise'
+export type HvacPlanId = 'basis' | 'pro' | 'enterprise'
+
+/** Boven dit aantal monteurs geen zelfbediening: offerte op maat. */
+export const ZELFBEDIENING_MAX_MONTEURS = 15
+/** AI-assistent als losse module bij Basis en Pro (in Enterprise inbegrepen). */
+export const AI_MODULE = { label: 'AI-assistent', prijs: 49 } as const
 
 export interface HvacPlan {
   id:        HvacPlanId
@@ -82,7 +92,11 @@ export interface HvacPlan {
     inbegrepen: number
     /** Meerprijs per extra monteur per maand, vanaf monteur nr. `vanafMonteur`. */
     extra?:     { vanafMonteur: number; prijs: number }
+    /** Maximaal aantal monteurs in dit pakket. */
+    max:        number
   }
+  /** Extra's bovenop de functies die in elk pakket zitten. */
+  inclusief?: string[]
   installaties: { max: number | null; label: string }
   featured?: boolean
   badge?:    string
@@ -90,30 +104,21 @@ export interface HvacPlan {
 
 export const PLANS: HvacPlan[] = [
   {
-    id:       'starter',
-    name:     'Starter',
-    tagline:  'Voor wie klein begint.',
-    audience: "Startende ZZP'er of kleine installateur met een beperkte installatieportefeuille.",
-    price:    { month: 10, year: 100 },
-    monteurs: { inbegrepen: 1 },
-    installaties: { max: 25, label: 'Maximaal 25 installaties' },
-  },
-  {
     id:       'basis',
     name:     'Basis',
     tagline:  'Voor de zelfstandige installateur.',
     audience: "Zelfstandig installateur of ZZP'er die Snellio volledig gebruikt.",
-    price:    { month: 29, year: 290 },
-    monteurs: { inbegrepen: 1 },
+    price:    { month: 39, year: 390 },
+    monteurs: { inbegrepen: 1, max: 1 },
     installaties: { max: null, label: 'Onbeperkt installaties' },
   },
   {
     id:       'pro',
     name:     'Pro',
-    tagline:  'Voor teams vanaf 2 monteurs.',
-    audience: 'Kleine tot middelgrote installatiebedrijven met meerdere monteurs.',
+    tagline:  'Voor teams tot 5 monteurs.',
+    audience: 'Kleine installatiebedrijven met 2 tot 5 monteurs.',
     price:    { month: 69, year: 690 },
-    monteurs: { inbegrepen: 2, extra: { vanafMonteur: 3, prijs: 20 } },
+    monteurs: { inbegrepen: 3, extra: { vanafMonteur: 4, prijs: 15 }, max: 5 },
     installaties: { max: null, label: 'Onbeperkt installaties' },
     featured: true,
     badge:    'Meest gekozen',
@@ -121,11 +126,12 @@ export const PLANS: HvacPlan[] = [
   {
     id:       'enterprise',
     name:     'Enterprise',
-    tagline:  'Voor groeiende bedrijven vanaf 5 monteurs.',
-    audience: 'Groeiende installatiebedrijven vanaf ongeveer 5 monteurs.',
-    price:    { month: 129, year: 1290 },
-    monteurs: { inbegrepen: 5, extra: { vanafMonteur: 6, prijs: 10 } },
+    tagline:  'Voor bedrijven vanaf 6 monteurs.',
+    audience: 'Groeiende installatiebedrijven met 6 tot 15 monteurs.',
+    price:    { month: 149, year: 1490 },
+    monteurs: { inbegrepen: 8, extra: { vanafMonteur: 9, prijs: 12 }, max: 15 },
     installaties: { max: null, label: 'Onbeperkt installaties' },
+    inclusief: ['AI-assistent', 'Eigen maildomein', 'Onboarding', 'Voorrang bij support', 'BRL 100-handboek, ook bij maandbetaling'],
     badge:    'Voor groeiende teams',
   },
 ]
@@ -148,9 +154,9 @@ export const INBEGREPEN = [
 
 // ── BRL 100 v3.0-handboek (15-10-2026) ──────────────────────────────────────
 // Een document bij jaarbetaling, geen functie: "alle functies in elk pakket"
-// blijft waar. Alleen Basis, Pro en Enterprise met jaarbetaling krijgen het
-// volledige handboek; Starter, maandbetaling en de proefperiode zien een
-// voorbeeld. Moet gelijk lopen met HANDBOEK_PAKKETTEN in
+// blijft waar. Basis en Pro met jaarbetaling, en Enterprise altijd, krijgen
+// het volledige handboek; maandbetaling bij Basis/Pro en de proefperiode zien
+// een voorbeeld. Moet gelijk lopen met HANDBOEK_PAKKETTEN in
 // lib/handboek/toegang.ts van de app. Formuleringen: rijen 30 t/m 36 van
 // docs/seo-geo/02-feature-factcheck.md. Nooit "goedgekeurd" of Kiwa.
 export const HANDBOEK = {
@@ -167,17 +173,18 @@ export const HANDBOEK = {
     { code: 'F', titel: 'Formulieren en registers', aantal: 14, voorbeeld: 'Logboek, F-gassenregistratie en -balans, meetinstrumenten en flessenkaarten' },
   ],
   href:         '/brl-100-handboek',
-  badge:        'Inbegrepen bij Basis, Pro en Enterprise met jaarbetaling',
+  badge:        'Inbegrepen bij Basis en Pro met jaarbetaling, bij Enterprise altijd',
   disclaimer:   'Gebaseerd op BRL 100 v3.0. Het handboek vervangt de beoordeling door je certificerende instelling niet.',
   regel: {
     inbegrepen: 'Inclusief BRL 100 v3.0-handboek',
     alleenJaar: 'BRL 100-handboek alleen bij jaarabonnement',
     vanafBasis: 'BRL 100-handboek vanaf Basis (jaar)',
+    altijd:     'Inclusief BRL 100 v3.0-handboek, ook bij maandbetaling',
   },
   // Zelfde vraag en antwoord op de homepage, /pricing en /brl-100-handboek.
   faq: {
     question: 'Zit het BRL 100-handboek bij elk abonnement?',
-    answer:   'Bij Basis, Pro en Enterprise met jaarbetaling. Bij Starter, bij een maandabonnement en in de proefperiode zie je een voorbeeld: de inhoudsopgave en het eerste hoofdstuk, zonder je eigen gegevens. Het handboek mag je gebruiken zolang je abonnement loopt. Stopt je jaarabonnement, dan kun je het nog 30 dagen lezen.',
+    answer:   'Bij Basis en Pro met jaarbetaling, en bij Enterprise altijd, ook per maand. Bij een maandabonnement op Basis of Pro en in de proefperiode zie je een voorbeeld: de inhoudsopgave en het eerste hoofdstuk, zonder je eigen gegevens. Het handboek mag je gebruiken zolang je abonnement loopt. Stopt je jaarabonnement, dan kun je het nog 30 dagen lezen.',
   },
 } as const
 

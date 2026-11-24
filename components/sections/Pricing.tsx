@@ -73,7 +73,7 @@ export default function Pricing() {
         </div>
 
         {/* ── Kaarten ── */}
-        <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-5 lg:gap-6 items-stretch">
+        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-6 items-stretch">
           {PLANS.map((plan, i) => (
             <PlanCard key={plan.id} plan={plan} annual={annual} index={i} />
           ))}
@@ -96,7 +96,7 @@ export default function Pricing() {
               Alle functies inbegrepen. <span className="text-[var(--accent)]">In elk pakket.</span>
             </h2>
             <p className="text-[var(--text2)] text-base mt-3 max-w-2xl mx-auto">
-              Snellio kent geen modulejungle. Starter, Basis, Pro en Enterprise bevatten dezelfde functies.
+              Snellio kent geen modulejungle. Basis, Pro en Enterprise bevatten dezelfde functies; Enterprise heeft daarnaast de AI-assistent, een eigen maildomein, onboarding en voorrang bij support.
               Je betaalt alleen voor de grootte van je bedrijf. Alleen het{' '}
               <Link href={HANDBOEK.href} className="text-[var(--accent)] font-semibold hover:underline">BRL 100-handboek</Link>{' '}
               hoort bij Basis, Pro en Enterprise met jaarbetaling.
@@ -143,15 +143,15 @@ interface PlanCardProps {
 function PlanCard({ plan, annual, index }: PlanCardProps) {
   const featured = !!plan.featured
   const extra    = plan.monteurs.extra
-  const monteursLabel = plan.monteurs.inbegrepen === 1
-    ? '1 monteur inbegrepen'
-    : `${plan.monteurs.inbegrepen} monteurs inbegrepen`
+  const monteursLabel = plan.monteurs.max === 1
+    ? '1 monteur'
+    : `${plan.monteurs.inbegrepen} monteurs inbegrepen, tot en met ${plan.monteurs.max}`
 
   const inbegrepen = [
     monteursLabel,
     plan.installaties.label,
     'Alle Snellio-functies',
-    'Geen losse moduletoeslagen',
+    ...(plan.inclusief ?? []).filter(i => !i.startsWith('BRL 100')),
     'Gratis boekhoudkoppelingen',
   ]
   const handboek = handboekRegel(plan, annual)

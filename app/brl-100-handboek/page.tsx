@@ -41,7 +41,6 @@ export const metadata: Metadata = buildMetadata({
   path:        HANDBOEK_PAGE.path,
 })
 
-const starter = planById('starter')
 const basis   = planById('basis')
 
 // ── Data ──────────────────────────────────────────────────────────────────────
@@ -256,8 +255,9 @@ export default function BrlHandboekPage() {
         <h2 className={h2} style={h2Size}>Bij welke abonnementen zit het handboek?</h2>
         <div className={prose}>
           <p>
-            Het volledige handboek hoort bij Basis, Pro en Enterprise met jaarbetaling. Alle functies van Snellio
-            zitten in elk pakket; het handboek is een document dat bij jaarbetaling vanaf {basis.name} hoort.
+            Het volledige handboek hoort bij Basis en Pro met jaarbetaling, en bij Enterprise altijd. Alle functies
+            van Snellio zitten in elk pakket; het handboek is een document dat bij jaarbetaling vanaf {basis.name} hoort,
+            en bij Enterprise ook bij maandbetaling.
             Prijzen {BTW.short}.
           </p>
         </div>
@@ -270,15 +270,15 @@ export default function BrlHandboekPage() {
               plan.name,
               fmtEuro(plan.price.month),
               fmtEuro(plan.price.year),
-              'Voorbeeld',
+              plan.id === 'enterprise' ? 'Volledig' : 'Voorbeeld',
               volledig ? 'Volledig' : 'Voorbeeld',
             ]
           })}
         />
         <div className={prose}>
           <p>
-            Het voorbeeld is de inhoudsopgave en het eerste hoofdstuk, zonder je eigen gegevens. Dat zie je ook bij{' '}
-            {starter.name} en in de proefperiode van {TRIAL_DAGEN} dagen. Het handboek mag je gebruiken zolang je
+            Het voorbeeld is de inhoudsopgave en het eerste hoofdstuk, zonder je eigen gegevens. Dat zie je bij een
+            maandabonnement op {basis.name} of Pro en in de proefperiode van {TRIAL_DAGEN} dagen. Het handboek mag je gebruiken zolang je
             abonnement loopt. Alle bedragen en wat er verder inbegrepen is:{' '}
             <Link href={`/pricing#${JAARPRIJZEN_ANKER}`} className={anchor}>jaarprijzen</Link>.
           </p>
@@ -310,7 +310,7 @@ export default function BrlHandboekPage() {
           { href: '/brl-100-software',     icon: '📄', title: 'BRL 100: wat de auditor van je administratie vraagt', desc: 'Certificaat, audit, logboek en meetinstrumenten' },
           { href: '/f-gassen-registratie', icon: '❄️', title: 'F-gassen registratie: het logboek per installatie',   desc: 'Art. 7, lekcontrole, flesbalans en kenplaat' },
           { href: PERSON_PATH,             icon: '👷', title: 'Over Rudy Snel',                                     desc: 'Installateur en maker van Snellio' },
-          { href: '/pricing',              icon: '💶', title: 'Prijzen, alles inbegrepen',                          desc: `Vanaf ${fmtEuro(starter.price.month)} per maand ${BTW.short}` },
+          { href: '/pricing',              icon: '💶', title: 'Prijzen, alles inbegrepen',                          desc: `Vanaf ${fmtEuro(basis.price.month)} per maand ${BTW.short}` },
         ]}
       />
 
