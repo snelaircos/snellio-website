@@ -39,9 +39,12 @@ export const BTW = { short: 'incl. 21% btw' } as const
 // Versie van de juridische documenten (voorwaarden + bijlagen, privacybeleid).
 // LET OP: de app-repo (snellio-app) moet exact dezelfde strings gebruiken —
 // het versienummer wordt gelogd bij acceptatie (art. 3.2 voorwaarden).
+// Versie 2.1 (art. 5.3 prijzen excl. btw, 5.3a founding partners, 5.3b
+// prijswijzigingen), geldig vanaf 1 januari 2027; aangekondigd volgens art. 3.4.
+// Versie 2.0 staat bevroren op /voorwaarden/archief-2026-09.
 export const VOORWAARDEN = {
-  versie: '2.0',
-  datum:  '5 september 2026',
+  versie: '2.1',
+  datum:  '1 januari 2027',
 } as const
 
 export const NAV_ITEMS = [

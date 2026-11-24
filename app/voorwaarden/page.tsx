@@ -6,7 +6,7 @@ import { SITE, VOORWAARDEN } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Algemene voorwaarden',
-  description: 'De algemene voorwaarden van Snellio, versie 2.0. Inclusief verwerkersovereenkomst en lijst van subverwerkers.',
+  description: `De algemene voorwaarden van Snellio, versie ${VOORWAARDEN.versie}. Inclusief verwerkersovereenkomst en lijst van subverwerkers.`,
   path:        '/voorwaarden',
 })
 
@@ -25,7 +25,7 @@ export default function VoorwaardenPage() {
         <h1 className="font-outfit font-black text-[var(--text)] text-4xl mb-2">Algemene voorwaarden</h1>
         <p className="text-[var(--muted2)] text-sm mb-6">
           Versie {VOORWAARDEN.versie} · geldig vanaf {VOORWAARDEN.datum} ·{' '}
-          <Link href="/voorwaarden/archief-2026-08" className="underline hover:text-[var(--accent)]">vorige versie (augustus 2026)</Link>
+          <Link href="/voorwaarden/archief-2026-09" className="underline hover:text-[var(--accent)]">vorige versie (2.0, september 2026)</Link>
         </p>
 
         <div className="bg-[var(--navy3)] border border-[var(--border)] rounded-xl p-5 mb-12 text-sm text-[var(--text2)] leading-relaxed">
@@ -67,9 +67,10 @@ export default function VoorwaardenPage() {
         <Section title="5. Abonnement, prijzen en looptijd">
           <p>5.1 Het Abonnement start op het moment dat de Klant in de Dienst een abonnementsvorm kiest en de acceptatie uit artikel 3.2 uitvoert.</p>
           <p>5.2 De Klant kiest een periode (per maand of per jaar) en een betaalwijze (betaling op factuur via iDEAL, of automatische incasso). Een jaarabonnement kost tien maandbedragen voor twaalf maanden.</p>
-          <p>5.3 Alle prijzen zijn inclusief 21% btw, tenzij uitdrukkelijk anders vermeld. Extra gebruikers, extra modules en verbruik van AI-functies worden in rekening gebracht volgens de prijslijst die in de Dienst wordt getoond op het moment van afname.</p>
-          <p>5.4 Snellio kan prijzen jaarlijks per 1 januari aanpassen aan de consumentenprijsindex van het CBS. Andere prijswijzigingen worden ten minste 30 dagen vooraf aangekondigd en gelden voor een lopend jaarabonnement pas bij de eerstvolgende verlenging.</p>
-          <p>5.5 Een maandabonnement loopt per maandperiode vanaf de startdatum en wordt telkens met een maand verlengd totdat het wordt opgezegd. Een jaarabonnement loopt tot het einde van de betaalde periode en wordt niet stilzwijgend verlengd. Snellio herinnert de Klant ten minste 30 dagen vóór afloop en de Klant kiest opnieuw.</p>
+          <p>5.3 Alle prijzen zijn exclusief 21% btw, tenzij anders vermeld. De prijzen staan op snellio.nl en in de abonnementskeuze in de app. Extra gebruikers, extra modules en verbruik van AI-functies worden in rekening gebracht volgens de prijslijst die in de Dienst wordt getoond op het moment van afname.</p>
+          <p>5.3a Founding partners. Een Klant die vóór 1 januari 2027 een betaald Abonnement heeft afgesloten, is founding partner. Een founding partner behoudt het tarief van zijn Abonnement op het moment van afsluiten, inclusief btw, zolang het Abonnement doorloopt, met uitzondering van de jaarlijkse CPI-indexatie uit 5.3b. Dit geldt ook bij verlengen, bij omzetten van maand naar jaar en bij het toevoegen van monteurs volgens de prijsladder die gold bij het afsluiten. Na beëindiging van het Abonnement vervalt de status van founding partner.</p>
+          <p>5.3b Snellio mag de prijzen jaarlijks per 1 januari aanpassen aan de consumentenprijsindex (CPI) van het CBS. Andere prijswijzigingen kondigt Snellio ten minste 30 dagen van tevoren per e-mail aan. Een prijswijziging geldt voor een lopend jaarabonnement pas bij de eerstvolgende verlenging. Is de Klant het niet eens met een prijswijziging die geen CPI-indexatie is, dan mag hij zijn Abonnement opzeggen per de datum waarop de wijziging ingaat.</p>
+          <p>5.4 Een maandabonnement loopt per maandperiode vanaf de startdatum en wordt telkens met een maand verlengd totdat het wordt opgezegd. Een jaarabonnement loopt tot het einde van de betaalde periode en wordt niet stilzwijgend verlengd. Snellio herinnert de Klant ten minste 30 dagen vóór afloop en de Klant kiest opnieuw.</p>
         </Section>
 
         <Section title="6. Betaling">
