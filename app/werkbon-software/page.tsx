@@ -48,7 +48,7 @@ export const metadata: Metadata = buildMetadata({
   path:        WERKBON_PAGE.path,
 })
 
-const starter = planById('starter')
+const basis   = planById('basis')
 
 // Screenshot van een werkbon in Snellio, aangeleverd door Rudy Snel op
 // 16-09-2026 (10, bouwinstructies). Certificaatnummer BRL 200 en het
@@ -127,12 +127,12 @@ const doelgroepen = [
   { icon: '🔧', titel: 'Airco-installateur',                    tekst: 'Plaatst split-units bij particulieren en bedrijven. Wil per installatie een werkbon met de koudemiddelvulling en de handtekening van de klant, en de kenplaat direct printen.' },
   { icon: '♨️', titel: 'Warmtepompinstallateur',                tekst: 'Inbedrijfstellingen en servicebeurten, met de velden die BRL 100 aan de werkregistratie stelt.' },
   { icon: '❄️', titel: 'Koeltechnisch monteur of servicebedrijf', tekst: 'Lekcontroles, drukbeproevingen en vacumeringen bij commerciële installaties, met de gegevens die in het logboek van de exploitant moeten.' },
-  { icon: '👷', titel: 'Zzp’er met BRL 100 en BRL 200',          tekst: `Dezelfde registratieplicht als een bedrijf, zonder kantoor dat het achteraf invoert. ${starter.name} vanaf ${fmtEuro(starter.price.month)} per maand ${BTW.short}.` },
+  { icon: '👷', titel: 'Zzp’er met BRL 100 en BRL 200',          tekst: `Dezelfde registratieplicht als een bedrijf, zonder kantoor dat het achteraf invoert. ${basis.name} vanaf ${fmtEuro(basis.price.month)} per maand ${BTW.short}.` },
 ]
 
 // Prijsantwoord één keer opbouwen: zichtbaar in de FAQ én in het FAQ-schema.
 const prijsAntwoord =
-  `Snellio kost vanaf ${fmtEuro(starter.price.month)} per maand ${BTW.short} (${starter.name}: ${starter.monteurs.inbegrepen} monteur, ${starter.installaties.label.toLowerCase()}). ` +
+  `Snellio kost vanaf ${fmtEuro(basis.price.month)} per maand ${BTW.short} (${basis.name}: ${basis.monteurs.inbegrepen} monteur, ${basis.installaties.label.toLowerCase()}). ` +
   `In elk pakket zitten alle functies: werkbonnen, planning, facturatie, F-gassen en BRL 100-werkregistratie. ` +
   `Je start met ${TRIAL_DAGEN} dagen gratis, zonder betaalgegevens, en kiest je abonnement pas daarna.`
 
@@ -451,7 +451,7 @@ export default function WerkbonSoftwarePage() {
           { href: '/f-gassen-registratie',       icon: '❄️', title: 'F-gassen registratie: het logboek per installatie', desc: 'Art. 7, lekcontrole, flesbalans en kenplaat' },
           { href: '/brl-100-software',           icon: '📄', title: 'BRL 100: wat de auditor van je administratie vraagt', desc: 'Certificaat, audit, logboek en meetinstrumenten' },
           { href: '/planningssoftware-monteurs', icon: '📅', title: 'Planning voor monteurs',                        desc: 'Werkorders inplannen per monteur, met Google Calendar' },
-          { href: '/pricing',                    icon: '💶', title: 'Prijzen, alles inbegrepen',                     desc: `Vanaf ${fmtEuro(starter.price.month)} per maand ${BTW.short}` },
+          { href: '/pricing',                    icon: '💶', title: 'Prijzen, alles inbegrepen',                     desc: `Vanaf ${fmtEuro(basis.price.month)} per maand ${BTW.short}` },
         ]}
       />
 

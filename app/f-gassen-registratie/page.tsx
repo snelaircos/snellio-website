@@ -197,7 +197,7 @@ const snellioFuncties: { icon: string; titel: string; tekst: ReactNode }[] = [
     titel: 'In elk pakket',
     tekst: (
       <>
-        Logboek, flesregistratie, balans en kenplaat zitten in elk pakket, ook in Starter. Zie{' '}
+        Logboek, flesregistratie, balans en kenplaat zitten in elk pakket, ook in Basis. Zie{' '}
         <Link href="/pricing" className={anchor}>prijzen</Link>.
       </>
     ),

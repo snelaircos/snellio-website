@@ -80,7 +80,7 @@ export function websiteSchema() {
 
 export function softwareApplicationSchema() {
   // Eén Offer per pakket per betaalperiode. Prijzen zijn de vaste basis-
-  // prijzen incl. 21% btw (Pro/Enterprise: inclusief de inbegrepen monteurs);
+  // prijzen excl. btw (per 1-1-2027; Pro/Enterprise: inclusief de inbegrepen monteurs);
   // extra monteurs zijn variabel en horen niet in het schema.
   const offers = PLANS.flatMap(p => ([
     {
@@ -95,7 +95,7 @@ export function softwareApplicationSchema() {
         billingDuration: 1,
         unitCode:        'MON',
         unitText:        'per maand',
-        valueAddedTaxIncluded: true,
+        valueAddedTaxIncluded: false,
       },
     },
     {
@@ -110,7 +110,7 @@ export function softwareApplicationSchema() {
         billingDuration: 1,
         unitCode:        'ANN',
         unitText:        'per jaar',
-        valueAddedTaxIncluded: true,
+        valueAddedTaxIncluded: false,
       },
     },
   ]))

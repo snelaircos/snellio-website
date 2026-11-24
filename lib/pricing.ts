@@ -12,9 +12,10 @@ export function planById(id: HvacPlanId): HvacPlan {
 
 /**
  * Maandprijs van een pakket voor een team van `monteurs` monteurs.
- * Pro:        €69 met 2 monteurs inbegrepen, daarna €20 per monteur.
- * Enterprise: €129 met 5 monteurs inbegrepen, daarna €10 per monteur.
- * Starter/Basis kennen geen extra monteurs (1 monteur, vaste prijs).
+ * Bedragen excl. btw (prijzen per 1-1-2027):
+ * Pro:        €69 met 3 monteurs inbegrepen, daarna €15 per monteur (tot 5).
+ * Enterprise: €149 met 8 monteurs inbegrepen, daarna €12 per monteur (tot 15).
+ * Basis kent geen extra monteurs (1 monteur, vaste prijs).
  */
 export function maandprijsVoorTeam(plan: HvacPlan, monteurs: number): number {
   const extra = plan.monteurs.extra
@@ -51,11 +52,12 @@ export function fmtEuro(bedrag: number): string {
 }
 
 /**
- * Regel over het BRL 100-handboek op een pakketkaart. Starter krijgt het
- * nooit, Basis, Pro en Enterprise alleen bij jaarbetaling (HANDBOEK).
+ * Regel over het BRL 100-handboek op een pakketkaart. Basis en Pro alleen bij
+ * jaarbetaling, Enterprise altijd (HANDBOEK, prijzen 2027).
  */
 export function handboekRegel(plan: HvacPlan, annual: boolean): { tekst: string; inbegrepen: boolean } {
   if (!HANDBOEK.pakketten.includes(plan.id)) return { tekst: HANDBOEK.regel.vanafBasis, inbegrepen: false }
+  if (plan.id === 'enterprise') return { tekst: HANDBOEK.regel.altijd, inbegrepen: true }
   return annual
     ? { tekst: HANDBOEK.regel.inbegrepen, inbegrepen: true }
     : { tekst: HANDBOEK.regel.alleenJaar, inbegrepen: false }

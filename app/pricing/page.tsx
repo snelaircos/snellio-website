@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { buildMetadata }  from '@/lib/metadata'
 import { breadcrumbSchema, faqSchema } from '@/lib/schemas'
-import { BTW, HANDBOEK, PLANS, TRIAL_DAGEN } from '@/lib/constants'
+import { AI_MODULE, BTW, HANDBOEK, PLANS, TRIAL_DAGEN, ZELFBEDIENING_MAX_MONTEURS } from '@/lib/constants'
 import { fmtEuro, twaalfMaanden } from '@/lib/pricing'
 import JsonLd    from '@/components/seo/JsonLd'
 import Pricing   from '@/components/sections/Pricing'
@@ -10,21 +10,22 @@ import Container from '@/components/ui/Container'
 
 export const metadata: Metadata = buildMetadata({
   title:       'Snellio prijzen | Software voor installatiebedrijven',
-  description: 'Bekijk de prijzen van Snellio. Alle functies inbegrepen, incl. 21% btw. Start 14 dagen gratis en kies daarna het abonnement dat bij jouw installatiebedrijf past.',
+  description: 'Bekijk de prijzen van Snellio. Alle functies inbegrepen, prijzen excl. btw. Start 14 dagen gratis en kies daarna het abonnement dat bij jouw installatiebedrijf past.',
   path:        '/pricing',
 })
 
 // Antwoorden zijn geverifieerd tegen de app: betaalwijzen iDEAL en
 // automatische incasso (lib/abonnement/keuze.ts), jaar = 10 maandbedragen,
-// Starter-cap 25 installaties (lib/pakket.ts). Handboekvraag: zelfde tekst als
-// homepage en /brl-100-handboek (HANDBOEK.faq).
+// prijsladder 2027 (lib/subscriptions/pricing.ts nieuw_2027). Handboekvraag:
+// zelfde tekst als homepage en /brl-100-handboek (HANDBOEK.faq).
+const [basis, pro, enterprise] = (['basis', 'pro', 'enterprise'] as const).map(id => PLANS.find(p => p.id === id)!)
 const faqs = [
   { question: 'Moet ik direct betalen?',
     answer:   `Nee. Je start eerst met een gratis trial van ${TRIAL_DAGEN} dagen. Bij registratie vragen we geen creditcard, geen betaling en geen incassomachtiging.` },
   { question: 'Wanneer kies ik mijn abonnement?',
     answer:   'Tijdens de proefperiode kies je in Snellio welk abonnement bij je bedrijf past, en of je per maand of per jaar wilt betalen.' },
   { question: 'Zijn de prijzen inclusief btw?',
-    answer:   'Ja. Alle genoemde prijzen zijn inclusief 21% btw. Het bedrag dat je ziet is het bedrag dat je betaalt, er komen geen kosten bij.' },
+    answer:   'Nee. Alle genoemde prijzen zijn exclusief btw; daar komt 21% btw bij. Verder zijn er geen extra kosten.' },
   { question: 'Kan ik maandelijks betalen?',
     answer:   'Ja. Bij maandelijkse betaling kun je per maand opzeggen. Een maandabonnement loopt per maandperiode en wordt telkens met een maand verlengd tot je opzegt.' },
   { question: 'Kan ik jaarlijks betalen?',
@@ -34,11 +35,11 @@ const faqs = [
   { question: 'Welke betaalmethoden zijn beschikbaar?',
     answer:   'Automatische incasso (SEPA) of zelf betalen via iDEAL. Je kiest dit in Snellio op het moment dat je je abonnement kiest.' },
   { question: 'Kan ik later extra monteurs toevoegen?',
-    answer:   'Ja. Bij Pro en Enterprise voeg je monteurs toe wanneer je wilt. De prijs wordt aangepast op basis van het gekozen pakket en het aantal monteurs: Pro €20 per extra monteur vanaf de 3e, Enterprise €10 per extra monteur vanaf de 6e. Starter en Basis zijn bedoeld voor 1 monteur; wil je er meer, dan stap je over naar Pro.' },
-  { question: 'Wat gebeurt er als Starter boven 25 installaties komt?',
-    answer:   'Dan stap je over naar Basis (€29 per maand, onbeperkt installaties). Je gegevens blijven gewoon staan.' },
+    answer:   `Ja. Bij Pro en Enterprise voeg je monteurs toe wanneer je wilt. Pro: ${pro.monteurs.inbegrepen} monteurs inbegrepen, €${pro.monteurs.extra!.prijs} per extra monteur vanaf de ${pro.monteurs.extra!.vanafMonteur}e, tot en met ${pro.monteurs.max}. Enterprise: ${enterprise.monteurs.inbegrepen} monteurs inbegrepen, €${enterprise.monteurs.extra!.prijs} per extra monteur vanaf de ${enterprise.monteurs.extra!.vanafMonteur}e, tot en met ${enterprise.monteurs.max}. ${basis.name} is voor 1 monteur; wil je er meer, dan stap je over naar Pro. Alle bedragen per maand, excl. btw.` },
+  { question: `Wat als we meer dan ${ZELFBEDIENING_MAX_MONTEURS} monteurs hebben?`,
+    answer:   `Dan maken we graag een offerte op maat. Neem contact op via info@snellio.nl.` },
   { question: 'Zitten planning, facturatie en F-gassen in elk pakket?',
-    answer:   'Ja. Snellio kent geen losse modules of toeslagen. CRM, planning, werkbonnen, facturatie, installatiebeheer en F-gassen-administratie zitten in elk pakket, ook in Starter.' },
+    answer:   `Ja. CRM, planning, werkbonnen, facturatie, installatiebeheer en F-gassen-administratie zitten in elk pakket, ook in ${basis.name}. ${enterprise.name} bevat daarnaast de ${AI_MODULE.label.toLowerCase()}, een eigen maildomein, onboarding en voorrang bij support.` },
   { question: 'Zijn de boekhoudkoppelingen inbegrepen?',
     answer:   'Ja. De koppelingen met WeFact, Moneybird en Exact Online zijn bij elk pakket gratis inbegrepen. Staat jouw boekhoudpakket er niet bij? Dan proberen wij, indien mogelijk, deze alsnog toe te voegen.' },
   { question: 'Kan ik van pakket wisselen?',
@@ -48,7 +49,7 @@ const faqs = [
 ]
 
 const heroChips = [
-  'Vanaf €10 per maand incl. btw',
+  `Vanaf €${basis.price.month} per maand ${BTW.short}`,
   `${TRIAL_DAGEN} dagen gratis`,
   'Geen creditcard nodig om te starten',
 ]

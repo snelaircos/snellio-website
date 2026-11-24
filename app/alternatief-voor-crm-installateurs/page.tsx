@@ -18,7 +18,6 @@ export const metadata: Metadata = buildMetadata({
 })
 
 const SIGNUP_HREF = '/registreren'
-const starter     = planById('starter')
 const basis       = planById('basis')
 const pro         = planById('pro')
 const enterprise  = planById('enterprise')
@@ -70,7 +69,7 @@ const voorWie = [
   {
     icon: '👤',
     title: 'ZZP installateurs',
-    desc: `Werk je alleen? ${starter.name} vanaf ${fmtEuro(starter.price.month)} per maand ${BTW.short} (${starter.installaties.label.toLowerCase()}) of ${basis.name} voor ${fmtEuro(basis.price.month)} per maand. Alle functies inbegrepen.`,
+    desc: `Werk je alleen? ${basis.name} voor ${fmtEuro(basis.price.month)} per maand ${BTW.short} (${basis.installaties.label.toLowerCase()}). Alle functies inbegrepen.`,
   },
   {
     icon: '👥',

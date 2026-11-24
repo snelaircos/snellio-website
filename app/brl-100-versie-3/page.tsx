@@ -43,7 +43,7 @@ export const metadata: Metadata = buildMetadata({
   path:        AUDITMAP_PAGE.path,
 })
 
-const starter = planById('starter')
+const basis   = planById('basis')
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -173,7 +173,7 @@ const faqs = [
   },
   {
     question: 'Werkt het ook als ik alleen monteur ben?',
-    answer:   `Ja. Ook als zzp’er heb je een bedrijfscertificaat (BRL 100) en een persoonscertificaat (BRL 200) nodig. De auditmap werkt hetzelfde met één monteur. Het pakket ${starter.name} is voor ${starter.monteurs.inbegrepen} monteur, met alle functies.`,
+    answer:   `Ja. Ook als zzp’er heb je een bedrijfscertificaat (BRL 100) en een persoonscertificaat (BRL 200) nodig. De auditmap werkt hetzelfde met één monteur. Het pakket ${basis.name} is voor ${basis.monteurs.inbegrepen} monteur, met alle functies.`,
   },
   {
     question: 'Krijg ik met Snellio een BRL 100-certificaat?',

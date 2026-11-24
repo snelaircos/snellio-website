@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { AUTOMOTIVE_PLANS, BTW } from '@/lib/constants'
+import { AUTOMOTIVE_PLANS, BTW_AUTOMOTIVE as BTW } from '@/lib/constants'
 
 // Light-theme pricing voor /automotive. Witte cards op #f4f7fa.
 // Pro card heeft "Aanbevolen"-pill in cyan, zoals het Claude Design ontwerp voorschrijft.
