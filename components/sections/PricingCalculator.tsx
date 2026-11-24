@@ -2,16 +2,16 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { BTW, JAAR_MAANDEN_BETAALD, ZELFBEDIENING_MAX_MONTEURS } from '@/lib/constants'
+import { BTW, JAAR_MAANDEN_BETAALD } from '@/lib/constants'
 import { planById, maandprijsVoorTeam, extraMonteurs, jaarprijs, fmtEuro } from '@/lib/pricing'
 
 // Kleine, puur client-side rekentool: hoeveel kost Pro of Enterprise voor
 // een team van N monteurs? Geen checkout, geen tracking, geen API-calls.
-// Prijzen per 1-1-2027 (excl. btw): Pro tot en met 5 monteurs, Enterprise
-// vanaf 6 tot en met 15. Daarboven een offerte op maat.
+// Bij 5 monteurs zijn Pro en Enterprise gelijk; vanaf 6 is Enterprise
+// voordeliger. Dat is de bedoelde upgrade-prikkel.
 
 const MIN = 1
-const MAX = ZELFBEDIENING_MAX_MONTEURS + 1
+const MAX = 15
 
 interface Props {
   annual: boolean
@@ -22,23 +22,22 @@ export default function PricingCalculator({ annual }: Props) {
 
   const pro        = planById('pro')
   const enterprise = planById('enterprise')
+  const starter    = planById('starter')
   const basis      = planById('basis')
 
   const proMaand = maandprijsVoorTeam(pro, monteurs)
   const entMaand = maandprijsVoorTeam(enterprise, monteurs)
   const proExtra = extraMonteurs(pro, monteurs)
   const entExtra = extraMonteurs(enterprise, monteurs)
-  const proKan   = monteurs <= pro.monteurs.max
-  const offerte  = monteurs > ZELFBEDIENING_MAX_MONTEURS
 
   const verdict =
-    offerte
-      ? { tekst: `Meer dan ${ZELFBEDIENING_MAX_MONTEURS} monteurs? Neem contact op voor een offerte op maat.`, kleur: 'neutral' as const }
-      : monteurs === 1
-        ? { tekst: `Met 1 monteur past ${basis.name} (${fmtEuro(basis.price.month)} per maand, onbeperkt installaties).`, kleur: 'neutral' as const }
-        : proKan
-          ? { tekst: `${pro.name} past bij dit team. ${enterprise.name} kan ook, met AI-assistent, eigen maildomein, onboarding en voorrang bij support.`, kleur: 'neutral' as const }
-          : { tekst: `Vanaf ${pro.monteurs.max + 1} monteurs kies je ${enterprise.name}.`, kleur: 'green' as const }
+    monteurs === 1
+      ? { tekst: `Met 1 monteur past ${starter.name} (${fmtEuro(starter.price.month)}, tot ${starter.installaties.max} installaties) of ${basis.name} (${fmtEuro(basis.price.month)}, onbeperkt installaties).`, kleur: 'neutral' as const }
+      : entMaand < proMaand
+        ? { tekst: 'Enterprise is voordeliger voor dit team.', kleur: 'green' as const }
+        : entMaand === proMaand
+          ? { tekst: 'Pro en Enterprise kosten evenveel. Groeit je team door, dan wordt Enterprise voordeliger.', kleur: 'neutral' as const }
+          : { tekst: 'Pro is voordeliger voor dit team.', kleur: 'neutral' as const }
 
   const clamp = (n: number) => Math.min(MAX, Math.max(MIN, n))
 
@@ -52,8 +51,8 @@ export default function PricingCalculator({ annual }: Props) {
             Wat kost Snellio voor jouw team?
           </h3>
           <p className="text-[var(--muted2)] text-sm leading-relaxed mb-6">
-            Pro heeft {pro.monteurs.inbegrepen} monteurs inbegrepen, daarna {fmtEuro(pro.monteurs.extra!.prijs)} per extra monteur, tot en met {pro.monteurs.max}.
-            Enterprise heeft {enterprise.monteurs.inbegrepen} monteurs inbegrepen, daarna {fmtEuro(enterprise.monteurs.extra!.prijs)} per extra monteur, tot en met {enterprise.monteurs.max}.
+            Pro heeft {pro.monteurs.inbegrepen} monteurs inbegrepen, daarna {fmtEuro(pro.monteurs.extra!.prijs)} per extra monteur.
+            Enterprise heeft {enterprise.monteurs.inbegrepen} monteurs inbegrepen, daarna {fmtEuro(enterprise.monteurs.extra!.prijs)} per extra monteur.
           </p>
 
           <label htmlFor="monteurs-range" className="block text-[var(--text2)] text-sm font-medium mb-2">
@@ -96,7 +95,7 @@ export default function PricingCalculator({ annual }: Props) {
               htmlFor="monteurs-range"
               className="w-12 text-center font-outfit font-black text-2xl text-[var(--text)] tabular-nums"
             >
-              {offerte ? `${ZELFBEDIENING_MAX_MONTEURS}+` : monteurs}
+              {monteurs}
             </output>
           </div>
 
@@ -115,9 +114,9 @@ export default function PricingCalculator({ annual }: Props) {
         {/* Uitkomst */}
         <div className="grid sm:grid-cols-2 gap-4">
           {[
-            { plan: pro,        maand: proMaand, extra: proExtra, kan: proKan && !offerte, best: monteurs > 1 && proKan && !offerte },
-            { plan: enterprise, maand: entMaand, extra: entExtra, kan: !offerte,           best: !proKan && !offerte },
-          ].map(({ plan, maand, extra, kan, best }) => (
+            { plan: pro,        maand: proMaand, extra: proExtra, best: monteurs > 1 && proMaand < entMaand },
+            { plan: enterprise, maand: entMaand, extra: entExtra, best: monteurs > 1 && entMaand < proMaand },
+          ].map(({ plan, maand, extra, best }) => (
             <div
               key={plan.id}
               className={`relative rounded-2xl p-5 border transition-colors ${
@@ -126,27 +125,21 @@ export default function PricingCalculator({ annual }: Props) {
             >
               {best && (
                 <span className="absolute -top-2.5 right-4 bg-[var(--accent)] text-white text-[.65rem] font-bold px-2.5 py-0.5 rounded-full">
-                  Past bij je team
+                  Voordeligst
                 </span>
               )}
               <p className="font-outfit font-bold text-[var(--text)] text-lg">{plan.name}</p>
               <p className="text-[var(--muted2)] text-xs mb-3">{plan.monteurs.inbegrepen} monteurs inbegrepen</p>
-              {!kan ? (
-                <p className="text-[var(--text2)] text-sm mt-2">
-                  {offerte ? 'Offerte op maat: info@snellio.nl' : `Tot en met ${plan.monteurs.max} monteurs`}
-                </p>
-              ) : (<>
               <p className="flex items-baseline gap-1">
                 <span className="font-outfit font-black text-3xl text-[var(--text)] tabular-nums">{fmtEuro(maand)}</span>
-                <span className="text-xs text-[var(--muted2)]">/ maand {BTW.short}</span>
+                <span className="text-xs text-[var(--muted2)]">/ maand</span>
               </p>
               <p className="text-[var(--muted2)] text-xs mt-1 tabular-nums">
                 {extra > 0
                   ? `${fmtEuro(plan.price.month)} + ${extra} × ${fmtEuro(plan.monteurs.extra!.prijs)}`
                   : `Basisprijs, ${monteurs} van ${plan.monteurs.inbegrepen} monteurs gebruikt`}
               </p>
-              </>)}
-              {annual && kan && (
+              {annual && (
                 <p className="text-[var(--text2)] text-xs mt-2 tabular-nums">
                   Per jaar: <strong className="text-[var(--text)]">{fmtEuro(jaarprijs(maand))}</strong>{' '}
                   <span className="text-[var(--muted2)]">({JAAR_MAANDEN_BETAALD} maanden betalen, 12 gebruiken)</span>

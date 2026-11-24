@@ -32,7 +32,7 @@ const vanaf  = Math.min(...PLANS.map(p => p.price.month))
 const totMax = Math.max(...PLANS.map(p => p.price.month))
 
 const TITLE       = 'Software voor installatiebedrijven in koeltechniek en airco'
-const DESCRIPTION = `CRM, werkbonnen, planning, facturatie en de administratie die BRL 100 vraagt, in één systeem. Vanaf ${fmtEuro(vanaf)} per maand ${BTW.short}. Probeer ${TRIAL_DAGEN} dagen gratis.`
+const DESCRIPTION = `CRM, werkbonnen, planning, facturatie en de administratie die BRL 100 vraagt, in één systeem. Vanaf ${fmtEuro(vanaf)} per maand incl. btw. Probeer ${TRIAL_DAGEN} dagen gratis.`
 
 export const metadata: Metadata = buildMetadata({
   title:       TITLE,
@@ -42,7 +42,7 @@ export const metadata: Metadata = buildMetadata({
 
 const pro        = planById('pro')
 const enterprise = planById('enterprise')
-const basis      = planById('basis')
+const starter    = planById('starter')
 
 // Answer-first alinea onder de H1; letterlijk hergebruikt als eerste FAQ,
 // zodat zichtbare tekst en FAQ-schema byte-gelijk zijn.
@@ -121,9 +121,9 @@ const extraKoeltechniek = [
 // /vergelijken/software-koeltechniek (nog te bouwen), niet hier.
 const vergelijking = [
   {
-    pakket: `Snellio ${basis.name}`,
-    instap: `${fmtEuro(basis.price.month)} per maand of ${fmtEuro(basis.price.year)} per jaar`,
-    btw:    `ex btw (${fmtEuro(Math.round(basis.price.month * 121) / 100)} incl.)`,
+    pakket: `Snellio ${starter.name}`,
+    instap: `${fmtEuro(starter.price.month)} per maand of ${fmtEuro(starter.price.year)} per jaar`,
+    btw:    BTW.short,
     fgas:   'Ja, inbegrepen',
   },
   {
@@ -161,7 +161,7 @@ const stappen = [
 const waarom = [
   {
     titel: 'Alle functies in elk pakket',
-    tekst: 'Geen modulejungle en geen toeslagen. Het verschil tussen de pakketten zit in het aantal monteurs; Enterprise heeft daarnaast de AI-assistent, een eigen maildomein, onboarding en voorrang bij support.',
+    tekst: 'Geen modulejungle en geen toeslagen. Het verschil tussen de pakketten zit in het aantal monteurs en, alleen bij Starter, het aantal installaties.',
   },
   {
     titel: 'Koeltechniek zit in de kern',
@@ -188,19 +188,19 @@ const faqs = [
   },
   {
     question: 'Wat kost Snellio?',
-    answer: `${basis.name} ${fmtEuro(basis.price.month)} per maand, Pro ${fmtEuro(pro.price.month)} per maand met ${pro.monteurs.inbegrepen} monteurs inbegrepen en Enterprise ${fmtEuro(enterprise.price.month)} per maand met ${enterprise.monteurs.inbegrepen} monteurs inbegrepen. Alle bedragen ${BTW.short}. Bij jaarbetaling betaal je ${JAAR_MAANDEN_BETAALD} maanden en gebruik je Snellio 12 maanden.`,
+    answer: `Starter ${fmtEuro(starter.price.month)} per maand, Basis ${fmtEuro(planById('basis').price.month)} per maand, Pro ${fmtEuro(pro.price.month)} per maand met ${pro.monteurs.inbegrepen} monteurs inbegrepen en Enterprise ${fmtEuro(enterprise.price.month)} per maand met ${enterprise.monteurs.inbegrepen} monteurs inbegrepen. Alle bedragen ${BTW.short}. Bij jaarbetaling betaal je ${JAAR_MAANDEN_BETAALD} maanden en gebruik je Snellio 12 maanden.`,
   },
   {
     question: 'Zijn de prijzen inclusief of exclusief btw, en hoe vergelijk ik dat?',
-    answer: 'Alle Snellio-prijzen zijn exclusief btw; daar komt 21% btw bij, net als bij de meeste leveranciers. Vergelijk dus ex btw met ex btw, en let ook op het aantal gebruikers bij de instapprijs en of de F-gasregistratie is inbegrepen of een losse module is.',
+    answer: 'Alle Snellio-prijzen zijn inclusief 21% btw: het bedrag dat je ziet, is het bedrag dat wordt afgeschreven. Veel leveranciers publiceren prijzen exclusief btw. Vermenigvuldig zo’n prijs met 1,21 om hem naast een Snellio-prijs te leggen, en let ook op het aantal gebruikers bij de instapprijs en of de F-gasregistratie is inbegrepen of een losse module is.',
   },
   {
     question: 'Kan ik extra monteurs toevoegen?',
-    answer: `Ja. Bij Pro kost een extra monteur ${fmtEuro(pro.monteurs.extra!.prijs)} per maand vanaf de ${pro.monteurs.extra!.vanafMonteur}e, bij Enterprise ${fmtEuro(enterprise.monteurs.extra!.prijs)} per maand vanaf de ${enterprise.monteurs.extra!.vanafMonteur}e. Pro gaat tot en met ${pro.monteurs.max} monteurs, Enterprise tot en met ${enterprise.monteurs.max}; daarboven maken we een offerte. ${basis.name} is bedoeld voor één monteur.`,
+    answer: `Ja. Bij Pro kost een extra monteur ${fmtEuro(pro.monteurs.extra!.prijs)} per maand vanaf de ${pro.monteurs.extra!.vanafMonteur}e, bij Enterprise ${fmtEuro(enterprise.monteurs.extra!.prijs)} per maand vanaf de ${enterprise.monteurs.extra!.vanafMonteur}e. Starter en Basis zijn bedoeld voor één monteur.`,
   },
   {
     question: 'Zijn alle functies inbegrepen?',
-    answer: `Ja. Werkbonnen, planning, facturatie, F-gassen en de boekhoudkoppelingen zitten in ieder pakket; de pakketten verschillen in het aantal monteurs. ${enterprise.name} bevat daarnaast de AI-assistent, een eigen maildomein, onboarding en voorrang bij support. Het BRL 100-handboek hoort bij ${basis.name} en Pro met jaarbetaling, en bij ${enterprise.name} altijd.`,
+    answer: `Ja. De pakketten verschillen alleen in capaciteit: het aantal monteurs en bij Starter maximaal ${starter.installaties.max} installaties. Werkbonnen, planning, facturatie, F-gassen en de boekhoudkoppelingen zitten in ieder pakket. Alleen het BRL 100-handboek hoort bij Basis, Pro en Enterprise met jaarbetaling.`,
   },
   {
     question: 'Kan mijn monteur Snellio onderweg gebruiken?',

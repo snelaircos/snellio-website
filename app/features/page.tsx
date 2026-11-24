@@ -25,7 +25,7 @@ const faqs = [
   { question: 'Maakt Snellio een TRA en LMRA bij werk met R290?',
     answer:   'Ja. Werk je aan een installatie met een brandbaar koudemiddel, dan zet Snellio bij de werkorder een veiligheidsdossier klaar: een TRA met risico’s en beheersmaatregelen uit de risicocatalogus, een werkvergunning waar die nodig is, en een LMRA die de monteur ter plaatse invult en aftekent. Snellio levert de formulieren en de vastlegging; de beoordeling van de klus en de RI&E blijven bij de werkgever.' },
   { question: 'Kan ik meerdere monteurs toevoegen?',
-    answer:   'Ja. Pro heeft 3 monteurs inbegrepen (daarna €15 per extra monteur per maand, tot en met 5), Enterprise 8 monteurs (daarna €12 per extra monteur, tot en met 15). Bij meer dan 15 monteurs maken we een offerte. Bedragen excl. btw. Je kunt per monteur rechten en Google Calendar instellen. Alle functies zijn in elk pakket gelijk.' },
+    answer:   'Ja. Pro heeft 2 monteurs inbegrepen (daarna €20 per extra monteur per maand), Enterprise 5 monteurs (daarna €10 per extra monteur). Je kunt per monteur rechten en Google Calendar instellen. Alle functies zijn in elk pakket gelijk.' },
 ]
 
 const details = [

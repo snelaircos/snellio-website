@@ -38,7 +38,7 @@ export const metadata: Metadata = buildMetadata({
   dateModified:  BRL100_PAGE.dateModified,
 })
 
-const basis   = planById('basis')
+const starter = planById('starter')
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -632,8 +632,8 @@ export default function Brl100SoftwarePage() {
           </figure>
           <div className={`${prose} mt-8`}>
             <p>
-              Alle functies zitten in elk pakket, vanaf {fmtEuro(basis.price.month)} per maand {BTW.short} ({basis.name},{' '}
-              {basis.monteurs.inbegrepen} monteur, {basis.installaties.label.toLowerCase()}).{' '}
+              Alle functies zitten in elk pakket, vanaf {fmtEuro(starter.price.month)} per maand {BTW.short} ({starter.name},{' '}
+              {starter.monteurs.inbegrepen} monteur, {starter.installaties.label.toLowerCase()}).{' '}
               <Link href="/f-gassen-registratie" className={anchor}>Bekijk de F-gassenregistratie in detail →</Link>
               {' · '}
               <Link href="/pricing" className={anchor}>Bekijk de prijzen →</Link>

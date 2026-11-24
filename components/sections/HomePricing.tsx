@@ -6,7 +6,7 @@ import { fmtEuro, handboekRegel } from '@/lib/pricing'
 import PeriodeSchakelaar, { usePeriode } from '@/components/ui/PeriodeSchakelaar'
 
 // Compact commercieel prijsblok voor de homepage (light theme). Geen volledige
-// pricingtabel: de boodschap is "vanaf €39 excl. btw, alles inbegrepen, 14 dagen gratis".
+// pricingtabel: de boodschap is "vanaf €10, alles inbegrepen, 14 dagen gratis".
 // De volledige uitleg staat op /pricing. Client component voor de maand/jaar-
 // schakelaar; "Bekijk de jaarprijzen" in de handboeksectie springt naar
 // #jaarprijzen en zet hem op jaar.
@@ -31,11 +31,11 @@ export default function HomePricing() {
             className="font-extrabold tracking-tight text-[#0f2133] leading-[1.1] mb-3"
             style={{ fontSize: 'clamp(1.7rem, 3.6vw, 2.4rem)' }}
           >
-            Snellio vanaf {fmtEuro(vanaf)} per maand {BTW.short}.
+            Snellio vanaf {fmtEuro(vanaf)} per maand.
           </h2>
           <p className="text-[#0f2133] text-[1.05rem] leading-[1.55] mb-5">
             <strong>Alle functies in elk pakket</strong>, je betaalt alleen voor de grootte van je bedrijf.
-            Het BRL 100-handboek krijg je bij Basis en Pro met jaarbetaling, bij Enterprise altijd.
+            Het BRL 100-handboek krijg je bij jaarbetaling vanaf Basis.
           </p>
           <ul className="flex flex-col gap-2 list-none mb-7">
             {punten.map(p => (
