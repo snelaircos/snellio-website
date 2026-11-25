@@ -35,7 +35,7 @@ export default function HomePricing() {
           </h2>
           <p className="text-[#0f2133] text-[1.05rem] leading-[1.55] mb-5">
             <strong>Alle functies in elk pakket</strong>, je betaalt alleen voor de grootte van je bedrijf.
-            Het BRL 100-handboek krijg je bij Basis en Pro met jaarbetaling, bij Enterprise altijd.
+            Het BRL 100-handboek krijg je alleen bij een jaarabonnement.
           </p>
           <ul className="flex flex-col gap-2 list-none mb-7">
             {punten.map(p => (

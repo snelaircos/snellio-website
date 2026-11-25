@@ -131,7 +131,7 @@ export const PLANS: HvacPlan[] = [
     price:    { month: 149, year: 1490 },
     monteurs: { inbegrepen: 8, extra: { vanafMonteur: 9, prijs: 12 }, max: 15 },
     installaties: { max: null, label: 'Onbeperkt installaties' },
-    inclusief: ['AI-assistent', 'Eigen maildomein', 'Onboarding', 'Voorrang bij support', 'BRL 100-handboek, ook bij maandbetaling'],
+    inclusief: ['AI-assistent', 'Eigen maildomein', 'Onboarding', 'Voorrang bij support'],
     badge:    'Voor groeiende teams',
   },
 ]
@@ -154,9 +154,9 @@ export const INBEGREPEN = [
 
 // ── BRL 100 v3.0-handboek (15-10-2026) ──────────────────────────────────────
 // Een document bij jaarbetaling, geen functie: "alle functies in elk pakket"
-// blijft waar. Basis en Pro met jaarbetaling, en Enterprise altijd, krijgen
-// het volledige handboek; maandbetaling bij Basis/Pro en de proefperiode zien
-// een voorbeeld. Moet gelijk lopen met HANDBOEK_PAKKETTEN in
+// blijft waar. Alleen een jaarabonnement (Basis, Pro en Enterprise) krijgt
+// het volledige handboek; een maandabonnement, ook Enterprise, en de
+// proefperiode zien een voorbeeld (besluit Rudy 25-11-2026). Moet gelijk lopen met HANDBOEK_PAKKETTEN in
 // lib/handboek/toegang.ts van de app. Formuleringen: rijen 30 t/m 36 van
 // docs/seo-geo/02-feature-factcheck.md. Nooit "goedgekeurd" of Kiwa.
 export const HANDBOEK = {
@@ -173,18 +173,17 @@ export const HANDBOEK = {
     { code: 'F', titel: 'Formulieren en registers', aantal: 14, voorbeeld: 'Logboek, F-gassenregistratie en -balans, meetinstrumenten en flessenkaarten' },
   ],
   href:         '/brl-100-handboek',
-  badge:        'Inbegrepen bij Basis en Pro met jaarbetaling, bij Enterprise altijd',
+  badge:        'Inbegrepen bij een jaarabonnement',
   disclaimer:   'Gebaseerd op BRL 100 v3.0. Het handboek vervangt de beoordeling door je certificerende instelling niet.',
   regel: {
     inbegrepen: 'Inclusief BRL 100 v3.0-handboek',
     alleenJaar: 'BRL 100-handboek alleen bij jaarabonnement',
     vanafBasis: 'BRL 100-handboek vanaf Basis (jaar)',
-    altijd:     'Inclusief BRL 100 v3.0-handboek, ook bij maandbetaling',
   },
   // Zelfde vraag en antwoord op de homepage, /pricing en /brl-100-handboek.
   faq: {
     question: 'Zit het BRL 100-handboek bij elk abonnement?',
-    answer:   'Bij Basis en Pro met jaarbetaling, en bij Enterprise altijd, ook per maand. Bij een maandabonnement op Basis of Pro en in de proefperiode zie je een voorbeeld: de inhoudsopgave en het eerste hoofdstuk, zonder je eigen gegevens. Het handboek mag je gebruiken zolang je abonnement loopt. Stopt je jaarabonnement, dan kun je het nog 30 dagen lezen.',
+    answer:   'Alleen bij een jaarabonnement, bij Basis, Pro en Enterprise. Bij een maandabonnement en in de proefperiode zie je een voorbeeld: de inhoudsopgave en het eerste hoofdstuk, zonder je eigen gegevens. Het handboek mag je gebruiken zolang je abonnement loopt. Stopt je jaarabonnement, dan kun je het nog 30 dagen lezen.',
   },
 } as const
 

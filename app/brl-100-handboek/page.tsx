@@ -255,9 +255,8 @@ export default function BrlHandboekPage() {
         <h2 className={h2} style={h2Size}>Bij welke abonnementen zit het handboek?</h2>
         <div className={prose}>
           <p>
-            Het volledige handboek hoort bij Basis en Pro met jaarbetaling, en bij Enterprise altijd. Alle functies
-            van Snellio zitten in elk pakket; het handboek is een document dat bij jaarbetaling vanaf {basis.name} hoort,
-            en bij Enterprise ook bij maandbetaling.
+            Het volledige handboek hoort alleen bij een jaarabonnement: Basis, Pro en Enterprise met jaarbetaling.
+            Alle functies van Snellio zitten in elk pakket; het handboek is een document dat bij jaarbetaling hoort.
             Prijzen {BTW.short}.
           </p>
         </div>
@@ -270,7 +269,7 @@ export default function BrlHandboekPage() {
               plan.name,
               fmtEuro(plan.price.month),
               fmtEuro(plan.price.year),
-              plan.id === 'enterprise' ? 'Volledig' : 'Voorbeeld',
+              'Voorbeeld',
               volledig ? 'Volledig' : 'Voorbeeld',
             ]
           })}
@@ -278,7 +277,7 @@ export default function BrlHandboekPage() {
         <div className={prose}>
           <p>
             Het voorbeeld is de inhoudsopgave en het eerste hoofdstuk, zonder je eigen gegevens. Dat zie je bij een
-            maandabonnement op {basis.name} of Pro en in de proefperiode van {TRIAL_DAGEN} dagen. Het handboek mag je gebruiken zolang je
+            maandabonnement, ook op Enterprise, en in de proefperiode van {TRIAL_DAGEN} dagen. Het handboek mag je gebruiken zolang je
             abonnement loopt. Alle bedragen en wat er verder inbegrepen is:{' '}
             <Link href={`/pricing#${JAARPRIJZEN_ANKER}`} className={anchor}>jaarprijzen</Link>.
           </p>

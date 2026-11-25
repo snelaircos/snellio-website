@@ -52,12 +52,11 @@ export function fmtEuro(bedrag: number): string {
 }
 
 /**
- * Regel over het BRL 100-handboek op een pakketkaart. Basis en Pro alleen bij
- * jaarbetaling, Enterprise altijd (HANDBOEK, prijzen 2027).
+ * Regel over het BRL 100-handboek op een pakketkaart: alleen bij jaarbetaling,
+ * voor alle pakketten, ook Enterprise (HANDBOEK, besluit 25-11-2026).
  */
 export function handboekRegel(plan: HvacPlan, annual: boolean): { tekst: string; inbegrepen: boolean } {
   if (!HANDBOEK.pakketten.includes(plan.id)) return { tekst: HANDBOEK.regel.vanafBasis, inbegrepen: false }
-  if (plan.id === 'enterprise') return { tekst: HANDBOEK.regel.altijd, inbegrepen: true }
   return annual
     ? { tekst: HANDBOEK.regel.inbegrepen, inbegrepen: true }
     : { tekst: HANDBOEK.regel.alleenJaar, inbegrepen: false }

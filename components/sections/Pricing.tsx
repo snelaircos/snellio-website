@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { BTW, PLANS, INBEGREPEN, TRIAL_DAGEN, JAAR_MAANDEN_BETAALD, JAARPRIJZEN_ANKER, HANDBOEK, type HvacPlan } from '@/lib/constants'
 import { fmtEuro, handboekRegel, twaalfMaanden } from '@/lib/pricing'
+import FoundingBalk from '@/components/ui/FoundingBalk'
 import PeriodeSchakelaar, { usePeriode } from '@/components/ui/PeriodeSchakelaar'
 import PricingCalculator from './PricingCalculator'
 
@@ -26,6 +27,9 @@ export default function Pricing() {
   return (
     <section className="px-[5%] pb-6" id="prijzen">
       <div className="mx-auto max-w-7xl">
+
+        {/* ── Founding-balk tot 1-1-2027 (verdwijnt vanzelf) ── */}
+        <FoundingBalk className="mb-8" />
 
         {/* ── Trialboodschap, boven de kaarten ── */}
         <div className="relative rounded-3xl p-[1px] bg-gradient-to-br from-[rgba(10,187,214,.55)] via-[rgba(0,144,184,.25)] to-[rgba(18,168,122,.35)] mb-12">

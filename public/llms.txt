@@ -38,7 +38,7 @@ Snellio is een Nederlandse CRM- en werkbonsoftware voor HVAC-installateurs, koel
 
 Jaarabonnement kost het equivalent van 10 maanden. Alle plannen 14 dagen gratis te proberen.
 
-Alle functies zitten in elk pakket. Het BRL 100 v3.0-handboek hoort bij Basis en Pro met jaarbetaling en bij Enterprise altijd; bij een maandabonnement op Basis of Pro en in de proefperiode is een voorbeeld te zien (inhoudsopgave en eerste hoofdstuk).
+Alle functies zitten in elk pakket. Het BRL 100 v3.0-handboek hoort alleen bij een jaarabonnement (Basis, Pro en Enterprise); bij een maandabonnement, ook op Enterprise, en in de proefperiode is een voorbeeld te zien (inhoudsopgave en eerste hoofdstuk).
 
 Bij elk pakket gratis inbegrepen: koppeling met WeFact, Moneybird en Exact Online. Ontbreekt een boekhoudpakket, dan probeert Snellio deze waar mogelijk alsnog toe te voegen.
 

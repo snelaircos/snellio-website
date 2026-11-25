@@ -7,6 +7,7 @@ import { BTW, HANDBOEK, PLANS, SITE, TRIAL_DAGEN } from '@/lib/constants'
 import { fmtEuro }       from '@/lib/pricing'
 import JsonLd            from '@/components/seo/JsonLd'
 import HomePricing       from '@/components/sections/HomePricing'
+import FoundingBalk      from '@/components/ui/FoundingBalk'
 import { JaarprijzenLink } from '@/components/ui/PeriodeSchakelaar'
 import { HOME_PAGE }     from './meta'
 import { AUDITMAP_PAGE } from './brl-100-versie-3/meta'
@@ -437,6 +438,7 @@ export default function HomePage() {
               Eerlijke prijzen, geen verrassingen.
             </h2>
           </div>
+          <FoundingBalk className="mx-auto max-w-5xl mb-6" />
           <HomePricing />
           <p className="text-center text-[#5f7791] text-sm mt-6">
             Alle functies in elk pakket. Je betaalt voor het aantal monteurs en installaties.

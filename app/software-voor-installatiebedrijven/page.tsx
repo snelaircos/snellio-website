@@ -200,7 +200,7 @@ const faqs = [
   },
   {
     question: 'Zijn alle functies inbegrepen?',
-    answer: `Ja. Werkbonnen, planning, facturatie, F-gassen en de boekhoudkoppelingen zitten in ieder pakket; de pakketten verschillen in het aantal monteurs. ${enterprise.name} bevat daarnaast de AI-assistent, een eigen maildomein, onboarding en voorrang bij support. Het BRL 100-handboek hoort bij ${basis.name} en Pro met jaarbetaling, en bij ${enterprise.name} altijd.`,
+    answer: `Ja. Werkbonnen, planning, facturatie, F-gassen en de boekhoudkoppelingen zitten in ieder pakket; de pakketten verschillen in het aantal monteurs. ${enterprise.name} bevat daarnaast de AI-assistent, een eigen maildomein, onboarding en voorrang bij support. Het BRL 100-handboek hoort alleen bij een jaarabonnement, bij ${basis.name}, Pro en ${enterprise.name}.`,
   },
   {
     question: 'Kan mijn monteur Snellio onderweg gebruiken?',
